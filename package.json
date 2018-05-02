@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "ng": "ng",
-    "start": "concurrently --kill-others \"npm run server:watch\" \"ng serve --progress=false --proxy-config proxy.conf.json\"",
+    "start": "concurrently --kill-others \"npm run server:watch\" \"ng serve --aot --progress=false --proxy-config proxy.conf.json\"",
     "client:build": "ng build --prod",
     "client:test": "ng test",
     "client:lint": "ng lint --fix",
