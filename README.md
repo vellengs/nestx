@@ -5,16 +5,16 @@ A full stack management system base on nest
 ```bash
 # clone our repo
 # --depth 1 removes all but one .git commit history
-git clone --depth 1 https://github.com/vellengs/nestx.git
+$ git clone --depth 1 https://github.com/vellengs/nestx.git
 
 # change directory to our repo
-cd nestx
+$ cd nestx
 
 # install the repo with npm
-npm install
+$ npm install
 
 # start the server
-npm start
+$ npm start
 
 ```
 
@@ -29,7 +29,7 @@ $ npm run start
 $ npm run start:dev
 
 # production mode
-npm run start:prod
+$ npm run start:prod
 
 ```
 
