@@ -37,6 +37,11 @@
     "server:test": "jasmine-ts ./src/server/**/*.spec.ts",
     "server:watch": "nodemon",
     "start": "concurrently --kill-others \"npm run server:watch\" \"ng serve --aot --progress=false --proxy-config proxy.conf.json\"",
+    "start:dev": "nodemon",
+    "start:prod": "node dist/main.js",
+    "test": "jest",
+    "test:cov": "jest --coverage",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
     "prettify": "pretty-quick"
   },
   "dependencies": {
