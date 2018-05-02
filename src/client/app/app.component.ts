@@ -14,8 +14,7 @@ export class AppComponent implements OnInit {
   constructor(private pingService: PingService) { }
 
   ping() {
-    // tslint:disable-next-line:no-commented-code
-    // this.pingService.sendPing(new Date());
+    this.pingService.sendPing(new Date());
   }
 
   ngOnInit() {
