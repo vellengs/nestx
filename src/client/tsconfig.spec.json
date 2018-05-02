@@ -1,14 +1,24 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../out-tsc/spec",
+    "outDir": "./out-tsc/spec",
     "baseUrl": "./",
     "module": "commonjs",
     "target": "es5",
     "types": [
       "jasmine",
       "node"
-    ]
+    ],
+    "paths": {
+        "@shared": [ "app/shared" ],
+        "@shared/*": [ "app/shared/*" ],
+        "@core": [ "app/core/" ],
+        "@core/*": [ "app/core/*" ],
+        "@testing": [ "testing/" ],
+        "@testing/*": [ "testing/*" ],
+        "@env": [ "environments/" ],
+        "@env/*": [ "environments/*" ]
+    }
   },
   "files": [
     "test.ts"

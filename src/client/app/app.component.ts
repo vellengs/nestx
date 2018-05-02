@@ -1,24 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { PingService } from './shared/services/ping.services';
-import { Observable } from 'rxjs/Observable';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { ThemesService, SettingsService, TitleService } from '@delon/theme';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `<router-outlet></router-outlet>`
 })
 export class AppComponent implements OnInit {
 
-  pongMessage$: Observable<any>;
+  @HostBinding('class.layout-fixed') get isFixed() { return this.settings.layout.fixed; }
+  @HostBinding('class.layout-boxed') get isBoxed() { return this.settings.layout.boxed; }
+  @HostBinding('class.aside-collapsed') get isCollapsed() { return this.settings.layout.collapsed; }
 
-  constructor(private pingService: PingService) { }
-
-  ping() {
-    this.pingService.sendPing(new Date());
+  constructor(
+    private theme: ThemesService,
+    private settings: SettingsService,
+    private router: Router,
+    private titleSrv: TitleService) {
   }
 
   ngOnInit() {
-
-    this.pongMessage$ = this.pingService.getPong();
+    this.router.events
+        .pipe(filter(evt => evt instanceof NavigationEnd))
+        .subscribe(() => this.titleSrv.setTitle());
   }
 }

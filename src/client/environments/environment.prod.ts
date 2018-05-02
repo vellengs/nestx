@@ -1,3 +1,7 @@
 export const environment = {
-  production: true
+    chore: false,
+    SERVER_URL: `./`,
+    production: true,
+    hmr: false,
+    useHash: true
 };

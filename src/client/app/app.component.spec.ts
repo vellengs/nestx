@@ -1,30 +1,20 @@
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, TestModuleMetadata } from '@angular/core/testing';
+import { APP_BASE_HREF } from '@angular/common';
+import { setUpTestBed } from '@testing/common.spec';
+
 import { AppComponent } from './app.component';
-import { RouterTestingModule } from '@angular/router/testing';
 
-describe('AppComponent', () => {
+describe('Component: App', () => {
+    setUpTestBed(<TestModuleMetadata>{
+        declarations: [ AppComponent ],
+        providers: [
+            { provide: APP_BASE_HREF, useValue: '/' }
+        ]
+    });
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
-
-  it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
-
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Universal App ( Server side rendering ) using NestJS and Angular 5+');
-  }));
+    it('should create the app', () => {
+        const fixture = TestBed.createComponent(AppComponent);
+        const comp = fixture.debugElement.componentInstance;
+        expect(comp).toBeTruthy();
+    });
 });
