@@ -11,10 +11,11 @@ export class AppComponent implements OnInit {
 
   pongMessage$: Observable<any>;
 
-  constructor(private pingService: PingService) {}
+  constructor(private pingService: PingService) { }
 
   ping() {
-    this.pingService.sendPing(new Date());
+    // tslint:disable-next-line:no-commented-code
+    // this.pingService.sendPing(new Date());
   }
 
   ngOnInit() {

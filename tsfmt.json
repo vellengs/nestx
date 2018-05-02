@@ -13,7 +13,7 @@
 	"insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
 	"insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
 	"insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
-	"noSpaceBeforeOpenParenInFuncDecl": false,
+	"noSpaceBeforeOpenParentInFuncDecl": false,
 	"placeOpenBraceOnNewLineForFunctions": false,
 	"placeOpenBraceOnNewLineForControlBlocks": false
 }

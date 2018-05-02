@@ -17,7 +17,7 @@
         "array-type": [false],
         "no-empty-interface": false,
         "no-empty": false,
-        "arrow-parens": false,
+        "arrow-parents": false,
         "object-literal-sort-keys": false,
         "no-unused-expression": false,
         "max-classes-per-file": [false],
