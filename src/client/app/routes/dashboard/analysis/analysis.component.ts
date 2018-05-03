@@ -31,9 +31,17 @@ export class DashboardAnalysisComponent implements OnInit {
         { type: 'number', title: '周涨幅', index: 'range', render: 'range', sorter: (a, b) => a.range - b.range }
     ];
 
-    constructor(private http: _HttpClient, public msg: NzMessageService) {}
+    salesType = 'all';
+    salesPieData: any;
+    salesTotal = 0;
+    _activeTab = 0;
+
+    constructor(private http: _HttpClient, public msg: NzMessageService) { }
 
     ngOnInit() {
+
+        console.log('analysis ...');
+
         this.http.get('/chart').subscribe((res: any) => {
             res.offlineData.forEach((item: any) => {
                 item.chart = Object.assign([], res.offlineChartData);
@@ -50,21 +58,19 @@ export class DashboardAnalysisComponent implements OnInit {
         this.q.end = rank[1];
     }
 
-    salesType = 'all';
-    salesPieData: any;
-    salesTotal = 0;
+
     changeSaleType() {
         this.salesPieData = this.salesType === 'all' ? this.data.salesTypeData : (
             this.salesType === 'online' ? this.data.salesTypeDataOnline : this.data.salesTypeDataOffline
         );
-        if (this.salesPieData) this.salesTotal = this.salesPieData.reduce((pre, now) => now.y + pre, 0);
+        if (this.salesPieData) { this.salesTotal = this.salesPieData.reduce((pre, now) => now.y + pre, 0); }
     }
 
     handlePieValueFormat(value: any) {
         return yuan(value);
     }
 
-    _activeTab = 0;
+
     _tabChange(value: any) {
         console.log('tab', this._activeTab, value);
     }

@@ -13,11 +13,13 @@ import { Exception403Component } from './exception/403.component';
 import { Exception404Component } from './exception/404.component';
 import { Exception500Component } from './exception/500.component';
 import { DashboardAnalysisComponent } from 'app/routes/dashboard/analysis/analysis.component';
+import { DashboardComponent } from 'app/routes/dashboard/default/dashboard.component';
 
 @NgModule({
     imports: [SharedModule, RouteRoutingModule],
     declarations: [
         DashboardAnalysisComponent,
+        DashboardComponent,
         // passport pages
         UserLoginComponent,
         UserRegisterComponent,
