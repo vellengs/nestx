@@ -5,18 +5,25 @@ import * as screenfull from 'screenfull';
     selector: 'header-fullscreen',
     template: `
     <i class="anticon anticon-{{status ? 'shrink' : 'arrows-alt'}}"></i>
-    {{ status ? '退出全屏' : '全屏' }}
-    `
+    {{(status ? 'fullscreen-exit' : 'fullscreen') | translate }}
+    `,
+    host: {
+        '[class.d-block]': 'true'
+    }
 })
 export class HeaderFullScreenComponent {
 
     status = false;
+
+    @HostListener('window:resize')
+    _resize() {
+        this.status = screenfull.isFullscreen;
+    }
 
     @HostListener('click')
     _click() {
         if (screenfull.enabled) {
             screenfull.toggle();
         }
-        this.status = !screenfull.isFullscreen;
     }
 }

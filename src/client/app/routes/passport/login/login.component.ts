@@ -2,10 +2,11 @@ import { SettingsService } from '@delon/theme';
 import { Component, OnDestroy, Inject, Optional } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { NzMessageService } from 'ng-zorro-antd';
-import { SocialService, SocialOpenType, ITokenService, DA_SERVICE_TOKEN } from '@delon/auth';
+import { NzMessageService, NzModalService } from 'ng-zorro-antd';
+import { SocialService, SocialOpenType, TokenService, DA_SERVICE_TOKEN } from '@delon/auth';
 import { ReuseTabService } from '@delon/abc';
 import { environment } from '@env/environment';
+import { StartupService } from '@core/startup/startup.service';
 
 @Component({
     selector: 'passport-login',
@@ -24,10 +25,13 @@ export class UserLoginComponent implements OnDestroy {
         fb: FormBuilder,
         private router: Router,
         public msg: NzMessageService,
+        private modalSrv: NzModalService,
         private settingsService: SettingsService,
         private socialService: SocialService,
         @Optional() @Inject(ReuseTabService) private reuseTabService: ReuseTabService,
-        @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService) {
+        @Inject(DA_SERVICE_TOKEN) private tokenService: TokenService,
+        private startupSrv: StartupService
+    ) {
         this.form = fb.group({
             userName: [null, [Validators.required, Validators.minLength(5)]],
             password: [null, Validators.required],
@@ -35,6 +39,7 @@ export class UserLoginComponent implements OnDestroy {
             captcha: [null, [Validators.required]],
             remember: [true]
         });
+        modalSrv.closeAll();
     }
 
     // region: fields
@@ -70,11 +75,15 @@ export class UserLoginComponent implements OnDestroy {
         this.error = '';
         if (this.type === 0) {
             this.userName.markAsDirty();
+            this.userName.updateValueAndValidity();
             this.password.markAsDirty();
+            this.password.updateValueAndValidity();
             if (this.userName.invalid || this.password.invalid) return;
         } else {
             this.mobile.markAsDirty();
+            this.mobile.updateValueAndValidity();
             this.captcha.markAsDirty();
+            this.captcha.updateValueAndValidity();
             if (this.mobile.invalid || this.captcha.invalid) return;
         }
         // mock http
@@ -90,6 +99,7 @@ export class UserLoginComponent implements OnDestroy {
 
             // 清空路由复用信息
             this.reuseTabService.clear();
+            // 设置Token信息
             this.tokenService.set({
                 token: '123456789',
                 name: this.userName.value,
@@ -97,6 +107,9 @@ export class UserLoginComponent implements OnDestroy {
                 id: 10000,
                 time: +new Date
             });
+            // 重新获取 StartupService 内容，若其包括 User 有关的信息的话
+            // this.startupSrv.load().then(() => this.router.navigate(['/']));
+            // 否则直接跳转
             this.router.navigate(['/']);
         }, 1000);
     }

@@ -7,7 +7,9 @@
     "mongodb",
     "nest",
     "ng-alain",
-    "zorro"
+    "zorro",
+    "json-schema",
+    "typescript"
   ],
   "homepage": "https://github.com/vellengs/nestx#readme",
   "bugs": {
@@ -58,12 +60,13 @@
     "@antv/data-set": "^0.8.3",
     "@antv/g2": "^3.0.1",
     "@antv/g2-plugin-slider": "^2.0.0",
-    "@delon/abc": "^0.7.0",
-    "@delon/acl": "^0.7.0",
-    "@delon/auth": "^0.7.0",
-    "@delon/cache": "^0.7.0",
-    "@delon/mock": "^0.7.0",
-    "@delon/theme": "^0.7.0",
+    "@delon/abc": "^1.0.0-beta.8",
+    "@delon/acl": "^1.0.0-beta.8",
+    "@delon/auth": "^1.0.0-beta.8",
+    "@delon/cache": "^1.0.0-beta.8",
+    "@delon/form": "^1.0.0-beta.8",
+    "@delon/mock": "^1.0.0-beta.8",
+    "@delon/theme": "^1.0.0-beta.8",
     "@nestjs/common": "^5.0.0-rc.1",
     "@nestjs/core": "^5.0.0-rc.1",
     "@nestjs/swagger": "^1.2.2",
@@ -73,6 +76,8 @@
     "@nguniversal/module-map-ngfactory-loader": "^5.0.0",
     "@ngx-translate/core": "^9.0.0",
     "@ngx-translate/http-loader": "^2.0.0",
+    "@types/ajv": "^1.0.0",
+    "ajv": "^6.4.0",
     "angular-baidu-maps": "^1.0.1",
     "angular-qq-maps": "^1.0.1",
     "angular-tree-component": "^7.0.1",
@@ -87,9 +92,8 @@
     "mongoose": "^5.0.17",
     "mysql": "^2.15.0",
     "ng-clipboard-antd": "^2.0.1",
-    "ng-tree-antd": "^2.0.0",
-    "ng-zorro-antd": "^0.6.5",
     "ng-zorro-antd-extra": "^1.1.6",
+    "ng-zorro-antd": "^0.7.0-beta.5",
     "ngx-countdown": "^2.0.0",
     "ngx-tinymce": "^1.0.1",
     "ngx-ueditor": "^1.1.0",
@@ -155,7 +159,11 @@
     "xlsx": "^0.11.16"
   },
   "jest": {
-    "moduleFileExtensions": ["js", "json", "ts"],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
     "rootDir": "src",
     "testRegex": ".spec.ts$",
     "transform": {
