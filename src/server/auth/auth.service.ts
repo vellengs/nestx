@@ -4,6 +4,10 @@ import { JwtPayload } from './interfaces/jwt-payload.interface';
 
 @Injectable()
 export class AuthService {
+
+  // constructor(private readonly userService: UserService) {
+  // }
+
   async createToken() {
     const expiresIn = 3600;
     const user: JwtPayload = { email: 'test@email.com' };
