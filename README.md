@@ -45,3 +45,17 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+
+### Front end stack
+
+#### angular >= 5;
+
+[angular](https://github.com/angular/angular)
+
+#### ant design angular version zorro
+[ng-zorro](https://github.com/NG-ZORRO/ng-zorro-antd)
+
+#### ng-zorro-antd admin panel front-end framework
+[ng-alain](https://github.com/cipchk/ng-alain)
+
+
