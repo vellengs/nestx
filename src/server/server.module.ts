@@ -6,7 +6,7 @@ import { EventsGateway } from './events.gateway';
 import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), AuthModule, PhotoModule, UsersModule],
+  imports: [TypeOrmModule.forRoot(), PhotoModule, UsersModule],
   controllers: [],
   providers: [EventsGateway]
 })

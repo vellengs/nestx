@@ -1,19 +1,14 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, HttpStatus, HttpCode } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { AuthGuard } from '../passport/auth.guard';
+import { LoginUserDto } from './dto/login-user.dto';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) { }
 
-  @Get('token')
-  async createToken(): Promise<any> {
-    return await this.authService.createToken();
-  }
-
-  @Get('data')
-  @UseGuards(AuthGuard('jwt'))
-  getSensitiveData() {
-    // this route is restricted
+  @Post('token')
+  @HttpCode(HttpStatus.OK)
+  async createToken(@Body() loginUserDto: LoginUserDto) {
+    return await this.authService.createToken(loginUserDto);
   }
 }

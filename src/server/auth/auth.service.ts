@@ -1,25 +1,65 @@
 import * as jwt from 'jsonwebtoken';
-import { Injectable } from '@nestjs/common';
+import {
+  Injectable,
+  Inject,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
+import { UsersService } from '../users/users.service';
+import { CryptoService } from '../crypto/crypto.service';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
+import { JWT_OPTIONS } from './auth.constants';
+import { JwtOptions } from './interfaces/jwt-options.interface';
+import { LoginUserDto } from './dto/login-user.dto';
+import { User } from '../users/interface/user.interface';
 
 @Injectable()
 export class AuthService {
+  constructor(
+    @Inject(JWT_OPTIONS) private readonly jwtOptions: JwtOptions,
+    private readonly cryptoService: CryptoService,
+    private readonly usersService: UsersService,
+  ) { }
 
-  // constructor(private readonly userService: UserService) {
-  // }
+  async createToken(loginUserDto: LoginUserDto) {
+    const { id, username } = await this.validateLoginUserDto(loginUserDto);
+    const { expiresIn, secret } = this.jwtOptions;
 
-  async createToken() {
-    const expiresIn = 3600;
-    const user: JwtPayload = { email: 'test@email.com' };
+    const token = jwt.sign({ id, username }, secret, {
+      expiresIn,
+    });
     return {
-      expiresIn: expiresIn,
-      accessToken: jwt.sign(user, 'secretKey', { expiresIn }),
+      expires_in: expiresIn,
+      access_token: token,
     };
   }
 
-  async validateUser(payload: JwtPayload): Promise<any> {
-    // put some validation logic here
-    // for example query user by id/email/username
-    return {};
+  async validateLoginUserDto(loginUserDto: LoginUserDto): Promise<User> {
+    const { password, username } = loginUserDto;
+    const user = await this.usersService.findOne({ username });
+    const isValid = await this.cryptoService.compare(password, user.password);
+
+    if (!isValid) {
+      throw new UnauthorizedException();
+    }
+    return user;
+  }
+
+  async validateUserPayload(payload: JwtPayload): Promise<User> {
+    const { username, id } = payload;
+    try {
+      const user = await this.usersService.findOne({ id });
+      return user.username === username ? user : null;
+    } catch {
+      return null;
+    }
+  }
+
+  validateToken(token: string): JwtPayload {
+    try {
+      return jwt.verify(token, this.jwtOptions.secret) as JwtPayload;
+    } catch {
+      return null;
+    }
   }
 }
