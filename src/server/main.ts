@@ -29,14 +29,14 @@ async function bootstrap() {
   const server = await NestFactory.create(ApplicationModule, app);
 
   const options = new DocumentBuilder()
-    .setTitle('Typerx api documents')
+    .setTitle('nestx api documents')
     .setDescription('The API description')
     .setVersion('1.0')
-    .addTag('typerx')
+    .addTag('nestx')
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(server, options);
-  SwaggerModule.setup('/api2', server, document);
+  SwaggerModule.setup('/docs', server, document);
 
   await server.listen(process.env.PORT || 3666);
 }
