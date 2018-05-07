@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
-import { PhotoModule } from './photo/photo.module';
+import { CmsModule } from './cms/cms.module';
 import { EventsGateway } from './events.gateway';
-import { UsersModule } from './users/users.module';
+import { CoreModule } from './core/core.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), PhotoModule, UsersModule],
+  imports: [TypeOrmModule.forRoot(), CoreModule, CmsModule],
   controllers: [],
   providers: [EventsGateway]
 })

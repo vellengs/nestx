@@ -15,8 +15,8 @@ import { CallbackComponent } from './callback/callback.component';
 import { Exception403Component } from './exception/403.component';
 import { Exception404Component } from './exception/404.component';
 import { Exception500Component } from './exception/500.component';
-import { DashboardAnalysisComponent } from 'app/routes/dashboard/analysis/analysis.component';
-import { DashboardComponent } from 'app/routes/dashboard/default/dashboard.component';
+import { DashboardAnalysisComponent } from './dashboard/analysis/analysis.component';
+import { DashboardComponent } from './dashboard/default/dashboard.component';
 
 const routes: Routes = [
     {

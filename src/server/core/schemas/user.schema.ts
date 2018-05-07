@@ -2,7 +2,7 @@ import { Schema, SchemaTypes as t, SchemaOptions } from 'mongoose';
 const option: SchemaOptions = {};
 option.timestamps = true;
 
-export const UserSchema = new Schema({
+export const schema = new Schema({
     username: t.String,
     password: t.String,
     avatar: t.String,
@@ -10,8 +10,8 @@ export const UserSchema = new Schema({
     nick: t.String,
     type: t.String,
     mobile: t.String,
-    groups: [{
-        type: t.ObjectId, ref: 'Group'
+    roles: [{
+        type: t.ObjectId, ref: 'Role'
     }],
     isDisable: {
         type: t.Boolean
