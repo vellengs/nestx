@@ -7,6 +7,7 @@
     "build": "tsc -p tsconfig.build.json",
     "format": "prettier lib/**/*.ts --write",
     "precommit": "lint-staged",
+    "prepublish": "npm run build",
     "prepublish:next": "npm run build",
     "publish:next": "npm publish --access public --tag next",
     "prepublish:npm": "npm run build",
