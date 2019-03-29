@@ -1,6 +1,6 @@
 {
   "name": "nest-swagger",
-  "version": "0.1.3",
+  "version": "0.2.0-alpha.0",
   "description": "generate swagger for nestjs",
   "main": "./dist/swagger/decorators.js",
   "scripts": {
