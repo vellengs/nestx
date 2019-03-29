@@ -15,11 +15,11 @@ declare module 'omit.js';
 declare module 'react-copy-to-clipboard';
 declare module 'ant-design-pro' {
   import React from 'react';
-  import { INoticeIconProps } from 'ant-design-pro/lib/NoticeIcon';
-  import { INoticeIconTabProps } from 'ant-design-pro/lib/NoticeIcon/NoticeIconTab';
+  import { NoticeIconProps } from 'ant-design-pro/lib/NoticeIcon';
+  import { NoticeIconTabProps } from 'ant-design-pro/lib/NoticeIcon/NoticeIconTab';
 
   type PartialNoticeIconProps = {
-    [K in Exclude<keyof INoticeIconProps, 'locale'>]?: INoticeIconProps[K]
+    [K in Exclude<keyof NoticeIconProps, 'locale'>]?: NoticeIconProps[K]
   };
   interface MixinNoticeIconProps extends PartialNoticeIconProps {
     locale?: {
@@ -28,12 +28,12 @@ declare module 'ant-design-pro' {
       viewMore: string;
       [key: string]: string;
     };
-    onViewMore?: (tabProps: INoticeIconProps) => void;
+    onViewMore?: (tabProps: NoticeIconProps) => void;
   }
-  interface MixinNoticeIconTabProps extends Partial<INoticeIconTabProps> {
+  interface MixinNoticeIconTabProps extends Partial<NoticeIconTabProps> {
     showViewMore?: boolean;
   }
-  class NoticeIconTab extends React.Component<MixinNoticeIconTabProps, any> {}
+  class NoticeIconTab extends React.Component<MixinNoticeIconTabProps, any> { }
   export class NoticeIcon extends React.Component<MixinNoticeIconProps, any> {
     public static Tab: typeof NoticeIconTab;
   }

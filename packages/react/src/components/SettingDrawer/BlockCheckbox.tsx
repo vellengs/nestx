@@ -2,14 +2,14 @@ import React from 'react';
 import { Tooltip, Icon } from 'antd';
 import style from './index.less';
 
-export interface BlockChecboxProps {
+export interface BlockCheckboxProps {
   value: string;
   onChange: (key: string) => void;
   list: any[];
 }
 
-const BlockChecbox: React.FC<BlockChecboxProps> = ({ value, onChange, list }) => (
-  <div className={style.blockChecbox} key={value}>
+const BlockCheckbox: React.FC<BlockCheckboxProps> = ({ value, onChange, list }) => (
+  <div className={style.blockCheckbox} key={value}>
     {list.map(item => (
       <Tooltip title={item.title} key={item.key}>
         <div className={style.item} onClick={() => onChange(item.key)}>
@@ -28,4 +28,4 @@ const BlockChecbox: React.FC<BlockChecboxProps> = ({ value, onChange, list }) =>
   </div>
 );
 
-export default BlockChecbox;
+export default BlockCheckbox;

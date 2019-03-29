@@ -30,7 +30,7 @@ function formatter(
         authority: item.authority || parentAuthority,
       };
       if (item.routes) {
-        const children = formatter(item.routes, item.authority, locale);
+        const children = formatter(item.routes!, item.authority, locale);
         // Reduce memory usage
         result.children = children;
       }
