@@ -1,0 +1,1673 @@
+{
+	"definitions": {
+		"LoginDto": {
+			"description": "",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"password": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"username",
+				"password"
+			]
+		},
+		"RegisterDto": {
+			"description": "",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"password": {
+					"type": "string",
+					"description": ""
+				},
+				"mobile": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"username",
+				"password",
+				"mobile"
+			]
+		},
+		"CreateDictReq": {
+			"description": "",
+			"properties": {
+				"category": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"translate": {
+					"type": "string",
+					"description": ""
+				},
+				"expand": {
+					"type": "object",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"category",
+				"name",
+				"translate",
+				"expand"
+			]
+		},
+		"Dict": {
+			"description": "",
+			"properties": {
+				"_id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"category": {
+					"type": "string",
+					"description": ""
+				},
+				"translate": {
+					"type": "string",
+					"description": ""
+				},
+				"expand": {
+					"type": "object",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"_id",
+				"name",
+				"category",
+				"translate",
+				"expand"
+			]
+		},
+		"EditDictReq": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"category": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"translate": {
+					"type": "string",
+					"description": ""
+				},
+				"expand": {
+					"type": "object",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"category",
+				"name",
+				"translate",
+				"expand"
+			]
+		},
+		"KeyValueDto": {
+			"description": "",
+			"properties": {
+				"label": {
+					"type": "string",
+					"description": ""
+				},
+				"value": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"label",
+				"value"
+			]
+		},
+		"Query": {
+			"description": "",
+			"properties": {
+				"size": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"index": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"size",
+				"index"
+			]
+		},
+		"ResultList$Dict": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Dict"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"User": {
+			"description": "",
+			"properties": {
+				"_id": {
+					"type": "string",
+					"description": ""
+				},
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"password": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"keyword": {
+					"type": "string",
+					"description": ""
+				},
+				"avatar": {
+					"type": "string",
+					"description": ""
+				},
+				"type": {
+					"type": "string",
+					"description": ""
+				},
+				"groups": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				},
+				"roles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				},
+				"email": {
+					"type": "string",
+					"description": ""
+				},
+				"mobile": {
+					"type": "string",
+					"description": ""
+				},
+				"profile": {
+					"type": "object",
+					"description": ""
+				},
+				"isDisable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"isAdmin": {
+					"type": "boolean",
+					"description": ""
+				},
+				"isApproved": {
+					"type": "boolean",
+					"description": ""
+				},
+				"secret": {
+					"type": "string",
+					"description": ""
+				},
+				"expired": {
+					"type": "string",
+					"format": "date-time",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"_id",
+				"username",
+				"name",
+				"avatar",
+				"type",
+				"groups",
+				"roles",
+				"email",
+				"mobile",
+				"isDisable",
+				"isAdmin",
+				"isApproved",
+				"secret",
+				"expired"
+			]
+		},
+		"CreateUserReq": {
+			"description": "",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"password": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"username",
+				"password"
+			]
+		},
+		"EditUserReq": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"mobile": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"email": {
+					"type": "string",
+					"description": ""
+				},
+				"company": {
+					"type": "string",
+					"description": ""
+				},
+				"siteUrl": {
+					"type": "string",
+					"description": ""
+				},
+				"address": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"mobile"
+			]
+		},
+		"ResultList$User": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/User"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"CreateMenuRes": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"slug": {
+					"type": "string",
+					"description": ""
+				},
+				"group": {
+					"type": "boolean",
+					"description": ""
+				},
+				"link": {
+					"type": "string",
+					"description": ""
+				},
+				"order": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"externalLink": {
+					"type": "string",
+					"description": ""
+				},
+				"blank": {
+					"type": "boolean",
+					"description": ""
+				},
+				"icon": {
+					"type": "string",
+					"description": ""
+				},
+				"badge": {
+					"type": "string",
+					"description": ""
+				},
+				"badgeDot": {
+					"type": "string",
+					"description": ""
+				},
+				"badgeStatus": {
+					"type": "string",
+					"description": ""
+				},
+				"enable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"expanded": {
+					"type": "boolean",
+					"description": ""
+				},
+				"acl": {
+					"type": "string",
+					"description": ""
+				},
+				"paths": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"parent": {
+					"type": "string",
+					"description": ""
+				},
+				"permissions": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"isMenu": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"slug",
+				"group",
+				"link",
+				"order",
+				"externalLink",
+				"blank",
+				"icon",
+				"badge",
+				"badgeDot",
+				"badgeStatus",
+				"enable",
+				"expanded",
+				"acl",
+				"paths",
+				"parent",
+				"isMenu"
+			]
+		},
+		"Menu": {
+			"description": "",
+			"properties": {
+				"_id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"slug": {
+					"type": "string",
+					"description": ""
+				},
+				"group": {
+					"type": "boolean",
+					"description": ""
+				},
+				"link": {
+					"type": "string",
+					"description": ""
+				},
+				"order": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"externalLink": {
+					"type": "string",
+					"description": ""
+				},
+				"blank": {
+					"type": "boolean",
+					"description": ""
+				},
+				"icon": {
+					"type": "string",
+					"description": ""
+				},
+				"badge": {
+					"type": "string",
+					"description": ""
+				},
+				"badgeDot": {
+					"type": "string",
+					"description": ""
+				},
+				"badgeStatus": {
+					"type": "string",
+					"description": ""
+				},
+				"enable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"expanded": {
+					"type": "boolean",
+					"description": ""
+				},
+				"acl": {
+					"type": "string",
+					"description": ""
+				},
+				"paths": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"parent": {
+					"type": "object",
+					"description": ""
+				},
+				"permissions": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"isMenu": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"_id",
+				"name",
+				"slug",
+				"group",
+				"link",
+				"order",
+				"externalLink",
+				"blank",
+				"icon",
+				"badge",
+				"badgeDot",
+				"badgeStatus",
+				"enable",
+				"expanded",
+				"acl",
+				"paths",
+				"parent",
+				"isMenu"
+			]
+		},
+		"EditMenuRes": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"slug": {
+					"type": "string",
+					"description": ""
+				},
+				"group": {
+					"type": "boolean",
+					"description": ""
+				},
+				"link": {
+					"type": "string",
+					"description": ""
+				},
+				"order": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"externalLink": {
+					"type": "string",
+					"description": ""
+				},
+				"blank": {
+					"type": "boolean",
+					"description": ""
+				},
+				"icon": {
+					"type": "string",
+					"description": ""
+				},
+				"badge": {
+					"type": "string",
+					"description": ""
+				},
+				"badgeDot": {
+					"type": "string",
+					"description": ""
+				},
+				"badgeStatus": {
+					"type": "string",
+					"description": ""
+				},
+				"enable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"expanded": {
+					"type": "boolean",
+					"description": ""
+				},
+				"acl": {
+					"type": "string",
+					"description": ""
+				},
+				"paths": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"parent": {
+					"type": "string",
+					"description": ""
+				},
+				"permissions": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"isMenu": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"slug",
+				"group",
+				"link",
+				"order",
+				"externalLink",
+				"blank",
+				"icon",
+				"badge",
+				"badgeDot",
+				"badgeStatus",
+				"enable",
+				"expanded",
+				"acl",
+				"paths",
+				"parent",
+				"isMenu"
+			]
+		},
+		"ResultList$Menu": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Menu"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"Log": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"operator": {
+					"type": "string",
+					"description": ""
+				},
+				"operatorIp": {
+					"type": "string",
+					"description": ""
+				},
+				"operation": {
+					"type": "string",
+					"description": ""
+				},
+				"comment": {
+					"type": "string",
+					"description": ""
+				},
+				"createdAt": {
+					"type": "string",
+					"format": "date-time",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"operator",
+				"operatorIp",
+				"operation",
+				"comment",
+				"createdAt"
+			]
+		},
+		"ResultList$Log": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Log"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"CreateProductDto": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"title"
+			]
+		},
+		"Product": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"title"
+			]
+		}
+	},
+	"info": {
+		"description": "项目标准接口",
+		"license": {
+			"name": "MIT"
+		},
+		"title": "rest api interface",
+		"version": "0.0.1"
+	},
+	"paths": {
+		"/": {
+			"get": {
+				"operationId": "AppRoot",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"app"
+				],
+				"parameters": []
+			}
+		},
+		"/auth/login": {
+			"post": {
+				"operationId": "AuthLogin",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "string",
+							"enum": [
+								"",
+								""
+							]
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "payload",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/LoginDto"
+						}
+					}
+				]
+			}
+		},
+		"/auth/register": {
+			"post": {
+				"operationId": "AuthRegister",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "string",
+							"enum": [
+								"",
+								""
+							]
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "payload",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/RegisterDto"
+						}
+					}
+				]
+			}
+		},
+		"/dicts/": {
+			"post": {
+				"operationId": "DictsCreate",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateDictReq"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "DictsUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Dict"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditDictReq"
+						}
+					}
+				]
+			}
+		},
+		"/dicts/search": {
+			"get": {
+				"operationId": "DictsSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/dicts/query": {
+			"get": {
+				"operationId": "DictsQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Dict"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "index",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/dicts/{id}": {
+			"get": {
+				"operationId": "DictsFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Dict"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/users/profile": {
+			"get": {
+				"operationId": "UsersProfile",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/User"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": []
+			}
+		},
+		"/users/": {
+			"post": {
+				"operationId": "UsersCreate",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "user",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateUserReq"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "UsersUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/User"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "user",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditUserReq"
+						}
+					}
+				]
+			}
+		},
+		"/users/search": {
+			"get": {
+				"operationId": "UsersSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/users/query": {
+			"get": {
+				"operationId": "UsersQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$User"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "index",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/users/{id}": {
+			"get": {
+				"operationId": "UsersFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/User"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/menus/": {
+			"post": {
+				"operationId": "MenusCreate",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateMenuRes"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "MenusUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Menu"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditMenuRes"
+						}
+					}
+				]
+			}
+		},
+		"/menus/search": {
+			"get": {
+				"operationId": "MenusSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/menus/query": {
+			"get": {
+				"operationId": "MenusQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Menu"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "index",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/menus/{id}": {
+			"get": {
+				"operationId": "MenusFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Menu"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/logs/search": {
+			"get": {
+				"operationId": "LogsSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/logs/query": {
+			"get": {
+				"operationId": "LogsQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Log"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "index",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/logs/{id}": {
+			"get": {
+				"operationId": "LogsFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Log"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/cats/": {
+			"post": {
+				"operationId": "ProductsCreate",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "",
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "createCatDto",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateProductDto"
+						}
+					}
+				]
+			},
+			"get": {
+				"operationId": "ProductsFindAll",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/Product"
+							}
+						}
+					}
+				},
+				"description": "",
+				"parameters": []
+			}
+		},
+		"/cats/{id}": {
+			"get": {
+				"operationId": "ProductsFindOne",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "",
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "number",
+						"format": "double"
+					}
+				]
+			}
+		}
+	},
+	"swagger": "2.0",
+	"securityDefinitions": {},
+	"produces": [
+		"application/json"
+	]
+}

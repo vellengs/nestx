@@ -1,0 +1,342 @@
+{
+    "controllers": [{
+        "consumes": [],
+        "location": "/Users/xieyunqi/projects/vellengs/nest-swagger/test/nestjs/app.controller.ts",
+        "methods": [{
+            "consumes": [],
+            "deprecated": false,
+            "description": "",
+            "method": "get",
+            "name": "root",
+            "parameters": [],
+            "path": "/",
+            "produces": [],
+            "responses": [{
+                "description": "Ok",
+                "schema": {
+                    "typeName": "string"
+                },
+                "status": "200"
+            }],
+            "tags": [],
+            "type": {
+                "typeName": "string"
+            }
+        }, {
+            "consumes": [],
+            "deprecated": false,
+            "description": "",
+            "method": "post",
+            "name": "create",
+            "parameters": [{
+                "description": "",
+                "in": "body",
+                "name": "user",
+                "parameterName": "user",
+                "required": true,
+                "type": {
+                    "description": "",
+                    "properties": [{
+                        "description": "",
+                        "name": "username",
+                        "required": true,
+                        "type": {
+                            "typeName": "string"
+                        }
+                    }, {
+                        "description": "",
+                        "name": "password",
+                        "required": true,
+                        "type": {
+                            "typeName": "string"
+                        }
+                    }, {
+                        "description": "",
+                        "name": "mobile",
+                        "required": true,
+                        "type": {
+                            "typeName": "string"
+                        }
+                    }],
+                    "typeName": "CreateUserReq"
+                }
+            }],
+            "path": "/",
+            "produces": [],
+            "responses": [{
+                "description": "Ok",
+                "schema": {
+                    "description": "",
+                    "properties": [{
+                        "description": "",
+                        "name": "username",
+                        "required": true,
+                        "type": {
+                            "typeName": "string"
+                        }
+                    }, {
+                        "description": "",
+                        "name": "mobile",
+                        "required": true,
+                        "type": {
+                            "typeName": "string"
+                        }
+                    }, {
+                        "description": "",
+                        "name": "createdAt",
+                        "required": true,
+                        "type": {
+                            "typeName": "datetime"
+                        }
+                    }],
+                    "typeName": "CreateUserRes"
+                },
+                "status": "200"
+            }],
+            "tags": [],
+            "type": {
+                "description": "",
+                "properties": [{
+                    "description": "",
+                    "name": "username",
+                    "required": true,
+                    "type": {
+                        "typeName": "string"
+                    }
+                }, {
+                    "description": "",
+                    "name": "mobile",
+                    "required": true,
+                    "type": {
+                        "typeName": "string"
+                    }
+                }, {
+                    "description": "",
+                    "name": "createdAt",
+                    "required": true,
+                    "type": {
+                        "typeName": "datetime"
+                    }
+                }],
+                "typeName": "CreateUserRes"
+            }
+        }, {
+            "consumes": [],
+            "deprecated": false,
+            "description": "",
+            "method": "get",
+            "name": "query",
+            "parameters": [{
+                "description": "",
+                "in": "query",
+                "name": "keyword",
+                "parameterName": "keyword",
+                "required": false,
+                "type": {
+                    "typeName": "string"
+                }
+            }, {
+                "default": 1,
+                "description": "",
+                "in": "query",
+                "name": "index",
+                "parameterName": "index",
+                "required": false,
+                "type": {
+                    "typeName": "double"
+                }
+            }, {
+                "default": 10,
+                "description": "",
+                "in": "query",
+                "name": "size",
+                "parameterName": "size",
+                "required": false,
+                "type": {
+                    "typeName": "double"
+                }
+            }],
+            "path": "/query",
+            "produces": [],
+            "responses": [{
+                "description": "Ok",
+                "schema": {
+                    "description": "",
+                    "properties": [{
+                        "description": "",
+                        "name": "size",
+                        "required": true,
+                        "type": {
+                            "typeName": "double"
+                        }
+                    }, {
+                        "description": "",
+                        "name": "type",
+                        "required": true,
+                        "type": {
+                            "typeName": "string"
+                        }
+                    }],
+                    "typeName": "ResultListUser"
+                },
+                "status": "200"
+            }],
+            "tags": [],
+            "type": {
+                "description": "",
+                "properties": [{
+                    "description": "",
+                    "name": "size",
+                    "required": true,
+                    "type": {
+                        "typeName": "double"
+                    }
+                }, {
+                    "description": "",
+                    "name": "type",
+                    "required": true,
+                    "type": {
+                        "typeName": "string"
+                    }
+                }],
+                "typeName": "ResultListUser"
+            }
+        }, {
+            "consumes": [],
+            "deprecated": false,
+            "description": "",
+            "method": "get",
+            "name": "findOne",
+            "parameters": [{
+                "description": "",
+                "in": "path",
+                "name": "id",
+                "parameterName": "id",
+                "required": true,
+                "type": {
+                    "typeName": "string"
+                }
+            }],
+            "path": "/{id}",
+            "produces": [],
+            "responses": [{
+                "description": "Ok",
+                "schema": {
+                    "description": "",
+                    "properties": [{
+                        "description": "",
+                        "name": "name",
+                        "required": true,
+                        "type": {
+                            "typeName": "string"
+                        }
+                    }],
+                    "typeName": "User"
+                },
+                "status": "200"
+            }],
+            "tags": [],
+            "type": {
+                "description": "",
+                "properties": [{
+                    "description": "",
+                    "name": "name",
+                    "required": true,
+                    "type": {
+                        "typeName": "string"
+                    }
+                }],
+                "typeName": "User"
+            }
+        }],
+        "name": "AppController",
+        "path": "app",
+        "produces": [],
+        "tags": []
+    }],
+    "referenceTypes": {
+        "CreateUserRes": {
+            "description": "",
+            "properties": [{
+                "description": "",
+                "name": "username",
+                "required": true,
+                "type": {
+                    "typeName": "string"
+                }
+            }, {
+                "description": "",
+                "name": "mobile",
+                "required": true,
+                "type": {
+                    "typeName": "string"
+                }
+            }, {
+                "description": "",
+                "name": "createdAt",
+                "required": true,
+                "type": {
+                    "typeName": "datetime"
+                }
+            }],
+            "typeName": "CreateUserRes"
+        },
+        "CreateUserReq": {
+            "description": "",
+            "properties": [{
+                "description": "",
+                "name": "username",
+                "required": true,
+                "type": {
+                    "typeName": "string"
+                }
+            }, {
+                "description": "",
+                "name": "password",
+                "required": true,
+                "type": {
+                    "typeName": "string"
+                }
+            }, {
+                "description": "",
+                "name": "mobile",
+                "required": true,
+                "type": {
+                    "typeName": "string"
+                }
+            }],
+            "typeName": "CreateUserReq"
+        },
+        "ResultListUser": {
+            "description": "",
+            "properties": [{
+                "description": "",
+                "name": "size",
+                "required": true,
+                "type": {
+                    "typeName": "double"
+                }
+            }, {
+                "description": "",
+                "name": "type",
+                "required": true,
+                "type": {
+                    "typeName": "string"
+                }
+            }],
+            "typeName": "ResultListUser"
+        },
+        "User": {
+            "description": "",
+            "properties": [{
+                "description": "",
+                "name": "name",
+                "required": true,
+                "type": {
+                    "typeName": "string"
+                }
+            }],
+            "typeName": "User"
+        }
+    }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "nest-angular",
+  "version": "0.2.0-alpha.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vellengs/nestx.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vellengs/nestx/issues"
+  },
+  "homepage": "https://github.com/vellengs/nestx#readme",
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
