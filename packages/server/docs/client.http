@@ -1,0 +1,5 @@
+
+### List JsonNode
+GET http://localhost:5600/api/users/profile HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50IjoidmVsbGVuZ3MiLCJpYXQiOjE1NTIxMzg0MjQsImV4cCI6MTU1MjE0MjAyNH0.hhrLgydv1bZcUu2d5dwfyjEU_PFlA-latRWNK9l_lJSxNt-Lu29UpahlDA8bdV9wq45Uv6menWNR512rm8VWTQ
+content-type: application/json

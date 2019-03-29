@@ -1,0 +1,10 @@
+{
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "Viking@123",
+    "database": "typerx",
+    "entities": ["src/**/**.entity{.ts,.js}"],
+    "synchronize": true
+}

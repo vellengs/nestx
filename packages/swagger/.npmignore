@@ -14,3 +14,4 @@ coverage
 .nyc_output
 tsconfig.json
 test
+src

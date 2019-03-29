@@ -37,7 +37,7 @@
     "moment": "^2.19.3",
     "mongoose": "^5.4.0",
     "mysql": "^2.15.0",
-    "nest-swagger": "0.0.4",
+    "nest-swagger": "^0.2.0-alpha.0",
     "optional": "^0.1.4",
     "passport": "^0.4.0",
     "passport-http-bearer": "^1.0.1",

@@ -1,0 +1,138 @@
+[{
+    "_id": "5b0d00ed41b2399582a10b09",
+    "name": "首页",
+    "paths": [],
+    "order": 100,
+    "isMenu": true,
+    "link": "/dashboard",
+    "slug": "home",
+    "icon": "icon-home",
+    "permissions": []
+}, {
+    "_id": "5b0d013341b2399582a10b0a",
+    "name": "内容管理",
+    "paths": [],
+    "order": 100,
+    "isMenu": true,
+    "link": "course",
+    "slug": "course",
+    "icon": "icon-screen-desktop",
+    "permissions": []
+}, {
+    "_id": "5b0d07b841b2399582a10b0b",
+    "name": "系统管理",
+    "paths": [],
+    "order": 100,
+    "isMenu": true,
+    "link": "order",
+    "slug": "order",
+    "icon": "icon-settings",
+    "permissions": []
+}, {
+    "_id": "5b194e0d139f72b0e7a28580",
+    "name": "设置管理",
+    "parent": "5b0d07b841b2399582a10b0b",
+    "paths": [],
+    "order": 100,
+    "isMenu": true,
+    "link": "/system/settings",
+    "slug": "settings",
+    "permissions": []
+}, {
+    "_id": "5b194e24139f72b0e7a28581",
+    "name": "帐号管理",
+    "parent": "5b0d07b841b2399582a10b0b",
+    "paths": [],
+    "order": 100,
+    "isMenu": true,
+    "link": "/system/accounts",
+    "slug": "accounts",
+    "permissions": ["5b1a2da699f6ac12569afb0e", "5b1a2da699f6ac12569afb0f", "5b1a2da699f6ac12569afb10"]
+}, {
+    "_id": "5b194e39139f72b0e7a28582",
+    "name": "角色管理",
+    "parent": "5b0d07b841b2399582a10b0b",
+    "paths": [],
+    "order": 100,
+    "isMenu": true,
+    "link": "/system/roles",
+    "slug": "roles",
+    "permissions": []
+}, {
+    "_id": "5b194e4e139f72b0e7a28583",
+    "name": "字典管理",
+    "parent": "5b0d07b841b2399582a10b0b",
+    "paths": [],
+    "order": 100,
+    "isMenu": true,
+    "link": "/system/dicts",
+    "slug": "dicts",
+    "permissions": []
+}, {
+    "_id": "5b194e63139f72b0e7a28584",
+    "name": "日志查询",
+    "parent": "5b0d07b841b2399582a10b0b",
+    "paths": [],
+    "order": 100,
+    "isMenu": true,
+    "link": "/system/logs",
+    "slug": "logs",
+    "permissions": []
+}, {
+    "_id": "5b194e7e139f72b0e7a28585",
+    "name": "页面管理",
+    "parent": "5b0d013341b2399582a10b0a",
+    "paths": [],
+    "order": 100,
+    "isMenu": true,
+    "link": "/cms/pages",
+    "slug": "pages",
+    "permissions": ["5b1a2da699f6ac12569afb0f", "5b1a2da699f6ac12569afb10"]
+}, {
+    "_id": "5b1a2da699f6ac12569afb0e",
+    "name": "是否允许添加帐号",
+    "paths": [],
+    "order": 100,
+    "isMenu": false,
+    "link": "CanAddAccount",
+    "slug": "CanAddAccount",
+    "permissions": []
+}, {
+    "_id": "5b1a2da699f6ac12569afb0f",
+    "name": "是否允许编辑帐号",
+    "paths": [],
+    "order": 100,
+    "isMenu": false,
+    "link": "CanEditAccount",
+    "slug": "CanEditAccount",
+    "permissions": []
+}, {
+    "_id": "5b1a2da699f6ac12569afb10",
+    "name": "是否允许删除帐号",
+    "paths": [],
+    "order": 100,
+    "isMenu": false,
+    "link": "CanRemoveAccount",
+    "slug": "CanRemoveAccount",
+    "permissions": []
+}, {
+    "_id": "5b25f774a408a579f0d89f94",
+    "name": "菜单管理",
+    "parent": "5b0d07b841b2399582a10b0b",
+    "paths": [],
+    "order": 100,
+    "isMenu": true,
+    "link": "/system/menus",
+    "slug": "menus",
+    "permissions": []
+}, {
+    "_id": "5b25fd480231387d74c8c253",
+    "name": "接口配置",
+    "parent": "5b0d07b841b2399582a10b0b",
+    "paths": [],
+    "order": 100,
+    "isMenu": true,
+    "link": "/system/permission",
+    "slug": "permission",
+    "permissions": []
+}]

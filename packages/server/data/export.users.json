@@ -1,0 +1,26 @@
+[{
+    "_id": "5af409755283214fb9c2ccd0",
+    "username": "admin",
+    "nick": "viking",
+    "password": "$2a$10$EmEaDrSJ.gs6PsWJYjZKqOXD0M2JZkGIeqC9Tu3fbMW/bHXTsfB5y",
+    "avatar": "https://avatars2.githubusercontent.com/u/5743338?s=400&u=ac196285a689b6dd65ab67f0be85eb787b07b428&v=4",
+    "type": "222",
+    "email": "velleng1s@qq.com",
+    "mobile": "13012345671",
+    "roles": ["5b1173e519e6cf0d3bdb0018", "5b1227fa9b6a1c20600b662a", "5b1227fa9b6a1c20600b662a", "5b1227fa9b6a1c20600b662a"],
+    "groups": ["5b0cfa81b7d02a8a4bf5d126", "5b13df0b6a129d64f589e105"],
+    "isDisable": false,
+    "isAdmin": true,
+    "isApproved": true,
+    "expired": "2028-06-30T02:54:07.000Z"
+}, {
+    "_id": "5b31eba49a674f606f7c5849",
+    "username": "tester",
+    "password": "$2a$10$xg95hppMP9i3KWKVztJyZOo8hCP8Zojs4vsrVkfhLkFDLp1SwfIx2",
+    "mobile": "13099948844",
+    "roles": ["5b1e8b2559989d1ffc06ac7d", "5b1e8b3e59989d1ffc06ac7e"],
+    "groups": ["5b1e89da653fef1f92c4b955", "5b2766a3177e2c274909cb6d"],
+    "isDisable": false,
+    "isAdmin": false,
+    "isApproved": true
+}]
