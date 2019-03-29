@@ -1,0 +1,368 @@
+{
+	"basePath": "/v1",
+	"definitions": {
+		"CreateUserRes": {
+			"description": "",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"mobile": {
+					"type": "string",
+					"description": ""
+				},
+				"createdAt": {
+					"type": "string",
+					"format": "date-time",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"username",
+				"mobile",
+				"createdAt"
+			]
+		},
+		"CreateUserReq": {
+			"description": "",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"password": {
+					"type": "string",
+					"description": ""
+				},
+				"mobile": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"username",
+				"password",
+				"mobile"
+			]
+		},
+		"User": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name"
+			]
+		},
+		"Query": {
+			"description": "",
+			"properties": {
+				"size": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"index": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"size",
+				"index"
+			]
+		},
+		"ResultList$User": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/User"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"KeyValueDto": {
+			"description": "",
+			"properties": {
+				"label": {
+					"type": "string",
+					"description": ""
+				},
+				"value": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"label",
+				"value"
+			]
+		}
+	},
+	"info": {
+		"description": "test description",
+		"license": {
+			"name": "MIT"
+		},
+		"title": "Nest Swagger API",
+		"version": "1.0"
+	},
+	"paths": {
+		"/app/": {
+			"get": {
+				"operationId": "AppRoot",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"demo"
+				],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "AppCreate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/CreateUserRes"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"demo"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "user",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateUserReq"
+						}
+					}
+				]
+			}
+		},
+		"/app/query": {
+			"get": {
+				"operationId": "AppQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$User"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"demo"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "index",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/app/profile": {
+			"get": {
+				"operationId": "AppProfile",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/User"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"demo"
+				],
+				"parameters": []
+			}
+		},
+		"/app/search": {
+			"get": {
+				"operationId": "AppSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"demo"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/app/{id}": {
+			"get": {
+				"operationId": "AppFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/User"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"demo"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/": {
+			"get": {
+				"operationId": "DemoExample",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"description": "",
+				"parameters": []
+			}
+		}
+	},
+	"swagger": "2.0",
+	"securityDefinitions": {
+		"api_key": {
+			"type": "apiKey",
+			"name": "access_token",
+			"in": "query"
+		},
+		"access_token": {
+			"type": "apiKey",
+			"name": "authorization",
+			"in": "header"
+		},
+		"user_email": {
+			"type": "apiKey",
+			"name": "x-user-email",
+			"in": "header"
+		}
+	},
+	"host": "localhost:3000",
+	"api_key": {
+		"type": "apiKey",
+		"name": "api_key",
+		"in": "header"
+	}
+}
