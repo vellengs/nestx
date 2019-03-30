@@ -1,8 +1,8 @@
 import { Injectable, UnauthorizedException, NotAcceptableException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload, Token } from './interfaces/jwt-payload.interface';
-import { LoginDto } from './dto/login.dto';
-import { RegisterDto } from './dto/Register.dto';
+import { LoginReq } from './dto/login.dto';
+import { RegisterReq } from './dto/Register.dto';
 import { UsersService } from './../core/controllers/users.service';
 
 @Injectable()
@@ -13,13 +13,17 @@ export class AuthService {
     private readonly userService: UsersService,
   ) { }
 
-  async login(payload: LoginDto): Promise<Token> {
+  async login(payload: LoginReq): Promise<Token> {
     const user = await this.userService.login(payload.username, payload.password);
     if (user) {
       return await this.createToken(user);
     } else {
       throw new UnauthorizedException();
     }
+  }
+
+  async logout(): Promise<boolean> {
+    return true; // TODO;
   }
 
   async createToken(payload: { username: string }): Promise<Token> {
@@ -30,7 +34,7 @@ export class AuthService {
     };
   }
 
-  async register(payload: RegisterDto): Promise<Token> {
+  async register(payload: RegisterReq): Promise<Token> {
     const user = await this.userService.create(payload).catch((error) => {
       // TODO log error. 
       throw new NotAcceptableException('register failure');

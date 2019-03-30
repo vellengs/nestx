@@ -65,9 +65,9 @@ export interface ModelType<T> {
     [key: string]: Effect;
   };
   reducers?: {
-    [key: string]: Reducer<T>
+    [key: string]: Reducer<T>;
   };
   subscriptions?: {
-    [key: string]: Subscription
-  }
+    [key: string]: Subscription;
+  };
 }

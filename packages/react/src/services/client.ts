@@ -1,10 +1,11 @@
-import { Configuration, CoreApi, AppApi, DefaultApi } from '../generated';
+import { Configuration, CoreApi, AppApi, DefaultApi, AuthApi } from '../generated';
 const config = new Configuration({
   basePath: 'http://localhost:5600/api',
 });
 
 export class Client {
   private static client: Client;
+  public authApi = new AuthApi(config);
   public coreApi = new CoreApi(config);
   public defaultApi = new DefaultApi(config);
   public appApi = new AppApi(config);

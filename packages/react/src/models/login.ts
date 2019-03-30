@@ -1,10 +1,12 @@
 import { routerRedux } from 'dva/router';
 import { stringify } from 'qs';
-import { fakeAccountLogin, getFakeCaptcha } from '@/services/api';
 import { setAuthority } from '@/utils/authority';
 import { getPageQuery } from '@/utils/utils';
 import { reloadAuthorized } from '@/utils/Authorized';
 import { ModelType } from './connect';
+
+import { HttpClient } from '../services/client';
+const { authLogin, authLogout, authCaptcha } = HttpClient.authApi;
 
 export interface LoginModelState {
   status: any;
@@ -18,7 +20,7 @@ const LoginModel: ModelType<LoginModelState> = {
 
   effects: {
     *login({ payload }, { call, put }) {
-      const response = yield call(fakeAccountLogin, payload);
+      const response = yield call(authLogin, payload);
       yield put({
         type: 'changeLoginStatus',
         payload: response,
@@ -46,10 +48,11 @@ const LoginModel: ModelType<LoginModelState> = {
     },
 
     *getCaptcha({ payload }, { call }) {
-      yield call(getFakeCaptcha, payload);
+      yield call(authCaptcha, payload);
     },
 
-    *logout(_, { put }) {
+    *logout(_, { call, put }) {
+      yield call(authLogout); // TODO;
       yield put({
         type: 'changeLoginStatus',
         payload: {

@@ -9,7 +9,7 @@ import defaultSettings, { ContentWidth } from '../../../config/defaultSettings';
 
 export interface TopNavHeaderProps extends SiderMenuProps, GlobalHeaderRightProps {
   contentWidth?: ContentWidth;
-  menuData?: any,
+  menuData?: any;
   logo?: string;
 }
 

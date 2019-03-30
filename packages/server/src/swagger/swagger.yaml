@@ -1,9 +1,12 @@
 basePath: null
 definitions:
-    LoginDto:
+    LoginReq:
         description: ""
         properties:
             username:
+                type: string
+                description: ""
+            type:
                 type: string
                 description: ""
             password:
@@ -13,7 +16,7 @@ definitions:
         required:
             - username
             - password
-    RegisterDto:
+    RegisterReq:
         description: ""
         properties:
             username:
@@ -30,6 +33,15 @@ definitions:
             - username
             - password
             - mobile
+    Result:
+        description: ""
+        properties:
+            ok:
+                type: boolean
+                description: ""
+        type: object
+        required:
+            - ok
     CreateDictReq:
         description: ""
         properties:
@@ -654,7 +666,7 @@ paths:
                             - ""
             description: ""
             tags:
-                - core
+                - auth
             consumes:
                 - application/json
             parameters:
@@ -664,7 +676,7 @@ paths:
                     name: payload
                     required: true
                     schema:
-                        $ref: '#/definitions/LoginDto'
+                        $ref: '#/definitions/LoginReq'
     /auth/register:
         post:
             operationId: AuthRegister
@@ -680,7 +692,7 @@ paths:
                             - ""
             description: ""
             tags:
-                - core
+                - auth
             consumes:
                 - application/json
             parameters:
@@ -690,7 +702,41 @@ paths:
                     name: payload
                     required: true
                     schema:
-                        $ref: '#/definitions/RegisterDto'
+                        $ref: '#/definitions/RegisterReq'
+    /auth/logout:
+        get:
+            operationId: AuthLogout
+            produces:
+                - text/html
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: boolean
+            description: ""
+            tags:
+                - auth
+            parameters: []
+    /auth/captcha:
+        get:
+            operationId: AuthCaptcha
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Result'
+            description: ""
+            tags:
+                - auth
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: mobile
+                    required: true
+                    type: string
     /dicts/:
         post:
             operationId: DictsCreate
