@@ -33,7 +33,7 @@ declare module 'ant-design-pro' {
   interface MixinNoticeIconTabProps extends Partial<NoticeIconTabProps> {
     showViewMore?: boolean;
   }
-  class NoticeIconTab extends React.Component<MixinNoticeIconTabProps, any> { }
+  class NoticeIconTab extends React.Component<MixinNoticeIconTabProps, any> {}
   export class NoticeIcon extends React.Component<MixinNoticeIconProps, any> {
     public static Tab: typeof NoticeIconTab;
   }

@@ -23,6 +23,7 @@
   "dependencies": {
     "ant-design-pro": "^2.1.1",
     "antd": "^3.10.9",
+    "qs": "^6.6.0",
     "classnames": "^2.2.6",
     "dva": "^2.4.0",
     "lodash": "^4.17.10",
@@ -38,7 +39,8 @@
     "react-copy-to-clipboard": "^5.0.1",
     "react-document-title": "^2.0.3",
     "react-media-hook2": "^1.0.2",
-    "umi-request": "^1.0.0"
+    "umi-request": "^1.0.0",
+    "axios": "^0.18.0"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.7",
@@ -46,6 +48,7 @@
     "@types/jest": "^24.0.11",
     "@types/lodash": "^4.14.122",
     "@types/memoize-one": "^4.1.0",
+    "@types/qs": "^6.5.2",
     "@types/react": "^16.8.1",
     "@types/react-document-title": "^2.0.3",
     "@types/react-dom": "^16.0.11",
