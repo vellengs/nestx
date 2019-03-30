@@ -41,7 +41,8 @@ if (pwa) {
     };
     const key = `open${Date.now()}`;
     const btn = (
-      <Button type={"primary" as any}
+      <Button
+        type={'primary' as any}
         onClick={() => {
           notification.close(key);
           reloadSW();
@@ -55,7 +56,7 @@ if (pwa) {
       description: formatMessage({ id: 'app.pwa.serviceworker.updated.hint' }),
       btn,
       key,
-      onClose: async () => { },
+      onClose: async () => {},
     });
   });
 }
