@@ -2,8 +2,8 @@ import React from 'react';
 import { Drawer } from 'antd';
 import SiderMenu, { SiderMenuProps } from './SiderMenu';
 import { getFlatMenuKeys } from './SiderMenuUtils';
-// export { MenuDataItem } from './BaseMenu';
-// export { SiderMenuProps };
+export { MenuDataItem } from './BaseMenu';
+export { SiderMenuProps };
 
 const SiderMenuWrapper: React.FC<SiderMenuProps> = props => {
   const { isMobile, menuData, collapsed, onCollapse } = props;
@@ -21,8 +21,8 @@ const SiderMenuWrapper: React.FC<SiderMenuProps> = props => {
       <SiderMenu {...props} flatMenuKeys={flatMenuKeys} collapsed={isMobile ? false : collapsed} />
     </Drawer>
   ) : (
-    <SiderMenu {...props} flatMenuKeys={flatMenuKeys} />
-  );
+      <SiderMenu {...props} flatMenuKeys={flatMenuKeys} />
+    );
 };
 
 SiderMenuWrapper.defaultProps = {

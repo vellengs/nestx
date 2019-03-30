@@ -1,7 +1,5 @@
 import { queryNotices } from '@/services/user';
-import { Subscription } from 'dva';
-import { Reducer } from 'redux';
-import { Effect } from './connect';
+import { ModelType } from './connect';
 import { NoticeIconData } from 'ant-design-pro/lib/NoticeIcon/NoticeIconTab';
 
 export interface NoticeItem extends NoticeIconData {
@@ -15,23 +13,7 @@ export interface GlobalModelState {
   notices: NoticeItem[];
 }
 
-export interface GlobalModelType {
-  namespace: 'global';
-  state: GlobalModelState;
-  effects: {
-    fetchNotices: Effect;
-    clearNotices: Effect;
-    changeNoticeReadState: Effect;
-  };
-  reducers: {
-    changeLayoutCollapsed: Reducer<GlobalModelState>;
-    saveNotices: Reducer<GlobalModelState>;
-    saveClearedNotices: Reducer<GlobalModelState>;
-  };
-  subscriptions: { setup: Subscription };
-}
-
-const GlobalModel: GlobalModelType = {
+const GlobalModel: ModelType<GlobalModelState> = {
   namespace: 'global',
 
   state: {

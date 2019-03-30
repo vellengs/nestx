@@ -1,5 +1,6 @@
 import { stringify } from 'qs';
 import request from '@/utils/request';
+import { HttpClient } from './client';
 
 export async function queryProjectNotice() {
   return request('/api/project/notice');
@@ -104,10 +105,12 @@ export async function updateFakeList(params) {
 }
 
 export async function fakeAccountLogin(params) {
-  return request('/api/login/account', {
-    method: 'POST',
-    body: params,
-  });
+  console.log('login:', params);
+  return HttpClient.coreApi.authLogin(params);
+  // return request('/api/login/account', {
+  //   method: 'POST',
+  //   body: params,
+  // });
 }
 
 export async function fakeRegister(params) {

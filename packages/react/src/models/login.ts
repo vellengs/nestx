@@ -4,27 +4,13 @@ import { fakeAccountLogin, getFakeCaptcha } from '@/services/api';
 import { setAuthority } from '@/utils/authority';
 import { getPageQuery } from '@/utils/utils';
 import { reloadAuthorized } from '@/utils/Authorized';
-import { Effect } from 'dva';
-import { Reducer } from 'redux';
+import { ModelType } from './connect';
 
 export interface LoginModelState {
   status: any;
 }
 
-export interface LoginModelType {
-  namespace: 'login';
-  state: LoginModelState;
-  effects: {
-    login: Effect;
-    getCaptcha: Effect;
-    logout: Effect;
-  };
-  reducers: {
-    changeLoginStatus: Reducer<LoginModelState>;
-  };
-}
-
-const LoginModel: LoginModelType = {
+const LoginModel: ModelType<LoginModelState> = {
   namespace: 'login',
   state: {
     status: undefined,

@@ -1,17 +1,8 @@
 import { message } from 'antd';
-import { Reducer } from 'redux';
 import defaultSettings, { DefaultSettings } from '../../config/defaultSettings';
+import { ModelType } from './connect';
 
-export interface SettingModelType {
-  namespace: 'setting';
-  state: DefaultSettings;
-  reducers: {
-    getSetting: Reducer<any>;
-    changeSetting: Reducer<any>;
-  };
-}
 let lessNodesAppended: boolean;
-
 const updateTheme: (primaryColor?: string) => void = primaryColor => {
   // Don't compile less in production!
   if (APP_TYPE !== 'site') {
@@ -75,7 +66,7 @@ const updateColorWeak: (colorWeak: string) => void = colorWeak => {
   document.body.className = colorWeak ? 'colorWeak' : '';
 };
 
-const SettingModel: SettingModelType = {
+const SettingModel: ModelType<DefaultSettings> = {
   namespace: 'setting',
   state: defaultSettings,
   reducers: {
