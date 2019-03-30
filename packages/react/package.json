@@ -10,7 +10,7 @@
     "dev:no-mock": "cross-env MOCK=none umi dev",
     "build": "umi build",
     "analyze": "cross-env ANALYZE=1 umi build",
-    "lint": "umi-lint --eslint.ext='.ts,.tsx' --prettier --stylelint src/",
+    "lint": "umi-lint --prettier --stylelint src/",
     "lint:style": "umi-lint --stylelint src/",
     "lint:prettier": "umi-lint --prettier src/",
     "lint:ts": "umi-lint --eslint.ext='.ts,.tsx' src/",
