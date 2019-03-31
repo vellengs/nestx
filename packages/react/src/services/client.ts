@@ -15,6 +15,6 @@ export class Client {
     }
     return this.client;
   }
-  private constructor() { }
+  private constructor() {}
 }
 export const HttpClient = Client.instance;

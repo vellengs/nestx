@@ -1,6 +1,6 @@
 export default {
   'menu.home': 'Home',
-  'menu.welcome':'Welcome',
+  'menu.welcome': 'Welcome',
   'menu.login': 'Login',
   'menu.register': 'Register',
   'menu.register.result': 'Register Result',

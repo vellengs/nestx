@@ -1,25 +1,21 @@
-import {
-  stringify
-} from 'qs';
+import { stringify } from 'qs';
 import request from '@/utils/request';
-import {
-  HttpClient
-} from './client';
+import { HttpClient } from './client';
 
-// type ApiMethod = (fn:any)<T>=> 
+// type ApiMethod = (fn:any)<T>=>
 
 export async function ProxyCall<T>(call: any, error?: object) {
   try {
     const result: T = await call();
     return {
       status: 'ok',
-      ...result
-    }
+      ...result,
+    };
   } catch (ex) {
     return {
       status: 'error',
-      ...error
-    }
+      ...error,
+    };
   }
 }
 
@@ -93,9 +89,7 @@ export async function queryList(params: any) {
 }
 
 export async function removeList(params: any) {
-  const {
-    count = 5, ...restParams
-  } = params;
+  const { count = 5, ...restParams } = params;
   return request(`/api/fake_list?count=${count}`, {
     method: 'POST',
     body: {
@@ -106,9 +100,7 @@ export async function removeList(params: any) {
 }
 
 export async function addList(params: any) {
-  const {
-    count = 5, ...restParams
-  } = params;
+  const { count = 5, ...restParams } = params;
   return request(`/api/fake_list?count=${count}`, {
     method: 'POST',
     body: {
@@ -119,9 +111,7 @@ export async function addList(params: any) {
 }
 
 export async function updateList(params: any) {
-  const {
-    count = 5, ...restParams
-  } = params;
+  const { count = 5, ...restParams } = params;
   return request(`/api/fake_list?count=${count}`, {
     method: 'POST',
     body: {
@@ -131,19 +121,18 @@ export async function updateList(params: any) {
   });
 }
 
-export async function accountLogin(params: {
-  username: string;
-  password: string;
-  type: string;
-}) {
+export async function accountLogin(params: { username: string; password: string; type: string }) {
   const { type } = params;
-  return ProxyCall<string>(async () => {
-    const res = await HttpClient.authApi.authLogin(params);
-    return res.data;
-  }, {
+  return ProxyCall<string>(
+    async () => {
+      const res = await HttpClient.authApi.authLogin(params);
+      return res.data;
+    },
+    {
       type,
       currentAuthority: 'guest',
-    });
+    },
+  );
 }
 
 export async function accountLogout() {
@@ -152,29 +141,30 @@ export async function accountLogout() {
 }
 
 export async function register(params: {
-  mail: string,
-  password: string,
-  confirm: string,
-  mobile: string,
-  captcha: string,
-  prefix: string
+  mail: string;
+  password: string;
+  confirm: string;
+  mobile: string;
+  captcha: string;
+  prefix: string;
+}) {
+  return ProxyCall<string>(
+    async () => {
+      const res = await HttpClient.authApi.authRegister({
+        username: params.mail,
+        password: params.password,
+        email: params.mail,
+        mobile: params.mobile,
+        veryCode: params.captcha,
+        mobilePrefix: params.prefix,
+      });
+      return res.data;
+    },
+    {
+      currentAuthority: 'guest',
+    },
+  );
 }
-) {
-  return ProxyCall<string>(async () => {
-    const res = await HttpClient.authApi.authRegister({
-      username: params.mail,
-      password: params.password,
-      email: params.mail,
-      mobile: params.mobile,
-      veryCode: params.captcha,
-      mobilePrefix: params.prefix,
-    });
-    return res.data;
-  }, {
-      currentAuthority: 'guest'
-    });
-}
-
 
 export async function getCaptcha(mobile: string) {
   return HttpClient.authApi.authCaptcha(mobile);
