@@ -11,7 +11,7 @@ const { Tab, UserName, Password, Mobile, Captcha, Submit }: any = Login;
 interface LoginPageProp {
   dispatch: any;
   login: any;
-  submitting: any;
+  submitting: boolean;
 }
 
 @connect(({ login, loading }: any) => ({

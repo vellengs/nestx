@@ -21,8 +21,8 @@ const SiderMenuWrapper: React.FC<SiderMenuProps> = props => {
       <SiderMenu {...props} flatMenuKeys={flatMenuKeys} collapsed={isMobile ? false : collapsed} />
     </Drawer>
   ) : (
-    <SiderMenu {...props} flatMenuKeys={flatMenuKeys} />
-  );
+      <SiderMenu {...props} flatMenuKeys={flatMenuKeys} />
+    );
 };
 
 SiderMenuWrapper.defaultProps = {

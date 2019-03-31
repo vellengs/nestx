@@ -1,24 +1,21 @@
 import { setAuthority } from '@/utils/authority';
 import { reloadAuthorized } from '@/utils/Authorized';
-import request from '@/utils/request';
+import { register } from '@/services/api';
+import { ModelType } from '@/models/connect';
 
-export async function fakeRegister(params: any) {
-  return request('/api/register', {
-    method: 'POST',
-    body: params,
-  });
+interface RegisterState {
+  status: any;
 }
 
-export default {
+const RegisterModel: ModelType<RegisterState> = {
   namespace: 'register',
-
   state: {
     status: undefined,
   },
 
   effects: {
-    *submit({ payload }: any, { call, put }: any) {
-      const response = yield call(fakeRegister, payload);
+    *submit({ payload }, { call, put }) {
+      const response = yield call(register, payload);
       yield put({
         type: 'registerHandle',
         payload: response,
@@ -27,7 +24,7 @@ export default {
   },
 
   reducers: {
-    registerHandle(state: any, { payload }: any) {
+    registerHandle(state, { payload }) {
       setAuthority('user');
       reloadAuthorized();
       return {
@@ -37,3 +34,5 @@ export default {
     },
   },
 };
+
+export default RegisterModel;

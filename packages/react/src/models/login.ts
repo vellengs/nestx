@@ -4,9 +4,7 @@ import { setAuthority } from '@/utils/authority';
 import { getPageQuery } from '@/utils/utils';
 import { reloadAuthorized } from '@/utils/Authorized';
 import { ModelType } from './connect';
-
-import { HttpClient } from '../services/client';
-const { authLogin, authLogout, authCaptcha } = HttpClient.authApi;
+import { accountLogin, getCaptcha, accountLogout } from '@/services/api';
 
 export interface LoginModelState {
   status: any;
@@ -20,7 +18,7 @@ const LoginModel: ModelType<LoginModelState> = {
 
   effects: {
     *login({ payload }, { call, put }) {
-      const response = yield call(authLogin, payload);
+      const response = yield call(accountLogin, payload);
       yield put({
         type: 'changeLoginStatus',
         payload: response,
@@ -48,11 +46,12 @@ const LoginModel: ModelType<LoginModelState> = {
     },
 
     *getCaptcha({ payload }, { call }) {
-      yield call(authCaptcha, payload);
+      yield call(getCaptcha, payload);
     },
 
     *logout(_, { call, put }) {
-      yield call(authLogout); // TODO;
+      const response = yield call(accountLogout);
+      console.log('response', response);
       yield put({
         type: 'changeLoginStatus',
         payload: {

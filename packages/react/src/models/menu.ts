@@ -1,6 +1,5 @@
 import { MenuDataItem } from '@/components/SiderMenu';
 import Authorized from '@/utils/Authorized';
-import { Effect } from 'dva';
 import isEqual from 'lodash/isEqual';
 import memoizeOne from 'memoize-one';
 import { formatMessage } from 'umi-plugin-locale';
