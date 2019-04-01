@@ -7,7 +7,7 @@ import { Spin, Tag, Menu, Icon, Avatar, Tooltip, message } from 'antd';
 import { ClickParam } from 'antd/es/menu';
 import moment from 'moment';
 import groupBy from 'lodash/groupBy';
-import { NoticeIcon } from 'ant-design-pro';
+import NoticeIcon from '../NoticeIcon';
 import HeaderSearch from '../HeaderSearch';
 import HeaderDropdown from '../HeaderDropdown';
 import SelectLang from '../SelectLang';
@@ -126,10 +126,10 @@ export default class GlobalHeaderRight extends Component<GlobalHeaderRightProps>
             formatMessage({ id: 'component.globalHeader.search.example3' }),
           ]}
           onSearch={value => {
-            console.log('input', value); // eslint-disable-line no-console
+            console.log('input', value); // eslint-disable-line
           }}
           onPressEnter={value => {
-            console.log('enter', value); // eslint-disable-line no-console
+            console.log('enter', value); // eslint-disable-line
           }}
         />
         <Tooltip title={formatMessage({ id: 'component.globalHeader.help' })}>
@@ -167,15 +167,17 @@ export default class GlobalHeaderRight extends Component<GlobalHeaderRightProps>
           <NoticeIcon.Tab
             count={unreadMsg.notification}
             list={noticeData.notification}
-            title="notification"
+            title={formatMessage({ id: 'component.globalHeader.notification' })}
+            name="notification"
             emptyText={formatMessage({ id: 'component.globalHeader.notification.empty' })}
             emptyImage="https://gw.alipayobjects.com/zos/rmsportal/wAhyIChODzsoKIOBHcBk.svg"
-            showViewMore // todo:showViewMore?: boolean;  skeletonProps?: SkeletonProps;
+            showViewMore
           />
           <NoticeIcon.Tab
             count={unreadMsg.message}
             list={noticeData.message}
-            title="message"
+            title={formatMessage({ id: 'component.globalHeader.message' })}
+            name="message"
             emptyText={formatMessage({ id: 'component.globalHeader.message.empty' })}
             emptyImage="https://gw.alipayobjects.com/zos/rmsportal/sAuJeJzSKbUmHfBQRzmZ.svg"
             showViewMore
@@ -183,7 +185,8 @@ export default class GlobalHeaderRight extends Component<GlobalHeaderRightProps>
           <NoticeIcon.Tab
             count={unreadMsg.event}
             list={noticeData.event}
-            title="event"
+            title={formatMessage({ id: 'component.globalHeader.event' })}
+            name="event"
             emptyText={formatMessage({ id: 'component.globalHeader.event.empty' })}
             emptyImage="https://gw.alipayobjects.com/zos/rmsportal/HsIsxMZiWKrNUavQUXqx.svg"
             showViewMore
@@ -202,8 +205,8 @@ export default class GlobalHeaderRight extends Component<GlobalHeaderRightProps>
             </span>
           </HeaderDropdown>
         ) : (
-          <Spin size="small" style={{ marginLeft: 8, marginRight: 8 }} />
-        )}
+            <Spin size="small" style={{ marginLeft: 8, marginRight: 8 }} />
+          )}
         <SelectLang className={styles.action} />
       </div>
     );

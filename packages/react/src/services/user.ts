@@ -29,11 +29,13 @@ export async function queryCurrent(): Promise<any> {
   });
 }
 
-export async function queryNotices(params: {
-  keyword?: string,
-  index?: number,
-  size?: number,
-} = {}) {
+export async function queryNotices(
+  params: {
+    keyword?: string;
+    index?: number;
+    size?: number;
+  } = {},
+) {
   let { keyword, index, size } = params;
   const res = await HttpClient.coreApi.noticesQuery(keyword, index, size);
   return res.data.list;
