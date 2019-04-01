@@ -127,7 +127,7 @@ export async function accountLogin(params: { username: string; password: string;
     async () => {
       const res = await HttpClient.authApi.authLogin(params);
       return {
-        currentAuthority: res.data.accessToken
+        currentAuthority: res.data.accessToken,
       };
     },
     {

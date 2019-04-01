@@ -7,18 +7,21 @@ const config = new Configuration({
   basePath: 'http://localhost:5600/api',
 });
 
-globalAxios.interceptors.request.use(config => {
-  if (config.baseURL === config.baseURL && !config.headers.Authorization) {
-    const token = getAuthority();
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+globalAxios.interceptors.request.use(
+  config => {
+    if (config.baseURL === config.baseURL && !config.headers.Authorization) {
+      const token = getAuthority();
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
     }
-  }
 
-  return config;
-}, function (error) {
-  return Promise.reject(error);
-});
+    return config;
+  },
+  function(error) {
+    return Promise.reject(error);
+  },
+);
 
 // TODO;
 globalAxios.interceptors.response.use(response => {
@@ -37,6 +40,6 @@ export class Client {
     }
     return this.client;
   }
-  private constructor() { }
+  private constructor() {}
 }
 export const HttpClient = Client.instance;
