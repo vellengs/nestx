@@ -126,7 +126,9 @@ export async function accountLogin(params: { username: string; password: string;
   return ProxyCall<string>(
     async () => {
       const res = await HttpClient.authApi.authLogin(params);
-      return res.data;
+      return {
+        currentAuthority: res.data.accessToken
+      };
     },
     {
       type,

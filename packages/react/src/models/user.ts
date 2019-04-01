@@ -35,6 +35,7 @@ const UserModel: ModelType<UserModelState> = {
     },
     *fetchCurrent(_, { call, put }) {
       const response = yield call(queryCurrent);
+      console.log('response:', response);
       yield put({
         type: 'saveCurrentUser',
         payload: response,

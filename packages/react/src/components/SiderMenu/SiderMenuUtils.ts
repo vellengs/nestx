@@ -1,7 +1,7 @@
 import pathToRegexp from 'path-to-regexp';
 import { urlToList } from '../_utils/pathTools';
-import { BaseMenuProps } from "./BaseMenuProps";
-import { MenuDataItem } from "./MenuDataItem";
+import { BaseMenuProps } from './BaseMenuProps';
+import { MenuDataItem } from './MenuDataItem';
 
 /**
  * Recursively flatten the data
