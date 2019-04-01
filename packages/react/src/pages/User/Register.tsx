@@ -2,7 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'dva';
 import Link from 'umi/link';
 import router from 'umi/router';
-import { Form, Input, Button, Select, Row, Col, Popover, Progress, Menu, Dropdown, Icon } from 'antd';
+import {
+  Form,
+  Input,
+  Button,
+  Select,
+  Row,
+  Col,
+  Popover,
+  Progress,
+  Menu,
+  Dropdown,
+  Icon,
+} from 'antd';
 import { FormComponentProps } from 'antd/lib/form/Form';
 import { FormattedMessage, formatMessage } from 'umi-plugin-locale';
 import styles from './Register.less';
@@ -185,8 +197,6 @@ class Register extends Component<IFormComponentProps> {
     ) : null;
   };
 
-
-
   render() {
     const { form, submitting } = this.props;
     const { getFieldDecorator } = form;
@@ -265,24 +275,27 @@ class Register extends Component<IFormComponentProps> {
             )}
           </FormItem>
           <FormItem>
-
-            <Dropdown overlayClassName="demo" overlay={
-              <Menu>
-                <Menu.Item key="0">
-                  <a href="http://www.alipay.com/">1st menu item</a>
-                </Menu.Item>
-                <Menu.Item key="1">
-                  <a href="http://www.taobao.com/">2nd menu item</a>
-                </Menu.Item>
-                <Menu.Divider />
-                <Menu.Item key="3">3rd menu item</Menu.Item>
-              </Menu>
-            } trigger={['click']}>
+            <Dropdown
+              overlayClassName="demo"
+              overlay={
+                <Menu>
+                  <Menu.Item key="0">
+                    <a href="http://www.alipay.com/">1st menu item</a>
+                  </Menu.Item>
+                  <Menu.Item key="1">
+                    <a href="http://www.taobao.com/">2nd menu item</a>
+                  </Menu.Item>
+                  <Menu.Divider />
+                  <Menu.Item key="3">3rd menu item</Menu.Item>
+                </Menu>
+              }
+              trigger={['click']}
+            >
               <a className="ant-dropdown-link" href="#">
                 Click me <Icon type="down" />
               </a>
-            </Dropdown>,
-
+            </Dropdown>
+            ,
             <InputGroup compact={true}>
               <Select
                 size="large"

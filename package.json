@@ -1,6 +1,9 @@
 {
   "name": "nestx",
   "private": true,
+  "scripts": {
+    "gen": "cd packages/server && npm run swagger"
+  },
   "devDependencies": {
     "lerna": "^3.13.1"
   }

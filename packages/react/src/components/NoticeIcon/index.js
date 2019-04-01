@@ -143,11 +143,7 @@ export default class NoticeIcon extends PureComponent {
     }
     console.log('styles.popover:', popoverProps);
     return (
-      <HeaderDropdown
-        placement="bottomRight"
-        overlay={notificationBox}
-        trigger={['click']}
-      >
+      <HeaderDropdown placement="bottomRight" overlay={notificationBox} trigger={['click']}>
         {trigger}
       </HeaderDropdown>
     );

@@ -2,7 +2,7 @@ export interface JwtPayload {
   account: string;
 }
 
-export interface Token {
+export interface AccessToken {
   expiresIn: number;
   accessToken: string;
 }

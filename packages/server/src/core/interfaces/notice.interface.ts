@@ -2,10 +2,10 @@ import { Document } from 'mongoose';
 
 export interface Notice {
     _id: string;
-    avatar: string;
     title: string;
-    datetime: Date;
+    description: Date;
     type: string;
+    extra: string;
     read: boolean;
 }
 

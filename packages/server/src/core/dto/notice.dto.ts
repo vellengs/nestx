@@ -1,47 +1,35 @@
-import { IsString, IsJSON } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class CreateNoticeReq {
     @IsString()
-    category: string;
-
+    title: string;
     @IsString()
-    name: string;
-
+    description: string;
     @IsString()
-    translate: string;
-
-    @IsJSON()
-    expand: object;
+    extra: string;
+    @IsString()
+    status: string;
+    @IsString()
+    type: string;
 }
 
 export class EditNoticeReq {
-
     @IsString()
-    id: string;
-
+    title: string;
     @IsString()
-    category: string;
-
+    description: string;
     @IsString()
-    name: string;
-
+    extra: string;
     @IsString()
-    translate: string;
-
-    @IsJSON()
-    expand: object;
+    status: string;
+    @IsString()
+    type: string;
 }
 
 export class NoticeRes {
-    @IsString()
-    category: string;
-
-    @IsString()
-    name: string;
-
-    @IsString()
-    translate: string;
-
-    @IsJSON()
-    expand: object;
+    title: string;
+    description: string;
+    extra: string;
+    status: string;
+    type: string;
 }

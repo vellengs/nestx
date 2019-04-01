@@ -3,9 +3,10 @@ import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
 import { ResultList } from './../../common/interfaces/result.interface';
 import { NoticesService } from './notices.service';
-import { Notice } from './../interfaces/Notice.interface';
+import { Notice } from './../interfaces';
 import { KeyValueDto, CreateNoticeReq, EditNoticeReq } from './../dto';
 import { Tags } from 'nest-swagger';
+import { NullableParseIntPipe } from './../../common/pipes/NullableParseInt.pipe';
 
 @Tags('core')
 @Controller('notices')
@@ -34,8 +35,8 @@ export class NoticesController {
   @Get('query')
   async query(
     @Query('keyword') keyword?: string,
-    @Query('index', new ParseIntPipe()) index: number = 1,
-    @Query('size', new ParseIntPipe()) size: number = 10,
+    @Query('index', new NullableParseIntPipe()) index: number = 1,
+    @Query('size', new NullableParseIntPipe()) size: number = 10,
   ): Promise<ResultList<Notice>> {
     return this.noticeService.query(index, size, { keyword });
   }

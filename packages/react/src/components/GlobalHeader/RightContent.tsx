@@ -205,8 +205,8 @@ export default class GlobalHeaderRight extends Component<GlobalHeaderRightProps>
             </span>
           </HeaderDropdown>
         ) : (
-            <Spin size="small" style={{ marginLeft: 8, marginRight: 8 }} />
-          )}
+          <Spin size="small" style={{ marginLeft: 8, marginRight: 8 }} />
+        )}
         <SelectLang className={styles.action} />
       </div>
     );

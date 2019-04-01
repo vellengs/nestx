@@ -8,6 +8,7 @@ import { MenuSchema } from './schemas/menu.schema';
 import { RoleSchema } from './schemas/role.schema';
 import { SettingSchema } from './schemas/setting.schema';
 import { CoreControllers, CoreServices } from './controllers';
+import { NoticeSchema } from './schemas';
 
 const models = [
   { name: 'Dict', schema: DictSchema },
@@ -16,6 +17,7 @@ const models = [
   { name: 'Role', schema: RoleSchema },
   { name: 'Setting', schema: SettingSchema },
   { name: 'User', schema: UserSchema },
+  { name: 'Notice', schema: NoticeSchema },
 ];
 
 @Module({
