@@ -6,4 +6,5 @@ export * from './log.interface';
 export * from './user.interface';
 export * from './group.interface';
 export * from './notice.interface';
+export * from './verycode.interface';
 

@@ -6,3 +6,4 @@ export { MenuSchema } from './menu.schema';
 export { GroupSchema } from './group.schema';
 export { UserSchema } from './user.schema';
 export { NoticeSchema } from './notice.schema';
+export { VeryCodeSchema } from './verycode.schema';

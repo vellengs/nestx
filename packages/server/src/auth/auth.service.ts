@@ -15,7 +15,6 @@ export class AuthService {
 
   async login(payload: LoginReq): Promise<AccessToken> {
     const user = await this.userService.login(payload.username, payload.password);
-    console.log('user ...', user);
     if (user) {
       return await this.createToken(user);
     } else {
@@ -36,8 +35,11 @@ export class AuthService {
   }
 
   async register(payload: RegisterReq): Promise<AccessToken> {
+    const validate = await this.userService.verifyCode(payload.veryCode, payload.mobile);
+    if (!validate) {
+      throw new NotAcceptableException('verycode failure');
+    }
     const user = await this.userService.register(payload).catch((error) => {
-      // TODO log error. 
       throw new NotAcceptableException('register failure');
     });
     return await this.createToken(user);
