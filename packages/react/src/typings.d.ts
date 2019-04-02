@@ -13,6 +13,7 @@ declare module '*.tiff';
 declare module 'rc-animate';
 declare module 'omit.js';
 declare module 'react-copy-to-clipboard';
+declare module 'nzh/cn';
 declare module 'ant-design-pro' {
   import React from 'react';
   import { NoticeIconProps } from 'ant-design-pro/lib/NoticeIcon';

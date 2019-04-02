@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { Icon, Tabs, Badge, Spin } from 'antd';
 import classNames from 'classnames';
-import {HeaderDropdown} from 'ant-design-pro';
+import { HeaderDropdown } from 'ant-design-pro';
 import List from './NoticeList';
 import styles from './index.less';
 

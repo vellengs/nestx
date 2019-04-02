@@ -4,7 +4,7 @@ import isEqual from 'lodash/isEqual';
 import memoizeOne from 'memoize-one';
 import { formatMessage } from 'umi-plugin-locale';
 import { IRoute } from 'umi-types';
-import defaultSettings from '../../config/defaultSettings';
+import defaultSettings from '../defaultSettings';
 import { ModelType } from './connect';
 
 // Conversion router to menu.

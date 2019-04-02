@@ -1,15 +1,14 @@
 // https://umijs.org/config/
-// import os from 'os';
-import slash from 'slash2';
+import os from 'os';
 import pageRoutes from './router.config';
-import { IPlugin, IConfig } from 'umi-types';
-import defaultSettings from './defaultSettings';
 import webpackPlugin from './plugin.config';
+import defaultSettings from '../src/defaultSettings';
+import slash from 'slash2';
 
 const { pwa, primaryColor } = defaultSettings;
 const { APP_TYPE, TEST } = process.env;
 
-const plugins: IPlugin[] = [
+const plugins = [
   [
     'umi-plugin-react',
     {
@@ -27,44 +26,26 @@ const plugins: IPlugin[] = [
         webpackChunkName: true,
         level: 3,
       },
-      pwa: {
-        workboxPluginMode: 'InjectManifest',
-        workboxOptions: {
-          importWorkboxFrom: 'local',
-        },
-      },
+      pwa: pwa
+        ? {
+            workboxPluginMode: 'InjectManifest',
+            workboxOptions: {
+              importWorkboxFrom: 'local',
+            },
+          }
+        : false,
+      ...(!TEST && os.platform() === 'darwin'
+        ? {
+            dll: {
+              include: ['dva', 'dva/router', 'dva/saga', 'dva/fetch'],
+              exclude: ['@babel/runtime'],
+            },
+            hardSource: false,
+          }
+        : {}),
     },
   ],
-  [
-    'umi-plugin-pro-block',
-    {
-      moveMock: false,
-      moveService: false,
-      modifyRequest: true,
-      autoAddMenu: true,
-    },
-  ],
-  // ...(!process.env.TEST && os.platform() === 'darwin'
-  //   ? {
-  //       dll: {
-  //         include: ['dva', 'dva/router', 'dva/saga', 'dva/fetch'],
-  //         exclude: ['@babel/runtime'],
-  //       },
-  //       hardSource: true,
-  //     }
-  //   : {}),
 ];
-
-// 针对 preview.pro.ant.design 的 GA 统计代码
-// 业务上不需要这个
-if (APP_TYPE === 'site') {
-  plugins.push([
-    'umi-plugin-ga',
-    {
-      code: 'UA-72788897-6',
-    },
-  ]);
-}
 
 export default {
   // add for transfer to umi
@@ -82,10 +63,6 @@ export default {
   // https://ant.design/docs/react/customize-theme-cn
   theme: {
     'primary-color': primaryColor,
-  },
-  externals: {
-    '@antv/data-set': 'DataSet',
-    bizcharts: 'BizCharts',
   },
   // proxy: {
   //   '/server/api/': {
@@ -124,5 +101,6 @@ export default {
   manifest: {
     basePath: '/',
   },
+
   chainWebpack: webpackPlugin,
-} as IConfig;
+};

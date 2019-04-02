@@ -2,7 +2,7 @@ import isEqual from 'lodash/isEqual';
 import memoizeOne from 'memoize-one';
 import pathToRegexp from 'path-to-regexp';
 import { formatMessage } from 'umi-plugin-locale';
-import defaultSettings from '../../config/defaultSettings';
+import defaultSettings from '../defaultSettings';
 import { MenuDataItem } from '@/components/SiderMenu/MenuDataItem';
 
 const { menu, title } = defaultSettings;

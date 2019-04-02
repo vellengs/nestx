@@ -1,12 +1,10 @@
 import { MenuTheme } from 'antd/es/menu';
-
 export type ContentWidth = 'Fluid' | 'Fixed';
-
 export interface DefaultSettings {
   /**
    * theme for nav menu
    */
-  navTheme: MenuTheme;
+  navTheme: MenuTheme | string;
   /**
    * primary color of ant design
    */
@@ -31,7 +29,9 @@ export interface DefaultSettings {
    * sticky siderbar
    */
   fixSiderbar: boolean;
-  menu: { disableLocal: boolean };
+  menu: {
+    disableLocal: boolean;
+  };
   title: string;
   pwa: boolean;
   /**
@@ -40,22 +40,5 @@ export interface DefaultSettings {
    * 注意：如果需要图标多色，Iconfont图标项目里要进行批量去色处理
    */
   iconfontUrl: string;
-  colorWeak: boolean;
+  colorWeak?: boolean;
 }
-
-export default {
-  navTheme: 'dark',
-  primaryColor: '#1890FF',
-  layout: 'sidemenu',
-  contentWidth: 'Fluid',
-  fixedHeader: false,
-  autoHideHeader: false,
-  fixSiderbar: false,
-  colorWeak: false,
-  menu: {
-    disableLocal: false,
-  },
-  title: 'Ant Design Pro',
-  pwa: true,
-  iconfontUrl: '',
-} as DefaultSettings;

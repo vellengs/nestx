@@ -47,9 +47,9 @@ const query = {
 
 export interface BasicLayoutProps
   extends ConnectProps,
-    SiderMenuProps,
-    HeaderViewProps,
-    Partial<SettingModelState> {
+  SiderMenuProps,
+  HeaderViewProps,
+  Partial<SettingModelState> {
   breadcrumbNameMap: { [path: string]: MenuDataItem };
   route: MenuDataItem;
 }
@@ -137,7 +137,9 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
           )}
         </ContainerQuery>
       </DocumentTitle>
-      <Suspense fallback={<PageLoading />}>{renderSettingDrawer()}</Suspense>
+      <Suspense fallback={<PageLoading />}>
+        {/* {renderSettingDrawer()} */}
+      </Suspense>
     </React.Fragment>
   );
 };

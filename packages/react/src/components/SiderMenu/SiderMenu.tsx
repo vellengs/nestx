@@ -2,7 +2,7 @@ import { Layout } from 'antd';
 import classNames from 'classnames';
 import React, { Component, Suspense } from 'react';
 import Link from 'umi/link';
-import defaultSettings from '../../../config/defaultSettings';
+import defaultSettings from '../../defaultSettings';
 import PageLoading from '../PageLoading';
 import styles from './index.less';
 import { getDefaultCollapsedSubMenus } from './SiderMenuUtils';
