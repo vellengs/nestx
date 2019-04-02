@@ -13,6 +13,7 @@
     "start:prod": "node dist/main.js",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "swagger": "swaggerGen -c ./swagger.config.json && npm run gen:client ",
+    "init:data": "ts-node src/scripts/data.import.ts",
     "gen:client": "ts-node src/scripts/api.generate.ts",
     "test": "jest",
     "test:watch": "jest --watch",

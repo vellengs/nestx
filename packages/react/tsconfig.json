@@ -22,7 +22,7 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["./src", "config/defaultSettings.ts"],
+  "include": ["./src"],
   "exclude": [
     "node_modules",
     "build",

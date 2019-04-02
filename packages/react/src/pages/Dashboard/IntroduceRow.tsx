@@ -141,7 +141,7 @@ const IntroduceRow = memo(({ loading, visitData }: any) => (
           strokeWidth={8}
           target={80}
           targetLabel={`${formatMessage({ id: 'component.miniProgress.tooltipDefault' }).concat(
-            ': '
+            ': ',
           )}80%`}
           color="#13C2C2"
         />

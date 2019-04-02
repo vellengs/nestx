@@ -59,7 +59,7 @@ const OfflineData = memo(
         ))}
       </Tabs>
     </Card>
-  )
+  ),
 );
 
 export default OfflineData;

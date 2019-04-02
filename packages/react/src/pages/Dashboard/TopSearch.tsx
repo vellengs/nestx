@@ -25,15 +25,15 @@ const columns = [
     title: <FormattedMessage id="app.analysis.table.users" defaultMessage="Users" />,
     dataIndex: 'count',
     key: 'count',
-    sorter: (a: { count: number; }, b: { count: number; }) => a.count - b.count,
+    sorter: (a: { count: number }, b: { count: number }) => a.count - b.count,
     className: styles.alignRight,
   },
   {
     title: <FormattedMessage id="app.analysis.table.weekly-range" defaultMessage="Weekly Range" />,
     dataIndex: 'range',
     key: 'range',
-    sorter: (a: { range: number; }, b: { range: number; }) => a.range - b.range,
-    render: (text: React.ReactNode, record: { status: number; }) => (
+    sorter: (a: { range: number }, b: { range: number }) => a.range - b.range,
+    render: (text: React.ReactNode, record: { status: number }) => (
       <Trend flag={record.status === 1 ? 'down' : 'up'}>
         <span style={{ marginRight: 4 }}>{text}%</span>
       </Trend>

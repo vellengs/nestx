@@ -3,7 +3,6 @@ import { Button, Spin, Card } from 'antd';
 import { connect } from 'dva';
 import styles from './style.less';
 
-
 interface TriggerExceptionProp {
   dispatch: any;
 }

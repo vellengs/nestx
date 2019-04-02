@@ -4,7 +4,7 @@ import { yuan } from '@/components/Charts';
  * 减少使用 dangerouslySetInnerHTML
  */
 export default class Yuan extends React.PureComponent<{
-  children: any
+  children: any;
 }> {
   private main: any;
   componentDidMount() {

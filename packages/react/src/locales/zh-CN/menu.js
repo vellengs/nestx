@@ -1,7 +1,6 @@
 export default {
   'menu.home': '首页',
   'menu.login': '登录',
-  'menu.welcome': '欢迎',
   'menu.register': '注册',
   'menu.register.result': '注册结果',
   'menu.dashboard': 'Dashboard',
@@ -39,4 +38,8 @@ export default {
   'menu.account.settings': '个人设置',
   'menu.account.trigger': '触发报错',
   'menu.account.logout': '退出登录',
+  'menu.editor': '图形编辑器',
+  'menu.editor.flow': '流程编辑器',
+  'menu.editor.mind': '脑图编辑器',
+  'menu.editor.koni': '拓扑编辑器',
 };

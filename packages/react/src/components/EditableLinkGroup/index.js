@@ -30,8 +30,8 @@ class EditableLinkGroup extends PureComponent {
               to: link.href,
               href: link.href,
             },
-            link.title
-          )
+            link.title,
+          ),
         )}
         {
           <Button size="small" type="primary" ghost onClick={onAdd} icon="plus">

@@ -7,10 +7,10 @@ import styles from './Analysis.less';
 import PageLoading from '@/components/PageLoading';
 
 const IntroduceRow = React.lazy(() => import('./IntroduceRow'));
-// const SalesCard = React.lazy(() => import('./SalesCard'));
-// const TopSearch = React.lazy(() => import('./TopSearch'));
-// const ProportionSales = React.lazy(() => import('./ProportionSales'));
-// const OfflineData = React.lazy(() => import('./OfflineData'));
+const SalesCard = React.lazy(() => import('./SalesCard'));
+const TopSearch = React.lazy(() => import('./TopSearch'));
+const ProportionSales = React.lazy(() => import('./ProportionSales'));
+const OfflineData = React.lazy(() => import('./OfflineData'));
 
 interface AnalysisProp {
   dispatch: any;
@@ -139,49 +139,49 @@ class Analysis extends Component<AnalysisProp> {
           <IntroduceRow loading={loading} visitData={visitData} />
         </Suspense>
         <Suspense fallback={null}>
-          {/* <SalesCard
+          <SalesCard
             rangePickerValue={rangePickerValue}
             salesData={salesData}
             isActive={this.isActive}
             handleRangePickerChange={this.handleRangePickerChange}
             loading={loading}
             selectDate={this.selectDate}
-          /> */}
+          />
         </Suspense>
         <div className={styles.twoColLayout}>
           <Row gutter={24}>
             <Col xl={12} lg={24} md={24} sm={24} xs={24}>
               <Suspense fallback={null}>
-                {/* <TopSearch
+                <TopSearch
                   loading={loading}
                   visitData2={visitData2}
                   selectDate={this.selectDate}
                   searchData={searchData}
                   dropdownGroup={dropdownGroup}
-                /> */}
+                />
               </Suspense>
             </Col>
             <Col xl={12} lg={24} md={24} sm={24} xs={24}>
               <Suspense fallback={null}>
-                {/* <ProportionSales
+                <ProportionSales
                   dropdownGroup={dropdownGroup}
                   salesType={salesType}
                   loading={loading}
                   salesPieData={salesPieData}
                   handleChangeSalesType={this.handleChangeSalesType}
-                /> */}
+                />
               </Suspense>
             </Col>
           </Row>
         </div>
         <Suspense fallback={null}>
-          {/* <OfflineData
+          <OfflineData
             activeKey={activeKey}
             loading={loading}
             offlineData={offlineData}
             offlineChartData={offlineChartData}
             handleTabChange={this.handleTabChange}
-          /> */}
+          />
         </Suspense>
       </GridContent>
     );

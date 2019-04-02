@@ -15,6 +15,7 @@ export class AuthService {
 
   async login(payload: LoginReq): Promise<AccessToken> {
     const user = await this.userService.login(payload.username, payload.password);
+    console.log('user ...', user);
     if (user) {
       return await this.createToken(user);
     } else {
@@ -43,7 +44,6 @@ export class AuthService {
   }
 
   async validateUser(payload: JwtPayload) {
-    console.log('payload:', payload);
     return this.userService.findOne({
       username: payload.account
     })

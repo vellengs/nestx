@@ -66,7 +66,8 @@ const updateColorWeak: (colorWeak: string) => void = colorWeak => {
   document.body.className = colorWeak ? 'colorWeak' : '';
 };
 
-const SettingModel: ModelType<any> = { // TODO
+const SettingModel: ModelType<any> = {
+  // TODO
   namespace: 'setting',
   state: defaultSettings,
   reducers: {

@@ -1,6 +1,5 @@
 export default {
   'menu.home': 'Home',
-  'menu.welcome': 'Welcome',
   'menu.login': 'Login',
   'menu.register': 'Register',
   'menu.register.result': 'Register Result',
@@ -39,4 +38,8 @@ export default {
   'menu.account.settings': 'Account Settings',
   'menu.account.trigger': 'Trigger Error',
   'menu.account.logout': 'Logout',
+  'menu.editor': 'Graphic Editor',
+  'menu.editor.flow': 'Flow Editor',
+  'menu.editor.mind': 'Mind Editor',
+  'menu.editor.koni': 'Koni Editor',
 };

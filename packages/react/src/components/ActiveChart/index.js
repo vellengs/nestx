@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { MiniArea } from '../Charts';
-import {NumberInfo} from 'ant-design-pro';
+import { NumberInfo } from 'ant-design-pro';
 import styles from './index.less';
 
 function fixedZero(val) {
@@ -40,7 +40,7 @@ export default class ActiveChart extends Component {
         },
         () => {
           this.loopData();
-        }
+        },
       );
     }, 500);
   };

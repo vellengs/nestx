@@ -43,10 +43,10 @@ interface WorkplaceProps {
   };
   currentUser: any;
   currentUserLoading: any;
-  project: { notice: any },
-  projectLoading: any,
-  activitiesLoading: any,
-  chart: { radarData: any },
+  project: { notice: any };
+  projectLoading: any;
+  activitiesLoading: any;
+  chart: { radarData: any };
 }
 
 @connect(({ user, project, activities, chart, loading }: any) => ({
@@ -227,7 +227,7 @@ class Workplace extends PureComponent<WorkplaceProps> {
               bordered={false}
               bodyStyle={{ padding: 0 }}
             >
-              <EditableLinkGroup onAdd={() => { }} links={links} linkElement={Link as any} />
+              <EditableLinkGroup onAdd={() => {}} links={links} linkElement={Link as any} />
             </Card>
             <Card
               style={{ marginBottom: 24 }}

@@ -110,9 +110,9 @@ function getRenderArr(routes: any[] | string[]) {
  * @param {string} path
  * @param {routerData} routerData
  */
-export function getRoutes(path: string, routerData: { [x: string]: any; }) {
+export function getRoutes(path: string, routerData: { [x: string]: any }) {
   let routes = Object.keys(routerData).filter(
-    routePath => routePath.indexOf(path) === 0 && routePath !== path
+    routePath => routePath.indexOf(path) === 0 && routePath !== path,
   );
   // Replace path to '' eg. path='user' /user/name => name
   routes = routes.map(item => item.replace(path, ''));
@@ -169,7 +169,8 @@ export const importCDN = (url: string, name: string | number) =>
 export function formatWan(val: number) {
   const v = val * 1;
   if (!v || Number.isNaN(v)) return '';
-  let value = val, result;
+  let value = val,
+    result;
   if (val > 10000) {
     value = Math.floor(val / 10000);
     result = (
@@ -185,7 +186,7 @@ export function formatWan(val: number) {
           }}
         >
           万
-          </span>
+        </span>
       </span>
     );
   }

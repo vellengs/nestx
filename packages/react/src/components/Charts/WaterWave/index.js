@@ -20,7 +20,7 @@ class WaterWave extends PureComponent {
       () => {
         requestAnimationFrame(() => this.resize());
       },
-      { passive: true }
+      { passive: true },
     );
   }
 

@@ -52,7 +52,7 @@ const ProportionSales = memo(
         style={{ padding: '8px 0' }}
       />
     </Card>
-  )
+  ),
 );
 
 export default ProportionSales;

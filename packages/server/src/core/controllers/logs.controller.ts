@@ -1,6 +1,6 @@
-import { Controller, Get, UseGuards, Param, ParseIntPipe, Query } from '@nestjs/common';
+import { Controller, Get, UseGuards, Param, Query } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { ResultList } from './../../common/interfaces/result.interface';
+import { ResultList, NullableParseIntPipe } from './../../common';
 import { LogsService } from './logs.service';
 import { Log } from './../interfaces';
 import { KeyValueDto } from './../dto';
@@ -23,8 +23,8 @@ export class LogsController {
   @Get('query')
   async query(
     @Query('keyword') keyword?: string,
-    @Query('index', new ParseIntPipe()) index: number = 1,
-    @Query('size', new ParseIntPipe()) size: number = 10,
+    @Query('index', new NullableParseIntPipe()) index: number = 1,
+    @Query('size', new NullableParseIntPipe()) size: number = 10,
   ): Promise<ResultList<Log>> {
     return this.logService.query(index, size, { keyword });
   }

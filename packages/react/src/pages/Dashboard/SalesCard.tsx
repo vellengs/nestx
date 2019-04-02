@@ -17,7 +17,14 @@ for (let i = 0; i < 7; i += 1) {
 }
 
 const SalesCard = memo(
-  ({ rangePickerValue, salesData, isActive, handleRangePickerChange, loading, selectDate }: any) => (
+  ({
+    rangePickerValue,
+    salesData,
+    isActive,
+    handleRangePickerChange,
+    loading,
+    selectDate,
+  }: any) => (
     <Card loading={loading} bordered={false} bodyStyle={{ padding: 0 }}>
       <div className={styles.salesCard}>
         <Tabs
@@ -144,7 +151,7 @@ const SalesCard = memo(
         </Tabs>
       </div>
     </Card>
-  )
+  ),
 );
 
 export default SalesCard;

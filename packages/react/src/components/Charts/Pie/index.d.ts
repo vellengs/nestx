@@ -22,4 +22,4 @@ export interface IPieProps {
   style?: any;
 }
 
-export default class Pie extends React.Component<IPieProps, any> { }
+export default class Pie extends React.Component<IPieProps, any> {}

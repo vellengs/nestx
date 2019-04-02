@@ -2,7 +2,7 @@ import { chartData } from '@/services/api';
 import { ModelType } from '@/models/connect';
 
 interface ChartState {
-  [key: string]: any
+  [key: string]: any;
 }
 
 const ChartModel: ModelType<ChartState> = {
