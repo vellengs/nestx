@@ -1,9 +1,9 @@
-import { Controller, Get, Post, Body, UseGuards, Param, Put, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards, Param, Put, Query, Res } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
 import { ResultList, NullableParseIntPipe } from './../../common';
 import { MenusService } from './menus.service';
-import { Menu } from './../interfaces/Menu.interface';
+import { Menu, MenuModel } from './../interfaces';
 import { CreateMenuReq, EditMenuReq, KeyValueDto } from './../dto';
 import { Tags } from 'nest-swagger';
 
@@ -33,16 +33,31 @@ export class MenusController {
 
   @Get('query')
   async query(
+    @Query('isMenu') isMenu: boolean,
     @Query('keyword') keyword?: string,
     @Query('index', new NullableParseIntPipe()) index: number = 1,
     @Query('size', new NullableParseIntPipe()) size: number = 10,
   ): Promise<ResultList<Menu>> {
-    return this.menuService.query(index, size, { keyword });
+    return this.menuService.query(index, size, { keyword, isMenu });
   }
 
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<Menu> {
     return this.menuService.findById(id);
+  }
+
+  @Get('permissions')
+  async getPermissionTags(): Promise<{
+    id: string;
+    name: string;
+    desc: string;
+  }[]> {
+    return this.menuService.getAllPermissionTags();
+  }
+
+  @Get('auth')
+  async getUserMenus(@Res() req: Express.Request): Promise<MenuModel[]> {
+    return this.menuService.getAuthenticatedMenus(req.user);
   }
 
 }
