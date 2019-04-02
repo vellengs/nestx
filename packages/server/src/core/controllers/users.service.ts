@@ -33,27 +33,26 @@ export class UsersService extends MongooseService<UserModel> {
     super(model);
   }
 
-  async sendVeryCode(code: string, mobile: string): Promise<string> {
-    // TODO;
-    // const sms = await this.veryCodeModel.findOne({
-    //   mobile,
-    //   lastSent: {
-    //     $gte: Date.now() - ONE_MINUTE
-    //   }
-    // }).exec();
-    // if (sms)
-    //   return Promise.reject("Request too often.");
-    // if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
-    //   const date = Date.now();
-    //   const code = "123456";
-    //   await new this.veryCodeModel({ mobile, code, lastSent: date }).save();
-    //   return Promise.resolve(code);
-    // }
-    // const veryCode = "" + require("rander").between(100000, 999999);
+  async sendVeryCode(mobile: string): Promise<string> {
+    const sms = await this.veryCodeModel.findOne({
+      mobile,
+      lastSent: {
+        $gte: Date.now() - ONE_MINUTE
+      }
+    }).exec();
+    if (sms)
+      return Promise.reject("Request too often.");
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+      const date = Date.now();
+      const code = "123456";
+      await new this.veryCodeModel({ mobile, code, lastSent: date }).save();
+      return Promise.resolve(code);
+    }
+    const code = "123456"; // + require("rander").between(100000, 999999);
     // const content = SMS_VERIFICATION_CONTENT.replace("{0}", code);
-    // // const result = await callSmsSent(mobile, content);
-    // // if (!result) return;
-    // await new this.veryCodeModel({ mobile, code }).save();
+    // const result = await callSmsSent(mobile, content);
+    // if (!result) return;
+    await new this.veryCodeModel({ mobile, code }).save();
     return Promise.resolve(code);
   }
 

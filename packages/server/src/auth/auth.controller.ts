@@ -28,8 +28,7 @@ export class AuthController {
 
   @Get('captcha')
   async captcha(@Query('mobile') mobile: string): Promise<Result> {
-
-    // TODO;
+    await this.authService.captcha(mobile);
     return {
       ok: true
     };

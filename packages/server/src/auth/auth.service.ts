@@ -4,6 +4,7 @@ import { JwtPayload, AccessToken } from './interfaces/jwt-payload.interface';
 import { LoginReq } from './dto/login.dto';
 import { RegisterReq } from './dto/Register.dto';
 import { UsersService } from './../core/controllers/users.service';
+import { Result } from './../common';
 
 @Injectable()
 export class AuthService {
@@ -43,6 +44,13 @@ export class AuthService {
       throw new NotAcceptableException('register failure');
     });
     return await this.createToken(user);
+  }
+
+  async captcha(mobile: string): Promise<Result> {
+    const code = await this.userService.sendVeryCode(mobile);
+    return {
+      ok: true
+    };
   }
 
   async validateUser(payload: JwtPayload) {
