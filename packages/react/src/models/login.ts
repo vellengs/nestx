@@ -1,30 +1,16 @@
 import { routerRedux } from 'dva/router';
 import { stringify } from 'qs';
-import { fakeAccountLogin, getFakeCaptcha } from '@/services/api';
 import { setAuthority } from '@/utils/authority';
 import { getPageQuery } from '@/utils/utils';
 import { reloadAuthorized } from '@/utils/Authorized';
-import { Effect } from 'dva';
-import { Reducer } from 'redux';
+import { ModelType } from './connect';
+import { accountLogin, getCaptcha, accountLogout } from '@/services/api';
 
 export interface LoginModelState {
   status: any;
 }
 
-export interface LoginModelType {
-  namespace: 'login';
-  state: LoginModelState;
-  effects: {
-    login: Effect;
-    getCaptcha: Effect;
-    logout: Effect;
-  };
-  reducers: {
-    changeLoginStatus: Reducer<LoginModelState>;
-  };
-}
-
-const LoginModel: LoginModelType = {
+const LoginModel: ModelType<LoginModelState> = {
   namespace: 'login',
   state: {
     status: undefined,
@@ -32,7 +18,7 @@ const LoginModel: LoginModelType = {
 
   effects: {
     *login({ payload }, { call, put }) {
-      const response = yield call(fakeAccountLogin, payload);
+      const response = yield call(accountLogin, payload);
       yield put({
         type: 'changeLoginStatus',
         payload: response,
@@ -60,10 +46,12 @@ const LoginModel: LoginModelType = {
     },
 
     *getCaptcha({ payload }, { call }) {
-      yield call(getFakeCaptcha, payload);
+      yield call(getCaptcha, payload);
     },
 
-    *logout(_, { put }) {
+    *logout(_, { call, put }) {
+      const response = yield call(accountLogout);
+      console.log('response', response);
       yield put({
         type: 'changeLoginStatus',
         payload: {

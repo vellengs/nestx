@@ -7,12 +7,15 @@ import { MenusController } from './menus.controller';
 import { MenusService } from './menus.service';
 import { LogsService } from './logs.service';
 import { LogsController } from './logs.controller';
+import { NoticesController } from './notices.controller';
+import { NoticesService } from './notices.service';
 
 export const CoreControllers = [
     DictsController,
     UsersController,
     MenusController,
     LogsController,
+    NoticesController,
 ];
 
 export const CoreServices = [
@@ -20,4 +23,5 @@ export const CoreServices = [
     UsersService,
     MenusService,
     LogsService,
+    NoticesService,
 ];

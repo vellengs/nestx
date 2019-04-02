@@ -1,9 +1,9 @@
-import { Controller, Get, Post, Body, UseGuards, Param, Put, ParseIntPipe, Query, Req, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards, Param, Put, Query, Req } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './../interfaces/user.interface';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
-import { ResultList } from './../../common/interfaces/result.interface';
+import { ResultList, NullableParseIntPipe } from './../../common';
 import { KeyValueDto, CreateUserReq, EditUserReq } from './../dto';
 import { Tags } from 'nest-swagger';
 
@@ -40,8 +40,8 @@ export class UsersController {
   @Get('query')
   async query(
     @Query('keyword') keyword?: string,
-    @Query('index', new ParseIntPipe()) index: number = 1,
-    @Query('size', new ParseIntPipe()) size: number = 10,
+    @Query('index', new NullableParseIntPipe()) index: number = 1,
+    @Query('size', new NullableParseIntPipe()) size: number = 10,
   ): Promise<ResultList<User>> {
     return this.usersService.query(index, size, { keyword }, 'name');
   }

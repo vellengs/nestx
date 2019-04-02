@@ -4,6 +4,11 @@ export interface ResultList<T> {
     query?: Query;
 }
 
+export interface Result {
+    ok: boolean
+}
+
+
 export interface Query {
     size: number;
     index: number;

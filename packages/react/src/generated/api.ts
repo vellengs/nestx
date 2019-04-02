@@ -75,6 +75,26 @@ export class RequiredError extends Error {
 /**
  *
  * @export
+ * @interface AccessToken
+ */
+export interface AccessToken {
+  /**
+   *
+   * @type {number}
+   * @memberof AccessToken
+   */
+  expiresIn: number;
+  /**
+   *
+   * @type {string}
+   * @memberof AccessToken
+   */
+  accessToken: string;
+}
+
+/**
+ *
+ * @export
  * @interface CreateDictReq
  */
 export interface CreateDictReq {
@@ -107,117 +127,149 @@ export interface CreateDictReq {
 /**
  *
  * @export
- * @interface CreateMenuRes
+ * @interface CreateMenuReq
  */
-export interface CreateMenuRes {
+export interface CreateMenuReq {
   /**
    *
    * @type {string}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   name: string;
   /**
    *
    * @type {string}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   slug: string;
   /**
    *
    * @type {boolean}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   group: boolean;
   /**
    *
    * @type {string}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   link: string;
   /**
    *
    * @type {number}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   order: number;
   /**
    *
    * @type {string}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   externalLink: string;
   /**
    *
    * @type {boolean}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   blank: boolean;
   /**
    *
    * @type {string}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   icon: string;
   /**
    *
    * @type {string}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   badge: string;
   /**
    *
    * @type {string}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   badgeDot: string;
   /**
    *
    * @type {string}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   badgeStatus: string;
   /**
    *
    * @type {boolean}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   enable: boolean;
   /**
    *
    * @type {boolean}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   expanded: boolean;
   /**
    *
    * @type {string}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   acl: string;
   /**
    *
    * @type {Array<any>}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   paths: Array<any>;
   /**
    *
    * @type {string}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   parent: string;
   /**
    *
    * @type {Array<any>}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   permissions?: Array<any>;
   /**
    *
    * @type {boolean}
-   * @memberof CreateMenuRes
+   * @memberof CreateMenuReq
    */
   isMenu: boolean;
+}
+
+/**
+ *
+ * @export
+ * @interface CreateNoticeReq
+ */
+export interface CreateNoticeReq {
+  /**
+   *
+   * @type {string}
+   * @memberof CreateNoticeReq
+   */
+  category: string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateNoticeReq
+   */
+  name: string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateNoticeReq
+   */
+  translate: string;
+  /**
+   *
+   * @type {any}
+   * @memberof CreateNoticeReq
+   */
+  expand: any;
 }
 
 /**
@@ -339,117 +391,155 @@ export interface EditDictReq {
 /**
  *
  * @export
- * @interface EditMenuRes
+ * @interface EditMenuReq
  */
-export interface EditMenuRes {
+export interface EditMenuReq {
   /**
    *
    * @type {string}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   name: string;
   /**
    *
    * @type {string}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   slug: string;
   /**
    *
    * @type {boolean}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   group: boolean;
   /**
    *
    * @type {string}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   link: string;
   /**
    *
    * @type {number}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   order: number;
   /**
    *
    * @type {string}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   externalLink: string;
   /**
    *
    * @type {boolean}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   blank: boolean;
   /**
    *
    * @type {string}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   icon: string;
   /**
    *
    * @type {string}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   badge: string;
   /**
    *
    * @type {string}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   badgeDot: string;
   /**
    *
    * @type {string}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   badgeStatus: string;
   /**
    *
    * @type {boolean}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   enable: boolean;
   /**
    *
    * @type {boolean}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   expanded: boolean;
   /**
    *
    * @type {string}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   acl: string;
   /**
    *
    * @type {Array<any>}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   paths: Array<any>;
   /**
    *
    * @type {string}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   parent: string;
   /**
    *
    * @type {Array<any>}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   permissions?: Array<any>;
   /**
    *
    * @type {boolean}
-   * @memberof EditMenuRes
+   * @memberof EditMenuReq
    */
   isMenu: boolean;
+}
+
+/**
+ *
+ * @export
+ * @interface EditNoticeReq
+ */
+export interface EditNoticeReq {
+  /**
+   *
+   * @type {string}
+   * @memberof EditNoticeReq
+   */
+  id: string;
+  /**
+   *
+   * @type {string}
+   * @memberof EditNoticeReq
+   */
+  category: string;
+  /**
+   *
+   * @type {string}
+   * @memberof EditNoticeReq
+   */
+  name: string;
+  /**
+   *
+   * @type {string}
+   * @memberof EditNoticeReq
+   */
+  translate: string;
+  /**
+   *
+   * @type {any}
+   * @memberof EditNoticeReq
+   */
+  expand: any;
 }
 
 /**
@@ -569,19 +659,25 @@ export interface Log {
 /**
  *
  * @export
- * @interface LoginDto
+ * @interface LoginReq
  */
-export interface LoginDto {
+export interface LoginReq {
   /**
    *
    * @type {string}
-   * @memberof LoginDto
+   * @memberof LoginReq
    */
   username: string;
   /**
    *
    * @type {string}
-   * @memberof LoginDto
+   * @memberof LoginReq
+   */
+  type?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof LoginReq
    */
   password: string;
 }
@@ -711,6 +807,50 @@ export interface Menu {
 /**
  *
  * @export
+ * @interface Notice
+ */
+export interface Notice {
+  /**
+   *
+   * @type {string}
+   * @memberof Notice
+   */
+  id: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Notice
+   */
+  avatar: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Notice
+   */
+  title: string;
+  /**
+   *
+   * @type {Date}
+   * @memberof Notice
+   */
+  datetime: Date;
+  /**
+   *
+   * @type {string}
+   * @memberof Notice
+   */
+  type: string;
+  /**
+   *
+   * @type {boolean}
+   * @memberof Notice
+   */
+  read: boolean;
+}
+
+/**
+ *
+ * @export
  * @interface Product
  */
 export interface Product {
@@ -751,27 +891,59 @@ export interface Query {
 /**
  *
  * @export
- * @interface RegisterDto
+ * @interface RegisterReq
  */
-export interface RegisterDto {
+export interface RegisterReq {
   /**
    *
    * @type {string}
-   * @memberof RegisterDto
+   * @memberof RegisterReq
    */
   username: string;
   /**
    *
    * @type {string}
-   * @memberof RegisterDto
+   * @memberof RegisterReq
    */
   password: string;
   /**
    *
    * @type {string}
-   * @memberof RegisterDto
+   * @memberof RegisterReq
    */
   mobile: string;
+  /**
+   *
+   * @type {string}
+   * @memberof RegisterReq
+   */
+  email: string;
+  /**
+   *
+   * @type {string}
+   * @memberof RegisterReq
+   */
+  mobilePrefix: string;
+  /**
+   *
+   * @type {string}
+   * @memberof RegisterReq
+   */
+  veryCode: string;
+}
+
+/**
+ *
+ * @export
+ * @interface Result
+ */
+export interface Result {
+  /**
+   *
+   * @type {boolean}
+   * @memberof Result
+   */
+  ok: boolean;
 }
 
 /**
@@ -848,6 +1020,32 @@ export interface ResultListMenu {
    *
    * @type {Query}
    * @memberof ResultListMenu
+   */
+  query?: Query;
+}
+
+/**
+ *
+ * @export
+ * @interface ResultListNotice
+ */
+export interface ResultListNotice {
+  /**
+   *
+   * @type {Array<Notice>}
+   * @memberof ResultListNotice
+   */
+  list: Array<Notice>;
+  /**
+   *
+   * @type {number}
+   * @memberof ResultListNotice
+   */
+  count?: number;
+  /**
+   *
+   * @type {Query}
+   * @memberof ResultListNotice
    */
   query?: Query;
 }
@@ -1091,23 +1289,66 @@ export class AppApi extends BaseAPI {
 }
 
 /**
- * CoreApi - axios parameter creator
+ * AuthApi - axios parameter creator
  * @export
  */
-export const CoreApiAxiosParamCreator = function(configuration?: Configuration) {
+export const AuthApiAxiosParamCreator = function(configuration?: Configuration) {
   return {
     /**
      *
-     * @param {LoginDto} loginDto
+     * @param {string} mobile
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authLogin(loginDto: LoginDto, options: any = {}): RequestArgs {
-      // verify required parameter 'loginDto' is not null or undefined
-      if (loginDto === null || loginDto === undefined) {
+    authCaptcha(mobile: string, options: any = {}): RequestArgs {
+      // verify required parameter 'mobile' is not null or undefined
+      if (mobile === null || mobile === undefined) {
         throw new RequiredError(
-          'loginDto',
-          'Required parameter loginDto was null or undefined when calling authLogin.',
+          'mobile',
+          'Required parameter mobile was null or undefined when calling authCaptcha.',
+        );
+      }
+      const localVarPath = `/auth/captcha`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      if (mobile !== undefined) {
+        localVarQueryParameter['mobile'] = mobile;
+      }
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query,
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {LoginReq} loginReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authLogin(loginReq: LoginReq, options: any = {}): RequestArgs {
+      // verify required parameter 'loginReq' is not null or undefined
+      if (loginReq === null || loginReq === undefined) {
+        throw new RequiredError(
+          'loginReq',
+          'Required parameter loginReq was null or undefined when calling authLogin.',
         );
       }
       const localVarPath = `/auth/login`;
@@ -1132,11 +1373,11 @@ export const CoreApiAxiosParamCreator = function(configuration?: Configuration) 
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'LoginDto' !== 'string' ||
+        <any>'LoginReq' !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.data = needsSerialization
-        ? JSON.stringify(loginDto || {})
-        : loginDto || '';
+        ? JSON.stringify(loginReq || {})
+        : loginReq || '';
 
       return {
         url: url.format(localVarUrlObj),
@@ -1145,16 +1386,47 @@ export const CoreApiAxiosParamCreator = function(configuration?: Configuration) 
     },
     /**
      *
-     * @param {RegisterDto} registerDto
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authRegister(registerDto: RegisterDto, options: any = {}): RequestArgs {
-      // verify required parameter 'registerDto' is not null or undefined
-      if (registerDto === null || registerDto === undefined) {
+    authLogout(options: any = {}): RequestArgs {
+      const localVarPath = `/auth/logout`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query,
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {RegisterReq} registerReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authRegister(registerReq: RegisterReq, options: any = {}): RequestArgs {
+      // verify required parameter 'registerReq' is not null or undefined
+      if (registerReq === null || registerReq === undefined) {
         throw new RequiredError(
-          'registerDto',
-          'Required parameter registerDto was null or undefined when calling authRegister.',
+          'registerReq',
+          'Required parameter registerReq was null or undefined when calling authRegister.',
         );
       }
       const localVarPath = `/auth/register`;
@@ -1179,17 +1451,214 @@ export const CoreApiAxiosParamCreator = function(configuration?: Configuration) 
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'RegisterDto' !== 'string' ||
+        <any>'RegisterReq' !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.data = needsSerialization
-        ? JSON.stringify(registerDto || {})
-        : registerDto || '';
+        ? JSON.stringify(registerReq || {})
+        : registerReq || '';
 
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
       };
     },
+  };
+};
+
+/**
+ * AuthApi - functional programming interface
+ * @export
+ */
+export const AuthApiFp = function(configuration?: Configuration) {
+  return {
+    /**
+     *
+     * @param {string} mobile
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authCaptcha(
+      mobile: string,
+      options?: any,
+    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Result> {
+      const localVarAxiosArgs = AuthApiAxiosParamCreator(configuration).authCaptcha(
+        mobile,
+        options,
+      );
+      return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+        const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {
+          url: basePath + localVarAxiosArgs.url,
+        });
+        return axios.request(axiosRequestArgs);
+      };
+    },
+    /**
+     *
+     * @param {LoginReq} loginReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authLogin(
+      loginReq: LoginReq,
+      options?: any,
+    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<AccessToken> {
+      const localVarAxiosArgs = AuthApiAxiosParamCreator(configuration).authLogin(
+        loginReq,
+        options,
+      );
+      return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+        const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {
+          url: basePath + localVarAxiosArgs.url,
+        });
+        return axios.request(axiosRequestArgs);
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authLogout(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean> {
+      const localVarAxiosArgs = AuthApiAxiosParamCreator(configuration).authLogout(options);
+      return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+        const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {
+          url: basePath + localVarAxiosArgs.url,
+        });
+        return axios.request(axiosRequestArgs);
+      };
+    },
+    /**
+     *
+     * @param {RegisterReq} registerReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authRegister(
+      registerReq: RegisterReq,
+      options?: any,
+    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<AccessToken> {
+      const localVarAxiosArgs = AuthApiAxiosParamCreator(configuration).authRegister(
+        registerReq,
+        options,
+      );
+      return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+        const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {
+          url: basePath + localVarAxiosArgs.url,
+        });
+        return axios.request(axiosRequestArgs);
+      };
+    },
+  };
+};
+
+/**
+ * AuthApi - factory interface
+ * @export
+ */
+export const AuthApiFactory = function(
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  return {
+    /**
+     *
+     * @param {string} mobile
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authCaptcha(mobile: string, options?: any) {
+      return AuthApiFp(configuration).authCaptcha(mobile, options)(axios, basePath);
+    },
+    /**
+     *
+     * @param {LoginReq} loginReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authLogin(loginReq: LoginReq, options?: any) {
+      return AuthApiFp(configuration).authLogin(loginReq, options)(axios, basePath);
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authLogout(options?: any) {
+      return AuthApiFp(configuration).authLogout(options)(axios, basePath);
+    },
+    /**
+     *
+     * @param {RegisterReq} registerReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authRegister(registerReq: RegisterReq, options?: any) {
+      return AuthApiFp(configuration).authRegister(registerReq, options)(axios, basePath);
+    },
+  };
+};
+
+/**
+ * AuthApi - object-oriented interface
+ * @export
+ * @class AuthApi
+ * @extends {BaseAPI}
+ */
+export class AuthApi extends BaseAPI {
+  /**
+   *
+   * @param {string} mobile
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthApi
+   */
+  public authCaptcha(mobile: string, options?: any) {
+    return AuthApiFp(this.configuration).authCaptcha(mobile, options)(this.axios, this.basePath);
+  }
+
+  /**
+   *
+   * @param {LoginReq} loginReq
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthApi
+   */
+  public authLogin(loginReq: LoginReq, options?: any) {
+    return AuthApiFp(this.configuration).authLogin(loginReq, options)(this.axios, this.basePath);
+  }
+
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthApi
+   */
+  public authLogout(options?: any) {
+    return AuthApiFp(this.configuration).authLogout(options)(this.axios, this.basePath);
+  }
+
+  /**
+   *
+   * @param {RegisterReq} registerReq
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthApi
+   */
+  public authRegister(registerReq: RegisterReq, options?: any) {
+    return AuthApiFp(this.configuration).authRegister(registerReq, options)(
+      this.axios,
+      this.basePath,
+    );
+  }
+}
+
+/**
+ * CoreApi - axios parameter creator
+ * @export
+ */
+export const CoreApiAxiosParamCreator = function(configuration?: Configuration) {
+  return {
     /**
      *
      * @param {CreateDictReq} createDictReq
@@ -1538,16 +2007,16 @@ export const CoreApiAxiosParamCreator = function(configuration?: Configuration) 
     },
     /**
      *
-     * @param {CreateMenuRes} createMenuRes
+     * @param {CreateMenuReq} createMenuReq
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    menusCreate(createMenuRes: CreateMenuRes, options: any = {}): RequestArgs {
-      // verify required parameter 'createMenuRes' is not null or undefined
-      if (createMenuRes === null || createMenuRes === undefined) {
+    menusCreate(createMenuReq: CreateMenuReq, options: any = {}): RequestArgs {
+      // verify required parameter 'createMenuReq' is not null or undefined
+      if (createMenuReq === null || createMenuReq === undefined) {
         throw new RequiredError(
-          'createMenuRes',
-          'Required parameter createMenuRes was null or undefined when calling menusCreate.',
+          'createMenuReq',
+          'Required parameter createMenuReq was null or undefined when calling menusCreate.',
         );
       }
       const localVarPath = `/menus/`;
@@ -1572,11 +2041,11 @@ export const CoreApiAxiosParamCreator = function(configuration?: Configuration) 
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'CreateMenuRes' !== 'string' ||
+        <any>'CreateMenuReq' !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.data = needsSerialization
-        ? JSON.stringify(createMenuRes || {})
-        : createMenuRes || '';
+        ? JSON.stringify(createMenuReq || {})
+        : createMenuReq || '';
 
       return {
         url: url.format(localVarUrlObj),
@@ -1711,16 +2180,16 @@ export const CoreApiAxiosParamCreator = function(configuration?: Configuration) 
     },
     /**
      *
-     * @param {EditMenuRes} editMenuRes
+     * @param {EditMenuReq} editMenuReq
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    menusUpdate(editMenuRes: EditMenuRes, options: any = {}): RequestArgs {
-      // verify required parameter 'editMenuRes' is not null or undefined
-      if (editMenuRes === null || editMenuRes === undefined) {
+    menusUpdate(editMenuReq: EditMenuReq, options: any = {}): RequestArgs {
+      // verify required parameter 'editMenuReq' is not null or undefined
+      if (editMenuReq === null || editMenuReq === undefined) {
         throw new RequiredError(
-          'editMenuRes',
-          'Required parameter editMenuRes was null or undefined when calling menusUpdate.',
+          'editMenuReq',
+          'Required parameter editMenuReq was null or undefined when calling menusUpdate.',
         );
       }
       const localVarPath = `/menus/`;
@@ -1745,11 +2214,231 @@ export const CoreApiAxiosParamCreator = function(configuration?: Configuration) 
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'EditMenuRes' !== 'string' ||
+        <any>'EditMenuReq' !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.data = needsSerialization
-        ? JSON.stringify(editMenuRes || {})
-        : editMenuRes || '';
+        ? JSON.stringify(editMenuReq || {})
+        : editMenuReq || '';
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {CreateNoticeReq} createNoticeReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    noticesCreate(createNoticeReq: CreateNoticeReq, options: any = {}): RequestArgs {
+      // verify required parameter 'createNoticeReq' is not null or undefined
+      if (createNoticeReq === null || createNoticeReq === undefined) {
+        throw new RequiredError(
+          'createNoticeReq',
+          'Required parameter createNoticeReq was null or undefined when calling noticesCreate.',
+        );
+      }
+      const localVarPath = `/notices/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query,
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization =
+        <any>'CreateNoticeReq' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.data = needsSerialization
+        ? JSON.stringify(createNoticeReq || {})
+        : createNoticeReq || '';
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    noticesFindOne(id: string, options: any = {}): RequestArgs {
+      // verify required parameter 'id' is not null or undefined
+      if (id === null || id === undefined) {
+        throw new RequiredError(
+          'id',
+          'Required parameter id was null or undefined when calling noticesFindOne.',
+        );
+      }
+      const localVarPath = `/notices/{id}`.replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      const localVarUrlObj = url.parse(localVarPath, true);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query,
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} [keyword]
+     * @param {number} [index]
+     * @param {number} [size]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    noticesQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
+      const localVarPath = `/notices/query`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      if (keyword !== undefined) {
+        localVarQueryParameter['keyword'] = keyword;
+      }
+
+      if (index !== undefined) {
+        localVarQueryParameter['index'] = index;
+      }
+
+      if (size !== undefined) {
+        localVarQueryParameter['size'] = size;
+      }
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query,
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} [keyword]
+     * @param {string} [value]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    noticesSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
+      const localVarPath = `/notices/search`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      if (keyword !== undefined) {
+        localVarQueryParameter['keyword'] = keyword;
+      }
+
+      if (value !== undefined) {
+        localVarQueryParameter['value'] = value;
+      }
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query,
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {EditNoticeReq} editNoticeReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    noticesUpdate(editNoticeReq: EditNoticeReq, options: any = {}): RequestArgs {
+      // verify required parameter 'editNoticeReq' is not null or undefined
+      if (editNoticeReq === null || editNoticeReq === undefined) {
+        throw new RequiredError(
+          'editNoticeReq',
+          'Required parameter editNoticeReq was null or undefined when calling noticesUpdate.',
+        );
+      }
+      const localVarPath = `/notices/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query,
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization =
+        <any>'EditNoticeReq' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.data = needsSerialization
+        ? JSON.stringify(editNoticeReq || {})
+        : editNoticeReq || '';
 
       return {
         url: url.format(localVarUrlObj),
@@ -2018,48 +2707,6 @@ export const CoreApiFp = function(configuration?: Configuration) {
   return {
     /**
      *
-     * @param {LoginDto} loginDto
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    authLogin(
-      loginDto: LoginDto,
-      options?: any,
-    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<string> {
-      const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).authLogin(
-        loginDto,
-        options,
-      );
-      return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-        const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {
-          url: basePath + localVarAxiosArgs.url,
-        });
-        return axios.request(axiosRequestArgs);
-      };
-    },
-    /**
-     *
-     * @param {RegisterDto} registerDto
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    authRegister(
-      registerDto: RegisterDto,
-      options?: any,
-    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<string> {
-      const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).authRegister(
-        registerDto,
-        options,
-      );
-      return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-        const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {
-          url: basePath + localVarAxiosArgs.url,
-        });
-        return axios.request(axiosRequestArgs);
-      };
-    },
-    /**
-     *
      * @param {CreateDictReq} createDictReq
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2240,16 +2887,16 @@ export const CoreApiFp = function(configuration?: Configuration) {
     },
     /**
      *
-     * @param {CreateMenuRes} createMenuRes
+     * @param {CreateMenuReq} createMenuReq
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     menusCreate(
-      createMenuRes: CreateMenuRes,
+      createMenuReq: CreateMenuReq,
       options?: any,
     ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
       const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusCreate(
-        createMenuRes,
+        createMenuReq,
         options,
       );
       return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
@@ -2330,16 +2977,127 @@ export const CoreApiFp = function(configuration?: Configuration) {
     },
     /**
      *
-     * @param {EditMenuRes} editMenuRes
+     * @param {EditMenuReq} editMenuReq
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     menusUpdate(
-      editMenuRes: EditMenuRes,
+      editMenuReq: EditMenuReq,
       options?: any,
     ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Menu> {
       const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusUpdate(
-        editMenuRes,
+        editMenuReq,
+        options,
+      );
+      return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+        const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {
+          url: basePath + localVarAxiosArgs.url,
+        });
+        return axios.request(axiosRequestArgs);
+      };
+    },
+    /**
+     *
+     * @param {CreateNoticeReq} createNoticeReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    noticesCreate(
+      createNoticeReq: CreateNoticeReq,
+      options?: any,
+    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+      const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).noticesCreate(
+        createNoticeReq,
+        options,
+      );
+      return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+        const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {
+          url: basePath + localVarAxiosArgs.url,
+        });
+        return axios.request(axiosRequestArgs);
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    noticesFindOne(
+      id: string,
+      options?: any,
+    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Notice> {
+      const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).noticesFindOne(id, options);
+      return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+        const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {
+          url: basePath + localVarAxiosArgs.url,
+        });
+        return axios.request(axiosRequestArgs);
+      };
+    },
+    /**
+     *
+     * @param {string} [keyword]
+     * @param {number} [index]
+     * @param {number} [size]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    noticesQuery(
+      keyword?: string,
+      index?: number,
+      size?: number,
+      options?: any,
+    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListNotice> {
+      const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).noticesQuery(
+        keyword,
+        index,
+        size,
+        options,
+      );
+      return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+        const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {
+          url: basePath + localVarAxiosArgs.url,
+        });
+        return axios.request(axiosRequestArgs);
+      };
+    },
+    /**
+     *
+     * @param {string} [keyword]
+     * @param {string} [value]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    noticesSearch(
+      keyword?: string,
+      value?: string,
+      options?: any,
+    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+      const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).noticesSearch(
+        keyword,
+        value,
+        options,
+      );
+      return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+        const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {
+          url: basePath + localVarAxiosArgs.url,
+        });
+        return axios.request(axiosRequestArgs);
+      };
+    },
+    /**
+     *
+     * @param {EditNoticeReq} editNoticeReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    noticesUpdate(
+      editNoticeReq: EditNoticeReq,
+      options?: any,
+    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Notice> {
+      const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).noticesUpdate(
+        editNoticeReq,
         options,
       );
       return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
@@ -2489,24 +3247,6 @@ export const CoreApiFactory = function(
   return {
     /**
      *
-     * @param {LoginDto} loginDto
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    authLogin(loginDto: LoginDto, options?: any) {
-      return CoreApiFp(configuration).authLogin(loginDto, options)(axios, basePath);
-    },
-    /**
-     *
-     * @param {RegisterDto} registerDto
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    authRegister(registerDto: RegisterDto, options?: any) {
-      return CoreApiFp(configuration).authRegister(registerDto, options)(axios, basePath);
-    },
-    /**
-     *
      * @param {CreateDictReq} createDictReq
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2585,12 +3325,12 @@ export const CoreApiFactory = function(
     },
     /**
      *
-     * @param {CreateMenuRes} createMenuRes
+     * @param {CreateMenuReq} createMenuReq
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    menusCreate(createMenuRes: CreateMenuRes, options?: any) {
-      return CoreApiFp(configuration).menusCreate(createMenuRes, options)(axios, basePath);
+    menusCreate(createMenuReq: CreateMenuReq, options?: any) {
+      return CoreApiFp(configuration).menusCreate(createMenuReq, options)(axios, basePath);
     },
     /**
      *
@@ -2624,12 +3364,60 @@ export const CoreApiFactory = function(
     },
     /**
      *
-     * @param {EditMenuRes} editMenuRes
+     * @param {EditMenuReq} editMenuReq
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    menusUpdate(editMenuRes: EditMenuRes, options?: any) {
-      return CoreApiFp(configuration).menusUpdate(editMenuRes, options)(axios, basePath);
+    menusUpdate(editMenuReq: EditMenuReq, options?: any) {
+      return CoreApiFp(configuration).menusUpdate(editMenuReq, options)(axios, basePath);
+    },
+    /**
+     *
+     * @param {CreateNoticeReq} createNoticeReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    noticesCreate(createNoticeReq: CreateNoticeReq, options?: any) {
+      return CoreApiFp(configuration).noticesCreate(createNoticeReq, options)(axios, basePath);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    noticesFindOne(id: string, options?: any) {
+      return CoreApiFp(configuration).noticesFindOne(id, options)(axios, basePath);
+    },
+    /**
+     *
+     * @param {string} [keyword]
+     * @param {number} [index]
+     * @param {number} [size]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    noticesQuery(keyword?: string, index?: number, size?: number, options?: any) {
+      return CoreApiFp(configuration).noticesQuery(keyword, index, size, options)(axios, basePath);
+    },
+    /**
+     *
+     * @param {string} [keyword]
+     * @param {string} [value]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    noticesSearch(keyword?: string, value?: string, options?: any) {
+      return CoreApiFp(configuration).noticesSearch(keyword, value, options)(axios, basePath);
+    },
+    /**
+     *
+     * @param {EditNoticeReq} editNoticeReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    noticesUpdate(editNoticeReq: EditNoticeReq, options?: any) {
+      return CoreApiFp(configuration).noticesUpdate(editNoticeReq, options)(axios, basePath);
     },
     /**
      *
@@ -2697,31 +3485,6 @@ export const CoreApiFactory = function(
  * @extends {BaseAPI}
  */
 export class CoreApi extends BaseAPI {
-  /**
-   *
-   * @param {LoginDto} loginDto
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof CoreApi
-   */
-  public authLogin(loginDto: LoginDto, options?: any) {
-    return CoreApiFp(this.configuration).authLogin(loginDto, options)(this.axios, this.basePath);
-  }
-
-  /**
-   *
-   * @param {RegisterDto} registerDto
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof CoreApi
-   */
-  public authRegister(registerDto: RegisterDto, options?: any) {
-    return CoreApiFp(this.configuration).authRegister(registerDto, options)(
-      this.axios,
-      this.basePath,
-    );
-  }
-
   /**
    *
    * @param {CreateDictReq} createDictReq
@@ -2836,13 +3599,13 @@ export class CoreApi extends BaseAPI {
 
   /**
    *
-   * @param {CreateMenuRes} createMenuRes
+   * @param {CreateMenuReq} createMenuReq
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof CoreApi
    */
-  public menusCreate(createMenuRes: CreateMenuRes, options?: any) {
-    return CoreApiFp(this.configuration).menusCreate(createMenuRes, options)(
+  public menusCreate(createMenuReq: CreateMenuReq, options?: any) {
+    return CoreApiFp(this.configuration).menusCreate(createMenuReq, options)(
       this.axios,
       this.basePath,
     );
@@ -2892,13 +3655,83 @@ export class CoreApi extends BaseAPI {
 
   /**
    *
-   * @param {EditMenuRes} editMenuRes
+   * @param {EditMenuReq} editMenuReq
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof CoreApi
    */
-  public menusUpdate(editMenuRes: EditMenuRes, options?: any) {
-    return CoreApiFp(this.configuration).menusUpdate(editMenuRes, options)(
+  public menusUpdate(editMenuReq: EditMenuReq, options?: any) {
+    return CoreApiFp(this.configuration).menusUpdate(editMenuReq, options)(
+      this.axios,
+      this.basePath,
+    );
+  }
+
+  /**
+   *
+   * @param {CreateNoticeReq} createNoticeReq
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CoreApi
+   */
+  public noticesCreate(createNoticeReq: CreateNoticeReq, options?: any) {
+    return CoreApiFp(this.configuration).noticesCreate(createNoticeReq, options)(
+      this.axios,
+      this.basePath,
+    );
+  }
+
+  /**
+   *
+   * @param {string} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CoreApi
+   */
+  public noticesFindOne(id: string, options?: any) {
+    return CoreApiFp(this.configuration).noticesFindOne(id, options)(this.axios, this.basePath);
+  }
+
+  /**
+   *
+   * @param {string} [keyword]
+   * @param {number} [index]
+   * @param {number} [size]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CoreApi
+   */
+  public noticesQuery(keyword?: string, index?: number, size?: number, options?: any) {
+    return CoreApiFp(this.configuration).noticesQuery(keyword, index, size, options)(
+      this.axios,
+      this.basePath,
+    );
+  }
+
+  /**
+   *
+   * @param {string} [keyword]
+   * @param {string} [value]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CoreApi
+   */
+  public noticesSearch(keyword?: string, value?: string, options?: any) {
+    return CoreApiFp(this.configuration).noticesSearch(keyword, value, options)(
+      this.axios,
+      this.basePath,
+    );
+  }
+
+  /**
+   *
+   * @param {EditNoticeReq} editNoticeReq
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CoreApi
+   */
+  public noticesUpdate(editNoticeReq: EditNoticeReq, options?: any) {
+    return CoreApiFp(this.configuration).noticesUpdate(editNoticeReq, options)(
       this.axios,
       this.basePath,
     );

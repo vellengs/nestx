@@ -1,12 +1,11 @@
 import { MenuDataItem } from '@/components/SiderMenu';
 import Authorized from '@/utils/Authorized';
-import { Effect } from 'dva';
 import isEqual from 'lodash/isEqual';
 import memoizeOne from 'memoize-one';
-import { Reducer } from 'redux';
 import { formatMessage } from 'umi-plugin-locale';
 import { IRoute } from 'umi-types';
-import defaultSettings from '../../config/defaultSettings';
+import defaultSettings from '../defaultSettings';
+import { ModelType } from './connect';
 
 // Conversion router to menu.
 function formatter(
@@ -77,7 +76,6 @@ const getBreadcrumbNameMap = (menuData: MenuDataItem[]) => {
       if (menuItem.children) {
         flattenMenuData(menuItem.children);
       }
-      // Reduce memory usage
       routerMap[menuItem.path] = menuItem;
     });
   };
@@ -93,26 +91,13 @@ export interface MenuModelState {
   breadcrumbNameMap: object;
 }
 
-export interface MenuModelType {
-  namespace: 'menu';
-  state: MenuModelState;
-  effects: {
-    getMenuData: Effect;
-  };
-  reducers: {
-    save: Reducer<MenuModelState>;
-  };
-}
-
-const MenuModel: MenuModelType = {
+const MenuModel: ModelType<MenuModelState> = {
   namespace: 'menu',
-
   state: {
     menuData: [],
     routerData: [],
     breadcrumbNameMap: {},
   },
-
   effects: {
     *getMenuData({ payload }, { put }) {
       const { routes, authority } = payload;
@@ -125,7 +110,6 @@ const MenuModel: MenuModelType = {
       });
     },
   },
-
   reducers: {
     save(state, action) {
       return {

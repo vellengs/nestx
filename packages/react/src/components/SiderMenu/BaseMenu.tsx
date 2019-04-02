@@ -1,13 +1,14 @@
 import IconFont from '@/components/IconFont';
 import { isUrl } from '@/utils/utils';
 import { Icon, Menu } from 'antd';
-import { MenuMode, MenuTheme } from 'antd/es/menu';
 import classNames from 'classnames';
 import React, { Component } from 'react';
 import Link from 'umi/link';
 import { urlToList } from '../_utils/pathTools';
 import styles from './index.less';
 import { getMenuMatches } from './SiderMenuUtils';
+import { MenuDataItem } from './MenuDataItem';
+import { BaseMenuProps } from './BaseMenuProps';
 
 const { SubMenu } = Menu;
 
@@ -28,38 +29,6 @@ const getIcon = (icon?: string | React.ReactNode) => {
   }
   return icon;
 };
-
-/**
- * @type R: is route
- */
-export interface MenuDataItem<R extends boolean = false> {
-  authority?: string[] | string;
-  children?: MenuDataItem[];
-  hideChildrenInMenu?: boolean;
-  hideInMenu?: boolean;
-  icon?: string;
-  locale?: string;
-  name?: string;
-  path: string;
-  routes?: R extends true ? MenuDataItem<R>[] : never;
-  [key: string]: any;
-}
-
-export interface BaseMenuProps {
-  className?: string;
-  collapsed?: boolean;
-  flatMenuKeys?: any[];
-  handleOpenChange?: (openKeys: string[]) => void;
-  isMobile?: boolean;
-  location?: Location;
-  menuData?: MenuDataItem[];
-  mode?: MenuMode;
-  onCollapse?: (collapsed: boolean) => void;
-  onOpenChange?: (openKeys: string[]) => void;
-  openKeys?: string[];
-  style?: React.CSSProperties;
-  theme?: MenuTheme;
-}
 
 export default class BaseMenu extends Component<BaseMenuProps> {
   static defaultProps: BaseMenuProps = {

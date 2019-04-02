@@ -1,7 +1,7 @@
 import { IsString, IsInt, IsJSON } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
 
-export class EditMenuRes {
+export class EditMenuReq {
    name: string;								// 菜单名称
    slug: string;								// 标识串
    group: boolean;              // 是否是分组
@@ -22,7 +22,7 @@ export class EditMenuRes {
    isMenu: boolean;							// 是否是菜单
 }
 
-export class CreateMenuRes {
+export class CreateMenuReq {
    name: string;								// 菜单名称
    slug: string;								// 标识串
    group: boolean;              // 是否是分组

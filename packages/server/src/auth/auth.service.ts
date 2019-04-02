@@ -1,8 +1,8 @@
 import { Injectable, UnauthorizedException, NotAcceptableException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { JwtPayload, Token } from './interfaces/jwt-payload.interface';
-import { LoginDto } from './dto/login.dto';
-import { RegisterDto } from './dto/Register.dto';
+import { JwtPayload, AccessToken } from './interfaces/jwt-payload.interface';
+import { LoginReq } from './dto/login.dto';
+import { RegisterReq } from './dto/Register.dto';
 import { UsersService } from './../core/controllers/users.service';
 
 @Injectable()
@@ -13,8 +13,9 @@ export class AuthService {
     private readonly userService: UsersService,
   ) { }
 
-  async login(payload: LoginDto): Promise<Token> {
+  async login(payload: LoginReq): Promise<AccessToken> {
     const user = await this.userService.login(payload.username, payload.password);
+    console.log('user ...', user);
     if (user) {
       return await this.createToken(user);
     } else {
@@ -22,7 +23,11 @@ export class AuthService {
     }
   }
 
-  async createToken(payload: { username: string }): Promise<Token> {
+  async logout(): Promise<boolean> {
+    return true; // TODO;
+  }
+
+  async createToken(payload: { username: string }): Promise<AccessToken> {
     const accessToken = this.jwtService.sign({ account: payload.username });
     return {
       expiresIn: 3600,
@@ -30,8 +35,8 @@ export class AuthService {
     };
   }
 
-  async register(payload: RegisterDto): Promise<Token> {
-    const user = await this.userService.create(payload).catch((error) => {
+  async register(payload: RegisterReq): Promise<AccessToken> {
+    const user = await this.userService.register(payload).catch((error) => {
       // TODO log error. 
       throw new NotAcceptableException('register failure');
     });
@@ -39,7 +44,6 @@ export class AuthService {
   }
 
   async validateUser(payload: JwtPayload) {
-    console.log('payload:', payload);
     return this.userService.findOne({
       username: payload.account
     })

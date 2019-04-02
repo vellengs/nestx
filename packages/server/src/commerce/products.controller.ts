@@ -6,12 +6,12 @@ import {
   UseGuards,
   UseInterceptors,
   Param,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { RolesGuard } from '../common/guards/roles.guard';
 import { Roles } from '../common/decorators/roles.decorator';
 import { LoggingInterceptor } from '../common/interceptors/logging.interceptor';
 import { TransformInterceptor } from '../common/interceptors/transform.interceptor';
-import { ParseIntPipe } from '../common/pipes/parse-int.pipe';
 import { RoleTypes } from './../config/enums';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';

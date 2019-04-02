@@ -5,7 +5,7 @@ export const UserSchema = new Schema({
     username: { type: t.String, unique: true, required: true },
     password: t.String,
     avatar: t.String,
-    email: t.String,
+    email: { type: t.String, unique: true, required: false },
     name: t.String,
     about: t.String,
     location: {
@@ -15,7 +15,7 @@ export const UserSchema = new Schema({
         address: t.String,
     },
     type: t.String,
-    mobile: t.String,
+    mobile: { type: t.String, unique: true, required: true },
     roles: [{
         type: t.ObjectId, ref: 'Role'
     }],
@@ -29,7 +29,7 @@ export const UserSchema = new Schema({
         type: t.Boolean
     },
     expired: {
-        type: t.Boolean
+        type: t.Date
     },
 }, {
         timestamps: true,

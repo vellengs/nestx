@@ -1,5 +1,5 @@
-import { EffectsCommandMap } from 'dva';
-import { AnyAction } from 'redux';
+import { EffectsCommandMap, Subscription } from 'dva';
+import { AnyAction, Reducer } from 'redux';
 import { GlobalModelState } from './global';
 import { MenuModelState } from './menu';
 import { UserModelState } from './user';
@@ -55,5 +55,19 @@ export interface ConnectProps<T extends { [key: string]: any } = {}, R = any>
     params: T;
     path: string;
     url: string;
+  };
+}
+
+export interface ModelType<T> {
+  namespace: string;
+  state: T;
+  effects?: {
+    [key: string]: Effect;
+  };
+  reducers?: {
+    [key: string]: Reducer<T>;
+  };
+  subscriptions?: {
+    [key: string]: Subscription;
   };
 }

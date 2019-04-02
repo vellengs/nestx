@@ -1,9 +1,32 @@
 {
 	"definitions": {
-		"LoginDto": {
+		"AccessToken": {
+			"description": "",
+			"properties": {
+				"expiresIn": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"accessToken": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"expiresIn",
+				"accessToken"
+			]
+		},
+		"LoginReq": {
 			"description": "",
 			"properties": {
 				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"type": {
 					"type": "string",
 					"description": ""
 				},
@@ -18,7 +41,7 @@
 				"password"
 			]
 		},
-		"RegisterDto": {
+		"RegisterReq": {
 			"description": "",
 			"properties": {
 				"username": {
@@ -32,13 +55,41 @@
 				"mobile": {
 					"type": "string",
 					"description": ""
+				},
+				"email": {
+					"type": "string",
+					"description": ""
+				},
+				"mobilePrefix": {
+					"type": "string",
+					"description": ""
+				},
+				"veryCode": {
+					"type": "string",
+					"description": ""
 				}
 			},
 			"type": "object",
 			"required": [
 				"username",
 				"password",
-				"mobile"
+				"mobile",
+				"email",
+				"mobilePrefix",
+				"veryCode"
+			]
+		},
+		"Result": {
+			"description": "",
+			"properties": {
+				"ok": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"ok"
 			]
 		},
 		"CreateDictReq": {
@@ -371,7 +422,7 @@
 				"list"
 			]
 		},
-		"CreateMenuRes": {
+		"CreateMenuReq": {
 			"description": "",
 			"properties": {
 				"name": {
@@ -584,7 +635,7 @@
 				"isMenu"
 			]
 		},
-		"EditMenuRes": {
+		"EditMenuReq": {
 			"description": "",
 			"properties": {
 				"name": {
@@ -780,6 +831,130 @@
 				"list"
 			]
 		},
+		"CreateNoticeReq": {
+			"description": "",
+			"properties": {
+				"category": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"translate": {
+					"type": "string",
+					"description": ""
+				},
+				"expand": {
+					"type": "object",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"category",
+				"name",
+				"translate",
+				"expand"
+			]
+		},
+		"Notice": {
+			"description": "",
+			"properties": {
+				"_id": {
+					"type": "string",
+					"description": ""
+				},
+				"avatar": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				},
+				"datetime": {
+					"type": "string",
+					"format": "date-time",
+					"description": ""
+				},
+				"type": {
+					"type": "string",
+					"description": ""
+				},
+				"read": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"_id",
+				"avatar",
+				"title",
+				"datetime",
+				"type",
+				"read"
+			]
+		},
+		"EditNoticeReq": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"category": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"translate": {
+					"type": "string",
+					"description": ""
+				},
+				"expand": {
+					"type": "object",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"category",
+				"name",
+				"translate",
+				"expand"
+			]
+		},
+		"ResultList$Notice": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Notice"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
 		"CreateProductDto": {
 			"description": "",
 			"properties": {
@@ -851,23 +1026,19 @@
 			"post": {
 				"operationId": "AuthLogin",
 				"produces": [
-					"text/html"
+					"application/json"
 				],
 				"responses": {
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"type": "string",
-							"enum": [
-								"",
-								""
-							]
+							"$ref": "#/definitions/AccessToken"
 						}
 					}
 				},
 				"description": "",
 				"tags": [
-					"core"
+					"auth"
 				],
 				"consumes": [
 					"application/json"
@@ -879,7 +1050,7 @@
 						"name": "payload",
 						"required": true,
 						"schema": {
-							"$ref": "#/definitions/LoginDto"
+							"$ref": "#/definitions/LoginReq"
 						}
 					}
 				]
@@ -889,23 +1060,19 @@
 			"post": {
 				"operationId": "AuthRegister",
 				"produces": [
-					"text/html"
+					"application/json"
 				],
 				"responses": {
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"type": "string",
-							"enum": [
-								"",
-								""
-							]
+							"$ref": "#/definitions/AccessToken"
 						}
 					}
 				},
 				"description": "",
 				"tags": [
-					"core"
+					"auth"
 				],
 				"consumes": [
 					"application/json"
@@ -917,8 +1084,58 @@
 						"name": "payload",
 						"required": true,
 						"schema": {
-							"$ref": "#/definitions/RegisterDto"
+							"$ref": "#/definitions/RegisterReq"
 						}
+					}
+				]
+			}
+		},
+		"/auth/logout": {
+			"get": {
+				"operationId": "AuthLogout",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"auth"
+				],
+				"parameters": []
+			}
+		},
+		"/auth/captcha": {
+			"get": {
+				"operationId": "AuthCaptcha",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Result"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"auth"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "mobile",
+						"required": true,
+						"type": "string"
 					}
 				]
 			}
@@ -1325,7 +1542,7 @@
 						"name": "entry",
 						"required": true,
 						"schema": {
-							"$ref": "#/definitions/CreateMenuRes"
+							"$ref": "#/definitions/CreateMenuReq"
 						}
 					}
 				]
@@ -1357,7 +1574,7 @@
 						"name": "entry",
 						"required": true,
 						"schema": {
-							"$ref": "#/definitions/EditMenuRes"
+							"$ref": "#/definitions/EditMenuReq"
 						}
 					}
 				]
@@ -1575,6 +1792,184 @@
 						"description": "Ok",
 						"schema": {
 							"$ref": "#/definitions/Log"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/notices/": {
+			"post": {
+				"operationId": "NoticesCreate",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateNoticeReq"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "NoticesUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Notice"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditNoticeReq"
+						}
+					}
+				]
+			}
+		},
+		"/notices/search": {
+			"get": {
+				"operationId": "NoticesSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/notices/query": {
+			"get": {
+				"operationId": "NoticesQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Notice"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "index",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/notices/{id}": {
+			"get": {
+				"operationId": "NoticesFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Notice"
 						}
 					}
 				},

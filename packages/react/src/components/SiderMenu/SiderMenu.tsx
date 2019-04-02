@@ -2,21 +2,16 @@ import { Layout } from 'antd';
 import classNames from 'classnames';
 import React, { Component, Suspense } from 'react';
 import Link from 'umi/link';
-import defaultSettings from '../../../config/defaultSettings';
+import defaultSettings from '../../defaultSettings';
 import PageLoading from '../PageLoading';
-import { BaseMenuProps } from './BaseMenu';
 import styles from './index.less';
 import { getDefaultCollapsedSubMenus } from './SiderMenuUtils';
+import { SiderMenuProps } from './SiderMenuProps';
 
 const BaseMenu = React.lazy(() => import('./BaseMenu'));
 const { Sider } = Layout;
 const { title } = defaultSettings;
 let firstMount = true;
-
-export interface SiderMenuProps extends BaseMenuProps {
-  logo?: string;
-  fixSiderbar?: boolean;
-}
 
 interface SiderMenuState {
   pathname?: string;

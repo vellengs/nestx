@@ -137,7 +137,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
           )}
         </ContainerQuery>
       </DocumentTitle>
-      <Suspense fallback={<PageLoading />}>{renderSettingDrawer()}</Suspense>
+      <Suspense fallback={<PageLoading />}>{/* {renderSettingDrawer()} */}</Suspense>
     </React.Fragment>
   );
 };

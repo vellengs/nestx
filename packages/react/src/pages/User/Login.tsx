@@ -11,7 +11,7 @@ const { Tab, UserName, Password, Mobile, Captcha, Submit }: any = Login;
 interface LoginPageProp {
   dispatch: any;
   login: any;
-  submitting: any;
+  submitting: boolean;
 }
 
 @connect(({ login, loading }: any) => ({
@@ -89,7 +89,7 @@ class LoginPage extends Component<LoginPageProp> {
               !submitting &&
               this.renderMessage(formatMessage({ id: 'app.login.message-invalid-credentials' }))}
             <UserName
-              name="userName"
+              name="username"
               placeholder={`${formatMessage({ id: 'app.login.userName' })}: admin or user`}
               rules={[
                 {

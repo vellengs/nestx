@@ -24,11 +24,12 @@ export class Installer {
 
     async initData() {
         const dataFolder = process.cwd();
+        this.db.dropDatabase();
         await Db.Role.insertMany(Installer.loadJson(dataFolder, 'roles'));
         await Db.Dict.insertMany(Installer.loadJson(dataFolder, 'dicts'));
         await Db.Menu.insertMany(Installer.loadJson(dataFolder, 'menus'));
         await Db.Setting.insertMany(Installer.loadJson(dataFolder, 'settings'));
-        // await Db.Account.insertMany(Installer.loadJson(dataFolder, 'accounts'));
+        await Db.User.insertMany(Installer.loadJson(dataFolder, 'users'));
     }
 
     async drop() {

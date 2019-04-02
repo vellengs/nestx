@@ -1,7 +1,7 @@
 import { Document } from 'mongoose';
 
 export interface Role {
-	id: string;
+	_id: string;
 	name: string;
 	role: string;
 	description: string;

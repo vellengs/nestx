@@ -11,7 +11,7 @@ interface ResponseError<D = any> extends Error {
   response: Response;
 }
 
-const codeMessage = {
+export const codeMessage = {
   200: '服务器成功返回请求的数据。',
   201: '新建或修改数据成功。',
   202: '一个请求已经进入后台排队（异步任务）。',
@@ -32,7 +32,7 @@ const codeMessage = {
 /**
  * 异常处理程序
  */
-const errorHandler = (error: ResponseError) => {
+export const errorHandler = (error: ResponseError) => {
   const { response = {} as Response } = error;
   const errorText = codeMessage[response.status] || response.statusText;
   const { status, url } = response;
