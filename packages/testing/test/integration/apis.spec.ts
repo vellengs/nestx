@@ -4,11 +4,11 @@ import { HttpClient } from './../../scripts/client';
 describe('Auth module test', () => {
 
     beforeAll(async () => {
-        console.log('pre condition');
+        HttpClient.mockApi.mockInitData();
     })
 
     afterAll(async () => {
-        console.log('reset');
+        HttpClient.mockApi.mockReset();
     })
 
     it('user login', async () => {

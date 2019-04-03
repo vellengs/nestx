@@ -1,5 +1,5 @@
 import globalAxios from 'axios';
-import { Configuration, CoreApi, AppApi, DefaultApi, AuthApi } from '../generated';
+import { Configuration, CoreApi, AppApi, DefaultApi, AuthApi , MockApi} from '../generated';
 
 const store = new Map();
 
@@ -39,6 +39,7 @@ globalAxios.interceptors.request.use(
 export class Client {
   private static client: Client;
   public authApi = new AuthApi(config);
+  public mockApi = new MockApi(config);
   public coreApi = new CoreApi(config);
   public defaultApi = new DefaultApi(config);
   public appApi = new AppApi(config);
