@@ -45,6 +45,9 @@ definitions:
             email:
                 type: string
                 description: ""
+            name:
+                type: string
+                description: ""
             mobilePrefix:
                 type: string
                 description: ""
@@ -57,6 +60,7 @@ definitions:
             - password
             - mobile
             - email
+            - name
             - mobilePrefix
             - veryCode
     Result:
@@ -633,41 +637,45 @@ definitions:
     CreateNoticeReq:
         description: ""
         properties:
-            category:
+            title:
                 type: string
                 description: ""
-            name:
+            description:
                 type: string
                 description: ""
-            translate:
+            extra:
                 type: string
                 description: ""
-            expand:
-                type: object
+            status:
+                type: string
+                description: ""
+            type:
+                type: string
                 description: ""
         type: object
         required:
-            - category
-            - name
-            - translate
-            - expand
+            - title
+            - description
+            - extra
+            - status
+            - type
     Notice:
         description: ""
         properties:
             _id:
                 type: string
                 description: ""
-            avatar:
-                type: string
-                description: ""
             title:
                 type: string
                 description: ""
-            datetime:
+            description:
                 type: string
                 format: date-time
                 description: ""
             type:
+                type: string
+                description: ""
+            extra:
                 type: string
                 description: ""
             read:
@@ -676,36 +684,36 @@ definitions:
         type: object
         required:
             - _id
-            - avatar
             - title
-            - datetime
+            - description
             - type
+            - extra
             - read
     EditNoticeReq:
         description: ""
         properties:
-            id:
+            title:
                 type: string
                 description: ""
-            category:
+            description:
                 type: string
                 description: ""
-            name:
+            extra:
                 type: string
                 description: ""
-            translate:
+            status:
                 type: string
                 description: ""
-            expand:
-                type: object
+            type:
+                type: string
                 description: ""
         type: object
         required:
-            - id
-            - category
-            - name
-            - translate
-            - expand
+            - title
+            - description
+            - extra
+            - status
+            - type
     ResultList$Notice:
         description: ""
         properties:
@@ -1206,6 +1214,12 @@ paths:
                 -
                     description: ""
                     in: query
+                    name: isMenu
+                    required: true
+                    type: boolean
+                -
+                    description: ""
+                    in: query
                     name: keyword
                     required: false
                     type: string
@@ -1245,6 +1259,48 @@ paths:
                     name: id
                     required: true
                     type: string
+    /menus/permissions:
+        get:
+            operationId: MenusGetPermissionTags
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: array
+                        items:
+                            type: object
+                            properties:
+                                id:
+                                    type: string
+                                    description: ""
+                                name:
+                                    type: string
+                                    description: ""
+                                desc:
+                                    type: string
+                                    description: ""
+            description: ""
+            tags:
+                - core
+            parameters: []
+    /menus/auth:
+        get:
+            operationId: MenusGetUserMenus
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/definitions/Menu'
+            description: ""
+            tags:
+                - core
+            parameters: []
     /logs/search:
         get:
             operationId: LogsSearch

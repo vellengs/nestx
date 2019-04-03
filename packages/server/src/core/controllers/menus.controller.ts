@@ -3,7 +3,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
 import { ResultList, NullableParseIntPipe } from './../../common';
 import { MenusService } from './menus.service';
-import { Menu, MenuModel } from './../interfaces';
+import { Menu } from './../interfaces';
 import { CreateMenuReq, EditMenuReq, KeyValueDto } from './../dto';
 import { Tags } from 'nest-swagger';
 
@@ -56,7 +56,7 @@ export class MenusController {
   }
 
   @Get('auth')
-  async getUserMenus(@Res() req: Express.Request): Promise<MenuModel[]> {
+  async getUserMenus(@Res() req: Express.Request): Promise<Menu[]> {
     return this.menuService.getAuthenticatedMenus(req.user);
   }
 
