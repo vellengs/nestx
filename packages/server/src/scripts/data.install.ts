@@ -6,6 +6,7 @@ import * as mongoose from 'mongoose';
 import { model, Connection } from 'mongoose';
 
 export class Installer {
+    private static processing = false;
     constructor(readonly db: Connection) {
 
     }
@@ -25,10 +26,16 @@ export class Installer {
     }
 
     async initData() {
-        await this.db.dropDatabase();
-        return bluebird.promisifyAll(['Role', 'Dict', 'Menu', 'Setting', 'User']).map((name) => {
-            return this.importData(name);
-        });
+        if (!Installer.processing) {
+            Installer.processing = true;
+            await new Promise((resolve) => {
+                this.db.dropDatabase(resolve);
+            });
+            await bluebird.promisifyAll(['Role', 'Dict', 'Menu', 'Setting', 'User']).map((name) => {
+                return this.importData(name);
+            });
+        }
+        return true;
     }
 
     async reset() {

@@ -1,10 +1,9 @@
-import { IsString, IsInt, IsEmail, IsOptional } from 'class-validator';
-import { ApiModelProperty } from '@nestjs/swagger';
+import { IsString, IsEmail, IsOptional, IsArray } from 'class-validator';
 
 export class CreateUserReq {
     @IsString()
     username: string;
-    
+
     @IsString()
     password: string;
 }
@@ -12,10 +11,11 @@ export class CreateUserReq {
 export class EditUserReq {
     @IsString()
     name: string;
-
     @IsString()
-    mobile: number;
-
+    mobile: string;
+    @IsArray()
+    @IsOptional()
+    roles?: string[];
     @IsEmail()
     @IsOptional()
     email?: string;

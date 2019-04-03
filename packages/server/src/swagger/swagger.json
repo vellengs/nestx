@@ -79,8 +79,6 @@
 				"password",
 				"mobile",
 				"email",
-				"name",
-				"mobilePrefix",
 				"veryCode"
 			]
 		},
@@ -376,8 +374,14 @@
 					"description": ""
 				},
 				"mobile": {
-					"type": "number",
-					"format": "double",
+					"type": "string",
+					"description": ""
+				},
+				"roles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
 					"description": ""
 				},
 				"email": {
@@ -2067,6 +2071,48 @@
 				]
 			}
 		},
+		"/mock/init": {
+			"get": {
+				"operationId": "MockInitData",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"mock"
+				],
+				"parameters": []
+			}
+		},
+		"/mock/reset": {
+			"get": {
+				"operationId": "MockReset",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"mock"
+				],
+				"parameters": []
+			}
+		},
 		"/cats/": {
 			"post": {
 				"operationId": "ProductsCreate",
@@ -2136,54 +2182,6 @@
 						"format": "double"
 					}
 				]
-			}
-		},
-		"/init": {
-			"post": {
-				"operationId": "MockInitData",
-				"produces": [
-					"text/html"
-				],
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"schema": {
-							"type": "boolean"
-						}
-					}
-				},
-				"description": "",
-				"tags": [
-					"mock"
-				],
-				"consumes": [
-					"application/json"
-				],
-				"parameters": []
-			}
-		},
-		"/reset": {
-			"post": {
-				"operationId": "MockReset",
-				"produces": [
-					"text/html"
-				],
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"schema": {
-							"type": "boolean"
-						}
-					}
-				},
-				"description": "",
-				"tags": [
-					"mock"
-				],
-				"consumes": [
-					"application/json"
-				],
-				"parameters": []
 			}
 		}
 	},

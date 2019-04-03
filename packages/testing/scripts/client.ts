@@ -1,5 +1,5 @@
 import globalAxios from 'axios';
-import { Configuration, CoreApi, AppApi, DefaultApi, AuthApi , MockApi} from '../generated';
+import { Configuration, CoreApi, AppApi, DefaultApi, AuthApi, MockApi, LoginReq } from '../generated';
 
 const store = new Map();
 
@@ -50,5 +50,11 @@ export class Client {
     return this.client;
   }
   private constructor() { }
+
+  public async login(req: LoginReq) {
+    const res = await this.authApi.authLogin(req);
+    setToken(res.data.accessToken);
+    return res;
+  }
 }
 export const HttpClient = Client.instance;

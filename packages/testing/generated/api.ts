@@ -559,10 +559,16 @@ export interface EditUserReq {
     name: string;
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof EditUserReq
      */
-    mobile: number;
+    mobile: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof EditUserReq
+     */
+    roles?: Array<string>;
     /**
      * 
      * @type {string}
@@ -952,13 +958,13 @@ export interface RegisterReq {
      * @type {string}
      * @memberof RegisterReq
      */
-    name: string;
+    name?: string;
     /**
      * 
      * @type {string}
      * @memberof RegisterReq
      */
-    mobilePrefix: string;
+    mobilePrefix?: string;
     /**
      * 
      * @type {string}
@@ -3692,13 +3698,13 @@ export const MockApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         mockInitData(options: any = {}): RequestArgs {
-            const localVarPath = `/init`;
+            const localVarPath = `/mock/init`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -3718,13 +3724,13 @@ export const MockApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         mockReset(options: any = {}): RequestArgs {
-            const localVarPath = `/reset`;
+            const localVarPath = `/mock/reset`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
