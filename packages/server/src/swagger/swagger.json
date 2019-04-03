@@ -2137,6 +2137,54 @@
 					}
 				]
 			}
+		},
+		"/init": {
+			"post": {
+				"operationId": "MockInitData",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"mock"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": []
+			}
+		},
+		"/reset": {
+			"post": {
+				"operationId": "MockReset",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"mock"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": []
+			}
 		}
 	},
 	"swagger": "2.0",

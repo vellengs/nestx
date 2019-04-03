@@ -110,7 +110,7 @@ export class MongooseService<T extends Document & Id>  {
 
   async remove(id: string | number | ObjectID): Promise<any> {
     let entity = await this.model.findById(id);
-    return await this.model.remove(entity);
+    return await this.model.deleteOne(entity);
   }
 
   private getFields(fields: string[]) {

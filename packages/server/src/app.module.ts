@@ -12,7 +12,7 @@ import { MONGODB_URI } from './utils/secrets';
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
-    MongooseModule.forRoot(MONGODB_URI),
+    MongooseModule.forRoot(MONGODB_URI, { useNewUrlParser: true }),
     AuthModule,
     CoreModule,
     CmsModule,

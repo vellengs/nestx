@@ -1,6 +1,7 @@
-import { MONGODB_URI } from './../utils/secrets';
 import { Installer } from "./data.install";
-const installer = new Installer(MONGODB_URI);
+import { CoreDatabase } from "./database";
+const installer = new Installer(CoreDatabase.Context);
 installer.initData().then(() => {
-    console.log('imported ...');
+    console.log('data imported');
+    process.exit(0);
 });

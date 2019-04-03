@@ -4,6 +4,6 @@
   "ignore": ["./src/**/*.spec.ts"],
   "exec": "node ./index",
   "env": {
-    "NODE_ENV": "development"
+    "NODE_ENV": "test"
   }
 }

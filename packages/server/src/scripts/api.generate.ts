@@ -36,7 +36,6 @@ async function loadSwagger() {
         const local = path.resolve(process.cwd(), 'swagger.zip');
         const generatedFolder = path.resolve(process.cwd(), './../react/src/generated');
         const testingFolder = path.resolve(process.cwd(), './../testing/generated');
-
         const templateFolder = path.resolve(process.cwd(), 'decompress', `${ClientName}-client`);
         const decompress = path.resolve(process.cwd(), 'decompress');
 
@@ -54,6 +53,7 @@ async function loadSwagger() {
                     fs.renameSync(templateFolder, generatedFolder);
                     console.log('copy generated ...');
                     await removeFolder(decompress);
+                    shell.rm('-rf', testingFolder);
                     shell.cp("-R", generatedFolder, testingFolder);
                     console.log('done ...');
                 });
