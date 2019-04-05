@@ -2,13 +2,20 @@
 import { existsSync } from 'fs';
 import { resolve } from 'path';
 import * as bluebird from 'bluebird';
-import * as mongoose from 'mongoose';
-import { model, Connection } from 'mongoose';
+import { Connection, Model } from 'mongoose';
 
 export class Installer {
     private static processing = false;
     constructor(readonly db: Connection) {
 
+    }
+    public static async importData(model: Model<any>) {
+        const dataFolder = process.cwd();
+        const data = Installer.loadJson(dataFolder, model.modelName);
+        // console.log('start delete ...', model.modelName);
+        await model.deleteMany({}).exec();
+        //  console.log('start insert ...', model.modelName);
+        await model.insertMany(data)
     }
 
     private static loadJson(dataFolder: string, file: string) {
@@ -19,26 +26,23 @@ export class Installer {
         return [];
     }
 
-    private async importData(name: string) {
-        const dataFolder = process.cwd();
-        const data = Installer.loadJson(dataFolder, name.toLowerCase());
-        return await this.db.model(name).insertMany(data);
-    }
-
     async initData() {
+        console.log('start init data');
         if (!Installer.processing) {
             Installer.processing = true;
-            await new Promise((resolve) => {
-                this.db.dropDatabase(resolve);
+            await bluebird.promisifyAll(['Role', 'Dict', 'Menu', 'Setting', 'User']).map(async (name) => {
+                const model = this.db.model(name);
+                return Installer.importData(model);
             });
-            await bluebird.promisifyAll(['Role', 'Dict', 'Menu', 'Setting', 'User']).map((name) => {
-                return this.importData(name);
-            });
+
+            Installer.processing = false;
         }
+        await new Promise((resolve) => setTimeout(resolve, 200));
         return true;
     }
 
     async reset() {
+        console.log('start reset data ..');
         await this.initData();
     }
 

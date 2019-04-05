@@ -178,7 +178,7 @@ export async function updateUser(params: any = {}) {
     roles: [],
     name: 'viking',
     username: 'vellengs2',
-    mobile: 13063090590,
+    mobile: '13063090590',
     email: 'vellengs@qq.com',
   };
   return HttpClient.coreApi.usersUpdate(editUserReq);

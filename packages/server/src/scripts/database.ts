@@ -35,7 +35,7 @@ export function connect(uri: string) {
   return db;
 }
 
-const context = connect(MONGODB_URI);
+export const context = connect(MONGODB_URI);
 
 export const CoreDatabase = {
   Dict: model<DictModel>('Dict', DictSchema),
@@ -44,6 +44,5 @@ export const CoreDatabase = {
   Role: model<RoleModel>('Role', RoleSchema),
   User: model<UserModel>('User', UserSchema),
   Setting: model<SettingModel>('Setting', SettingSchema),
-  Group: model<GroupModel>('Group', GroupSchema),
-  Context: context,
+  Group: model<GroupModel>('Group', GroupSchema)
 };

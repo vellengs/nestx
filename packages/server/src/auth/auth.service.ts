@@ -41,7 +41,7 @@ export class AuthService {
       throw new NotAcceptableException('verycode failure');
     }
     const user = await this.userService.register(payload).catch((error) => {
-      throw new NotAcceptableException('register failure');
+      throw new NotAcceptableException('register failure might duplicate with username, email or mobile.');
     });
     return await this.createToken(user);
   }

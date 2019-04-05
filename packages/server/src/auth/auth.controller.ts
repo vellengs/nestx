@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Query } from '@nestjs/common';
+import { Controller, Post, Body, Get, Query, Req } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AccessToken } from './interfaces/jwt-payload.interface';
 import { LoginReq } from './dto/Login.dto';
@@ -22,7 +22,8 @@ export class AuthController {
   }
 
   @Get('logout')
-  async logout(): Promise<boolean> {
+  async logout(@Req() request: Express.Request): Promise<boolean> {
+    request.logOut(); // TODO this won't works for JWT;
     return this.authService.logout();
   }
 
