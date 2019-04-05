@@ -1,0 +1,35 @@
+{
+  "name": "nest-testing",
+  "version": "0.2.1-alpha.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:cov": "jest --coverage",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/mongoose": "^5.3.24",
+    "@types/node": "^11.13.0",
+    "axios": "^0.18.0",
+    "jest": "^24.6.0",
+    "mongoose": "^5.4.21",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^24.0.1",
+    "ts-node": "^8.0.3",
+    "typescript": "^3.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vellengs/nestx.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vellengs/nestx/issues"
+  },
+  "homepage": "https://github.com/vellengs/nestx#readme",
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}

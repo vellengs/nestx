@@ -14,12 +14,18 @@ if (existsSync('.env')) {
 }
 
 export const ENVIRONMENT = process.env.NODE_ENV;
-const prod = ENVIRONMENT === 'production'; // Anything else is treated as 'dev'
-export const SESSION_SECRET = process.env['SESSION_SECRET'];
 
-export const MONGODB_URI = prod
-  ? process.env['MONGODB_URI']
-  : process.env['MONGODB_URI_LOCAL'];
+const envMapping: { [k: string]: string } = {
+  production: 'MONGODB_URI_PRODUCTION',
+  development: 'MONGODB_URI_DEV',
+  test: 'MONGODB_URI_TEST'
+};
+
+let mongoUriKey: string = envMapping[ENVIRONMENT] || 'MONGODB_URI_TEST';
+
+export const MONGODB_URI = process.env[mongoUriKey];
+export const SESSION_SECRET = process.env['SESSION_SECRET'];
+export const PORT = process.env['PORT'] || 5600;
 
 if (!SESSION_SECRET) {
   console.log('No client secret. Set SESSION_SECRET environment variable.');

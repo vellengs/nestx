@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, MinLength, Length, IsEmail } from 'class-validator';
+import { IsNotEmpty, IsString, MinLength, Length, IsEmail, IsOptional } from 'class-validator';
 
 export class RegisterReq {
     @IsNotEmpty()
@@ -21,10 +21,11 @@ export class RegisterReq {
     @IsEmail()
     email: string;
 
-    name: string;
+    name?: string;
 
     @Length(2, 5)
-    mobilePrefix: string;
+    @IsOptional()
+    mobilePrefix?: string;
 
     @Length(6)
     @IsNotEmpty()

@@ -4,6 +4,7 @@ import { JwtPayload, AccessToken } from './interfaces/jwt-payload.interface';
 import { LoginReq } from './dto/login.dto';
 import { RegisterReq } from './dto/Register.dto';
 import { UsersService } from './../core/controllers/users.service';
+import { Result } from './../common';
 
 @Injectable()
 export class AuthService {
@@ -15,7 +16,6 @@ export class AuthService {
 
   async login(payload: LoginReq): Promise<AccessToken> {
     const user = await this.userService.login(payload.username, payload.password);
-    console.log('user ...', user);
     if (user) {
       return await this.createToken(user);
     } else {
@@ -36,11 +36,21 @@ export class AuthService {
   }
 
   async register(payload: RegisterReq): Promise<AccessToken> {
+    const validate = await this.userService.verifyCode(payload.veryCode, payload.mobile);
+    if (!validate) {
+      throw new NotAcceptableException('verycode failure');
+    }
     const user = await this.userService.register(payload).catch((error) => {
-      // TODO log error. 
-      throw new NotAcceptableException('register failure');
+      throw new NotAcceptableException('register failure might duplicate with username, email or mobile.');
     });
     return await this.createToken(user);
+  }
+
+  async captcha(mobile: string): Promise<Result> {
+    const code = await this.userService.sendVeryCode(mobile);
+    return {
+      ok: true
+    };
   }
 
   async validateUser(payload: JwtPayload) {

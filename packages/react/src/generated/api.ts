@@ -251,25 +251,31 @@ export interface CreateNoticeReq {
    * @type {string}
    * @memberof CreateNoticeReq
    */
-  category: string;
+  title: string;
   /**
    *
    * @type {string}
    * @memberof CreateNoticeReq
    */
-  name: string;
+  description: string;
   /**
    *
    * @type {string}
    * @memberof CreateNoticeReq
    */
-  translate: string;
+  extra: string;
   /**
    *
-   * @type {any}
+   * @type {string}
    * @memberof CreateNoticeReq
    */
-  expand: any;
+  status: string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateNoticeReq
+   */
+  type: string;
 }
 
 /**
@@ -515,31 +521,31 @@ export interface EditNoticeReq {
    * @type {string}
    * @memberof EditNoticeReq
    */
-  id: string;
+  title: string;
   /**
    *
    * @type {string}
    * @memberof EditNoticeReq
    */
-  category: string;
+  description: string;
   /**
    *
    * @type {string}
    * @memberof EditNoticeReq
    */
-  name: string;
+  extra: string;
   /**
    *
    * @type {string}
    * @memberof EditNoticeReq
    */
-  translate: string;
+  status: string;
   /**
    *
-   * @type {any}
+   * @type {string}
    * @memberof EditNoticeReq
    */
-  expand: any;
+  type: string;
 }
 
 /**
@@ -556,10 +562,16 @@ export interface EditUserReq {
   name: string;
   /**
    *
-   * @type {number}
+   * @type {string}
    * @memberof EditUserReq
    */
-  mobile: number;
+  mobile: string;
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof EditUserReq
+   */
+  roles?: Array<string>;
   /**
    *
    * @type {string}
@@ -584,6 +596,32 @@ export interface EditUserReq {
    * @memberof EditUserReq
    */
   address?: string;
+}
+
+/**
+ *
+ * @export
+ * @interface InlineResponse200
+ */
+export interface InlineResponse200 {
+  /**
+   *
+   * @type {string}
+   * @memberof InlineResponse200
+   */
+  name?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof InlineResponse200
+   */
+  id?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof InlineResponse200
+   */
+  desc?: string;
 }
 
 /**
@@ -821,25 +859,25 @@ export interface Notice {
    * @type {string}
    * @memberof Notice
    */
-  avatar: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Notice
-   */
   title: string;
   /**
    *
    * @type {Date}
    * @memberof Notice
    */
-  datetime: Date;
+  description: Date;
   /**
    *
    * @type {string}
    * @memberof Notice
    */
   type: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Notice
+   */
+  extra: string;
   /**
    *
    * @type {boolean}
@@ -923,7 +961,13 @@ export interface RegisterReq {
    * @type {string}
    * @memberof RegisterReq
    */
-  mobilePrefix: string;
+  name?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof RegisterReq
+   */
+  mobilePrefix?: string;
   /**
    *
    * @type {string}
@@ -2093,13 +2137,89 @@ export const CoreApiAxiosParamCreator = function(configuration?: Configuration) 
     },
     /**
      *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    menusGetPermissionTags(options: any = {}): RequestArgs {
+      const localVarPath = `/menus/permissions`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query,
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    menusGetUserMenus(options: any = {}): RequestArgs {
+      const localVarPath = `/menus/auth`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query,
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {boolean} isMenu
      * @param {string} [keyword]
      * @param {number} [index]
      * @param {number} [size]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    menusQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
+    menusQuery(
+      isMenu: boolean,
+      keyword?: string,
+      index?: number,
+      size?: number,
+      options: any = {},
+    ): RequestArgs {
+      // verify required parameter 'isMenu' is not null or undefined
+      if (isMenu === null || isMenu === undefined) {
+        throw new RequiredError(
+          'isMenu',
+          'Required parameter isMenu was null or undefined when calling menusQuery.',
+        );
+      }
       const localVarPath = `/menus/query`;
       const localVarUrlObj = url.parse(localVarPath, true);
       let baseOptions;
@@ -2109,6 +2229,10 @@ export const CoreApiAxiosParamCreator = function(configuration?: Configuration) 
       const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
       const localVarHeaderParameter = {} as any;
       const localVarQueryParameter = {} as any;
+
+      if (isMenu !== undefined) {
+        localVarQueryParameter['isMenu'] = isMenu;
+      }
 
       if (keyword !== undefined) {
         localVarQueryParameter['keyword'] = keyword;
@@ -2926,6 +3050,41 @@ export const CoreApiFp = function(configuration?: Configuration) {
     },
     /**
      *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    menusGetPermissionTags(
+      options?: any,
+    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<InlineResponse200>> {
+      const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusGetPermissionTags(
+        options,
+      );
+      return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+        const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {
+          url: basePath + localVarAxiosArgs.url,
+        });
+        return axios.request(axiosRequestArgs);
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    menusGetUserMenus(
+      options?: any,
+    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Menu>> {
+      const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusGetUserMenus(options);
+      return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+        const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {
+          url: basePath + localVarAxiosArgs.url,
+        });
+        return axios.request(axiosRequestArgs);
+      };
+    },
+    /**
+     *
+     * @param {boolean} isMenu
      * @param {string} [keyword]
      * @param {number} [index]
      * @param {number} [size]
@@ -2933,12 +3092,14 @@ export const CoreApiFp = function(configuration?: Configuration) {
      * @throws {RequiredError}
      */
     menusQuery(
+      isMenu: boolean,
       keyword?: string,
       index?: number,
       size?: number,
       options?: any,
     ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListMenu> {
       const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusQuery(
+        isMenu,
         keyword,
         index,
         size,
@@ -3343,14 +3504,34 @@ export const CoreApiFactory = function(
     },
     /**
      *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    menusGetPermissionTags(options?: any) {
+      return CoreApiFp(configuration).menusGetPermissionTags(options)(axios, basePath);
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    menusGetUserMenus(options?: any) {
+      return CoreApiFp(configuration).menusGetUserMenus(options)(axios, basePath);
+    },
+    /**
+     *
+     * @param {boolean} isMenu
      * @param {string} [keyword]
      * @param {number} [index]
      * @param {number} [size]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    menusQuery(keyword?: string, index?: number, size?: number, options?: any) {
-      return CoreApiFp(configuration).menusQuery(keyword, index, size, options)(axios, basePath);
+    menusQuery(isMenu: boolean, keyword?: string, index?: number, size?: number, options?: any) {
+      return CoreApiFp(configuration).menusQuery(isMenu, keyword, index, size, options)(
+        axios,
+        basePath,
+      );
     },
     /**
      *
@@ -3624,6 +3805,27 @@ export class CoreApi extends BaseAPI {
 
   /**
    *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CoreApi
+   */
+  public menusGetPermissionTags(options?: any) {
+    return CoreApiFp(this.configuration).menusGetPermissionTags(options)(this.axios, this.basePath);
+  }
+
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CoreApi
+   */
+  public menusGetUserMenus(options?: any) {
+    return CoreApiFp(this.configuration).menusGetUserMenus(options)(this.axios, this.basePath);
+  }
+
+  /**
+   *
+   * @param {boolean} isMenu
    * @param {string} [keyword]
    * @param {number} [index]
    * @param {number} [size]
@@ -3631,8 +3833,14 @@ export class CoreApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof CoreApi
    */
-  public menusQuery(keyword?: string, index?: number, size?: number, options?: any) {
-    return CoreApiFp(this.configuration).menusQuery(keyword, index, size, options)(
+  public menusQuery(
+    isMenu: boolean,
+    keyword?: string,
+    index?: number,
+    size?: number,
+    options?: any,
+  ) {
+    return CoreApiFp(this.configuration).menusQuery(isMenu, keyword, index, size, options)(
       this.axios,
       this.basePath,
     );
@@ -4090,5 +4298,172 @@ export class DefaultApi extends BaseAPI {
    */
   public productsFindOne(id: number, options?: any) {
     return DefaultApiFp(this.configuration).productsFindOne(id, options)(this.axios, this.basePath);
+  }
+}
+
+/**
+ * MockApi - axios parameter creator
+ * @export
+ */
+export const MockApiAxiosParamCreator = function(configuration?: Configuration) {
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    mockInitData(options: any = {}): RequestArgs {
+      const localVarPath = `/mock/init`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query,
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    mockReset(options: any = {}): RequestArgs {
+      const localVarPath = `/mock/reset`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query,
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * MockApi - functional programming interface
+ * @export
+ */
+export const MockApiFp = function(configuration?: Configuration) {
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    mockInitData(
+      options?: any,
+    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean> {
+      const localVarAxiosArgs = MockApiAxiosParamCreator(configuration).mockInitData(options);
+      return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+        const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {
+          url: basePath + localVarAxiosArgs.url,
+        });
+        return axios.request(axiosRequestArgs);
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    mockReset(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean> {
+      const localVarAxiosArgs = MockApiAxiosParamCreator(configuration).mockReset(options);
+      return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+        const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {
+          url: basePath + localVarAxiosArgs.url,
+        });
+        return axios.request(axiosRequestArgs);
+      };
+    },
+  };
+};
+
+/**
+ * MockApi - factory interface
+ * @export
+ */
+export const MockApiFactory = function(
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    mockInitData(options?: any) {
+      return MockApiFp(configuration).mockInitData(options)(axios, basePath);
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    mockReset(options?: any) {
+      return MockApiFp(configuration).mockReset(options)(axios, basePath);
+    },
+  };
+};
+
+/**
+ * MockApi - object-oriented interface
+ * @export
+ * @class MockApi
+ * @extends {BaseAPI}
+ */
+export class MockApi extends BaseAPI {
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof MockApi
+   */
+  public mockInitData(options?: any) {
+    return MockApiFp(this.configuration).mockInitData(options)(this.axios, this.basePath);
+  }
+
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof MockApi
+   */
+  public mockReset(options?: any) {
+    return MockApiFp(this.configuration).mockReset(options)(this.axios, this.basePath);
   }
 }

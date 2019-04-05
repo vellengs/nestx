@@ -1,9 +1,13 @@
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { User, UserModel, RoleModel } from './../interfaces';
+import { User, UserModel, RoleModel, VeryCodeModel } from './../interfaces';
 import { MongooseService } from './../mongoose.service';
 import { RegisterReq } from './../../auth/dto/Register.dto';
+
+const FIVE_MINUTES = 5 * 60 * 1000; // 5 mins
+const ONE_MINUTE = 1 * 60 * 1000; // 1 mins
+const SMS_VERIFICATION_CONTENT = `sms template {0}`;
 
 @Injectable()
 export class UsersService extends MongooseService<UserModel> {
@@ -23,23 +27,54 @@ export class UsersService extends MongooseService<UserModel> {
   constructor(
     @InjectModel('User')
     protected readonly model: Model<UserModel>,
-    @InjectModel('Role')
-    private readonly roleModel: Model<RoleModel>,
+    @InjectModel('VeryCode')
+    private readonly veryCodeModel: Model<VeryCodeModel>,
   ) {
     super(model);
   }
 
-  async getDefaultRoles(): Promise<string[]> {
-    const role = await this.roleModel.findOne({
-      name: 'user'
+  async sendVeryCode(mobile: string): Promise<string> {
+    const sms = await this.veryCodeModel.findOne({
+      mobile,
+      lastSent: {
+        $gte: Date.now() - ONE_MINUTE
+      }
+    }).exec();
+    if (sms && process.env.NODE_ENV !== 'test') {
+      return Promise.reject("Request too often.");
+    }
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+      const date = Date.now();
+      const code = "123456";
+      await new this.veryCodeModel({ mobile, code, lastSent: date }).save();
+      return Promise.resolve(code);
+    }
+    const code = "123456"; // + require("rander").between(100000, 999999);
+    // const content = SMS_VERIFICATION_CONTENT.replace("{0}", code);
+    // const result = await callSmsSent(mobile, content);
+    // if (!result) return;
+    await new this.veryCodeModel({ mobile, code }).save();
+    return Promise.resolve(code);
+  }
+
+  async verifyCode(code: string, mobile: string): Promise<boolean> {
+    return true; // TODO;
+    const instance = await this.veryCodeModel.findOne({
+      code,
+      mobile,
+      lastSent: {
+        $gte: Date.now() - ONE_MINUTE
+      }
     });
-    return [role._id];
+    return instance ? true : false;
   }
 
   async register(entry: RegisterReq): Promise<User> {
     entry.name = entry.name || entry.username;
-    const roles = await this.getDefaultRoles();
-    const instance = new this.model({ ...entry, roles });
+    const { name, email, password, username, mobile, mobilePrefix } = entry;
+    const instance = new this.model({
+      name, email, password, username, mobile, mobilePrefix
+    }); // only accept those fields
     return await instance.save();
   }
 

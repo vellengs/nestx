@@ -1,6 +1,9 @@
 {
 	"folders": [
 		{
+			"path": "packages/testing"
+		},
+		{
 			"path": "packages/react"
 		},
 		{

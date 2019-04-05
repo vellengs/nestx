@@ -1,7 +1,3 @@
-import { connect } from './connector';
-import { connection, model, Document, Model } from 'mongoose';
-
-connect('mongodb://localhost/nestx-server');
 import { writeFileSync } from 'fs';
 import { CoreDatabase as Db } from './database';
 
@@ -11,7 +7,7 @@ function save2File(file: string, data: object) {
 
 async function exportData() {
     const users = await Db.User.find().exec();
-    save2File('users', users.map((item) => {
+    save2File('user', users.map((item) => {
         return {
             _id: item._id,
             username: item.username,
@@ -32,7 +28,7 @@ async function exportData() {
     }));
 
     const dicts = await Db.Dict.find().exec();
-    save2File('dicts', dicts.map((item) => {
+    save2File('dict', dicts.map((item) => {
         return {
             _id: item._id,
             category: item.category,
@@ -42,7 +38,7 @@ async function exportData() {
     }));
 
     const groups = await Db.Group.find().exec();
-    save2File('groups', groups.map((item) => {
+    save2File('group', groups.map((item) => {
         return {
             _id: item._id,
             outid: item.outid,
@@ -58,7 +54,7 @@ async function exportData() {
     }));
 
     const roles = await Db.Role.find().exec();
-    save2File('roles', roles.map((item) => {
+    save2File('role', roles.map((item) => {
         return {
             _id: item._id,
             name: item.name,
@@ -68,7 +64,7 @@ async function exportData() {
     }));
 
     const menus = await Db.Menu.find().exec();
-    save2File('menus', menus.map((item) => {
+    save2File('menu', menus.map((item) => {
         return {
             _id: item._id,
             name: item.name,
@@ -87,7 +83,7 @@ async function exportData() {
     }));
 
     const settings = await Db.Setting.find().exec();
-    save2File('settings', settings.map((item) => {
+    save2File('setting', settings.map((item) => {
         return {
             _id: item._id,
             name: item.name,

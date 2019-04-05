@@ -171,3 +171,15 @@ export async function register(params: {
 export async function getCaptcha(mobile: string) {
   return HttpClient.authApi.authCaptcha(mobile);
 }
+
+export async function updateUser(params: any = {}) {
+  const editUserReq = {
+    _id: '5c984580d8efba637156bc85',
+    roles: [],
+    name: 'viking',
+    username: 'vellengs2',
+    mobile: '13063090590',
+    email: 'vellengs@qq.com',
+  };
+  return HttpClient.coreApi.usersUpdate(editUserReq);
+}

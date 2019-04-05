@@ -1,17 +1,20 @@
 
-import { CoreDatabase as Db } from './database';
 import { existsSync } from 'fs';
 import { resolve } from 'path';
-import { connect } from './connector';
-import { Connection } from "mongoose";
+import { Connection, Model } from 'mongoose';
+
+const models = ['Role', 'Dict', 'Menu', 'Setting', 'User'];
 
 export class Installer {
+    private static processing = false;
+    constructor(readonly db: Connection) {
 
-    mongooseUri = '';
-    db: Connection;
-    constructor(mongooseUri: string) {
-        this.mongooseUri = mongooseUri;
-        this.db = connect(mongooseUri);
+    }
+    public static async importData(model: Model<any>) {
+        const dataFolder = process.cwd();
+        const data = Installer.loadJson(dataFolder, model.modelName);
+        await model.deleteMany({}).exec();
+        await model.insertMany(data);
     }
 
     private static loadJson(dataFolder: string, file: string) {
@@ -23,18 +26,20 @@ export class Installer {
     }
 
     async initData() {
-        const dataFolder = process.cwd();
-        this.db.dropDatabase();
-        await Db.Role.insertMany(Installer.loadJson(dataFolder, 'roles'));
-        await Db.Dict.insertMany(Installer.loadJson(dataFolder, 'dicts'));
-        await Db.Menu.insertMany(Installer.loadJson(dataFolder, 'menus'));
-        await Db.Setting.insertMany(Installer.loadJson(dataFolder, 'settings'));
-        await Db.User.insertMany(Installer.loadJson(dataFolder, 'users'));
+        if (!Installer.processing) {
+            Installer.processing = true;
+            console.log('Installer processing');
+            for (const name of models) {
+                const model = this.db.model(name);
+                await Installer.importData(model);
+            }
+            Installer.processing = false;
+        }
     }
 
-    async drop() {
-        this.db.dropDatabase();
-        this.db.close();
+    async reset() {
+        console.log('start reset data ..');
+        await this.initData();
     }
 
 
