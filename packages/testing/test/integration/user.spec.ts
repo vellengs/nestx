@@ -4,12 +4,12 @@ import { login } from '../utils/login';
 
 describe('User module test', () => {
 
-    beforeEach(async () => {
-        await HttpClient.mockApi.mockInitData();
+    beforeAll(async () => {
+       await HttpClient.initDatabase()
     })
 
-    afterEach(async () => {
-        // await HttpClient.mockApi.mockReset();
+    beforeAll(async () => {
+
     })
 
     /**
@@ -18,10 +18,10 @@ describe('User module test', () => {
     it('create user', async () => {
         await login();
         const createUserReq = {
-            "username": "vellengs2",
+            "username": "createTest",
             "password": "8911111",
-            "mobile": "13063090591",
-            "email": "demo@domain.com",
+            "mobile": "13049833837",
+            "email": "create@domain.com",
             "mobilePrefix": "86",
             "isAdmin": "true",
             "veryCode": "123456"
@@ -40,12 +40,20 @@ describe('User module test', () => {
             "_id": "5c984580d8efba637156bc85",
             "name": "viking",
             "username": "vellengs2",
-            "mobile": "s",
-            "email": "vellengs@qq.com"
+            "mobile": "13063090490",
+            "email": "edit_user@vellengs.com"
         }
         const res = await HttpClient.coreApi
             .usersUpdate(editUserReq);
         expect(res.status).toBe(200);
+    });
+
+
+    it('query user', async () => {
+        await login();
+        const res = await HttpClient.coreApi.usersQuery();
+        expect(res.status).toBe(200);
+        console.log('users count', res.data.list.length);
     });
 
 

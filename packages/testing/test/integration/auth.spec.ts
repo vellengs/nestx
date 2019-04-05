@@ -3,12 +3,12 @@ import { login } from '../utils/login';
 
 describe('Auth module test', () => {
 
-    beforeEach(async () => {
-        await HttpClient.mockApi.mockInitData();
+    beforeAll(async () => {
+        await HttpClient.initDatabase()
     })
 
-    afterEach(async () => {
-        await HttpClient.mockApi.mockReset();
+    afterAll(async () => {
+
     })
 
     it('user login', async () => {
@@ -18,8 +18,8 @@ describe('Auth module test', () => {
 
     it('user register', async () => {
         const registerReq = {
-            "username": "vellengs2",
-            "password": "8911111",
+            "username": "vellengs230",
+            "password": "9200033",
             "mobile": "13063090591",
             "email": "demo@domain.com",
             "mobilePrefix": "86",
