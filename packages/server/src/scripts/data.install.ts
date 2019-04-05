@@ -1,8 +1,9 @@
 
 import { existsSync } from 'fs';
 import { resolve } from 'path';
-import * as bluebird from 'bluebird';
 import { Connection, Model } from 'mongoose';
+
+const models = ['Role', 'Dict', 'Menu', 'Setting', 'User'];
 
 export class Installer {
     private static processing = false;
@@ -12,10 +13,8 @@ export class Installer {
     public static async importData(model: Model<any>) {
         const dataFolder = process.cwd();
         const data = Installer.loadJson(dataFolder, model.modelName);
-        // console.log('start delete ...', model.modelName);
         await model.deleteMany({}).exec();
-        //  console.log('start insert ...', model.modelName);
-        await model.insertMany(data)
+        await model.insertMany(data);
     }
 
     private static loadJson(dataFolder: string, file: string) {
@@ -27,18 +26,15 @@ export class Installer {
     }
 
     async initData() {
-        console.log('start init data');
         if (!Installer.processing) {
             Installer.processing = true;
-            await bluebird.promisifyAll(['Role', 'Dict', 'Menu', 'Setting', 'User']).map(async (name) => {
+            console.log('Installer processing');
+            for (const name of models) {
                 const model = this.db.model(name);
-                return Installer.importData(model);
-            });
-
+                await Installer.importData(model);
+            }
             Installer.processing = false;
         }
-        await new Promise((resolve) => setTimeout(resolve, 200));
-        return true;
     }
 
     async reset() {

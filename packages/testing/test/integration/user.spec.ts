@@ -5,7 +5,7 @@ import { login } from '../utils/login';
 describe('User module test', () => {
 
     beforeAll(async () => {
-       await HttpClient.initDatabase()
+        await HttpClient.initDatabase()
     })
 
     beforeAll(async () => {
@@ -53,7 +53,6 @@ describe('User module test', () => {
         await login();
         const res = await HttpClient.coreApi.usersQuery();
         expect(res.status).toBe(200);
-        console.log('users count', res.data.list.length);
     });
 
 
