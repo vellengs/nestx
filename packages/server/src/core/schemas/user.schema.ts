@@ -29,7 +29,7 @@ export const UserSchema = new Schema({
         type: t.Boolean
     },
     expired: {
-        type: t.Boolean
+        type: t.Date
     },
 }, {
         timestamps: true,

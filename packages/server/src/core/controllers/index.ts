@@ -9,6 +9,8 @@ import { LogsService } from './logs.service';
 import { LogsController } from './logs.controller';
 import { NoticesController } from './notices.controller';
 import { NoticesService } from './notices.service';
+import { MockController } from './mock.controller';
+import { MockService } from './mock.service';
 
 export const CoreControllers = [
     DictsController,
@@ -16,6 +18,7 @@ export const CoreControllers = [
     MenusController,
     LogsController,
     NoticesController,
+    MockController,
 ];
 
 export const CoreServices = [
@@ -24,4 +27,5 @@ export const CoreServices = [
     MenusService,
     LogsService,
     NoticesService,
+    MockService,
 ];

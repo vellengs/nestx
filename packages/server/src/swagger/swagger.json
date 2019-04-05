@@ -60,6 +60,10 @@
 					"type": "string",
 					"description": ""
 				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
 				"mobilePrefix": {
 					"type": "string",
 					"description": ""
@@ -75,7 +79,6 @@
 				"password",
 				"mobile",
 				"email",
-				"mobilePrefix",
 				"veryCode"
 			]
 		},
@@ -371,8 +374,14 @@
 					"description": ""
 				},
 				"mobile": {
-					"type": "number",
-					"format": "double",
+					"type": "string",
+					"description": ""
+				},
+				"roles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
 					"description": ""
 				},
 				"email": {
@@ -834,29 +843,34 @@
 		"CreateNoticeReq": {
 			"description": "",
 			"properties": {
-				"category": {
+				"title": {
 					"type": "string",
 					"description": ""
 				},
-				"name": {
+				"description": {
 					"type": "string",
 					"description": ""
 				},
-				"translate": {
+				"extra": {
 					"type": "string",
 					"description": ""
 				},
-				"expand": {
-					"type": "object",
+				"status": {
+					"type": "string",
+					"description": ""
+				},
+				"type": {
+					"type": "string",
 					"description": ""
 				}
 			},
 			"type": "object",
 			"required": [
-				"category",
-				"name",
-				"translate",
-				"expand"
+				"title",
+				"description",
+				"extra",
+				"status",
+				"type"
 			]
 		},
 		"Notice": {
@@ -866,20 +880,20 @@
 					"type": "string",
 					"description": ""
 				},
-				"avatar": {
-					"type": "string",
-					"description": ""
-				},
 				"title": {
 					"type": "string",
 					"description": ""
 				},
-				"datetime": {
+				"description": {
 					"type": "string",
 					"format": "date-time",
 					"description": ""
 				},
 				"type": {
+					"type": "string",
+					"description": ""
+				},
+				"extra": {
 					"type": "string",
 					"description": ""
 				},
@@ -891,44 +905,44 @@
 			"type": "object",
 			"required": [
 				"_id",
-				"avatar",
 				"title",
-				"datetime",
+				"description",
 				"type",
+				"extra",
 				"read"
 			]
 		},
 		"EditNoticeReq": {
 			"description": "",
 			"properties": {
-				"id": {
+				"title": {
 					"type": "string",
 					"description": ""
 				},
-				"category": {
+				"description": {
 					"type": "string",
 					"description": ""
 				},
-				"name": {
+				"extra": {
 					"type": "string",
 					"description": ""
 				},
-				"translate": {
+				"status": {
 					"type": "string",
 					"description": ""
 				},
-				"expand": {
-					"type": "object",
+				"type": {
+					"type": "string",
 					"description": ""
 				}
 			},
 			"type": "object",
 			"required": [
-				"id",
-				"category",
-				"name",
-				"translate",
-				"expand"
+				"title",
+				"description",
+				"extra",
+				"status",
+				"type"
 			]
 		},
 		"ResultList$Notice": {
@@ -1641,6 +1655,13 @@
 					{
 						"description": "",
 						"in": "query",
+						"name": "isMenu",
+						"required": true,
+						"type": "boolean"
+					},
+					{
+						"description": "",
+						"in": "query",
 						"name": "keyword",
 						"required": false,
 						"type": "string"
@@ -1693,6 +1714,68 @@
 						"type": "string"
 					}
 				]
+			}
+		},
+		"/menus/permissions": {
+			"get": {
+				"operationId": "MenusGetPermissionTags",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"desc": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": []
+			}
+		},
+		"/menus/auth": {
+			"get": {
+				"operationId": "MenusGetUserMenus",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/Menu"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": []
 			}
 		},
 		"/logs/search": {
@@ -1986,6 +2069,48 @@
 						"type": "string"
 					}
 				]
+			}
+		},
+		"/mock/init": {
+			"get": {
+				"operationId": "MockInitData",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"mock"
+				],
+				"parameters": []
+			}
+		},
+		"/mock/reset": {
+			"get": {
+				"operationId": "MockReset",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"mock"
+				],
+				"parameters": []
 			}
 		},
 		"/cats/": {

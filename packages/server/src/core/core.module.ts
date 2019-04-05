@@ -1,14 +1,18 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PassportModule } from '@nestjs/passport';
-import { UserSchema } from './schemas/user.schema';
-import { DictSchema } from './schemas/dict.schema';
-import { LogSchema } from './schemas/log.schema';
-import { MenuSchema } from './schemas/menu.schema';
-import { RoleSchema } from './schemas/role.schema';
-import { SettingSchema } from './schemas/setting.schema';
+import {
+  UserSchema,
+  DictSchema,
+  LogSchema,
+  MenuSchema,
+  RoleSchema,
+  SettingSchema,
+  NoticeSchema,
+  VeryCodeSchema,
+  GroupSchema,
+} from './schemas';
 import { CoreControllers, CoreServices } from './controllers';
-import { NoticeSchema } from './schemas';
 
 const models = [
   { name: 'Dict', schema: DictSchema },
@@ -18,6 +22,8 @@ const models = [
   { name: 'Setting', schema: SettingSchema },
   { name: 'User', schema: UserSchema },
   { name: 'Notice', schema: NoticeSchema },
+  { name: 'VeryCode', schema: VeryCodeSchema },
+  { name: 'Group', schema: GroupSchema }
 ];
 
 @Module({

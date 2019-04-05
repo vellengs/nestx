@@ -1,7 +1,7 @@
 import React from 'react';
 import { notification, Button, message } from 'antd';
 import { formatMessage } from 'umi-plugin-locale';
-import defaultSettings from '../config/defaultSettings';
+import defaultSettings from './defaultSettings';
 
 (window as any).React = React;
 

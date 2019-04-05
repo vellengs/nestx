@@ -8,7 +8,9 @@ import { DictModel } from './../interfaces';
 export class DictsService extends MongooseService<DictModel> {
 
   defaultQueryFields = ['name', 'translate', 'expand'];
-  constructor(@InjectModel('Dict') protected readonly model: Model<DictModel>) {
+  constructor(
+    @InjectModel('Dict') protected readonly model: Model<DictModel>
+  ) {
     super(model);
   }
 

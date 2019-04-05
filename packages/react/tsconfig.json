@@ -18,10 +18,11 @@
     "experimentalDecorators": true,
     "strict": true,
     "paths": {
+      "*": ["types/*"],
       "@/*": ["./src/*"]
     }
   },
-  "include": ["./src", "config/defaultSettings.ts"],
+  "include": ["./src"],
   "exclude": [
     "node_modules",
     "build",

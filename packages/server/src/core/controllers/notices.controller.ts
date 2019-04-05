@@ -1,12 +1,11 @@
 import { Controller, Get, Post, Body, UseGuards, Param, Put, ParseIntPipe, Query } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
-import { ResultList } from './../../common/interfaces/result.interface';
 import { NoticesService } from './notices.service';
 import { Notice } from './../interfaces';
 import { KeyValueDto, CreateNoticeReq, EditNoticeReq } from './../dto';
 import { Tags } from 'nest-swagger';
-import { NullableParseIntPipe } from './../../common/pipes/NullableParseInt.pipe';
+import { ResultList, NullableParseIntPipe } from './../../common';
 
 @Tags('core')
 @Controller('notices')

@@ -48,7 +48,7 @@ export class MongooseService<T extends Document & Id>  {
     return new Promise<ResultList<T>>(async (resolve) => {
       let result: ResultList<T> = {
         list: await listQuery.limit(size).skip(size * (index - 1)).lean(),
-        count: await collection.count(),
+        count: await collection.countDocuments(),
         query: {
           index: index,
           size: size
@@ -110,7 +110,7 @@ export class MongooseService<T extends Document & Id>  {
 
   async remove(id: string | number | ObjectID): Promise<any> {
     let entity = await this.model.findById(id);
-    return await this.model.remove(entity);
+    return await this.model.deleteOne(entity);
   }
 
   private getFields(fields: string[]) {

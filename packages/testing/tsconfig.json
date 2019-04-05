@@ -1,0 +1,34 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"declaration": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"module": "commonjs",
+		"newLine": "LF",
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": false,
+		"noUnusedParameters": false,
+		"noUnusedLocals": false,
+		"outDir": "./dist",
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strictNullChecks": false,
+		"target": "es2016",
+		"rootDirs": ["generated", "scripts"],
+		"lib": [
+			"es6",
+			"dom"
+		]
+	},
+	"include": [
+		"./scripts/**/*.ts",
+		"./test/**/*.ts"
+	],
+	"exclude": [
+		"node_modules",
+		"./dist/**/*"
+	]
+}

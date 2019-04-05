@@ -34,6 +34,7 @@ export class Client {
   public coreApi = new CoreApi(config);
   public defaultApi = new DefaultApi(config);
   public appApi = new AppApi(config);
+
   public static get instance() {
     if (!this.client) {
       this.client = new Client();

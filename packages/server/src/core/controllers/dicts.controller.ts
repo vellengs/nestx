@@ -1,7 +1,7 @@
-import { Controller, Get, Post, Body, UseGuards, Param, Put, ParseIntPipe, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards, Param, Put, Query } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
-import { ResultList } from './../../common/interfaces/result.interface';
+import { ResultList, NullableParseIntPipe } from './../../common';
 import { DictsService } from './dicts.service';
 import { Dict } from './../interfaces/dict.interface';
 import { CreateDictReq, EditDictReq, KeyValueDto } from './../dto';
@@ -34,8 +34,8 @@ export class DictsController {
   @Get('query')
   async query(
     @Query('keyword') keyword?: string,
-    @Query('index', new ParseIntPipe()) index: number = 1,
-    @Query('size', new ParseIntPipe()) size: number = 10,
+    @Query('index', new NullableParseIntPipe()) index: number = 1,
+    @Query('size', new NullableParseIntPipe()) size: number = 10,
   ): Promise<ResultList<Dict>> {
     return this.dictService.query(index, size, { keyword });
   }
