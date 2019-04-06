@@ -1,7 +1,7 @@
 import { Document } from 'mongoose';
 
 export interface VeryCode {
-	_id: string;
+	id: string;
 	lastSent: number;
 	mobile: string;
 	code: string;

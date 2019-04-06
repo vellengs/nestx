@@ -3,8 +3,9 @@ import { Injectable } from '@nestjs/common';
 import { ObjectID } from 'typeorm';
 import { ResultList } from './../common/interfaces/result.interface';
 
-export interface Id {
-  _id: string | number | Date | ObjectID;
+export interface IdentifyEntry {
+  id: string | number | Date | ObjectID;
+  [key: string]: any;
 }
 
 export interface Criteria {
@@ -12,7 +13,7 @@ export interface Criteria {
 }
 
 @Injectable()
-export class MongooseService<T extends Document & Id>  {
+export class MongooseService<T extends Document>  {
 
   defaultQueryFields: string[] = [];
 
@@ -25,9 +26,9 @@ export class MongooseService<T extends Document & Id>  {
     return await instance.save();
   }
 
-  async update(entry: any, fields: string[] = this.defaultQueryFields): Promise<T> {
+  async update(entry: IdentifyEntry, fields: string[] = this.defaultQueryFields): Promise<T> {
     const instance = await this.model.findOneAndUpdate(
-      { _id: entry._id },
+      { _id: entry.id },
       { $set: entry },
       { upsert: true, fields: this.getFields(fields), 'new': true }).exec();
     return instance;

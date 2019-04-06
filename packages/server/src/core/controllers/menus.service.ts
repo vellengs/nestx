@@ -54,8 +54,9 @@ export class MenusService extends MongooseService<MenuModel> {
     if (!currentUser) {
       Promise.reject("user is not authenticated");
     }
+    console.log('currentUser: *****', currentUser);
     if (!currentUser.isAdmin) {
-      const user = await this.model.findById(currentUser._id, 'groups').exec();
+      const user = await this.model.findById(currentUser.id, 'groups').exec(); // TODO
       const roles = (user.toObject() as User).roles || [];
       const roleDocs = await this.groupModel.find({
         _id: { $in: roles }

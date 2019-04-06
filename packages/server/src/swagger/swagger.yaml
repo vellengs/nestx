@@ -94,7 +94,7 @@ definitions:
     Dict:
         description: ""
         properties:
-            _id:
+            id:
                 type: string
                 description: ""
             name:
@@ -111,7 +111,7 @@ definitions:
                 description: ""
         type: object
         required:
-            - _id
+            - id
             - name
             - category
             - translate
@@ -189,7 +189,7 @@ definitions:
     User:
         description: ""
         properties:
-            _id:
+            id:
                 type: string
                 description: ""
             username:
@@ -247,7 +247,7 @@ definitions:
                 description: ""
         type: object
         required:
-            - _id
+            - id
             - username
             - name
             - avatar
@@ -277,10 +277,19 @@ definitions:
     EditUserReq:
         description: ""
         properties:
+            id:
+                type: string
+                description: ""
             name:
                 type: string
                 description: ""
+            username:
+                type: string
+                description: ""
             mobile:
+                type: string
+                description: ""
+            password:
                 type: string
                 description: ""
             roles:
@@ -302,7 +311,9 @@ definitions:
                 description: ""
         type: object
         required:
+            - id
             - name
+            - username
             - mobile
     ResultList$User:
         description: ""
@@ -389,23 +400,14 @@ definitions:
             - slug
             - group
             - link
-            - order
-            - externalLink
             - blank
-            - icon
-            - badge
-            - badgeDot
-            - badgeStatus
             - enable
             - expanded
-            - acl
-            - paths
-            - parent
             - isMenu
     Menu:
         description: ""
         properties:
-            _id:
+            id:
                 type: string
                 description: ""
             name:
@@ -469,7 +471,7 @@ definitions:
                 description: ""
         type: object
         required:
-            - _id
+            - id
             - name
             - slug
             - group
@@ -490,6 +492,9 @@ definitions:
     EditMenuReq:
         description: ""
         properties:
+            id:
+                type: string
+                description: ""
             name:
                 type: string
                 description: ""
@@ -551,22 +556,14 @@ definitions:
                 description: ""
         type: object
         required:
+            - id
             - name
             - slug
             - group
             - link
-            - order
-            - externalLink
             - blank
-            - icon
-            - badge
-            - badgeDot
-            - badgeStatus
             - enable
             - expanded
-            - acl
-            - paths
-            - parent
             - isMenu
     ResultList$Menu:
         description: ""
@@ -664,7 +661,7 @@ definitions:
     Notice:
         description: ""
         properties:
-            _id:
+            id:
                 type: string
                 description: ""
             title:
@@ -685,7 +682,7 @@ definitions:
                 description: ""
         type: object
         required:
-            - _id
+            - id
             - title
             - description
             - type
@@ -694,6 +691,9 @@ definitions:
     EditNoticeReq:
         description: ""
         properties:
+            id:
+                type: string
+                description: ""
             title:
                 type: string
                 description: ""
@@ -711,6 +711,7 @@ definitions:
                 description: ""
         type: object
         required:
+            - id
             - title
             - description
             - extra

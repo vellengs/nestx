@@ -126,7 +126,7 @@
 		"Dict": {
 			"description": "",
 			"properties": {
-				"_id": {
+				"id": {
 					"type": "string",
 					"description": ""
 				},
@@ -149,7 +149,7 @@
 			},
 			"type": "object",
 			"required": [
-				"_id",
+				"id",
 				"name",
 				"category",
 				"translate",
@@ -254,7 +254,7 @@
 		"User": {
 			"description": "",
 			"properties": {
-				"_id": {
+				"id": {
 					"type": "string",
 					"description": ""
 				},
@@ -332,7 +332,7 @@
 			},
 			"type": "object",
 			"required": [
-				"_id",
+				"id",
 				"username",
 				"name",
 				"avatar",
@@ -369,11 +369,23 @@
 		"EditUserReq": {
 			"description": "",
 			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
 				"name": {
 					"type": "string",
 					"description": ""
 				},
+				"username": {
+					"type": "string",
+					"description": ""
+				},
 				"mobile": {
+					"type": "string",
+					"description": ""
+				},
+				"password": {
 					"type": "string",
 					"description": ""
 				},
@@ -403,7 +415,9 @@
 			},
 			"type": "object",
 			"required": [
+				"id",
 				"name",
+				"username",
 				"mobile"
 			]
 		},
@@ -520,25 +534,16 @@
 				"slug",
 				"group",
 				"link",
-				"order",
-				"externalLink",
 				"blank",
-				"icon",
-				"badge",
-				"badgeDot",
-				"badgeStatus",
 				"enable",
 				"expanded",
-				"acl",
-				"paths",
-				"parent",
 				"isMenu"
 			]
 		},
 		"Menu": {
 			"description": "",
 			"properties": {
-				"_id": {
+				"id": {
 					"type": "string",
 					"description": ""
 				},
@@ -624,7 +629,7 @@
 			},
 			"type": "object",
 			"required": [
-				"_id",
+				"id",
 				"name",
 				"slug",
 				"group",
@@ -647,6 +652,10 @@
 		"EditMenuReq": {
 			"description": "",
 			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
 				"name": {
 					"type": "string",
 					"description": ""
@@ -729,22 +738,14 @@
 			},
 			"type": "object",
 			"required": [
+				"id",
 				"name",
 				"slug",
 				"group",
 				"link",
-				"order",
-				"externalLink",
 				"blank",
-				"icon",
-				"badge",
-				"badgeDot",
-				"badgeStatus",
 				"enable",
 				"expanded",
-				"acl",
-				"paths",
-				"parent",
 				"isMenu"
 			]
 		},
@@ -876,7 +877,7 @@
 		"Notice": {
 			"description": "",
 			"properties": {
-				"_id": {
+				"id": {
 					"type": "string",
 					"description": ""
 				},
@@ -904,7 +905,7 @@
 			},
 			"type": "object",
 			"required": [
-				"_id",
+				"id",
 				"title",
 				"description",
 				"type",
@@ -915,6 +916,10 @@
 		"EditNoticeReq": {
 			"description": "",
 			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
 				"title": {
 					"type": "string",
 					"description": ""
@@ -938,6 +943,7 @@
 			},
 			"type": "object",
 			"required": [
+				"id",
 				"title",
 				"description",
 				"extra",

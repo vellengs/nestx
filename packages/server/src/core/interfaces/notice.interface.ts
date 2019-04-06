@@ -1,7 +1,7 @@
 import { Document } from 'mongoose';
 
 export interface Notice {
-    _id: string;
+    id: string;
     title: string;
     description: Date;
     type: string;

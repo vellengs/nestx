@@ -156,13 +156,13 @@ export interface CreateMenuReq {
      * @type {number}
      * @memberof CreateMenuReq
      */
-    order: number;
+    order?: number;
     /**
      * 
      * @type {string}
      * @memberof CreateMenuReq
      */
-    externalLink: string;
+    externalLink?: string;
     /**
      * 
      * @type {boolean}
@@ -174,25 +174,25 @@ export interface CreateMenuReq {
      * @type {string}
      * @memberof CreateMenuReq
      */
-    icon: string;
+    icon?: string;
     /**
      * 
      * @type {string}
      * @memberof CreateMenuReq
      */
-    badge: string;
+    badge?: string;
     /**
      * 
      * @type {string}
      * @memberof CreateMenuReq
      */
-    badgeDot: string;
+    badgeDot?: string;
     /**
      * 
      * @type {string}
      * @memberof CreateMenuReq
      */
-    badgeStatus: string;
+    badgeStatus?: string;
     /**
      * 
      * @type {boolean}
@@ -210,19 +210,19 @@ export interface CreateMenuReq {
      * @type {string}
      * @memberof CreateMenuReq
      */
-    acl: string;
+    acl?: string;
     /**
      * 
      * @type {Array<any>}
      * @memberof CreateMenuReq
      */
-    paths: Array<any>;
+    paths?: Array<any>;
     /**
      * 
      * @type {string}
      * @memberof CreateMenuReq
      */
-    parent: string;
+    parent?: string;
     /**
      * 
      * @type {Array<any>}
@@ -402,6 +402,12 @@ export interface EditMenuReq {
      * @type {string}
      * @memberof EditMenuReq
      */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditMenuReq
+     */
     name: string;
     /**
      * 
@@ -426,13 +432,13 @@ export interface EditMenuReq {
      * @type {number}
      * @memberof EditMenuReq
      */
-    order: number;
+    order?: number;
     /**
      * 
      * @type {string}
      * @memberof EditMenuReq
      */
-    externalLink: string;
+    externalLink?: string;
     /**
      * 
      * @type {boolean}
@@ -444,25 +450,25 @@ export interface EditMenuReq {
      * @type {string}
      * @memberof EditMenuReq
      */
-    icon: string;
+    icon?: string;
     /**
      * 
      * @type {string}
      * @memberof EditMenuReq
      */
-    badge: string;
+    badge?: string;
     /**
      * 
      * @type {string}
      * @memberof EditMenuReq
      */
-    badgeDot: string;
+    badgeDot?: string;
     /**
      * 
      * @type {string}
      * @memberof EditMenuReq
      */
-    badgeStatus: string;
+    badgeStatus?: string;
     /**
      * 
      * @type {boolean}
@@ -480,19 +486,19 @@ export interface EditMenuReq {
      * @type {string}
      * @memberof EditMenuReq
      */
-    acl: string;
+    acl?: string;
     /**
      * 
      * @type {Array<any>}
      * @memberof EditMenuReq
      */
-    paths: Array<any>;
+    paths?: Array<any>;
     /**
      * 
      * @type {string}
      * @memberof EditMenuReq
      */
-    parent: string;
+    parent?: string;
     /**
      * 
      * @type {Array<any>}
@@ -513,6 +519,12 @@ export interface EditMenuReq {
  * @interface EditNoticeReq
  */
 export interface EditNoticeReq {
+    /**
+     * 
+     * @type {string}
+     * @memberof EditNoticeReq
+     */
+    id: string;
     /**
      * 
      * @type {string}
@@ -556,13 +568,31 @@ export interface EditUserReq {
      * @type {string}
      * @memberof EditUserReq
      */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditUserReq
+     */
     name: string;
     /**
      * 
      * @type {string}
      * @memberof EditUserReq
      */
+    username: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditUserReq
+     */
     mobile: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditUserReq
+     */
+    password?: string;
     /**
      * 
      * @type {Array<string>}

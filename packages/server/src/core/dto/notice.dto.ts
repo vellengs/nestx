@@ -15,6 +15,8 @@ export class CreateNoticeReq {
 
 export class EditNoticeReq {
     @IsString()
+    id: string;
+    @IsString()
     title: string;
     @IsString()
     description: string;

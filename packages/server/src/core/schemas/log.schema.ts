@@ -19,3 +19,9 @@ export const LogSchema = new Schema({
         type: t.String
     }
 }, option);
+
+LogSchema.set('toJSON', {
+    transform: function (_doc: any, ret: any, _options: any) {
+        ret.id = ret._id;
+    }
+}); 

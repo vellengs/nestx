@@ -52,6 +52,7 @@ export class MenusController {
     name: string;
     desc: string;
   }[]> {
+    console.log('permissions', 'permissions');
     return this.menuService.getAllPermissionTags();
   }
 

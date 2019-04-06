@@ -74,3 +74,9 @@ UserSchema.methods.pure = function () {
     delete obj.password;
     return obj;
 }
+
+UserSchema.set('toJSON', {
+    transform: function (_doc: any, ret: any, _options: any) {
+        ret.id = ret._id;
+    }
+}); 

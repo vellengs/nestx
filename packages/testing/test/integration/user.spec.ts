@@ -37,7 +37,7 @@ describe('User module test', () => {
     it('edit user', async () => {
         await login();
         const editUserReq = {
-            "_id": "5c984580d8efba637156bc85",
+            "id": "5c984580d8efba637156bc85",
             "name": "viking",
             "username": "vellengs2",
             "mobile": "13063090490",
