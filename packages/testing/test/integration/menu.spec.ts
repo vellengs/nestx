@@ -5,7 +5,8 @@ import { login } from '../utils/login';
 describe('menu module test', () => {
 
     beforeAll(async () => {
-        await HttpClient.initDatabase()
+        await HttpClient.initDatabase();
+        await login();
     })
 
     beforeAll(async () => {
@@ -13,7 +14,6 @@ describe('menu module test', () => {
     })
 
     it('create menu', async () => {
-        await login();
         const reqBody = {
             name: 'home',
             slug: 'main',
@@ -33,7 +33,6 @@ describe('menu module test', () => {
     });
 
     it('edit menu', async () => {
-        await login();
         const reqBody = {
             id: '5b0d013341b2399582a10b0a',
             name: '资料管理',
@@ -54,14 +53,11 @@ describe('menu module test', () => {
 
 
     it('query menu', async () => {
-        await login();
         const res = await HttpClient.coreApi.menusQuery(true);
         expect(res.status).toBe(200);
     });
 
-
     it('search menu', async () => {
-        await login();
         const params = {
             keyword: '设置',
             value: ''
@@ -70,17 +66,21 @@ describe('menu module test', () => {
         expect(res.status).toBe(200);
     });
 
+    it('get users menus', async () => {
 
-    it.only('get users menus', async () => {
-        await login();
         const res = await HttpClient.coreApi.menusGetUserMenus();
         expect(res.status).toBe(200);
     });
 
     it('get permission tags', async () => {
-        await login();
         const res = await HttpClient.coreApi.menusGetPermissionTags();
         expect(res.status).toBe(200);
     });
+
+    it('get menu by id', async () => {
+        const res = await HttpClient.coreApi.menusFindOne('5b0d013341b2399582a10b0a');
+        expect(res.status).toBe(200);
+    });
+
 
 });
