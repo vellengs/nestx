@@ -19,6 +19,31 @@
 				"accessToken"
 			]
 		},
+		"LoginRes": {
+			"description": "",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"token": {
+					"$ref": "#/definitions/AccessToken"
+				},
+				"roles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"username",
+				"token",
+				"roles"
+			]
+		},
 		"LoginReq": {
 			"description": "",
 			"properties": {
@@ -1052,7 +1077,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/AccessToken"
+							"$ref": "#/definitions/LoginRes"
 						}
 					}
 				},
@@ -1693,35 +1718,6 @@
 				]
 			}
 		},
-		"/menus/{id}": {
-			"get": {
-				"operationId": "MenusFindOne",
-				"produces": [
-					"application/json"
-				],
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"schema": {
-							"$ref": "#/definitions/Menu"
-						}
-					}
-				},
-				"description": "",
-				"tags": [
-					"core"
-				],
-				"parameters": [
-					{
-						"description": "",
-						"in": "path",
-						"name": "id",
-						"required": true,
-						"type": "string"
-					}
-				]
-			}
-		},
 		"/menus/permissions": {
 			"get": {
 				"operationId": "MenusGetPermissionTags",
@@ -1782,6 +1778,35 @@
 					"core"
 				],
 				"parameters": []
+			}
+		},
+		"/menus/{id}": {
+			"get": {
+				"operationId": "MenusFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Menu"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
 			}
 		},
 		"/logs/search": {

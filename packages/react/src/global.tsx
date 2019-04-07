@@ -42,7 +42,7 @@ if (pwa) {
     const key = `open${Date.now()}`;
     const btn = (
       <Button
-        type={'primary' as any}
+        type="primary"
         onClick={() => {
           notification.close(key);
           reloadSW();

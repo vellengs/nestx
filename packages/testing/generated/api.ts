@@ -750,6 +750,32 @@ export interface LoginReq {
 /**
  * 
  * @export
+ * @interface LoginRes
+ */
+export interface LoginRes {
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginRes
+     */
+    username: string;
+    /**
+     * 
+     * @type {AccessToken}
+     * @memberof LoginRes
+     */
+    token: AccessToken;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof LoginRes
+     */
+    roles: Array<string>;
+}
+
+/**
+ * 
+ * @export
  * @interface Menu
  */
 export interface Menu {
@@ -1515,7 +1541,7 @@ export const AuthApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authLogin(loginReq: LoginReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<AccessToken> {
+        authLogin(loginReq: LoginReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LoginRes> {
             const localVarAxiosArgs = AuthApiAxiosParamCreator(configuration).authLogin(loginReq, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})

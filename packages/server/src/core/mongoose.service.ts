@@ -114,7 +114,7 @@ export class MongooseService<T extends Document>  {
     return await this.model.deleteOne(entity);
   }
 
-  private getFields(fields: string[]) {
+  protected getFields(fields: string[]) {
     const selectFields: Criteria = {};
     // selectFields._id = 0;
     fields.forEach(field => {

@@ -1,7 +1,7 @@
 import { Controller, Post, Body, Get, Query, Req } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AccessToken } from './interfaces/jwt-payload.interface';
-import { LoginReq } from './dto/Login.dto';
+import { LoginReq, LoginRes } from './dto/Login.dto';
 import { RegisterReq } from './dto/Register.dto';
 import { Tags } from 'nest-swagger';
 import { Result } from './../common/interfaces/result.interface';
@@ -12,7 +12,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) { }
 
   @Post('login')
-  async login(@Body() payload: LoginReq): Promise<AccessToken> {
+  async login(@Body() payload: LoginReq): Promise<LoginRes> {
     return this.authService.login(payload);
   }
 

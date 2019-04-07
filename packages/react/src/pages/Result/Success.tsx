@@ -116,7 +116,7 @@ const extra = (
 
 const actions = (
   <Fragment>
-    <Button type={'primary' as any}>
+    <Button type="primary">
       <FormattedMessage id="app.result.success.btn-return" defaultMessage="Back to list" />
     </Button>
     <Button>

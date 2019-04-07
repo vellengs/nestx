@@ -14,6 +14,24 @@ definitions:
         required:
             - expiresIn
             - accessToken
+    LoginRes:
+        description: ""
+        properties:
+            username:
+                type: string
+                description: ""
+            token:
+                $ref: '#/definitions/AccessToken'
+            roles:
+                type: array
+                items:
+                    type: string
+                description: ""
+        type: object
+        required:
+            - username
+            - token
+            - roles
     LoginReq:
         description: ""
         properties:
@@ -790,7 +808,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/AccessToken'
+                        $ref: '#/definitions/LoginRes'
             description: ""
             tags:
                 - auth
@@ -1242,26 +1260,6 @@ paths:
                     type: number
                     format: double
                     default: 10
-    '/menus/{id}':
-        get:
-            operationId: MenusFindOne
-            produces:
-                - application/json
-            responses:
-                '200':
-                    description: Ok
-                    schema:
-                        $ref: '#/definitions/Menu'
-            description: ""
-            tags:
-                - core
-            parameters:
-                -
-                    description: ""
-                    in: path
-                    name: id
-                    required: true
-                    type: string
     /menus/permissions:
         get:
             operationId: MenusGetPermissionTags
@@ -1304,6 +1302,26 @@ paths:
             tags:
                 - core
             parameters: []
+    '/menus/{id}':
+        get:
+            operationId: MenusFindOne
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Menu'
+            description: ""
+            tags:
+                - core
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: id
+                    required: true
+                    type: string
     /logs/search:
         get:
             operationId: LogsSearch

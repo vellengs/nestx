@@ -35,10 +35,9 @@ export const codeMessage = {
 export const errorHandler = (error: ResponseError) => {
   const { response = {} as Response } = error;
   const errorText = codeMessage[response.status] || response.statusText;
-  const { status, url } = response;
-
+  const { status } = response;
   notification.error({
-    message: `请求错误 ${status}: ${url}`,
+    message: `请求错误 ${status}:`,
     description: errorText,
   });
 };

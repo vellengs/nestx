@@ -126,8 +126,9 @@ export async function accountLogin(params: { username: string; password: string;
   return ProxyCall<string>(
     async () => {
       const res = await HttpClient.authApi.authLogin(params);
+      HttpClient.setToken(res.data.token.accessToken);
       return {
-        currentAuthority: res.data.accessToken,
+        currentAuthority: res.data.roles,
       };
     },
     {
@@ -138,6 +139,7 @@ export async function accountLogin(params: { username: string; password: string;
 }
 
 export async function accountLogout() {
+  await HttpClient.removeToken();
   const res = await HttpClient.authApi.authLogout();
   return res.data;
 }
@@ -173,13 +175,13 @@ export async function getCaptcha(mobile: string) {
 }
 
 export async function updateUser(params: any = {}) {
-  const editUserReq = {
-    _id: '5c984580d8efba637156bc85',
+  const reqBody = {
+    id: '5c984580d8efba637156bc85',
     roles: [],
     name: 'viking',
     username: 'vellengs2',
     mobile: '13063090590',
     email: 'vellengs@qq.com',
   };
-  return HttpClient.coreApi.usersUpdate(editUserReq);
+  return HttpClient.coreApi.usersUpdate(reqBody);
 }

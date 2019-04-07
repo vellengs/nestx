@@ -4,6 +4,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { User, UserModel, RoleModel, VeryCodeModel } from './../interfaces';
 import { MongooseService } from './../mongoose.service';
 import { RegisterReq } from './../../auth/dto/Register.dto';
+import { LoginRes } from 'auth/dto/login.dto';
+import { ObjectID } from 'typeorm';
 
 const FIVE_MINUTES = 5 * 60 * 1000; // 5 mins
 const ONE_MINUTE = 1 * 60 * 1000; // 1 mins
@@ -92,6 +94,14 @@ export class UsersService extends MongooseService<UserModel> {
       });
     }
     return false;
+  }
+
+  async findById(id: string | number | ObjectID): Promise<UserModel> {
+    const user = await this.model.findById(id).exec();
+    if (user) {
+      user.name = user.name || user.username;
+    }
+    return user;
   }
 
 }

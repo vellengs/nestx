@@ -45,7 +45,7 @@ const extra = (
 );
 
 const actions = (
-  <Button type={'primary' as any}>
+  <Button type="primary">
     <FormattedMessage id="app.result.error.btn-text" defaultMessage="Return to modify" />
   </Button>
 );
