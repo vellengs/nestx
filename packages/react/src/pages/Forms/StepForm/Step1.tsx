@@ -43,7 +43,7 @@ class Step1 extends React.PureComponent<any> {
             })(
               <Select placeholder="test@example.com">
                 <Option value="ant-design@alipay.com">ant-design@alipay.com</Option>
-              </Select>
+              </Select>,
             )}
           </Form.Item>
           <Form.Item {...formItemLayout} label="收款账户">

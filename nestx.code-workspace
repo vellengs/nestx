@@ -4,13 +4,13 @@
 			"path": "packages/testing"
 		},
 		{
-			"path": "packages/react"
-		},
-		{
 			"path": "packages/server"
 		},
 		{
 			"path": "docs"
+		},
+		{
+			"path": "packages/angular"
 		}
 	],
 	"settings": {}

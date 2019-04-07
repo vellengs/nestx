@@ -178,7 +178,7 @@ class AdvancedForm extends PureComponent<any> {
                       addonBefore="http://"
                       addonAfter=".com"
                       placeholder="请输入"
-                    />
+                    />,
                   )}
                 </Form.Item>
               </Col>
@@ -190,7 +190,7 @@ class AdvancedForm extends PureComponent<any> {
                     <Select placeholder="请选择管理员">
                       <Option value="xiao">付晓晓</Option>
                       <Option value="mao">周毛毛</Option>
-                    </Select>
+                    </Select>,
                   )}
                 </Form.Item>
               </Col>
@@ -204,7 +204,7 @@ class AdvancedForm extends PureComponent<any> {
                     <Select placeholder="请选择审批员">
                       <Option value="xiao">付晓晓</Option>
                       <Option value="mao">周毛毛</Option>
-                    </Select>
+                    </Select>,
                   )}
                 </Form.Item>
               </Col>
@@ -213,7 +213,10 @@ class AdvancedForm extends PureComponent<any> {
                   {getFieldDecorator('dateRange', {
                     rules: [{ required: true, message: '请选择生效日期' }],
                   })(
-                    <RangePicker placeholder={['开始日期', '结束日期']} style={{ width: '100%' }} />
+                    <RangePicker
+                      placeholder={['开始日期', '结束日期']}
+                      style={{ width: '100%' }}
+                    />,
                   )}
                 </Form.Item>
               </Col>
@@ -225,7 +228,7 @@ class AdvancedForm extends PureComponent<any> {
                     <Select placeholder="请选择仓库类型">
                       <Option value="private">私密</Option>
                       <Option value="public">公开</Option>
-                    </Select>
+                    </Select>,
                   )}
                 </Form.Item>
               </Col>
@@ -257,7 +260,7 @@ class AdvancedForm extends PureComponent<any> {
                     <Select placeholder="请选择管理员">
                       <Option value="xiao">付晓晓</Option>
                       <Option value="mao">周毛毛</Option>
-                    </Select>
+                    </Select>,
                   )}
                 </Form.Item>
               </Col>
@@ -271,7 +274,7 @@ class AdvancedForm extends PureComponent<any> {
                     <Select placeholder="请选择审批员">
                       <Option value="xiao">付晓晓</Option>
                       <Option value="mao">周毛毛</Option>
-                    </Select>
+                    </Select>,
                   )}
                 </Form.Item>
               </Col>
@@ -284,7 +287,7 @@ class AdvancedForm extends PureComponent<any> {
                       placeholder="提醒时间"
                       style={{ width: '100%' }}
                       getPopupContainer={(trigger: any) => trigger.parentNode}
-                    />
+                    />,
                   )}
                 </Form.Item>
               </Col>
@@ -296,7 +299,7 @@ class AdvancedForm extends PureComponent<any> {
                     <Select placeholder="请选择仓库类型">
                       <Option value="private">私密</Option>
                       <Option value="public">公开</Option>
-                    </Select>
+                    </Select>,
                   )}
                 </Form.Item>
               </Col>
