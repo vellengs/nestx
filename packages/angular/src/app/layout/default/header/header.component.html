@@ -1,7 +1,8 @@
 <div class="alain-default__header-logo">
   <a [routerLink]="['/']" class="alain-default__header-logo-link">
-    <img class="alain-default__header-logo-expanded" src="./assets/logo-full.svg" alt="{{settings.app.name}}" style="max-height:40px;" />
-    <img class="alain-default__header-logo-collapsed" src="./assets/logo.svg" alt="{{settings.app.name}}" style="max-height:30px;" />
+    <img class="alain-default__header-logo-expanded" src="./assets/img/typerx-color.revert.svg" alt="{{settings.app.name}}"
+      style="max-height:32px;" />
+    <img class="alain-default__header-logo-collapsed" src="./assets/img/logo.svg" alt="{{settings.app.name}}" style="max-height:30px;" />
   </a>
 </div>
 <div class="alain-default__nav-wrap">
@@ -20,7 +21,7 @@
     </li>
     <!-- Lock Page -->
     <li class="hidden-mobile">
-      <div class="alain-default__nav-item" [routerLink]="['/lock']">
+      <div class="alain-default__nav-item" routerLink="/passport/lock">
         <i nz-icon type="lock"></i>
       </div>
     </li>

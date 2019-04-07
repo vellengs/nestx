@@ -13,5 +13,7 @@
 			"path": "packages/angular"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"typescript.tsdk": "server/node_modules/typescript/lib"
+	}
 }

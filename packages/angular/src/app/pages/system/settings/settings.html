@@ -1,0 +1,29 @@
+<page-header [title]="title">
+</page-header>
+<nz-card>
+
+  <nz-row [nzGutter]="24" class="py-lg">
+    <nz-col [nzSpan]="6">
+      <nz-card nzTitle="设置项目" class="ant-card__body-nopadding">
+        <a (click)="active=1" class="d-block py-sm px-md" [ngClass]="{'bg-primary-light text-white':active===1}">个人信息</a>
+        <a (click)="active=2" class="d-block py-sm px-md" [ngClass]="{'bg-primary-light text-white':active===2}">系统设置</a>
+      </nz-card>
+    </nz-col>
+    <nz-col [nzSpan]="18">
+      <nz-card nzTitle="个人信息" *ngIf="active===1">
+
+        <sf #profileForm *ngIf="formSets" [formData]="profileData" (formChange)="profileFormChanged($event)" [mode]="'edit'" [layout]="'vertical'"
+          [schema]="formSets.profile" (formSubmit)="profileSave($event)">
+        </sf>
+      </nz-card>
+      <nz-card nzTitle="系统设置" *ngIf="active===2">
+
+        <sf #sysSetting *ngIf="formSets" [formData]="settingsData" (formChange)="sysSettingFormChanged($event)" [mode]="'edit'" [layout]="'vertical'"
+          [schema]="formSets.sysSetting" (formSubmit)="saveSysSettings($event)">
+        </sf>
+      </nz-card>
+    </nz-col>
+  </nz-row>
+
+
+</nz-card>

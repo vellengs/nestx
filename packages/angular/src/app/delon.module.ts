@@ -2,8 +2,14 @@
  * 进一步对基础模块的导入提炼
  * 有关模块注册指导原则请参考：https://github.com/ng-alain/ng-alain/issues/180
  */
-import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
-import { throwIfAlreadyLoaded } from '@core';
+import {
+  NgModule,
+  Optional,
+  SkipSelf,
+  ModuleWithProviders,
+  SystemJsNgModuleLoader,
+} from '@angular/core';
+import { throwIfAlreadyLoaded } from '@core/module-import-guard';
 
 import { AlainThemeModule } from '@delon/theme';
 
@@ -30,7 +36,7 @@ const MOCK_MODULES = !environment.production
  */
 import { RouteReuseStrategy } from '@angular/router';
 import { ReuseTabService, ReuseTabStrategy } from '@delon/abc/reuse-tab';
-const REUSETAB_PROVIDES = [
+const REUSE_TAB_PROVIDES = [
   // {
   //   provide: RouteReuseStrategy,
   //   useClass: ReuseTabStrategy,
@@ -43,28 +49,37 @@ const REUSETAB_PROVIDES = [
 
 import { PageHeaderConfig } from '@delon/abc';
 export function fnPageHeaderConfig(): PageHeaderConfig {
-  return {
-    ...new PageHeaderConfig(),
-    ...{ homeI18n: 'home' } as PageHeaderConfig
-  };
+  return Object.assign(new PageHeaderConfig(), { homeI18n: 'home' });
 }
 
+
 import { DelonAuthConfig } from '@delon/auth';
+import { ApiModule, Configuration } from 'generated';
+import { UserService } from '@services/user.service';
+import { ListContext } from '@services/list.context';
+import { CanAdminProvide } from '@services/can.admin.provide';
+import { CanAuthProvide } from '@services/can.auth.provide';
+import { TreeService } from '@services/tree.service';
+
 export function fnDelonAuthConfig(): DelonAuthConfig {
-  return {
-    ...new DelonAuthConfig(),
-    ...{ login_url: '/passport/login' } as DelonAuthConfig
-  };
+  return Object.assign(new DelonAuthConfig(), <DelonAuthConfig>{
+    login_url: '/passport/login',
+  });
+}
+
+export function apiConfig(): Configuration {
+  return new Configuration({
+    basePath: `${location.protocol}//${location.host}`
+  });
 }
 
 import { STConfig } from '@delon/abc';
+import { SchemaValidatorFactory } from '@delon/form';
+import { CustomSchemaValidatorFactory } from './custom.form.factory';
 export function fnSTConfig(): STConfig {
-  return {
-    ...new STConfig(),
-    ...{
-      modal: { size: 'lg' }
-    } as STConfig
-  };
+  return Object.assign(new STConfig(), <STConfig>{
+    modal: { size: 'lg' },
+  });
 }
 
 const GLOBAL_CONFIG_PROVIDES = [
@@ -72,6 +87,10 @@ const GLOBAL_CONFIG_PROVIDES = [
   { provide: STConfig, useFactory: fnSTConfig },
   { provide: PageHeaderConfig, useFactory: fnPageHeaderConfig },
   { provide: DelonAuthConfig, useFactory: fnDelonAuthConfig },
+  {
+    provide: SchemaValidatorFactory,
+    useClass: CustomSchemaValidatorFactory,
+  },
 ];
 
 // #endregion
@@ -79,8 +98,18 @@ const GLOBAL_CONFIG_PROVIDES = [
 @NgModule({
   imports: [
     AlainThemeModule.forRoot(),
+    // mock
     ...MOCK_MODULES,
+    ApiModule.forRoot(apiConfig),
   ],
+  providers: [
+    TreeService,
+    UserService,
+    ListContext,
+    CanAdminProvide,
+    CanAuthProvide,
+    SystemJsNgModuleLoader,
+  ]
 })
 export class DelonModule {
   constructor(@Optional() @SkipSelf() parentModule: DelonModule) {
@@ -90,7 +119,7 @@ export class DelonModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: DelonModule,
-      providers: [...REUSETAB_PROVIDES, ...GLOBAL_CONFIG_PROVIDES],
+      providers: [...REUSE_TAB_PROVIDES, ...GLOBAL_CONFIG_PROVIDES],
     };
   }
 }

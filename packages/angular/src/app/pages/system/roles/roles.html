@@ -1,0 +1,54 @@
+<page-header [title]="title"></page-header>
+
+<nz-row [nzGutter]="24" class="py-lg">
+  <nz-col [nzSpan]="8">
+
+    <nz-card nzTitle="角色设置" class="ant-card__body-nopadding" [nzExtra]="roleTemplate">
+      <nz-table #table [nzShowPagination]="false" [nzData]="entries">
+        <thead>
+          <tr>
+            <th>角色</th>
+            <th>描述</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr [ngClass]="{'selected':item.id === selectedItem.id}" *ngFor="let item of table.data" (click)="select(item)">
+            <td>
+              <a (click)="editRole(item,$event)">{{item.name}}</a>
+            </td>
+            <td>{{item.description}}</td>
+            <td>
+              <a (click)="editPermission(item,$event)">权限</a>
+              <nz-divider nzType="vertical"></nz-divider>
+              <a (click)="removeRole(item,$event)">删除</a>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+
+      <ng-template #roleTemplate>
+        <a (click)="add()">
+          <i class="anticon anticon-plus"></i>
+          新建</a>
+      </ng-template>
+    </nz-card>
+  </nz-col>
+
+
+  <nz-col [nzSpan]="16">
+    <nz-card *ngIf="selectedItem.name" [nzTitle]="selectedItem.name + '的列表'" [nzExtra]="mainTpl">
+
+      <app-base-stand #slaves [operations]="operations" [queryUrl]="'api/account/query'" [queryParams]="slaveQueryParams" [domain]="'account'"></app-base-stand>
+      <ng-template #mainTpl>
+        <a (click)="addAccountsToRole()">
+          <i class="anticon anticon-plus"></i>
+          添加成员</a>
+      </ng-template>
+
+    </nz-card>
+  </nz-col>
+
+
+
+</nz-row>

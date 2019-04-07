@@ -1,0 +1,45 @@
+<page-header [title]="title"></page-header>
+
+<nz-row [nzGutter]="24" class="py-lg">
+  <nz-col [nzSpan]="8">
+    <nz-card nzTitle="字典分类" class="ant-card__body-nopadding" [nzExtra]="roleTemplate">
+      <nz-table #table [nzShowPagination]="false" [nzData]="categories">
+        <thead>
+          <tr>
+            <th>分类</th>
+            <th style="text-align: center;">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr [ngClass]="{'selected':item.id === selectedItem.id}" *ngFor="let item of table.data" (click)="select(item)">
+            <td>
+              {{item.translate}}
+            </td>
+            <td style="width:120px;">
+              <a (click)="edit(item)">编辑</a>
+              <nz-divider nzType="vertical"></nz-divider>
+              <a (click)="remove(item)">删除</a>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+
+      <ng-template #roleTemplate>
+        <a (click)="addDictCategory()">
+          <i class="anticon anticon-plus"></i>
+          新建分类</a>
+      </ng-template>
+    </nz-card>
+  </nz-col>
+  <nz-col [nzSpan]="16">
+    <nz-card *ngIf="selectedItem.translate" [nzTitle]="selectedItem.translate + '的列表'" [nzExtra]="slaveTpl">
+      <app-base-stand #slaves [operations]="operations" [queryUrl]="'api/account/query'" [queryParams]="queryParams" [domain]="'dict'"></app-base-stand>
+      <ng-template #slaveTpl>
+        <a (click)="addDict()">
+          <i class="anticon anticon-plus"></i>
+          新建字典</a>
+      </ng-template>
+
+    </nz-card>
+  </nz-col>
+</nz-row>

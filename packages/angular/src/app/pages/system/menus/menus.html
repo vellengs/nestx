@@ -1,0 +1,44 @@
+<page-header [title]="title"></page-header>
+
+
+<nz-row [nzGutter]="24" class="py-lg">
+  <nz-col [nzSpan]="8">
+
+    <nz-card nzTitle="菜单树" [nzExtra]="groupTpl">
+
+      <nz-input-group [nzSuffix]="suffixIcon">
+        <input type="text" nz-input placeholder="搜索菜单" [(ngModel)]="searchValue">
+      </nz-input-group>
+      <ng-template #suffixIcon>
+        <i class="anticon anticon-search"></i>
+      </ng-template>
+
+      <nz-tree [nzSearchValue]="searchValue" [(ngModel)]="nodes" [nzShowLine]="true" [nzDefaultExpandedKeys]="expandKeys" (nzExpandChange)="selectNode('expand',$event)"
+        (nzContextMenu)="selectNode('contextmenu', $event)" (nzClick)="treeNodeClick('click',$event)">
+      </nz-tree>
+
+      <ng-template #groupTpl>
+        <a (click)="addMenu()">
+          <i class="anticon anticon-plus"></i>
+          新建菜单</a>
+      </ng-template>
+    </nz-card>
+  </nz-col>
+  <nz-col [nzSpan]="16">
+    <nz-card *ngIf="selectedItem.title" [nzTitle]="selectedItem.title" [nzExtra]="accountTpl">
+      <sf #sf *ngIf="detailSchema" [formData]="formData" (formChange)="value = $event" [mode]="'edit'" [layout]="'inline'" [schema]="detailSchema"
+        (formSubmit)="saveMenu($event)">
+        <div class="modal-footer">
+          <button nz-button type="button" (click)="sf.reset()">重置</button>
+          <button nz-button type="submit" [nzType]="'primary'" [disabled]="!sf.valid" [nzLoading]="client.loading">保存</button>
+        </div>
+      </sf>
+
+      <ng-template #accountTpl>
+        <a (click)="removeMenu(selectedItem)">
+          删除</a>
+      </ng-template>
+
+    </nz-card>
+  </nz-col>
+</nz-row>

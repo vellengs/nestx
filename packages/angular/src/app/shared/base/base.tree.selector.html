@@ -1,0 +1,72 @@
+<nz-row [nzGutter]="12" class="modal-selector">
+  <nz-col [nzSpan]="(multiple && showResults)?16:24">
+
+    <nz-input-group [nzSuffix]="suffixIcon">
+      <input type="text" nz-input placeholder="搜索用户组" [(ngModel)]="searchValue">
+    </nz-input-group>
+    <ng-template #suffixIcon>
+      <i class="anticon anticon-search"></i>
+    </ng-template>
+
+    <nz-tree #treeView [nzCheckable]="true" [nzSearchValue]="searchValue" (nzCheckBoxChange)="selectedChanged($event)" [(ngModel)]="nodes"
+      [nzShowLine]="true" [nzDefaultExpandedKeys]="expandKeys" (nzExpandChange)="nodeExpandChanged('expand',$event)" (nzContextMenu)="showContextMenu('contextmenu', $event)"
+      (nzClick)="treeNodeClick('click', $event)">
+
+      <!-- <ng-template #nzTreeTemplate let-node>
+        <span class="ant-tree-node-content-wrapper" [class.ant-tree-node-content-wrapper-open]="node.isExpanded && node.getChildren().length>0"
+          [class.ant-tree-node-content-wrapper-close]="!node.isExpanded && node.getChildren().length>0" [class.ant-tree-node-content-wrapper-normal]="node.getChildren().length>0"
+          [class.ant-tree-node-selected]="node.isSelected">
+          <span class="ant-tree-title">
+            <ng-container *ngIf="matchValue.length==2">
+              <span>
+                {{matchValue[0]}}
+                <span class="font-highlight">{{searchValue}}</span>{{matchValue[1]}}
+              </span>
+            </ng-container>
+            <ng-container *ngIf="matchValue.length!=2">
+              {{node.title}}
+            </ng-container>
+          </span>
+        </span>
+      </ng-template> -->
+    </nz-tree>
+  </nz-col>
+
+  <nz-col *ngIf="multiple && showResults" [nzSpan]="8">
+    <div class="card select-result">
+      <div class="card-head">
+        <div>已选择：
+          <span class="badge">{{selectedItems.length}}</span>
+        </div>
+        <div class="pull-right">
+          <a class="btn btn-icon-toggle" title="清空" (click)="cleanAll()">
+            <i class="anticon anticon-delete"></i>
+          </a>
+        </div>
+      </div>
+      <div class="card-body no-padding multi-selected">
+        <ul class="list">
+          <li *ngFor="let item of selectedItems">
+            <span>{{item.title}}</span>
+            <a class="btn btn-icon-toggle" title="移除" (click)="removeOne(item)">
+              <i class="anticon anticon-delete"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nz-col>
+</nz-row>
+
+<div class="modal-footer">
+  <div *ngIf="model && !multiple" class="pull-left">
+    已选择：{{model.name}}
+  </div>
+
+  <button nz-button [nzType]="'primary'" (click)="save($event)">
+    确 定
+  </button>
+  <button nz-button [nzType]="'default'" (click)="cancel($event)">
+    取 消
+  </button>
+</div>

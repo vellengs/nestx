@@ -1,0 +1,44 @@
+<page-header [title]="title"></page-header>
+
+
+<nz-row [nzGutter]="24" class="py-lg">
+  <nz-col [nzSpan]="8">
+
+    <nz-card nzTitle="权限列表" class="ant-card__body-nopadding">
+      <nz-table #table [nzShowPagination]="false" [nzData]="entries">
+        <thead>
+          <tr>
+            <th>操作权限名</th>
+            <th>描述</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr [ngClass]="{'selected':item.id === selectedItem.id}" *ngFor="let item of table.data" (click)="select(item)">
+            <td>
+              <a>{{item.name}}</a>
+            </td>
+            <td>{{item.description}}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+
+    </nz-card>
+  </nz-col>
+
+
+  <nz-col [nzSpan]="16">
+    <nz-card *ngIf="selectedItem.name" [nzTitle]="selectedItem.name + '的列表'" [nzExtra]="mainTpl">
+
+      <app-base-stand #slaves [operations]="operations" [queryUrl]="'api/api/query'" [queryParams]="slaveQueryParams" [domain]="'api'"></app-base-stand>
+      <ng-template #mainTpl>
+        <a (click)="addApiPermission()">
+          <i class="anticon anticon-plus"></i>
+          添加接口成员</a>
+      </ng-template>
+
+    </nz-card>
+  </nz-col>
+
+
+
+</nz-row>

@@ -1,0 +1,52 @@
+<page-header [title]="title"></page-header>
+
+<nz-row [nzGutter]="24" class="py-lg">
+  <nz-col [nzSpan]="8">
+
+    <nz-card nzTitle="用户组设置" [nzExtra]="groupTpl">
+      <nz-input-group [nzSuffix]="suffixIcon">
+        <input type="text" nz-input placeholder="搜索用户组" [(ngModel)]="searchValue">
+      </nz-input-group>
+      <ng-template #suffixIcon>
+        <i class="anticon anticon-search"></i>
+      </ng-template>
+
+      <nz-tree [nzSearchValue]="searchValue" [(ngModel)]="nodes" [nzShowLine]="true" [nzDefaultExpandedKeys]="expandKeys" (nzExpandChange)="selectNode('expand',$event)"
+        (nzContextMenu)="selectNode('contextmenu', $event)" (nzClick)="treeNodeClick('click',$event)">
+
+        <ng-template #nzTreeTemplate let-node>
+          <span class="custom-node" draggable="true" aria-grabbed="true" [class.active]="node.isSelected">
+            <span>
+              {{node.title}}
+
+              <span *ngIf="node.isSelected" style="padding-left: 40px;">
+                <a (click)="editGroup(selectedItem)">
+                  编辑</a>
+                <nz-divider *ngIf="node.isLeaf" nzType="vertical"></nz-divider>
+                <a *ngIf="node.isLeaf" (click)="removeGroup(selectedItem)">
+                  删除</a>
+              </span>
+            </span>
+          </span>
+        </ng-template>
+      </nz-tree>
+
+      <ng-template #groupTpl>
+        <a (click)="addGroup()">
+          <i class="anticon anticon-plus"></i>
+          新建组</a>
+      </ng-template>
+    </nz-card>
+  </nz-col>
+  <nz-col [nzSpan]="16">
+    <nz-card *ngIf="selectedItem.title" [nzTitle]="selectedItem.title + '的成员'" [nzExtra]="accountTpl">
+      <app-base-stand #accountList [operations]="operationColumn" [queryUrl]="'api/account/query'" [queryParams]="accountQueryParams"
+        [domain]="'account'"></app-base-stand>
+      <ng-template #accountTpl>
+        <a (click)="addAccount()">
+          新建帐号</a>
+      </ng-template>
+
+    </nz-card>
+  </nz-col>
+</nz-row>

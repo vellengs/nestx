@@ -1,0 +1,18 @@
+<div style="height:500px;">
+  <nz-transfer #transfer [nzRender]="render" [nzDataSource]="list" [nzListStyle]="{'width.px': 390, 'height.px': 500}" nzShowSearch
+    [nzFilterOption]="filterOption" (nzSearchChange)="search($event)" (nzSelectChange)="select($event)" (nzChange)="change($event)">
+
+    <ng-template #render let-item>
+      {{item.title}} ~ {{item.description}}
+    </ng-template>
+  </nz-transfer>
+</div>
+
+<div class="modal-footer">
+  <button nz-button [nzType]="'primary'" (click)="save($event)">
+    确 定
+  </button>
+  <button nz-button [nzType]="'default'" (click)="cancel($event)">
+    取 消
+  </button>
+</div>
