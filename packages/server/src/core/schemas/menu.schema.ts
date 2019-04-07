@@ -33,3 +33,9 @@ export const MenuSchema = new Schema({
         default: true
     }
 }, option);
+
+MenuSchema.set('toJSON', {
+    transform: function (_doc: any, ret: any, _options: any) {
+        ret.id = ret._id;
+    }
+}); 

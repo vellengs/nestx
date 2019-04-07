@@ -1,0 +1,133 @@
+// 建议所有项目自定义样式放在该文件夹下
+table {
+    tr.selected {
+        background-color: #efefef;
+    }
+}
+
+.pull-left {
+    float: left;
+}
+
+.modal-selector {
+    .ant-modal-body {
+        padding: 0 24px;
+    }
+    .card {
+        height: 100%;
+        position: relative;
+        margin-bottom: 8px;
+        background-color: #fff;
+        border-radius: 2px;
+        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .33);
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .33);
+    }
+    .select-result .card-head {
+        background: #EEF1F4;
+        line-height: 50px;
+        min-height: 50px;
+    }
+    .card-head {
+        position: relative;
+        line-height: 52px;
+        min-height: 52px;
+        vertical-align: middle;
+        border-radius: 2px 2px 0 0;
+        padding-right: 12px;
+    }
+    .select-result .card-head>div:nth-child(1) {
+        padding-left: 10px;
+    }
+    .badge {
+        display: inline-block;
+        min-width: 10px;
+        padding: 3px 7px;
+        font-size: 12px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1;
+        vertical-align: baseline;
+        white-space: nowrap;
+        text-align: center;
+        background-color: #969c9c;
+        border-radius: 10px;
+    }
+    .card-head>div {
+        display: inline-block;
+    }
+    .pull-right {
+        float: right !important;
+    }
+    .pull-right .btn-icon-toggle {
+        float: initial;
+    }
+    .card-body:last-child {
+        border-radius: 0 0 2px 2px;
+    }
+    .multi-selected {
+        min-height: 480px;
+    }
+    .no-padding {
+        padding: 0 !important;
+    }
+    .card-body {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding-top: 10px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: 460px;
+    }
+    .select-result .list {
+        padding: 10px;
+    }
+    .select-result .list span {
+        display: inline-block;
+        width: 185px;
+        height: 30px;
+        line-height: 30px;
+        vertical-align: middle;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .btn-icon-toggle {
+        padding: 5px;
+        width: 28px;
+        height: 28px;
+        float: right;
+        text-align: center;
+    }
+    .btn-flat,
+    .btn-icon-toggle {
+        background-color: transparent;
+        font-weight: 500;
+        border-color: transparent;
+    }
+    .btn-icon-toggle {
+        border-radius: 50%;
+    }
+    .btn-icon-toggle:hover,
+    .btn-flat:hover,
+    .card .btn-flat:hover {
+        background-color: rgba(12, 12, 12, .07);
+    }
+    .select-result,
+    .card-body {
+        min-height: 320px;
+    }
+}
+
+body{
+    overflow-y: scroll !important;
+}
+
+.cdk-overlay-pane{
+    min-width: 120px;
+}
+
+nz-form-item.sf-fixed{
+    display: flex;
+}

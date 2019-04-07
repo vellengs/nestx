@@ -14,10 +14,10 @@
         "outDir": "./dist",
         "baseUrl": "./src",
         "rootDirs": ["/src"],
-        "paths": {
-            "@common/*": ["./src/common/*"],
-            "@core/*": ["./src/core/*"]
-        }
+        "typeRoots": [
+            "./node_modules/@types",
+            "./src/types/"
+        ]
     },
     "include": [
         "src/**/*"

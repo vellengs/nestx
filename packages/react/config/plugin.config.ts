@@ -4,7 +4,7 @@ import MergeLessPlugin from 'antd-pro-merge-less';
 import AntDesignThemePlugin from 'antd-theme-webpack-plugin';
 import path from 'path';
 
-function getModulePackageName(module) {
+function getModulePackageName(module: any) {
   if (!module.context) return null;
 
   const nodeModulesPath = path.join(__dirname, '../node_modules/');
@@ -23,7 +23,7 @@ function getModulePackageName(module) {
   return packageName;
 }
 
-export default config => {
+export default (config: any) => {
   // pro 和 开发环境再添加这个插件
   if (process.env.APP_TYPE === 'site' || process.env.NODE_ENV !== 'production') {
     // 将所有 less 合并为一个供 themePlugin使用
@@ -59,14 +59,14 @@ export default config => {
       minSize: 0,
       cacheGroups: {
         vendors: {
-          test: module => {
+          test: (module: any) => {
             const packageName = getModulePackageName(module);
             if (packageName) {
               return ['bizcharts', '@antv_data-set'].indexOf(packageName) >= 0;
             }
             return false;
           },
-          name(module) {
+          name(module: any) {
             const packageName = getModulePackageName(module);
 
             if (['bizcharts', '@antv_data-set'].indexOf(packageName) >= 0) {

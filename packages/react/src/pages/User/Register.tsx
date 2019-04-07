@@ -362,7 +362,7 @@ class Register extends Component<IFormComponentProps> {
               size="large"
               loading={submitting}
               className={styles.submit}
-              type={'primary' as any}
+              type="primary"
               htmlType="submit"
             >
               <FormattedMessage id="app.register.register" />

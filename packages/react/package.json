@@ -3,7 +3,6 @@
   "version": "0.2.0-alpha.0",
   "description": "react client side",
   "scripts": {
-    "presite": "cd functions && npm install",
     "start": "cross-env APP_TYPE=site umi dev",
     "start:no-mock": "cross-env MOCK=none umi dev",
     "dev": "cross-env APP_TYPE=site umi dev",
@@ -22,7 +21,7 @@
   },
   "dependencies": {
     "ant-design-pro": "^2.1.1",
-    "antd": "3.15.1",
+    "antd": "^3.10.9",
     "axios": "^0.18.0",
     "bizcharts": "^3.5.2",
     "bizcharts-plugin-slider": "^2.1.1-beta.1",
@@ -97,6 +96,24 @@
   "bugs": {
     "url": "https://github.com/vellengs/nestx/issues"
   },
+  "optionalDependencies": {
+    "puppeteer": "^1.12.1"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
+  "checkFiles": [
+    "src/**/*.js*",
+    "src/**/*.ts*",
+    "src/**/*.less",
+    "config/**/*.js*",
+    "scripts/**/*.js"
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint"

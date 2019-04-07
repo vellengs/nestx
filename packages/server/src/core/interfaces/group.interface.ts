@@ -1,7 +1,7 @@
 import { Document } from 'mongoose';
 
 export interface Group {
-    _id: string;						// 编号
+    id: string;						// 编号
     outid: number;						// 外部编号
     name: string;						// 名称
     icon: string;						// 图标

@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException, NotAcceptableException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload, AccessToken } from './interfaces/jwt-payload.interface';
-import { LoginReq } from './dto/login.dto';
+import { LoginReq, LoginRes } from './dto/login.dto';
 import { RegisterReq } from './dto/Register.dto';
 import { UsersService } from './../core/controllers/users.service';
 import { Result } from './../common';
@@ -14,10 +14,15 @@ export class AuthService {
     private readonly userService: UsersService,
   ) { }
 
-  async login(payload: LoginReq): Promise<AccessToken> {
+  async login(payload: LoginReq): Promise<LoginRes> {
     const user = await this.userService.login(payload.username, payload.password);
     if (user) {
-      return await this.createToken(user);
+      const token = await this.createToken(user);
+      return {
+        username: user.username,
+        token,
+        roles: user.roles
+      };
     } else {
       throw new UnauthorizedException();
     }

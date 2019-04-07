@@ -12,4 +12,11 @@ export const GroupSchema = new Schema({
     director: { type: t.ObjectId, ref: 'User' },
     description: { type: t.String }
 },
-    { timestamps: true }); 
+    { timestamps: true });
+
+
+GroupSchema.set('toJSON', {
+    transform: function (_doc: any, ret: any, _options: any) {
+        ret.id = ret._id;
+    }
+}); 

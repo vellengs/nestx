@@ -1,4 +1,5 @@
 import { IsString, IsEmail, IsOptional, IsArray } from 'class-validator';
+import { Optional } from '@nestjs/common';
 
 export class CreateUserReq {
     @IsString()
@@ -10,16 +11,33 @@ export class CreateUserReq {
 
 export class EditUserReq {
     @IsString()
-    name: string;
+    id: string;
     @IsString()
-    mobile: string;
+    readonly name: string;
+    @IsString()
+    readonly username: string;
+    @IsString()
+    readonly mobile: string;
+    @IsString()
+    @IsOptional()
+    password?: string;
     @IsArray()
     @IsOptional()
     roles?: string[];
+
     @IsEmail()
     @IsOptional()
     email?: string;
+
+    @IsOptional()
+    @IsString()
     company?: string;
+
+    @IsOptional()
+    @IsString()
     siteUrl?: string;
+
+    @IsOptional()
+    @IsString()
     address?: string;
 }

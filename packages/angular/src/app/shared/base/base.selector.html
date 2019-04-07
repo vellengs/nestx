@@ -1,0 +1,50 @@
+<nz-row [nzGutter]="12" class="modal-selector">
+  <nz-col [nzSpan]="multiple?16:24">
+    <div class="mb-md">
+      <sf *ngIf="formSets" [mode]="'search'" [layout]="'inline'" [schema]="formSets.query" (formSubmit)="query($event)"></sf>
+    </div>
+
+    <st [size]="'middle'" (checkboxChange)="checkboxChange($event)" *ngIf="columns" #simpleTable [data]="queryUrl"
+      [columns]="columns" [req]="{params: queryParams}"></st>
+  </nz-col>
+
+  <nz-col *ngIf="multiple" [nzSpan]="8">
+
+    <div class="card select-result">
+      <div class="card-head">
+        <div>已选择：
+          <span class="badge">{{selectedItems.length}}</span>
+        </div>
+        <div class="pull-right">
+          <a class="btn btn-icon-toggle" title="清空" (click)="cleanAll()">
+            <i class="anticon anticon-delete"></i>
+          </a>
+        </div>
+      </div>
+      <div class="card-body no-padding multi-selected">
+        <ul class="list">
+          <li *ngFor="let item of selectedItems">
+            <span>{{item.name}}</span>
+            <a class="btn btn-icon-toggle" title="移除" (click)="removeOne(item)">
+              <i class="anticon anticon-delete"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </nz-col>
+</nz-row>
+
+<div class="modal-footer">
+  <div *ngIf="model && !multiple" class="pull-left">
+    已选择：{{model.name}}
+  </div>
+
+  <button nz-button [nzType]="'primary'" (click)="save($event)">
+    确 定
+  </button>
+  <button nz-button [nzType]="'default'" (click)="cancel($event)">
+    取 消
+  </button>
+</div>

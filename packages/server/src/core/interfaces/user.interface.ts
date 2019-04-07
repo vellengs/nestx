@@ -1,7 +1,7 @@
 import { Document } from 'mongoose';
 
 export interface User {
-  _id: string;
+  id: string;
   username: string;
   password?: string;
   name: string; // 姓名

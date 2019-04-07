@@ -4,14 +4,16 @@
 			"path": "packages/testing"
 		},
 		{
-			"path": "packages/react"
-		},
-		{
 			"path": "packages/server"
 		},
 		{
 			"path": "docs"
+		},
+		{
+			"path": "packages/angular"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"typescript.tsdk": "server/node_modules/typescript/lib"
+	}
 }

@@ -1,0 +1,83 @@
+{
+  "app": {
+    "name": "Typerx",
+    "description": "Ng-zorro admin panel front-end framework"
+  },
+  "menu": [{
+    "text": "主导航",
+    "group": true,
+    "children": [{
+        "text": "首页",
+        "link": "/dashboard",
+        "icon": "icon-home"
+      },
+      {
+        "text": "内容管理",
+        "group": true,
+        "icon": "icon-screen-desktop",
+        "children": [{
+            "text": "页面管理",
+            "link": "/cms/pages",
+            "icon": "icon-people"
+          },
+          {
+            "text": "文章管理",
+            "link": "/cms/articles",
+            "icon": "icon-people"
+          },
+          {
+            "text": "分类管理",
+            "link": "/cms/categories",
+            "icon": "icon-people"
+          },
+          {
+            "text": "媒体管理",
+            "link": "/cms/media",
+            "icon": "icon-people"
+          },
+          {
+            "text": "小部件管理",
+            "link": "/cms/widgets",
+            "icon": "icon-people"
+          }
+        ]
+      },
+      {
+        "text": "系统管理",
+        "icon": "icon-settings",
+        "group": true,
+        "children": [{
+            "text": "设置管理",
+            "link": "/system/settings",
+            "icon": "icon-settings"
+          },
+          {
+            "text": "帐号管理",
+            "link": "/system/accounts",
+            "icon": "icon-list"
+          },
+          {
+            "text": "菜单管理",
+            "link": "/system/menus",
+            "icon": "icon-list"
+          },
+          {
+            "text": "角色权限",
+            "link": "/system/roles",
+            "icon": "icon-list"
+          },
+          {
+            "text": "字典管理",
+            "link": "/system/dicts",
+            "icon": "icon-notebook"
+          },
+          {
+            "text": "日志查询",
+            "link": "/system/logs",
+            "icon": "icon-list"
+          }
+        ]
+      }
+    ]
+  }]
+}

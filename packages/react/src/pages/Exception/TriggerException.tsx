@@ -33,16 +33,16 @@ class TriggerException extends PureComponent<TriggerExceptionProp> {
     return (
       <Card>
         <Spin spinning={isloading} wrapperClassName={styles.trigger}>
-          <Button type={'danger' as any} onClick={() => this.triggerError(401)}>
+          <Button type="danger" onClick={() => this.triggerError(401)}>
             触发401
           </Button>
-          <Button type={'danger' as any} onClick={() => this.triggerError(403)}>
+          <Button type="danger" onClick={() => this.triggerError(403)}>
             触发403
           </Button>
-          <Button type={'danger' as any} onClick={() => this.triggerError(500)}>
+          <Button type="danger" onClick={() => this.triggerError(500)}>
             触发500
           </Button>
-          <Button type={'danger' as any} onClick={() => this.triggerError(404)}>
+          <Button type="danger" onClick={() => this.triggerError(404)}>
             触发404
           </Button>
         </Spin>

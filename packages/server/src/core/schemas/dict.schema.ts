@@ -8,3 +8,10 @@ export const DictSchema = new Schema({
         timestamps: true,
         usePushEach: true
     });
+
+
+DictSchema.set('toJSON', {
+    transform: function (_doc: any, ret: any, _options: any) {
+        ret.id = ret._id;
+    }
+}); 

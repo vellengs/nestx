@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, UseGuards, Param, Put, Query, Res } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards, Param, Put, Query, Req } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
 import { ResultList, NullableParseIntPipe } from './../../common';
@@ -41,10 +41,6 @@ export class MenusController {
     return this.menuService.query(index, size, { keyword, isMenu });
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string): Promise<Menu> {
-    return this.menuService.findById(id);
-  }
 
   @Get('permissions')
   async getPermissionTags(): Promise<{
@@ -56,8 +52,13 @@ export class MenusController {
   }
 
   @Get('auth')
-  async getUserMenus(@Res() req: Express.Request): Promise<Menu[]> {
-    return this.menuService.getAuthenticatedMenus(req.user);
+  async getUserMenus(@Req() request: Express.Request): Promise<Menu[]> {
+    return this.menuService.getAuthenticatedMenus(request.user);
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: string): Promise<Menu> {
+    return this.menuService.findById(id);
   }
 
 }

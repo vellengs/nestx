@@ -9,3 +9,9 @@ export const NoticeSchema = new Schema({
     status: { type: t.String },
     read: { type: t.Boolean },
 }, option);
+
+NoticeSchema.set('toJSON', {
+    transform: function (_doc: any, ret: any, _options: any) {
+        ret.id = ret._id;
+    }
+}); 

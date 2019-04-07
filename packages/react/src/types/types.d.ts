@@ -21,6 +21,9 @@ declare module 'ant-design-pro' {
   import React from 'react';
   import { NoticeIconProps } from 'ant-design-pro/lib/NoticeIcon';
   import { NoticeIconTabProps } from 'ant-design-pro/lib/NoticeIcon/NoticeIconTab';
+  import TagSelectOption, {
+    TagSelectOptionProps,
+  } from 'ant-design-pro/lib/TagSelect/TagSelectOption';
 
   type PartialNoticeIconProps = {
     [K in Exclude<keyof NoticeIconProps, 'locale'>]?: NoticeIconProps[K]
@@ -42,4 +45,35 @@ declare module 'ant-design-pro' {
     public static Tab: typeof NoticeIconTab;
   }
   export * from 'ant-design-pro/lib';
+
+  export interface TagSelectProps {
+    onChange?: (value: string[]) => void;
+    expandable?: boolean;
+    value?: string[] | number[];
+    style?: React.CSSProperties;
+    hideCheckAll?: boolean;
+    actionsText?: {
+      expandText?: React.ReactNode;
+      collapseText?: React.ReactNode;
+      selectAllText?: React.ReactNode;
+    };
+    className?: string;
+    Option?: TagSelectOptionProps;
+    children: React.ReactElement<TagSelectOption> | Array<React.ReactElement<TagSelectOption>>;
+  }
+
+  export interface FooterToolbarProps {
+    extra?: React.ReactNode;
+    style?: React.CSSProperties;
+    className?: string;
+  }
+
+  export class TagSelect extends React.Component<TagSelectProps, any> {
+    public static Option: typeof TagSelectOption;
+    private children:
+      | React.ReactElement<TagSelectOption>
+      | Array<React.ReactElement<TagSelectOption>>;
+  }
+
+  export class FooterToolbar extends React.Component<FooterToolbarProps, any> {}
 }

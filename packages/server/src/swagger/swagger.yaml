@@ -14,6 +14,24 @@ definitions:
         required:
             - expiresIn
             - accessToken
+    LoginRes:
+        description: ""
+        properties:
+            username:
+                type: string
+                description: ""
+            token:
+                $ref: '#/definitions/AccessToken'
+            roles:
+                type: array
+                items:
+                    type: string
+                description: ""
+        type: object
+        required:
+            - username
+            - token
+            - roles
     LoginReq:
         description: ""
         properties:
@@ -94,7 +112,7 @@ definitions:
     Dict:
         description: ""
         properties:
-            _id:
+            id:
                 type: string
                 description: ""
             name:
@@ -111,7 +129,7 @@ definitions:
                 description: ""
         type: object
         required:
-            - _id
+            - id
             - name
             - category
             - translate
@@ -189,7 +207,7 @@ definitions:
     User:
         description: ""
         properties:
-            _id:
+            id:
                 type: string
                 description: ""
             username:
@@ -247,7 +265,7 @@ definitions:
                 description: ""
         type: object
         required:
-            - _id
+            - id
             - username
             - name
             - avatar
@@ -277,10 +295,19 @@ definitions:
     EditUserReq:
         description: ""
         properties:
+            id:
+                type: string
+                description: ""
             name:
                 type: string
                 description: ""
+            username:
+                type: string
+                description: ""
             mobile:
+                type: string
+                description: ""
+            password:
                 type: string
                 description: ""
             roles:
@@ -302,7 +329,9 @@ definitions:
                 description: ""
         type: object
         required:
+            - id
             - name
+            - username
             - mobile
     ResultList$User:
         description: ""
@@ -389,23 +418,14 @@ definitions:
             - slug
             - group
             - link
-            - order
-            - externalLink
             - blank
-            - icon
-            - badge
-            - badgeDot
-            - badgeStatus
             - enable
             - expanded
-            - acl
-            - paths
-            - parent
             - isMenu
     Menu:
         description: ""
         properties:
-            _id:
+            id:
                 type: string
                 description: ""
             name:
@@ -469,7 +489,7 @@ definitions:
                 description: ""
         type: object
         required:
-            - _id
+            - id
             - name
             - slug
             - group
@@ -490,6 +510,9 @@ definitions:
     EditMenuReq:
         description: ""
         properties:
+            id:
+                type: string
+                description: ""
             name:
                 type: string
                 description: ""
@@ -551,22 +574,14 @@ definitions:
                 description: ""
         type: object
         required:
+            - id
             - name
             - slug
             - group
             - link
-            - order
-            - externalLink
             - blank
-            - icon
-            - badge
-            - badgeDot
-            - badgeStatus
             - enable
             - expanded
-            - acl
-            - paths
-            - parent
             - isMenu
     ResultList$Menu:
         description: ""
@@ -664,7 +679,7 @@ definitions:
     Notice:
         description: ""
         properties:
-            _id:
+            id:
                 type: string
                 description: ""
             title:
@@ -685,7 +700,7 @@ definitions:
                 description: ""
         type: object
         required:
-            - _id
+            - id
             - title
             - description
             - type
@@ -694,6 +709,9 @@ definitions:
     EditNoticeReq:
         description: ""
         properties:
+            id:
+                type: string
+                description: ""
             title:
                 type: string
                 description: ""
@@ -711,6 +729,7 @@ definitions:
                 description: ""
         type: object
         required:
+            - id
             - title
             - description
             - extra
@@ -789,7 +808,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/AccessToken'
+                        $ref: '#/definitions/LoginRes'
             description: ""
             tags:
                 - auth
@@ -1241,26 +1260,6 @@ paths:
                     type: number
                     format: double
                     default: 10
-    '/menus/{id}':
-        get:
-            operationId: MenusFindOne
-            produces:
-                - application/json
-            responses:
-                '200':
-                    description: Ok
-                    schema:
-                        $ref: '#/definitions/Menu'
-            description: ""
-            tags:
-                - core
-            parameters:
-                -
-                    description: ""
-                    in: path
-                    name: id
-                    required: true
-                    type: string
     /menus/permissions:
         get:
             operationId: MenusGetPermissionTags
@@ -1303,6 +1302,26 @@ paths:
             tags:
                 - core
             parameters: []
+    '/menus/{id}':
+        get:
+            operationId: MenusFindOne
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Menu'
+            description: ""
+            tags:
+                - core
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: id
+                    required: true
+                    type: string
     /logs/search:
         get:
             operationId: LogsSearch

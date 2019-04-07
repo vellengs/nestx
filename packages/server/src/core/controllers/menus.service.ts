@@ -4,6 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { MongooseService, Criteria } from './../mongoose.service';
 import { MenuModel, User, GroupModel } from './../interfaces';
 import { ResultList } from './../../common';
+import { MenuRes } from './../dto';
 
 @Injectable()
 export class MenusService extends MongooseService<MenuModel> {
@@ -50,12 +51,15 @@ export class MenusService extends MongooseService<MenuModel> {
     return super.query(index, size, query, searchField, fields, sort);
   }
 
-  async getAuthenticatedMenus(currentUser: User): Promise<MenuModel[]> {
+  async getAuthenticatedMenus(currentUser: User): Promise<MenuRes[]> {
     if (!currentUser) {
       Promise.reject("user is not authenticated");
     }
+
+    const fields = this.getFields(this.defaultQueryFields);
+
     if (!currentUser.isAdmin) {
-      const user = await this.model.findById(currentUser._id, 'groups').exec();
+      const user = await this.model.findById(currentUser.id, 'groups').exec(); // TODO
       const roles = (user.toObject() as User).roles || [];
       const roleDocs = await this.groupModel.find({
         _id: { $in: roles }
@@ -69,13 +73,15 @@ export class MenusService extends MongooseService<MenuModel> {
           $in: permissions
         },
         isMenu: true
-      });
+      }).select(fields);
       return menus as any;
     } else {
-      const menus = await this.model.find({
+      const menus = (await this.model.find({
         isMenu: true
+      }).select(fields)).map(item => {
+        return item as MenuRes; // TODO;
       });
-      return menus as any;
+      return menus;
     }
   }
 

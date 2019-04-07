@@ -1,0 +1,19 @@
+<div class="content__title">
+  <h1>{{title}}</h1>
+</div>
+<nz-card [nzExtra]="extra" [nzCover]="cover">
+  <sf *ngIf="formSets" [mode]="'search'" [layout]="'inline'" [schema]="formSets.query" (formSubmit)="query($event)"></sf>
+</nz-card>
+<nz-row [nzGutter]="16">
+  <nz-col [nzMd]="24">
+    <nz-card [nzExtra]="extra" [nzCover]="cover">
+      <div class="mb-md">
+        <button class="mr-sm" type="button" nz-button [nzType]="'primary'" (click)="add()">
+          <i class="anticon anticon-plus"></i>新增
+        </button>
+      </div>
+
+      <st *ngIf="columnSets" [data]="url" [req]="{params: queryParams}" [total]="total" [columns]="columnSets.default"></st>
+    </nz-card>
+  </nz-col>
+</nz-row>

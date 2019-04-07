@@ -28,7 +28,6 @@ export class Installer {
     async initData() {
         if (!Installer.processing) {
             Installer.processing = true;
-            console.log('Installer processing');
             for (const name of models) {
                 const model = this.db.model(name);
                 await Installer.importData(model);
