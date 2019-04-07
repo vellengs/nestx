@@ -30,7 +30,7 @@ class Center extends PureComponent<any> {
               <div className={stylesProjects.cardItemContent}>
                 <span>{moment(item.updatedAt).fromNow()}</span>
                 <div className={stylesProjects.avatarList}>
-                  <AvatarList size={"mini" as any}>
+                  <AvatarList size={'mini' as any}>
                     {item.members.map((member: any) => (
                       <AvatarList.Item
                         key={`${item.id}-avatar-${member.id}`}

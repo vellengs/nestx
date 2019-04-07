@@ -19,7 +19,7 @@ export class Client {
     }
     return this.client;
   }
-  private constructor() { }
+  private constructor() {}
 
   public setToken(accessToken: string): void {
     return localStorage.setItem('nest-react-token', JSON.stringify(accessToken));
@@ -53,7 +53,7 @@ globalAxios.interceptors.request.use(
 
     return config;
   },
-  function (error) {
+  function(error) {
     return Promise.reject(error);
   },
 );
@@ -61,4 +61,4 @@ globalAxios.interceptors.request.use(
 // TODO;
 globalAxios.interceptors.response.use(response => {
   return response;
-}, (errorHandler));
+}, errorHandler);

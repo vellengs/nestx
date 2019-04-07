@@ -150,7 +150,7 @@ class TableList extends PureComponent<any, any> {
   handleStandardTableChange = (
     pagination: { current: any; pageSize: any },
     filtersArg: { [x: string]: any },
-    sorter: { field: any; order: any }
+    sorter: { field: any; order: any },
   ) => {
     const { dispatch } = this.props;
     const { formValues } = this.state;
@@ -321,7 +321,7 @@ class TableList extends PureComponent<any, any> {
                 <Select placeholder="请选择" style={{ width: '100%' }}>
                   <Option value="0">关闭</Option>
                   <Option value="1">运行中</Option>
-                </Select>
+                </Select>,
               )}
             </FormItem>
           </Col>
@@ -361,7 +361,7 @@ class TableList extends PureComponent<any, any> {
                 <Select placeholder="请选择" style={{ width: '100%' }}>
                   <Option value="0">关闭</Option>
                   <Option value="1">运行中</Option>
-                </Select>
+                </Select>,
               )}
             </FormItem>
           </Col>
@@ -375,7 +375,7 @@ class TableList extends PureComponent<any, any> {
           <Col md={8} sm={24}>
             <FormItem label="更新日期">
               {getFieldDecorator('date')(
-                <DatePicker style={{ width: '100%' }} placeholder="请输入更新日期" />
+                <DatePicker style={{ width: '100%' }} placeholder="请输入更新日期" />,
               )}
             </FormItem>
           </Col>
@@ -385,7 +385,7 @@ class TableList extends PureComponent<any, any> {
                 <Select placeholder="请选择" style={{ width: '100%' }}>
                   <Option value="0">关闭</Option>
                   <Option value="1">运行中</Option>
-                </Select>
+                </Select>,
               )}
             </FormItem>
           </Col>
@@ -395,7 +395,7 @@ class TableList extends PureComponent<any, any> {
                 <Select placeholder="请选择" style={{ width: '100%' }}>
                   <Option value="0">关闭</Option>
                   <Option value="1">运行中</Option>
-                </Select>
+                </Select>,
               )}
             </FormItem>
           </Col>

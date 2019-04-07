@@ -1,9 +1,7 @@
 import { queryRule, removeRule, addRule, updateRule } from '@/services/api';
 import { ModelType } from '@/models/connect';
 
-interface RulesState {
-
-}
+interface RulesState {}
 
 const rulesModel: ModelType<RulesState> = {
   namespace: 'rule',
@@ -58,6 +56,5 @@ const rulesModel: ModelType<RulesState> = {
     },
   },
 };
-
 
 export default rulesModel;

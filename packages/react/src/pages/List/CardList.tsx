@@ -84,12 +84,12 @@ class CardList extends PureComponent<any> {
                   </Card>
                 </List.Item>
               ) : (
-                  <List.Item>
-                    <Button type="dashed" className={styles.newButton}>
-                      <Icon type="plus" /> 新建产品
+                <List.Item>
+                  <Button type="dashed" className={styles.newButton}>
+                    <Icon type="plus" /> 新建产品
                   </Button>
-                  </List.Item>
-                )
+                </List.Item>
+              )
             }
           />
         </div>

@@ -9,7 +9,6 @@ import styles from './Articles.less';
 }))
 class Center extends PureComponent<any> {
   render() {
-
     const listData = this.props.list;
     const { list } = listData || { list: [] };
     const IconText: React.SFC<any> = ({ type, text }) => (

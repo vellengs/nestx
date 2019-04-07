@@ -128,8 +128,8 @@ const customDot: React.FC<any> = (dot, { status }) =>
       {dot}
     </Popover>
   ) : (
-      dot
-    );
+    dot
+  );
 
 const operationTabList = [
   {
@@ -165,8 +165,8 @@ const columns = [
       text === 'agree' ? (
         <Badge status="success" text="成功" />
       ) : (
-          <Badge status="error" text="驳回" />
-        ),
+        <Badge status="error" text="驳回" />
+      ),
   },
   {
     title: '操作时间',

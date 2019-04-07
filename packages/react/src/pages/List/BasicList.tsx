@@ -232,7 +232,7 @@ class BasicList extends PureComponent<any, any> {
                 placeholder="请选择"
                 format="YYYY-MM-DD HH:mm:ss"
                 style={{ width: '100%' }}
-              />
+              />,
             )}
           </FormItem>
           <FormItem label="任务负责人" {...this.formLayout}>
@@ -243,7 +243,7 @@ class BasicList extends PureComponent<any, any> {
               <Select placeholder="请选择">
                 <SelectOption value="付晓晓">付晓晓</SelectOption>
                 <SelectOption value="周毛毛">周毛毛</SelectOption>
-              </Select>
+              </Select>,
             )}
           </FormItem>
           <FormItem {...this.formLayout} label="产品描述">
