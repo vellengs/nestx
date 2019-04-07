@@ -75,7 +75,7 @@ class SearchList extends Component<any, any> {
       },
     ];
 
-    const IconText: React.SFC<any> = ({ type, text }) => (
+    const IconText: React.FC<any> = ({ type, text }) => (
       <span>
         <Icon type={type} style={{ marginRight: 8 }} />
         {text}

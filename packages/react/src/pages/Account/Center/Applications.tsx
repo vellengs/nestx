@@ -32,7 +32,7 @@ class Center extends PureComponent<any> {
         </Menu.Item>
       </Menu>
     );
-    const CardInfo: React.SFC<any> = ({ activeUser, newUser }) => (
+    const CardInfo: React.FC<any> = ({ activeUser, newUser }) => (
       <div className={stylesApplications.cardInfo}>
         <div>
           <p>活跃用户</p>

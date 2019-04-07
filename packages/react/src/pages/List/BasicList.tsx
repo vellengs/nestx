@@ -141,7 +141,7 @@ class BasicList extends PureComponent<any, any> {
       ? { footer: null, onCancel: this.handleDone }
       : { okText: '保存', onOk: this.handleSubmit, onCancel: this.handleCancel };
 
-    const Info: React.SFC<any> = ({ title, value, bordered }) => (
+    const Info: React.FC<any> = ({ title, value, bordered }) => (
       <div className={styles.headerInfo}>
         <span>{title}</span>
         <p>{value}</p>
@@ -167,7 +167,7 @@ class BasicList extends PureComponent<any, any> {
       total: 50,
     };
 
-    const ListContent: React.SFC<any> = ({ data: { owner, createdAt, percent, status } }) => (
+    const ListContent: React.FC<any> = ({ data: { owner, createdAt, percent, status } }) => (
       <div className={styles.listContent}>
         <div className={styles.listContentItem}>
           <span>Owner</span>
@@ -183,7 +183,7 @@ class BasicList extends PureComponent<any, any> {
       </div>
     );
 
-    const MoreBtn: React.SFC<any> = props => (
+    const MoreBtn: React.FC<any> = props => (
       <Dropdown
         overlay={
           <Menu onClick={({ key }) => editAndDelete(key, props.current)}>

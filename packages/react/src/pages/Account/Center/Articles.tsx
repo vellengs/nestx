@@ -11,7 +11,7 @@ class Center extends PureComponent<any> {
   render() {
     const listData = this.props.list;
     const { list } = listData || { list: [] };
-    const IconText: React.SFC<any> = ({ type, text }) => (
+    const IconText: React.FC<any> = ({ type, text }) => (
       <span>
         <Icon type={type} style={{ marginRight: 8 }} />
         {text}

@@ -40,7 +40,7 @@ declare module 'ant-design-pro' {
   interface MixinNoticeIconTabProps extends Partial<NoticeIconTabProps> {
     showViewMore?: boolean;
   }
-  class NoticeIconTab extends React.Component<MixinNoticeIconTabProps, any> {}
+  class NoticeIconTab extends React.Component<MixinNoticeIconTabProps, any> { }
   export class NoticeIcon extends React.Component<MixinNoticeIconProps, any> {
     public static Tab: typeof NoticeIconTab;
   }
@@ -62,10 +62,20 @@ declare module 'ant-design-pro' {
     children: React.ReactElement<TagSelectOption> | Array<React.ReactElement<TagSelectOption>>;
   }
 
+  export interface FooterToolbarProps {
+    extra?: React.ReactNode;
+    style?: React.CSSProperties;
+    className?: string;
+  }
+
+
   export class TagSelect extends React.Component<TagSelectProps, any> {
     public static Option: typeof TagSelectOption;
     private children:
       | React.ReactElement<TagSelectOption>
       | Array<React.ReactElement<TagSelectOption>>;
   }
+
+  export class FooterToolbar extends React.Component<FooterToolbarProps, any> { }
+
 }
