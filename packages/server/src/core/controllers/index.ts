@@ -11,6 +11,8 @@ import { NoticesController } from './notices.controller';
 import { NoticesService } from './notices.service';
 import { MockController } from './mock.controller';
 import { MockService } from './mock.service';
+import { SettingsController } from './settings.controller';
+import { SettingsService } from './settings.service';
 
 export const CoreControllers = [
     DictsController,
@@ -19,6 +21,7 @@ export const CoreControllers = [
     LogsController,
     NoticesController,
     MockController,
+    SettingsController,
 ];
 
 export const CoreServices = [
@@ -28,4 +31,5 @@ export const CoreServices = [
     LogsService,
     NoticesService,
     MockService,
+    SettingsService,
 ];

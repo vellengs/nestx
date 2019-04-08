@@ -5,3 +5,6 @@ export * from './group.dto';
 export * from './menu.dto';
 export * from './user.dto';
 export * from './notice.dto';
+export * from './setting.dto';
+export * from './role.dto';
+export * from './profile.dto';

@@ -7,4 +7,4 @@ export * from './user.interface';
 export * from './group.interface';
 export * from './notice.interface';
 export * from './verycode.interface';
-
+export * from './setting.interface';

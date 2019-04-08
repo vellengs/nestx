@@ -3,16 +3,22 @@ import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
 
-import { CmsService } from './api/cms.service';
+import { AppService } from './api/app.service';
+import { AuthService } from './api/auth.service';
 import { CoreService } from './api/core.service';
+import { DefaultService } from './api/default.service';
+import { MockService } from './api/mock.service';
 
 @NgModule({
   imports:      [],
   declarations: [],
   exports:      [],
   providers: [
-    CmsService,
-    CoreService ]
+    AppService,
+    AuthService,
+    CoreService,
+    DefaultService,
+    MockService ]
 })
 export class ApiModule {
     public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders {

@@ -4,7 +4,7 @@ import { plainToClass } from 'class-transformer';
 import { ResultList, NullableParseIntPipe } from './../../common';
 import { MenusService } from './menus.service';
 import { Menu } from './../interfaces';
-import { CreateMenuReq, EditMenuReq, KeyValueDto } from './../dto';
+import { CreateMenuReq, EditMenuReq, KeyValueDto, MenuRes } from './../dto';
 import { Tags } from 'nest-swagger';
 
 @Tags('core')
@@ -41,7 +41,6 @@ export class MenusController {
     return this.menuService.query(index, size, { keyword, isMenu });
   }
 
-
   @Get('permissions')
   async getPermissionTags(): Promise<{
     id: string;
@@ -52,7 +51,7 @@ export class MenusController {
   }
 
   @Get('auth')
-  async getUserMenus(@Req() request: Express.Request): Promise<Menu[]> {
+  async getUserMenus(@Req() request: Express.Request): Promise<MenuRes[]> {
     return this.menuService.getAuthenticatedMenus(request.user);
   }
 

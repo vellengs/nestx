@@ -798,6 +798,106 @@
 				"list"
 			]
 		},
+		"MenuRes": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"slug": {
+					"type": "string",
+					"description": ""
+				},
+				"group": {
+					"type": "boolean",
+					"description": ""
+				},
+				"link": {
+					"type": "string",
+					"description": ""
+				},
+				"order": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"externalLink": {
+					"type": "string",
+					"description": ""
+				},
+				"blank": {
+					"type": "boolean",
+					"description": ""
+				},
+				"icon": {
+					"type": "string",
+					"description": ""
+				},
+				"badge": {
+					"type": "string",
+					"description": ""
+				},
+				"badgeDot": {
+					"type": "string",
+					"description": ""
+				},
+				"badgeStatus": {
+					"type": "string",
+					"description": ""
+				},
+				"enable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"expanded": {
+					"type": "boolean",
+					"description": ""
+				},
+				"acl": {
+					"type": "string",
+					"description": ""
+				},
+				"paths": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"parent": {
+					"type": "string",
+					"description": ""
+				},
+				"permissions": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"isMenu": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"slug",
+				"group",
+				"link",
+				"blank",
+				"enable",
+				"expanded",
+				"isMenu"
+			]
+		},
 		"Log": {
 			"description": "",
 			"properties": {
@@ -998,6 +1098,162 @@
 			"type": "object",
 			"required": [
 				"list"
+			]
+		},
+		"CreateSettingReq": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"key": {
+					"type": "string",
+					"description": ""
+				},
+				"value": {
+					"type": "object",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"key",
+				"value",
+				"description"
+			]
+		},
+		"Setting": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"key": {
+					"type": "string",
+					"description": ""
+				},
+				"value": {
+					"type": "object",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"key",
+				"value",
+				"description"
+			]
+		},
+		"EditSettingReq": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"key": {
+					"type": "string",
+					"description": ""
+				},
+				"value": {
+					"type": "object",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"key",
+				"value",
+				"description"
+			]
+		},
+		"SettingsGroup": {
+			"description": "",
+			"properties": {},
+			"type": "object"
+		},
+		"ResultList$Setting": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Setting"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"SettingRes": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"key": {
+					"type": "string",
+					"description": ""
+				},
+				"value": {
+					"type": "object",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"key",
+				"value",
+				"description"
 			]
 		},
 		"CreateProductDto": {
@@ -1768,7 +2024,7 @@
 						"schema": {
 							"type": "array",
 							"items": {
-								"$ref": "#/definitions/Menu"
+								"$ref": "#/definitions/MenuRes"
 							}
 						}
 					}
@@ -2142,6 +2398,281 @@
 					"mock"
 				],
 				"parameters": []
+			}
+		},
+		"/settings/": {
+			"post": {
+				"operationId": "SettingsCreate",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateSettingReq"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "SettingsUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Setting"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditSettingReq"
+						}
+					}
+				]
+			}
+		},
+		"/settings/name/{name}": {
+			"put": {
+				"operationId": "SettingsUpdateSettingsByName",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/SettingsGroup"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "name",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/SettingsGroup"
+						}
+					}
+				]
+			},
+			"get": {
+				"operationId": "SettingsGetSettingsByName",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/SettingsGroup"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "name",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/settings/search": {
+			"get": {
+				"operationId": "SettingsSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/settings/query": {
+			"get": {
+				"operationId": "SettingsQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Setting"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "index",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/settings/key/{key}": {
+			"get": {
+				"operationId": "SettingsGetSettingsByKey",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/SettingRes"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "key",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/settings/{id}": {
+			"get": {
+				"operationId": "SettingsFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Setting"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
 			}
 		},
 		"/cats/": {

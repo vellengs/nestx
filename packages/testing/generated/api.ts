@@ -298,6 +298,38 @@ export interface CreateProductDto {
 /**
  * 
  * @export
+ * @interface CreateSettingReq
+ */
+export interface CreateSettingReq {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSettingReq
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSettingReq
+     */
+    key: string;
+    /**
+     * 
+     * @type {any}
+     * @memberof CreateSettingReq
+     */
+    value: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSettingReq
+     */
+    description: string;
+}
+
+/**
+ * 
+ * @export
  * @interface CreateUserReq
  */
 export interface CreateUserReq {
@@ -555,6 +587,44 @@ export interface EditNoticeReq {
      * @memberof EditNoticeReq
      */
     type: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface EditSettingReq
+ */
+export interface EditSettingReq {
+    /**
+     * 
+     * @type {string}
+     * @memberof EditSettingReq
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditSettingReq
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditSettingReq
+     */
+    key: string;
+    /**
+     * 
+     * @type {any}
+     * @memberof EditSettingReq
+     */
+    value: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditSettingReq
+     */
+    description: string;
 }
 
 /**
@@ -898,6 +968,128 @@ export interface Menu {
 /**
  * 
  * @export
+ * @interface MenuRes
+ */
+export interface MenuRes {
+    /**
+     * 
+     * @type {string}
+     * @memberof MenuRes
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MenuRes
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MenuRes
+     */
+    slug: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof MenuRes
+     */
+    group: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof MenuRes
+     */
+    link: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof MenuRes
+     */
+    order?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof MenuRes
+     */
+    externalLink?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof MenuRes
+     */
+    blank: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof MenuRes
+     */
+    icon?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MenuRes
+     */
+    badge?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MenuRes
+     */
+    badgeDot?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MenuRes
+     */
+    badgeStatus?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof MenuRes
+     */
+    enable: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof MenuRes
+     */
+    expanded: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof MenuRes
+     */
+    acl?: string;
+    /**
+     * 
+     * @type {Array<any>}
+     * @memberof MenuRes
+     */
+    paths?: Array<any>;
+    /**
+     * 
+     * @type {string}
+     * @memberof MenuRes
+     */
+    parent?: string;
+    /**
+     * 
+     * @type {Array<any>}
+     * @memberof MenuRes
+     */
+    permissions?: Array<any>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof MenuRes
+     */
+    isMenu: boolean;
+}
+
+/**
+ * 
+ * @export
  * @interface Notice
  */
 export interface Notice {
@@ -1150,6 +1342,32 @@ export interface ResultListNotice {
 /**
  * 
  * @export
+ * @interface ResultListSetting
+ */
+export interface ResultListSetting {
+    /**
+     * 
+     * @type {Array<Setting>}
+     * @memberof ResultListSetting
+     */
+    list: Array<Setting>;
+    /**
+     * 
+     * @type {number}
+     * @memberof ResultListSetting
+     */
+    count?: number;
+    /**
+     * 
+     * @type {Query}
+     * @memberof ResultListSetting
+     */
+    query?: Query;
+}
+
+/**
+ * 
+ * @export
  * @interface ResultListUser
  */
 export interface ResultListUser {
@@ -1171,6 +1389,90 @@ export interface ResultListUser {
      * @memberof ResultListUser
      */
     query?: Query;
+}
+
+/**
+ * 
+ * @export
+ * @interface Setting
+ */
+export interface Setting {
+    /**
+     * 
+     * @type {string}
+     * @memberof Setting
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Setting
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Setting
+     */
+    key: string;
+    /**
+     * 
+     * @type {any}
+     * @memberof Setting
+     */
+    value: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof Setting
+     */
+    description: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface SettingRes
+ */
+export interface SettingRes {
+    /**
+     * 
+     * @type {string}
+     * @memberof SettingRes
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SettingRes
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SettingRes
+     */
+    key: string;
+    /**
+     * 
+     * @type {any}
+     * @memberof SettingRes
+     */
+    value: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof SettingRes
+     */
+    description: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface SettingsGroup
+ */
+export interface SettingsGroup {
 }
 
 /**
@@ -2387,6 +2689,295 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {CreateSettingReq} createSettingReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsCreate(createSettingReq: CreateSettingReq, options: any = {}): RequestArgs {
+            // verify required parameter 'createSettingReq' is not null or undefined
+            if (createSettingReq === null || createSettingReq === undefined) {
+                throw new RequiredError('createSettingReq','Required parameter createSettingReq was null or undefined when calling settingsCreate.');
+            }
+            const localVarPath = `/settings/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"CreateSettingReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(createSettingReq || {}) : (createSettingReq || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsFindOne(id: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling settingsFindOne.');
+            }
+            const localVarPath = `/settings/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} key 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsGetSettingsByKey(key: string, options: any = {}): RequestArgs {
+            // verify required parameter 'key' is not null or undefined
+            if (key === null || key === undefined) {
+                throw new RequiredError('key','Required parameter key was null or undefined when calling settingsGetSettingsByKey.');
+            }
+            const localVarPath = `/settings/key/{key}`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (key !== undefined) {
+                localVarQueryParameter['key'] = key;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [name] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsGetSettingsByName(name?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/settings/name/{name}`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (name !== undefined) {
+                localVarQueryParameter['name'] = name;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [index] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
+            const localVarPath = `/settings/query`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (index !== undefined) {
+                localVarQueryParameter['index'] = index;
+            }
+
+            if (size !== undefined) {
+                localVarQueryParameter['size'] = size;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/settings/search`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (value !== undefined) {
+                localVarQueryParameter['value'] = value;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {EditSettingReq} editSettingReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsUpdate(editSettingReq: EditSettingReq, options: any = {}): RequestArgs {
+            // verify required parameter 'editSettingReq' is not null or undefined
+            if (editSettingReq === null || editSettingReq === undefined) {
+                throw new RequiredError('editSettingReq','Required parameter editSettingReq was null or undefined when calling settingsUpdate.');
+            }
+            const localVarPath = `/settings/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"EditSettingReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(editSettingReq || {}) : (editSettingReq || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} name 
+         * @param {SettingsGroup} settingsGroup 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsUpdateSettingsByName(name: string, settingsGroup: SettingsGroup, options: any = {}): RequestArgs {
+            // verify required parameter 'name' is not null or undefined
+            if (name === null || name === undefined) {
+                throw new RequiredError('name','Required parameter name was null or undefined when calling settingsUpdateSettingsByName.');
+            }
+            // verify required parameter 'settingsGroup' is not null or undefined
+            if (settingsGroup === null || settingsGroup === undefined) {
+                throw new RequiredError('settingsGroup','Required parameter settingsGroup was null or undefined when calling settingsUpdateSettingsByName.');
+            }
+            const localVarPath = `/settings/name/{name}`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (name !== undefined) {
+                localVarQueryParameter['name'] = name;
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"SettingsGroup" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(settingsGroup || {}) : (settingsGroup || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {CreateUserReq} createUserReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2752,7 +3343,7 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        menusGetUserMenus(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Menu>> {
+        menusGetUserMenus(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<MenuRes>> {
             const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusGetUserMenus(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -2865,6 +3456,114 @@ export const CoreApiFp = function(configuration?: Configuration) {
          */
         noticesUpdate(editNoticeReq: EditNoticeReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Notice> {
             const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).noticesUpdate(editNoticeReq, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {CreateSettingReq} createSettingReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsCreate(createSettingReq: CreateSettingReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsCreate(createSettingReq, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Setting> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsFindOne(id, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} key 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsGetSettingsByKey(key: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<SettingRes> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsGetSettingsByKey(key, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [name] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsGetSettingsByName(name?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<SettingsGroup> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsGetSettingsByName(name, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [index] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsQuery(keyword?: string, index?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListSetting> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsQuery(keyword, index, size, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsSearch(keyword, value, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {EditSettingReq} editSettingReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsUpdate(editSettingReq: EditSettingReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Setting> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsUpdate(editSettingReq, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} name 
+         * @param {SettingsGroup} settingsGroup 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsUpdateSettingsByName(name: string, settingsGroup: SettingsGroup, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<SettingsGroup> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsUpdateSettingsByName(name, settingsGroup, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -3149,6 +3848,82 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
          */
         noticesUpdate(editNoticeReq: EditNoticeReq, options?: any) {
             return CoreApiFp(configuration).noticesUpdate(editNoticeReq, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {CreateSettingReq} createSettingReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsCreate(createSettingReq: CreateSettingReq, options?: any) {
+            return CoreApiFp(configuration).settingsCreate(createSettingReq, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsFindOne(id: string, options?: any) {
+            return CoreApiFp(configuration).settingsFindOne(id, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} key 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsGetSettingsByKey(key: string, options?: any) {
+            return CoreApiFp(configuration).settingsGetSettingsByKey(key, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [name] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsGetSettingsByName(name?: string, options?: any) {
+            return CoreApiFp(configuration).settingsGetSettingsByName(name, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [index] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsQuery(keyword?: string, index?: number, size?: number, options?: any) {
+            return CoreApiFp(configuration).settingsQuery(keyword, index, size, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsSearch(keyword?: string, value?: string, options?: any) {
+            return CoreApiFp(configuration).settingsSearch(keyword, value, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {EditSettingReq} editSettingReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsUpdate(editSettingReq: EditSettingReq, options?: any) {
+            return CoreApiFp(configuration).settingsUpdate(editSettingReq, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} name 
+         * @param {SettingsGroup} settingsGroup 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        settingsUpdateSettingsByName(name: string, settingsGroup: SettingsGroup, options?: any) {
+            return CoreApiFp(configuration).settingsUpdateSettingsByName(name, settingsGroup, options)(axios, basePath);
         },
         /**
          * 
@@ -3445,6 +4220,98 @@ export class CoreApi extends BaseAPI {
      */
     public noticesUpdate(editNoticeReq: EditNoticeReq, options?: any) {
         return CoreApiFp(this.configuration).noticesUpdate(editNoticeReq, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {CreateSettingReq} createSettingReq 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public settingsCreate(createSettingReq: CreateSettingReq, options?: any) {
+        return CoreApiFp(this.configuration).settingsCreate(createSettingReq, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public settingsFindOne(id: string, options?: any) {
+        return CoreApiFp(this.configuration).settingsFindOne(id, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} key 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public settingsGetSettingsByKey(key: string, options?: any) {
+        return CoreApiFp(this.configuration).settingsGetSettingsByKey(key, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [name] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public settingsGetSettingsByName(name?: string, options?: any) {
+        return CoreApiFp(this.configuration).settingsGetSettingsByName(name, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {number} [index] 
+     * @param {number} [size] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public settingsQuery(keyword?: string, index?: number, size?: number, options?: any) {
+        return CoreApiFp(this.configuration).settingsQuery(keyword, index, size, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {string} [value] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public settingsSearch(keyword?: string, value?: string, options?: any) {
+        return CoreApiFp(this.configuration).settingsSearch(keyword, value, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {EditSettingReq} editSettingReq 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public settingsUpdate(editSettingReq: EditSettingReq, options?: any) {
+        return CoreApiFp(this.configuration).settingsUpdate(editSettingReq, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} name 
+     * @param {SettingsGroup} settingsGroup 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public settingsUpdateSettingsByName(name: string, settingsGroup: SettingsGroup, options?: any) {
+        return CoreApiFp(this.configuration).settingsUpdateSettingsByName(name, settingsGroup, options)(this.axios, this.basePath);
     }
 
     /**
