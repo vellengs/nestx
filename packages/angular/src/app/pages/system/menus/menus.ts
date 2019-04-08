@@ -1,4 +1,4 @@
-import { NzTreeNode } from 'ng-zorro-antd';
+import { NzTreeNode, NzFormatEmitEvent } from 'ng-zorro-antd';
 import { Component, OnInit, Injector, Input } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 import * as treeify from 'array-to-tree';
@@ -92,8 +92,7 @@ export class MenusPageComponent extends BaseStandComponent implements OnInit {
         });
     }
 
-
-    treeNodeClick(e: any) {
+    treeNodeClick(e: Required<NzFormatEmitEvent>) {
         if (e.node.key === this.selectedItem.key) {
 
         } else {
@@ -105,7 +104,7 @@ export class MenusPageComponent extends BaseStandComponent implements OnInit {
         }
     }
 
-    selectNode(name: string): void {
+    selectNode(event: Required<NzFormatEmitEvent>): void {
         if (name === 'contextmenu') {
 
         }

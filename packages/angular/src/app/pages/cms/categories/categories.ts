@@ -1,4 +1,4 @@
-import { NzTreeNode } from 'ng-zorro-antd';
+import { NzTreeNode, NzFormatEmitEvent } from 'ng-zorro-antd';
 import { Component, OnInit, Injector, Input } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 import * as treeify from 'array-to-tree';
@@ -63,7 +63,7 @@ export class CategoriesPageComponent extends BaseStandComponent implements OnIni
     async loadTreeData() {
         const treeResponse = await this.cmsService.categoryQuery('', 0, 3000).toPromise();
 
-         const items = treeResponse ? treeResponse.list : [];
+        const items = treeResponse ? treeResponse.list : [];
 
         const raw = items.map((item) => {
             const isLeaf = items.findIndex(r => r.parent === item.id) === -1;
@@ -89,7 +89,7 @@ export class CategoriesPageComponent extends BaseStandComponent implements OnIni
     }
 
 
-    treeNodeClick(e: any) {
+    treeNodeClick(e: Required<NzFormatEmitEvent>) {
         if (e.node.key === this.selectedItem.key) {
 
         } else {
@@ -118,6 +118,10 @@ export class CategoriesPageComponent extends BaseStandComponent implements OnIni
         super.remove({
             id: item.key
         });
+    }
+
+    removeCategory(item) {
+        // TODO;
     }
 
     reload() {

@@ -13,8 +13,8 @@
         <i class="anticon anticon-search"></i>
       </ng-template>
 
-      <nz-tree [nzSearchValue]="searchValue" [(ngModel)]="nodes" [nzShowLine]="true" [nzDefaultExpandedKeys]="expandKeys" (nzExpandChange)="selectNode('expand',$event)"
-        (nzContextCategory)="selectNode('contextmenu', $event)" (nzClick)="treeNodeClick('click',$event)">
+      <nz-tree [nzSearchValue]="searchValue" [(ngModel)]="nodes" [nzShowLine]="true" [nzDefaultExpandedKeys]="expandKeys" (nzExpandChange)="selectNode('expand')"
+        (nzContextCategory)="selectNode($event)" (nzClick)="treeNodeClick($event)">
       </nz-tree>
 
       <ng-template #groupTpl>

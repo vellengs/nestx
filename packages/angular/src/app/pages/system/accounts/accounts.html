@@ -11,8 +11,8 @@
         <i class="anticon anticon-search"></i>
       </ng-template>
 
-      <nz-tree [nzSearchValue]="searchValue" [(ngModel)]="nodes" [nzShowLine]="true" [nzDefaultExpandedKeys]="expandKeys" (nzExpandChange)="selectNode('expand',$event)"
-        (nzContextMenu)="selectNode('contextmenu', $event)" (nzClick)="treeNodeClick('click',$event)">
+      <nz-tree [nzSearchValue]="searchValue" [(ngModel)]="nodes" [nzShowLine]="true" [nzDefaultExpandedKeys]="expandKeys" (nzExpandChange)="selectNode($event)"
+        (nzContextMenu)="selectNode($event)" (nzClick)="treeNodeClick($event)">
 
         <ng-template #nzTreeTemplate let-node>
           <span class="custom-node" draggable="true" aria-grabbed="true" [class.active]="node.isSelected">
