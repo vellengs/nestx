@@ -66,7 +66,7 @@ export class Client {
 
   public async login(req: LoginReq) {
     const res = await this.authApi.authLogin(req);
-    setToken(res.data.accessToken);
+    setToken(res.data.token.accessToken);
     return res;
   }
 }

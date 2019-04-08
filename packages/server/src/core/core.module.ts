@@ -11,6 +11,7 @@ import {
   NoticeSchema,
   VeryCodeSchema,
   GroupSchema,
+  ProfileSchema,
 } from './schemas';
 import { CoreControllers, CoreServices } from './controllers';
 
@@ -23,7 +24,8 @@ const models = [
   { name: 'User', schema: UserSchema },
   { name: 'Notice', schema: NoticeSchema },
   { name: 'VeryCode', schema: VeryCodeSchema },
-  { name: 'Group', schema: GroupSchema }
+  { name: 'Group', schema: GroupSchema },
+  { name: 'Profile', schema: ProfileSchema },
 ];
 
 @Module({
