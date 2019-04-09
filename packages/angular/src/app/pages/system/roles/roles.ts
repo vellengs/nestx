@@ -40,7 +40,7 @@ export class RolesPageComponent extends BaseStandComponent implements OnInit {
                     text: '移出',
                     type: 'del',
                     click: (record: any) => {
-                        self.coreService.accountRemoveAccountFromRole(this.selectedItem.id, record.id).subscribe(
+                        self.coreService.usersRemoveAccountFromRole(this.selectedItem.id, record.id).subscribe(
                             (res) => {
                                 if (res) {
                                     self.msg.success('移除成功！');
@@ -81,7 +81,7 @@ export class RolesPageComponent extends BaseStandComponent implements OnInit {
                     const ids = res.map(a => a.id);
                     item.permissions = ids;
                     const role = Object.assign({}, item);
-                    this.coreService.roleUpdate(role).subscribe((r) => {
+                    this.coreService.rolesUpdate(role).subscribe((r) => {
                         if (r) {
                             this.msg.success('权限修改成功');
                         }
@@ -114,7 +114,7 @@ export class RolesPageComponent extends BaseStandComponent implements OnInit {
             }).subscribe((res) => {
                 if (res) {
                     const ids = res.map(a => a.id);
-                    self.coreService.accountAddAccountsToRole(self.selectedItem.id, ids).subscribe(() => {
+                    self.coreService.usersAddUsersToRole(self.selectedItem.id, ids).subscribe(() => {
                         this.msg.success('完成');
                         self.slaves.reload();
                     });

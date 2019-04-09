@@ -94,7 +94,7 @@ export class CategoriesPageComponent extends BaseStandComponent implements OnIni
 
         } else {
             this.selectedItem = e.node;
-            this.cmsService.categoryGet(e.node.key).subscribe((res) => {
+            this.cmsService.categoryFindOne(e.node.key).subscribe((res) => {
                 this.formData = res;
             });
         }

@@ -92,6 +92,396 @@ export interface AccessToken {
 /**
  * 
  * @export
+ * @interface Article
+ */
+export interface Article {
+    /**
+     * 
+     * @type {string}
+     * @memberof Article
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Article
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Article
+     */
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Article
+     */
+    picture: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Article
+     */
+    keyword: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Article
+     */
+    category: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Article
+     */
+    description: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Article
+     */
+    author: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Article
+     */
+    sort: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Article
+     */
+    disable: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof Article
+     */
+    meta: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Article
+     */
+    content: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Article
+     */
+    template: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface ArticleResponse
+ */
+export interface ArticleResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof ArticleResponse
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ArticleResponse
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ArticleResponse
+     */
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ArticleResponse
+     */
+    picture: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ArticleResponse
+     */
+    category: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ArticleResponse
+     */
+    description: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ArticleResponse
+     */
+    author: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ArticleResponse
+     */
+    sort: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ArticleResponse
+     */
+    disable: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof ArticleResponse
+     */
+    meta: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ArticleResponse
+     */
+    content: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ArticleResponse
+     */
+    template: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface Category
+ */
+export interface Category {
+    /**
+     * 
+     * @type {string}
+     * @memberof Category
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Category
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Category
+     */
+    slug: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Category
+     */
+    order: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof Category
+     */
+    parent: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof Category
+     */
+    paths: Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof Category
+     */
+    description: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface CategoryResponse
+ */
+export interface CategoryResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof CategoryResponse
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CategoryResponse
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CategoryResponse
+     */
+    slug: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof CategoryResponse
+     */
+    order: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CategoryResponse
+     */
+    parent: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof CategoryResponse
+     */
+    paths: Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof CategoryResponse
+     */
+    description: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface CreateArticleDto
+ */
+export interface CreateArticleDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateArticleDto
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateArticleDto
+     */
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateArticleDto
+     */
+    keyword: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateArticleDto
+     */
+    picture: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateArticleDto
+     */
+    category: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateArticleDto
+     */
+    description: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateArticleDto
+     */
+    author: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateArticleDto
+     */
+    sort: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateArticleDto
+     */
+    disable: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateArticleDto
+     */
+    meta: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateArticleDto
+     */
+    content: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateArticleDto
+     */
+    template: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface CreateCategoryDto
+ */
+export interface CreateCategoryDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateCategoryDto
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateCategoryDto
+     */
+    slug: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateCategoryDto
+     */
+    order: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateCategoryDto
+     */
+    parent: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof CreateCategoryDto
+     */
+    paths: Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateCategoryDto
+     */
+    description: string;
+}
+
+/**
+ * 
+ * @export
  * @interface CreateDictReq
  */
 export interface CreateDictReq {
@@ -119,6 +509,112 @@ export interface CreateDictReq {
      * @memberof CreateDictReq
      */
     expand: any;
+}
+
+/**
+ * 
+ * @export
+ * @interface CreateGroupReq
+ */
+export interface CreateGroupReq {
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateGroupReq
+     */
+    outid?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateGroupReq
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateGroupReq
+     */
+    icon?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateGroupReq
+     */
+    parent?: string;
+    /**
+     * 
+     * @type {Array<any>}
+     * @memberof CreateGroupReq
+     */
+    paths?: Array<any>;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateGroupReq
+     */
+    director?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateGroupReq
+     */
+    order: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateGroupReq
+     */
+    isRegion?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateGroupReq
+     */
+    description?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface CreateMediaDto
+ */
+export interface CreateMediaDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMediaDto
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMediaDto
+     */
+    caption: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMediaDto
+     */
+    description: string;
+    /**
+     * 
+     * @type {any}
+     * @memberof CreateMediaDto
+     */
+    ext: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMediaDto
+     */
+    url: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMediaDto
+     */
+    uri: string;
 }
 
 /**
@@ -278,6 +774,112 @@ export interface CreateNoticeReq {
 /**
  * 
  * @export
+ * @interface CreatePageDto
+ */
+export interface CreatePageDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePageDto
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePageDto
+     */
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePageDto
+     */
+    description: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreatePageDto
+     */
+    sort: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreatePageDto
+     */
+    disable: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePageDto
+     */
+    meta: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePageDto
+     */
+    publish: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePageDto
+     */
+    content: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePageDto
+     */
+    template: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface CreatePhotoDto
+ */
+export interface CreatePhotoDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePhotoDto
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePhotoDto
+     */
+    caption: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePhotoDto
+     */
+    description: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePhotoDto
+     */
+    ext: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePhotoDto
+     */
+    url: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePhotoDto
+     */
+    uri: string;
+}
+
+/**
+ * 
+ * @export
  * @interface CreateProductDto
  */
 export interface CreateProductDto {
@@ -293,6 +895,32 @@ export interface CreateProductDto {
      * @memberof CreateProductDto
      */
     title: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface CreateRoleReq
+ */
+export interface CreateRoleReq {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateRoleReq
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateRoleReq
+     */
+    description: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof CreateRoleReq
+     */
+    permissions: Array<string>;
 }
 
 /**
@@ -350,6 +978,38 @@ export interface CreateUserReq {
 /**
  * 
  * @export
+ * @interface CreateWidgetDto
+ */
+export interface CreateWidgetDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWidgetDto
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWidgetDto
+     */
+    title: string;
+    /**
+     * 
+     * @type {any}
+     * @memberof CreateWidgetDto
+     */
+    params: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWidgetDto
+     */
+    type: string;
+}
+
+/**
+ * 
+ * @export
  * @interface Dict
  */
 export interface Dict {
@@ -388,6 +1048,142 @@ export interface Dict {
 /**
  * 
  * @export
+ * @interface EditArticleDto
+ */
+export interface EditArticleDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof EditArticleDto
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditArticleDto
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditArticleDto
+     */
+    picture: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditArticleDto
+     */
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditArticleDto
+     */
+    keyword: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditArticleDto
+     */
+    category: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditArticleDto
+     */
+    description: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditArticleDto
+     */
+    author: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof EditArticleDto
+     */
+    sort: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof EditArticleDto
+     */
+    disable: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditArticleDto
+     */
+    meta: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditArticleDto
+     */
+    content: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditArticleDto
+     */
+    template: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface EditCategoryDto
+ */
+export interface EditCategoryDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof EditCategoryDto
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditCategoryDto
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditCategoryDto
+     */
+    slug: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof EditCategoryDto
+     */
+    order: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditCategoryDto
+     */
+    parent: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof EditCategoryDto
+     */
+    paths: Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditCategoryDto
+     */
+    description: string;
+}
+
+/**
+ * 
+ * @export
  * @interface EditDictReq
  */
 export interface EditDictReq {
@@ -421,6 +1217,124 @@ export interface EditDictReq {
      * @memberof EditDictReq
      */
     expand: any;
+}
+
+/**
+ * 
+ * @export
+ * @interface EditGroupReq
+ */
+export interface EditGroupReq {
+    /**
+     * 
+     * @type {string}
+     * @memberof EditGroupReq
+     */
+    id: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof EditGroupReq
+     */
+    outid?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditGroupReq
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditGroupReq
+     */
+    icon?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditGroupReq
+     */
+    parent?: string;
+    /**
+     * 
+     * @type {Array<any>}
+     * @memberof EditGroupReq
+     */
+    paths?: Array<any>;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditGroupReq
+     */
+    director?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof EditGroupReq
+     */
+    order: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof EditGroupReq
+     */
+    isRegion?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditGroupReq
+     */
+    description?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface EditMediaDto
+ */
+export interface EditMediaDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof EditMediaDto
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditMediaDto
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditMediaDto
+     */
+    caption: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditMediaDto
+     */
+    description: string;
+    /**
+     * 
+     * @type {any}
+     * @memberof EditMediaDto
+     */
+    ext: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditMediaDto
+     */
+    url: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditMediaDto
+     */
+    uri: string;
 }
 
 /**
@@ -592,6 +1506,156 @@ export interface EditNoticeReq {
 /**
  * 
  * @export
+ * @interface EditPageDto
+ */
+export interface EditPageDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof EditPageDto
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditPageDto
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditPageDto
+     */
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditPageDto
+     */
+    description: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof EditPageDto
+     */
+    sort: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof EditPageDto
+     */
+    disable: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditPageDto
+     */
+    publish: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditPageDto
+     */
+    meta: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditPageDto
+     */
+    content: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditPageDto
+     */
+    template: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface EditPhotoDto
+ */
+export interface EditPhotoDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof EditPhotoDto
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditPhotoDto
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditPhotoDto
+     */
+    caption: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditPhotoDto
+     */
+    description: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditPhotoDto
+     */
+    ext: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditPhotoDto
+     */
+    url: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditPhotoDto
+     */
+    uri: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface EditRoleReq
+ */
+export interface EditRoleReq {
+    /**
+     * 
+     * @type {string}
+     * @memberof EditRoleReq
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditRoleReq
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditRoleReq
+     */
+    description: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof EditRoleReq
+     */
+    permissions: Array<string>;
+}
+
+/**
+ * 
+ * @export
  * @interface EditSettingReq
  */
 export interface EditSettingReq {
@@ -693,6 +1757,112 @@ export interface EditUserReq {
      * @memberof EditUserReq
      */
     address?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface EditWidgetDto
+ */
+export interface EditWidgetDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof EditWidgetDto
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditWidgetDto
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditWidgetDto
+     */
+    title: string;
+    /**
+     * 
+     * @type {any}
+     * @memberof EditWidgetDto
+     */
+    params: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditWidgetDto
+     */
+    type: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface Group
+ */
+export interface Group {
+    /**
+     * 
+     * @type {string}
+     * @memberof Group
+     */
+    id: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Group
+     */
+    outid: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof Group
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Group
+     */
+    icon: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Group
+     */
+    parent: string;
+    /**
+     * 
+     * @type {Array<any>}
+     * @memberof Group
+     */
+    paths: Array<any>;
+    /**
+     * 
+     * @type {string}
+     * @memberof Group
+     */
+    director: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Group
+     */
+    order: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Group
+     */
+    isRegion: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof Group
+     */
+    description: string;
 }
 
 /**
@@ -841,6 +2011,106 @@ export interface LoginRes {
      * @memberof LoginRes
      */
     roles: Array<string>;
+}
+
+/**
+ * 
+ * @export
+ * @interface Media
+ */
+export interface Media {
+    /**
+     * 
+     * @type {string}
+     * @memberof Media
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Media
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Media
+     */
+    caption: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Media
+     */
+    description: string;
+    /**
+     * 
+     * @type {any}
+     * @memberof Media
+     */
+    ext: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof Media
+     */
+    url: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Media
+     */
+    uri: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface MediaResponse
+ */
+export interface MediaResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof MediaResponse
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MediaResponse
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MediaResponse
+     */
+    caption: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MediaResponse
+     */
+    description: string;
+    /**
+     * 
+     * @type {any}
+     * @memberof MediaResponse
+     */
+    ext: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof MediaResponse
+     */
+    url: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MediaResponse
+     */
+    uri: string;
 }
 
 /**
@@ -1134,6 +2404,248 @@ export interface Notice {
 /**
  * 
  * @export
+ * @interface Page
+ */
+export interface Page {
+    /**
+     * 
+     * @type {string}
+     * @memberof Page
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Page
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Page
+     */
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Page
+     */
+    keyword: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Page
+     */
+    description: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Page
+     */
+    sort: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Page
+     */
+    disable: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof Page
+     */
+    meta: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Page
+     */
+    publish: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Page
+     */
+    content: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Page
+     */
+    template: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface PageResponse
+ */
+export interface PageResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof PageResponse
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PageResponse
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PageResponse
+     */
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PageResponse
+     */
+    description: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof PageResponse
+     */
+    sort: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof PageResponse
+     */
+    publish: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PageResponse
+     */
+    disable: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof PageResponse
+     */
+    meta: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PageResponse
+     */
+    content: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PageResponse
+     */
+    template: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface Photo
+ */
+export interface Photo {
+    /**
+     * 
+     * @type {string}
+     * @memberof Photo
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Photo
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Photo
+     */
+    caption: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Photo
+     */
+    description: string;
+    /**
+     * 
+     * @type {any}
+     * @memberof Photo
+     */
+    ext: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof Photo
+     */
+    url: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Photo
+     */
+    uri: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface PhotoRes
+ */
+export interface PhotoRes {
+    /**
+     * 
+     * @type {string}
+     * @memberof PhotoRes
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PhotoRes
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PhotoRes
+     */
+    caption: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PhotoRes
+     */
+    description: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PhotoRes
+     */
+    ext: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PhotoRes
+     */
+    url: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PhotoRes
+     */
+    uri: string;
+}
+
+/**
+ * 
+ * @export
  * @interface Product
  */
 export interface Product {
@@ -1168,7 +2680,7 @@ export interface Query {
      * @type {number}
      * @memberof Query
      */
-    index: number;
+    page: number;
 }
 
 /**
@@ -1238,6 +2750,58 @@ export interface Result {
 /**
  * 
  * @export
+ * @interface ResultListArticle
+ */
+export interface ResultListArticle {
+    /**
+     * 
+     * @type {Array<Article>}
+     * @memberof ResultListArticle
+     */
+    list: Array<Article>;
+    /**
+     * 
+     * @type {number}
+     * @memberof ResultListArticle
+     */
+    count?: number;
+    /**
+     * 
+     * @type {Query}
+     * @memberof ResultListArticle
+     */
+    query?: Query;
+}
+
+/**
+ * 
+ * @export
+ * @interface ResultListCategory
+ */
+export interface ResultListCategory {
+    /**
+     * 
+     * @type {Array<Category>}
+     * @memberof ResultListCategory
+     */
+    list: Array<Category>;
+    /**
+     * 
+     * @type {number}
+     * @memberof ResultListCategory
+     */
+    count?: number;
+    /**
+     * 
+     * @type {Query}
+     * @memberof ResultListCategory
+     */
+    query?: Query;
+}
+
+/**
+ * 
+ * @export
  * @interface ResultListDict
  */
 export interface ResultListDict {
@@ -1264,6 +2828,32 @@ export interface ResultListDict {
 /**
  * 
  * @export
+ * @interface ResultListGroup
+ */
+export interface ResultListGroup {
+    /**
+     * 
+     * @type {Array<Group>}
+     * @memberof ResultListGroup
+     */
+    list: Array<Group>;
+    /**
+     * 
+     * @type {number}
+     * @memberof ResultListGroup
+     */
+    count?: number;
+    /**
+     * 
+     * @type {Query}
+     * @memberof ResultListGroup
+     */
+    query?: Query;
+}
+
+/**
+ * 
+ * @export
  * @interface ResultListLog
  */
 export interface ResultListLog {
@@ -1283,6 +2873,32 @@ export interface ResultListLog {
      * 
      * @type {Query}
      * @memberof ResultListLog
+     */
+    query?: Query;
+}
+
+/**
+ * 
+ * @export
+ * @interface ResultListMedia
+ */
+export interface ResultListMedia {
+    /**
+     * 
+     * @type {Array<Media>}
+     * @memberof ResultListMedia
+     */
+    list: Array<Media>;
+    /**
+     * 
+     * @type {number}
+     * @memberof ResultListMedia
+     */
+    count?: number;
+    /**
+     * 
+     * @type {Query}
+     * @memberof ResultListMedia
      */
     query?: Query;
 }
@@ -1342,6 +2958,84 @@ export interface ResultListNotice {
 /**
  * 
  * @export
+ * @interface ResultListPage
+ */
+export interface ResultListPage {
+    /**
+     * 
+     * @type {Array<Page>}
+     * @memberof ResultListPage
+     */
+    list: Array<Page>;
+    /**
+     * 
+     * @type {number}
+     * @memberof ResultListPage
+     */
+    count?: number;
+    /**
+     * 
+     * @type {Query}
+     * @memberof ResultListPage
+     */
+    query?: Query;
+}
+
+/**
+ * 
+ * @export
+ * @interface ResultListPhoto
+ */
+export interface ResultListPhoto {
+    /**
+     * 
+     * @type {Array<Photo>}
+     * @memberof ResultListPhoto
+     */
+    list: Array<Photo>;
+    /**
+     * 
+     * @type {number}
+     * @memberof ResultListPhoto
+     */
+    count?: number;
+    /**
+     * 
+     * @type {Query}
+     * @memberof ResultListPhoto
+     */
+    query?: Query;
+}
+
+/**
+ * 
+ * @export
+ * @interface ResultListRole
+ */
+export interface ResultListRole {
+    /**
+     * 
+     * @type {Array<Role>}
+     * @memberof ResultListRole
+     */
+    list: Array<Role>;
+    /**
+     * 
+     * @type {number}
+     * @memberof ResultListRole
+     */
+    count?: number;
+    /**
+     * 
+     * @type {Query}
+     * @memberof ResultListRole
+     */
+    query?: Query;
+}
+
+/**
+ * 
+ * @export
  * @interface ResultListSetting
  */
 export interface ResultListSetting {
@@ -1389,6 +3083,70 @@ export interface ResultListUser {
      * @memberof ResultListUser
      */
     query?: Query;
+}
+
+/**
+ * 
+ * @export
+ * @interface ResultListWidget
+ */
+export interface ResultListWidget {
+    /**
+     * 
+     * @type {Array<Widget>}
+     * @memberof ResultListWidget
+     */
+    list: Array<Widget>;
+    /**
+     * 
+     * @type {number}
+     * @memberof ResultListWidget
+     */
+    count?: number;
+    /**
+     * 
+     * @type {Query}
+     * @memberof ResultListWidget
+     */
+    query?: Query;
+}
+
+/**
+ * 
+ * @export
+ * @interface Role
+ */
+export interface Role {
+    /**
+     * 
+     * @type {string}
+     * @memberof Role
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Role
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Role
+     */
+    role: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Role
+     */
+    description: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof Role
+     */
+    permissions: Array<string>;
 }
 
 /**
@@ -1583,6 +3341,102 @@ export interface User {
      * @memberof User
      */
     expired: Date;
+}
+
+/**
+ * 
+ * @export
+ * @interface UsersOfRole
+ */
+export interface UsersOfRole {
+    /**
+     * 
+     * @type {string}
+     * @memberof UsersOfRole
+     */
+    role: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof UsersOfRole
+     */
+    userIds: Array<string>;
+}
+
+/**
+ * 
+ * @export
+ * @interface Widget
+ */
+export interface Widget {
+    /**
+     * 
+     * @type {string}
+     * @memberof Widget
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Widget
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Widget
+     */
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Widget
+     */
+    type: string;
+    /**
+     * 
+     * @type {any}
+     * @memberof Widget
+     */
+    params: any;
+}
+
+/**
+ * 
+ * @export
+ * @interface WidgetResponse
+ */
+export interface WidgetResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof WidgetResponse
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WidgetResponse
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WidgetResponse
+     */
+    title: string;
+    /**
+     * 
+     * @type {any}
+     * @memberof WidgetResponse
+     */
+    params: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof WidgetResponse
+     */
+    type: string;
 }
 
 
@@ -1975,6 +3829,2558 @@ export class AuthApi extends BaseAPI {
 }
 
 /**
+ * CmsApi - axios parameter creator
+ * @export
+ */
+export const CmsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {CreateArticleDto} createArticleDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleCreate(createArticleDto: CreateArticleDto, options: any = {}): RequestArgs {
+            // verify required parameter 'createArticleDto' is not null or undefined
+            if (createArticleDto === null || createArticleDto === undefined) {
+                throw new RequiredError('createArticleDto','Required parameter createArticleDto was null or undefined when calling articleCreate.');
+            }
+            const localVarPath = `/article/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"CreateArticleDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(createArticleDto || {}) : (createArticleDto || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleFindOne(id: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling articleFindOne.');
+            }
+            const localVarPath = `/article/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [category] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleQuery(keyword?: string, category?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+            const localVarPath = `/article/query`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (category !== undefined) {
+                localVarQueryParameter['category'] = category;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (size !== undefined) {
+                localVarQueryParameter['size'] = size;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleRemove(id: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling articleRemove.');
+            }
+            const localVarPath = `/article/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/article/search`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (value !== undefined) {
+                localVarQueryParameter['value'] = value;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {EditArticleDto} editArticleDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleUpdate(editArticleDto: EditArticleDto, options: any = {}): RequestArgs {
+            // verify required parameter 'editArticleDto' is not null or undefined
+            if (editArticleDto === null || editArticleDto === undefined) {
+                throw new RequiredError('editArticleDto','Required parameter editArticleDto was null or undefined when calling articleUpdate.');
+            }
+            const localVarPath = `/article/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"EditArticleDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(editArticleDto || {}) : (editArticleDto || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {CreateCategoryDto} createCategoryDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categoryCreate(createCategoryDto: CreateCategoryDto, options: any = {}): RequestArgs {
+            // verify required parameter 'createCategoryDto' is not null or undefined
+            if (createCategoryDto === null || createCategoryDto === undefined) {
+                throw new RequiredError('createCategoryDto','Required parameter createCategoryDto was null or undefined when calling categoryCreate.');
+            }
+            const localVarPath = `/category/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"CreateCategoryDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(createCategoryDto || {}) : (createCategoryDto || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categoryFindOne(id: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling categoryFindOne.');
+            }
+            const localVarPath = `/category/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categoryQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+            const localVarPath = `/category/query`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (size !== undefined) {
+                localVarQueryParameter['size'] = size;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categoryRemove(id: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling categoryRemove.');
+            }
+            const localVarPath = `/category/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categorySearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/category/search`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (value !== undefined) {
+                localVarQueryParameter['value'] = value;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {EditCategoryDto} editCategoryDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categoryUpdate(editCategoryDto: EditCategoryDto, options: any = {}): RequestArgs {
+            // verify required parameter 'editCategoryDto' is not null or undefined
+            if (editCategoryDto === null || editCategoryDto === undefined) {
+                throw new RequiredError('editCategoryDto','Required parameter editCategoryDto was null or undefined when calling categoryUpdate.');
+            }
+            const localVarPath = `/category/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"EditCategoryDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(editCategoryDto || {}) : (editCategoryDto || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {CreateMediaDto} createMediaDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaCreate(createMediaDto: CreateMediaDto, options: any = {}): RequestArgs {
+            // verify required parameter 'createMediaDto' is not null or undefined
+            if (createMediaDto === null || createMediaDto === undefined) {
+                throw new RequiredError('createMediaDto','Required parameter createMediaDto was null or undefined when calling mediaCreate.');
+            }
+            const localVarPath = `/media/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"CreateMediaDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(createMediaDto || {}) : (createMediaDto || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaFindOne(id: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling mediaFindOne.');
+            }
+            const localVarPath = `/media/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+            const localVarPath = `/media/query`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (size !== undefined) {
+                localVarQueryParameter['size'] = size;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaRemove(id: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling mediaRemove.');
+            }
+            const localVarPath = `/media/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/media/search`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (value !== undefined) {
+                localVarQueryParameter['value'] = value;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {EditMediaDto} editMediaDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaUpdate(editMediaDto: EditMediaDto, options: any = {}): RequestArgs {
+            // verify required parameter 'editMediaDto' is not null or undefined
+            if (editMediaDto === null || editMediaDto === undefined) {
+                throw new RequiredError('editMediaDto','Required parameter editMediaDto was null or undefined when calling mediaUpdate.');
+            }
+            const localVarPath = `/media/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"EditMediaDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(editMediaDto || {}) : (editMediaDto || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {CreatePageDto} createPageDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageCreate(createPageDto: CreatePageDto, options: any = {}): RequestArgs {
+            // verify required parameter 'createPageDto' is not null or undefined
+            if (createPageDto === null || createPageDto === undefined) {
+                throw new RequiredError('createPageDto','Required parameter createPageDto was null or undefined when calling pageCreate.');
+            }
+            const localVarPath = `/page/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"CreatePageDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(createPageDto || {}) : (createPageDto || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageFindOne(id: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling pageFindOne.');
+            }
+            const localVarPath = `/page/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+            const localVarPath = `/page/query`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (size !== undefined) {
+                localVarQueryParameter['size'] = size;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageRemove(id: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling pageRemove.');
+            }
+            const localVarPath = `/page/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/page/search`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (value !== undefined) {
+                localVarQueryParameter['value'] = value;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {EditPageDto} editPageDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageUpdate(editPageDto: EditPageDto, options: any = {}): RequestArgs {
+            // verify required parameter 'editPageDto' is not null or undefined
+            if (editPageDto === null || editPageDto === undefined) {
+                throw new RequiredError('editPageDto','Required parameter editPageDto was null or undefined when calling pageUpdate.');
+            }
+            const localVarPath = `/page/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"EditPageDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(editPageDto || {}) : (editPageDto || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {CreatePhotoDto} createPhotoDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoCreate(createPhotoDto: CreatePhotoDto, options: any = {}): RequestArgs {
+            // verify required parameter 'createPhotoDto' is not null or undefined
+            if (createPhotoDto === null || createPhotoDto === undefined) {
+                throw new RequiredError('createPhotoDto','Required parameter createPhotoDto was null or undefined when calling photoCreate.');
+            }
+            const localVarPath = `/photo/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"CreatePhotoDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(createPhotoDto || {}) : (createPhotoDto || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoFindOne(id: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling photoFindOne.');
+            }
+            const localVarPath = `/photo/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+            const localVarPath = `/photo/query`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (size !== undefined) {
+                localVarQueryParameter['size'] = size;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoRemove(id: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling photoRemove.');
+            }
+            const localVarPath = `/photo/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/photo/search`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (value !== undefined) {
+                localVarQueryParameter['value'] = value;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {EditPhotoDto} editPhotoDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoUpdate(editPhotoDto: EditPhotoDto, options: any = {}): RequestArgs {
+            // verify required parameter 'editPhotoDto' is not null or undefined
+            if (editPhotoDto === null || editPhotoDto === undefined) {
+                throw new RequiredError('editPhotoDto','Required parameter editPhotoDto was null or undefined when calling photoUpdate.');
+            }
+            const localVarPath = `/photo/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"EditPhotoDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(editPhotoDto || {}) : (editPhotoDto || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {CreateWidgetDto} createWidgetDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetCreate(createWidgetDto: CreateWidgetDto, options: any = {}): RequestArgs {
+            // verify required parameter 'createWidgetDto' is not null or undefined
+            if (createWidgetDto === null || createWidgetDto === undefined) {
+                throw new RequiredError('createWidgetDto','Required parameter createWidgetDto was null or undefined when calling widgetCreate.');
+            }
+            const localVarPath = `/widget/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"CreateWidgetDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(createWidgetDto || {}) : (createWidgetDto || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetFindOne(id: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling widgetFindOne.');
+            }
+            const localVarPath = `/widget/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+            const localVarPath = `/widget/query`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (size !== undefined) {
+                localVarQueryParameter['size'] = size;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetRemove(id: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling widgetRemove.');
+            }
+            const localVarPath = `/widget/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/widget/search`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (value !== undefined) {
+                localVarQueryParameter['value'] = value;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {EditWidgetDto} editWidgetDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetUpdate(editWidgetDto: EditWidgetDto, options: any = {}): RequestArgs {
+            // verify required parameter 'editWidgetDto' is not null or undefined
+            if (editWidgetDto === null || editWidgetDto === undefined) {
+                throw new RequiredError('editWidgetDto','Required parameter editWidgetDto was null or undefined when calling widgetUpdate.');
+            }
+            const localVarPath = `/widget/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"EditWidgetDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(editWidgetDto || {}) : (editWidgetDto || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * CmsApi - functional programming interface
+ * @export
+ */
+export const CmsApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {CreateArticleDto} createArticleDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleCreate(createArticleDto: CreateArticleDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArticleResponse> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).articleCreate(createArticleDto, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Article> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).articleFindOne(id, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [category] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleQuery(keyword?: string, category?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListArticle> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).articleQuery(keyword, category, page, size, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleRemove(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).articleRemove(id, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).articleSearch(keyword, value, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {EditArticleDto} editArticleDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleUpdate(editArticleDto: EditArticleDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArticleResponse> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).articleUpdate(editArticleDto, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {CreateCategoryDto} createCategoryDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categoryCreate(createCategoryDto: CreateCategoryDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<CategoryResponse> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).categoryCreate(createCategoryDto, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categoryFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Category> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).categoryFindOne(id, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categoryQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListCategory> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).categoryQuery(keyword, page, size, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categoryRemove(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).categoryRemove(id, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categorySearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).categorySearch(keyword, value, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {EditCategoryDto} editCategoryDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categoryUpdate(editCategoryDto: EditCategoryDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<CategoryResponse> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).categoryUpdate(editCategoryDto, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {CreateMediaDto} createMediaDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaCreate(createMediaDto: CreateMediaDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<MediaResponse> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).mediaCreate(createMediaDto, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Media> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).mediaFindOne(id, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListMedia> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).mediaQuery(keyword, page, size, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaRemove(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).mediaRemove(id, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).mediaSearch(keyword, value, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {EditMediaDto} editMediaDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaUpdate(editMediaDto: EditMediaDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<MediaResponse> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).mediaUpdate(editMediaDto, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {CreatePageDto} createPageDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageCreate(createPageDto: CreatePageDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PageResponse> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).pageCreate(createPageDto, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Page> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).pageFindOne(id, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListPage> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).pageQuery(keyword, page, size, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageRemove(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).pageRemove(id, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).pageSearch(keyword, value, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {EditPageDto} editPageDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageUpdate(editPageDto: EditPageDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PageResponse> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).pageUpdate(editPageDto, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {CreatePhotoDto} createPhotoDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoCreate(createPhotoDto: CreatePhotoDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PhotoRes> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).photoCreate(createPhotoDto, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Photo> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).photoFindOne(id, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListPhoto> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).photoQuery(keyword, page, size, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoRemove(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).photoRemove(id, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).photoSearch(keyword, value, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {EditPhotoDto} editPhotoDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoUpdate(editPhotoDto: EditPhotoDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PhotoRes> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).photoUpdate(editPhotoDto, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {CreateWidgetDto} createWidgetDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetCreate(createWidgetDto: CreateWidgetDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<WidgetResponse> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).widgetCreate(createWidgetDto, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Widget> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).widgetFindOne(id, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListWidget> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).widgetQuery(keyword, page, size, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetRemove(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).widgetRemove(id, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).widgetSearch(keyword, value, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {EditWidgetDto} editWidgetDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetUpdate(editWidgetDto: EditWidgetDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<WidgetResponse> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).widgetUpdate(editWidgetDto, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+    }
+};
+
+/**
+ * CmsApi - factory interface
+ * @export
+ */
+export const CmsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    return {
+        /**
+         * 
+         * @param {CreateArticleDto} createArticleDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleCreate(createArticleDto: CreateArticleDto, options?: any) {
+            return CmsApiFp(configuration).articleCreate(createArticleDto, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleFindOne(id: string, options?: any) {
+            return CmsApiFp(configuration).articleFindOne(id, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [category] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleQuery(keyword?: string, category?: string, page?: number, size?: number, options?: any) {
+            return CmsApiFp(configuration).articleQuery(keyword, category, page, size, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleRemove(id: string, options?: any) {
+            return CmsApiFp(configuration).articleRemove(id, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleSearch(keyword?: string, value?: string, options?: any) {
+            return CmsApiFp(configuration).articleSearch(keyword, value, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {EditArticleDto} editArticleDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        articleUpdate(editArticleDto: EditArticleDto, options?: any) {
+            return CmsApiFp(configuration).articleUpdate(editArticleDto, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {CreateCategoryDto} createCategoryDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categoryCreate(createCategoryDto: CreateCategoryDto, options?: any) {
+            return CmsApiFp(configuration).categoryCreate(createCategoryDto, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categoryFindOne(id: string, options?: any) {
+            return CmsApiFp(configuration).categoryFindOne(id, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categoryQuery(keyword?: string, page?: number, size?: number, options?: any) {
+            return CmsApiFp(configuration).categoryQuery(keyword, page, size, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categoryRemove(id: string, options?: any) {
+            return CmsApiFp(configuration).categoryRemove(id, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categorySearch(keyword?: string, value?: string, options?: any) {
+            return CmsApiFp(configuration).categorySearch(keyword, value, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {EditCategoryDto} editCategoryDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categoryUpdate(editCategoryDto: EditCategoryDto, options?: any) {
+            return CmsApiFp(configuration).categoryUpdate(editCategoryDto, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {CreateMediaDto} createMediaDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaCreate(createMediaDto: CreateMediaDto, options?: any) {
+            return CmsApiFp(configuration).mediaCreate(createMediaDto, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaFindOne(id: string, options?: any) {
+            return CmsApiFp(configuration).mediaFindOne(id, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaQuery(keyword?: string, page?: number, size?: number, options?: any) {
+            return CmsApiFp(configuration).mediaQuery(keyword, page, size, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaRemove(id: string, options?: any) {
+            return CmsApiFp(configuration).mediaRemove(id, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaSearch(keyword?: string, value?: string, options?: any) {
+            return CmsApiFp(configuration).mediaSearch(keyword, value, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {EditMediaDto} editMediaDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaUpdate(editMediaDto: EditMediaDto, options?: any) {
+            return CmsApiFp(configuration).mediaUpdate(editMediaDto, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {CreatePageDto} createPageDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageCreate(createPageDto: CreatePageDto, options?: any) {
+            return CmsApiFp(configuration).pageCreate(createPageDto, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageFindOne(id: string, options?: any) {
+            return CmsApiFp(configuration).pageFindOne(id, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageQuery(keyword?: string, page?: number, size?: number, options?: any) {
+            return CmsApiFp(configuration).pageQuery(keyword, page, size, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageRemove(id: string, options?: any) {
+            return CmsApiFp(configuration).pageRemove(id, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageSearch(keyword?: string, value?: string, options?: any) {
+            return CmsApiFp(configuration).pageSearch(keyword, value, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {EditPageDto} editPageDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        pageUpdate(editPageDto: EditPageDto, options?: any) {
+            return CmsApiFp(configuration).pageUpdate(editPageDto, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {CreatePhotoDto} createPhotoDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoCreate(createPhotoDto: CreatePhotoDto, options?: any) {
+            return CmsApiFp(configuration).photoCreate(createPhotoDto, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoFindOne(id: string, options?: any) {
+            return CmsApiFp(configuration).photoFindOne(id, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoQuery(keyword?: string, page?: number, size?: number, options?: any) {
+            return CmsApiFp(configuration).photoQuery(keyword, page, size, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoRemove(id: string, options?: any) {
+            return CmsApiFp(configuration).photoRemove(id, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoSearch(keyword?: string, value?: string, options?: any) {
+            return CmsApiFp(configuration).photoSearch(keyword, value, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {EditPhotoDto} editPhotoDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        photoUpdate(editPhotoDto: EditPhotoDto, options?: any) {
+            return CmsApiFp(configuration).photoUpdate(editPhotoDto, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {CreateWidgetDto} createWidgetDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetCreate(createWidgetDto: CreateWidgetDto, options?: any) {
+            return CmsApiFp(configuration).widgetCreate(createWidgetDto, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetFindOne(id: string, options?: any) {
+            return CmsApiFp(configuration).widgetFindOne(id, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetQuery(keyword?: string, page?: number, size?: number, options?: any) {
+            return CmsApiFp(configuration).widgetQuery(keyword, page, size, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetRemove(id: string, options?: any) {
+            return CmsApiFp(configuration).widgetRemove(id, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetSearch(keyword?: string, value?: string, options?: any) {
+            return CmsApiFp(configuration).widgetSearch(keyword, value, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {EditWidgetDto} editWidgetDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        widgetUpdate(editWidgetDto: EditWidgetDto, options?: any) {
+            return CmsApiFp(configuration).widgetUpdate(editWidgetDto, options)(axios, basePath);
+        },
+    };
+};
+
+/**
+ * CmsApi - object-oriented interface
+ * @export
+ * @class CmsApi
+ * @extends {BaseAPI}
+ */
+export class CmsApi extends BaseAPI {
+    /**
+     * 
+     * @param {CreateArticleDto} createArticleDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public articleCreate(createArticleDto: CreateArticleDto, options?: any) {
+        return CmsApiFp(this.configuration).articleCreate(createArticleDto, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public articleFindOne(id: string, options?: any) {
+        return CmsApiFp(this.configuration).articleFindOne(id, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {string} [category] 
+     * @param {number} [page] 
+     * @param {number} [size] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public articleQuery(keyword?: string, category?: string, page?: number, size?: number, options?: any) {
+        return CmsApiFp(this.configuration).articleQuery(keyword, category, page, size, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public articleRemove(id: string, options?: any) {
+        return CmsApiFp(this.configuration).articleRemove(id, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {string} [value] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public articleSearch(keyword?: string, value?: string, options?: any) {
+        return CmsApiFp(this.configuration).articleSearch(keyword, value, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {EditArticleDto} editArticleDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public articleUpdate(editArticleDto: EditArticleDto, options?: any) {
+        return CmsApiFp(this.configuration).articleUpdate(editArticleDto, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {CreateCategoryDto} createCategoryDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public categoryCreate(createCategoryDto: CreateCategoryDto, options?: any) {
+        return CmsApiFp(this.configuration).categoryCreate(createCategoryDto, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public categoryFindOne(id: string, options?: any) {
+        return CmsApiFp(this.configuration).categoryFindOne(id, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {number} [page] 
+     * @param {number} [size] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public categoryQuery(keyword?: string, page?: number, size?: number, options?: any) {
+        return CmsApiFp(this.configuration).categoryQuery(keyword, page, size, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public categoryRemove(id: string, options?: any) {
+        return CmsApiFp(this.configuration).categoryRemove(id, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {string} [value] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public categorySearch(keyword?: string, value?: string, options?: any) {
+        return CmsApiFp(this.configuration).categorySearch(keyword, value, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {EditCategoryDto} editCategoryDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public categoryUpdate(editCategoryDto: EditCategoryDto, options?: any) {
+        return CmsApiFp(this.configuration).categoryUpdate(editCategoryDto, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {CreateMediaDto} createMediaDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public mediaCreate(createMediaDto: CreateMediaDto, options?: any) {
+        return CmsApiFp(this.configuration).mediaCreate(createMediaDto, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public mediaFindOne(id: string, options?: any) {
+        return CmsApiFp(this.configuration).mediaFindOne(id, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {number} [page] 
+     * @param {number} [size] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public mediaQuery(keyword?: string, page?: number, size?: number, options?: any) {
+        return CmsApiFp(this.configuration).mediaQuery(keyword, page, size, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public mediaRemove(id: string, options?: any) {
+        return CmsApiFp(this.configuration).mediaRemove(id, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {string} [value] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public mediaSearch(keyword?: string, value?: string, options?: any) {
+        return CmsApiFp(this.configuration).mediaSearch(keyword, value, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {EditMediaDto} editMediaDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public mediaUpdate(editMediaDto: EditMediaDto, options?: any) {
+        return CmsApiFp(this.configuration).mediaUpdate(editMediaDto, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {CreatePageDto} createPageDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public pageCreate(createPageDto: CreatePageDto, options?: any) {
+        return CmsApiFp(this.configuration).pageCreate(createPageDto, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public pageFindOne(id: string, options?: any) {
+        return CmsApiFp(this.configuration).pageFindOne(id, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {number} [page] 
+     * @param {number} [size] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public pageQuery(keyword?: string, page?: number, size?: number, options?: any) {
+        return CmsApiFp(this.configuration).pageQuery(keyword, page, size, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public pageRemove(id: string, options?: any) {
+        return CmsApiFp(this.configuration).pageRemove(id, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {string} [value] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public pageSearch(keyword?: string, value?: string, options?: any) {
+        return CmsApiFp(this.configuration).pageSearch(keyword, value, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {EditPageDto} editPageDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public pageUpdate(editPageDto: EditPageDto, options?: any) {
+        return CmsApiFp(this.configuration).pageUpdate(editPageDto, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {CreatePhotoDto} createPhotoDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public photoCreate(createPhotoDto: CreatePhotoDto, options?: any) {
+        return CmsApiFp(this.configuration).photoCreate(createPhotoDto, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public photoFindOne(id: string, options?: any) {
+        return CmsApiFp(this.configuration).photoFindOne(id, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {number} [page] 
+     * @param {number} [size] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public photoQuery(keyword?: string, page?: number, size?: number, options?: any) {
+        return CmsApiFp(this.configuration).photoQuery(keyword, page, size, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public photoRemove(id: string, options?: any) {
+        return CmsApiFp(this.configuration).photoRemove(id, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {string} [value] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public photoSearch(keyword?: string, value?: string, options?: any) {
+        return CmsApiFp(this.configuration).photoSearch(keyword, value, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {EditPhotoDto} editPhotoDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public photoUpdate(editPhotoDto: EditPhotoDto, options?: any) {
+        return CmsApiFp(this.configuration).photoUpdate(editPhotoDto, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {CreateWidgetDto} createWidgetDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public widgetCreate(createWidgetDto: CreateWidgetDto, options?: any) {
+        return CmsApiFp(this.configuration).widgetCreate(createWidgetDto, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public widgetFindOne(id: string, options?: any) {
+        return CmsApiFp(this.configuration).widgetFindOne(id, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {number} [page] 
+     * @param {number} [size] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public widgetQuery(keyword?: string, page?: number, size?: number, options?: any) {
+        return CmsApiFp(this.configuration).widgetQuery(keyword, page, size, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public widgetRemove(id: string, options?: any) {
+        return CmsApiFp(this.configuration).widgetRemove(id, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {string} [value] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public widgetSearch(keyword?: string, value?: string, options?: any) {
+        return CmsApiFp(this.configuration).widgetSearch(keyword, value, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {EditWidgetDto} editWidgetDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public widgetUpdate(editWidgetDto: EditWidgetDto, options?: any) {
+        return CmsApiFp(this.configuration).widgetUpdate(editWidgetDto, options)(this.axios, this.basePath);
+    }
+
+}
+
+/**
  * CoreApi - axios parameter creator
  * @export
  */
@@ -2153,6 +6559,185 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"EditDictReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(editDictReq || {}) : (editDictReq || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {CreateGroupReq} createGroupReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsCreate(createGroupReq: CreateGroupReq, options: any = {}): RequestArgs {
+            // verify required parameter 'createGroupReq' is not null or undefined
+            if (createGroupReq === null || createGroupReq === undefined) {
+                throw new RequiredError('createGroupReq','Required parameter createGroupReq was null or undefined when calling groupsCreate.');
+            }
+            const localVarPath = `/groups/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"CreateGroupReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(createGroupReq || {}) : (createGroupReq || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsFindOne(id: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling groupsFindOne.');
+            }
+            const localVarPath = `/groups/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [index] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
+            const localVarPath = `/groups/query`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (index !== undefined) {
+                localVarQueryParameter['index'] = index;
+            }
+
+            if (size !== undefined) {
+                localVarQueryParameter['size'] = size;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/groups/search`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (value !== undefined) {
+                localVarQueryParameter['value'] = value;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {EditGroupReq} editGroupReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsUpdate(editGroupReq: EditGroupReq, options: any = {}): RequestArgs {
+            // verify required parameter 'editGroupReq' is not null or undefined
+            if (editGroupReq === null || editGroupReq === undefined) {
+                throw new RequiredError('editGroupReq','Required parameter editGroupReq was null or undefined when calling groupsUpdate.');
+            }
+            const localVarPath = `/groups/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"EditGroupReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(editGroupReq || {}) : (editGroupReq || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -2689,6 +7274,185 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {CreateRoleReq} createRoleReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rolesCreate(createRoleReq: CreateRoleReq, options: any = {}): RequestArgs {
+            // verify required parameter 'createRoleReq' is not null or undefined
+            if (createRoleReq === null || createRoleReq === undefined) {
+                throw new RequiredError('createRoleReq','Required parameter createRoleReq was null or undefined when calling rolesCreate.');
+            }
+            const localVarPath = `/roles/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"CreateRoleReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(createRoleReq || {}) : (createRoleReq || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rolesFindOne(id: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling rolesFindOne.');
+            }
+            const localVarPath = `/roles/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [index] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rolesQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
+            const localVarPath = `/roles/query`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (index !== undefined) {
+                localVarQueryParameter['index'] = index;
+            }
+
+            if (size !== undefined) {
+                localVarQueryParameter['size'] = size;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rolesSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/roles/search`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (value !== undefined) {
+                localVarQueryParameter['value'] = value;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {EditRoleReq} editRoleReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rolesUpdate(editRoleReq: EditRoleReq, options: any = {}): RequestArgs {
+            // verify required parameter 'editRoleReq' is not null or undefined
+            if (editRoleReq === null || editRoleReq === undefined) {
+                throw new RequiredError('editRoleReq','Required parameter editRoleReq was null or undefined when calling rolesUpdate.');
+            }
+            const localVarPath = `/roles/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"EditRoleReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(editRoleReq || {}) : (editRoleReq || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {CreateSettingReq} createSettingReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2978,6 +7742,41 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {UsersOfRole} usersOfRole 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersAddUsersToRole(usersOfRole: UsersOfRole, options: any = {}): RequestArgs {
+            // verify required parameter 'usersOfRole' is not null or undefined
+            if (usersOfRole === null || usersOfRole === undefined) {
+                throw new RequiredError('usersOfRole','Required parameter usersOfRole was null or undefined when calling usersAddUsersToRole.');
+            }
+            const localVarPath = `/users/role`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"UsersOfRole" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(usersOfRole || {}) : (usersOfRole || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {CreateUserReq} createUserReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3098,6 +7897,50 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} role 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersRemoveAccountFromRole(role: string, id: string, options: any = {}): RequestArgs {
+            // verify required parameter 'role' is not null or undefined
+            if (role === null || role === undefined) {
+                throw new RequiredError('role','Required parameter role was null or undefined when calling usersRemoveAccountFromRole.');
+            }
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling usersRemoveAccountFromRole.');
+            }
+            const localVarPath = `/users/role`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (role !== undefined) {
+                localVarQueryParameter['role'] = role;
+            }
+
+            if (id !== undefined) {
+                localVarQueryParameter['id'] = id;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -3253,6 +8096,74 @@ export const CoreApiFp = function(configuration?: Configuration) {
          */
         dictsUpdate(editDictReq: EditDictReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dict> {
             const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).dictsUpdate(editDictReq, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {CreateGroupReq} createGroupReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsCreate(createGroupReq: CreateGroupReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsCreate(createGroupReq, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Group> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsFindOne(id, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [index] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsQuery(keyword?: string, index?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListGroup> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsQuery(keyword, index, size, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsSearch(keyword, value, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {EditGroupReq} editGroupReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsUpdate(editGroupReq: EditGroupReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Group> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsUpdate(editGroupReq, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -3463,6 +8374,74 @@ export const CoreApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {CreateRoleReq} createRoleReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rolesCreate(createRoleReq: CreateRoleReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).rolesCreate(createRoleReq, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rolesFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Role> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).rolesFindOne(id, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [index] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rolesQuery(keyword?: string, index?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListRole> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).rolesQuery(keyword, index, size, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rolesSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).rolesSearch(keyword, value, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {EditRoleReq} editRoleReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rolesUpdate(editRoleReq: EditRoleReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Role> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).rolesUpdate(editRoleReq, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @param {CreateSettingReq} createSettingReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3571,6 +8550,19 @@ export const CoreApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {UsersOfRole} usersOfRole 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersAddUsersToRole(usersOfRole: UsersOfRole, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersAddUsersToRole(usersOfRole, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @param {CreateUserReq} createUserReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3617,6 +8609,20 @@ export const CoreApiFp = function(configuration?: Configuration) {
          */
         usersQuery(keyword?: string, index?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListUser> {
             const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersQuery(keyword, index, size, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} role 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersRemoveAccountFromRole(role: string, id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersRemoveAccountFromRole(role, id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -3705,6 +8711,54 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
          */
         dictsUpdate(editDictReq: EditDictReq, options?: any) {
             return CoreApiFp(configuration).dictsUpdate(editDictReq, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {CreateGroupReq} createGroupReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsCreate(createGroupReq: CreateGroupReq, options?: any) {
+            return CoreApiFp(configuration).groupsCreate(createGroupReq, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsFindOne(id: string, options?: any) {
+            return CoreApiFp(configuration).groupsFindOne(id, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [index] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsQuery(keyword?: string, index?: number, size?: number, options?: any) {
+            return CoreApiFp(configuration).groupsQuery(keyword, index, size, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsSearch(keyword?: string, value?: string, options?: any) {
+            return CoreApiFp(configuration).groupsSearch(keyword, value, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {EditGroupReq} editGroupReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsUpdate(editGroupReq: EditGroupReq, options?: any) {
+            return CoreApiFp(configuration).groupsUpdate(editGroupReq, options)(axios, basePath);
         },
         /**
          * 
@@ -3851,6 +8905,54 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {CreateRoleReq} createRoleReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rolesCreate(createRoleReq: CreateRoleReq, options?: any) {
+            return CoreApiFp(configuration).rolesCreate(createRoleReq, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rolesFindOne(id: string, options?: any) {
+            return CoreApiFp(configuration).rolesFindOne(id, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [index] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rolesQuery(keyword?: string, index?: number, size?: number, options?: any) {
+            return CoreApiFp(configuration).rolesQuery(keyword, index, size, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rolesSearch(keyword?: string, value?: string, options?: any) {
+            return CoreApiFp(configuration).rolesSearch(keyword, value, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {EditRoleReq} editRoleReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rolesUpdate(editRoleReq: EditRoleReq, options?: any) {
+            return CoreApiFp(configuration).rolesUpdate(editRoleReq, options)(axios, basePath);
+        },
+        /**
+         * 
          * @param {CreateSettingReq} createSettingReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3927,6 +9029,15 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {UsersOfRole} usersOfRole 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersAddUsersToRole(usersOfRole: UsersOfRole, options?: any) {
+            return CoreApiFp(configuration).usersAddUsersToRole(usersOfRole, options)(axios, basePath);
+        },
+        /**
+         * 
          * @param {CreateUserReq} createUserReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3961,6 +9072,16 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
          */
         usersQuery(keyword?: string, index?: number, size?: number, options?: any) {
             return CoreApiFp(configuration).usersQuery(keyword, index, size, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} role 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersRemoveAccountFromRole(role: string, id: string, options?: any) {
+            return CoreApiFp(configuration).usersRemoveAccountFromRole(role, id, options)(axios, basePath);
         },
         /**
          * 
@@ -4047,6 +9168,64 @@ export class CoreApi extends BaseAPI {
      */
     public dictsUpdate(editDictReq: EditDictReq, options?: any) {
         return CoreApiFp(this.configuration).dictsUpdate(editDictReq, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {CreateGroupReq} createGroupReq 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public groupsCreate(createGroupReq: CreateGroupReq, options?: any) {
+        return CoreApiFp(this.configuration).groupsCreate(createGroupReq, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public groupsFindOne(id: string, options?: any) {
+        return CoreApiFp(this.configuration).groupsFindOne(id, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {number} [index] 
+     * @param {number} [size] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public groupsQuery(keyword?: string, index?: number, size?: number, options?: any) {
+        return CoreApiFp(this.configuration).groupsQuery(keyword, index, size, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {string} [value] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public groupsSearch(keyword?: string, value?: string, options?: any) {
+        return CoreApiFp(this.configuration).groupsSearch(keyword, value, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {EditGroupReq} editGroupReq 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public groupsUpdate(editGroupReq: EditGroupReq, options?: any) {
+        return CoreApiFp(this.configuration).groupsUpdate(editGroupReq, options)(this.axios, this.basePath);
     }
 
     /**
@@ -4224,6 +9403,64 @@ export class CoreApi extends BaseAPI {
 
     /**
      * 
+     * @param {CreateRoleReq} createRoleReq 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public rolesCreate(createRoleReq: CreateRoleReq, options?: any) {
+        return CoreApiFp(this.configuration).rolesCreate(createRoleReq, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public rolesFindOne(id: string, options?: any) {
+        return CoreApiFp(this.configuration).rolesFindOne(id, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {number} [index] 
+     * @param {number} [size] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public rolesQuery(keyword?: string, index?: number, size?: number, options?: any) {
+        return CoreApiFp(this.configuration).rolesQuery(keyword, index, size, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {string} [value] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public rolesSearch(keyword?: string, value?: string, options?: any) {
+        return CoreApiFp(this.configuration).rolesSearch(keyword, value, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {EditRoleReq} editRoleReq 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public rolesUpdate(editRoleReq: EditRoleReq, options?: any) {
+        return CoreApiFp(this.configuration).rolesUpdate(editRoleReq, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
      * @param {CreateSettingReq} createSettingReq 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4316,6 +9553,17 @@ export class CoreApi extends BaseAPI {
 
     /**
      * 
+     * @param {UsersOfRole} usersOfRole 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public usersAddUsersToRole(usersOfRole: UsersOfRole, options?: any) {
+        return CoreApiFp(this.configuration).usersAddUsersToRole(usersOfRole, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
      * @param {CreateUserReq} createUserReq 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4357,6 +9605,18 @@ export class CoreApi extends BaseAPI {
      */
     public usersQuery(keyword?: string, index?: number, size?: number, options?: any) {
         return CoreApiFp(this.configuration).usersQuery(keyword, index, size, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} role 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public usersRemoveAccountFromRole(role: string, id: string, options?: any) {
+        return CoreApiFp(this.configuration).usersRemoveAccountFromRole(role, id, options)(this.axios, this.basePath);
     }
 
     /**

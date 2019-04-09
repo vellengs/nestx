@@ -13,6 +13,10 @@ import { MockController } from './mock.controller';
 import { MockService } from './mock.service';
 import { SettingsController } from './settings.controller';
 import { SettingsService } from './settings.service';
+import { RolesController } from './roles.controller';
+import { RolesService } from './roles.service';
+import { GroupsController } from './groups.controller';
+import { GroupsService } from './groups.service';
 
 export const CoreControllers = [
     DictsController,
@@ -22,6 +26,8 @@ export const CoreControllers = [
     NoticesController,
     MockController,
     SettingsController,
+    RolesController,
+    GroupsController,
 ];
 
 export const CoreServices = [
@@ -32,4 +38,6 @@ export const CoreServices = [
     NoticesService,
     MockService,
     SettingsService,
+    RolesService,
+    GroupsService,
 ];

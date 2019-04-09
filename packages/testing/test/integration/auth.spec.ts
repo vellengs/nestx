@@ -13,7 +13,7 @@ describe('Auth module test', () => {
 
     it('user login', async () => {
         const res = await login();
-        expect(res.status).toBe(201);
+        expect(res.status).toBe(200);
     });
 
     it('user register', async () => {

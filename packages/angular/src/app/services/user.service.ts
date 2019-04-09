@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SettingsService, _HttpClient } from '@delon/theme';
-import { CoreService, LoginDto } from 'generated';
+import { CoreService, LoginReq, AuthService } from 'generated';
 // TODO remove array-to-tree
 import * as treeify from 'array-to-tree';
 import { NzTreeNode } from 'ng-zorro-antd';
@@ -19,6 +19,7 @@ export class UserService {
     constructor(
         public client: _HttpClient,
         public settings: SettingsService,
+        public authService: AuthService,
         public coreService: CoreService
     ) {
 
@@ -169,8 +170,8 @@ export class UserService {
         };
     }
 
-    async login(model: LoginDto) {
-        const user = await this.coreService.userLogin(model).toPromise();
+    async login(model: LoginReq) {
+        const user = await this.authService.authLogin(model).toPromise();
         this.settings.setUser(user);
         return user;
     }
@@ -180,13 +181,13 @@ export class UserService {
             return true;
         }
         this.authenticating = true;
-        const user = await this.coreService.accountProfile().toPromise() || {};
+        const user = await this.coreService.usersProfile().toPromise() || {};
         this.settings.setUser(user);
         return user;
     }
 
     async logout() {
-        await this.coreService.userLogout().toPromise();
+        await this.authService.authLogout().toPromise();
         this.settings.setUser(null);
         this.user = {};
     }

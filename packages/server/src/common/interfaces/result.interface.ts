@@ -11,5 +11,5 @@ export interface Result {
 
 export interface Query {
     size: number;
-    index: number;
+    page: number;
 }

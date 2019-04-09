@@ -4,7 +4,7 @@ import * as https from 'https';
 import * as fs from 'fs';
 import * as shell from "shelljs";
 
-const unzip = require('unzip');
+const unzip = require('unzip2');
 const rimraf = require('rimraf');
 
 function getGateway(name: string) {
@@ -33,22 +33,25 @@ async function saveFile(name: string, client: AxiosInstance, downloadLink: strin
         url: downloadLink,
         responseType: 'stream'
     })
-    const zipFilePath = path.resolve(process.cwd(), 'swagger.zip');
-    const templateFolder = path.resolve(process.cwd(), 'decompress', `${name}-client`);
-    const decompressFolder = path.resolve(process.cwd(), 'decompress');
+    const zipFilePath = path.resolve(process.cwd(), `${name}-swagger.zip`);
+    const decompressName = `decompress_${name}`;
+    const templateFolder = path.resolve(process.cwd(), decompressName, `${name}-client`);
+    const decompressFolder = path.resolve(process.cwd(), decompressName);
 
     return new Promise((resolve) => {
         response.data.pipe(fs.createWriteStream(zipFilePath))
             .on('finish', () => {
-                fs.createReadStream(zipFilePath).pipe(unzip.Extract({ path: 'decompress' }))
+                fs.createReadStream(zipFilePath).pipe(unzip.Extract({ path: decompressName }))
                     .on('close',
                         async () => {
-                            console.log('... extracted');
+                            console.log(name, '... extracted');
                             fs.unlinkSync(zipFilePath);
-                            console.log('... deleted zip file');
+                            console.log(name, '... deleted zip file');
                             await removeFolder(dist); // for override folder;
+                            console.log(name, '... cleared dist');
                             fs.renameSync(templateFolder, dist);
                             await removeFolder(decompressFolder);
+                            console.log(name, '... cleared decompress folder');
                             resolve(dist);
                         });
             });
@@ -56,6 +59,7 @@ async function saveFile(name: string, client: AxiosInstance, downloadLink: strin
 }
 
 async function generate(name: string, dist: string, options?: { [key: string]: any }) {
+    console.log('start generate', name);
     const gateway = getGateway(name);
     const json = loadSwaggerFile();
     const client = axios.create({
@@ -69,14 +73,23 @@ async function generate(name: string, dist: string, options?: { [key: string]: a
     }
 }
 
-async function generateAll() {
-    const axiosDist = path.resolve(process.cwd(), './../react/src/generated');
+async function generateAxios() {
+    const current = process.cwd();
+    const axiosDist = path.resolve(current, './../react/src/generated');
     await generate('typescript-axios', axiosDist);
-    const angularDist = path.resolve(process.cwd(), './../angular/src/generated');
-    await generate('typescript-angular', angularDist, { ngVersion: '6.0' });
-    const testingFolder = path.resolve(process.cwd(), './../testing/generated');
+    const testingFolder = path.resolve(current, './../testing/generated');
     shell.rm('-rf', testingFolder);
     shell.cp("-R", axiosDist, testingFolder);
+}
+
+async function generateAngular() {
+    const angularDist = path.resolve(process.cwd(), './../angular/src/generated');
+    await generate('typescript-angular', angularDist, { ngVersion: '6.0' });
+}
+
+async function generateAll() {
+    await generateAngular();
+    await generateAxios();
 }
 
 generateAll().then(() => {

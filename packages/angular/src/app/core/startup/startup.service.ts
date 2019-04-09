@@ -37,8 +37,8 @@ export class StartupService {
         return new Promise((resolve) => {
             zip(
                 this.httpClient.get(`assets/i18n/${this.i18n.defaultLang}.json`),
-                this.coreService.settingGetSettingsByName('main'),
-                this.coreService.menuGetUserMenus(),
+                this.coreService.settingsGetSettingsByName('main'),
+                this.coreService.menusGetUserMenus(),
             ).pipe(
                 // 接收其他拦截器后产生的异常消息
                 catchError(([langData, settingsData, menuData]) => {

@@ -179,14 +179,14 @@ definitions:
                 type: number
                 format: double
                 description: ""
-            index:
+            page:
                 type: number
                 format: double
                 description: ""
         type: object
         required:
             - size
-            - index
+            - page
     ResultList$Dict:
         description: ""
         properties:
@@ -292,6 +292,21 @@ definitions:
         required:
             - username
             - password
+    UsersOfRole:
+        description: ""
+        properties:
+            role:
+                type: string
+                description: ""
+            userIds:
+                type: array
+                items:
+                    type: string
+                description: ""
+        type: object
+        required:
+            - role
+            - userIds
     EditUserReq:
         description: ""
         properties:
@@ -945,6 +960,238 @@ definitions:
             - key
             - value
             - description
+    CreateRoleReq:
+        description: ""
+        properties:
+            name:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            permissions:
+                type: array
+                items:
+                    type: string
+                description: ""
+        type: object
+        required:
+            - name
+            - description
+            - permissions
+    Role:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            role:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            permissions:
+                type: array
+                items:
+                    type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - role
+            - description
+            - permissions
+    EditRoleReq:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            permissions:
+                type: array
+                items:
+                    type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - description
+            - permissions
+    ResultList$Role:
+        description: ""
+        properties:
+            list:
+                type: array
+                items:
+                    $ref: '#/definitions/Role'
+                description: ""
+            count:
+                type: number
+                format: double
+                description: ""
+            query:
+                $ref: '#/definitions/Query'
+        type: object
+        required:
+            - list
+    CreateGroupReq:
+        description: ""
+        properties:
+            outid:
+                type: number
+                format: double
+                description: ""
+            name:
+                type: string
+                description: ""
+            icon:
+                type: string
+                description: ""
+            parent:
+                type: string
+                description: ""
+            paths:
+                type: array
+                items:
+                    type: object
+                description: ""
+            director:
+                type: string
+                description: ""
+            order:
+                type: number
+                format: double
+                description: ""
+            isRegion:
+                type: boolean
+                description: ""
+            description:
+                type: string
+                description: ""
+        type: object
+        required:
+            - name
+            - order
+    Group:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            outid:
+                type: number
+                format: double
+                description: ""
+            name:
+                type: string
+                description: ""
+            icon:
+                type: string
+                description: ""
+            parent:
+                type: string
+                description: ""
+            paths:
+                type: array
+                items:
+                    type: object
+                description: ""
+            director:
+                type: string
+                description: ""
+            order:
+                type: number
+                format: double
+                description: ""
+            isRegion:
+                type: boolean
+                description: ""
+            description:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - outid
+            - name
+            - icon
+            - parent
+            - paths
+            - director
+            - order
+            - isRegion
+            - description
+    EditGroupReq:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            outid:
+                type: number
+                format: double
+                description: ""
+            name:
+                type: string
+                description: ""
+            icon:
+                type: string
+                description: ""
+            parent:
+                type: string
+                description: ""
+            paths:
+                type: array
+                items:
+                    type: object
+                description: ""
+            director:
+                type: string
+                description: ""
+            order:
+                type: number
+                format: double
+                description: ""
+            isRegion:
+                type: boolean
+                description: ""
+            description:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - order
+    ResultList$Group:
+        description: ""
+        properties:
+            list:
+                type: array
+                items:
+                    $ref: '#/definitions/Group'
+                description: ""
+            count:
+                type: number
+                format: double
+                description: ""
+            query:
+                $ref: '#/definitions/Query'
+        type: object
+        required:
+            - list
     CreateProductDto:
         description: ""
         properties:
@@ -971,6 +1218,1008 @@ definitions:
         required:
             - name
             - title
+    PhotoRes:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            caption:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            ext:
+                type: string
+                description: ""
+            url:
+                type: string
+                description: ""
+            uri:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - caption
+            - description
+            - ext
+            - url
+            - uri
+    CreatePhotoDto:
+        description: ""
+        properties:
+            name:
+                type: string
+                description: ""
+            caption:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            ext:
+                type: string
+                description: ""
+            url:
+                type: string
+                description: ""
+            uri:
+                type: string
+                description: ""
+        type: object
+        required:
+            - name
+            - caption
+            - description
+            - ext
+            - url
+            - uri
+    EditPhotoDto:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            caption:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            ext:
+                type: string
+                description: ""
+            url:
+                type: string
+                description: ""
+            uri:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - caption
+            - description
+            - ext
+            - url
+            - uri
+    Photo:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            caption:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            ext:
+                type: object
+                description: ""
+            url:
+                type: string
+                description: ""
+            uri:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - caption
+            - description
+            - ext
+            - url
+            - uri
+    ResultList$Photo:
+        description: ""
+        properties:
+            list:
+                type: array
+                items:
+                    $ref: '#/definitions/Photo'
+                description: ""
+            count:
+                type: number
+                format: double
+                description: ""
+            query:
+                $ref: '#/definitions/Query'
+        type: object
+        required:
+            - list
+    ArticleResponse:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            title:
+                type: string
+                description: ""
+            picture:
+                type: string
+                description: ""
+            category:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            author:
+                type: string
+                description: ""
+            sort:
+                type: number
+                format: double
+                description: ""
+            disable:
+                type: boolean
+                description: ""
+            meta:
+                type: string
+                description: ""
+            content:
+                type: string
+                description: ""
+            template:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - title
+            - picture
+            - category
+            - description
+            - author
+            - sort
+            - disable
+            - meta
+            - content
+            - template
+    CreateArticleDto:
+        description: ""
+        properties:
+            name:
+                type: string
+                description: ""
+            title:
+                type: string
+                description: ""
+            keyword:
+                type: string
+                description: ""
+            picture:
+                type: string
+                description: ""
+            category:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            author:
+                type: string
+                description: ""
+            sort:
+                type: number
+                format: double
+                description: ""
+            disable:
+                type: boolean
+                description: ""
+            meta:
+                type: string
+                description: ""
+            content:
+                type: string
+                description: ""
+            template:
+                type: string
+                description: ""
+        type: object
+        required:
+            - name
+            - title
+            - keyword
+            - picture
+            - category
+            - description
+            - author
+            - sort
+            - disable
+            - meta
+            - content
+            - template
+    EditArticleDto:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            picture:
+                type: string
+                description: ""
+            title:
+                type: string
+                description: ""
+            keyword:
+                type: string
+                description: ""
+            category:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            author:
+                type: string
+                description: ""
+            sort:
+                type: number
+                format: double
+                description: ""
+            disable:
+                type: boolean
+                description: ""
+            meta:
+                type: string
+                description: ""
+            content:
+                type: string
+                description: ""
+            template:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - picture
+            - title
+            - keyword
+            - category
+            - description
+            - author
+            - sort
+            - disable
+            - meta
+            - content
+            - template
+    Article:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            title:
+                type: string
+                description: ""
+            picture:
+                type: string
+                description: ""
+            keyword:
+                type: string
+                description: ""
+            category:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            author:
+                type: string
+                description: ""
+            sort:
+                type: number
+                format: double
+                description: ""
+            disable:
+                type: boolean
+                description: ""
+            meta:
+                type: string
+                description: ""
+            content:
+                type: string
+                description: ""
+            template:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - title
+            - picture
+            - keyword
+            - category
+            - description
+            - author
+            - sort
+            - disable
+            - meta
+            - content
+            - template
+    ResultList$Article:
+        description: ""
+        properties:
+            list:
+                type: array
+                items:
+                    $ref: '#/definitions/Article'
+                description: ""
+            count:
+                type: number
+                format: double
+                description: ""
+            query:
+                $ref: '#/definitions/Query'
+        type: object
+        required:
+            - list
+    CategoryResponse:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            slug:
+                type: string
+                description: ""
+            order:
+                type: number
+                format: double
+                description: ""
+            parent:
+                type: string
+                description: ""
+            paths:
+                type: array
+                items:
+                    type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - slug
+            - order
+            - parent
+            - paths
+            - description
+    CreateCategoryDto:
+        description: ""
+        properties:
+            name:
+                type: string
+                description: ""
+            slug:
+                type: string
+                description: ""
+            order:
+                type: number
+                format: double
+                description: ""
+            parent:
+                type: string
+                description: ""
+            paths:
+                type: array
+                items:
+                    type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+        type: object
+        required:
+            - name
+            - slug
+            - order
+            - parent
+            - paths
+            - description
+    EditCategoryDto:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            slug:
+                type: string
+                description: ""
+            order:
+                type: number
+                format: double
+                description: ""
+            parent:
+                type: string
+                description: ""
+            paths:
+                type: array
+                items:
+                    type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - slug
+            - order
+            - parent
+            - paths
+            - description
+    Category:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            slug:
+                type: string
+                description: ""
+            order:
+                type: number
+                format: double
+                description: ""
+            parent:
+                type: string
+                description: ""
+            paths:
+                type: array
+                items:
+                    type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - slug
+            - order
+            - parent
+            - paths
+            - description
+    ResultList$Category:
+        description: ""
+        properties:
+            list:
+                type: array
+                items:
+                    $ref: '#/definitions/Category'
+                description: ""
+            count:
+                type: number
+                format: double
+                description: ""
+            query:
+                $ref: '#/definitions/Query'
+        type: object
+        required:
+            - list
+    MediaResponse:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            caption:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            ext:
+                type: object
+                description: ""
+            url:
+                type: string
+                description: ""
+            uri:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - caption
+            - description
+            - ext
+            - url
+            - uri
+    CreateMediaDto:
+        description: ""
+        properties:
+            name:
+                type: string
+                description: ""
+            caption:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            ext:
+                type: object
+                description: ""
+            url:
+                type: string
+                description: ""
+            uri:
+                type: string
+                description: ""
+        type: object
+        required:
+            - name
+            - caption
+            - description
+            - ext
+            - url
+            - uri
+    EditMediaDto:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            caption:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            ext:
+                type: object
+                description: ""
+            url:
+                type: string
+                description: ""
+            uri:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - caption
+            - description
+            - ext
+            - url
+            - uri
+    Media:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            caption:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            ext:
+                type: object
+                description: ""
+            url:
+                type: string
+                description: ""
+            uri:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - caption
+            - description
+            - ext
+            - url
+            - uri
+    ResultList$Media:
+        description: ""
+        properties:
+            list:
+                type: array
+                items:
+                    $ref: '#/definitions/Media'
+                description: ""
+            count:
+                type: number
+                format: double
+                description: ""
+            query:
+                $ref: '#/definitions/Query'
+        type: object
+        required:
+            - list
+    PageResponse:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            title:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            sort:
+                type: number
+                format: double
+                description: ""
+            publish:
+                type: string
+                description: ""
+            disable:
+                type: boolean
+                description: ""
+            meta:
+                type: string
+                description: ""
+            content:
+                type: string
+                description: ""
+            template:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - title
+            - description
+            - sort
+            - publish
+            - disable
+            - meta
+            - content
+            - template
+    CreatePageDto:
+        description: ""
+        properties:
+            name:
+                type: string
+                description: ""
+            title:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            sort:
+                type: number
+                format: double
+                description: ""
+            disable:
+                type: boolean
+                description: ""
+            meta:
+                type: string
+                description: ""
+            publish:
+                type: string
+                description: ""
+            content:
+                type: string
+                description: ""
+            template:
+                type: string
+                description: ""
+        type: object
+        required:
+            - name
+            - title
+            - description
+            - sort
+            - disable
+            - meta
+            - publish
+            - content
+            - template
+    EditPageDto:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            title:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            sort:
+                type: number
+                format: double
+                description: ""
+            disable:
+                type: boolean
+                description: ""
+            publish:
+                type: string
+                description: ""
+            meta:
+                type: string
+                description: ""
+            content:
+                type: string
+                description: ""
+            template:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - title
+            - description
+            - sort
+            - disable
+            - publish
+            - meta
+            - content
+            - template
+    Page:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            title:
+                type: string
+                description: ""
+            keyword:
+                type: string
+                description: ""
+            description:
+                type: string
+                description: ""
+            sort:
+                type: number
+                format: double
+                description: ""
+            disable:
+                type: boolean
+                description: ""
+            meta:
+                type: string
+                description: ""
+            publish:
+                type: string
+                description: ""
+            content:
+                type: string
+                description: ""
+            template:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - title
+            - keyword
+            - description
+            - sort
+            - disable
+            - meta
+            - publish
+            - content
+            - template
+    ResultList$Page:
+        description: ""
+        properties:
+            list:
+                type: array
+                items:
+                    $ref: '#/definitions/Page'
+                description: ""
+            count:
+                type: number
+                format: double
+                description: ""
+            query:
+                $ref: '#/definitions/Query'
+        type: object
+        required:
+            - list
+    WidgetResponse:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            title:
+                type: string
+                description: ""
+            params:
+                type: object
+                description: ""
+            type:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - title
+            - params
+            - type
+    CreateWidgetDto:
+        description: ""
+        properties:
+            name:
+                type: string
+                description: ""
+            title:
+                type: string
+                description: ""
+            params:
+                type: object
+                description: ""
+            type:
+                type: string
+                description: ""
+        type: object
+        required:
+            - name
+            - title
+            - params
+            - type
+    EditWidgetDto:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            title:
+                type: string
+                description: ""
+            params:
+                type: object
+                description: ""
+            type:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - title
+            - params
+            - type
+    Widget:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            title:
+                type: string
+                description: ""
+            type:
+                type: string
+                description: ""
+            params:
+                type: object
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - title
+            - type
+            - params
+    ResultList$Widget:
+        description: ""
+        properties:
+            list:
+                type: array
+                items:
+                    $ref: '#/definitions/Widget'
+                description: ""
+            count:
+                type: number
+                format: double
+                description: ""
+            query:
+                $ref: '#/definitions/Query'
+        type: object
+        required:
+            - list
 info:
     description: 项目标准接口
     license:
@@ -1256,6 +2505,54 @@ paths:
                     required: true
                     schema:
                         $ref: '#/definitions/EditUserReq'
+    /users/role:
+        post:
+            operationId: UsersAddUsersToRole
+            produces:
+                - text/html
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: boolean
+            description: ""
+            tags:
+                - core
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: users
+                    required: true
+                    schema:
+                        $ref: '#/definitions/UsersOfRole'
+        delete:
+            operationId: UsersRemoveAccountFromRole
+            produces:
+                - text/html
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: boolean
+            description: ""
+            tags:
+                - core
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: role
+                    required: true
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: id
+                    required: true
+                    type: string
     /users/search:
         get:
             operationId: UsersSearch
@@ -1949,6 +3246,260 @@ paths:
                     name: id
                     required: true
                     type: string
+    /roles/:
+        post:
+            operationId: RolesCreate
+            produces:
+                - text/html
+            responses:
+                '204':
+                    description: 'No content'
+            description: ""
+            tags:
+                - core
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/CreateRoleReq'
+        put:
+            operationId: RolesUpdate
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Role'
+            description: ""
+            tags:
+                - core
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/EditRoleReq'
+    /roles/search:
+        get:
+            operationId: RolesSearch
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/definitions/KeyValueDto'
+            description: ""
+            tags:
+                - core
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: value
+                    required: false
+                    type: string
+    /roles/query:
+        get:
+            operationId: RolesQuery
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/ResultList$Role'
+            description: ""
+            tags:
+                - core
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: index
+                    required: false
+                    type: number
+                    format: double
+                    default: 1
+                -
+                    description: ""
+                    in: query
+                    name: size
+                    required: false
+                    type: number
+                    format: double
+                    default: 10
+    '/roles/{id}':
+        get:
+            operationId: RolesFindOne
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Role'
+            description: ""
+            tags:
+                - core
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: id
+                    required: true
+                    type: string
+    /groups/:
+        post:
+            operationId: GroupsCreate
+            produces:
+                - text/html
+            responses:
+                '204':
+                    description: 'No content'
+            description: ""
+            tags:
+                - core
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/CreateGroupReq'
+        put:
+            operationId: GroupsUpdate
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Group'
+            description: ""
+            tags:
+                - core
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/EditGroupReq'
+    /groups/search:
+        get:
+            operationId: GroupsSearch
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/definitions/KeyValueDto'
+            description: ""
+            tags:
+                - core
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: value
+                    required: false
+                    type: string
+    /groups/query:
+        get:
+            operationId: GroupsQuery
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/ResultList$Group'
+            description: ""
+            tags:
+                - core
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: index
+                    required: false
+                    type: number
+                    format: double
+                    default: 1
+                -
+                    description: ""
+                    in: query
+                    name: size
+                    required: false
+                    type: number
+                    format: double
+                    default: 10
+    '/groups/{id}':
+        get:
+            operationId: GroupsFindOne
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Group'
+            description: ""
+            tags:
+                - core
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: id
+                    required: true
+                    type: string
     /cats/:
         post:
             operationId: ProductsCreate
@@ -1998,6 +3549,900 @@ paths:
                     required: true
                     type: number
                     format: double
+    /photo/search:
+        get:
+            operationId: PhotoSearch
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/definitions/KeyValueDto'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: value
+                    required: false
+                    type: string
+    /photo/:
+        post:
+            operationId: PhotoCreate
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/PhotoRes'
+            description: ""
+            tags:
+                - cms
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/CreatePhotoDto'
+        put:
+            operationId: PhotoUpdate
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/PhotoRes'
+            description: ""
+            tags:
+                - cms
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/EditPhotoDto'
+    /photo/query:
+        get:
+            operationId: PhotoQuery
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/ResultList$Photo'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: page
+                    required: false
+                    type: number
+                    format: double
+                    default: 1
+                -
+                    description: ""
+                    in: query
+                    name: size
+                    required: false
+                    type: number
+                    format: double
+                    default: 10
+    '/photo/{id}':
+        delete:
+            operationId: PhotoRemove
+            produces:
+                - text/html
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: boolean
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: id
+                    required: true
+                    type: string
+        get:
+            operationId: PhotoFindOne
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Photo'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: id
+                    required: true
+                    type: string
+    /article/search:
+        get:
+            operationId: ArticleSearch
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/definitions/KeyValueDto'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: value
+                    required: false
+                    type: string
+    /article/:
+        post:
+            operationId: ArticleCreate
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/ArticleResponse'
+            description: ""
+            tags:
+                - cms
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/CreateArticleDto'
+        put:
+            operationId: ArticleUpdate
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/ArticleResponse'
+            description: ""
+            tags:
+                - cms
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/EditArticleDto'
+    /article/query:
+        get:
+            operationId: ArticleQuery
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/ResultList$Article'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: category
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: page
+                    required: false
+                    type: number
+                    format: double
+                    default: 1
+                -
+                    description: ""
+                    in: query
+                    name: size
+                    required: false
+                    type: number
+                    format: double
+                    default: 10
+    '/article/{id}':
+        delete:
+            operationId: ArticleRemove
+            produces:
+                - text/html
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: boolean
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: id
+                    required: true
+                    type: string
+        get:
+            operationId: ArticleFindOne
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Article'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: id
+                    required: true
+                    type: string
+    /category/search:
+        get:
+            operationId: CategorySearch
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/definitions/KeyValueDto'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: value
+                    required: false
+                    type: string
+    /category/:
+        post:
+            operationId: CategoryCreate
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/CategoryResponse'
+            description: ""
+            tags:
+                - cms
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/CreateCategoryDto'
+        put:
+            operationId: CategoryUpdate
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/CategoryResponse'
+            description: ""
+            tags:
+                - cms
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/EditCategoryDto'
+    /category/query:
+        get:
+            operationId: CategoryQuery
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/ResultList$Category'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: page
+                    required: false
+                    type: number
+                    format: double
+                    default: 1
+                -
+                    description: ""
+                    in: query
+                    name: size
+                    required: false
+                    type: number
+                    format: double
+                    default: 10
+    '/category/{id}':
+        delete:
+            operationId: CategoryRemove
+            produces:
+                - text/html
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: boolean
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: id
+                    required: true
+                    type: string
+        get:
+            operationId: CategoryFindOne
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Category'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: id
+                    required: true
+                    type: string
+    /media/search:
+        get:
+            operationId: MediaSearch
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/definitions/KeyValueDto'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: value
+                    required: false
+                    type: string
+    /media/:
+        post:
+            operationId: MediaCreate
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/MediaResponse'
+            description: ""
+            tags:
+                - cms
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/CreateMediaDto'
+        put:
+            operationId: MediaUpdate
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/MediaResponse'
+            description: ""
+            tags:
+                - cms
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/EditMediaDto'
+    /media/query:
+        get:
+            operationId: MediaQuery
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/ResultList$Media'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: page
+                    required: false
+                    type: number
+                    format: double
+                    default: 1
+                -
+                    description: ""
+                    in: query
+                    name: size
+                    required: false
+                    type: number
+                    format: double
+                    default: 10
+    '/media/{id}':
+        delete:
+            operationId: MediaRemove
+            produces:
+                - text/html
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: boolean
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: id
+                    required: true
+                    type: string
+        get:
+            operationId: MediaFindOne
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Media'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: id
+                    required: true
+                    type: string
+    /page/search:
+        get:
+            operationId: PageSearch
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/definitions/KeyValueDto'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: value
+                    required: false
+                    type: string
+    /page/:
+        post:
+            operationId: PageCreate
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/PageResponse'
+            description: ""
+            tags:
+                - cms
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/CreatePageDto'
+        put:
+            operationId: PageUpdate
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/PageResponse'
+            description: ""
+            tags:
+                - cms
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/EditPageDto'
+    /page/query:
+        get:
+            operationId: PageQuery
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/ResultList$Page'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: page
+                    required: false
+                    type: number
+                    format: double
+                    default: 1
+                -
+                    description: ""
+                    in: query
+                    name: size
+                    required: false
+                    type: number
+                    format: double
+                    default: 10
+    '/page/{id}':
+        delete:
+            operationId: PageRemove
+            produces:
+                - text/html
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: boolean
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: id
+                    required: true
+                    type: string
+        get:
+            operationId: PageFindOne
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Page'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: id
+                    required: true
+                    type: string
+    /widget/search:
+        get:
+            operationId: WidgetSearch
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/definitions/KeyValueDto'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: value
+                    required: false
+                    type: string
+    /widget/:
+        post:
+            operationId: WidgetCreate
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/WidgetResponse'
+            description: ""
+            tags:
+                - cms
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/CreateWidgetDto'
+        put:
+            operationId: WidgetUpdate
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/WidgetResponse'
+            description: ""
+            tags:
+                - cms
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/EditWidgetDto'
+    /widget/query:
+        get:
+            operationId: WidgetQuery
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/ResultList$Widget'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: page
+                    required: false
+                    type: number
+                    format: double
+                    default: 1
+                -
+                    description: ""
+                    in: query
+                    name: size
+                    required: false
+                    type: number
+                    format: double
+                    default: 10
+    '/widget/{id}':
+        delete:
+            operationId: WidgetRemove
+            produces:
+                - text/html
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: boolean
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: id
+                    required: true
+                    type: string
+        get:
+            operationId: WidgetFindOne
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Widget'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: id
+                    required: true
+                    type: string
 swagger: '2.0'
 securityDefinitions: {}
 produces:
