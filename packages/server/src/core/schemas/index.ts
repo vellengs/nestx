@@ -9,3 +9,4 @@ export { UserSchema } from './user.schema';
 export { NoticeSchema } from './notice.schema';
 export { VeryCodeSchema } from './verycode.schema';
 export { ProfileSchema } from './profile.schema';
+export { AppearanceSchema } from './appearance.schema';

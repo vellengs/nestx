@@ -51,7 +51,8 @@ export class DictsPageComponent extends BaseStandComponent implements OnInit {
     }
 
     async load() {
-        const res = await this.coreService.dictQuery('', 'category', 0, 2000).toPromise();
+        // TODO;
+        const res = await this.coreService.dictsQuery('', 0, 2000).toPromise();
         if (res) {
             this.categories = res.list;
         }

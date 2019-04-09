@@ -92,6 +92,32 @@ export interface AccessToken {
 /**
  * 
  * @export
+ * @interface Appearance
+ */
+export interface Appearance {
+    /**
+     * 
+     * @type {string}
+     * @memberof Appearance
+     */
+    name: string;
+    /**
+     * 
+     * @type {any}
+     * @memberof Appearance
+     */
+    options: any;
+    /**
+     * 
+     * @type {any}
+     * @memberof Appearance
+     */
+    data: any;
+}
+
+/**
+ * 
+ * @export
  * @interface Article
  */
 export interface Article {
@@ -353,6 +379,32 @@ export interface CategoryResponse {
      * @memberof CategoryResponse
      */
     description: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface CreateAppearanceReq
+ */
+export interface CreateAppearanceReq {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateAppearanceReq
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateAppearanceReq
+     */
+    option: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateAppearanceReq
+     */
+    data: string;
 }
 
 /**
@@ -1043,6 +1095,38 @@ export interface Dict {
      * @memberof Dict
      */
     expand: any;
+}
+
+/**
+ * 
+ * @export
+ * @interface EditAppearanceReq
+ */
+export interface EditAppearanceReq {
+    /**
+     * 
+     * @type {string}
+     * @memberof EditAppearanceReq
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditAppearanceReq
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditAppearanceReq
+     */
+    option: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditAppearanceReq
+     */
+    data: string;
 }
 
 /**
@@ -2745,6 +2829,32 @@ export interface Result {
      * @memberof Result
      */
     ok: boolean;
+}
+
+/**
+ * 
+ * @export
+ * @interface ResultListAppearance
+ */
+export interface ResultListAppearance {
+    /**
+     * 
+     * @type {Array<Appearance>}
+     * @memberof ResultListAppearance
+     */
+    list: Array<Appearance>;
+    /**
+     * 
+     * @type {number}
+     * @memberof ResultListAppearance
+     */
+    count?: number;
+    /**
+     * 
+     * @type {Query}
+     * @memberof ResultListAppearance
+     */
+    query?: Query;
 }
 
 /**
@@ -6388,6 +6498,217 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
     return {
         /**
          * 
+         * @param {CreateAppearanceReq} createAppearanceReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesCreate(createAppearanceReq: CreateAppearanceReq, options: any = {}): RequestArgs {
+            // verify required parameter 'createAppearanceReq' is not null or undefined
+            if (createAppearanceReq === null || createAppearanceReq === undefined) {
+                throw new RequiredError('createAppearanceReq','Required parameter createAppearanceReq was null or undefined when calling appearancesCreate.');
+            }
+            const localVarPath = `/appearances/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"CreateAppearanceReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(createAppearanceReq || {}) : (createAppearanceReq || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesFindOne(id: string, options: any = {}): RequestArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling appearancesFindOne.');
+            }
+            const localVarPath = `/appearances/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} name 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesGetAppearanceByName(name: string, options: any = {}): RequestArgs {
+            // verify required parameter 'name' is not null or undefined
+            if (name === null || name === undefined) {
+                throw new RequiredError('name','Required parameter name was null or undefined when calling appearancesGetAppearanceByName.');
+            }
+            const localVarPath = `/appearances/name/{name}`
+                .replace(`{${"name"}}`, encodeURIComponent(String(name)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [index] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
+            const localVarPath = `/appearances/query`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (index !== undefined) {
+                localVarQueryParameter['index'] = index;
+            }
+
+            if (size !== undefined) {
+                localVarQueryParameter['size'] = size;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/appearances/search`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (value !== undefined) {
+                localVarQueryParameter['value'] = value;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {EditAppearanceReq} editAppearanceReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesUpdate(editAppearanceReq: EditAppearanceReq, options: any = {}): RequestArgs {
+            // verify required parameter 'editAppearanceReq' is not null or undefined
+            if (editAppearanceReq === null || editAppearanceReq === undefined) {
+                throw new RequiredError('editAppearanceReq','Required parameter editAppearanceReq was null or undefined when calling appearancesUpdate.');
+            }
+            const localVarPath = `/appearances/`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"EditAppearanceReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(editAppearanceReq || {}) : (editAppearanceReq || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {CreateDictReq} createDictReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -8035,6 +8356,87 @@ export const CoreApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @param {CreateAppearanceReq} createAppearanceReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesCreate(createAppearanceReq: CreateAppearanceReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).appearancesCreate(createAppearanceReq, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Appearance> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).appearancesFindOne(id, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} name 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesGetAppearanceByName(name: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Appearance> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).appearancesGetAppearanceByName(name, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [index] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesQuery(keyword?: string, index?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListAppearance> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).appearancesQuery(keyword, index, size, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).appearancesSearch(keyword, value, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {EditAppearanceReq} editAppearanceReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesUpdate(editAppearanceReq: EditAppearanceReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Appearance> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).appearancesUpdate(editAppearanceReq, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @param {CreateDictReq} createDictReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -8666,6 +9068,63 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
     return {
         /**
          * 
+         * @param {CreateAppearanceReq} createAppearanceReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesCreate(createAppearanceReq: CreateAppearanceReq, options?: any) {
+            return CoreApiFp(configuration).appearancesCreate(createAppearanceReq, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesFindOne(id: string, options?: any) {
+            return CoreApiFp(configuration).appearancesFindOne(id, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} name 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesGetAppearanceByName(name: string, options?: any) {
+            return CoreApiFp(configuration).appearancesGetAppearanceByName(name, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {number} [index] 
+         * @param {number} [size] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesQuery(keyword?: string, index?: number, size?: number, options?: any) {
+            return CoreApiFp(configuration).appearancesQuery(keyword, index, size, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesSearch(keyword?: string, value?: string, options?: any) {
+            return CoreApiFp(configuration).appearancesSearch(keyword, value, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {EditAppearanceReq} editAppearanceReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appearancesUpdate(editAppearanceReq: EditAppearanceReq, options?: any) {
+            return CoreApiFp(configuration).appearancesUpdate(editAppearanceReq, options)(axios, basePath);
+        },
+        /**
+         * 
          * @param {CreateDictReq} createDictReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9112,6 +9571,75 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
  * @extends {BaseAPI}
  */
 export class CoreApi extends BaseAPI {
+    /**
+     * 
+     * @param {CreateAppearanceReq} createAppearanceReq 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public appearancesCreate(createAppearanceReq: CreateAppearanceReq, options?: any) {
+        return CoreApiFp(this.configuration).appearancesCreate(createAppearanceReq, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public appearancesFindOne(id: string, options?: any) {
+        return CoreApiFp(this.configuration).appearancesFindOne(id, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} name 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public appearancesGetAppearanceByName(name: string, options?: any) {
+        return CoreApiFp(this.configuration).appearancesGetAppearanceByName(name, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {number} [index] 
+     * @param {number} [size] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public appearancesQuery(keyword?: string, index?: number, size?: number, options?: any) {
+        return CoreApiFp(this.configuration).appearancesQuery(keyword, index, size, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {string} [value] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public appearancesSearch(keyword?: string, value?: string, options?: any) {
+        return CoreApiFp(this.configuration).appearancesSearch(keyword, value, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {EditAppearanceReq} editAppearanceReq 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public appearancesUpdate(editAppearanceReq: EditAppearanceReq, options?: any) {
+        return CoreApiFp(this.configuration).appearancesUpdate(editAppearanceReq, options)(this.axios, this.basePath);
+    }
+
     /**
      * 
      * @param {CreateDictReq} createDictReq 

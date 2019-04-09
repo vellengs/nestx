@@ -60,14 +60,14 @@ export class MenusPageComponent extends BaseStandComponent implements OnInit {
         this.onConfigChanged.subscribe(() => {
             this.detailSchema = this.formSets.edit;
             this.detailSchema.properties.permissions.ui.selectorAsyncData = () => {
-                return this.coreService.menuGetPermissionTags();
+                return this.coreService.menusGetPermissionTags();
             };
         });
     }
 
 
     async loadMenuTree() {
-        const menuResponse = await this.coreService.menuQuery('', true, 0, 3000).toPromise();
+        const menuResponse = await this.coreService.menusQuery(true, '', 3000).toPromise();
         const items = menuResponse ? menuResponse.list : [];
         const raw = items.map((item) => {
             const isLeaf = items.findIndex(r => r.parent === item.id) === -1;
@@ -98,7 +98,7 @@ export class MenusPageComponent extends BaseStandComponent implements OnInit {
         } else {
             this.selectedItem = e.node;
 
-            this.coreService.menuGet(e.node.key).subscribe((res) => {
+            this.coreService.menusFindOne(e.node.key).subscribe((res) => {
                 this.formData = res;
             });
         }

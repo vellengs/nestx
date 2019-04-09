@@ -18,6 +18,8 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
+import { Appearance } from '../model/appearance';
+import { CreateAppearanceReq } from '../model/createAppearanceReq';
 import { CreateDictReq } from '../model/createDictReq';
 import { CreateGroupReq } from '../model/createGroupReq';
 import { CreateMenuReq } from '../model/createMenuReq';
@@ -26,6 +28,7 @@ import { CreateRoleReq } from '../model/createRoleReq';
 import { CreateSettingReq } from '../model/createSettingReq';
 import { CreateUserReq } from '../model/createUserReq';
 import { Dict } from '../model/dict';
+import { EditAppearanceReq } from '../model/editAppearanceReq';
 import { EditDictReq } from '../model/editDictReq';
 import { EditGroupReq } from '../model/editGroupReq';
 import { EditMenuReq } from '../model/editMenuReq';
@@ -40,6 +43,7 @@ import { Log } from '../model/log';
 import { Menu } from '../model/menu';
 import { MenuRes } from '../model/menuRes';
 import { Notice } from '../model/notice';
+import { ResultListAppearance } from '../model/resultListAppearance';
 import { ResultListDict } from '../model/resultListDict';
 import { ResultListGroup } from '../model/resultListGroup';
 import { ResultListLog } from '../model/resultListLog';
@@ -93,6 +97,275 @@ export class CoreService {
         return false;
     }
 
+
+    /**
+     * 
+     * 
+     * @param createAppearanceReq 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public appearancesCreate(createAppearanceReq: CreateAppearanceReq, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public appearancesCreate(createAppearanceReq: CreateAppearanceReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public appearancesCreate(createAppearanceReq: CreateAppearanceReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public appearancesCreate(createAppearanceReq: CreateAppearanceReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (createAppearanceReq === null || createAppearanceReq === undefined) {
+            throw new Error('Required parameter createAppearanceReq was null or undefined when calling appearancesCreate.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.post<any>(`${this.configuration.basePath}/appearances/`,
+            createAppearanceReq,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param id 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public appearancesFindOne(id: string, observe?: 'body', reportProgress?: boolean): Observable<Appearance>;
+    public appearancesFindOne(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Appearance>>;
+    public appearancesFindOne(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Appearance>>;
+    public appearancesFindOne(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling appearancesFindOne.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.get<Appearance>(`${this.configuration.basePath}/appearances/${encodeURIComponent(String(id))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param name 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public appearancesGetAppearanceByName(name: string, observe?: 'body', reportProgress?: boolean): Observable<Appearance>;
+    public appearancesGetAppearanceByName(name: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Appearance>>;
+    public appearancesGetAppearanceByName(name: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Appearance>>;
+    public appearancesGetAppearanceByName(name: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (name === null || name === undefined) {
+            throw new Error('Required parameter name was null or undefined when calling appearancesGetAppearanceByName.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.get<Appearance>(`${this.configuration.basePath}/appearances/name/${encodeURIComponent(String(name))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param keyword 
+     * @param index 
+     * @param size 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public appearancesQuery(keyword?: string, index?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListAppearance>;
+    public appearancesQuery(keyword?: string, index?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListAppearance>>;
+    public appearancesQuery(keyword?: string, index?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListAppearance>>;
+    public appearancesQuery(keyword?: string, index?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (keyword !== undefined && keyword !== null) {
+            queryParameters = queryParameters.set('keyword', <any>keyword);
+        }
+        if (index !== undefined && index !== null) {
+            queryParameters = queryParameters.set('index', <any>index);
+        }
+        if (size !== undefined && size !== null) {
+            queryParameters = queryParameters.set('size', <any>size);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.get<ResultListAppearance>(`${this.configuration.basePath}/appearances/query`,
+            {
+                params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param keyword 
+     * @param value 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public appearancesSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValueDto>>;
+    public appearancesSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValueDto>>>;
+    public appearancesSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValueDto>>>;
+    public appearancesSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (keyword !== undefined && keyword !== null) {
+            queryParameters = queryParameters.set('keyword', <any>keyword);
+        }
+        if (value !== undefined && value !== null) {
+            queryParameters = queryParameters.set('value', <any>value);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/appearances/search`,
+            {
+                params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param editAppearanceReq 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public appearancesUpdate(editAppearanceReq: EditAppearanceReq, observe?: 'body', reportProgress?: boolean): Observable<Appearance>;
+    public appearancesUpdate(editAppearanceReq: EditAppearanceReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Appearance>>;
+    public appearancesUpdate(editAppearanceReq: EditAppearanceReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Appearance>>;
+    public appearancesUpdate(editAppearanceReq: EditAppearanceReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (editAppearanceReq === null || editAppearanceReq === undefined) {
+            throw new Error('Required parameter editAppearanceReq was null or undefined when calling appearancesUpdate.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.put<Appearance>(`${this.configuration.basePath}/appearances/`,
+            editAppearanceReq,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
 
     /**
      * 

@@ -8,3 +8,4 @@ export * from './group.interface';
 export * from './notice.interface';
 export * from './verycode.interface';
 export * from './setting.interface';
+export * from './appearance.interface';
