@@ -1,7 +1,7 @@
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { MongooseService, Criteria } from './../mongoose.service';
+import { MongooseService, Criteria } from './../../common/services/mongoose.service';
 import { MenuModel, User, GroupModel } from './../interfaces';
 import { ResultList } from './../../common';
 import { MenuRes } from './../dto';

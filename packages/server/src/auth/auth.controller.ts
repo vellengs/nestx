@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Query, Req, Res, Request, Response } from '@nestjs/common';
+import { Controller, Post, Body, Get, Query, Req, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AccessToken } from './interfaces/jwt-payload.interface';
 import { LoginReq, LoginRes } from './dto/Login.dto';
@@ -28,6 +28,7 @@ export class AuthController {
     request.logOut();
     await this.authService.logout();
     res.clearCookie('access_token');
+
     return res.json(true);
   }
 

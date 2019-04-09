@@ -3,7 +3,7 @@
 import { Component, Inject } from '@angular/core';
 import { NzMessageService, ModalOptionsForService } from 'ng-zorro-antd';
 import { SettingsService, ModalHelper, _HttpClient } from '@delon/theme';
-import { CoreService } from 'generated';
+import { CoreService, AuthService } from 'generated';
 import { Router } from '@angular/router';
 import { BaseDetailComponent } from '@shared/base/base.detail.component';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
@@ -46,6 +46,7 @@ export class SidebarComponent {
   constructor(
     public settings: SettingsService,
     public coreService: CoreService,
+    public authService: AuthService,
     public msgSrv: NzMessageService,
     public router: Router,
     public modalHelper: ModalHelper,
@@ -56,7 +57,7 @@ export class SidebarComponent {
 
   logout() {
 
-    this.coreService.userLogout().subscribe(
+    this.authService.authLogout().subscribe(
       (result) => {
         if (result) {
           this.msgSrv.success('成功退出');

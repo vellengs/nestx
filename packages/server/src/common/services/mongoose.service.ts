@@ -1,7 +1,7 @@
 import { Model, Document, Types } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { ObjectID } from 'typeorm';
-import { ResultList } from './../common/interfaces/result.interface';
+import { ResultList } from './../interfaces/result.interface';
 
 export interface IdentifyEntry {
   id: string | number | Date | ObjectID;
@@ -34,7 +34,7 @@ export class MongooseService<T extends Document>  {
     return instance;
   }
 
-  async query(index: number = 1, size: number = 10,
+  async query(page: number = 1, size: number = 10,
     query: Criteria = {}, searchField = 'name', fields: string[] = this.defaultQueryFields, sort: Criteria | string = { _id: 1 }
   ): Promise<ResultList<T>> {
 
@@ -48,10 +48,10 @@ export class MongooseService<T extends Document>  {
 
     return new Promise<ResultList<T>>(async (resolve) => {
       let result: ResultList<T> = {
-        list: await listQuery.limit(size).skip(size * (index - 1)).lean(),
+        list: await listQuery.limit(size).skip(size * (page - 1)).lean(),
         count: await collection.countDocuments(),
         query: {
-          index: index,
+          page: page,
           size: size
         }
       }

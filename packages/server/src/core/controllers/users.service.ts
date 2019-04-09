@@ -1,12 +1,13 @@
-import { Model } from 'mongoose';
+import { Model, Document } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserModel, RoleModel, VeryCodeModel } from './../interfaces';
-import { MongooseService } from './../mongoose.service';
+import { MongooseService } from './../../common/services/mongoose.service';
 import { RegisterReq } from './../../auth/dto/Register.dto';
 import { LoginRes } from 'auth/dto/login.dto';
 import { ObjectID } from 'typeorm';
 import { EditProfileReq, ProfileRes } from './../dto';
+import { ObjectId } from 'bson';
 
 const FIVE_MINUTES = 5 * 60 * 1000; // 5 mins
 const ONE_MINUTE = 1 * 60 * 1000; // 1 mins
@@ -107,6 +108,48 @@ export class UsersService extends MongooseService<UserModel> {
     return user;
   }
 
+  async removeUserFromRole(role: string, accountId: string) {
+    if (role && accountId) {
+      await this.model.update({
+        _id: {
+          $in: accountId
+        }
+      }, { $pullAll: { roles: [role] } }, { multi: true }).exec();
+    }
+    return true;
+  }
+
+
+  async addAccountsToRole(role: string, accountIds: string[] | string) {
+
+    if (!Array.isArray(accountIds) && ObjectId.isValid(accountIds)) {
+      accountIds = [accountIds];
+    }
+
+    if (role && Array.isArray(accountIds)) {
+      const existIds = (await this.model.find({
+        _id: {
+          $in: accountIds
+        },
+        roles: {
+          $in: [role]
+        }
+      }, { _id: 1 }).exec());
+
+      const exists = (existIds || []).map((item: Document) => item._id.toString());
+      const ids = accountIds.filter((id) => {
+        return exists.indexOf(id) === -1;
+      });
+
+      const effects = await this.model.update({
+        _id: {
+          $in: ids
+        }
+      }, { $push: { roles: role } }, { multi: true }).exec();
+    }
+
+    return true;
+  }
 
   async updateProfile(
     entry: EditProfileReq,

@@ -41,3 +41,12 @@ export class EditUserReq {
     @IsString()
     address?: string;
 }
+
+
+export class UsersOfRole {
+    @IsString()
+    role: string;
+
+    @IsString()
+    userIds: string[];
+}

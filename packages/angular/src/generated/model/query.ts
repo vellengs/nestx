@@ -22,5 +22,5 @@ export interface Query {
     /**
      * 
      */
-    index: number;
+    page: number;
 }
