@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Query, Req } from '@nestjs/common';
+import { Controller, Post, Body, Get, Query, Req, Res, Request, Response } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AccessToken } from './interfaces/jwt-payload.interface';
 import { LoginReq, LoginRes } from './dto/Login.dto';
@@ -12,8 +12,10 @@ export class AuthController {
   constructor(private readonly authService: AuthService) { }
 
   @Post('login')
-  async login(@Body() payload: LoginReq): Promise<LoginRes> {
-    return this.authService.login(payload);
+  async login(@Body() payload: LoginReq, @Res() res: any): Promise<LoginRes> {
+    const result = await this.authService.login(payload);
+    res.cookie('access_token', result.token.accessToken);
+    return res.json(result);
   }
 
   @Post('register')
@@ -22,9 +24,11 @@ export class AuthController {
   }
 
   @Get('logout')
-  async logout(@Req() request: Express.Request): Promise<boolean> {
-    request.logOut(); // TODO this won't works for JWT;
-    return this.authService.logout();
+  async logout(@Req() request: Express.Request, @Res() res: any): Promise<boolean> {
+    request.logOut();
+    await this.authService.logout();
+    res.clearCookie('access_token');
+    return res.json(true);
   }
 
   @Get('captcha')

@@ -4,7 +4,7 @@
   </h1>
 </div>
 <form nz-form [formGroup]="form" (ngSubmit)="submit()" role="form">
-  <nz-tabset [nzAnimated]="false" class="tabs" (nzSelectChange)="switch($event)">
+  <nz-tabset [nzAnimated]="false" class="tabs" (nzSelectChange)="switch()">
     <nz-tab nzTitle="">
       <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg"></nz-alert>
       <nz-form-item>

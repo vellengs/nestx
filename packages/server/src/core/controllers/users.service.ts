@@ -6,6 +6,7 @@ import { MongooseService } from './../mongoose.service';
 import { RegisterReq } from './../../auth/dto/Register.dto';
 import { LoginRes } from 'auth/dto/login.dto';
 import { ObjectID } from 'typeorm';
+import { EditProfileReq, ProfileRes } from './../dto';
 
 const FIVE_MINUTES = 5 * 60 * 1000; // 5 mins
 const ONE_MINUTE = 1 * 60 * 1000; // 1 mins
@@ -29,6 +30,8 @@ export class UsersService extends MongooseService<UserModel> {
   constructor(
     @InjectModel('User')
     protected readonly model: Model<UserModel>,
+    @InjectModel('Profile')
+    protected readonly profileModel: Model<UserModel>,
     @InjectModel('VeryCode')
     private readonly veryCodeModel: Model<VeryCodeModel>,
   ) {
@@ -102,6 +105,37 @@ export class UsersService extends MongooseService<UserModel> {
       user.name = user.name || user.username;
     }
     return user;
+  }
+
+
+  async updateProfile(
+    entry: EditProfileReq,
+  ): Promise<ProfileRes> {
+
+    // const { request } = context;
+    // const profile: any = await Db.Profile.findOneAndUpdate(
+    //   {
+    //     _id: request.user.id,
+    //   },
+    //   entry, { upsert: true, new: true },
+    // ).exec();
+
+    // entry.profile = profile._id;
+    // const account = await Db.Account.findOneAndUpdate(
+    //   {
+    //     _id: request.user.id,
+    //   },
+    //   entry, { new: true },
+    // ).populate('profile').exec();
+
+    // if (profile) {
+    //   const instance = Repository.mergeProfile(account);
+    //   return instance;
+    // } else {
+    //   throw new Errors.BadRequestError('user not found');
+    // }
+
+    return null; // TODO;
   }
 
 }

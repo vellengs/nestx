@@ -18,42 +18,33 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { AccountResponse } from '../model/accountResponse';
-import { Appearance } from '../model/appearance';
-import { CreateAccountDto } from '../model/createAccountDto';
-import { CreateDictDto } from '../model/createDictDto';
-import { CreateGroupDto } from '../model/createGroupDto';
-import { CreateMenuDto } from '../model/createMenuDto';
-import { CreateRoleDto } from '../model/createRoleDto';
-import { CreateSettingDto } from '../model/createSettingDto';
-import { DictResponse } from '../model/dictResponse';
-import { EditAccountDto } from '../model/editAccountDto';
-import { EditDictDto } from '../model/editDictDto';
-import { EditGroupDto } from '../model/editGroupDto';
-import { EditMenuDto } from '../model/editMenuDto';
-import { EditProfileDto } from '../model/editProfileDto';
-import { EditRoleDto } from '../model/editRoleDto';
-import { EditSettingDto } from '../model/editSettingDto';
-import { GroupResponse } from '../model/groupResponse';
-import { KeyValue } from '../model/keyValue';
-import { LogResponse } from '../model/logResponse';
-import { LoginDto } from '../model/loginDto';
-import { MenuResponse } from '../model/menuResponse';
-import { PaginateAccount } from '../model/paginateAccount';
-import { PaginateApi } from '../model/paginateApi';
-import { PaginateDict } from '../model/paginateDict';
-import { PaginateGroup } from '../model/paginateGroup';
-import { PaginateLog } from '../model/paginateLog';
-import { PaginateMenu } from '../model/paginateMenu';
-import { PaginateRole } from '../model/paginateRole';
-import { PaginateSetting } from '../model/paginateSetting';
-import { ProfileResponse } from '../model/profileResponse';
-import { RoleResponse } from '../model/roleResponse';
-import { SelectorItem } from '../model/selectorItem';
-import { SettingResponse } from '../model/settingResponse';
+import { CreateDictReq } from '../model/createDictReq';
+import { CreateMenuReq } from '../model/createMenuReq';
+import { CreateNoticeReq } from '../model/createNoticeReq';
+import { CreateSettingReq } from '../model/createSettingReq';
+import { CreateUserReq } from '../model/createUserReq';
+import { Dict } from '../model/dict';
+import { EditDictReq } from '../model/editDictReq';
+import { EditMenuReq } from '../model/editMenuReq';
+import { EditNoticeReq } from '../model/editNoticeReq';
+import { EditSettingReq } from '../model/editSettingReq';
+import { EditUserReq } from '../model/editUserReq';
+import { InlineResponse200 } from '../model/inlineResponse200';
+import { KeyValueDto } from '../model/keyValueDto';
+import { Log } from '../model/log';
+import { Menu } from '../model/menu';
+import { MenuRes } from '../model/menuRes';
+import { Notice } from '../model/notice';
+import { ResultListDict } from '../model/resultListDict';
+import { ResultListLog } from '../model/resultListLog';
+import { ResultListMenu } from '../model/resultListMenu';
+import { ResultListNotice } from '../model/resultListNotice';
+import { ResultListSetting } from '../model/resultListSetting';
+import { ResultListUser } from '../model/resultListUser';
+import { Setting } from '../model/setting';
+import { SettingRes } from '../model/settingRes';
 import { SettingsGroup } from '../model/settingsGroup';
-import { TreeNode } from '../model/treeNode';
-import { UploadConfig } from '../model/uploadConfig';
+import { User } from '../model/user';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -96,88 +87,23 @@ export class CoreService {
 
     /**
      * 
-     * 添加用户到角色
-     * @param role 角色编号
-     * @param accountIds 用户编号序列
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public accountAddAccountsToRole(role: string, accountIds: Array<string>, observe?: 'body', reportProgress?: boolean): Observable<boolean>;
-    public accountAddAccountsToRole(role: string, accountIds: Array<string>, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<boolean>>;
-    public accountAddAccountsToRole(role: string, accountIds: Array<string>, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<boolean>>;
-    public accountAddAccountsToRole(role: string, accountIds: Array<string>, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (role === null || role === undefined) {
-            throw new Error('Required parameter role was null or undefined when calling accountAddAccountsToRole.');
-        }
-        if (accountIds === null || accountIds === undefined) {
-            throw new Error('Required parameter accountIds was null or undefined when calling accountAddAccountsToRole.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'text/html'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/x-www-form-urlencoded'
-        ];
-
-        const canConsumeForm = this.canConsumeForm(consumes);
-
-        let formParams: { append(param: string, value: any): any; };
-        let useForm = false;
-        let convertFormParamsToString = false;
-        if (useForm) {
-            formParams = new FormData();
-        } else {
-            formParams = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        }
-
-        if (role !== undefined) {
-            formParams = formParams.append('role', <any>role) || formParams;
-        }
-        if (accountIds) {
-            formParams = formParams.append('accountIds', accountIds.join(COLLECTION_FORMATS['csv'])) || formParams;
-        }
-
-        return this.httpClient.post<boolean>(`${this.configuration.basePath}/api/account/role`,
-            convertFormParamsToString ? formParams.toString() : formParams,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * 
-     * 创建帐号
-     * @param createAccountDto 帐号信息
+     * @param createDictReq 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public accountCreate(createAccountDto: CreateAccountDto, observe?: 'body', reportProgress?: boolean): Observable<AccountResponse>;
-    public accountCreate(createAccountDto: CreateAccountDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<AccountResponse>>;
-    public accountCreate(createAccountDto: CreateAccountDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<AccountResponse>>;
-    public accountCreate(createAccountDto: CreateAccountDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (createAccountDto === null || createAccountDto === undefined) {
-            throw new Error('Required parameter createAccountDto was null or undefined when calling accountCreate.');
+    public dictsCreate(createDictReq: CreateDictReq, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public dictsCreate(createDictReq: CreateDictReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public dictsCreate(createDictReq: CreateDictReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public dictsCreate(createDictReq: CreateDictReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (createDictReq === null || createDictReq === undefined) {
+            throw new Error('Required parameter createDictReq was null or undefined when calling dictsCreate.');
         }
 
         let headers = this.defaultHeaders;
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
-            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected !== undefined) {
@@ -193,8 +119,8 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<AccountResponse>(`${this.configuration.basePath}/api/account`,
-            createAccountDto,
+        return this.httpClient.post<any>(`${this.configuration.basePath}/dicts/`,
+            createDictReq,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -206,448 +132,17 @@ export class CoreService {
 
     /**
      * 
-     * 查询帐号
-     * @param id 编号
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public accountGet(id: string, observe?: 'body', reportProgress?: boolean): Observable<AccountResponse>;
-    public accountGet(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<AccountResponse>>;
-    public accountGet(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<AccountResponse>>;
-    public accountGet(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling accountGet.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<AccountResponse>(`${this.configuration.basePath}/api/account/${encodeURIComponent(String(id))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * 
-     * 按关键词查询帐号
-     * @param keyword 
-     * @param value 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public accountGetAccountsByKeyword(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValue>>;
-    public accountGetAccountsByKeyword(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValue>>>;
-    public accountGetAccountsByKeyword(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
-    public accountGetAccountsByKeyword(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (keyword !== undefined && keyword !== null) {
-            queryParameters = queryParameters.set('keyword', <any>keyword);
-        }
-        if (value !== undefined && value !== null) {
-            queryParameters = queryParameters.set('value', <any>value);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/api/account/search`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 获取帐号管理界面配置信息.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public accountGetConfig(observe?: 'body', reportProgress?: boolean): Observable<Appearance>;
-    public accountGetConfig(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Appearance>>;
-    public accountGetConfig(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Appearance>>;
-    public accountGetConfig(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<Appearance>(`${this.configuration.basePath}/api/account/config`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 帐户信息
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public accountProfile(observe?: 'body', reportProgress?: boolean): Observable<ProfileResponse>;
-    public accountProfile(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ProfileResponse>>;
-    public accountProfile(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ProfileResponse>>;
-    public accountProfile(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<ProfileResponse>(`${this.configuration.basePath}/api/account/profile`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 分页查询帐号数据
-     * @param keyword 关键词
-     * @param group 
-     * @param role 
-     * @param page 
-     * @param size 
-     * @param sort 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public accountQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<PaginateAccount>;
-    public accountQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PaginateAccount>>;
-    public accountQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PaginateAccount>>;
-    public accountQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (keyword !== undefined && keyword !== null) {
-            queryParameters = queryParameters.set('keyword', <any>keyword);
-        }
-        if (group !== undefined && group !== null) {
-            queryParameters = queryParameters.set('group', <any>group);
-        }
-        if (role !== undefined && role !== null) {
-            queryParameters = queryParameters.set('role', <any>role);
-        }
-        if (page !== undefined && page !== null) {
-            queryParameters = queryParameters.set('page', <any>page);
-        }
-        if (size !== undefined && size !== null) {
-            queryParameters = queryParameters.set('size', <any>size);
-        }
-        if (sort !== undefined && sort !== null) {
-            queryParameters = queryParameters.set('sort', <any>sort);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<PaginateAccount>(`${this.configuration.basePath}/api/account/query`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 删除帐号
-     * @param id 帐号编号
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public accountRemove(id: string, observe?: 'body', reportProgress?: boolean): Observable<boolean>;
-    public accountRemove(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<boolean>>;
-    public accountRemove(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<boolean>>;
-    public accountRemove(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling accountRemove.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'text/html'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.delete<boolean>(`${this.configuration.basePath}/api/account/${encodeURIComponent(String(id))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 从角色中删除用户
-     * @param role 角色编号
      * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public accountRemoveAccountFromRole(role: string, id: string, observe?: 'body', reportProgress?: boolean): Observable<boolean>;
-    public accountRemoveAccountFromRole(role: string, id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<boolean>>;
-    public accountRemoveAccountFromRole(role: string, id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<boolean>>;
-    public accountRemoveAccountFromRole(role: string, id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (role === null || role === undefined) {
-            throw new Error('Required parameter role was null or undefined when calling accountRemoveAccountFromRole.');
-        }
+    public dictsFindOne(id: string, observe?: 'body', reportProgress?: boolean): Observable<Dict>;
+    public dictsFindOne(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Dict>>;
+    public dictsFindOne(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Dict>>;
+    public dictsFindOne(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling accountRemoveAccountFromRole.');
-        }
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (role !== undefined && role !== null) {
-            queryParameters = queryParameters.set('role', <any>role);
-        }
-        if (id !== undefined && id !== null) {
-            queryParameters = queryParameters.set('id', <any>id);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'text/html'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.delete<boolean>(`${this.configuration.basePath}/api/account/role`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 更新帐号
-     * @param editAccountDto 帐号信息
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public accountUpdate(editAccountDto: EditAccountDto, observe?: 'body', reportProgress?: boolean): Observable<AccountResponse>;
-    public accountUpdate(editAccountDto: EditAccountDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<AccountResponse>>;
-    public accountUpdate(editAccountDto: EditAccountDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<AccountResponse>>;
-    public accountUpdate(editAccountDto: EditAccountDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (editAccountDto === null || editAccountDto === undefined) {
-            throw new Error('Required parameter editAccountDto was null or undefined when calling accountUpdate.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
-
-        return this.httpClient.put<AccountResponse>(`${this.configuration.basePath}/api/account`,
-            editAccountDto,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 添加API接口到权限标签
-     * @param permission 权限编号
-     * @param ids 接口编号列表
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public apiAddApisToPermission(permission: string, ids: Array<string>, observe?: 'body', reportProgress?: boolean): Observable<boolean>;
-    public apiAddApisToPermission(permission: string, ids: Array<string>, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<boolean>>;
-    public apiAddApisToPermission(permission: string, ids: Array<string>, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<boolean>>;
-    public apiAddApisToPermission(permission: string, ids: Array<string>, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (permission === null || permission === undefined) {
-            throw new Error('Required parameter permission was null or undefined when calling apiAddApisToPermission.');
-        }
-        if (ids === null || ids === undefined) {
-            throw new Error('Required parameter ids was null or undefined when calling apiAddApisToPermission.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'text/html'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/x-www-form-urlencoded'
-        ];
-
-        const canConsumeForm = this.canConsumeForm(consumes);
-
-        let formParams: { append(param: string, value: any): any; };
-        let useForm = false;
-        let convertFormParamsToString = false;
-        if (useForm) {
-            formParams = new FormData();
-        } else {
-            formParams = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        }
-
-        if (permission !== undefined) {
-            formParams = formParams.append('permission', <any>permission) || formParams;
-        }
-        if (ids) {
-            formParams = formParams.append('ids', ids.join(COLLECTION_FORMATS['csv'])) || formParams;
-        }
-
-        return this.httpClient.post<boolean>(`${this.configuration.basePath}/api/api/permission`,
-            convertFormParamsToString ? formParams.toString() : formParams,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 按关键词查询接口
-     * @param keyword 关键词
-     * @param value 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public apiGetAccountsByKeyword(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValue>>;
-    public apiGetAccountsByKeyword(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValue>>>;
-    public apiGetAccountsByKeyword(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
-    public apiGetAccountsByKeyword(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (keyword !== undefined && keyword !== null) {
-            queryParameters = queryParameters.set('keyword', <any>keyword);
-        }
-        if (value !== undefined && value !== null) {
-            queryParameters = queryParameters.set('value', <any>value);
+            throw new Error('Required parameter id was null or undefined when calling dictsFindOne.');
         }
 
         let headers = this.defaultHeaders;
@@ -665,44 +160,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/api/api/search`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 获取接口管理界面配置信息.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public apiGetConfig(observe?: 'body', reportProgress?: boolean): Observable<Appearance>;
-    public apiGetConfig(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Appearance>>;
-    public apiGetConfig(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Appearance>>;
-    public apiGetConfig(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<Appearance>(`${this.configuration.basePath}/api/api/config`,
+        return this.httpClient.get<Dict>(`${this.configuration.basePath}/dicts/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -714,588 +172,28 @@ export class CoreService {
 
     /**
      * 
-     * 接口查询
-     * @param keyword 接口关键词
-     * @param permission 
-     * @param page 第几页
-     * @param size 页大小
-     * @param sort 排序
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public apiQuery(keyword?: string, permission?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<PaginateApi>;
-    public apiQuery(keyword?: string, permission?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PaginateApi>>;
-    public apiQuery(keyword?: string, permission?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PaginateApi>>;
-    public apiQuery(keyword?: string, permission?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (keyword !== undefined && keyword !== null) {
-            queryParameters = queryParameters.set('keyword', <any>keyword);
-        }
-        if (permission !== undefined && permission !== null) {
-            queryParameters = queryParameters.set('permission', <any>permission);
-        }
-        if (page !== undefined && page !== null) {
-            queryParameters = queryParameters.set('page', <any>page);
-        }
-        if (size !== undefined && size !== null) {
-            queryParameters = queryParameters.set('size', <any>size);
-        }
-        if (sort !== undefined && sort !== null) {
-            queryParameters = queryParameters.set('sort', <any>sort);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<PaginateApi>(`${this.configuration.basePath}/api/api/query`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * 
-     * 移除API接口从权限标签
-     * @param permission 权限编号
-     * @param id 接口编号
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public apiRemoveApisToPermission(permission: string, id: string, observe?: 'body', reportProgress?: boolean): Observable<boolean>;
-    public apiRemoveApisToPermission(permission: string, id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<boolean>>;
-    public apiRemoveApisToPermission(permission: string, id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<boolean>>;
-    public apiRemoveApisToPermission(permission: string, id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (permission === null || permission === undefined) {
-            throw new Error('Required parameter permission was null or undefined when calling apiRemoveApisToPermission.');
-        }
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling apiRemoveApisToPermission.');
-        }
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (permission !== undefined && permission !== null) {
-            queryParameters = queryParameters.set('permission', <any>permission);
-        }
-        if (id !== undefined && id !== null) {
-            queryParameters = queryParameters.set('id', <any>id);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'text/html'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.delete<boolean>(`${this.configuration.basePath}/api/api/permission`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 创建字典
-     * @param createDictDto 设置项实体
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public dictCreate(createDictDto: CreateDictDto, observe?: 'body', reportProgress?: boolean): Observable<DictResponse>;
-    public dictCreate(createDictDto: CreateDictDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<DictResponse>>;
-    public dictCreate(createDictDto: CreateDictDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<DictResponse>>;
-    public dictCreate(createDictDto: CreateDictDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (createDictDto === null || createDictDto === undefined) {
-            throw new Error('Required parameter createDictDto was null or undefined when calling dictCreate.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
-
-        return this.httpClient.post<DictResponse>(`${this.configuration.basePath}/api/dict`,
-            createDictDto,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 按编号获取字典
-     * @param id 键
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public dictGet(id: string, observe?: 'body', reportProgress?: boolean): Observable<DictResponse>;
-    public dictGet(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<DictResponse>>;
-    public dictGet(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<DictResponse>>;
-    public dictGet(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling dictGet.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<DictResponse>(`${this.configuration.basePath}/api/dict/${encodeURIComponent(String(id))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 获取帐号管理界面配置信息.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public dictGetConfig(observe?: 'body', reportProgress?: boolean): Observable<Appearance>;
-    public dictGetConfig(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Appearance>>;
-    public dictGetConfig(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Appearance>>;
-    public dictGetConfig(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<Appearance>(`${this.configuration.basePath}/api/dict/config`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 分页查询字典
-     * @param keyword 关键词
-     * @param category 
-     * @param page 第几页
-     * @param size 页大小
-     * @param sort 排序
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public dictQuery(keyword?: string, category?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<PaginateDict>;
-    public dictQuery(keyword?: string, category?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PaginateDict>>;
-    public dictQuery(keyword?: string, category?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PaginateDict>>;
-    public dictQuery(keyword?: string, category?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (keyword !== undefined && keyword !== null) {
-            queryParameters = queryParameters.set('keyword', <any>keyword);
-        }
-        if (category !== undefined && category !== null) {
-            queryParameters = queryParameters.set('category', <any>category);
-        }
-        if (page !== undefined && page !== null) {
-            queryParameters = queryParameters.set('page', <any>page);
-        }
-        if (size !== undefined && size !== null) {
-            queryParameters = queryParameters.set('size', <any>size);
-        }
-        if (sort !== undefined && sort !== null) {
-            queryParameters = queryParameters.set('sort', <any>sort);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<PaginateDict>(`${this.configuration.basePath}/api/dict/query`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 删除字典
-     * @param id 键
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public dictRemove(id: string, observe?: 'body', reportProgress?: boolean): Observable<boolean>;
-    public dictRemove(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<boolean>>;
-    public dictRemove(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<boolean>>;
-    public dictRemove(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling dictRemove.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'text/html'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.delete<boolean>(`${this.configuration.basePath}/api/dict/${encodeURIComponent(String(id))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 搜索字典表
-     * @param keyword 关键词
-     * @param value 键
-     * @param category 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public dictSearch(keyword?: string, value?: string, category?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValue>>;
-    public dictSearch(keyword?: string, value?: string, category?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValue>>>;
-    public dictSearch(keyword?: string, value?: string, category?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
-    public dictSearch(keyword?: string, value?: string, category?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (keyword !== undefined && keyword !== null) {
-            queryParameters = queryParameters.set('keyword', <any>keyword);
-        }
-        if (value !== undefined && value !== null) {
-            queryParameters = queryParameters.set('value', <any>value);
-        }
-        if (category !== undefined && category !== null) {
-            queryParameters = queryParameters.set('category', <any>category);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/api/dict/search`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 更新字典
-     * @param editDictDto 设置项实体
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public dictUpdate(editDictDto: EditDictDto, observe?: 'body', reportProgress?: boolean): Observable<DictResponse>;
-    public dictUpdate(editDictDto: EditDictDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<DictResponse>>;
-    public dictUpdate(editDictDto: EditDictDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<DictResponse>>;
-    public dictUpdate(editDictDto: EditDictDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (editDictDto === null || editDictDto === undefined) {
-            throw new Error('Required parameter editDictDto was null or undefined when calling dictUpdate.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
-
-        return this.httpClient.put<DictResponse>(`${this.configuration.basePath}/api/dict`,
-            editDictDto,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 创建用户组
-     * @param createGroupDto 创建参数
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public groupCreate(createGroupDto: CreateGroupDto, observe?: 'body', reportProgress?: boolean): Observable<GroupResponse>;
-    public groupCreate(createGroupDto: CreateGroupDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GroupResponse>>;
-    public groupCreate(createGroupDto: CreateGroupDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GroupResponse>>;
-    public groupCreate(createGroupDto: CreateGroupDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (createGroupDto === null || createGroupDto === undefined) {
-            throw new Error('Required parameter createGroupDto was null or undefined when calling groupCreate.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
-
-        return this.httpClient.post<GroupResponse>(`${this.configuration.basePath}/api/group`,
-            createGroupDto,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 查询用户组
-     * @param id 用户组编号
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public groupGet(id: string, observe?: 'body', reportProgress?: boolean): Observable<GroupResponse>;
-    public groupGet(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GroupResponse>>;
-    public groupGet(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GroupResponse>>;
-    public groupGet(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling groupGet.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<GroupResponse>(`${this.configuration.basePath}/api/group/${encodeURIComponent(String(id))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 获取用户组管理界面配置信息.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public groupGetConfig(observe?: 'body', reportProgress?: boolean): Observable<Appearance>;
-    public groupGetConfig(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Appearance>>;
-    public groupGetConfig(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Appearance>>;
-    public groupGetConfig(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<Appearance>(`${this.configuration.basePath}/api/group/config`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 查询用户组
      * @param keyword 
-     * @param isRegion 
-     * @param page 
+     * @param index 
      * @param size 
-     * @param sort 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public groupQuery(keyword?: string, isRegion?: boolean, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<PaginateGroup>;
-    public groupQuery(keyword?: string, isRegion?: boolean, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PaginateGroup>>;
-    public groupQuery(keyword?: string, isRegion?: boolean, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PaginateGroup>>;
-    public groupQuery(keyword?: string, isRegion?: boolean, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public dictsQuery(keyword?: string, index?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListDict>;
+    public dictsQuery(keyword?: string, index?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListDict>>;
+    public dictsQuery(keyword?: string, index?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListDict>>;
+    public dictsQuery(keyword?: string, index?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
         }
-        if (isRegion !== undefined && isRegion !== null) {
-            queryParameters = queryParameters.set('isRegion', <any>isRegion);
-        }
-        if (page !== undefined && page !== null) {
-            queryParameters = queryParameters.set('page', <any>page);
+        if (index !== undefined && index !== null) {
+            queryParameters = queryParameters.set('index', <any>index);
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
         }
-        if (sort !== undefined && sort !== null) {
-            queryParameters = queryParameters.set('sort', <any>sort);
-        }
 
         let headers = this.defaultHeaders;
 
@@ -1312,94 +210,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<PaginateGroup>(`${this.configuration.basePath}/api/group/query`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 删除用户组
-     * @param id 用户组编号
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public groupRemove(id: string, observe?: 'body', reportProgress?: boolean): Observable<boolean>;
-    public groupRemove(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<boolean>>;
-    public groupRemove(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<boolean>>;
-    public groupRemove(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling groupRemove.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'text/html'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.delete<boolean>(`${this.configuration.basePath}/api/group/${encodeURIComponent(String(id))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 查询用户组
-     * @param keyword 关键词
-     * @param value 已选中的用户组编号
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public groupSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValue>>;
-    public groupSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValue>>>;
-    public groupSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
-    public groupSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (keyword !== undefined && keyword !== null) {
-            queryParameters = queryParameters.set('keyword', <any>keyword);
-        }
-        if (value !== undefined && value !== null) {
-            queryParameters = queryParameters.set('value', <any>value);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/api/group/search`,
+        return this.httpClient.get<ResultListDict>(`${this.configuration.basePath}/dicts/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1418,10 +229,10 @@ export class CoreService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public groupSearchTree(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<TreeNode>>;
-    public groupSearchTree(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<TreeNode>>>;
-    public groupSearchTree(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<TreeNode>>>;
-    public groupSearchTree(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public dictsSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValueDto>>;
+    public dictsSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValueDto>>>;
+    public dictsSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValueDto>>>;
+    public dictsSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -1446,7 +257,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<TreeNode>>(`${this.configuration.basePath}/api/group/tree`,
+        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/dicts/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1459,17 +270,17 @@ export class CoreService {
 
     /**
      * 
-     * 更新用户组
-     * @param editGroupDto 用户组参数
+     * 
+     * @param editDictReq 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public groupUpdate(editGroupDto: EditGroupDto, observe?: 'body', reportProgress?: boolean): Observable<GroupResponse>;
-    public groupUpdate(editGroupDto: EditGroupDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GroupResponse>>;
-    public groupUpdate(editGroupDto: EditGroupDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GroupResponse>>;
-    public groupUpdate(editGroupDto: EditGroupDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (editGroupDto === null || editGroupDto === undefined) {
-            throw new Error('Required parameter editGroupDto was null or undefined when calling groupUpdate.');
+    public dictsUpdate(editDictReq: EditDictReq, observe?: 'body', reportProgress?: boolean): Observable<Dict>;
+    public dictsUpdate(editDictReq: EditDictReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Dict>>;
+    public dictsUpdate(editDictReq: EditDictReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Dict>>;
+    public dictsUpdate(editDictReq: EditDictReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (editDictReq === null || editDictReq === undefined) {
+            throw new Error('Required parameter editDictReq was null or undefined when calling dictsUpdate.');
         }
 
         let headers = this.defaultHeaders;
@@ -1492,8 +303,8 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<GroupResponse>(`${this.configuration.basePath}/api/group`,
-            editGroupDto,
+        return this.httpClient.put<Dict>(`${this.configuration.basePath}/dicts/`,
+            editDictReq,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -1505,17 +316,17 @@ export class CoreService {
 
     /**
      * 
-     * 按编号获取日志
-     * @param id 键
+     * 
+     * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public logGet(id: string, observe?: 'body', reportProgress?: boolean): Observable<LogResponse>;
-    public logGet(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<LogResponse>>;
-    public logGet(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<LogResponse>>;
-    public logGet(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public logsFindOne(id: string, observe?: 'body', reportProgress?: boolean): Observable<Log>;
+    public logsFindOne(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Log>>;
+    public logsFindOne(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Log>>;
+    public logsFindOne(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling logGet.');
+            throw new Error('Required parameter id was null or undefined when calling logsFindOne.');
         }
 
         let headers = this.defaultHeaders;
@@ -1533,7 +344,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<LogResponse>(`${this.configuration.basePath}/api/log/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<Log>(`${this.configuration.basePath}/logs/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -1545,68 +356,28 @@ export class CoreService {
 
     /**
      * 
-     * 获取日志管理界面配置信息.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public logGetConfig(observe?: 'body', reportProgress?: boolean): Observable<Appearance>;
-    public logGetConfig(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Appearance>>;
-    public logGetConfig(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Appearance>>;
-    public logGetConfig(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<Appearance>(`${this.configuration.basePath}/api/log/config`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * 
-     * 分页查询日志
-     * @param keyword 关键词
-     * @param page 第几页
-     * @param size 页大小
-     * @param sort 排序
+     * @param keyword 
+     * @param index 
+     * @param size 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public logQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<PaginateLog>;
-    public logQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PaginateLog>>;
-    public logQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PaginateLog>>;
-    public logQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public logsQuery(keyword?: string, index?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListLog>;
+    public logsQuery(keyword?: string, index?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListLog>>;
+    public logsQuery(keyword?: string, index?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListLog>>;
+    public logsQuery(keyword?: string, index?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
         }
-        if (page !== undefined && page !== null) {
-            queryParameters = queryParameters.set('page', <any>page);
+        if (index !== undefined && index !== null) {
+            queryParameters = queryParameters.set('index', <any>index);
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
         }
-        if (sort !== undefined && sort !== null) {
-            queryParameters = queryParameters.set('sort', <any>sort);
-        }
 
         let headers = this.defaultHeaders;
 
@@ -1623,7 +394,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<PaginateLog>(`${this.configuration.basePath}/api/log/query`,
+        return this.httpClient.get<ResultListLog>(`${this.configuration.basePath}/logs/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1636,16 +407,16 @@ export class CoreService {
 
     /**
      * 
-     * 搜索日志
-     * @param keyword 关键词
-     * @param value 键
+     * 
+     * @param keyword 
+     * @param value 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public logSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValue>>;
-    public logSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValue>>>;
-    public logSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
-    public logSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public logsSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValueDto>>;
+    public logsSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValueDto>>>;
+    public logsSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValueDto>>>;
+    public logsSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -1670,7 +441,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/api/log/search`,
+        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/logs/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1683,24 +454,23 @@ export class CoreService {
 
     /**
      * 
-     * 创建菜单
-     * @param createMenuDto 创建参数
+     * 
+     * @param createMenuReq 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public menuCreate(createMenuDto: CreateMenuDto, observe?: 'body', reportProgress?: boolean): Observable<MenuResponse>;
-    public menuCreate(createMenuDto: CreateMenuDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<MenuResponse>>;
-    public menuCreate(createMenuDto: CreateMenuDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<MenuResponse>>;
-    public menuCreate(createMenuDto: CreateMenuDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (createMenuDto === null || createMenuDto === undefined) {
-            throw new Error('Required parameter createMenuDto was null or undefined when calling menuCreate.');
+    public menusCreate(createMenuReq: CreateMenuReq, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public menusCreate(createMenuReq: CreateMenuReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public menusCreate(createMenuReq: CreateMenuReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public menusCreate(createMenuReq: CreateMenuReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (createMenuReq === null || createMenuReq === undefined) {
+            throw new Error('Required parameter createMenuReq was null or undefined when calling menusCreate.');
         }
 
         let headers = this.defaultHeaders;
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
-            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected !== undefined) {
@@ -1716,8 +486,8 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<MenuResponse>(`${this.configuration.basePath}/api/menu`,
-            createMenuDto,
+        return this.httpClient.post<any>(`${this.configuration.basePath}/menus/`,
+            createMenuReq,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -1729,17 +499,17 @@ export class CoreService {
 
     /**
      * 
-     * 查询菜单
-     * @param id 菜单编号
+     * 
+     * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public menuGet(id: string, observe?: 'body', reportProgress?: boolean): Observable<MenuResponse>;
-    public menuGet(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<MenuResponse>>;
-    public menuGet(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<MenuResponse>>;
-    public menuGet(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public menusFindOne(id: string, observe?: 'body', reportProgress?: boolean): Observable<Menu>;
+    public menusFindOne(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Menu>>;
+    public menusFindOne(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Menu>>;
+    public menusFindOne(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling menuGet.');
+            throw new Error('Required parameter id was null or undefined when calling menusFindOne.');
         }
 
         let headers = this.defaultHeaders;
@@ -1757,7 +527,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<MenuResponse>(`${this.configuration.basePath}/api/menu/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<Menu>(`${this.configuration.basePath}/menus/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -1769,14 +539,14 @@ export class CoreService {
 
     /**
      * 
-     * 获取帐号管理界面配置信息.
+     * 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public menuGetConfig(observe?: 'body', reportProgress?: boolean): Observable<Appearance>;
-    public menuGetConfig(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Appearance>>;
-    public menuGetConfig(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Appearance>>;
-    public menuGetConfig(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public menusGetPermissionTags(observe?: 'body', reportProgress?: boolean): Observable<Array<InlineResponse200>>;
+    public menusGetPermissionTags(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<InlineResponse200>>>;
+    public menusGetPermissionTags(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<InlineResponse200>>>;
+    public menusGetPermissionTags(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -1793,7 +563,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Appearance>(`${this.configuration.basePath}/api/menu/config`,
+        return this.httpClient.get<Array<InlineResponse200>>(`${this.configuration.basePath}/menus/permissions`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -1805,14 +575,14 @@ export class CoreService {
 
     /**
      * 
-     * 获取菜单权限标签列表
+     * 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public menuGetPermissionTags(observe?: 'body', reportProgress?: boolean): Observable<Array<SelectorItem>>;
-    public menuGetPermissionTags(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<SelectorItem>>>;
-    public menuGetPermissionTags(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<SelectorItem>>>;
-    public menuGetPermissionTags(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public menusGetUserMenus(observe?: 'body', reportProgress?: boolean): Observable<Array<MenuRes>>;
+    public menusGetUserMenus(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<MenuRes>>>;
+    public menusGetUserMenus(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<MenuRes>>>;
+    public menusGetUserMenus(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -1829,7 +599,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<SelectorItem>>(`${this.configuration.basePath}/api/menu/permissions`,
+        return this.httpClient.get<Array<MenuRes>>(`${this.configuration.basePath}/menus/auth`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -1841,71 +611,34 @@ export class CoreService {
 
     /**
      * 
-     * 返回用户鉴权后的菜单
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public menuGetUserMenus(observe?: 'body', reportProgress?: boolean): Observable<Array<MenuResponse>>;
-    public menuGetUserMenus(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<MenuResponse>>>;
-    public menuGetUserMenus(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<MenuResponse>>>;
-    public menuGetUserMenus(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<Array<MenuResponse>>(`${this.configuration.basePath}/api/menu/auth`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * 
-     * 查询菜单数据
-     * @param keyword 关键词
      * @param isMenu 
-     * @param page 第几页
-     * @param size 页大小
-     * @param sort 排序
+     * @param keyword 
+     * @param index 
+     * @param size 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public menuQuery(keyword?: string, isMenu?: boolean, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<PaginateMenu>;
-    public menuQuery(keyword?: string, isMenu?: boolean, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PaginateMenu>>;
-    public menuQuery(keyword?: string, isMenu?: boolean, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PaginateMenu>>;
-    public menuQuery(keyword?: string, isMenu?: boolean, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public menusQuery(isMenu: boolean, keyword?: string, index?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListMenu>;
+    public menusQuery(isMenu: boolean, keyword?: string, index?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListMenu>>;
+    public menusQuery(isMenu: boolean, keyword?: string, index?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListMenu>>;
+    public menusQuery(isMenu: boolean, keyword?: string, index?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (isMenu === null || isMenu === undefined) {
+            throw new Error('Required parameter isMenu was null or undefined when calling menusQuery.');
+        }
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (keyword !== undefined && keyword !== null) {
-            queryParameters = queryParameters.set('keyword', <any>keyword);
-        }
         if (isMenu !== undefined && isMenu !== null) {
             queryParameters = queryParameters.set('isMenu', <any>isMenu);
         }
-        if (page !== undefined && page !== null) {
-            queryParameters = queryParameters.set('page', <any>page);
+        if (keyword !== undefined && keyword !== null) {
+            queryParameters = queryParameters.set('keyword', <any>keyword);
+        }
+        if (index !== undefined && index !== null) {
+            queryParameters = queryParameters.set('index', <any>index);
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
-        }
-        if (sort !== undefined && sort !== null) {
-            queryParameters = queryParameters.set('sort', <any>sort);
         }
 
         let headers = this.defaultHeaders;
@@ -1923,7 +656,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<PaginateMenu>(`${this.configuration.basePath}/api/menu/query`,
+        return this.httpClient.get<ResultListMenu>(`${this.configuration.basePath}/menus/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1936,56 +669,16 @@ export class CoreService {
 
     /**
      * 
-     * 删除菜单
-     * @param id 菜单编号
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public menuRemove(id: string, observe?: 'body', reportProgress?: boolean): Observable<boolean>;
-    public menuRemove(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<boolean>>;
-    public menuRemove(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<boolean>>;
-    public menuRemove(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling menuRemove.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'text/html'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.delete<boolean>(`${this.configuration.basePath}/api/menu/${encodeURIComponent(String(id))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * 
-     * 查询菜单
-     * @param keyword 关键词
-     * @param value 已选中的菜单编号
+     * @param keyword 
+     * @param value 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public menuSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValue>>;
-    public menuSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValue>>>;
-    public menuSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
-    public menuSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public menusSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValueDto>>;
+    public menusSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValueDto>>>;
+    public menusSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValueDto>>>;
+    public menusSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -2010,7 +703,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/api/menu/search`,
+        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/menus/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -2023,17 +716,17 @@ export class CoreService {
 
     /**
      * 
-     * 更新菜单
-     * @param editMenuDto 菜单参数
+     * 
+     * @param editMenuReq 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public menuUpdate(editMenuDto: EditMenuDto, observe?: 'body', reportProgress?: boolean): Observable<MenuResponse>;
-    public menuUpdate(editMenuDto: EditMenuDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<MenuResponse>>;
-    public menuUpdate(editMenuDto: EditMenuDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<MenuResponse>>;
-    public menuUpdate(editMenuDto: EditMenuDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (editMenuDto === null || editMenuDto === undefined) {
-            throw new Error('Required parameter editMenuDto was null or undefined when calling menuUpdate.');
+    public menusUpdate(editMenuReq: EditMenuReq, observe?: 'body', reportProgress?: boolean): Observable<Menu>;
+    public menusUpdate(editMenuReq: EditMenuReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Menu>>;
+    public menusUpdate(editMenuReq: EditMenuReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Menu>>;
+    public menusUpdate(editMenuReq: EditMenuReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (editMenuReq === null || editMenuReq === undefined) {
+            throw new Error('Required parameter editMenuReq was null or undefined when calling menusUpdate.');
         }
 
         let headers = this.defaultHeaders;
@@ -2056,8 +749,8 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<MenuResponse>(`${this.configuration.basePath}/api/menu`,
-            editMenuDto,
+        return this.httpClient.put<Menu>(`${this.configuration.basePath}/menus/`,
+            editMenuReq,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -2069,24 +762,23 @@ export class CoreService {
 
     /**
      * 
-     * 创建角色
-     * @param createRoleDto 设置项实体
+     * 
+     * @param createNoticeReq 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public roleCreate(createRoleDto: CreateRoleDto, observe?: 'body', reportProgress?: boolean): Observable<RoleResponse>;
-    public roleCreate(createRoleDto: CreateRoleDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<RoleResponse>>;
-    public roleCreate(createRoleDto: CreateRoleDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<RoleResponse>>;
-    public roleCreate(createRoleDto: CreateRoleDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (createRoleDto === null || createRoleDto === undefined) {
-            throw new Error('Required parameter createRoleDto was null or undefined when calling roleCreate.');
+    public noticesCreate(createNoticeReq: CreateNoticeReq, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public noticesCreate(createNoticeReq: CreateNoticeReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public noticesCreate(createNoticeReq: CreateNoticeReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public noticesCreate(createNoticeReq: CreateNoticeReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (createNoticeReq === null || createNoticeReq === undefined) {
+            throw new Error('Required parameter createNoticeReq was null or undefined when calling noticesCreate.');
         }
 
         let headers = this.defaultHeaders;
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
-            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected !== undefined) {
@@ -2102,8 +794,8 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<RoleResponse>(`${this.configuration.basePath}/api/role`,
-            createRoleDto,
+        return this.httpClient.post<any>(`${this.configuration.basePath}/notices/`,
+            createNoticeReq,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -2115,17 +807,17 @@ export class CoreService {
 
     /**
      * 
-     * 按编号获取角色
-     * @param id 键
+     * 
+     * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public roleGet(id: string, observe?: 'body', reportProgress?: boolean): Observable<RoleResponse>;
-    public roleGet(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<RoleResponse>>;
-    public roleGet(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<RoleResponse>>;
-    public roleGet(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public noticesFindOne(id: string, observe?: 'body', reportProgress?: boolean): Observable<Notice>;
+    public noticesFindOne(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Notice>>;
+    public noticesFindOne(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Notice>>;
+    public noticesFindOne(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling roleGet.');
+            throw new Error('Required parameter id was null or undefined when calling noticesFindOne.');
         }
 
         let headers = this.defaultHeaders;
@@ -2143,7 +835,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<RoleResponse>(`${this.configuration.basePath}/api/role/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<Notice>(`${this.configuration.basePath}/notices/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -2155,67 +847,27 @@ export class CoreService {
 
     /**
      * 
-     * 获取角色管理界面配置信息.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public roleGetConfig(observe?: 'body', reportProgress?: boolean): Observable<Appearance>;
-    public roleGetConfig(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Appearance>>;
-    public roleGetConfig(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Appearance>>;
-    public roleGetConfig(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<Appearance>(`${this.configuration.basePath}/api/role/config`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * 
-     * 分页查询角色
-     * @param keyword 关键词
-     * @param page 第几页
-     * @param size 页大小
-     * @param sort 排序
+     * @param keyword 
+     * @param index 
+     * @param size 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public roleQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<PaginateRole>;
-    public roleQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PaginateRole>>;
-    public roleQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PaginateRole>>;
-    public roleQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public noticesQuery(keyword?: string, index?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListNotice>;
+    public noticesQuery(keyword?: string, index?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListNotice>>;
+    public noticesQuery(keyword?: string, index?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListNotice>>;
+    public noticesQuery(keyword?: string, index?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
         }
-        if (page !== undefined && page !== null) {
-            queryParameters = queryParameters.set('page', <any>page);
+        if (index !== undefined && index !== null) {
+            queryParameters = queryParameters.set('index', <any>index);
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
-        }
-        if (sort !== undefined && sort !== null) {
-            queryParameters = queryParameters.set('sort', <any>sort);
         }
 
         let headers = this.defaultHeaders;
@@ -2233,7 +885,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<PaginateRole>(`${this.configuration.basePath}/api/role/query`,
+        return this.httpClient.get<ResultListNotice>(`${this.configuration.basePath}/notices/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -2246,56 +898,16 @@ export class CoreService {
 
     /**
      * 
-     * 删除角色
-     * @param id 键
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public roleRemove(id: string, observe?: 'body', reportProgress?: boolean): Observable<boolean>;
-    public roleRemove(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<boolean>>;
-    public roleRemove(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<boolean>>;
-    public roleRemove(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling roleRemove.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'text/html'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.delete<boolean>(`${this.configuration.basePath}/api/role/${encodeURIComponent(String(id))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * 
-     * 搜索角色
-     * @param keyword 关键词
-     * @param value 键
+     * @param keyword 
+     * @param value 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public roleSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValue>>;
-    public roleSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValue>>>;
-    public roleSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
-    public roleSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public noticesSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValueDto>>;
+    public noticesSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValueDto>>>;
+    public noticesSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValueDto>>>;
+    public noticesSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -2320,7 +932,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/api/role/search`,
+        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/notices/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -2333,17 +945,17 @@ export class CoreService {
 
     /**
      * 
-     * 更新角色
-     * @param editRoleDto 设置项实体
+     * 
+     * @param editNoticeReq 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public roleUpdate(editRoleDto: EditRoleDto, observe?: 'body', reportProgress?: boolean): Observable<RoleResponse>;
-    public roleUpdate(editRoleDto: EditRoleDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<RoleResponse>>;
-    public roleUpdate(editRoleDto: EditRoleDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<RoleResponse>>;
-    public roleUpdate(editRoleDto: EditRoleDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (editRoleDto === null || editRoleDto === undefined) {
-            throw new Error('Required parameter editRoleDto was null or undefined when calling roleUpdate.');
+    public noticesUpdate(editNoticeReq: EditNoticeReq, observe?: 'body', reportProgress?: boolean): Observable<Notice>;
+    public noticesUpdate(editNoticeReq: EditNoticeReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Notice>>;
+    public noticesUpdate(editNoticeReq: EditNoticeReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Notice>>;
+    public noticesUpdate(editNoticeReq: EditNoticeReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (editNoticeReq === null || editNoticeReq === undefined) {
+            throw new Error('Required parameter editNoticeReq was null or undefined when calling noticesUpdate.');
         }
 
         let headers = this.defaultHeaders;
@@ -2366,8 +978,8 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<RoleResponse>(`${this.configuration.basePath}/api/role`,
-            editRoleDto,
+        return this.httpClient.put<Notice>(`${this.configuration.basePath}/notices/`,
+            editNoticeReq,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -2379,24 +991,23 @@ export class CoreService {
 
     /**
      * 
-     * 创建设置项
-     * @param createSettingDto 设置项实体
+     * 
+     * @param createSettingReq 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public settingCreate(createSettingDto: CreateSettingDto, observe?: 'body', reportProgress?: boolean): Observable<SettingResponse>;
-    public settingCreate(createSettingDto: CreateSettingDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SettingResponse>>;
-    public settingCreate(createSettingDto: CreateSettingDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SettingResponse>>;
-    public settingCreate(createSettingDto: CreateSettingDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (createSettingDto === null || createSettingDto === undefined) {
-            throw new Error('Required parameter createSettingDto was null or undefined when calling settingCreate.');
+    public settingsCreate(createSettingReq: CreateSettingReq, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public settingsCreate(createSettingReq: CreateSettingReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public settingsCreate(createSettingReq: CreateSettingReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public settingsCreate(createSettingReq: CreateSettingReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (createSettingReq === null || createSettingReq === undefined) {
+            throw new Error('Required parameter createSettingReq was null or undefined when calling settingsCreate.');
         }
 
         let headers = this.defaultHeaders;
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
-            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected !== undefined) {
@@ -2412,8 +1023,8 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<SettingResponse>(`${this.configuration.basePath}/api/setting`,
-            createSettingDto,
+        return this.httpClient.post<any>(`${this.configuration.basePath}/settings/`,
+            createSettingReq,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -2425,17 +1036,17 @@ export class CoreService {
 
     /**
      * 
-     * 按编号获取设置项
-     * @param id 键
+     * 
+     * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public settingGet(id: string, observe?: 'body', reportProgress?: boolean): Observable<SettingResponse>;
-    public settingGet(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SettingResponse>>;
-    public settingGet(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SettingResponse>>;
-    public settingGet(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public settingsFindOne(id: string, observe?: 'body', reportProgress?: boolean): Observable<Setting>;
+    public settingsFindOne(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Setting>>;
+    public settingsFindOne(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Setting>>;
+    public settingsFindOne(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling settingGet.');
+            throw new Error('Required parameter id was null or undefined when calling settingsFindOne.');
         }
 
         let headers = this.defaultHeaders;
@@ -2453,7 +1064,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<SettingResponse>(`${this.configuration.basePath}/api/setting/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<Setting>(`${this.configuration.basePath}/settings/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -2465,147 +1076,22 @@ export class CoreService {
 
     /**
      * 
-     * 获取设置管理界面配置信息.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public settingGetConfig(observe?: 'body', reportProgress?: boolean): Observable<Appearance>;
-    public settingGetConfig(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Appearance>>;
-    public settingGetConfig(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Appearance>>;
-    public settingGetConfig(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<Appearance>(`${this.configuration.basePath}/api/setting/config`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * 
-     * 通过Key获取设置项目
-     * @param key 键名
+     * @param key 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public settingGetSettingsByKey(key: string, observe?: 'body', reportProgress?: boolean): Observable<SettingResponse>;
-    public settingGetSettingsByKey(key: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SettingResponse>>;
-    public settingGetSettingsByKey(key: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SettingResponse>>;
-    public settingGetSettingsByKey(key: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public settingsGetSettingsByKey(key: string, observe?: 'body', reportProgress?: boolean): Observable<SettingRes>;
+    public settingsGetSettingsByKey(key: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SettingRes>>;
+    public settingsGetSettingsByKey(key: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SettingRes>>;
+    public settingsGetSettingsByKey(key: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (key === null || key === undefined) {
-            throw new Error('Required parameter key was null or undefined when calling settingGetSettingsByKey.');
+            throw new Error('Required parameter key was null or undefined when calling settingsGetSettingsByKey.');
         }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<SettingResponse>(`${this.configuration.basePath}/api/setting/key/${encodeURIComponent(String(key))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 按分组获取多个设置项
-     * @param name 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public settingGetSettingsByName(name: string, observe?: 'body', reportProgress?: boolean): Observable<SettingsGroup>;
-    public settingGetSettingsByName(name: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SettingsGroup>>;
-    public settingGetSettingsByName(name: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SettingsGroup>>;
-    public settingGetSettingsByName(name: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (name === null || name === undefined) {
-            throw new Error('Required parameter name was null or undefined when calling settingGetSettingsByName.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<SettingsGroup>(`${this.configuration.basePath}/api/setting/name/${encodeURIComponent(String(name))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 分页查询设置项
-     * @param keyword 关键词
-     * @param page 第几页
-     * @param size 页大小
-     * @param sort 排序
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public settingQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<PaginateSetting>;
-    public settingQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PaginateSetting>>;
-    public settingQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PaginateSetting>>;
-    public settingQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (keyword !== undefined && keyword !== null) {
-            queryParameters = queryParameters.set('keyword', <any>keyword);
-        }
-        if (page !== undefined && page !== null) {
-            queryParameters = queryParameters.set('page', <any>page);
-        }
-        if (size !== undefined && size !== null) {
-            queryParameters = queryParameters.set('size', <any>size);
-        }
-        if (sort !== undefined && sort !== null) {
-            queryParameters = queryParameters.set('sort', <any>sort);
+        if (key !== undefined && key !== null) {
+            queryParameters = queryParameters.set('key', <any>key);
         }
 
         let headers = this.defaultHeaders;
@@ -2623,7 +1109,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<PaginateSetting>(`${this.configuration.basePath}/api/setting/query`,
+        return this.httpClient.get<SettingRes>(`${this.configuration.basePath}/settings/key/${encodeURIComponent(String(key))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -2636,24 +1122,26 @@ export class CoreService {
 
     /**
      * 
-     * 删除设置项
-     * @param id 键
+     * 
+     * @param name 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public settingRemove(id: string, observe?: 'body', reportProgress?: boolean): Observable<boolean>;
-    public settingRemove(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<boolean>>;
-    public settingRemove(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<boolean>>;
-    public settingRemove(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling settingRemove.');
+    public settingsGetSettingsByName(name?: string, observe?: 'body', reportProgress?: boolean): Observable<SettingsGroup>;
+    public settingsGetSettingsByName(name?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SettingsGroup>>;
+    public settingsGetSettingsByName(name?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SettingsGroup>>;
+    public settingsGetSettingsByName(name?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (name !== undefined && name !== null) {
+            queryParameters = queryParameters.set('name', <any>name);
         }
 
         let headers = this.defaultHeaders;
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
-            'text/html'
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected !== undefined) {
@@ -2664,8 +1152,9 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.delete<boolean>(`${this.configuration.basePath}/api/setting/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<SettingsGroup>(`${this.configuration.basePath}/settings/name/${encodeURIComponent(String(name))}`,
             {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -2676,16 +1165,67 @@ export class CoreService {
 
     /**
      * 
-     * 查询设置项
-     * @param keyword 关键词
-     * @param value 键
+     * 
+     * @param keyword 
+     * @param index 
+     * @param size 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public settingSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<SettingResponse>>;
-    public settingSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<SettingResponse>>>;
-    public settingSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<SettingResponse>>>;
-    public settingSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public settingsQuery(keyword?: string, index?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListSetting>;
+    public settingsQuery(keyword?: string, index?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListSetting>>;
+    public settingsQuery(keyword?: string, index?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListSetting>>;
+    public settingsQuery(keyword?: string, index?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (keyword !== undefined && keyword !== null) {
+            queryParameters = queryParameters.set('keyword', <any>keyword);
+        }
+        if (index !== undefined && index !== null) {
+            queryParameters = queryParameters.set('index', <any>index);
+        }
+        if (size !== undefined && size !== null) {
+            queryParameters = queryParameters.set('size', <any>size);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.get<ResultListSetting>(`${this.configuration.basePath}/settings/query`,
+            {
+                params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param keyword 
+     * @param value 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public settingsSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValueDto>>;
+    public settingsSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValueDto>>>;
+    public settingsSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValueDto>>>;
+    public settingsSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -2710,7 +1250,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<SettingResponse>>(`${this.configuration.basePath}/api/setting/search`,
+        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/settings/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -2723,17 +1263,17 @@ export class CoreService {
 
     /**
      * 
-     * 更新设置项
-     * @param editSettingDto 设置项实体
+     * 
+     * @param editSettingReq 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public settingUpdate(editSettingDto: EditSettingDto, observe?: 'body', reportProgress?: boolean): Observable<SettingResponse>;
-    public settingUpdate(editSettingDto: EditSettingDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SettingResponse>>;
-    public settingUpdate(editSettingDto: EditSettingDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SettingResponse>>;
-    public settingUpdate(editSettingDto: EditSettingDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (editSettingDto === null || editSettingDto === undefined) {
-            throw new Error('Required parameter editSettingDto was null or undefined when calling settingUpdate.');
+    public settingsUpdate(editSettingReq: EditSettingReq, observe?: 'body', reportProgress?: boolean): Observable<Setting>;
+    public settingsUpdate(editSettingReq: EditSettingReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Setting>>;
+    public settingsUpdate(editSettingReq: EditSettingReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Setting>>;
+    public settingsUpdate(editSettingReq: EditSettingReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (editSettingReq === null || editSettingReq === undefined) {
+            throw new Error('Required parameter editSettingReq was null or undefined when calling settingsUpdate.');
         }
 
         let headers = this.defaultHeaders;
@@ -2756,8 +1296,8 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<SettingResponse>(`${this.configuration.basePath}/api/setting`,
-            editSettingDto,
+        return this.httpClient.put<Setting>(`${this.configuration.basePath}/settings/`,
+            editSettingReq,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -2769,323 +1309,118 @@ export class CoreService {
 
     /**
      * 
-     * 更新设置项
+     * 
      * @param name 
-     * @param settingsGroup 设置项实体
+     * @param settingsGroup 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public settingUpdateSettingsByName(name: string, settingsGroup: SettingsGroup, observe?: 'body', reportProgress?: boolean): Observable<SettingsGroup>;
-    public settingUpdateSettingsByName(name: string, settingsGroup: SettingsGroup, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SettingsGroup>>;
-    public settingUpdateSettingsByName(name: string, settingsGroup: SettingsGroup, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SettingsGroup>>;
-    public settingUpdateSettingsByName(name: string, settingsGroup: SettingsGroup, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public settingsUpdateSettingsByName(name: string, settingsGroup: SettingsGroup, observe?: 'body', reportProgress?: boolean): Observable<SettingsGroup>;
+    public settingsUpdateSettingsByName(name: string, settingsGroup: SettingsGroup, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SettingsGroup>>;
+    public settingsUpdateSettingsByName(name: string, settingsGroup: SettingsGroup, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SettingsGroup>>;
+    public settingsUpdateSettingsByName(name: string, settingsGroup: SettingsGroup, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (name === null || name === undefined) {
-            throw new Error('Required parameter name was null or undefined when calling settingUpdateSettingsByName.');
+            throw new Error('Required parameter name was null or undefined when calling settingsUpdateSettingsByName.');
         }
         if (settingsGroup === null || settingsGroup === undefined) {
-            throw new Error('Required parameter settingsGroup was null or undefined when calling settingUpdateSettingsByName.');
+            throw new Error('Required parameter settingsGroup was null or undefined when calling settingsUpdateSettingsByName.');
         }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
-
-        return this.httpClient.put<SettingsGroup>(`${this.configuration.basePath}/api/setting/name/${encodeURIComponent(String(name))}`,
-            settingsGroup,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 上传附件
-     * @param file 
-     * @param field 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public userFileUpload(file: Blob, field?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public userFileUpload(file: Blob, field?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public userFileUpload(file: Blob, field?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public userFileUpload(file: Blob, field?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (file === null || file === undefined) {
-            throw new Error('Required parameter file was null or undefined when calling userFileUpload.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'multipart/form-data'
-        ];
-
-        const canConsumeForm = this.canConsumeForm(consumes);
-
-        let formParams: { append(param: string, value: any): any; };
-        let useForm = false;
-        let convertFormParamsToString = false;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        // see https://stackoverflow.com/questions/4007969/application-x-www-form-urlencoded-or-multipart-form-data
-        useForm = canConsumeForm;
-        if (useForm) {
-            formParams = new FormData();
-        } else {
-            formParams = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        }
-
-        if (file !== undefined) {
-            formParams = formParams.append('file', <any>file) || formParams;
-        }
-        if (field !== undefined) {
-            formParams = formParams.append('field', <any>field) || formParams;
-        }
-
-        return this.httpClient.post<any>(`${this.configuration.basePath}/user/upload`,
-            convertFormParamsToString ? formParams.toString() : formParams,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 用户登陆
-     * @param loginDto 用户登陆参数
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public userLogin(loginDto: LoginDto, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public userLogin(loginDto: LoginDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public userLogin(loginDto: LoginDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public userLogin(loginDto: LoginDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (loginDto === null || loginDto === undefined) {
-            throw new Error('Required parameter loginDto was null or undefined when calling userLogin.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
-
-        return this.httpClient.post<any>(`${this.configuration.basePath}/user/login`,
-            loginDto,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 退出登陆
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public userLogout(observe?: 'body', reportProgress?: boolean): Observable<boolean>;
-    public userLogout(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<boolean>>;
-    public userLogout(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<boolean>>;
-    public userLogout(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'text/html'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<boolean>(`${this.configuration.basePath}/user/logout`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 编辑器附件上传
-     * @param upfile 
-     * @param field 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public userUmeditorUpload(upfile: Blob, field?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public userUmeditorUpload(upfile: Blob, field?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public userUmeditorUpload(upfile: Blob, field?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public userUmeditorUpload(upfile: Blob, field?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (upfile === null || upfile === undefined) {
-            throw new Error('Required parameter upfile was null or undefined when calling userUmeditorUpload.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'multipart/form-data'
-        ];
-
-        const canConsumeForm = this.canConsumeForm(consumes);
-
-        let formParams: { append(param: string, value: any): any; };
-        let useForm = false;
-        let convertFormParamsToString = false;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        // see https://stackoverflow.com/questions/4007969/application-x-www-form-urlencoded-or-multipart-form-data
-        useForm = canConsumeForm;
-        if (useForm) {
-            formParams = new FormData();
-        } else {
-            formParams = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        }
-
-        if (upfile !== undefined) {
-            formParams = formParams.append('upfile', <any>upfile) || formParams;
-        }
-        if (field !== undefined) {
-            formParams = formParams.append('field', <any>field) || formParams;
-        }
-
-        return this.httpClient.post<any>(`${this.configuration.basePath}/user/umeditor/upload`,
-            convertFormParamsToString ? formParams.toString() : formParams,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 更新帐号
-     * @param editProfileDto 帐号信息
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public userUpdate(editProfileDto: EditProfileDto, observe?: 'body', reportProgress?: boolean): Observable<ProfileResponse>;
-    public userUpdate(editProfileDto: EditProfileDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ProfileResponse>>;
-    public userUpdate(editProfileDto: EditProfileDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ProfileResponse>>;
-    public userUpdate(editProfileDto: EditProfileDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (editProfileDto === null || editProfileDto === undefined) {
-            throw new Error('Required parameter editProfileDto was null or undefined when calling userUpdate.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected !== undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
-
-        return this.httpClient.put<ProfileResponse>(`${this.configuration.basePath}/user`,
-            editProfileDto,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 文件上传配置
-     * @param action 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public userUploadConfig(action?: string, observe?: 'body', reportProgress?: boolean): Observable<UploadConfig>;
-    public userUploadConfig(action?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UploadConfig>>;
-    public userUploadConfig(action?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UploadConfig>>;
-    public userUploadConfig(action?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (action !== undefined && action !== null) {
-            queryParameters = queryParameters.set('action', <any>action);
+        if (name !== undefined && name !== null) {
+            queryParameters = queryParameters.set('name', <any>name);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.put<SettingsGroup>(`${this.configuration.basePath}/settings/name/${encodeURIComponent(String(name))}`,
+            settingsGroup,
+            {
+                params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param createUserReq 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public usersCreate(createUserReq: CreateUserReq, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public usersCreate(createUserReq: CreateUserReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public usersCreate(createUserReq: CreateUserReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public usersCreate(createUserReq: CreateUserReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (createUserReq === null || createUserReq === undefined) {
+            throw new Error('Required parameter createUserReq was null or undefined when calling usersCreate.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.post<any>(`${this.configuration.basePath}/users/`,
+            createUserReq,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param id 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public usersFindOne(id: string, observe?: 'body', reportProgress?: boolean): Observable<User>;
+    public usersFindOne(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<User>>;
+    public usersFindOne(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<User>>;
+    public usersFindOne(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling usersFindOne.');
         }
 
         let headers = this.defaultHeaders;
@@ -3103,9 +1438,188 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<UploadConfig>(`${this.configuration.basePath}/user/upload`,
+        return this.httpClient.get<User>(`${this.configuration.basePath}/users/${encodeURIComponent(String(id))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public usersProfile(observe?: 'body', reportProgress?: boolean): Observable<User>;
+    public usersProfile(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<User>>;
+    public usersProfile(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<User>>;
+    public usersProfile(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.get<User>(`${this.configuration.basePath}/users/profile`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param keyword 
+     * @param index 
+     * @param size 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public usersQuery(keyword?: string, index?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListUser>;
+    public usersQuery(keyword?: string, index?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListUser>>;
+    public usersQuery(keyword?: string, index?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListUser>>;
+    public usersQuery(keyword?: string, index?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (keyword !== undefined && keyword !== null) {
+            queryParameters = queryParameters.set('keyword', <any>keyword);
+        }
+        if (index !== undefined && index !== null) {
+            queryParameters = queryParameters.set('index', <any>index);
+        }
+        if (size !== undefined && size !== null) {
+            queryParameters = queryParameters.set('size', <any>size);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.get<ResultListUser>(`${this.configuration.basePath}/users/query`,
             {
                 params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param keyword 
+     * @param value 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public usersSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValueDto>>;
+    public usersSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValueDto>>>;
+    public usersSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValueDto>>>;
+    public usersSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (keyword !== undefined && keyword !== null) {
+            queryParameters = queryParameters.set('keyword', <any>keyword);
+        }
+        if (value !== undefined && value !== null) {
+            queryParameters = queryParameters.set('value', <any>value);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/users/search`,
+            {
+                params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param editUserReq 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public usersUpdate(editUserReq: EditUserReq, observe?: 'body', reportProgress?: boolean): Observable<User>;
+    public usersUpdate(editUserReq: EditUserReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<User>>;
+    public usersUpdate(editUserReq: EditUserReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<User>>;
+    public usersUpdate(editUserReq: EditUserReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (editUserReq === null || editUserReq === undefined) {
+            throw new Error('Required parameter editUserReq was null or undefined when calling usersUpdate.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.put<User>(`${this.configuration.basePath}/users/`,
+            editUserReq,
+            {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

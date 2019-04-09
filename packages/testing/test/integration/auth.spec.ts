@@ -34,10 +34,4 @@ describe('Auth module test', () => {
         expect(res.status).toBe(201);
 
     });
-
-    it('user profile', async () => {
-        await login();
-        const res = await HttpClient.coreApi.usersProfile();
-        expect(res.status).toBe(200);
-    });
 });

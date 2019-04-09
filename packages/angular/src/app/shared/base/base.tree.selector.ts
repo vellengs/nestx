@@ -1,6 +1,6 @@
 import { Component, Injector, Input, ViewChild, OnInit } from '@angular/core';
 import { BaseComponent } from '@shared/base/base.component';
-import { NzModalRef, NzTreeComponent } from 'ng-zorro-antd';
+import { NzModalRef, NzTreeComponent, NzFormatEmitEvent } from 'ng-zorro-antd';
 import { UserService } from '@services/user.service';
 import { Observable } from 'rxjs';
 import { TreeData } from 'types/types';
@@ -75,7 +75,7 @@ export class BaseTreeSelectorComponent extends BaseComponent implements OnInit {
         }
     }
 
-    treeNodeClick(e: any) { // TODO
+    treeNodeClick(e: Required<NzFormatEmitEvent>) {
         if (e.node.key === this.selectedItem.key) {
 
         } else {
@@ -83,15 +83,15 @@ export class BaseTreeSelectorComponent extends BaseComponent implements OnInit {
         }
     }
 
-    showContextMenu() {
+    showContextMenu(event: Required<NzFormatEmitEvent>) {
 
     }
 
-    nodeExpandChanged(label: string, event: any) {
+    nodeExpandChanged(event: Required<NzFormatEmitEvent>) {
 
     }
 
-    selectedChanged(event: any) {
+    selectedChanged(event: Required<NzFormatEmitEvent>) {
         this.getAllCheckedItems();
     }
 

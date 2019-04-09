@@ -52,4 +52,9 @@ describe('User module test', () => {
         expect(res.status).toBe(200);
     });
 
+    it('get user profile', async () => {
+        const res = await HttpClient.coreApi.usersProfile();
+        expect(res.status).toBe(200);
+    });
+
 });

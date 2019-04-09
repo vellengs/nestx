@@ -57,15 +57,15 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
-        imports: [
-                ApiModule,
-                // make sure to import the HttpClientModule in the AppModule only,
-                // see https://github.com/angular/angular/issues/20575
-                HttpClientModule
-        ],
-        declarations: [ AppComponent ],
-        providers: [],
-        bootstrap: [ AppComponent ]
+    imports: [
+        ApiModule,
+        // make sure to import the HttpClientModule in the AppModule only,
+        // see https://github.com/angular/angular/issues/20575
+        HttpClientModule
+    ],
+    declarations: [ AppComponent ],
+    providers: [],
+    bootstrap: [ AppComponent ]
 })
 export class AppModule {}
 ```
@@ -75,17 +75,17 @@ export class AppModule {}
 import { ApiModule, Configuration, ConfigurationParameters } from '';
 
 export function apiConfigFactory (): Configuration => {
-    const params: ConfigurationParameters = {
-        // set configuration parameters here.
-    }
-    return new Configuration(params);
+  const params: ConfigurationParameters = {
+    // set configuration parameters here.
+  }
+  return new Configuration(params);
 }
 
 @NgModule({
-        imports: [ ApiModule.forRoot(apiConfigFactory) ],
-        declarations: [ AppComponent ],
-        providers: [],
-        bootstrap: [ AppComponent ]
+    imports: [ ApiModule.forRoot(apiConfigFactory) ],
+    declarations: [ AppComponent ],
+    providers: [],
+    bootstrap: [ AppComponent ]
 })
 export class AppModule {}
 ```
@@ -112,13 +112,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
-    imports: [
-        ApiModule,
-        OtherApiModule,
-        // make sure to import the HttpClientModule in the AppModule only,
-        // see https://github.com/angular/angular/issues/20575
-        HttpClientModule
-    ]
+  imports: [
+    ApiModule,
+    OtherApiModule,
+    // make sure to import the HttpClientModule in the AppModule only,
+    // see https://github.com/angular/angular/issues/20575
+    HttpClientModule
+  ]
 })
 export class AppModule {
 
@@ -133,7 +133,7 @@ If different than the generated base path, during app bootstrap, you can provide
 import { BASE_PATH } from '';
 
 bootstrap(AppComponent, [
-        { provide: BASE_PATH, useValue: 'https://your-web-service.com' },
+    { provide: BASE_PATH, useValue: 'https://your-web-service.com' },
 ]);
 ```
 or
@@ -142,10 +142,10 @@ or
 import { BASE_PATH } from '';
 
 @NgModule({
-        imports: [],
-        declarations: [ AppComponent ],
-        providers: [ provide: BASE_PATH, useValue: 'https://your-web-service.com' ],
-        bootstrap: [ AppComponent ]
+    imports: [],
+    declarations: [ AppComponent ],
+    providers: [ provide: BASE_PATH, useValue: 'https://your-web-service.com' ],
+    bootstrap: [ AppComponent ]
 })
 export class AppModule {}
 ```
@@ -156,8 +156,8 @@ First extend your `src/environments/*.ts` files by adding the corresponding base
 
 ```
 export const environment = {
-    production: false,
-    API_BASE_PATH: 'http://127.0.0.1:8080'
+  production: false,
+  API_BASE_PATH: 'http://127.0.0.1:8080'
 };
 ```
 
@@ -167,12 +167,12 @@ import { BASE_PATH } from '';
 import { environment } from '../environments/environment';
 
 @NgModule({
-    declarations: [
-        AppComponent
-    ],
-    imports: [ ],
-    providers: [{ provide: BASE_PATH, useValue: environment.API_BASE_PATH }],
-    bootstrap: [ AppComponent ]
+  declarations: [
+    AppComponent
+  ],
+  imports: [ ],
+  providers: [{ provide: BASE_PATH, useValue: environment.API_BASE_PATH }],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
 ```  
