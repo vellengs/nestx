@@ -31,7 +31,6 @@ const models = [
 @Module({
   imports: [
     MongooseModule.forFeature(models),
-    PassportModule.register({ defaultStrategy: 'jwt', session: false })
   ],
   controllers: [...CoreControllers],
   providers: [...CoreServices],

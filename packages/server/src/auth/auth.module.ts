@@ -10,7 +10,7 @@ import { CoreModule } from './../core/core.module';
 @Module({
   imports: [
     CoreModule,
-    PassportModule.register({ defaultStrategy: 'jwt' }),
+    PassportModule.register({ defaultStrategy: 'jwt', session: true }),
     JwtModule.registerAsync({
       imports: [
         ConfigModule,
@@ -30,9 +30,6 @@ import { CoreModule } from './../core/core.module';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy],
-  exports: [
-    PassportModule.register({ defaultStrategy: 'jwt' }),
-  ],
+  providers: [AuthService, JwtStrategy]
 })
 export class AuthModule { }
