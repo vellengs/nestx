@@ -3181,7 +3181,7 @@
 				]
 			}
 		},
-		"/dicts/": {
+		"/dict/": {
 			"post": {
 				"operationId": "DictsCreate",
 				"produces": [
@@ -3244,7 +3244,7 @@
 				]
 			}
 		},
-		"/dicts/search": {
+		"/dict/search": {
 			"get": {
 				"operationId": "DictsSearch",
 				"produces": [
@@ -3283,7 +3283,7 @@
 				]
 			}
 		},
-		"/dicts/query": {
+		"/dict/query": {
 			"get": {
 				"operationId": "DictsQuery",
 				"produces": [
@@ -3330,7 +3330,7 @@
 				]
 			}
 		},
-		"/dicts/{id}": {
+		"/dict/{id}": {
 			"get": {
 				"operationId": "DictsFindOne",
 				"produces": [
@@ -3359,7 +3359,7 @@
 				]
 			}
 		},
-		"/users/profile": {
+		"/user/profile": {
 			"get": {
 				"operationId": "UsersProfile",
 				"produces": [
@@ -3380,7 +3380,7 @@
 				"parameters": []
 			}
 		},
-		"/users/": {
+		"/user/": {
 			"post": {
 				"operationId": "UsersCreate",
 				"produces": [
@@ -3443,7 +3443,7 @@
 				]
 			}
 		},
-		"/users/role": {
+		"/user/role": {
 			"post": {
 				"operationId": "UsersAddUsersToRole",
 				"produces": [
@@ -3511,7 +3511,7 @@
 				]
 			}
 		},
-		"/users/search": {
+		"/user/search": {
 			"get": {
 				"operationId": "UsersSearch",
 				"produces": [
@@ -3550,7 +3550,7 @@
 				]
 			}
 		},
-		"/users/query": {
+		"/user/query": {
 			"get": {
 				"operationId": "UsersQuery",
 				"produces": [
@@ -3597,7 +3597,7 @@
 				]
 			}
 		},
-		"/users/{id}": {
+		"/user/{id}": {
 			"get": {
 				"operationId": "UsersFindOne",
 				"produces": [
@@ -3626,7 +3626,7 @@
 				]
 			}
 		},
-		"/menus/": {
+		"/menu/": {
 			"post": {
 				"operationId": "MenusCreate",
 				"produces": [
@@ -3689,7 +3689,7 @@
 				]
 			}
 		},
-		"/menus/search": {
+		"/menu/search": {
 			"get": {
 				"operationId": "MenusSearch",
 				"produces": [
@@ -3728,7 +3728,7 @@
 				]
 			}
 		},
-		"/menus/query": {
+		"/menu/query": {
 			"get": {
 				"operationId": "MenusQuery",
 				"produces": [
@@ -3782,7 +3782,7 @@
 				]
 			}
 		},
-		"/menus/permissions": {
+		"/menu/permissions": {
 			"get": {
 				"operationId": "MenusGetPermissionTags",
 				"produces": [
@@ -3820,7 +3820,7 @@
 				"parameters": []
 			}
 		},
-		"/menus/auth": {
+		"/menu/auth": {
 			"get": {
 				"operationId": "MenusGetUserMenus",
 				"produces": [
@@ -3844,7 +3844,7 @@
 				"parameters": []
 			}
 		},
-		"/menus/{id}": {
+		"/menu/{id}": {
 			"get": {
 				"operationId": "MenusFindOne",
 				"produces": [
@@ -3873,7 +3873,7 @@
 				]
 			}
 		},
-		"/logs/search": {
+		"/log/search": {
 			"get": {
 				"operationId": "LogsSearch",
 				"produces": [
@@ -3912,7 +3912,7 @@
 				]
 			}
 		},
-		"/logs/query": {
+		"/log/query": {
 			"get": {
 				"operationId": "LogsQuery",
 				"produces": [
@@ -3959,7 +3959,7 @@
 				]
 			}
 		},
-		"/logs/{id}": {
+		"/log/{id}": {
 			"get": {
 				"operationId": "LogsFindOne",
 				"produces": [
@@ -3988,7 +3988,7 @@
 				]
 			}
 		},
-		"/notices/": {
+		"/notice/": {
 			"post": {
 				"operationId": "NoticesCreate",
 				"produces": [
@@ -4051,7 +4051,7 @@
 				]
 			}
 		},
-		"/notices/search": {
+		"/notice/search": {
 			"get": {
 				"operationId": "NoticesSearch",
 				"produces": [
@@ -4090,7 +4090,7 @@
 				]
 			}
 		},
-		"/notices/query": {
+		"/notice/query": {
 			"get": {
 				"operationId": "NoticesQuery",
 				"produces": [
@@ -4137,7 +4137,7 @@
 				]
 			}
 		},
-		"/notices/{id}": {
+		"/notice/{id}": {
 			"get": {
 				"operationId": "NoticesFindOne",
 				"produces": [
@@ -4208,7 +4208,7 @@
 				"parameters": []
 			}
 		},
-		"/settings/": {
+		"/setting/": {
 			"post": {
 				"operationId": "SettingsCreate",
 				"produces": [
@@ -4271,7 +4271,7 @@
 				]
 			}
 		},
-		"/settings/name/{name}": {
+		"/setting/name/{name}": {
 			"put": {
 				"operationId": "SettingsUpdateSettingsByName",
 				"produces": [
@@ -4339,7 +4339,7 @@
 				]
 			}
 		},
-		"/settings/search": {
+		"/setting/search": {
 			"get": {
 				"operationId": "SettingsSearch",
 				"produces": [
@@ -4378,7 +4378,7 @@
 				]
 			}
 		},
-		"/settings/query": {
+		"/setting/query": {
 			"get": {
 				"operationId": "SettingsQuery",
 				"produces": [
@@ -4425,7 +4425,7 @@
 				]
 			}
 		},
-		"/settings/key/{key}": {
+		"/setting/key/{key}": {
 			"get": {
 				"operationId": "SettingsGetSettingsByKey",
 				"produces": [
@@ -4454,7 +4454,7 @@
 				]
 			}
 		},
-		"/settings/{id}": {
+		"/setting/{id}": {
 			"get": {
 				"operationId": "SettingsFindOne",
 				"produces": [
@@ -4483,7 +4483,7 @@
 				]
 			}
 		},
-		"/roles/": {
+		"/role/": {
 			"post": {
 				"operationId": "RolesCreate",
 				"produces": [
@@ -4546,7 +4546,7 @@
 				]
 			}
 		},
-		"/roles/search": {
+		"/role/search": {
 			"get": {
 				"operationId": "RolesSearch",
 				"produces": [
@@ -4585,7 +4585,7 @@
 				]
 			}
 		},
-		"/roles/query": {
+		"/role/query": {
 			"get": {
 				"operationId": "RolesQuery",
 				"produces": [
@@ -4632,7 +4632,7 @@
 				]
 			}
 		},
-		"/roles/{id}": {
+		"/role/{id}": {
 			"get": {
 				"operationId": "RolesFindOne",
 				"produces": [
@@ -4661,7 +4661,7 @@
 				]
 			}
 		},
-		"/groups/": {
+		"/group/": {
 			"post": {
 				"operationId": "GroupsCreate",
 				"produces": [
@@ -4724,7 +4724,7 @@
 				]
 			}
 		},
-		"/groups/search": {
+		"/group/search": {
 			"get": {
 				"operationId": "GroupsSearch",
 				"produces": [
@@ -4763,7 +4763,7 @@
 				]
 			}
 		},
-		"/groups/query": {
+		"/group/query": {
 			"get": {
 				"operationId": "GroupsQuery",
 				"produces": [
@@ -4810,7 +4810,7 @@
 				]
 			}
 		},
-		"/groups/{id}": {
+		"/group/{id}": {
 			"get": {
 				"operationId": "GroupsFindOne",
 				"produces": [
@@ -4839,7 +4839,7 @@
 				]
 			}
 		},
-		"/appearances/": {
+		"/appearance/": {
 			"post": {
 				"operationId": "AppearancesCreate",
 				"produces": [
@@ -4902,7 +4902,7 @@
 				]
 			}
 		},
-		"/appearances/search": {
+		"/appearance/search": {
 			"get": {
 				"operationId": "AppearancesSearch",
 				"produces": [
@@ -4941,7 +4941,7 @@
 				]
 			}
 		},
-		"/appearances/query": {
+		"/appearance/query": {
 			"get": {
 				"operationId": "AppearancesQuery",
 				"produces": [
@@ -4988,7 +4988,7 @@
 				]
 			}
 		},
-		"/appearances/name/{name}": {
+		"/appearance/name/{name}": {
 			"get": {
 				"operationId": "AppearancesGetAppearanceByName",
 				"produces": [
@@ -5017,7 +5017,7 @@
 				]
 			}
 		},
-		"/appearances/{id}": {
+		"/appearance/{id}": {
 			"get": {
 				"operationId": "AppearancesFindOne",
 				"produces": [

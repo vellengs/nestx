@@ -8,7 +8,7 @@ import { CreateDictReq, EditDictReq, KeyValueDto } from './../dto';
 import { Tags } from 'nest-swagger';
 
 @Tags('core')
-@Controller('dicts')
+@Controller('dict')
 @UseGuards(AuthGuard('jwt'))
 export class DictsController {
   constructor(private readonly dictService: DictsService) { }

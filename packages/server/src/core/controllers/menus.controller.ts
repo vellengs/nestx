@@ -8,7 +8,7 @@ import { CreateMenuReq, EditMenuReq, KeyValueDto, MenuRes } from './../dto';
 import { Tags } from 'nest-swagger';
 
 @Tags('core')
-@Controller('menus')
+@Controller('menu')
 @UseGuards(AuthGuard('jwt'))
 export class MenusController {
   constructor(private readonly menuService: MenusService) { }

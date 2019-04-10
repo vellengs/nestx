@@ -7,7 +7,7 @@ import { KeyValueDto } from './../dto';
 import { Tags } from 'nest-swagger';
 
 @Tags('core')
-@Controller('logs')
+@Controller('log')
 @UseGuards(AuthGuard('jwt'))
 export class LogsController {
   constructor(private readonly logService: LogsService) { }

@@ -8,7 +8,7 @@ import { CreateRoleReq, EditRoleReq, KeyValueDto } from './../dto';
 import { Tags } from 'nest-swagger';
 
 @Tags('core')
-@Controller('roles')
+@Controller('role')
 @UseGuards(AuthGuard('jwt'))
 export class RolesController {
   constructor(private readonly roleService: RolesService) { }

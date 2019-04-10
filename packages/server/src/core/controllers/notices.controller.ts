@@ -8,7 +8,7 @@ import { Tags } from 'nest-swagger';
 import { ResultList, NullableParseIntPipe } from './../../common';
 
 @Tags('core')
-@Controller('notices')
+@Controller('notice')
 @UseGuards(AuthGuard('jwt'))
 export class NoticesController {
   constructor(private readonly noticeService: NoticesService) { }

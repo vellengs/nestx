@@ -8,7 +8,7 @@ import { CreateAppearanceReq, EditAppearanceReq, KeyValueDto } from './../dto';
 import { Tags } from 'nest-swagger';
 
 @Tags('core')
-@Controller('appearances')
+@Controller('appearance')
 @UseGuards(AuthGuard('jwt'))
 export class AppearancesController {
   constructor(private readonly appearanceService: AppearancesService) { }
@@ -42,7 +42,10 @@ export class AppearancesController {
 
   @Get('name/:name')
   async getAppearanceByName(@Param('name') name: string): Promise<Appearance> {
-    return this.appearanceService.findOne({ name });
+    const result = await this.appearanceService.findOne({ name });
+    result.options = JSON.parse(result.options || '{}');
+    result.data = JSON.parse(result.data || '{}');
+    return result;
   }
 
   @Get(':id')

@@ -46,11 +46,10 @@ export class BaseStandComponent extends BaseComponent implements CurdPage {
         }
 
         this.queryUrl = `api/${this.domain}/query`;
-        const url = `api/${this.domain}/config`;
-        const config: any = await this.client.get(url, this.configParams).toPromise();
-        if (config) {
-            this.columnSets = config.columnSets;
-            this.formSets = config.formSets;
+        const config = await this.coreService.appearancesGetAppearanceByName(this.domain).toPromise();
+        if (config && config.data) {
+            this.columnSets = config.data.columnSets;
+            this.formSets = config.data.formSets;
             if (this.columnSets && Array.isArray(this.columnSets.default)) {
                 this.columnSets.default.map((col) => {
                     switch (col.action) {

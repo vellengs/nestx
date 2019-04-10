@@ -8,7 +8,7 @@ import { KeyValueDto, CreateUserReq, EditUserReq, UsersOfRole } from './../dto';
 import { Tags } from 'nest-swagger';
 
 @Tags('core')
-@Controller('users')
+@Controller('user')
 @UseGuards(AuthGuard('jwt'))
 export class UsersController {
   constructor(private readonly usersService: UsersService) { }

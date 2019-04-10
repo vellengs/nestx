@@ -8,7 +8,7 @@ import { Tags } from 'nest-swagger';
 import { ResultList, NullableParseIntPipe } from './../../common';
 
 @Tags('core')
-@Controller('groups')
+@Controller('group')
 @UseGuards(AuthGuard('jwt'))
 export class GroupsController {
   constructor(private readonly settingService: GroupsService) { }

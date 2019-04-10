@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 import * as bluebird from 'bluebird';
 import { model, Connection } from 'mongoose';
 import {
+  AppearanceSchema,
   SettingSchema,
   DictSchema,
   LogSchema,
@@ -12,6 +13,7 @@ import {
 } from './../core/schemas';
 
 import {
+  AppearanceModel,
   DictModel,
   LogModel,
   MenuModel,
@@ -44,5 +46,6 @@ export const CoreDatabase = {
   Role: model<RoleModel>('Role', RoleSchema),
   User: model<UserModel>('User', UserSchema),
   Setting: model<SettingModel>('Setting', SettingSchema),
-  Group: model<GroupModel>('Group', GroupSchema)
+  Group: model<GroupModel>('Group', GroupSchema),
+  Appearance: model<GroupModel>('Appearance', AppearanceSchema)
 };

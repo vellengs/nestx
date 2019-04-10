@@ -8,7 +8,7 @@ import { Tags } from 'nest-swagger';
 import { ResultList, NullableParseIntPipe } from './../../common';
 
 @Tags('core')
-@Controller('settings')
+@Controller('setting')
 export class SettingsController {
   constructor(private readonly settingService: SettingsService) { }
 

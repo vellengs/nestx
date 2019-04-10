@@ -32,9 +32,9 @@ export class SettingsPageComponent extends BaseComponent implements OnInit {
     constructor(injector: Injector) {
         super(injector);
         this.profileData = this.settings.user;
-        this.coreService.appearancesFindOne('settings').subscribe((config) => {
+        this.coreService.appearancesGetAppearanceByName(this.domain).subscribe((config) => {
             if (config && config.data) {
-                this.formSets = config.data as any;
+                this.formSets = config.data.formSets as any;
             }
         });
     }
@@ -76,7 +76,7 @@ export class SettingsPageComponent extends BaseComponent implements OnInit {
         });
     }
 
-    saveSysSettings(event) {
+    saveSysSettings(event?) {
         const entry = Object.assign({}, event);
 
         this.coreService.settingsUpdateSettingsByName('main', entry).subscribe((res) => {

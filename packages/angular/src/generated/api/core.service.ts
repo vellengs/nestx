@@ -132,7 +132,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.configuration.basePath}/appearances/`,
+        return this.httpClient.post<any>(`${this.configuration.basePath}/appearance/`,
             createAppearanceReq,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -173,7 +173,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Appearance>(`${this.configuration.basePath}/appearances/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<Appearance>(`${this.configuration.basePath}/appearance/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -213,7 +213,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Appearance>(`${this.configuration.basePath}/appearances/name/${encodeURIComponent(String(name))}`,
+        return this.httpClient.get<Appearance>(`${this.configuration.basePath}/appearance/name/${encodeURIComponent(String(name))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -263,7 +263,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<ResultListAppearance>(`${this.configuration.basePath}/appearances/query`,
+        return this.httpClient.get<ResultListAppearance>(`${this.configuration.basePath}/appearance/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -310,7 +310,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/appearances/search`,
+        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/appearance/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -356,7 +356,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<Appearance>(`${this.configuration.basePath}/appearances/`,
+        return this.httpClient.put<Appearance>(`${this.configuration.basePath}/appearance/`,
             editAppearanceReq,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -401,7 +401,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.configuration.basePath}/dicts/`,
+        return this.httpClient.post<any>(`${this.configuration.basePath}/dict/`,
             createDictReq,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -442,7 +442,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Dict>(`${this.configuration.basePath}/dicts/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<Dict>(`${this.configuration.basePath}/dict/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -492,7 +492,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<ResultListDict>(`${this.configuration.basePath}/dicts/query`,
+        return this.httpClient.get<ResultListDict>(`${this.configuration.basePath}/dict/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -539,7 +539,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/dicts/search`,
+        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/dict/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -585,7 +585,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<Dict>(`${this.configuration.basePath}/dicts/`,
+        return this.httpClient.put<Dict>(`${this.configuration.basePath}/dict/`,
             editDictReq,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -630,7 +630,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.configuration.basePath}/groups/`,
+        return this.httpClient.post<any>(`${this.configuration.basePath}/group/`,
             createGroupReq,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -671,7 +671,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Group>(`${this.configuration.basePath}/groups/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<Group>(`${this.configuration.basePath}/group/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -721,7 +721,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<ResultListGroup>(`${this.configuration.basePath}/groups/query`,
+        return this.httpClient.get<ResultListGroup>(`${this.configuration.basePath}/group/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -768,7 +768,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/groups/search`,
+        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/group/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -814,7 +814,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<Group>(`${this.configuration.basePath}/groups/`,
+        return this.httpClient.put<Group>(`${this.configuration.basePath}/group/`,
             editGroupReq,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -855,7 +855,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Log>(`${this.configuration.basePath}/logs/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<Log>(`${this.configuration.basePath}/log/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -905,7 +905,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<ResultListLog>(`${this.configuration.basePath}/logs/query`,
+        return this.httpClient.get<ResultListLog>(`${this.configuration.basePath}/log/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -952,7 +952,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/logs/search`,
+        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/log/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -997,7 +997,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.configuration.basePath}/menus/`,
+        return this.httpClient.post<any>(`${this.configuration.basePath}/menu/`,
             createMenuReq,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -1038,7 +1038,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Menu>(`${this.configuration.basePath}/menus/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<Menu>(`${this.configuration.basePath}/menu/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -1074,7 +1074,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<InlineResponse200>>(`${this.configuration.basePath}/menus/permissions`,
+        return this.httpClient.get<Array<InlineResponse200>>(`${this.configuration.basePath}/menu/permissions`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -1110,7 +1110,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<MenuRes>>(`${this.configuration.basePath}/menus/auth`,
+        return this.httpClient.get<Array<MenuRes>>(`${this.configuration.basePath}/menu/auth`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -1167,7 +1167,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<ResultListMenu>(`${this.configuration.basePath}/menus/query`,
+        return this.httpClient.get<ResultListMenu>(`${this.configuration.basePath}/menu/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1214,7 +1214,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/menus/search`,
+        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/menu/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1260,7 +1260,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<Menu>(`${this.configuration.basePath}/menus/`,
+        return this.httpClient.put<Menu>(`${this.configuration.basePath}/menu/`,
             editMenuReq,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -1305,7 +1305,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.configuration.basePath}/notices/`,
+        return this.httpClient.post<any>(`${this.configuration.basePath}/notice/`,
             createNoticeReq,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -1346,7 +1346,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Notice>(`${this.configuration.basePath}/notices/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<Notice>(`${this.configuration.basePath}/notice/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -1396,7 +1396,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<ResultListNotice>(`${this.configuration.basePath}/notices/query`,
+        return this.httpClient.get<ResultListNotice>(`${this.configuration.basePath}/notice/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1443,7 +1443,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/notices/search`,
+        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/notice/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1489,7 +1489,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<Notice>(`${this.configuration.basePath}/notices/`,
+        return this.httpClient.put<Notice>(`${this.configuration.basePath}/notice/`,
             editNoticeReq,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -1534,7 +1534,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.configuration.basePath}/roles/`,
+        return this.httpClient.post<any>(`${this.configuration.basePath}/role/`,
             createRoleReq,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -1575,7 +1575,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Role>(`${this.configuration.basePath}/roles/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<Role>(`${this.configuration.basePath}/role/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -1625,7 +1625,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<ResultListRole>(`${this.configuration.basePath}/roles/query`,
+        return this.httpClient.get<ResultListRole>(`${this.configuration.basePath}/role/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1672,7 +1672,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/roles/search`,
+        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/role/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1718,7 +1718,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<Role>(`${this.configuration.basePath}/roles/`,
+        return this.httpClient.put<Role>(`${this.configuration.basePath}/role/`,
             editRoleReq,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -1763,7 +1763,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.configuration.basePath}/settings/`,
+        return this.httpClient.post<any>(`${this.configuration.basePath}/setting/`,
             createSettingReq,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -1804,7 +1804,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Setting>(`${this.configuration.basePath}/settings/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<Setting>(`${this.configuration.basePath}/setting/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -1849,7 +1849,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<SettingRes>(`${this.configuration.basePath}/settings/key/${encodeURIComponent(String(key))}`,
+        return this.httpClient.get<SettingRes>(`${this.configuration.basePath}/setting/key/${encodeURIComponent(String(key))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1892,7 +1892,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<SettingsGroup>(`${this.configuration.basePath}/settings/name/${encodeURIComponent(String(name))}`,
+        return this.httpClient.get<SettingsGroup>(`${this.configuration.basePath}/setting/name/${encodeURIComponent(String(name))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1943,7 +1943,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<ResultListSetting>(`${this.configuration.basePath}/settings/query`,
+        return this.httpClient.get<ResultListSetting>(`${this.configuration.basePath}/setting/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1990,7 +1990,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/settings/search`,
+        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/setting/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -2036,7 +2036,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<Setting>(`${this.configuration.basePath}/settings/`,
+        return this.httpClient.put<Setting>(`${this.configuration.basePath}/setting/`,
             editSettingReq,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -2091,7 +2091,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<SettingsGroup>(`${this.configuration.basePath}/settings/name/${encodeURIComponent(String(name))}`,
+        return this.httpClient.put<SettingsGroup>(`${this.configuration.basePath}/setting/name/${encodeURIComponent(String(name))}`,
             settingsGroup,
             {
                 params: queryParameters,
@@ -2138,7 +2138,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<boolean>(`${this.configuration.basePath}/users/role`,
+        return this.httpClient.post<boolean>(`${this.configuration.basePath}/user/role`,
             usersOfRole,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -2183,7 +2183,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.configuration.basePath}/users/`,
+        return this.httpClient.post<any>(`${this.configuration.basePath}/user/`,
             createUserReq,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -2224,7 +2224,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<User>(`${this.configuration.basePath}/users/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<User>(`${this.configuration.basePath}/user/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -2260,7 +2260,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<User>(`${this.configuration.basePath}/users/profile`,
+        return this.httpClient.get<User>(`${this.configuration.basePath}/user/profile`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -2310,7 +2310,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<ResultListUser>(`${this.configuration.basePath}/users/query`,
+        return this.httpClient.get<ResultListUser>(`${this.configuration.basePath}/user/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -2363,7 +2363,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.delete<boolean>(`${this.configuration.basePath}/users/role`,
+        return this.httpClient.delete<boolean>(`${this.configuration.basePath}/user/role`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -2410,7 +2410,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/users/search`,
+        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/user/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -2456,7 +2456,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<User>(`${this.configuration.basePath}/users/`,
+        return this.httpClient.put<User>(`${this.configuration.basePath}/user/`,
             editUserReq,
             {
                 withCredentials: this.configuration.withCredentials,

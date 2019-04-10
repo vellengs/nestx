@@ -6507,7 +6507,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (createAppearanceReq === null || createAppearanceReq === undefined) {
                 throw new RequiredError('createAppearanceReq','Required parameter createAppearanceReq was null or undefined when calling appearancesCreate.');
             }
-            const localVarPath = `/appearances/`;
+            const localVarPath = `/appearance/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -6542,7 +6542,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling appearancesFindOne.');
             }
-            const localVarPath = `/appearances/{id}`
+            const localVarPath = `/appearance/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -6574,7 +6574,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (name === null || name === undefined) {
                 throw new RequiredError('name','Required parameter name was null or undefined when calling appearancesGetAppearanceByName.');
             }
-            const localVarPath = `/appearances/name/{name}`
+            const localVarPath = `/appearance/name/{name}`
                 .replace(`{${"name"}}`, encodeURIComponent(String(name)));
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -6604,7 +6604,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         appearancesQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
-            const localVarPath = `/appearances/query`;
+            const localVarPath = `/appearance/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -6644,7 +6644,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         appearancesSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/appearances/search`;
+            const localVarPath = `/appearance/search`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -6683,7 +6683,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (editAppearanceReq === null || editAppearanceReq === undefined) {
                 throw new RequiredError('editAppearanceReq','Required parameter editAppearanceReq was null or undefined when calling appearancesUpdate.');
             }
-            const localVarPath = `/appearances/`;
+            const localVarPath = `/appearance/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -6718,7 +6718,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (createDictReq === null || createDictReq === undefined) {
                 throw new RequiredError('createDictReq','Required parameter createDictReq was null or undefined when calling dictsCreate.');
             }
-            const localVarPath = `/dicts/`;
+            const localVarPath = `/dict/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -6753,7 +6753,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling dictsFindOne.');
             }
-            const localVarPath = `/dicts/{id}`
+            const localVarPath = `/dict/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -6783,7 +6783,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         dictsQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
-            const localVarPath = `/dicts/query`;
+            const localVarPath = `/dict/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -6823,7 +6823,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         dictsSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/dicts/search`;
+            const localVarPath = `/dict/search`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -6862,7 +6862,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (editDictReq === null || editDictReq === undefined) {
                 throw new RequiredError('editDictReq','Required parameter editDictReq was null or undefined when calling dictsUpdate.');
             }
-            const localVarPath = `/dicts/`;
+            const localVarPath = `/dict/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -6897,7 +6897,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (createGroupReq === null || createGroupReq === undefined) {
                 throw new RequiredError('createGroupReq','Required parameter createGroupReq was null or undefined when calling groupsCreate.');
             }
-            const localVarPath = `/groups/`;
+            const localVarPath = `/group/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -6932,7 +6932,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling groupsFindOne.');
             }
-            const localVarPath = `/groups/{id}`
+            const localVarPath = `/group/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -6962,7 +6962,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         groupsQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
-            const localVarPath = `/groups/query`;
+            const localVarPath = `/group/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7002,7 +7002,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         groupsSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/groups/search`;
+            const localVarPath = `/group/search`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7041,7 +7041,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (editGroupReq === null || editGroupReq === undefined) {
                 throw new RequiredError('editGroupReq','Required parameter editGroupReq was null or undefined when calling groupsUpdate.');
             }
-            const localVarPath = `/groups/`;
+            const localVarPath = `/group/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7076,7 +7076,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling logsFindOne.');
             }
-            const localVarPath = `/logs/{id}`
+            const localVarPath = `/log/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -7106,7 +7106,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         logsQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
-            const localVarPath = `/logs/query`;
+            const localVarPath = `/log/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7146,7 +7146,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         logsSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/logs/search`;
+            const localVarPath = `/log/search`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7185,7 +7185,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (createMenuReq === null || createMenuReq === undefined) {
                 throw new RequiredError('createMenuReq','Required parameter createMenuReq was null or undefined when calling menusCreate.');
             }
-            const localVarPath = `/menus/`;
+            const localVarPath = `/menu/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7220,7 +7220,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling menusFindOne.');
             }
-            const localVarPath = `/menus/{id}`
+            const localVarPath = `/menu/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -7247,7 +7247,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         menusGetPermissionTags(options: any = {}): RequestArgs {
-            const localVarPath = `/menus/permissions`;
+            const localVarPath = `/menu/permissions`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7273,7 +7273,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         menusGetUserMenus(options: any = {}): RequestArgs {
-            const localVarPath = `/menus/auth`;
+            const localVarPath = `/menu/auth`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7307,7 +7307,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (isMenu === null || isMenu === undefined) {
                 throw new RequiredError('isMenu','Required parameter isMenu was null or undefined when calling menusQuery.');
             }
-            const localVarPath = `/menus/query`;
+            const localVarPath = `/menu/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7351,7 +7351,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         menusSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/menus/search`;
+            const localVarPath = `/menu/search`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7390,7 +7390,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (editMenuReq === null || editMenuReq === undefined) {
                 throw new RequiredError('editMenuReq','Required parameter editMenuReq was null or undefined when calling menusUpdate.');
             }
-            const localVarPath = `/menus/`;
+            const localVarPath = `/menu/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7425,7 +7425,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (createNoticeReq === null || createNoticeReq === undefined) {
                 throw new RequiredError('createNoticeReq','Required parameter createNoticeReq was null or undefined when calling noticesCreate.');
             }
-            const localVarPath = `/notices/`;
+            const localVarPath = `/notice/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7460,7 +7460,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling noticesFindOne.');
             }
-            const localVarPath = `/notices/{id}`
+            const localVarPath = `/notice/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -7490,7 +7490,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         noticesQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
-            const localVarPath = `/notices/query`;
+            const localVarPath = `/notice/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7530,7 +7530,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         noticesSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/notices/search`;
+            const localVarPath = `/notice/search`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7569,7 +7569,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (editNoticeReq === null || editNoticeReq === undefined) {
                 throw new RequiredError('editNoticeReq','Required parameter editNoticeReq was null or undefined when calling noticesUpdate.');
             }
-            const localVarPath = `/notices/`;
+            const localVarPath = `/notice/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7604,7 +7604,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (createRoleReq === null || createRoleReq === undefined) {
                 throw new RequiredError('createRoleReq','Required parameter createRoleReq was null or undefined when calling rolesCreate.');
             }
-            const localVarPath = `/roles/`;
+            const localVarPath = `/role/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7639,7 +7639,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling rolesFindOne.');
             }
-            const localVarPath = `/roles/{id}`
+            const localVarPath = `/role/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -7669,7 +7669,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         rolesQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
-            const localVarPath = `/roles/query`;
+            const localVarPath = `/role/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7709,7 +7709,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         rolesSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/roles/search`;
+            const localVarPath = `/role/search`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7748,7 +7748,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (editRoleReq === null || editRoleReq === undefined) {
                 throw new RequiredError('editRoleReq','Required parameter editRoleReq was null or undefined when calling rolesUpdate.');
             }
-            const localVarPath = `/roles/`;
+            const localVarPath = `/role/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7783,7 +7783,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (createSettingReq === null || createSettingReq === undefined) {
                 throw new RequiredError('createSettingReq','Required parameter createSettingReq was null or undefined when calling settingsCreate.');
             }
-            const localVarPath = `/settings/`;
+            const localVarPath = `/setting/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7818,7 +7818,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling settingsFindOne.');
             }
-            const localVarPath = `/settings/{id}`
+            const localVarPath = `/setting/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -7850,7 +7850,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (key === null || key === undefined) {
                 throw new RequiredError('key','Required parameter key was null or undefined when calling settingsGetSettingsByKey.');
             }
-            const localVarPath = `/settings/key/{key}`;
+            const localVarPath = `/setting/key/{key}`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7881,7 +7881,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         settingsGetSettingsByName(name?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/settings/name/{name}`;
+            const localVarPath = `/setting/name/{name}`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7914,7 +7914,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         settingsQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
-            const localVarPath = `/settings/query`;
+            const localVarPath = `/setting/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7954,7 +7954,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         settingsSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/settings/search`;
+            const localVarPath = `/setting/search`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -7993,7 +7993,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (editSettingReq === null || editSettingReq === undefined) {
                 throw new RequiredError('editSettingReq','Required parameter editSettingReq was null or undefined when calling settingsUpdate.');
             }
-            const localVarPath = `/settings/`;
+            const localVarPath = `/setting/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -8033,7 +8033,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (settingsGroup === null || settingsGroup === undefined) {
                 throw new RequiredError('settingsGroup','Required parameter settingsGroup was null or undefined when calling settingsUpdateSettingsByName.');
             }
-            const localVarPath = `/settings/name/{name}`;
+            const localVarPath = `/setting/name/{name}`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -8072,7 +8072,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (usersOfRole === null || usersOfRole === undefined) {
                 throw new RequiredError('usersOfRole','Required parameter usersOfRole was null or undefined when calling usersAddUsersToRole.');
             }
-            const localVarPath = `/users/role`;
+            const localVarPath = `/user/role`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -8107,7 +8107,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (createUserReq === null || createUserReq === undefined) {
                 throw new RequiredError('createUserReq','Required parameter createUserReq was null or undefined when calling usersCreate.');
             }
-            const localVarPath = `/users/`;
+            const localVarPath = `/user/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -8142,7 +8142,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling usersFindOne.');
             }
-            const localVarPath = `/users/{id}`
+            const localVarPath = `/user/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -8169,7 +8169,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         usersProfile(options: any = {}): RequestArgs {
-            const localVarPath = `/users/profile`;
+            const localVarPath = `/user/profile`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -8198,7 +8198,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         usersQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
-            const localVarPath = `/users/query`;
+            const localVarPath = `/user/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -8246,7 +8246,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling usersRemoveAccountFromRole.');
             }
-            const localVarPath = `/users/role`;
+            const localVarPath = `/user/role`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -8282,7 +8282,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         usersSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/users/search`;
+            const localVarPath = `/user/search`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -8321,7 +8321,7 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
             if (editUserReq === null || editUserReq === undefined) {
                 throw new RequiredError('editUserReq','Required parameter editUserReq was null or undefined when calling usersUpdate.');
             }
-            const localVarPath = `/users/`;
+            const localVarPath = `/user/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
