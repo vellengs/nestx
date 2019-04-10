@@ -69,7 +69,7 @@ export function fnDelonAuthConfig(): DelonAuthConfig {
 
 export function apiConfig(): Configuration {
   return new Configuration({
-    basePath: `${location.protocol}//${location.host}`
+    basePath: `${location.protocol}//${location.host}/api`
   });
 }
 

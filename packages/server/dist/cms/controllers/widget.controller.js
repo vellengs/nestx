@@ -23,8 +23,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const nest_swagger_1 = require("nest-swagger");
 const widget_service_1 = require("./widget.service");
-const widget_dto_1 = require("cms/dto/widget.dto");
-const common_2 = require("common");
+const dto_1 = require("../dto");
+const common_2 = require("../../common");
 let WidgetController = class WidgetController {
     constructor(service) {
         this.service = service;
@@ -71,13 +71,13 @@ __decorate([
 __decorate([
     common_1.Post(),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [widget_dto_1.CreateWidgetDto]),
+    __metadata("design:paramtypes", [dto_1.CreateWidgetDto]),
     __metadata("design:returntype", Promise)
 ], WidgetController.prototype, "create", null);
 __decorate([
     common_1.Put(),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [widget_dto_1.EditWidgetDto]),
+    __metadata("design:paramtypes", [dto_1.EditWidgetDto]),
     __metadata("design:returntype", Promise)
 ], WidgetController.prototype, "update", null);
 __decorate([

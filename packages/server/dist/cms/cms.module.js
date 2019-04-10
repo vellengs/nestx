@@ -10,6 +10,7 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const controllers_1 = require("./controllers");
 const schemas_1 = require("./schemas");
+const widget_schema_1 = require("./schemas/widget.schema");
 const models = [
     { name: 'Article', schema: schemas_1.ArticleSchema },
     { name: 'Category', schema: schemas_1.CategorySchema },
@@ -17,6 +18,7 @@ const models = [
     { name: 'Media', schema: schemas_1.MediaSchema },
     { name: 'Page', schema: schemas_1.PageSchema },
     { name: 'Photo', schema: schemas_1.PhotoSchema },
+    { name: 'Widget', schema: widget_schema_1.WidgetSchema },
 ];
 let CmsModule = class CmsModule {
 };

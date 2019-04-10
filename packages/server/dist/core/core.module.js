@@ -21,6 +21,7 @@ const models = [
     { name: 'VeryCode', schema: schemas_1.VeryCodeSchema },
     { name: 'Group', schema: schemas_1.GroupSchema },
     { name: 'Profile', schema: schemas_1.ProfileSchema },
+    { name: 'Appearance', schema: schemas_1.AppearanceSchema },
 ];
 let CoreModule = class CoreModule {
 };

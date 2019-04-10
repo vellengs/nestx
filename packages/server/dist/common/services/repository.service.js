@@ -23,14 +23,14 @@ let RepositoryService = class RepositoryService {
     constructor(repository) {
         this.repository = repository;
     }
-    findAll(index, size, query) {
+    findAll(page, size, query) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((x) => __awaiter(this, void 0, void 0, function* () {
                 let result = {
-                    list: yield this.repository.find({ skip: size * (index - 1), take: size }),
+                    list: yield this.repository.find({ skip: size * (page - 1), take: size }),
                     count: yield this.repository.count(),
                     query: {
-                        index: index,
+                        page: page,
                         size: size
                     }
                 };

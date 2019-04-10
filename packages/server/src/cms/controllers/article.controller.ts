@@ -1,10 +1,10 @@
 import { Controller, Get, Query, Post, Put, Delete, Param } from '@nestjs/common';
 import { Tags } from 'nest-swagger';
 import { ArticleService } from './article.service';
-import { CreateArticleDto, ArticleResponse, EditArticleDto } from 'cms/dto/article.dto';
-import { NullableParseIntPipe, ResultList } from 'common';
-import { Article } from 'cms/interfaces';
-import { KeyValueDto } from 'core/dto';
+import { CreateArticleDto, ArticleResponse, EditArticleDto } from './../dto';
+import { NullableParseIntPipe, ResultList } from '../../common';
+import { Article } from '../interfaces';
+import { KeyValueDto } from './../../core/dto';
 
 @Tags('cms')
 @Controller('article')

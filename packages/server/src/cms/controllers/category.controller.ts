@@ -2,10 +2,10 @@ import { Controller, Get, Query, Post, Put, Delete, Param } from '@nestjs/common
 import { Tags } from 'nest-swagger';
 import { CategoryService } from './category.service';
 import { KeyValue } from 'common/types/data.types';
-import { CreateCategoryDto, CategoryResponse, EditCategoryDto } from 'cms/dto/category.dto';
-import { NullableParseIntPipe, ResultList } from 'common';
-import { Category } from 'cms/interfaces';
-import { KeyValueDto } from 'core/dto';
+import { CreateCategoryDto, CategoryResponse, EditCategoryDto } from '../dto';
+import { NullableParseIntPipe, ResultList } from '../../common';
+import { Category } from '../interfaces';
+import { KeyValueDto } from './../../core/dto';
 
 @Tags('cms')
 @Controller('category')

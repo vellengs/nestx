@@ -23,8 +23,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const nest_swagger_1 = require("nest-swagger");
 const media_service_1 = require("./media.service");
-const media_dto_1 = require("cms/dto/media.dto");
-const common_2 = require("common");
+const dto_1 = require("../dto");
+const common_2 = require("../../common");
 let MediaController = class MediaController {
     constructor(service) {
         this.service = service;
@@ -71,13 +71,13 @@ __decorate([
 __decorate([
     common_1.Post(),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [media_dto_1.CreateMediaDto]),
+    __metadata("design:paramtypes", [dto_1.CreateMediaDto]),
     __metadata("design:returntype", Promise)
 ], MediaController.prototype, "create", null);
 __decorate([
     common_1.Put(),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [media_dto_1.EditMediaDto]),
+    __metadata("design:paramtypes", [dto_1.EditMediaDto]),
     __metadata("design:returntype", Promise)
 ], MediaController.prototype, "update", null);
 __decorate([

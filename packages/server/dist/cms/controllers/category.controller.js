@@ -23,8 +23,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const nest_swagger_1 = require("nest-swagger");
 const category_service_1 = require("./category.service");
-const category_dto_1 = require("cms/dto/category.dto");
-const common_2 = require("common");
+const dto_1 = require("../dto");
+const common_2 = require("../../common");
 let CategoryController = class CategoryController {
     constructor(service) {
         this.service = service;
@@ -71,13 +71,13 @@ __decorate([
 __decorate([
     common_1.Post(),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [category_dto_1.CreateCategoryDto]),
+    __metadata("design:paramtypes", [dto_1.CreateCategoryDto]),
     __metadata("design:returntype", Promise)
 ], CategoryController.prototype, "create", null);
 __decorate([
     common_1.Put(),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [category_dto_1.EditCategoryDto]),
+    __metadata("design:paramtypes", [dto_1.EditCategoryDto]),
     __metadata("design:returntype", Promise)
 ], CategoryController.prototype, "update", null);
 __decorate([
