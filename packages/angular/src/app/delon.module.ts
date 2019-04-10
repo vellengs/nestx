@@ -13,14 +13,6 @@ import { throwIfAlreadyLoaded } from '@core/module-import-guard';
 
 import { AlainThemeModule } from '@delon/theme';
 
-// #region mock
-import { DelonMockModule } from '@delon/mock';
-import * as MOCKDATA from '../../_mock';
-import { environment } from '@env/environment';
-const MOCK_MODULES = !environment.production
-  ? [DelonMockModule.forRoot({ data: MOCKDATA })]
-  : [];
-// #endregion
 
 // #region reuse-tab
 /**
@@ -98,8 +90,6 @@ const GLOBAL_CONFIG_PROVIDES = [
 @NgModule({
   imports: [
     AlainThemeModule.forRoot(),
-    // mock
-    ...MOCK_MODULES,
     ApiModule.forRoot(apiConfig),
   ],
   providers: [

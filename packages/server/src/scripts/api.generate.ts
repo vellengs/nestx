@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as https from 'https';
 import * as fs from 'fs';
 import * as shell from "shelljs";
+import * as swaggerParser from 'swagger-parser';
 
 const unzip = require('unzip2');
 const rimraf = require('rimraf');
@@ -85,6 +86,27 @@ async function generateAxios() {
 async function generateAngular() {
     const angularDist = path.resolve(process.cwd(), './../angular/src/generated');
     await generate('typescript-angular', angularDist, { ngVersion: '6.0' });
+}
+
+async function generateTestFiles() {
+    const file = await loadSwaggerFile();
+    const api = await swaggerParser.parse(file);
+    const paths = Object.keys(api.paths);
+    for (let url of paths) {
+        if (url) {
+            const item = api.paths[url];
+            const methods = Object.keys(item);
+            for (let method of methods) {
+                const entry = item[method];
+                const doc = {
+                    name: (entry.description || ''),
+                    method: url,
+                    path: method + url,
+                    version: api.info.version
+                }
+            }
+        }
+    }
 }
 
 async function generateAll() {

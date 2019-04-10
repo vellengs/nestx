@@ -6,7 +6,7 @@
     "isMenu": true,
     "link": "/dashboard",
     "slug": "home",
-    "icon": "icon-home",
+    "icon": "anticon anticon-home",
     "permissions": []
 }, {
     "_id": "5b0d013341b2399582a10b0a",
@@ -16,7 +16,7 @@
     "isMenu": true,
     "link": "course",
     "slug": "course",
-    "icon": "icon-screen-desktop",
+    "icon": "anticon anticon-desktop",
     "permissions": []
 }, {
     "_id": "5b0d07b841b2399582a10b0b",
@@ -26,7 +26,7 @@
     "isMenu": true,
     "link": "order",
     "slug": "order",
-    "icon": "icon-settings",
+    "icon": "anticon anticon-setting",
     "permissions": []
 }, {
     "_id": "5b194e0d139f72b0e7a28580",

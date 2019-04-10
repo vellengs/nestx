@@ -47,5 +47,5 @@ export const CoreDatabase = {
   User: model<UserModel>('User', UserSchema),
   Setting: model<SettingModel>('Setting', SettingSchema),
   Group: model<GroupModel>('Group', GroupSchema),
-  Appearance: model<GroupModel>('Appearance', AppearanceSchema)
+  Appearance: model<AppearanceModel>('Appearance', AppearanceSchema)
 };
