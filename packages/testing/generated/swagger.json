@@ -1,0 +1,6381 @@
+{
+	"definitions": {
+		"AccessToken": {
+			"description": "",
+			"properties": {
+				"expiresIn": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"accessToken": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"expiresIn",
+				"accessToken"
+			]
+		},
+		"LoginRes": {
+			"description": "",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"token": {
+					"$ref": "#/definitions/AccessToken"
+				},
+				"roles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"username",
+				"token",
+				"roles"
+			]
+		},
+		"LoginReq": {
+			"description": "",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"type": {
+					"type": "string",
+					"description": ""
+				},
+				"password": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"username",
+				"password"
+			]
+		},
+		"RegisterReq": {
+			"description": "",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"password": {
+					"type": "string",
+					"description": ""
+				},
+				"mobile": {
+					"type": "string",
+					"description": ""
+				},
+				"email": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"mobilePrefix": {
+					"type": "string",
+					"description": ""
+				},
+				"veryCode": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"username",
+				"password",
+				"mobile",
+				"email",
+				"veryCode"
+			]
+		},
+		"Result": {
+			"description": "",
+			"properties": {
+				"ok": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"ok"
+			]
+		},
+		"CreateDictReq": {
+			"description": "",
+			"properties": {
+				"category": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"translate": {
+					"type": "string",
+					"description": ""
+				},
+				"expand": {
+					"type": "object",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"category",
+				"name",
+				"translate",
+				"expand"
+			]
+		},
+		"Dict": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"category": {
+					"type": "string",
+					"description": ""
+				},
+				"translate": {
+					"type": "string",
+					"description": ""
+				},
+				"expand": {
+					"type": "object",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"category",
+				"translate",
+				"expand"
+			]
+		},
+		"EditDictReq": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"category": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"translate": {
+					"type": "string",
+					"description": ""
+				},
+				"expand": {
+					"type": "object",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"category",
+				"name",
+				"translate",
+				"expand"
+			]
+		},
+		"KeyValueDto": {
+			"description": "",
+			"properties": {
+				"label": {
+					"type": "string",
+					"description": ""
+				},
+				"value": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"label",
+				"value"
+			]
+		},
+		"Query": {
+			"description": "",
+			"properties": {
+				"size": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"page": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"size",
+				"page"
+			]
+		},
+		"ResultList$Dict": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Dict"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"User": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"password": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"keyword": {
+					"type": "string",
+					"description": ""
+				},
+				"avatar": {
+					"type": "string",
+					"description": ""
+				},
+				"type": {
+					"type": "string",
+					"description": ""
+				},
+				"groups": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				},
+				"roles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				},
+				"email": {
+					"type": "string",
+					"description": ""
+				},
+				"mobile": {
+					"type": "string",
+					"description": ""
+				},
+				"profile": {
+					"type": "object",
+					"description": ""
+				},
+				"isDisable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"isAdmin": {
+					"type": "boolean",
+					"description": ""
+				},
+				"isApproved": {
+					"type": "boolean",
+					"description": ""
+				},
+				"secret": {
+					"type": "string",
+					"description": ""
+				},
+				"expired": {
+					"type": "string",
+					"format": "date-time",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"username",
+				"name",
+				"avatar",
+				"type",
+				"groups",
+				"roles",
+				"email",
+				"mobile",
+				"isDisable",
+				"isAdmin",
+				"isApproved",
+				"secret",
+				"expired"
+			]
+		},
+		"CreateUserReq": {
+			"description": "",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"password": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"username",
+				"password"
+			]
+		},
+		"UsersOfRole": {
+			"description": "",
+			"properties": {
+				"role": {
+					"type": "string",
+					"description": ""
+				},
+				"userIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"role",
+				"userIds"
+			]
+		},
+		"EditUserReq": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"mobile": {
+					"type": "string",
+					"description": ""
+				},
+				"password": {
+					"type": "string",
+					"description": ""
+				},
+				"roles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				},
+				"email": {
+					"type": "string",
+					"description": ""
+				},
+				"company": {
+					"type": "string",
+					"description": ""
+				},
+				"siteUrl": {
+					"type": "string",
+					"description": ""
+				},
+				"address": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"username",
+				"mobile"
+			]
+		},
+		"ResultList$User": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/User"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"CreateMenuReq": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"slug": {
+					"type": "string",
+					"description": ""
+				},
+				"group": {
+					"type": "boolean",
+					"description": ""
+				},
+				"link": {
+					"type": "string",
+					"description": ""
+				},
+				"order": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"externalLink": {
+					"type": "string",
+					"description": ""
+				},
+				"blank": {
+					"type": "boolean",
+					"description": ""
+				},
+				"icon": {
+					"type": "string",
+					"description": ""
+				},
+				"badge": {
+					"type": "string",
+					"description": ""
+				},
+				"badgeDot": {
+					"type": "string",
+					"description": ""
+				},
+				"badgeStatus": {
+					"type": "string",
+					"description": ""
+				},
+				"enable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"expanded": {
+					"type": "boolean",
+					"description": ""
+				},
+				"acl": {
+					"type": "string",
+					"description": ""
+				},
+				"paths": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"parent": {
+					"type": "string",
+					"description": ""
+				},
+				"permissions": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"isMenu": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"slug",
+				"group",
+				"link",
+				"blank",
+				"enable",
+				"expanded",
+				"isMenu"
+			]
+		},
+		"Menu": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"slug": {
+					"type": "string",
+					"description": ""
+				},
+				"group": {
+					"type": "boolean",
+					"description": ""
+				},
+				"link": {
+					"type": "string",
+					"description": ""
+				},
+				"order": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"externalLink": {
+					"type": "string",
+					"description": ""
+				},
+				"blank": {
+					"type": "boolean",
+					"description": ""
+				},
+				"icon": {
+					"type": "string",
+					"description": ""
+				},
+				"badge": {
+					"type": "string",
+					"description": ""
+				},
+				"badgeDot": {
+					"type": "string",
+					"description": ""
+				},
+				"badgeStatus": {
+					"type": "string",
+					"description": ""
+				},
+				"enable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"expanded": {
+					"type": "boolean",
+					"description": ""
+				},
+				"acl": {
+					"type": "string",
+					"description": ""
+				},
+				"paths": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"parent": {
+					"type": "object",
+					"description": ""
+				},
+				"permissions": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"isMenu": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"slug",
+				"group",
+				"link",
+				"order",
+				"externalLink",
+				"blank",
+				"icon",
+				"badge",
+				"badgeDot",
+				"badgeStatus",
+				"enable",
+				"expanded",
+				"acl",
+				"paths",
+				"parent",
+				"isMenu"
+			]
+		},
+		"EditMenuReq": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"slug": {
+					"type": "string",
+					"description": ""
+				},
+				"group": {
+					"type": "boolean",
+					"description": ""
+				},
+				"link": {
+					"type": "string",
+					"description": ""
+				},
+				"order": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"externalLink": {
+					"type": "string",
+					"description": ""
+				},
+				"blank": {
+					"type": "boolean",
+					"description": ""
+				},
+				"icon": {
+					"type": "string",
+					"description": ""
+				},
+				"badge": {
+					"type": "string",
+					"description": ""
+				},
+				"badgeDot": {
+					"type": "string",
+					"description": ""
+				},
+				"badgeStatus": {
+					"type": "string",
+					"description": ""
+				},
+				"enable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"expanded": {
+					"type": "boolean",
+					"description": ""
+				},
+				"acl": {
+					"type": "string",
+					"description": ""
+				},
+				"paths": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"parent": {
+					"type": "string",
+					"description": ""
+				},
+				"permissions": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"isMenu": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"slug",
+				"group",
+				"link",
+				"blank",
+				"enable",
+				"expanded",
+				"isMenu"
+			]
+		},
+		"ResultList$Menu": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Menu"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"MenuRes": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"slug": {
+					"type": "string",
+					"description": ""
+				},
+				"group": {
+					"type": "boolean",
+					"description": ""
+				},
+				"link": {
+					"type": "string",
+					"description": ""
+				},
+				"order": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"externalLink": {
+					"type": "string",
+					"description": ""
+				},
+				"blank": {
+					"type": "boolean",
+					"description": ""
+				},
+				"icon": {
+					"type": "string",
+					"description": ""
+				},
+				"badge": {
+					"type": "string",
+					"description": ""
+				},
+				"badgeDot": {
+					"type": "string",
+					"description": ""
+				},
+				"badgeStatus": {
+					"type": "string",
+					"description": ""
+				},
+				"enable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"expanded": {
+					"type": "boolean",
+					"description": ""
+				},
+				"acl": {
+					"type": "string",
+					"description": ""
+				},
+				"paths": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"parent": {
+					"type": "string",
+					"description": ""
+				},
+				"permissions": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"isMenu": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"slug",
+				"group",
+				"link",
+				"blank",
+				"enable",
+				"expanded",
+				"isMenu"
+			]
+		},
+		"Log": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"operator": {
+					"type": "string",
+					"description": ""
+				},
+				"operatorIp": {
+					"type": "string",
+					"description": ""
+				},
+				"operation": {
+					"type": "string",
+					"description": ""
+				},
+				"comment": {
+					"type": "string",
+					"description": ""
+				},
+				"createdAt": {
+					"type": "string",
+					"format": "date-time",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"operator",
+				"operatorIp",
+				"operation",
+				"comment",
+				"createdAt"
+			]
+		},
+		"ResultList$Log": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Log"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"CreateNoticeReq": {
+			"description": "",
+			"properties": {
+				"title": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"extra": {
+					"type": "string",
+					"description": ""
+				},
+				"status": {
+					"type": "string",
+					"description": ""
+				},
+				"type": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"title",
+				"description",
+				"extra",
+				"status",
+				"type"
+			]
+		},
+		"Notice": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"format": "date-time",
+					"description": ""
+				},
+				"type": {
+					"type": "string",
+					"description": ""
+				},
+				"extra": {
+					"type": "string",
+					"description": ""
+				},
+				"read": {
+					"type": "boolean",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"title",
+				"description",
+				"type",
+				"extra",
+				"read"
+			]
+		},
+		"EditNoticeReq": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"extra": {
+					"type": "string",
+					"description": ""
+				},
+				"status": {
+					"type": "string",
+					"description": ""
+				},
+				"type": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"title",
+				"description",
+				"extra",
+				"status",
+				"type"
+			]
+		},
+		"ResultList$Notice": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Notice"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"CreateSettingReq": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"key": {
+					"type": "string",
+					"description": ""
+				},
+				"value": {
+					"type": "object",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"key",
+				"value",
+				"description"
+			]
+		},
+		"Setting": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"key": {
+					"type": "string",
+					"description": ""
+				},
+				"value": {
+					"type": "object",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"key",
+				"value",
+				"description"
+			]
+		},
+		"EditSettingReq": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"key": {
+					"type": "string",
+					"description": ""
+				},
+				"value": {
+					"type": "object",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"key",
+				"value",
+				"description"
+			]
+		},
+		"SettingsGroup": {
+			"description": "",
+			"properties": {},
+			"type": "object"
+		},
+		"ResultList$Setting": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Setting"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"SettingRes": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"key": {
+					"type": "string",
+					"description": ""
+				},
+				"value": {
+					"type": "object",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"key",
+				"value",
+				"description"
+			]
+		},
+		"CreateRoleReq": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"permissions": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"description",
+				"permissions"
+			]
+		},
+		"Role": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"role": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"permissions": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"role",
+				"description",
+				"permissions"
+			]
+		},
+		"EditRoleReq": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"permissions": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"description",
+				"permissions"
+			]
+		},
+		"ResultList$Role": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Role"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"CreateGroupReq": {
+			"description": "",
+			"properties": {
+				"outid": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"icon": {
+					"type": "string",
+					"description": ""
+				},
+				"parent": {
+					"type": "string",
+					"description": ""
+				},
+				"paths": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"director": {
+					"type": "string",
+					"description": ""
+				},
+				"order": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"isRegion": {
+					"type": "boolean",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"order"
+			]
+		},
+		"Group": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"outid": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"icon": {
+					"type": "string",
+					"description": ""
+				},
+				"parent": {
+					"type": "string",
+					"description": ""
+				},
+				"paths": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"director": {
+					"type": "string",
+					"description": ""
+				},
+				"order": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"isRegion": {
+					"type": "boolean",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"outid",
+				"name",
+				"icon",
+				"parent",
+				"paths",
+				"director",
+				"order",
+				"isRegion",
+				"description"
+			]
+		},
+		"EditGroupReq": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"outid": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"icon": {
+					"type": "string",
+					"description": ""
+				},
+				"parent": {
+					"type": "string",
+					"description": ""
+				},
+				"paths": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"description": ""
+				},
+				"director": {
+					"type": "string",
+					"description": ""
+				},
+				"order": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"isRegion": {
+					"type": "boolean",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"order"
+			]
+		},
+		"ResultList$Group": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Group"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"CreateAppearanceReq": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"option": {
+					"type": "string",
+					"description": ""
+				},
+				"data": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"option",
+				"data"
+			]
+		},
+		"Appearance": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"options": {
+					"type": "object",
+					"description": ""
+				},
+				"data": {
+					"type": "object",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"options",
+				"data"
+			]
+		},
+		"EditAppearanceReq": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"option": {
+					"type": "string",
+					"description": ""
+				},
+				"data": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"option",
+				"data"
+			]
+		},
+		"ResultList$Appearance": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Appearance"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"CreateProductDto": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"title"
+			]
+		},
+		"Product": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"title"
+			]
+		},
+		"PhotoRes": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"caption": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"ext": {
+					"type": "string",
+					"description": ""
+				},
+				"url": {
+					"type": "string",
+					"description": ""
+				},
+				"uri": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"caption",
+				"description",
+				"ext",
+				"url",
+				"uri"
+			]
+		},
+		"CreatePhotoDto": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"caption": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"ext": {
+					"type": "string",
+					"description": ""
+				},
+				"url": {
+					"type": "string",
+					"description": ""
+				},
+				"uri": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"caption",
+				"description",
+				"ext",
+				"url",
+				"uri"
+			]
+		},
+		"EditPhotoDto": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"caption": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"ext": {
+					"type": "string",
+					"description": ""
+				},
+				"url": {
+					"type": "string",
+					"description": ""
+				},
+				"uri": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"caption",
+				"description",
+				"ext",
+				"url",
+				"uri"
+			]
+		},
+		"Photo": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"caption": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"ext": {
+					"type": "object",
+					"description": ""
+				},
+				"url": {
+					"type": "string",
+					"description": ""
+				},
+				"uri": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"caption",
+				"description",
+				"ext",
+				"url",
+				"uri"
+			]
+		},
+		"ResultList$Photo": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Photo"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"ArticleResponse": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				},
+				"picture": {
+					"type": "string",
+					"description": ""
+				},
+				"category": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"author": {
+					"type": "string",
+					"description": ""
+				},
+				"sort": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"disable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"meta": {
+					"type": "string",
+					"description": ""
+				},
+				"content": {
+					"type": "string",
+					"description": ""
+				},
+				"template": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"title",
+				"picture",
+				"category",
+				"description",
+				"author",
+				"sort",
+				"disable",
+				"meta",
+				"content",
+				"template"
+			]
+		},
+		"CreateArticleDto": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				},
+				"keyword": {
+					"type": "string",
+					"description": ""
+				},
+				"picture": {
+					"type": "string",
+					"description": ""
+				},
+				"category": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"author": {
+					"type": "string",
+					"description": ""
+				},
+				"sort": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"disable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"meta": {
+					"type": "string",
+					"description": ""
+				},
+				"content": {
+					"type": "string",
+					"description": ""
+				},
+				"template": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"title",
+				"keyword",
+				"picture",
+				"category",
+				"description",
+				"author",
+				"sort",
+				"disable",
+				"meta",
+				"content",
+				"template"
+			]
+		},
+		"EditArticleDto": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"picture": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				},
+				"keyword": {
+					"type": "string",
+					"description": ""
+				},
+				"category": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"author": {
+					"type": "string",
+					"description": ""
+				},
+				"sort": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"disable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"meta": {
+					"type": "string",
+					"description": ""
+				},
+				"content": {
+					"type": "string",
+					"description": ""
+				},
+				"template": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"picture",
+				"title",
+				"keyword",
+				"category",
+				"description",
+				"author",
+				"sort",
+				"disable",
+				"meta",
+				"content",
+				"template"
+			]
+		},
+		"Article": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				},
+				"picture": {
+					"type": "string",
+					"description": ""
+				},
+				"keyword": {
+					"type": "string",
+					"description": ""
+				},
+				"category": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"author": {
+					"type": "string",
+					"description": ""
+				},
+				"sort": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"disable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"meta": {
+					"type": "string",
+					"description": ""
+				},
+				"content": {
+					"type": "string",
+					"description": ""
+				},
+				"template": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"title",
+				"picture",
+				"keyword",
+				"category",
+				"description",
+				"author",
+				"sort",
+				"disable",
+				"meta",
+				"content",
+				"template"
+			]
+		},
+		"ResultList$Article": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Article"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"CategoryResponse": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"slug": {
+					"type": "string",
+					"description": ""
+				},
+				"order": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"parent": {
+					"type": "string",
+					"description": ""
+				},
+				"paths": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"slug",
+				"order",
+				"parent",
+				"paths",
+				"description"
+			]
+		},
+		"CreateCategoryDto": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"slug": {
+					"type": "string",
+					"description": ""
+				},
+				"order": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"parent": {
+					"type": "string",
+					"description": ""
+				},
+				"paths": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"slug",
+				"order",
+				"parent",
+				"paths",
+				"description"
+			]
+		},
+		"EditCategoryDto": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"slug": {
+					"type": "string",
+					"description": ""
+				},
+				"order": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"parent": {
+					"type": "string",
+					"description": ""
+				},
+				"paths": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"slug",
+				"order",
+				"parent",
+				"paths",
+				"description"
+			]
+		},
+		"Category": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"slug": {
+					"type": "string",
+					"description": ""
+				},
+				"order": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"parent": {
+					"type": "string",
+					"description": ""
+				},
+				"paths": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"slug",
+				"order",
+				"parent",
+				"paths",
+				"description"
+			]
+		},
+		"ResultList$Category": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Category"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"MediaResponse": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"caption": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"ext": {
+					"type": "object",
+					"description": ""
+				},
+				"url": {
+					"type": "string",
+					"description": ""
+				},
+				"uri": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"caption",
+				"description",
+				"ext",
+				"url",
+				"uri"
+			]
+		},
+		"CreateMediaDto": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"caption": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"ext": {
+					"type": "object",
+					"description": ""
+				},
+				"url": {
+					"type": "string",
+					"description": ""
+				},
+				"uri": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"caption",
+				"description",
+				"ext",
+				"url",
+				"uri"
+			]
+		},
+		"EditMediaDto": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"caption": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"ext": {
+					"type": "object",
+					"description": ""
+				},
+				"url": {
+					"type": "string",
+					"description": ""
+				},
+				"uri": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"caption",
+				"description",
+				"ext",
+				"url",
+				"uri"
+			]
+		},
+		"Media": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"caption": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"ext": {
+					"type": "object",
+					"description": ""
+				},
+				"url": {
+					"type": "string",
+					"description": ""
+				},
+				"uri": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"caption",
+				"description",
+				"ext",
+				"url",
+				"uri"
+			]
+		},
+		"ResultList$Media": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Media"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"PageResponse": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"sort": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"publish": {
+					"type": "string",
+					"description": ""
+				},
+				"disable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"meta": {
+					"type": "string",
+					"description": ""
+				},
+				"content": {
+					"type": "string",
+					"description": ""
+				},
+				"template": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"title",
+				"description",
+				"sort",
+				"publish",
+				"disable",
+				"meta",
+				"content",
+				"template"
+			]
+		},
+		"CreatePageDto": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"sort": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"disable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"meta": {
+					"type": "string",
+					"description": ""
+				},
+				"publish": {
+					"type": "string",
+					"description": ""
+				},
+				"content": {
+					"type": "string",
+					"description": ""
+				},
+				"template": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"title",
+				"description",
+				"sort",
+				"disable",
+				"meta",
+				"publish",
+				"content",
+				"template"
+			]
+		},
+		"EditPageDto": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"sort": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"disable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"publish": {
+					"type": "string",
+					"description": ""
+				},
+				"meta": {
+					"type": "string",
+					"description": ""
+				},
+				"content": {
+					"type": "string",
+					"description": ""
+				},
+				"template": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"title",
+				"description",
+				"sort",
+				"disable",
+				"publish",
+				"meta",
+				"content",
+				"template"
+			]
+		},
+		"Page": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				},
+				"keyword": {
+					"type": "string",
+					"description": ""
+				},
+				"description": {
+					"type": "string",
+					"description": ""
+				},
+				"sort": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"disable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"meta": {
+					"type": "string",
+					"description": ""
+				},
+				"publish": {
+					"type": "string",
+					"description": ""
+				},
+				"content": {
+					"type": "string",
+					"description": ""
+				},
+				"template": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"title",
+				"keyword",
+				"description",
+				"sort",
+				"disable",
+				"meta",
+				"publish",
+				"content",
+				"template"
+			]
+		},
+		"ResultList$Page": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Page"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
+		"WidgetResponse": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				},
+				"params": {
+					"type": "object",
+					"description": ""
+				},
+				"type": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"title",
+				"params",
+				"type"
+			]
+		},
+		"CreateWidgetDto": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				},
+				"params": {
+					"type": "object",
+					"description": ""
+				},
+				"type": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name",
+				"title",
+				"params",
+				"type"
+			]
+		},
+		"EditWidgetDto": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				},
+				"params": {
+					"type": "object",
+					"description": ""
+				},
+				"type": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"title",
+				"params",
+				"type"
+			]
+		},
+		"Widget": {
+			"description": "",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"title": {
+					"type": "string",
+					"description": ""
+				},
+				"type": {
+					"type": "string",
+					"description": ""
+				},
+				"params": {
+					"type": "object",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"title",
+				"type",
+				"params"
+			]
+		},
+		"ResultList$Widget": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Widget"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		}
+	},
+	"info": {
+		"description": "项目标准接口",
+		"license": {
+			"name": "MIT"
+		},
+		"title": "rest api interface",
+		"version": "0.0.1"
+	},
+	"paths": {
+		"/": {
+			"get": {
+				"operationId": "AppRoot",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"app"
+				],
+				"parameters": []
+			}
+		},
+		"/auth/login": {
+			"post": {
+				"operationId": "AuthLogin",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/LoginRes"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"auth"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "payload",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/LoginReq"
+						}
+					}
+				]
+			}
+		},
+		"/auth/register": {
+			"post": {
+				"operationId": "AuthRegister",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/AccessToken"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"auth"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "payload",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/RegisterReq"
+						}
+					}
+				]
+			}
+		},
+		"/auth/logout": {
+			"get": {
+				"operationId": "AuthLogout",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"auth"
+				],
+				"parameters": []
+			}
+		},
+		"/auth/captcha": {
+			"get": {
+				"operationId": "AuthCaptcha",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Result"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"auth"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "mobile",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/dict/": {
+			"post": {
+				"operationId": "DictsCreate",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateDictReq"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "DictsUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Dict"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditDictReq"
+						}
+					}
+				]
+			}
+		},
+		"/dict/search": {
+			"get": {
+				"operationId": "DictsSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/dict/query": {
+			"get": {
+				"operationId": "DictsQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Dict"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "index",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/dict/{id}": {
+			"get": {
+				"operationId": "DictsFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Dict"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/user/profile": {
+			"get": {
+				"operationId": "UsersProfile",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/User"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": []
+			}
+		},
+		"/user/": {
+			"post": {
+				"operationId": "UsersCreate",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "user",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateUserReq"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "UsersUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/User"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "user",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditUserReq"
+						}
+					}
+				]
+			}
+		},
+		"/user/role": {
+			"post": {
+				"operationId": "UsersAddUsersToRole",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "users",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/UsersOfRole"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "UsersRemoveAccountFromRole",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "role",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/user/search": {
+			"get": {
+				"operationId": "UsersSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/user/query": {
+			"get": {
+				"operationId": "UsersQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$User"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "index",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/user/{id}": {
+			"get": {
+				"operationId": "UsersFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/User"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/menu/": {
+			"post": {
+				"operationId": "MenusCreate",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateMenuReq"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "MenusUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Menu"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditMenuReq"
+						}
+					}
+				]
+			}
+		},
+		"/menu/search": {
+			"get": {
+				"operationId": "MenusSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/menu/query": {
+			"get": {
+				"operationId": "MenusQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Menu"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "isMenu",
+						"required": true,
+						"type": "boolean"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "index",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/menu/permissions": {
+			"get": {
+				"operationId": "MenusGetPermissionTags",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"desc": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": []
+			}
+		},
+		"/menu/auth": {
+			"get": {
+				"operationId": "MenusGetUserMenus",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/MenuRes"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": []
+			}
+		},
+		"/menu/{id}": {
+			"get": {
+				"operationId": "MenusFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Menu"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/log/search": {
+			"get": {
+				"operationId": "LogsSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/log/query": {
+			"get": {
+				"operationId": "LogsQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Log"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "index",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/log/{id}": {
+			"get": {
+				"operationId": "LogsFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Log"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/notice/": {
+			"post": {
+				"operationId": "NoticesCreate",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateNoticeReq"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "NoticesUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Notice"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditNoticeReq"
+						}
+					}
+				]
+			}
+		},
+		"/notice/search": {
+			"get": {
+				"operationId": "NoticesSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/notice/query": {
+			"get": {
+				"operationId": "NoticesQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Notice"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "index",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/notice/{id}": {
+			"get": {
+				"operationId": "NoticesFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Notice"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/mock/init": {
+			"get": {
+				"operationId": "MockInitData",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"mock"
+				],
+				"parameters": []
+			}
+		},
+		"/mock/reset": {
+			"get": {
+				"operationId": "MockReset",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"mock"
+				],
+				"parameters": []
+			}
+		},
+		"/setting/": {
+			"post": {
+				"operationId": "SettingsCreate",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateSettingReq"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "SettingsUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Setting"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditSettingReq"
+						}
+					}
+				]
+			}
+		},
+		"/setting/name/{name}": {
+			"put": {
+				"operationId": "SettingsUpdateSettingsByName",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/SettingsGroup"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "name",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/SettingsGroup"
+						}
+					}
+				]
+			},
+			"get": {
+				"operationId": "SettingsGetSettingsByName",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/SettingsGroup"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "name",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/setting/search": {
+			"get": {
+				"operationId": "SettingsSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/setting/query": {
+			"get": {
+				"operationId": "SettingsQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Setting"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "index",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/setting/key/{key}": {
+			"get": {
+				"operationId": "SettingsGetSettingsByKey",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/SettingRes"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "key",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/setting/{id}": {
+			"get": {
+				"operationId": "SettingsFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Setting"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/role/": {
+			"post": {
+				"operationId": "RolesCreate",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateRoleReq"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "RolesUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Role"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditRoleReq"
+						}
+					}
+				]
+			}
+		},
+		"/role/search": {
+			"get": {
+				"operationId": "RolesSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/role/query": {
+			"get": {
+				"operationId": "RolesQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Role"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "index",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/role/{id}": {
+			"get": {
+				"operationId": "RolesFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Role"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/group/": {
+			"post": {
+				"operationId": "GroupsCreate",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateGroupReq"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "GroupsUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Group"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditGroupReq"
+						}
+					}
+				]
+			}
+		},
+		"/group/search": {
+			"get": {
+				"operationId": "GroupsSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/group/query": {
+			"get": {
+				"operationId": "GroupsQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Group"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "index",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/group/{id}": {
+			"get": {
+				"operationId": "GroupsFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Group"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/appearance/": {
+			"post": {
+				"operationId": "AppearancesCreate",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateAppearanceReq"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "AppearancesUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Appearance"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditAppearanceReq"
+						}
+					}
+				]
+			}
+		},
+		"/appearance/search": {
+			"get": {
+				"operationId": "AppearancesSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/appearance/query": {
+			"get": {
+				"operationId": "AppearancesQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Appearance"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "index",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/appearance/name/{name}": {
+			"get": {
+				"operationId": "AppearancesGetAppearanceByName",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Appearance"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "name",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/appearance/{id}": {
+			"get": {
+				"operationId": "AppearancesFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Appearance"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/cats/": {
+			"post": {
+				"operationId": "ProductsCreate",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "",
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "createCatDto",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateProductDto"
+						}
+					}
+				]
+			},
+			"get": {
+				"operationId": "ProductsFindAll",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/Product"
+							}
+						}
+					}
+				},
+				"description": "",
+				"parameters": []
+			}
+		},
+		"/cats/{id}": {
+			"get": {
+				"operationId": "ProductsFindOne",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "",
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "number",
+						"format": "double"
+					}
+				]
+			}
+		},
+		"/photo/search": {
+			"get": {
+				"operationId": "PhotoSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/photo/": {
+			"post": {
+				"operationId": "PhotoCreate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/PhotoRes"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreatePhotoDto"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "PhotoUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/PhotoRes"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditPhotoDto"
+						}
+					}
+				]
+			}
+		},
+		"/photo/query": {
+			"get": {
+				"operationId": "PhotoQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Photo"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/photo/{id}": {
+			"delete": {
+				"operationId": "PhotoRemove",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			},
+			"get": {
+				"operationId": "PhotoFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Photo"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/article/search": {
+			"get": {
+				"operationId": "ArticleSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/article/": {
+			"post": {
+				"operationId": "ArticleCreate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ArticleResponse"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateArticleDto"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "ArticleUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ArticleResponse"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditArticleDto"
+						}
+					}
+				]
+			}
+		},
+		"/article/query": {
+			"get": {
+				"operationId": "ArticleQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Article"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "category",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/article/{id}": {
+			"delete": {
+				"operationId": "ArticleRemove",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			},
+			"get": {
+				"operationId": "ArticleFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Article"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/category/search": {
+			"get": {
+				"operationId": "CategorySearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/category/": {
+			"post": {
+				"operationId": "CategoryCreate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/CategoryResponse"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateCategoryDto"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "CategoryUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/CategoryResponse"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditCategoryDto"
+						}
+					}
+				]
+			}
+		},
+		"/category/query": {
+			"get": {
+				"operationId": "CategoryQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Category"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/category/{id}": {
+			"delete": {
+				"operationId": "CategoryRemove",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			},
+			"get": {
+				"operationId": "CategoryFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Category"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/media/search": {
+			"get": {
+				"operationId": "MediaSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/media/": {
+			"post": {
+				"operationId": "MediaCreate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/MediaResponse"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateMediaDto"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "MediaUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/MediaResponse"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditMediaDto"
+						}
+					}
+				]
+			}
+		},
+		"/media/query": {
+			"get": {
+				"operationId": "MediaQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Media"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/media/{id}": {
+			"delete": {
+				"operationId": "MediaRemove",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			},
+			"get": {
+				"operationId": "MediaFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Media"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/page/search": {
+			"get": {
+				"operationId": "PageSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/page/": {
+			"post": {
+				"operationId": "PageCreate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/PageResponse"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreatePageDto"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "PageUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/PageResponse"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditPageDto"
+						}
+					}
+				]
+			}
+		},
+		"/page/query": {
+			"get": {
+				"operationId": "PageQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Page"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/page/{id}": {
+			"delete": {
+				"operationId": "PageRemove",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			},
+			"get": {
+				"operationId": "PageFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Page"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/widget/search": {
+			"get": {
+				"operationId": "WidgetSearch",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/KeyValueDto"
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/widget/": {
+			"post": {
+				"operationId": "WidgetCreate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/WidgetResponse"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateWidgetDto"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "WidgetUpdate",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/WidgetResponse"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditWidgetDto"
+						}
+					}
+				]
+			}
+		},
+		"/widget/query": {
+			"get": {
+				"operationId": "WidgetQuery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ResultList$Widget"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"type": "number",
+						"format": "double",
+						"default": 10
+					}
+				]
+			}
+		},
+		"/widget/{id}": {
+			"delete": {
+				"operationId": "WidgetRemove",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			},
+			"get": {
+				"operationId": "WidgetFindOne",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Widget"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		}
+	},
+	"swagger": "2.0",
+	"securityDefinitions": {},
+	"produces": [
+		"application/json"
+	]
+}

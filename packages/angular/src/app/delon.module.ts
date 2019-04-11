@@ -71,6 +71,12 @@ import { CustomSchemaValidatorFactory } from './custom.form.factory';
 export function fnSTConfig(): STConfig {
   return Object.assign(new STConfig(), <STConfig>{
     modal: { size: 'lg' },
+    req: {
+      reName: {
+        pi: 'page',
+        ps: 'size'
+      }
+    }
   });
 }
 

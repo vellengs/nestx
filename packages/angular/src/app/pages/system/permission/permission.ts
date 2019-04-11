@@ -42,7 +42,7 @@ export class PermissionPageComponent extends BaseStandComponent implements OnIni
         this.onConfigChanged.subscribe(() => {
         });
         this.load();
-        this.coreService.appearancesFindOne('apis').subscribe((res) => {
+        this.coreService.appearancesGetAppearanceByName('api').subscribe((res) => {
             if (res) {
                 this.slaveColumns = res.options;
                 this.slaveFormSets = res.data;

@@ -152,33 +152,48 @@ export class UsersService extends MongooseService<UserModel> {
   }
 
   async updateProfile(
+    userId: string,
     entry: EditProfileReq,
   ): Promise<ProfileRes> {
 
-    // const { request } = context;
-    // const profile: any = await Db.Profile.findOneAndUpdate(
-    //   {
-    //     _id: request.user.id,
-    //   },
-    //   entry, { upsert: true, new: true },
-    // ).exec();
+    const profile: any = await this.profileModel.findOneAndUpdate(
+      {
+        _id: userId,
+      },
+      entry, { upsert: true, new: true },
+    ).exec();
 
-    // entry.profile = profile._id;
-    // const account = await Db.Account.findOneAndUpdate(
-    //   {
-    //     _id: request.user.id,
-    //   },
-    //   entry, { new: true },
-    // ).populate('profile').exec();
+    entry.profile = profile._id;
+    const user = await this.model.findOneAndUpdate(
+      {
+        _id: userId,
+      },
+      entry, { new: true },
+    ).populate('profile').exec();
 
-    // if (profile) {
-    //   const instance = Repository.mergeProfile(account);
-    //   return instance;
-    // } else {
-    //   throw new Errors.BadRequestError('user not found');
-    // }
+    if (profile) {
+      const instance = this.mergeProfile(user);
+      return instance;
+    } else {
+      // throw new Errors.BadRequestError('user not found');
+    }
 
     return null; // TODO;
+  }
+
+  mergeProfile(user?: Document) {
+    if (!user) {
+      return null;
+    }
+    const doc = user.toObject();
+    const instance = Object.assign({}, doc, doc.profile);
+    instance.id = doc._id;
+    delete instance.profile;
+    delete instance._id;
+    delete instance.__v;
+    delete instance.password;
+    instance.createdAt = doc.createdAt;
+    return instance;
   }
 
 }

@@ -30,9 +30,14 @@ export class UsersController {
     return this.usersService.addAccountsToRole(users.role, users.userIds);
   }
 
-  @Put()
+  @Put() // TODO needs role guard
   async update(@Body() user: EditUserReq): Promise<User> {
     return this.usersService.update(plainToClass(EditUserReq, user));
+  }
+
+  @Put('profile')  // TODO 
+  async updateProfile(@Body() user: EditUserReq, @Req() req: Express.Request): Promise<any> {
+    return this.usersService.updateProfile(req.user.id, user);
   }
 
   @Get('search')
