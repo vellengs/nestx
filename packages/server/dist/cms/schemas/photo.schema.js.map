@@ -1,0 +1,1 @@
+{"version":3,"file":"photo.schema.js","sourceRoot":"","sources":["../../../src/cms/schemas/photo.schema.ts"],"names":[],"mappings":";;AAAA,uCAAmE;AACnE,MAAM,MAAM,GAAkB,EAAE,CAAC;AACjC,MAAM,CAAC,UAAU,GAAG,IAAI,CAAC;AAEZ,QAAA,WAAW,GAAG,IAAI,iBAAM,CAAC;IAClC,IAAI,EAAE;QACF,IAAI,EAAE,sBAAC,CAAC,MAAM;KACjB;CACJ,EAAE,MAAM,CAAC,CAAC"}

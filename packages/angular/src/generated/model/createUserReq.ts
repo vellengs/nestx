@@ -23,4 +23,44 @@ export interface CreateUserReq {
      * 
      */
     password: string;
+    /**
+     * 
+     */
+    avatar: string;
+    /**
+     * 
+     */
+    email: string;
+    /**
+     * 
+     */
+    name: string;
+    /**
+     * 
+     */
+    mobile: string;
+    /**
+     * 
+     */
+    isAdmin: boolean;
+    /**
+     * 
+     */
+    isApproved: boolean;
+    /**
+     * 
+     */
+    expired: number;
+    /**
+     * 
+     */
+    company?: string;
+    /**
+     * 
+     */
+    siteUrl?: string;
+    /**
+     * 
+     */
+    address?: string;
 }

@@ -1,11 +1,12 @@
-import { IsNotEmpty, IsString, MinLength } from 'class-validator';
-import { ApiModelProperty } from '@nestjs/swagger';
+import { IsNotEmpty, IsString, MinLength, IsOptional } from 'class-validator';
 import { AccessToken } from '../interfaces/jwt-payload.interface';
 
 export class LoginReq {
     @IsNotEmpty()
     @IsString()
     readonly username: string;
+
+    @IsOptional()
     readonly type?: string;
 
     @IsNotEmpty()

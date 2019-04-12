@@ -16,9 +16,22 @@ export const UserSchema = new Schema({
     },
     type: t.String,
     mobile: { type: t.String, unique: true, required: true },
-    roles: [{
-        type: t.ObjectId, ref: 'Role'
-    }],
+    roles: [
+        {
+            type: t.ObjectId,
+            ref: 'Role',
+        },
+    ],
+    groups: [
+        {
+            type: t.ObjectId,
+            ref: 'Group',
+        },
+    ],
+    profile: {
+        type: t.ObjectId,
+        ref: 'Profile',
+    },
     isDisable: {
         type: t.Boolean
     },

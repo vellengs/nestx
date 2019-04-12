@@ -80,6 +80,8 @@ async function generateAxios() {
     const testingFolder = path.resolve(current, './../testing/generated');
     shell.rm('-rf', testingFolder);
     shell.cp("-R", axiosDist, testingFolder);
+    const from = path.resolve(current, 'src/swagger', 'swagger.json');
+    shell.cp(from, testingFolder);
 }
 
 async function generateAngular() {

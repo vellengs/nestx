@@ -2,9 +2,10 @@ import { Model, Document, Types } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { ObjectID } from 'typeorm';
 import { ResultList } from './../interfaces/result.interface';
+import { ClassType } from 'class-transformer/ClassTransformer';
 
 export interface IdentifyEntry {
-  id: string | number | Date | ObjectID;
+  id: string | number | ObjectID;
   [key: string]: any;
 }
 
@@ -37,6 +38,7 @@ export class MongooseService<T extends Document>  {
   async query(page: number = 1, size: number = 10,
     query: Criteria = {}, searchField = 'name', fields: string[] = this.defaultQueryFields, sort: Criteria | string = { _id: 1 }
   ): Promise<ResultList<T>> {
+    page = page < 1 ? 1 : page;
 
     const criteria: Criteria = {};
     criteria[searchField] = new RegExp(query.keyword, 'i');
@@ -59,14 +61,25 @@ export class MongooseService<T extends Document>  {
     })
   }
 
+  /**
+   * searchable list
+   * @param keyword keyword
+   * @param id implicit match the value of id
+   * @param category category of data
+   * @param limit record count of data
+   * @param labelField which field to output as list label
+   * @param valueField which field to output as list value
+   * @param searchField which field to match keyword
+   */
   async search(
     keyword?: string, id?: string,
     category = '', limit: number = 10, labelField = 'name', valueField = '_id', searchField = 'name'
   ): Promise<any[]> {
 
-    const criteria: Criteria = {};
-    criteria[searchField] = new RegExp(keyword, 'i');
-    const query = keyword ? criteria : {};
+    let query: Criteria = {};
+    if (keyword) {
+      query[searchField] = new RegExp(keyword, 'i');
+    }
 
     if (category) {
       query.category = category;

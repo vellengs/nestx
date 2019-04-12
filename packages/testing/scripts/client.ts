@@ -1,5 +1,5 @@
 import globalAxios from 'axios';
-import { Configuration, CoreApi, AppApi, DefaultApi, AuthApi, MockApi, LoginReq } from '../generated';
+import { Configuration, CoreApi, AppApi, DefaultApi, AuthApi, MockApi, LoginReq, CmsApi } from '../generated';
 
 const store = new Map();
 
@@ -47,6 +47,7 @@ export class Client {
   public authApi = new AuthApi(config);
   public mockApi = new MockApi(config);
   public coreApi = new CoreApi(config);
+  public cmsApi = new CmsApi(config);
   public defaultApi = new DefaultApi(config);
   public appApi = new AppApi(config);
   public static get instance() {

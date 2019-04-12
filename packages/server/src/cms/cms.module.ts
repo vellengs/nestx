@@ -9,6 +9,7 @@ import {
   PageSchema,
   PhotoSchema
 } from './schemas';
+import { WidgetSchema } from './schemas/widget.schema';
 
 const models = [
   { name: 'Article', schema: ArticleSchema },
@@ -17,6 +18,7 @@ const models = [
   { name: 'Media', schema: MediaSchema },
   { name: 'Page', schema: PageSchema },
   { name: 'Photo', schema: PhotoSchema },
+  { name: 'Widget', schema: WidgetSchema },
 ];
 @Module({
   imports: [

@@ -3,7 +3,7 @@ import { existsSync } from 'fs';
 import { resolve } from 'path';
 import { Connection, Model } from 'mongoose';
 
-const models = ['Role', 'Dict', 'Menu', 'Setting', 'User'];
+const models = ['Role', 'Dict', 'Menu', 'Setting', 'User', 'Notice'];
 
 export class Installer {
     private static processing = false;

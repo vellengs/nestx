@@ -1,11 +1,10 @@
 import { Controller, Get, Query, Post, Put, Delete, Param } from '@nestjs/common';
 import { Tags } from 'nest-swagger';
 import { MediaService } from './media.service';
-import { KeyValue } from 'common/types/data.types';
-import { CreateMediaDto, MediaResponse, EditMediaDto } from 'cms/dto/media.dto';
-import { NullableParseIntPipe, ResultList } from 'common';
-import { Media } from 'cms/interfaces';
-import { KeyValueDto } from 'core/dto';
+import { CreateMediaDto, MediaResponse, EditMediaDto } from '../dto';
+import { NullableParseIntPipe, ResultList } from '../../common';
+import { Media } from '../interfaces';
+import { KeyValueDto } from '../../core/dto';
 
 @Tags('cms')
 @Controller('media')

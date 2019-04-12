@@ -24,12 +24,13 @@ export class AuthController {
   }
 
   @Get('logout')
-  async logout(@Req() request: Express.Request, @Res() res: any): Promise<boolean> {
+  async logout(@Req() request: Express.Request, @Res() res: any): Promise<Result> {
     request.logOut();
     await this.authService.logout();
     res.clearCookie('access_token');
-
-    return res.json(true);
+    return res.json({
+      ok: true
+    });
   }
 
   @Get('captcha')

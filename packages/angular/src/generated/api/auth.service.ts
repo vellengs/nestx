@@ -161,16 +161,16 @@ export class AuthService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public authLogout(observe?: 'body', reportProgress?: boolean): Observable<boolean>;
-    public authLogout(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<boolean>>;
-    public authLogout(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<boolean>>;
+    public authLogout(observe?: 'body', reportProgress?: boolean): Observable<Result>;
+    public authLogout(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Result>>;
+    public authLogout(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Result>>;
     public authLogout(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
-            'text/html'
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected !== undefined) {
@@ -181,7 +181,7 @@ export class AuthService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<boolean>(`${this.configuration.basePath}/auth/logout`,
+        return this.httpClient.get<Result>(`${this.configuration.basePath}/auth/logout`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

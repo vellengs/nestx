@@ -8,7 +8,7 @@ import { Tags } from 'nest-swagger';
 import { ResultList, NullableParseIntPipe } from './../../common';
 
 @Tags('core')
-@Controller('groups')
+@Controller('group')
 @UseGuards(AuthGuard('jwt'))
 export class GroupsController {
   constructor(private readonly settingService: GroupsService) { }
@@ -34,10 +34,10 @@ export class GroupsController {
   @Get('query')
   async query(
     @Query('keyword') keyword?: string,
-    @Query('index', new NullableParseIntPipe()) index: number = 1,
+    @Query('page', new NullableParseIntPipe()) page: number = 1,
     @Query('size', new NullableParseIntPipe()) size: number = 10,
   ): Promise<ResultList<Group>> {
-    return this.settingService.query(index, size, { keyword });
+    return this.settingService.query(page, size, { keyword });
   }
 
   @Get(':id')

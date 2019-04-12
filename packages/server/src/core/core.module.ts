@@ -12,6 +12,7 @@ import {
   VeryCodeSchema,
   GroupSchema,
   ProfileSchema,
+  AppearanceSchema,
 } from './schemas';
 import { CoreControllers, CoreServices } from './controllers';
 
@@ -26,6 +27,7 @@ const models = [
   { name: 'VeryCode', schema: VeryCodeSchema },
   { name: 'Group', schema: GroupSchema },
   { name: 'Profile', schema: ProfileSchema },
+  { name: 'Appearance', schema: AppearanceSchema },
 ];
 
 @Module({

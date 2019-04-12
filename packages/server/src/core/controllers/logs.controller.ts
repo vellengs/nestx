@@ -7,26 +7,18 @@ import { KeyValueDto } from './../dto';
 import { Tags } from 'nest-swagger';
 
 @Tags('core')
-@Controller('logs')
+@Controller('log')
 @UseGuards(AuthGuard('jwt'))
 export class LogsController {
   constructor(private readonly logService: LogsService) { }
 
-  @Get('search')
-  async search(
-    @Query('keyword') keyword?: string,
-    @Query('value') value?: string,
-  ): Promise<KeyValueDto[]> {
-    return this.logService.search(keyword, value);
-  }
-
   @Get('query')
   async query(
     @Query('keyword') keyword?: string,
-    @Query('index', new NullableParseIntPipe()) index: number = 1,
+    @Query('page', new NullableParseIntPipe()) page: number = 1,
     @Query('size', new NullableParseIntPipe()) size: number = 10,
   ): Promise<ResultList<Log>> {
-    return this.logService.query(index, size, { keyword });
+    return this.logService.query(page, size, { keyword });
   }
 
   @Get(':id')

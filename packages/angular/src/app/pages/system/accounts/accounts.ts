@@ -64,15 +64,6 @@ export class AccountsPageComponent extends BaseStandComponent implements OnInit 
                     }
                 }
             },
-            // {
-            //     text: '更多',
-            //     children: [
-            //         {
-            //             text: `过期`,
-            //             type: 'none',
-            //         },
-            //     ]
-            // }
         ]
     };
 

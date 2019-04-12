@@ -8,7 +8,7 @@ import { CreateDictReq, EditDictReq, KeyValueDto } from './../dto';
 import { Tags } from 'nest-swagger';
 
 @Tags('core')
-@Controller('dicts')
+@Controller('dict')
 @UseGuards(AuthGuard('jwt'))
 export class DictsController {
   constructor(private readonly dictService: DictsService) { }
@@ -34,10 +34,10 @@ export class DictsController {
   @Get('query')
   async query(
     @Query('keyword') keyword?: string,
-    @Query('index', new NullableParseIntPipe()) index: number = 1,
+    @Query('page', new NullableParseIntPipe()) page: number = 1,
     @Query('size', new NullableParseIntPipe()) size: number = 10,
   ): Promise<ResultList<Dict>> {
-    return this.dictService.query(index, size, { keyword });
+    return this.dictService.query(page, size, { keyword });
   }
 
   @Get(':id')

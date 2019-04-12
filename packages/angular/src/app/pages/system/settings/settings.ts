@@ -2,7 +2,7 @@ import { Component, OnInit, Injector, Input, ViewChild } from '@angular/core';
 import { BaseComponent } from '@shared/base/base.component';
 import { FormSets } from 'types/types';
 import { SFComponent } from '@delon/form';
-import { EditProfileDto } from 'generated';
+import { EditSettingReq } from 'generated';
 @Component({
     selector: 'app-settings-page',
     templateUrl: './settings.html',
@@ -32,9 +32,9 @@ export class SettingsPageComponent extends BaseComponent implements OnInit {
     constructor(injector: Injector) {
         super(injector);
         this.profileData = this.settings.user;
-        this.coreService.settingGetConfig().subscribe((config) => {
-            if (config && config.formSets) {
-                this.formSets = config.formSets as any;
+        this.coreService.appearancesGetAppearanceByName(this.domain).subscribe((config) => {
+            if (config && config.data) {
+                this.formSets = config.data.formSets as any;
             }
         });
     }
@@ -67,8 +67,8 @@ export class SettingsPageComponent extends BaseComponent implements OnInit {
     }
 
     profileSave(event?) {
-        const entry: EditProfileDto = Object.assign({}, event);
-        this.coreService.userUpdate(entry).subscribe((res) => {
+        const entry = Object.assign({}, event);
+        this.coreService.usersUpdate(entry).subscribe((res) => {
             if (res) {
                 this.settings.setUser(res);
                 this.msg.success('个人资料修改成功');
@@ -76,10 +76,10 @@ export class SettingsPageComponent extends BaseComponent implements OnInit {
         });
     }
 
-    saveSysSettings(event) {
+    saveSysSettings(event?) {
         const entry = Object.assign({}, event);
 
-        this.coreService.settingUpdateSettingsByName('main', entry).subscribe((res) => {
+        this.coreService.settingsUpdateSettingsByName('main', entry).subscribe((res) => {
             if (res) {
                 this.settingsData = res;
                 this.msg.success('系统设置更新成功');
@@ -88,7 +88,7 @@ export class SettingsPageComponent extends BaseComponent implements OnInit {
     }
 
     load() {
-        this.coreService.settingGetSettingsByName('main').subscribe((res) => {
+        this.coreService.settingsGetSettingsByName('main').subscribe((res) => {
             if (res) {
                 this.settingsData = res;
             }

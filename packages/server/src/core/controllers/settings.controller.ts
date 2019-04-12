@@ -8,17 +8,18 @@ import { Tags } from 'nest-swagger';
 import { ResultList, NullableParseIntPipe } from './../../common';
 
 @Tags('core')
-@Controller('settings')
-@UseGuards(AuthGuard('jwt'))
+@Controller('setting')
 export class SettingsController {
   constructor(private readonly settingService: SettingsService) { }
 
   @Post()
+  @UseGuards(AuthGuard('jwt'))
   async create(@Body() entry: CreateSettingReq) {
     return this.settingService.create(plainToClass(CreateSettingReq, entry));
   }
 
   @Put()
+  @UseGuards(AuthGuard('jwt'))
   async update(@Body() entry: EditSettingReq): Promise<Setting> {
     return this.settingService.update(plainToClass(EditSettingReq, entry));
   }
@@ -31,6 +32,7 @@ export class SettingsController {
   }
 
   @Get('search')
+  @UseGuards(AuthGuard('jwt'))
   async search(
     @Query('keyword') keyword?: string,
     @Query('value') value?: string,
@@ -39,12 +41,13 @@ export class SettingsController {
   }
 
   @Get('query')
+  @UseGuards(AuthGuard('jwt'))
   async query(
     @Query('keyword') keyword?: string,
-    @Query('index', new NullableParseIntPipe()) index: number = 1,
+    @Query('page', new NullableParseIntPipe()) page: number = 1,
     @Query('size', new NullableParseIntPipe()) size: number = 10,
   ): Promise<ResultList<Setting>> {
-    return this.settingService.query(index, size, { keyword });
+    return this.settingService.query(page, size, { keyword });
   }
 
   @Get('name/:name')
@@ -58,6 +61,7 @@ export class SettingsController {
   }
 
   @Get(':id')
+  @UseGuards(AuthGuard('jwt'))
   async findOne(@Param('id') id: string): Promise<Setting> {
     return this.settingService.findById(id);
   }

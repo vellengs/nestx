@@ -13,14 +13,6 @@ import { throwIfAlreadyLoaded } from '@core/module-import-guard';
 
 import { AlainThemeModule } from '@delon/theme';
 
-// #region mock
-import { DelonMockModule } from '@delon/mock';
-import * as MOCKDATA from '../../_mock';
-import { environment } from '@env/environment';
-const MOCK_MODULES = !environment.production
-  ? [DelonMockModule.forRoot({ data: MOCKDATA })]
-  : [];
-// #endregion
 
 // #region reuse-tab
 /**
@@ -69,7 +61,7 @@ export function fnDelonAuthConfig(): DelonAuthConfig {
 
 export function apiConfig(): Configuration {
   return new Configuration({
-    basePath: `${location.protocol}//${location.host}`
+    basePath: `${location.protocol}//${location.host}/api`
   });
 }
 
@@ -79,6 +71,12 @@ import { CustomSchemaValidatorFactory } from './custom.form.factory';
 export function fnSTConfig(): STConfig {
   return Object.assign(new STConfig(), <STConfig>{
     modal: { size: 'lg' },
+    req: {
+      reName: {
+        pi: 'page',
+        ps: 'size'
+      }
+    }
   });
 }
 
@@ -98,8 +96,6 @@ const GLOBAL_CONFIG_PROVIDES = [
 @NgModule({
   imports: [
     AlainThemeModule.forRoot(),
-    // mock
-    ...MOCK_MODULES,
     ApiModule.forRoot(apiConfig),
   ],
   providers: [

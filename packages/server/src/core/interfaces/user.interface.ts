@@ -17,7 +17,7 @@ export interface User {
   isAdmin: boolean; // 是否管理员
   isApproved: boolean; // 是否审核
   secret: string; // 密保
-  expired: Date; // 有效期
+  expired: number; // use timestamp
   comparePassword: (password: string, cb: any) => void;
 }
 

@@ -2,23 +2,27 @@ import * as mongoose from 'mongoose';
 import * as bluebird from 'bluebird';
 import { model, Connection } from 'mongoose';
 import {
+  AppearanceSchema,
   SettingSchema,
   DictSchema,
   LogSchema,
   MenuSchema,
   RoleSchema,
   UserSchema,
-  GroupSchema
+  GroupSchema,
+  NoticeSchema,
 } from './../core/schemas';
 
 import {
+  AppearanceModel,
   DictModel,
   LogModel,
   MenuModel,
   RoleModel,
   UserModel,
   SettingModel,
-  GroupModel
+  GroupModel,
+  NoticeModel,
 } from './../core/interfaces';
 
 import { MONGODB_URI } from './../utils/secrets';
@@ -44,5 +48,7 @@ export const CoreDatabase = {
   Role: model<RoleModel>('Role', RoleSchema),
   User: model<UserModel>('User', UserSchema),
   Setting: model<SettingModel>('Setting', SettingSchema),
-  Group: model<GroupModel>('Group', GroupSchema)
+  Group: model<GroupModel>('Group', GroupSchema),
+  Appearance: model<AppearanceModel>('Appearance', AppearanceSchema),
+  Notice: model<NoticeModel>('Notice', NoticeSchema),
 };

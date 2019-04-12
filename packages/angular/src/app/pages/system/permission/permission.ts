@@ -42,10 +42,10 @@ export class PermissionPageComponent extends BaseStandComponent implements OnIni
         this.onConfigChanged.subscribe(() => {
         });
         this.load();
-        this.coreService.apiGetConfig().subscribe((res) => {
+        this.coreService.appearancesGetAppearanceByName('api').subscribe((res) => {
             if (res) {
-                this.slaveColumns = res.columnSets['default'];
-                this.slaveFormSets = res.formSets;
+                this.slaveColumns = res.options;
+                this.slaveFormSets = res.data;
             }
         });
         const self = this;
@@ -57,14 +57,14 @@ export class PermissionPageComponent extends BaseStandComponent implements OnIni
                     text: '移出',
                     type: 'del',
                     click: (record: any) => {
-                        self.coreService.apiRemoveApisToPermission(this.selectedItem.id, record.id).subscribe(
-                            (res) => {
-                                if (res) {
-                                    self.msg.success('移除成功！');
-                                    self.slaves.reload();
-                                }
-                            }
-                        );
+                        // self.coreService.apiRemoveApisToPermission(this.selectedItem.id, record.id).subscribe(
+                        //     (res) => {
+                        //         if (res) {
+                        //             self.msg.success('移除成功！');
+                        //             self.slaves.reload();
+                        //         }
+                        //     }
+                        // );
                     }
                 }
             ]
@@ -82,11 +82,11 @@ export class PermissionPageComponent extends BaseStandComponent implements OnIni
             }).subscribe((res) => {
                 if (res) {
                     const ids = res.map(a => a.id);
-                    self.coreService.apiAddApisToPermission(self.selectedItem.id, ids)
-                        .subscribe(() => {
-                            self.msg.success('完成');
-                            self.slaves.reload();
-                        });
+                    // self.coreService.apiAddApisToPermission(self.selectedItem.id, ids)
+                    //     .subscribe(() => {
+                    //         self.msg.success('完成');
+                    //         self.slaves.reload();
+                    //     });
                 }
             });
     }

@@ -17,6 +17,8 @@ import { RolesController } from './roles.controller';
 import { RolesService } from './roles.service';
 import { GroupsController } from './groups.controller';
 import { GroupsService } from './groups.service';
+import { AppearancesController } from './appearances.controller';
+import { AppearancesService } from './appearances.service';
 
 export const CoreControllers = [
     DictsController,
@@ -28,6 +30,7 @@ export const CoreControllers = [
     SettingsController,
     RolesController,
     GroupsController,
+    AppearancesController,
 ];
 
 export const CoreServices = [
@@ -40,4 +43,5 @@ export const CoreServices = [
     SettingsService,
     RolesService,
     GroupsService,
+    AppearancesService,
 ];

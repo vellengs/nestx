@@ -260,8 +260,8 @@ definitions:
                 type: string
                 description: ""
             expired:
-                type: string
-                format: date-time
+                type: number
+                format: double
                 description: ""
         type: object
         required:
@@ -279,6 +279,53 @@ definitions:
             - isApproved
             - secret
             - expired
+    UserRes:
+        description: ""
+        properties:
+            username:
+                type: string
+                description: ""
+            avatar:
+                type: string
+                description: ""
+            email:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            mobile:
+                type: string
+                description: ""
+            isAdmin:
+                type: boolean
+                description: ""
+            isApproved:
+                type: boolean
+                description: ""
+            expired:
+                type: number
+                format: double
+                description: ""
+            company:
+                type: string
+                description: ""
+            siteUrl:
+                type: string
+                description: ""
+            address:
+                type: string
+                description: ""
+        type: object
+        required:
+            - username
+            - avatar
+            - email
+            - name
+            - mobile
+            - isAdmin
+            - isApproved
+            - expired
     CreateUserReq:
         description: ""
         properties:
@@ -288,10 +335,48 @@ definitions:
             password:
                 type: string
                 description: ""
+            avatar:
+                type: string
+                description: ""
+            email:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            mobile:
+                type: string
+                description: ""
+            isAdmin:
+                type: boolean
+                description: ""
+            isApproved:
+                type: boolean
+                description: ""
+            expired:
+                type: number
+                format: double
+                description: ""
+            company:
+                type: string
+                description: ""
+            siteUrl:
+                type: string
+                description: ""
+            address:
+                type: string
+                description: ""
         type: object
         required:
             - username
             - password
+            - avatar
+            - email
+            - name
+            - mobile
+            - isAdmin
+            - isApproved
+            - expired
     UsersOfRole:
         description: ""
         properties:
@@ -314,9 +399,6 @@ definitions:
                 type: string
                 description: ""
             name:
-                type: string
-                description: ""
-            username:
                 type: string
                 description: ""
             mobile:
@@ -346,8 +428,38 @@ definitions:
         required:
             - id
             - name
-            - username
-            - mobile
+    EditProfileReq:
+        description: ""
+        properties:
+            name:
+                type: string
+                description: ""
+            mobile:
+                type: string
+                description: ""
+            password:
+                type: string
+                description: ""
+            roles:
+                type: array
+                items:
+                    type: string
+                description: ""
+            email:
+                type: string
+                description: ""
+            company:
+                type: string
+                description: ""
+            siteUrl:
+                type: string
+                description: ""
+            address:
+                type: string
+                description: ""
+        type: object
+        required:
+            - name
     ResultList$User:
         description: ""
         properties:
@@ -1182,6 +1294,78 @@ definitions:
                 type: array
                 items:
                     $ref: '#/definitions/Group'
+                description: ""
+            count:
+                type: number
+                format: double
+                description: ""
+            query:
+                $ref: '#/definitions/Query'
+        type: object
+        required:
+            - list
+    CreateAppearanceReq:
+        description: ""
+        properties:
+            name:
+                type: string
+                description: ""
+            option:
+                type: string
+                description: ""
+            data:
+                type: string
+                description: ""
+        type: object
+        required:
+            - name
+            - option
+            - data
+    Appearance:
+        description: ""
+        properties:
+            name:
+                type: string
+                description: ""
+            options:
+                type: object
+                description: ""
+            data:
+                type: object
+                description: ""
+        type: object
+        required:
+            - name
+            - options
+            - data
+    EditAppearanceReq:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            option:
+                type: string
+                description: ""
+            data:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - name
+            - option
+            - data
+    ResultList$Appearance:
+        description: ""
+        properties:
+            list:
+                type: array
+                items:
+                    $ref: '#/definitions/Appearance'
                 description: ""
             count:
                 type: number
@@ -2291,12 +2475,12 @@ paths:
         get:
             operationId: AuthLogout
             produces:
-                - text/html
+                - application/json
             responses:
                 '200':
                     description: Ok
                     schema:
-                        type: boolean
+                        $ref: '#/definitions/Result'
             description: ""
             tags:
                 - auth
@@ -2321,7 +2505,7 @@ paths:
                     name: mobile
                     required: true
                     type: string
-    /dicts/:
+    /dict/:
         post:
             operationId: DictsCreate
             produces:
@@ -2364,7 +2548,7 @@ paths:
                     required: true
                     schema:
                         $ref: '#/definitions/EditDictReq'
-    /dicts/search:
+    /dict/search:
         get:
             operationId: DictsSearch
             produces:
@@ -2392,7 +2576,7 @@ paths:
                     name: value
                     required: false
                     type: string
-    /dicts/query:
+    /dict/query:
         get:
             operationId: DictsQuery
             produces:
@@ -2415,7 +2599,7 @@ paths:
                 -
                     description: ""
                     in: query
-                    name: index
+                    name: page
                     required: false
                     type: number
                     format: double
@@ -2428,7 +2612,7 @@ paths:
                     type: number
                     format: double
                     default: 10
-    '/dicts/{id}':
+    '/dict/{id}':
         get:
             operationId: DictsFindOne
             produces:
@@ -2448,7 +2632,7 @@ paths:
                     name: id
                     required: true
                     type: string
-    /users/profile:
+    /user/profile:
         get:
             operationId: UsersProfile
             produces:
@@ -2462,14 +2646,38 @@ paths:
             tags:
                 - core
             parameters: []
-    /users/:
+        put:
+            operationId: UsersUpdateProfile
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/UserRes'
+            description: ""
+            tags:
+                - core
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: user
+                    required: true
+                    schema:
+                        $ref: '#/definitions/EditProfileReq'
+    /user/:
         post:
             operationId: UsersCreate
             produces:
-                - text/html
+                - application/json
             responses:
-                '204':
-                    description: 'No content'
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/UserRes'
             description: ""
             tags:
                 - core
@@ -2491,7 +2699,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/User'
+                        $ref: '#/definitions/UserRes'
             description: ""
             tags:
                 - core
@@ -2505,16 +2713,16 @@ paths:
                     required: true
                     schema:
                         $ref: '#/definitions/EditUserReq'
-    /users/role:
+    /user/role:
         post:
             operationId: UsersAddUsersToRole
             produces:
-                - text/html
+                - application/json
             responses:
                 '200':
                     description: Ok
                     schema:
-                        type: boolean
+                        $ref: '#/definitions/Result'
             description: ""
             tags:
                 - core
@@ -2531,12 +2739,12 @@ paths:
         delete:
             operationId: UsersRemoveAccountFromRole
             produces:
-                - text/html
+                - application/json
             responses:
                 '200':
                     description: Ok
                     schema:
-                        type: boolean
+                        $ref: '#/definitions/Result'
             description: ""
             tags:
                 - core
@@ -2553,7 +2761,7 @@ paths:
                     name: id
                     required: true
                     type: string
-    /users/search:
+    /user/search:
         get:
             operationId: UsersSearch
             produces:
@@ -2581,7 +2789,7 @@ paths:
                     name: value
                     required: false
                     type: string
-    /users/query:
+    /user/query:
         get:
             operationId: UsersQuery
             produces:
@@ -2604,7 +2812,7 @@ paths:
                 -
                     description: ""
                     in: query
-                    name: index
+                    name: page
                     required: false
                     type: number
                     format: double
@@ -2617,7 +2825,7 @@ paths:
                     type: number
                     format: double
                     default: 10
-    '/users/{id}':
+    '/user/{id}':
         get:
             operationId: UsersFindOne
             produces:
@@ -2637,7 +2845,7 @@ paths:
                     name: id
                     required: true
                     type: string
-    /menus/:
+    /menu/:
         post:
             operationId: MenusCreate
             produces:
@@ -2680,7 +2888,7 @@ paths:
                     required: true
                     schema:
                         $ref: '#/definitions/EditMenuReq'
-    /menus/search:
+    /menu/search:
         get:
             operationId: MenusSearch
             produces:
@@ -2708,7 +2916,7 @@ paths:
                     name: value
                     required: false
                     type: string
-    /menus/query:
+    /menu/query:
         get:
             operationId: MenusQuery
             produces:
@@ -2737,7 +2945,7 @@ paths:
                 -
                     description: ""
                     in: query
-                    name: index
+                    name: page
                     required: false
                     type: number
                     format: double
@@ -2750,7 +2958,7 @@ paths:
                     type: number
                     format: double
                     default: 10
-    /menus/permissions:
+    /menu/permissions:
         get:
             operationId: MenusGetPermissionTags
             produces:
@@ -2776,7 +2984,7 @@ paths:
             tags:
                 - core
             parameters: []
-    /menus/auth:
+    /menu/auth:
         get:
             operationId: MenusGetUserMenus
             produces:
@@ -2792,7 +3000,7 @@ paths:
             tags:
                 - core
             parameters: []
-    '/menus/{id}':
+    '/menu/{id}':
         get:
             operationId: MenusFindOne
             produces:
@@ -2812,35 +3020,7 @@ paths:
                     name: id
                     required: true
                     type: string
-    /logs/search:
-        get:
-            operationId: LogsSearch
-            produces:
-                - application/json
-            responses:
-                '200':
-                    description: Ok
-                    schema:
-                        type: array
-                        items:
-                            $ref: '#/definitions/KeyValueDto'
-            description: ""
-            tags:
-                - core
-            parameters:
-                -
-                    description: ""
-                    in: query
-                    name: keyword
-                    required: false
-                    type: string
-                -
-                    description: ""
-                    in: query
-                    name: value
-                    required: false
-                    type: string
-    /logs/query:
+    /log/query:
         get:
             operationId: LogsQuery
             produces:
@@ -2863,7 +3043,7 @@ paths:
                 -
                     description: ""
                     in: query
-                    name: index
+                    name: page
                     required: false
                     type: number
                     format: double
@@ -2876,7 +3056,7 @@ paths:
                     type: number
                     format: double
                     default: 10
-    '/logs/{id}':
+    '/log/{id}':
         get:
             operationId: LogsFindOne
             produces:
@@ -2896,7 +3076,7 @@ paths:
                     name: id
                     required: true
                     type: string
-    /notices/:
+    /notice/:
         post:
             operationId: NoticesCreate
             produces:
@@ -2939,7 +3119,7 @@ paths:
                     required: true
                     schema:
                         $ref: '#/definitions/EditNoticeReq'
-    /notices/search:
+    /notice/search:
         get:
             operationId: NoticesSearch
             produces:
@@ -2967,7 +3147,7 @@ paths:
                     name: value
                     required: false
                     type: string
-    /notices/query:
+    /notice/query:
         get:
             operationId: NoticesQuery
             produces:
@@ -2990,7 +3170,7 @@ paths:
                 -
                     description: ""
                     in: query
-                    name: index
+                    name: page
                     required: false
                     type: number
                     format: double
@@ -3003,7 +3183,7 @@ paths:
                     type: number
                     format: double
                     default: 10
-    '/notices/{id}':
+    '/notice/{id}':
         get:
             operationId: NoticesFindOne
             produces:
@@ -3051,7 +3231,7 @@ paths:
             tags:
                 - mock
             parameters: []
-    /settings/:
+    /setting/:
         post:
             operationId: SettingsCreate
             produces:
@@ -3094,7 +3274,7 @@ paths:
                     required: true
                     schema:
                         $ref: '#/definitions/EditSettingReq'
-    '/settings/name/{name}':
+    '/setting/name/{name}':
         put:
             operationId: SettingsUpdateSettingsByName
             produces:
@@ -3142,7 +3322,7 @@ paths:
                     name: name
                     required: false
                     type: string
-    /settings/search:
+    /setting/search:
         get:
             operationId: SettingsSearch
             produces:
@@ -3170,7 +3350,7 @@ paths:
                     name: value
                     required: false
                     type: string
-    /settings/query:
+    /setting/query:
         get:
             operationId: SettingsQuery
             produces:
@@ -3193,7 +3373,7 @@ paths:
                 -
                     description: ""
                     in: query
-                    name: index
+                    name: page
                     required: false
                     type: number
                     format: double
@@ -3206,7 +3386,7 @@ paths:
                     type: number
                     format: double
                     default: 10
-    '/settings/key/{key}':
+    '/setting/key/{key}':
         get:
             operationId: SettingsGetSettingsByKey
             produces:
@@ -3226,7 +3406,7 @@ paths:
                     name: key
                     required: true
                     type: string
-    '/settings/{id}':
+    '/setting/{id}':
         get:
             operationId: SettingsFindOne
             produces:
@@ -3246,7 +3426,7 @@ paths:
                     name: id
                     required: true
                     type: string
-    /roles/:
+    /role/:
         post:
             operationId: RolesCreate
             produces:
@@ -3289,7 +3469,7 @@ paths:
                     required: true
                     schema:
                         $ref: '#/definitions/EditRoleReq'
-    /roles/search:
+    /role/search:
         get:
             operationId: RolesSearch
             produces:
@@ -3317,7 +3497,7 @@ paths:
                     name: value
                     required: false
                     type: string
-    /roles/query:
+    /role/query:
         get:
             operationId: RolesQuery
             produces:
@@ -3340,7 +3520,7 @@ paths:
                 -
                     description: ""
                     in: query
-                    name: index
+                    name: page
                     required: false
                     type: number
                     format: double
@@ -3353,7 +3533,7 @@ paths:
                     type: number
                     format: double
                     default: 10
-    '/roles/{id}':
+    '/role/{id}':
         get:
             operationId: RolesFindOne
             produces:
@@ -3373,7 +3553,7 @@ paths:
                     name: id
                     required: true
                     type: string
-    /groups/:
+    /group/:
         post:
             operationId: GroupsCreate
             produces:
@@ -3416,7 +3596,7 @@ paths:
                     required: true
                     schema:
                         $ref: '#/definitions/EditGroupReq'
-    /groups/search:
+    /group/search:
         get:
             operationId: GroupsSearch
             produces:
@@ -3444,7 +3624,7 @@ paths:
                     name: value
                     required: false
                     type: string
-    /groups/query:
+    /group/query:
         get:
             operationId: GroupsQuery
             produces:
@@ -3467,7 +3647,7 @@ paths:
                 -
                     description: ""
                     in: query
-                    name: index
+                    name: page
                     required: false
                     type: number
                     format: double
@@ -3480,7 +3660,7 @@ paths:
                     type: number
                     format: double
                     default: 10
-    '/groups/{id}':
+    '/group/{id}':
         get:
             operationId: GroupsFindOne
             produces:
@@ -3490,6 +3670,153 @@ paths:
                     description: Ok
                     schema:
                         $ref: '#/definitions/Group'
+            description: ""
+            tags:
+                - core
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: id
+                    required: true
+                    type: string
+    /appearance/:
+        post:
+            operationId: AppearancesCreate
+            produces:
+                - text/html
+            responses:
+                '204':
+                    description: 'No content'
+            description: ""
+            tags:
+                - core
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/CreateAppearanceReq'
+        put:
+            operationId: AppearancesUpdate
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Appearance'
+            description: ""
+            tags:
+                - core
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: entry
+                    required: true
+                    schema:
+                        $ref: '#/definitions/EditAppearanceReq'
+    /appearance/search:
+        get:
+            operationId: AppearancesSearch
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/definitions/KeyValueDto'
+            description: ""
+            tags:
+                - core
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: value
+                    required: false
+                    type: string
+    /appearance/query:
+        get:
+            operationId: AppearancesQuery
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/ResultList$Appearance'
+            description: ""
+            tags:
+                - core
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: page
+                    required: false
+                    type: number
+                    format: double
+                    default: 1
+                -
+                    description: ""
+                    in: query
+                    name: size
+                    required: false
+                    type: number
+                    format: double
+                    default: 10
+    '/appearance/name/{name}':
+        get:
+            operationId: AppearancesGetAppearanceByName
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Appearance'
+            description: ""
+            tags:
+                - core
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: name
+                    required: true
+                    type: string
+    '/appearance/{id}':
+        get:
+            operationId: AppearancesFindOne
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Appearance'
             description: ""
             tags:
                 - core

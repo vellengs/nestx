@@ -1,12 +1,11 @@
 import { Model, Document } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { User, UserModel, RoleModel, VeryCodeModel } from './../interfaces';
-import { MongooseService } from './../../common/services/mongoose.service';
+import { User, UserModel, VeryCodeModel } from './../interfaces';
+import { MongooseService, IdentifyEntry } from './../../common';
 import { RegisterReq } from './../../auth/dto/Register.dto';
-import { LoginRes } from 'auth/dto/login.dto';
 import { ObjectID } from 'typeorm';
-import { EditProfileReq, ProfileRes } from './../dto';
+import { EditProfileReq, UserRes } from './../dto';
 import { ObjectId } from 'bson';
 
 const FIVE_MINUTES = 5 * 60 * 1000; // 5 mins
@@ -21,7 +20,6 @@ export class UsersService extends MongooseService<UserModel> {
     'avatar',
     'email',
     'name',
-    'email',
     'mobile',
     'isAdmin',
     'isApproved',
@@ -116,7 +114,7 @@ export class UsersService extends MongooseService<UserModel> {
         }
       }, { $pullAll: { roles: [role] } }, { multi: true }).exec();
     }
-    return true;
+    return { ok: true };
   }
 
 
@@ -148,37 +146,57 @@ export class UsersService extends MongooseService<UserModel> {
       }, { $push: { roles: role } }, { multi: true }).exec();
     }
 
-    return true;
+    return { ok: true };
   }
 
   async updateProfile(
+    userId: string,
     entry: EditProfileReq,
-  ): Promise<ProfileRes> {
+  ): Promise<UserRes> {
 
-    // const { request } = context;
-    // const profile: any = await Db.Profile.findOneAndUpdate(
-    //   {
-    //     _id: request.user.id,
-    //   },
-    //   entry, { upsert: true, new: true },
-    // ).exec();
+    const profileModel = await this.profileModel.findOneAndUpdate(
+      {
+        _id: userId,
+      },
+      entry, { upsert: true, new: true },
+    ).exec();
 
-    // entry.profile = profile._id;
-    // const account = await Db.Account.findOneAndUpdate(
-    //   {
-    //     _id: request.user.id,
-    //   },
-    //   entry, { new: true },
-    // ).populate('profile').exec();
+    const profile = profileModel._id;
+    const user = await this.model.findOneAndUpdate(
+      {
+        _id: userId,
+      },
+      {
+        profile,
+        ...entry
+      }, { new: true },
+    ).populate('profile').exec();
 
-    // if (profile) {
-    //   const instance = Repository.mergeProfile(account);
-    //   return instance;
-    // } else {
-    //   throw new Errors.BadRequestError('user not found');
-    // }
+    if (profile) {
+      const instance = this.plainProfile(user);
+      return instance;
+    }
+    return null;
+  }
 
-    return null; // TODO;
+  async getProfile(entry: IdentifyEntry) {
+    const user = await this.model.findById(entry).populate('profile').exec();
+    return this.plainProfile(user);
+  }
+
+  private plainProfile(user?: UserModel) {
+    if (!user) {
+      return null;
+    }
+    const doc = user.toObject();
+    const instance = Object.assign({}, doc, doc.profile);
+    instance.id = doc._id;
+    delete instance.profile;
+    delete instance._id;
+    delete instance.__v;
+    delete instance.password;
+    instance.createdAt = doc.createdAt;
+    return instance;
   }
 
 }
