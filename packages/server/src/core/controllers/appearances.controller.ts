@@ -34,10 +34,10 @@ export class AppearancesController {
   @Get('query')
   async query(
     @Query('keyword') keyword?: string,
-    @Query('index', new NullableParseIntPipe()) index: number = 1,
+    @Query('page', new NullableParseIntPipe()) page: number = 1,
     @Query('size', new NullableParseIntPipe()) size: number = 10,
   ): Promise<ResultList<Appearance>> {
-    return this.appearanceService.query(index, size, { keyword });
+    return this.appearanceService.query(page, size, { keyword });
   }
 
   @Get('name/:name')

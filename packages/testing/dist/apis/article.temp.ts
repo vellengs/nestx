@@ -10,16 +10,16 @@ describe('article module test', () => {
 
     })
 
-    it('[get] /article/search', async () => {
 
+    it('[get] /article/search', async () => {
          const keyword = '';
          const value = '';
-
     const res = await HttpClient.cmsApi.articleSearch(keyword, value);
         expect(res.status).toBe(200);
     });
-    it('[post] /article/', async () => {
+    
 
+    it('[post] /article/', async () => {
         const reqBody = {
             name: '',
             title: '',
@@ -34,12 +34,12 @@ describe('article module test', () => {
             content: '',
             template: '',
         };
-
     const res = await HttpClient.cmsApi.articleCreate(reqBody);
         expect(res.status).toBe(200);
     });
-    it('[put] /article/', async () => {
+    
 
+    it('[put] /article/', async () => {
         const reqBody = {
             id: '',
             name: '',
@@ -55,32 +55,32 @@ describe('article module test', () => {
             content: '',
             template: '',
         };
-
     const res = await HttpClient.cmsApi.articleUpdate(reqBody);
         expect(res.status).toBe(200);
     });
-    it('[get] /article/query', async () => {
+    
 
+    it('[get] /article/query', async () => {
          const keyword = '';
          const category = '';
          const page = '';
          const size = '';
-
     const res = await HttpClient.cmsApi.articleQuery(keyword, category, page, size);
         expect(res.status).toBe(200);
     });
+    
+
     it('[delete] /article/{id}', async () => {
-
          const id = '';
-
     const res = await HttpClient.cmsApi.articleRemove(id);
         expect(res.status).toBe(200);
     });
+    
+
     it('[get] /article/{id}', async () => {
-
          const id = '';
-
     const res = await HttpClient.cmsApi.articleFindOne(id);
         expect(res.status).toBe(200);
     });
+    
 });

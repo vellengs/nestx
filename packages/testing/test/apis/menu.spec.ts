@@ -13,7 +13,7 @@ describe('menu module test', () => {
 
     })
 
-    it('create menu', async () => {
+    it('[post] /menu/', async () => {
         const reqBody = {
             name: 'home',
             slug: 'main',
@@ -24,7 +24,6 @@ describe('menu module test', () => {
             icon: 'icon-home',
             enable: true,
             expanded: false,
-            paths: [] as any,
             isMenu: true,
         }
 
@@ -32,7 +31,7 @@ describe('menu module test', () => {
         expect(res.status).toBe(201);
     });
 
-    it('edit menu', async () => {
+    it('[put] /menu/', async () => {
         const reqBody = {
             id: '5b0d013341b2399582a10b0a',
             name: '资料管理',
@@ -52,12 +51,12 @@ describe('menu module test', () => {
     });
 
 
-    it('query menu', async () => {
+    it('[get] /menu/query', async () => {
         const res = await HttpClient.coreApi.menusQuery(true);
         expect(res.status).toBe(200);
     });
 
-    it('search menu', async () => {
+    it('[get] /menu/search', async () => {
         const params = {
             keyword: '设置',
             value: ''
@@ -66,18 +65,22 @@ describe('menu module test', () => {
         expect(res.status).toBe(200);
     });
 
-    it('get users menus', async () => {
-
+    it('[get] /menu/auth', async () => {
         const res = await HttpClient.coreApi.menusGetUserMenus();
         expect(res.status).toBe(200);
     });
 
-    it('get permission tags', async () => {
+    it('[get] /menu/permissions', async () => {
         const res = await HttpClient.coreApi.menusGetPermissionTags();
         expect(res.status).toBe(200);
     });
 
-    it('get menu by id', async () => {
+    it('[get] /menu/auth', async () => {
+        const res = await HttpClient.coreApi.menusGetUserMenus();
+        expect(res.status).toBe(200);
+    });
+
+    it('[get] /menu/{id}', async () => {
         const res = await HttpClient.coreApi.menusFindOne('5b0d013341b2399582a10b0a');
         expect(res.status).toBe(200);
     });

@@ -114,7 +114,7 @@ export class UsersService extends MongooseService<UserModel> {
         }
       }, { $pullAll: { roles: [role] } }, { multi: true }).exec();
     }
-    return true;
+    return { ok: true };
   }
 
 
@@ -146,7 +146,7 @@ export class UsersService extends MongooseService<UserModel> {
       }, { $push: { roles: role } }, { multi: true }).exec();
     }
 
-    return true;
+    return { ok: true };
   }
 
   async updateProfile(

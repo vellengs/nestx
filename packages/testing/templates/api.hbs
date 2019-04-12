@@ -11,8 +11,8 @@ describe('{{title}} module test', () => {
     })
 
 {{#each methods}}
-    it('{{path}}', async () => {
 
+    it('{{path}}', async () => {
 {{#each parameters}}
      {{#if children}}
         const {{name}} = {
@@ -24,9 +24,9 @@ describe('{{title}} module test', () => {
          const {{name}} = '';
      {{/if}}
 {{/each}} 
-
     const res = await HttpClient.{{tag}}Api.{{operationId}}({{paramsNames}});
         expect(res.status).toBe({{state}});
     });
+    
 {{/each}}
 });

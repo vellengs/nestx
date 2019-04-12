@@ -1,6 +1,25 @@
 [{
-    "_id": "59f058a7696cf532c5172ead",
-    "category": "category",
-    "name": "category",
-    "translate": "字典分类"
-}]
+        "_id": "59f058a7696cf532c5172ead",
+        "category": "category",
+        "name": "category",
+        "translate": "字典分类"
+    },
+    {
+        "_id": "59f058a7696cf532c5172ea1",
+        "category": "category",
+        "name": "department",
+        "translate": "部门分类"
+    },
+    {
+        "_id": "59f058a7696cf532c5172ea2",
+        "category": "category",
+        "name": "product",
+        "translate": "产品分类"
+    },
+    {
+        "_id": "59f058a7696cf532c5172ea3",
+        "category": "product",
+        "name": "iphone",
+        "translate": "苹果手机"
+    }
+]

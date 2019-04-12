@@ -10,16 +10,16 @@ describe('mock module test', () => {
 
     })
 
+
     it('[get] /mock/init', async () => {
-
-
     const res = await HttpClient.mockApi.mockInitData();
         expect(res.status).toBe(200);
     });
+    
+
     it('[get] /mock/reset', async () => {
-
-
     const res = await HttpClient.mockApi.mockReset();
         expect(res.status).toBe(200);
     });
+    
 });

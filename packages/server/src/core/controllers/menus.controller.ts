@@ -35,10 +35,10 @@ export class MenusController {
   async query(
     @Query('isMenu') isMenu: boolean,
     @Query('keyword') keyword?: string,
-    @Query('index', new NullableParseIntPipe()) index: number = 1,
+    @Query('page', new NullableParseIntPipe()) page: number = 1,
     @Query('size', new NullableParseIntPipe()) size: number = 10,
   ): Promise<ResultList<Menu>> {
-    return this.menuService.query(index, size, { keyword, isMenu });
+    return this.menuService.query(page, size, { keyword, isMenu });
   }
 
   @Get('permissions')

@@ -2599,7 +2599,7 @@ paths:
                 -
                     description: ""
                     in: query
-                    name: index
+                    name: page
                     required: false
                     type: number
                     format: double
@@ -2654,7 +2654,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        type: object
+                        $ref: '#/definitions/UserRes'
             description: ""
             tags:
                 - core
@@ -2699,7 +2699,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/User'
+                        $ref: '#/definitions/UserRes'
             description: ""
             tags:
                 - core
@@ -2717,12 +2717,12 @@ paths:
         post:
             operationId: UsersAddUsersToRole
             produces:
-                - text/html
+                - application/json
             responses:
                 '200':
                     description: Ok
                     schema:
-                        type: boolean
+                        $ref: '#/definitions/Result'
             description: ""
             tags:
                 - core
@@ -2739,12 +2739,12 @@ paths:
         delete:
             operationId: UsersRemoveAccountFromRole
             produces:
-                - text/html
+                - application/json
             responses:
                 '200':
                     description: Ok
                     schema:
-                        type: boolean
+                        $ref: '#/definitions/Result'
             description: ""
             tags:
                 - core
@@ -2812,7 +2812,7 @@ paths:
                 -
                     description: ""
                     in: query
-                    name: index
+                    name: page
                     required: false
                     type: number
                     format: double
@@ -2945,7 +2945,7 @@ paths:
                 -
                     description: ""
                     in: query
-                    name: index
+                    name: page
                     required: false
                     type: number
                     format: double
@@ -3020,34 +3020,6 @@ paths:
                     name: id
                     required: true
                     type: string
-    /log/search:
-        get:
-            operationId: LogsSearch
-            produces:
-                - application/json
-            responses:
-                '200':
-                    description: Ok
-                    schema:
-                        type: array
-                        items:
-                            $ref: '#/definitions/KeyValueDto'
-            description: ""
-            tags:
-                - core
-            parameters:
-                -
-                    description: ""
-                    in: query
-                    name: keyword
-                    required: false
-                    type: string
-                -
-                    description: ""
-                    in: query
-                    name: value
-                    required: false
-                    type: string
     /log/query:
         get:
             operationId: LogsQuery
@@ -3071,7 +3043,7 @@ paths:
                 -
                     description: ""
                     in: query
-                    name: index
+                    name: page
                     required: false
                     type: number
                     format: double
@@ -3198,7 +3170,7 @@ paths:
                 -
                     description: ""
                     in: query
-                    name: index
+                    name: page
                     required: false
                     type: number
                     format: double
@@ -3401,7 +3373,7 @@ paths:
                 -
                     description: ""
                     in: query
-                    name: index
+                    name: page
                     required: false
                     type: number
                     format: double
@@ -3548,7 +3520,7 @@ paths:
                 -
                     description: ""
                     in: query
-                    name: index
+                    name: page
                     required: false
                     type: number
                     format: double
@@ -3675,7 +3647,7 @@ paths:
                 -
                     description: ""
                     in: query
-                    name: index
+                    name: page
                     required: false
                     type: number
                     format: double
@@ -3802,7 +3774,7 @@ paths:
                 -
                     description: ""
                     in: query
-                    name: index
+                    name: page
                     required: false
                     type: number
                     format: double

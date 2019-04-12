@@ -10,10 +10,10 @@ describe('_root module test', () => {
 
     })
 
+
     it('[get] /', async () => {
-
-
     const res = await HttpClient.appApi.appRoot();
         expect(res.status).toBe(200);
     });
+    
 });

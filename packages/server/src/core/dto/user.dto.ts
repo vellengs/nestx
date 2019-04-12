@@ -120,6 +120,6 @@ export class UsersOfRole {
     @IsString()
     role: string;
 
-    @IsString()
+    @IsString({each: true})
     userIds: string[];
 }

@@ -38,6 +38,7 @@ export class MongooseService<T extends Document>  {
   async query(page: number = 1, size: number = 10,
     query: Criteria = {}, searchField = 'name', fields: string[] = this.defaultQueryFields, sort: Criteria | string = { _id: 1 }
   ): Promise<ResultList<T>> {
+    page = page < 1 ? 1 : page;
 
     const criteria: Criteria = {};
     criteria[searchField] = new RegExp(query.keyword, 'i');

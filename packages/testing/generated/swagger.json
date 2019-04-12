@@ -3459,7 +3459,7 @@
 					{
 						"description": "",
 						"in": "query",
-						"name": "index",
+						"name": "page",
 						"required": false,
 						"type": "number",
 						"format": "double",
@@ -3535,7 +3535,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"type": "object"
+							"$ref": "#/definitions/UserRes"
 						}
 					}
 				},
@@ -3601,7 +3601,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/User"
+							"$ref": "#/definitions/UserRes"
 						}
 					}
 				},
@@ -3629,13 +3629,13 @@
 			"post": {
 				"operationId": "UsersAddUsersToRole",
 				"produces": [
-					"text/html"
+					"application/json"
 				],
 				"responses": {
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"type": "boolean"
+							"$ref": "#/definitions/Result"
 						}
 					}
 				},
@@ -3661,13 +3661,13 @@
 			"delete": {
 				"operationId": "UsersRemoveAccountFromRole",
 				"produces": [
-					"text/html"
+					"application/json"
 				],
 				"responses": {
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"type": "boolean"
+							"$ref": "#/definitions/Result"
 						}
 					}
 				},
@@ -3761,7 +3761,7 @@
 					{
 						"description": "",
 						"in": "query",
-						"name": "index",
+						"name": "page",
 						"required": false,
 						"type": "number",
 						"format": "double",
@@ -3946,7 +3946,7 @@
 					{
 						"description": "",
 						"in": "query",
-						"name": "index",
+						"name": "page",
 						"required": false,
 						"type": "number",
 						"format": "double",
@@ -4055,45 +4055,6 @@
 				]
 			}
 		},
-		"/log/search": {
-			"get": {
-				"operationId": "LogsSearch",
-				"produces": [
-					"application/json"
-				],
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"schema": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/KeyValueDto"
-							}
-						}
-					}
-				},
-				"description": "",
-				"tags": [
-					"core"
-				],
-				"parameters": [
-					{
-						"description": "",
-						"in": "query",
-						"name": "keyword",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"description": "",
-						"in": "query",
-						"name": "value",
-						"required": false,
-						"type": "string"
-					}
-				]
-			}
-		},
 		"/log/query": {
 			"get": {
 				"operationId": "LogsQuery",
@@ -4123,7 +4084,7 @@
 					{
 						"description": "",
 						"in": "query",
-						"name": "index",
+						"name": "page",
 						"required": false,
 						"type": "number",
 						"format": "double",
@@ -4301,7 +4262,7 @@
 					{
 						"description": "",
 						"in": "query",
-						"name": "index",
+						"name": "page",
 						"required": false,
 						"type": "number",
 						"format": "double",
@@ -4589,7 +4550,7 @@
 					{
 						"description": "",
 						"in": "query",
-						"name": "index",
+						"name": "page",
 						"required": false,
 						"type": "number",
 						"format": "double",
@@ -4796,7 +4757,7 @@
 					{
 						"description": "",
 						"in": "query",
-						"name": "index",
+						"name": "page",
 						"required": false,
 						"type": "number",
 						"format": "double",
@@ -4974,7 +4935,7 @@
 					{
 						"description": "",
 						"in": "query",
-						"name": "index",
+						"name": "page",
 						"required": false,
 						"type": "number",
 						"format": "double",
@@ -5152,7 +5113,7 @@
 					{
 						"description": "",
 						"in": "query",
-						"name": "index",
+						"name": "page",
 						"required": false,
 						"type": "number",
 						"format": "double",

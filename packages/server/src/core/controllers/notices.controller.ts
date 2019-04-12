@@ -34,10 +34,10 @@ export class NoticesController {
   @Get('query')
   async query(
     @Query('keyword') keyword?: string,
-    @Query('index', new NullableParseIntPipe()) index: number = 1,
+    @Query('page', new NullableParseIntPipe()) page: number = 1,
     @Query('size', new NullableParseIntPipe()) size: number = 10,
   ): Promise<ResultList<Notice>> {
-    return this.noticeService.query(index, size, { keyword });
+    return this.noticeService.query(page, size, { keyword });
   }
 
   @Get(':id')

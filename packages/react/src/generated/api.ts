@@ -6782,12 +6782,12 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        appearancesQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
+        appearancesQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
             const localVarPath = `/appearance/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -6802,8 +6802,8 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
                 localVarQueryParameter['keyword'] = keyword;
             }
 
-            if (index !== undefined) {
-                localVarQueryParameter['index'] = index;
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
             }
 
             if (size !== undefined) {
@@ -6961,12 +6961,12 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dictsQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
+        dictsQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
             const localVarPath = `/dict/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -6981,8 +6981,8 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
                 localVarQueryParameter['keyword'] = keyword;
             }
 
-            if (index !== undefined) {
-                localVarQueryParameter['index'] = index;
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
             }
 
             if (size !== undefined) {
@@ -7140,12 +7140,12 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        groupsQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
+        groupsQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
             const localVarPath = `/group/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -7160,8 +7160,8 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
                 localVarQueryParameter['keyword'] = keyword;
             }
 
-            if (index !== undefined) {
-                localVarQueryParameter['index'] = index;
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
             }
 
             if (size !== undefined) {
@@ -7284,12 +7284,12 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        logsQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
+        logsQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
             const localVarPath = `/log/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -7304,48 +7304,12 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
                 localVarQueryParameter['keyword'] = keyword;
             }
 
-            if (index !== undefined) {
-                localVarQueryParameter['index'] = index;
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
             }
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        logsSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/log/search`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (value !== undefined) {
-                localVarQueryParameter['value'] = value;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -7481,12 +7445,12 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * 
          * @param {boolean} isMenu 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        menusQuery(isMenu: boolean, keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
+        menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
             // verify required parameter 'isMenu' is not null or undefined
             if (isMenu === null || isMenu === undefined) {
                 throw new RequiredError('isMenu','Required parameter isMenu was null or undefined when calling menusQuery.');
@@ -7509,8 +7473,8 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
                 localVarQueryParameter['keyword'] = keyword;
             }
 
-            if (index !== undefined) {
-                localVarQueryParameter['index'] = index;
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
             }
 
             if (size !== undefined) {
@@ -7668,12 +7632,12 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        noticesQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
+        noticesQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
             const localVarPath = `/notice/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -7688,8 +7652,8 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
                 localVarQueryParameter['keyword'] = keyword;
             }
 
-            if (index !== undefined) {
-                localVarQueryParameter['index'] = index;
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
             }
 
             if (size !== undefined) {
@@ -7847,12 +7811,12 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rolesQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
+        rolesQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
             const localVarPath = `/role/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -7867,8 +7831,8 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
                 localVarQueryParameter['keyword'] = keyword;
             }
 
-            if (index !== undefined) {
-                localVarQueryParameter['index'] = index;
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
             }
 
             if (size !== undefined) {
@@ -8092,12 +8056,12 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        settingsQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
+        settingsQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
             const localVarPath = `/setting/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -8112,8 +8076,8 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
                 localVarQueryParameter['keyword'] = keyword;
             }
 
-            if (index !== undefined) {
-                localVarQueryParameter['index'] = index;
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
             }
 
             if (size !== undefined) {
@@ -8376,12 +8340,12 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersQuery(keyword?: string, index?: number, size?: number, options: any = {}): RequestArgs {
+        usersQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
             const localVarPath = `/user/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -8396,8 +8360,8 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
                 localVarQueryParameter['keyword'] = keyword;
             }
 
-            if (index !== undefined) {
-                localVarQueryParameter['index'] = index;
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
             }
 
             if (size !== undefined) {
@@ -8615,13 +8579,13 @@ export const CoreApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        appearancesQuery(keyword?: string, index?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListAppearance> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).appearancesQuery(keyword, index, size, options);
+        appearancesQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListAppearance> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).appearancesQuery(keyword, page, size, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8683,13 +8647,13 @@ export const CoreApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dictsQuery(keyword?: string, index?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListDict> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).dictsQuery(keyword, index, size, options);
+        dictsQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListDict> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).dictsQuery(keyword, page, size, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8751,13 +8715,13 @@ export const CoreApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        groupsQuery(keyword?: string, index?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListGroup> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsQuery(keyword, index, size, options);
+        groupsQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListGroup> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsQuery(keyword, page, size, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8806,27 +8770,13 @@ export const CoreApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        logsQuery(keyword?: string, index?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListLog> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).logsQuery(keyword, index, size, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        logsSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).logsSearch(keyword, value, options);
+        logsQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListLog> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).logsQuery(keyword, page, size, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8886,13 +8836,13 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * 
          * @param {boolean} isMenu 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        menusQuery(isMenu: boolean, keyword?: string, index?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListMenu> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusQuery(isMenu, keyword, index, size, options);
+        menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListMenu> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusQuery(isMenu, keyword, page, size, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8954,13 +8904,13 @@ export const CoreApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        noticesQuery(keyword?: string, index?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListNotice> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).noticesQuery(keyword, index, size, options);
+        noticesQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListNotice> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).noticesQuery(keyword, page, size, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9022,13 +8972,13 @@ export const CoreApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rolesQuery(keyword?: string, index?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListRole> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).rolesQuery(keyword, index, size, options);
+        rolesQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListRole> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).rolesQuery(keyword, page, size, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9116,13 +9066,13 @@ export const CoreApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        settingsQuery(keyword?: string, index?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListSetting> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsQuery(keyword, index, size, options);
+        settingsQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListSetting> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsQuery(keyword, page, size, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9175,7 +9125,7 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersAddUsersToRole(usersOfRole: UsersOfRole, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean> {
+        usersAddUsersToRole(usersOfRole: UsersOfRole, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Result> {
             const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersAddUsersToRole(usersOfRole, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -9223,13 +9173,13 @@ export const CoreApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersQuery(keyword?: string, index?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListUser> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersQuery(keyword, index, size, options);
+        usersQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListUser> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersQuery(keyword, page, size, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9242,7 +9192,7 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersRemoveAccountFromRole(role: string, id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean> {
+        usersRemoveAccountFromRole(role: string, id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Result> {
             const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersRemoveAccountFromRole(role, id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -9269,7 +9219,7 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersUpdate(editUserReq: EditUserReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
+        usersUpdate(editUserReq: EditUserReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRes> {
             const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersUpdate(editUserReq, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -9282,7 +9232,7 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersUpdateProfile(editProfileReq: EditProfileReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<any> {
+        usersUpdateProfile(editProfileReq: EditProfileReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRes> {
             const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersUpdateProfile(editProfileReq, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -9328,13 +9278,13 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        appearancesQuery(keyword?: string, index?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).appearancesQuery(keyword, index, size, options)(axios, basePath);
+        appearancesQuery(keyword?: string, page?: number, size?: number, options?: any) {
+            return CoreApiFp(configuration).appearancesQuery(keyword, page, size, options)(axios, basePath);
         },
         /**
          * 
@@ -9376,13 +9326,13 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dictsQuery(keyword?: string, index?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).dictsQuery(keyword, index, size, options)(axios, basePath);
+        dictsQuery(keyword?: string, page?: number, size?: number, options?: any) {
+            return CoreApiFp(configuration).dictsQuery(keyword, page, size, options)(axios, basePath);
         },
         /**
          * 
@@ -9424,13 +9374,13 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        groupsQuery(keyword?: string, index?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).groupsQuery(keyword, index, size, options)(axios, basePath);
+        groupsQuery(keyword?: string, page?: number, size?: number, options?: any) {
+            return CoreApiFp(configuration).groupsQuery(keyword, page, size, options)(axios, basePath);
         },
         /**
          * 
@@ -9463,23 +9413,13 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        logsQuery(keyword?: string, index?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).logsQuery(keyword, index, size, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        logsSearch(keyword?: string, value?: string, options?: any) {
-            return CoreApiFp(configuration).logsSearch(keyword, value, options)(axios, basePath);
+        logsQuery(keyword?: string, page?: number, size?: number, options?: any) {
+            return CoreApiFp(configuration).logsQuery(keyword, page, size, options)(axios, basePath);
         },
         /**
          * 
@@ -9519,13 +9459,13 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
          * 
          * @param {boolean} isMenu 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        menusQuery(isMenu: boolean, keyword?: string, index?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).menusQuery(isMenu, keyword, index, size, options)(axios, basePath);
+        menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, options?: any) {
+            return CoreApiFp(configuration).menusQuery(isMenu, keyword, page, size, options)(axios, basePath);
         },
         /**
          * 
@@ -9567,13 +9507,13 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        noticesQuery(keyword?: string, index?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).noticesQuery(keyword, index, size, options)(axios, basePath);
+        noticesQuery(keyword?: string, page?: number, size?: number, options?: any) {
+            return CoreApiFp(configuration).noticesQuery(keyword, page, size, options)(axios, basePath);
         },
         /**
          * 
@@ -9615,13 +9555,13 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rolesQuery(keyword?: string, index?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).rolesQuery(keyword, index, size, options)(axios, basePath);
+        rolesQuery(keyword?: string, page?: number, size?: number, options?: any) {
+            return CoreApiFp(configuration).rolesQuery(keyword, page, size, options)(axios, basePath);
         },
         /**
          * 
@@ -9681,13 +9621,13 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        settingsQuery(keyword?: string, index?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).settingsQuery(keyword, index, size, options)(axios, basePath);
+        settingsQuery(keyword?: string, page?: number, size?: number, options?: any) {
+            return CoreApiFp(configuration).settingsQuery(keyword, page, size, options)(axios, basePath);
         },
         /**
          * 
@@ -9756,13 +9696,13 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
         /**
          * 
          * @param {string} [keyword] 
-         * @param {number} [index] 
+         * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersQuery(keyword?: string, index?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).usersQuery(keyword, index, size, options)(axios, basePath);
+        usersQuery(keyword?: string, page?: number, size?: number, options?: any) {
+            return CoreApiFp(configuration).usersQuery(keyword, page, size, options)(axios, basePath);
         },
         /**
          * 
@@ -9848,14 +9788,14 @@ export class CoreApi extends BaseAPI {
     /**
      * 
      * @param {string} [keyword] 
-     * @param {number} [index] 
+     * @param {number} [page] 
      * @param {number} [size] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public appearancesQuery(keyword?: string, index?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).appearancesQuery(keyword, index, size, options)(this.axios, this.basePath);
+    public appearancesQuery(keyword?: string, page?: number, size?: number, options?: any) {
+        return CoreApiFp(this.configuration).appearancesQuery(keyword, page, size, options)(this.axios, this.basePath);
     }
 
     /**
@@ -9906,14 +9846,14 @@ export class CoreApi extends BaseAPI {
     /**
      * 
      * @param {string} [keyword] 
-     * @param {number} [index] 
+     * @param {number} [page] 
      * @param {number} [size] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public dictsQuery(keyword?: string, index?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).dictsQuery(keyword, index, size, options)(this.axios, this.basePath);
+    public dictsQuery(keyword?: string, page?: number, size?: number, options?: any) {
+        return CoreApiFp(this.configuration).dictsQuery(keyword, page, size, options)(this.axios, this.basePath);
     }
 
     /**
@@ -9964,14 +9904,14 @@ export class CoreApi extends BaseAPI {
     /**
      * 
      * @param {string} [keyword] 
-     * @param {number} [index] 
+     * @param {number} [page] 
      * @param {number} [size] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public groupsQuery(keyword?: string, index?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).groupsQuery(keyword, index, size, options)(this.axios, this.basePath);
+    public groupsQuery(keyword?: string, page?: number, size?: number, options?: any) {
+        return CoreApiFp(this.configuration).groupsQuery(keyword, page, size, options)(this.axios, this.basePath);
     }
 
     /**
@@ -10011,26 +9951,14 @@ export class CoreApi extends BaseAPI {
     /**
      * 
      * @param {string} [keyword] 
-     * @param {number} [index] 
+     * @param {number} [page] 
      * @param {number} [size] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public logsQuery(keyword?: string, index?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).logsQuery(keyword, index, size, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {string} [value] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public logsSearch(keyword?: string, value?: string, options?: any) {
-        return CoreApiFp(this.configuration).logsSearch(keyword, value, options)(this.axios, this.basePath);
+    public logsQuery(keyword?: string, page?: number, size?: number, options?: any) {
+        return CoreApiFp(this.configuration).logsQuery(keyword, page, size, options)(this.axios, this.basePath);
     }
 
     /**
@@ -10079,14 +10007,14 @@ export class CoreApi extends BaseAPI {
      * 
      * @param {boolean} isMenu 
      * @param {string} [keyword] 
-     * @param {number} [index] 
+     * @param {number} [page] 
      * @param {number} [size] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public menusQuery(isMenu: boolean, keyword?: string, index?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).menusQuery(isMenu, keyword, index, size, options)(this.axios, this.basePath);
+    public menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, options?: any) {
+        return CoreApiFp(this.configuration).menusQuery(isMenu, keyword, page, size, options)(this.axios, this.basePath);
     }
 
     /**
@@ -10137,14 +10065,14 @@ export class CoreApi extends BaseAPI {
     /**
      * 
      * @param {string} [keyword] 
-     * @param {number} [index] 
+     * @param {number} [page] 
      * @param {number} [size] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public noticesQuery(keyword?: string, index?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).noticesQuery(keyword, index, size, options)(this.axios, this.basePath);
+    public noticesQuery(keyword?: string, page?: number, size?: number, options?: any) {
+        return CoreApiFp(this.configuration).noticesQuery(keyword, page, size, options)(this.axios, this.basePath);
     }
 
     /**
@@ -10195,14 +10123,14 @@ export class CoreApi extends BaseAPI {
     /**
      * 
      * @param {string} [keyword] 
-     * @param {number} [index] 
+     * @param {number} [page] 
      * @param {number} [size] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public rolesQuery(keyword?: string, index?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).rolesQuery(keyword, index, size, options)(this.axios, this.basePath);
+    public rolesQuery(keyword?: string, page?: number, size?: number, options?: any) {
+        return CoreApiFp(this.configuration).rolesQuery(keyword, page, size, options)(this.axios, this.basePath);
     }
 
     /**
@@ -10275,14 +10203,14 @@ export class CoreApi extends BaseAPI {
     /**
      * 
      * @param {string} [keyword] 
-     * @param {number} [index] 
+     * @param {number} [page] 
      * @param {number} [size] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public settingsQuery(keyword?: string, index?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).settingsQuery(keyword, index, size, options)(this.axios, this.basePath);
+    public settingsQuery(keyword?: string, page?: number, size?: number, options?: any) {
+        return CoreApiFp(this.configuration).settingsQuery(keyword, page, size, options)(this.axios, this.basePath);
     }
 
     /**
@@ -10366,14 +10294,14 @@ export class CoreApi extends BaseAPI {
     /**
      * 
      * @param {string} [keyword] 
-     * @param {number} [index] 
+     * @param {number} [page] 
      * @param {number} [size] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public usersQuery(keyword?: string, index?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).usersQuery(keyword, index, size, options)(this.axios, this.basePath);
+    public usersQuery(keyword?: string, page?: number, size?: number, options?: any) {
+        return CoreApiFp(this.configuration).usersQuery(keyword, page, size, options)(this.axios, this.basePath);
     }
 
     /**
