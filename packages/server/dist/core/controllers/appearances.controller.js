@@ -53,7 +53,10 @@ let AppearancesController = class AppearancesController {
     }
     getAppearanceByName(name) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.appearanceService.findOne({ name });
+            const result = yield this.appearanceService.findOne({ name });
+            result.options = JSON.parse(result.options || '{}');
+            result.data = JSON.parse(result.data || '{}');
+            return result;
         });
     }
     findOne(id) {
@@ -109,7 +112,7 @@ __decorate([
 ], AppearancesController.prototype, "findOne", null);
 AppearancesController = __decorate([
     nest_swagger_1.Tags('core'),
-    common_1.Controller('appearances'),
+    common_1.Controller('appearance'),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __metadata("design:paramtypes", [appearances_service_1.AppearancesService])
 ], AppearancesController);

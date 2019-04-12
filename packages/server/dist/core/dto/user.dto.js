@@ -20,7 +20,92 @@ __decorate([
     class_validator_1.IsString(),
     __metadata("design:type", String)
 ], CreateUserReq.prototype, "password", void 0);
+__decorate([
+    class_validator_1.IsString(),
+    __metadata("design:type", String)
+], CreateUserReq.prototype, "avatar", void 0);
+__decorate([
+    class_validator_1.IsString(),
+    __metadata("design:type", String)
+], CreateUserReq.prototype, "email", void 0);
+__decorate([
+    class_validator_1.IsString(),
+    __metadata("design:type", String)
+], CreateUserReq.prototype, "name", void 0);
+__decorate([
+    class_validator_1.IsString(),
+    __metadata("design:type", String)
+], CreateUserReq.prototype, "mobile", void 0);
+__decorate([
+    class_validator_1.IsBoolean(),
+    __metadata("design:type", Boolean)
+], CreateUserReq.prototype, "isAdmin", void 0);
+__decorate([
+    class_validator_1.IsBoolean(),
+    __metadata("design:type", Boolean)
+], CreateUserReq.prototype, "isApproved", void 0);
+__decorate([
+    class_validator_1.IsNumber(),
+    __metadata("design:type", Number)
+], CreateUserReq.prototype, "expired", void 0);
+__decorate([
+    class_validator_1.IsOptional(),
+    class_validator_1.IsString(),
+    __metadata("design:type", String)
+], CreateUserReq.prototype, "company", void 0);
+__decorate([
+    class_validator_1.IsOptional(),
+    class_validator_1.IsString(),
+    __metadata("design:type", String)
+], CreateUserReq.prototype, "siteUrl", void 0);
+__decorate([
+    class_validator_1.IsOptional(),
+    class_validator_1.IsString(),
+    __metadata("design:type", String)
+], CreateUserReq.prototype, "address", void 0);
 exports.CreateUserReq = CreateUserReq;
+class EditProfileReq {
+}
+__decorate([
+    class_validator_1.IsString(),
+    __metadata("design:type", String)
+], EditProfileReq.prototype, "name", void 0);
+__decorate([
+    class_validator_1.IsString(),
+    class_validator_1.IsOptional(),
+    __metadata("design:type", String)
+], EditProfileReq.prototype, "mobile", void 0);
+__decorate([
+    class_validator_1.IsString(),
+    class_validator_1.IsOptional(),
+    __metadata("design:type", String)
+], EditProfileReq.prototype, "password", void 0);
+__decorate([
+    class_validator_1.IsArray(),
+    class_validator_1.IsOptional(),
+    __metadata("design:type", Array)
+], EditProfileReq.prototype, "roles", void 0);
+__decorate([
+    class_validator_1.IsEmail(),
+    class_validator_1.IsOptional(),
+    __metadata("design:type", String)
+], EditProfileReq.prototype, "email", void 0);
+__decorate([
+    class_validator_1.IsOptional(),
+    class_validator_1.IsString(),
+    __metadata("design:type", String)
+], EditProfileReq.prototype, "company", void 0);
+__decorate([
+    class_validator_1.IsOptional(),
+    class_validator_1.IsString(),
+    __metadata("design:type", String)
+], EditProfileReq.prototype, "siteUrl", void 0);
+__decorate([
+    class_validator_1.IsOptional(),
+    class_validator_1.IsString(),
+    __metadata("design:type", String)
+], EditProfileReq.prototype, "address", void 0);
+exports.EditProfileReq = EditProfileReq;
 class EditUserReq {
 }
 __decorate([
@@ -33,10 +118,7 @@ __decorate([
 ], EditUserReq.prototype, "name", void 0);
 __decorate([
     class_validator_1.IsString(),
-    __metadata("design:type", String)
-], EditUserReq.prototype, "username", void 0);
-__decorate([
-    class_validator_1.IsString(),
+    class_validator_1.IsOptional(),
     __metadata("design:type", String)
 ], EditUserReq.prototype, "mobile", void 0);
 __decorate([
@@ -70,6 +152,9 @@ __decorate([
     __metadata("design:type", String)
 ], EditUserReq.prototype, "address", void 0);
 exports.EditUserReq = EditUserReq;
+class UserRes {
+}
+exports.UserRes = UserRes;
 class UsersOfRole {
 }
 __decorate([

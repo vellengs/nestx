@@ -350,8 +350,8 @@
 					"description": ""
 				},
 				"expired": {
-					"type": "string",
-					"format": "date-time",
+					"type": "number",
+					"format": "double",
 					"description": ""
 				}
 			},
@@ -373,6 +373,67 @@
 				"expired"
 			]
 		},
+		"UserRes": {
+			"description": "",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"avatar": {
+					"type": "string",
+					"description": ""
+				},
+				"email": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"mobile": {
+					"type": "string",
+					"description": ""
+				},
+				"isAdmin": {
+					"type": "boolean",
+					"description": ""
+				},
+				"isApproved": {
+					"type": "boolean",
+					"description": ""
+				},
+				"expired": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"company": {
+					"type": "string",
+					"description": ""
+				},
+				"siteUrl": {
+					"type": "string",
+					"description": ""
+				},
+				"address": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"username",
+				"avatar",
+				"email",
+				"name",
+				"mobile",
+				"isAdmin",
+				"isApproved",
+				"expired"
+			]
+		},
 		"CreateUserReq": {
 			"description": "",
 			"properties": {
@@ -383,12 +444,60 @@
 				"password": {
 					"type": "string",
 					"description": ""
+				},
+				"avatar": {
+					"type": "string",
+					"description": ""
+				},
+				"email": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"mobile": {
+					"type": "string",
+					"description": ""
+				},
+				"isAdmin": {
+					"type": "boolean",
+					"description": ""
+				},
+				"isApproved": {
+					"type": "boolean",
+					"description": ""
+				},
+				"expired": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"company": {
+					"type": "string",
+					"description": ""
+				},
+				"siteUrl": {
+					"type": "string",
+					"description": ""
+				},
+				"address": {
+					"type": "string",
+					"description": ""
 				}
 			},
 			"type": "object",
 			"required": [
 				"username",
-				"password"
+				"password",
+				"avatar",
+				"email",
+				"name",
+				"mobile",
+				"isAdmin",
+				"isApproved",
+				"expired"
 			]
 		},
 		"UsersOfRole": {
@@ -420,10 +529,6 @@
 					"description": ""
 				},
 				"name": {
-					"type": "string",
-					"description": ""
-				},
-				"username": {
 					"type": "string",
 					"description": ""
 				},
@@ -462,9 +567,51 @@
 			"type": "object",
 			"required": [
 				"id",
-				"name",
-				"username",
-				"mobile"
+				"name"
+			]
+		},
+		"EditProfileReq": {
+			"description": "",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"mobile": {
+					"type": "string",
+					"description": ""
+				},
+				"password": {
+					"type": "string",
+					"description": ""
+				},
+				"roles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				},
+				"email": {
+					"type": "string",
+					"description": ""
+				},
+				"company": {
+					"type": "string",
+					"description": ""
+				},
+				"siteUrl": {
+					"type": "string",
+					"description": ""
+				},
+				"address": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"name"
 			]
 		},
 		"ResultList$User": {
@@ -3135,13 +3282,13 @@
 			"get": {
 				"operationId": "AuthLogout",
 				"produces": [
-					"text/html"
+					"application/json"
 				],
 				"responses": {
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"type": "boolean"
+							"$ref": "#/definitions/Result"
 						}
 					}
 				},
@@ -3378,17 +3525,52 @@
 					"core"
 				],
 				"parameters": []
+			},
+			"put": {
+				"operationId": "UsersUpdateProfile",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "user",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EditProfileReq"
+						}
+					}
+				]
 			}
 		},
 		"/user/": {
 			"post": {
 				"operationId": "UsersCreate",
 				"produces": [
-					"text/html"
+					"application/json"
 				],
 				"responses": {
-					"204": {
-						"description": "No content"
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/UserRes"
+						}
 					}
 				},
 				"description": "",

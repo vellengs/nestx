@@ -1,12 +1,11 @@
 import { Model, Document } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { User, UserModel, RoleModel, VeryCodeModel } from './../interfaces';
-import { MongooseService } from './../../common/services/mongoose.service';
+import { User, UserModel, VeryCodeModel } from './../interfaces';
+import { MongooseService, IdentifyEntry } from './../../common';
 import { RegisterReq } from './../../auth/dto/Register.dto';
-import { LoginRes } from 'auth/dto/login.dto';
 import { ObjectID } from 'typeorm';
-import { EditProfileReq, ProfileRes } from './../dto';
+import { EditProfileReq, UserRes } from './../dto';
 import { ObjectId } from 'bson';
 
 const FIVE_MINUTES = 5 * 60 * 1000; // 5 mins
@@ -21,7 +20,6 @@ export class UsersService extends MongooseService<UserModel> {
     'avatar',
     'email',
     'name',
-    'email',
     'mobile',
     'isAdmin',
     'isApproved',
@@ -154,34 +152,39 @@ export class UsersService extends MongooseService<UserModel> {
   async updateProfile(
     userId: string,
     entry: EditProfileReq,
-  ): Promise<ProfileRes> {
+  ): Promise<UserRes> {
 
-    const profile: any = await this.profileModel.findOneAndUpdate(
+    const profileModel = await this.profileModel.findOneAndUpdate(
       {
         _id: userId,
       },
       entry, { upsert: true, new: true },
     ).exec();
 
-    entry.profile = profile._id;
+    const profile = profileModel._id;
     const user = await this.model.findOneAndUpdate(
       {
         _id: userId,
       },
-      entry, { new: true },
+      {
+        profile,
+        ...entry
+      }, { new: true },
     ).populate('profile').exec();
 
     if (profile) {
-      const instance = this.mergeProfile(user);
+      const instance = this.plainProfile(user);
       return instance;
-    } else {
-      // throw new Errors.BadRequestError('user not found');
     }
-
-    return null; // TODO;
+    return null;
   }
 
-  mergeProfile(user?: Document) {
+  async getProfile(entry: IdentifyEntry) {
+    const user = await this.model.findById(entry).populate('profile').exec();
+    return this.plainProfile(user);
+  }
+
+  private plainProfile(user?: UserModel) {
     if (!user) {
       return null;
     }

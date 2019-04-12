@@ -33,7 +33,12 @@ async function bootstrap() {
   setupSwagger(app);
   app.enableCors();
   app.use(helmet());
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(new ValidationPipe({
+    // disableErrorMessages: true,  // TODO needs only open at dev;
+    transform: true,
+    whitelist: true,
+    forbidNonWhitelisted: true,
+  }));
   app.use(compression());
   await app.listen(5600);
 }

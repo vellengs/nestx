@@ -97,7 +97,7 @@ __decorate([
 ], RolesController.prototype, "findOne", null);
 RolesController = __decorate([
     nest_swagger_1.Tags('core'),
-    common_1.Controller('roles'),
+    common_1.Controller('role'),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __metadata("design:paramtypes", [roles_service_1.RolesService])
 ], RolesController);

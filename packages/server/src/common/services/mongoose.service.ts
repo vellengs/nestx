@@ -2,9 +2,10 @@ import { Model, Document, Types } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { ObjectID } from 'typeorm';
 import { ResultList } from './../interfaces/result.interface';
+import { ClassType } from 'class-transformer/ClassTransformer';
 
 export interface IdentifyEntry {
-  id: string | number | Date | ObjectID;
+  id: string | number | ObjectID;
   [key: string]: any;
 }
 

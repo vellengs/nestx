@@ -12,6 +12,5 @@ __export(require("./user.dto"));
 __export(require("./notice.dto"));
 __export(require("./setting.dto"));
 __export(require("./role.dto"));
-__export(require("./profile.dto"));
 __export(require("./appearance.dto"));
 //# sourceMappingURL=index.js.map

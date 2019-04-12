@@ -39,7 +39,6 @@ let UsersService = class UsersService extends mongoose_service_1.MongooseService
             'avatar',
             'email',
             'name',
-            'email',
             'mobile',
             'isAdmin',
             'isApproved',
@@ -158,10 +157,42 @@ let UsersService = class UsersService extends mongoose_service_1.MongooseService
             return true;
         });
     }
-    updateProfile(entry) {
+    updateProfile(userId, entry) {
         return __awaiter(this, void 0, void 0, function* () {
+            const scopedEntry = Object.assign({}, entry);
+            const profileModel = yield this.profileModel.findOneAndUpdate({
+                _id: userId,
+            }, scopedEntry, { upsert: true, new: true }).exec();
+            const profile = profileModel._id;
+            const user = yield this.model.findOneAndUpdate({
+                _id: userId,
+            }, Object.assign({ profile }, entry), { new: true }).populate('profile').exec();
+            if (profile) {
+                const instance = this.plainProfile(user);
+                return instance;
+            }
             return null;
         });
+    }
+    getProfile(entry) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = yield this.model.findById(entry).populate('profile').exec();
+            return this.plainProfile(user);
+        });
+    }
+    plainProfile(user) {
+        if (!user) {
+            return null;
+        }
+        const doc = user.toObject();
+        const instance = Object.assign({}, doc, doc.profile);
+        instance.id = doc._id;
+        delete instance.profile;
+        delete instance._id;
+        delete instance.__v;
+        delete instance.password;
+        instance.createdAt = doc.createdAt;
+        return instance;
     }
 };
 UsersService = __decorate([

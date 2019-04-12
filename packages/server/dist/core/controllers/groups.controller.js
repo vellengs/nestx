@@ -97,7 +97,7 @@ __decorate([
 ], GroupsController.prototype, "findOne", null);
 GroupsController = __decorate([
     nest_swagger_1.Tags('core'),
-    common_1.Controller('groups'),
+    common_1.Controller('group'),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __metadata("design:paramtypes", [groups_service_1.GroupsService])
 ], GroupsController);

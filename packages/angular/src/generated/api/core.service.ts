@@ -33,6 +33,7 @@ import { EditDictReq } from '../model/editDictReq';
 import { EditGroupReq } from '../model/editGroupReq';
 import { EditMenuReq } from '../model/editMenuReq';
 import { EditNoticeReq } from '../model/editNoticeReq';
+import { EditProfileReq } from '../model/editProfileReq';
 import { EditRoleReq } from '../model/editRoleReq';
 import { EditSettingReq } from '../model/editSettingReq';
 import { EditUserReq } from '../model/editUserReq';
@@ -57,6 +58,7 @@ import { Setting } from '../model/setting';
 import { SettingRes } from '../model/settingRes';
 import { SettingsGroup } from '../model/settingsGroup';
 import { User } from '../model/user';
+import { UserRes } from '../model/userRes';
 import { UsersOfRole } from '../model/usersOfRole';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -2156,9 +2158,9 @@ export class CoreService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public usersCreate(createUserReq: CreateUserReq, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public usersCreate(createUserReq: CreateUserReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public usersCreate(createUserReq: CreateUserReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public usersCreate(createUserReq: CreateUserReq, observe?: 'body', reportProgress?: boolean): Observable<UserRes>;
+    public usersCreate(createUserReq: CreateUserReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UserRes>>;
+    public usersCreate(createUserReq: CreateUserReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UserRes>>;
     public usersCreate(createUserReq: CreateUserReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (createUserReq === null || createUserReq === undefined) {
             throw new Error('Required parameter createUserReq was null or undefined when calling usersCreate.');
@@ -2168,6 +2170,7 @@ export class CoreService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected !== undefined) {
@@ -2183,7 +2186,7 @@ export class CoreService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.configuration.basePath}/user/`,
+        return this.httpClient.post<UserRes>(`${this.configuration.basePath}/user/`,
             createUserReq,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -2458,6 +2461,52 @@ export class CoreService {
 
         return this.httpClient.put<User>(`${this.configuration.basePath}/user/`,
             editUserReq,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param editProfileReq 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public usersUpdateProfile(editProfileReq: EditProfileReq, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public usersUpdateProfile(editProfileReq: EditProfileReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public usersUpdateProfile(editProfileReq: EditProfileReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public usersUpdateProfile(editProfileReq: EditProfileReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (editProfileReq === null || editProfileReq === undefined) {
+            throw new Error('Required parameter editProfileReq was null or undefined when calling usersUpdateProfile.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.put<any>(`${this.configuration.basePath}/user/profile`,
+            editProfileReq,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

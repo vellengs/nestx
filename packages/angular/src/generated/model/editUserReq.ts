@@ -26,11 +26,7 @@ export interface EditUserReq {
     /**
      * 
      */
-    username: string;
-    /**
-     * 
-     */
-    mobile: string;
+    mobile?: string;
     /**
      * 
      */

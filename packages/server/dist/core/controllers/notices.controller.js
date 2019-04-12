@@ -97,7 +97,7 @@ __decorate([
 ], NoticesController.prototype, "findOne", null);
 NoticesController = __decorate([
     nest_swagger_1.Tags('core'),
-    common_1.Controller('notices'),
+    common_1.Controller('notice'),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __metadata("design:paramtypes", [notices_service_1.NoticesService])
 ], NoticesController);

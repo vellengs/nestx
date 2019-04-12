@@ -1,10 +1,10 @@
-import { Controller, Get, Post, Body, UseGuards, Param, Put, Query, Req, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards, Param, Put, Query, Req, Delete, UsePipes, ValidationPipe } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './../interfaces/user.interface';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
 import { ResultList, NullableParseIntPipe } from './../../common';
-import { KeyValueDto, CreateUserReq, EditUserReq, UsersOfRole } from './../dto';
+import { KeyValueDto, CreateUserReq, EditUserReq, EditProfileReq, UsersOfRole, UserRes } from './../dto';
 import { Tags } from 'nest-swagger';
 
 @Tags('core')
@@ -16,11 +16,12 @@ export class UsersController {
   @Get('profile')
   async profile(@Req() request: any): Promise<User> {
     const user = request.user;
-    return this.usersService.findById(user._id);
+    const instance = this.usersService.getProfile(user);
+    return instance;
   }
 
   @Post()
-  async create(@Body() user: CreateUserReq) {
+  async create(@Body() user: CreateUserReq): Promise<UserRes> {
     return this.usersService.create(plainToClass(CreateUserReq, user));
   }
 
@@ -36,7 +37,7 @@ export class UsersController {
   }
 
   @Put('profile')  // TODO 
-  async updateProfile(@Body() user: EditUserReq, @Req() req: Express.Request): Promise<any> {
+  async updateProfile(@Body() user: EditProfileReq, @Req() req: Express.Request): Promise<any> {
     return this.usersService.updateProfile(req.user.id, user);
   }
 

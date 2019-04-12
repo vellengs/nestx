@@ -1025,6 +1025,66 @@ export interface CreateUserReq {
      * @memberof CreateUserReq
      */
     password: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateUserReq
+     */
+    avatar: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateUserReq
+     */
+    email: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateUserReq
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateUserReq
+     */
+    mobile: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateUserReq
+     */
+    isAdmin: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateUserReq
+     */
+    isApproved: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateUserReq
+     */
+    expired: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateUserReq
+     */
+    company?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateUserReq
+     */
+    siteUrl?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateUserReq
+     */
+    address?: string;
 }
 
 /**
@@ -1708,6 +1768,62 @@ export interface EditPhotoDto {
 /**
  * 
  * @export
+ * @interface EditProfileReq
+ */
+export interface EditProfileReq {
+    /**
+     * 
+     * @type {string}
+     * @memberof EditProfileReq
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditProfileReq
+     */
+    mobile?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditProfileReq
+     */
+    password?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof EditProfileReq
+     */
+    roles?: Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditProfileReq
+     */
+    email?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditProfileReq
+     */
+    company?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditProfileReq
+     */
+    siteUrl?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditProfileReq
+     */
+    address?: string;
+}
+
+/**
+ * 
+ * @export
  * @interface EditRoleReq
  */
 export interface EditRoleReq {
@@ -1798,13 +1914,7 @@ export interface EditUserReq {
      * @type {string}
      * @memberof EditUserReq
      */
-    username: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditUserReq
-     */
-    mobile: string;
+    mobile?: string;
     /**
      * 
      * @type {string}
@@ -3447,10 +3557,84 @@ export interface User {
     secret: string;
     /**
      * 
-     * @type {Date}
+     * @type {number}
      * @memberof User
      */
-    expired: Date;
+    expired: number;
+}
+
+/**
+ * 
+ * @export
+ * @interface UserRes
+ */
+export interface UserRes {
+    /**
+     * 
+     * @type {string}
+     * @memberof UserRes
+     */
+    username: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserRes
+     */
+    avatar: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserRes
+     */
+    email: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserRes
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserRes
+     */
+    mobile: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserRes
+     */
+    isAdmin: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserRes
+     */
+    isApproved: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof UserRes
+     */
+    expired: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserRes
+     */
+    company?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserRes
+     */
+    siteUrl?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserRes
+     */
+    address?: string;
 }
 
 /**
@@ -3819,7 +4003,7 @@ export const AuthApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authLogout(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean> {
+        authLogout(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Result> {
             const localVarAxiosArgs = AuthApiAxiosParamCreator(configuration).authLogout(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -8345,6 +8529,41 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @param {EditProfileReq} editProfileReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersUpdateProfile(editProfileReq: EditProfileReq, options: any = {}): RequestArgs {
+            // verify required parameter 'editProfileReq' is not null or undefined
+            if (editProfileReq === null || editProfileReq === undefined) {
+                throw new RequiredError('editProfileReq','Required parameter editProfileReq was null or undefined when calling usersUpdateProfile.');
+            }
+            const localVarPath = `/user/profile`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"EditProfileReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(editProfileReq || {}) : (editProfileReq || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -8969,7 +9188,7 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersCreate(createUserReq: CreateUserReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+        usersCreate(createUserReq: CreateUserReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRes> {
             const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersCreate(createUserReq, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -9052,6 +9271,19 @@ export const CoreApiFp = function(configuration?: Configuration) {
          */
         usersUpdate(editUserReq: EditUserReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
             const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersUpdate(editUserReq, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {EditProfileReq} editProfileReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersUpdateProfile(editProfileReq: EditProfileReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<any> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersUpdateProfile(editProfileReq, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9560,6 +9792,15 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
          */
         usersUpdate(editUserReq: EditUserReq, options?: any) {
             return CoreApiFp(configuration).usersUpdate(editUserReq, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {EditProfileReq} editProfileReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersUpdateProfile(editProfileReq: EditProfileReq, options?: any) {
+            return CoreApiFp(configuration).usersUpdateProfile(editProfileReq, options)(axios, basePath);
         },
     };
 };
@@ -10168,6 +10409,17 @@ export class CoreApi extends BaseAPI {
      */
     public usersUpdate(editUserReq: EditUserReq, options?: any) {
         return CoreApiFp(this.configuration).usersUpdate(editUserReq, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {EditProfileReq} editProfileReq 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public usersUpdateProfile(editProfileReq: EditProfileReq, options?: any) {
+        return CoreApiFp(this.configuration).usersUpdateProfile(editProfileReq, options)(this.axios, this.basePath);
     }
 
 }

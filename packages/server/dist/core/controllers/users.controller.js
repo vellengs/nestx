@@ -34,7 +34,8 @@ let UsersController = class UsersController {
     profile(request) {
         return __awaiter(this, void 0, void 0, function* () {
             const user = request.user;
-            return this.usersService.findById(user._id);
+            const instance = this.usersService.getProfile(user);
+            return instance;
         });
     }
     create(user) {
@@ -50,6 +51,11 @@ let UsersController = class UsersController {
     update(user) {
         return __awaiter(this, void 0, void 0, function* () {
             return this.usersService.update(class_transformer_1.plainToClass(dto_1.EditUserReq, user));
+        });
+    }
+    updateProfile(user, req) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.usersService.updateProfile(req.user.id, user);
         });
     }
     search(keyword, value) {
@@ -102,6 +108,13 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "update", null);
 __decorate([
+    common_1.Put('profile'),
+    __param(0, common_1.Body()), __param(1, common_1.Req()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [dto_1.EditProfileReq, Object]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "updateProfile", null);
+__decorate([
     common_1.Get('search'),
     __param(0, common_1.Query('keyword')),
     __param(1, common_1.Query('value')),
@@ -134,7 +147,7 @@ __decorate([
 ], UsersController.prototype, "findOne", null);
 UsersController = __decorate([
     nest_swagger_1.Tags('core'),
-    common_1.Controller('users'),
+    common_1.Controller('user'),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __metadata("design:paramtypes", [users_service_1.UsersService])
 ], UsersController);

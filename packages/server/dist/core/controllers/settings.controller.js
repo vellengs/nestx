@@ -74,6 +74,7 @@ let SettingsController = class SettingsController {
 };
 __decorate([
     common_1.Post(),
+    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [dto_1.CreateSettingReq]),
@@ -81,6 +82,7 @@ __decorate([
 ], SettingsController.prototype, "create", null);
 __decorate([
     common_1.Put(),
+    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [dto_1.EditSettingReq]),
@@ -96,6 +98,7 @@ __decorate([
 ], SettingsController.prototype, "updateSettingsByName", null);
 __decorate([
     common_1.Get('search'),
+    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Query('keyword')),
     __param(1, common_1.Query('value')),
     __metadata("design:type", Function),
@@ -104,6 +107,7 @@ __decorate([
 ], SettingsController.prototype, "search", null);
 __decorate([
     common_1.Get('query'),
+    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Query('keyword')),
     __param(1, common_1.Query('index', new common_2.NullableParseIntPipe())),
     __param(2, common_1.Query('size', new common_2.NullableParseIntPipe())),
@@ -127,6 +131,7 @@ __decorate([
 ], SettingsController.prototype, "getSettingsByKey", null);
 __decorate([
     common_1.Get(':id'),
+    common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -134,8 +139,7 @@ __decorate([
 ], SettingsController.prototype, "findOne", null);
 SettingsController = __decorate([
     nest_swagger_1.Tags('core'),
-    common_1.Controller('settings'),
-    common_1.UseGuards(passport_1.AuthGuard('jwt')),
+    common_1.Controller('setting'),
     __metadata("design:paramtypes", [settings_service_1.SettingsService])
 ], SettingsController);
 exports.SettingsController = SettingsController;

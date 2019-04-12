@@ -121,7 +121,7 @@ __decorate([
 ], MenusController.prototype, "findOne", null);
 MenusController = __decorate([
     nest_swagger_1.Tags('core'),
-    common_1.Controller('menus'),
+    common_1.Controller('menu'),
     common_1.UseGuards(passport_1.AuthGuard('jwt')),
     __metadata("design:paramtypes", [menus_service_1.MenusService])
 ], MenusController);

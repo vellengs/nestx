@@ -82,5 +82,5 @@ export interface User {
     /**
      * 
      */
-    expired: Date;
+    expired: number;
 }

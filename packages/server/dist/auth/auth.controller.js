@@ -46,7 +46,9 @@ let AuthController = class AuthController {
             request.logOut();
             yield this.authService.logout();
             res.clearCookie('access_token');
-            return res.json(true);
+            return res.json({
+                ok: true
+            });
         });
     }
     captcha(mobile) {

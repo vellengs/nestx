@@ -1,7 +1,7 @@
 import * as swaggerParser from 'swagger-parser';
 import * as path from 'path';
 import * as handlebars from 'handlebars';
-import { writeFileSync, readFileSync } from 'fs';
+import { writeFileSync, readFileSync, mkdirSync, existsSync } from 'fs';
 import * as lodash from 'lodash';
 interface Parameter {
     description?: string;
@@ -85,6 +85,10 @@ function parseParams(params: Parameter[], context: Context): Parameter[] {
 }
 
 async function generateTestFiles() {
+    const distFolder = path.resolve(process.cwd(), 'dist', 'apis');
+    if (!existsSync(distFolder) && mkdirSync) {
+        mkdirSync(distFolder, { recursive: true });
+    }
     const file = await loadSwaggerFile();
     const context = await swaggerParser.parse(file);
     const paths = Object.keys(context.paths);
@@ -134,8 +138,7 @@ async function generateTestFiles() {
             title: key,
             methods: items
         });
-        const dist = path.resolve(process.cwd(), 'dist', key + '.ts');
-        // console.log('key:', key);
+        const dist = path.resolve(distFolder, key + '.temp.ts');
         writeFileSync(dist, content);
     }
 }
