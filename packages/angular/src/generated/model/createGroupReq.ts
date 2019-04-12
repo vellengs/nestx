@@ -42,7 +42,7 @@ export interface CreateGroupReq {
     /**
      * 
      */
-    order: number;
+    order?: number;
     /**
      * 
      */

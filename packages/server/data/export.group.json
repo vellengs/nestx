@@ -1,13 +1,21 @@
 [{
-    "_id": "5b1e89da653fef1f92c4b955",
-    "name": "总公司",
-    "paths": [],
-    "description": "总公司分组"
-}, {
-    "_id": "5b2766a3177e2c274909cb6d",
-    "name": "第一分公司",
-    "parent": "5b1e89da653fef1f92c4b955",
-    "paths": [],
-    "director": "5af409755283214fb9c2ccd0",
-    "description": "研发中心"
-}]
+        "_id": "5b1e89da653fef1f92c4b955",
+        "name": "总公司",
+        "paths": [],
+        "description": "总公司分组"
+    }, {
+        "_id": "5b2766a3177e2c274909cb6d",
+        "name": "第一分公司",
+        "parent": "5b1e89da653fef1f92c4b955",
+        "paths": [],
+        "director": "5af409755283214fb9c2ccd0",
+        "description": "研发中心"
+    },
+    {
+        "_id": "5b2766a3177e2c274909cb61",
+        "name": "第二分公司",
+        "parent": "5b1e89da653fef1f92c4b955",
+        "paths": [],
+        "description": "市场分析"
+    }
+]

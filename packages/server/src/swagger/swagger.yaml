@@ -1195,7 +1195,6 @@ definitions:
         type: object
         required:
             - name
-            - order
     Group:
         description: ""
         properties:
@@ -1286,7 +1285,6 @@ definitions:
         required:
             - id
             - name
-            - order
     ResultList$Group:
         description: ""
         properties:
@@ -1304,6 +1302,23 @@ definitions:
         type: object
         required:
             - list
+    TreeNode:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            title:
+                type: string
+                description: ""
+            parent:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - title
+            - parent
     CreateAppearanceReq:
         description: ""
         properties:
@@ -3660,6 +3675,34 @@ paths:
                     type: number
                     format: double
                     default: 10
+    /group/tree:
+        get:
+            operationId: GroupsSearchTree
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/definitions/TreeNode'
+            description: ""
+            tags:
+                - core
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: value
+                    required: false
+                    type: string
     '/group/{id}':
         get:
             operationId: GroupsFindOne
