@@ -115,7 +115,7 @@ export class UserService {
             size: 5000,
         }).toPromise();
 
-        const accounts: any = await this.client.get('api/account/query', {
+        const accounts: any = await this.client.get('api/user/query', {
             size: 10000  // TODO if user too big should be lazy load.
         }).toPromise();
 

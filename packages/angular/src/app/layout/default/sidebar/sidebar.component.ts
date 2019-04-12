@@ -100,7 +100,7 @@ export class SidebarComponent {
   }
 
   async save(entry: { id: any; }) {
-    const url = `api/account/password`;
+    const url = `api/user/password`;
     if (entry.id) {
       return this.client.put(url, entry).toPromise();
     } else {
