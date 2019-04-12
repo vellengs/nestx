@@ -1,7 +1,7 @@
 [{
         "_id": "5af409755283214fb9c2ccd0",
         "username": "admin",
-        "nick": "viking",
+        "name": "viking",
         "password": "$2b$10$YlOePGiu.RBMjwqLzv4GSebDR32n/fQOLj7UjJdB/EFn3sWmSxWMG",
         "avatar": "https://avatars2.githubusercontent.com/u/5743338?s=400&u=ac196285a689b6dd65ab67f0be85eb787b07b428&v=4",
         "email": "vellengs@qq.com",
@@ -16,6 +16,7 @@
     {
         "_id": "5b31eba49a674f606f3c5841",
         "username": "tester1",
+        "name": "zhansan",
         "password": "$2b$10$YlOePGiu.RBMjwqLzv4GSebDR32n/fQOLj7UjJdB/EFn3sWmSxWMG",
         "mobile": "13099948841",
         "roles": [],
@@ -28,6 +29,7 @@
     {
         "_id": "5b31eba49a674f606f3c5842",
         "username": "tester2",
+        "name": "lisi",
         "password": "$2b$10$YlOePGiu.RBMjwqLzv4GSebDR32n/fQOLj7UjJdB/EFn3sWmSxWMG",
         "mobile": "13099948842",
         "roles": [],
@@ -40,6 +42,7 @@
     {
         "_id": "5b31eba49a674f606f3c5843",
         "username": "tester3",
+        "name": "wangwu",
         "password": "$2b$10$YlOePGiu.RBMjwqLzv4GSebDR32n/fQOLj7UjJdB/EFn3sWmSxWMG",
         "mobile": "13099948843",
         "roles": [],
@@ -52,6 +55,7 @@
     {
         "_id": "5b31eba49a674f606f7c5849",
         "username": "tester4",
+        "name": "gaomu",
         "password": "$2b$10$YlOePGiu.RBMjwqLzv4GSebDR32n/fQOLj7UjJdB/EFn3sWmSxWMG",
         "mobile": "13099948844",
         "roles": ["5b1e8b3e59989d1ffc06ac7e"],

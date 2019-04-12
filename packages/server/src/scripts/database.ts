@@ -9,7 +9,8 @@ import {
   MenuSchema,
   RoleSchema,
   UserSchema,
-  GroupSchema
+  GroupSchema,
+  NoticeSchema,
 } from './../core/schemas';
 
 import {
@@ -20,7 +21,8 @@ import {
   RoleModel,
   UserModel,
   SettingModel,
-  GroupModel
+  GroupModel,
+  NoticeModel,
 } from './../core/interfaces';
 
 import { MONGODB_URI } from './../utils/secrets';
@@ -47,5 +49,6 @@ export const CoreDatabase = {
   User: model<UserModel>('User', UserSchema),
   Setting: model<SettingModel>('Setting', SettingSchema),
   Group: model<GroupModel>('Group', GroupSchema),
-  Appearance: model<AppearanceModel>('Appearance', AppearanceSchema)
+  Appearance: model<AppearanceModel>('Appearance', AppearanceSchema),
+  Notice: model<NoticeModel>('Notice', NoticeSchema),
 };

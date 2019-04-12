@@ -95,9 +95,8 @@ describe('user module test', () => {
     });
 
     it('[get] /user/search', async () => {
-        const keyword = 'name';
-        const value = 'tester1';
-        const res = await HttpClient.coreApi.usersSearch(keyword, value);
+        const keyword = 'zhan';
+        const res = await HttpClient.coreApi.usersSearch(keyword);
         expect(res.status).toBe(200);
         expect(res.data.length).toBeGreaterThan(0);
     });

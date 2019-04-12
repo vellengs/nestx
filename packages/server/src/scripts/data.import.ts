@@ -38,6 +38,7 @@ async function exec() {
     await Installer.importData(db.Role);
     await Installer.importData(db.Setting);
     await Installer.importData(db.User);
+    await Installer.importData(db.Notice);
     db.Appearance.remove({});
     await importModuleAppearances(['core', 'cms']);
     return true;

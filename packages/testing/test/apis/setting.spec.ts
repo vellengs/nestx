@@ -18,7 +18,4 @@ describe('Setting module test', () => {
         expect(res.status).toBe(200);
     });
 
-
-
-
 });
