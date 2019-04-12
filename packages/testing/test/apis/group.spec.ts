@@ -11,55 +11,44 @@ describe("group module test", () => {
 
   it("[post] /group/", async () => {
     const reqBody = {
-      outid: "",
-      name: "",
-      icon: "",
-      parent: "",
-      paths: "",
-      director: "",
-      order: "",
-      isRegion: "",
-      description: ""
+      name: "demo",
+      icon: "icon-desktop",
+      order: 100,
+      isRegion: false,
+      description: "description of example"
     };
     const res = await HttpClient.coreApi.groupsCreate(reqBody);
-    expect(res.status).toBe(204);
+    expect(res.status).toBe(201);
   });
 
   it("[put] /group/", async () => {
     const reqBody = {
-      id: "",
-      outid: "",
-      name: "",
-      icon: "",
-      parent: "",
-      paths: "",
-      director: "",
-      order: "",
-      isRegion: "",
-      description: ""
+      id: "5b2766a3177e2c274909cb6d",
+      name: "editedName",
+      icon: "icon-example",
+      order: 100,
+      isRegion: false,
+      description: "an demo of edit group"
     };
     const res = await HttpClient.coreApi.groupsUpdate(reqBody);
     expect(res.status).toBe(200);
   });
 
   it("[get] /group/search", async () => {
-    const keyword = "";
-    const value = "";
-    const res = await HttpClient.coreApi.groupsSearch(keyword, value);
+    const keyword = "demo";
+    const res = await HttpClient.coreApi.groupsSearch(keyword);
     expect(res.status).toBe(200);
   });
 
   it("[get] /group/query", async () => {
-    const keyword = "";
-    const page = "";
-    const size = "";
-    const res = await HttpClient.coreApi.groupsQuery(keyword, page, size);
+    const res = await HttpClient.coreApi.groupsQuery();
     expect(res.status).toBe(200);
   });
 
   it("[get] /group/{id}", async () => {
-    const id = "";
-    const res = await HttpClient.coreApi.groupsFindOne(id);
+    const res = await HttpClient.coreApi.groupsFindOne(
+      "5b2766a3177e2c274909cb6d"
+    );
     expect(res.status).toBe(200);
   });
 });

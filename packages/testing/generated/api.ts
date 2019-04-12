@@ -610,7 +610,7 @@ export interface CreateGroupReq {
      * @type {number}
      * @memberof CreateGroupReq
      */
-    order: number;
+    order?: number;
     /**
      * 
      * @type {boolean}
@@ -1416,7 +1416,7 @@ export interface EditGroupReq {
      * @type {number}
      * @memberof EditGroupReq
      */
-    order: number;
+    order?: number;
     /**
      * 
      * @type {boolean}
@@ -3451,6 +3451,32 @@ export interface SettingRes {
  * @interface SettingsGroup
  */
 export interface SettingsGroup {
+}
+
+/**
+ * 
+ * @export
+ * @interface TreeNode
+ */
+export interface TreeNode {
+    /**
+     * 
+     * @type {string}
+     * @memberof TreeNode
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TreeNode
+     */
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TreeNode
+     */
+    parent: string;
 }
 
 /**
@@ -7216,6 +7242,42 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsSearchTree(keyword?: string, value?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/group/tree`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (value !== undefined) {
+                localVarQueryParameter['value'] = value;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {EditGroupReq} editGroupReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -8743,6 +8805,20 @@ export const CoreApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsSearchTree(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TreeNode>> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsSearchTree(keyword, value, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @param {EditGroupReq} editGroupReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9394,6 +9470,16 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsSearchTree(keyword?: string, value?: string, options?: any) {
+            return CoreApiFp(configuration).groupsSearchTree(keyword, value, options)(axios, basePath);
+        },
+        /**
+         * 
          * @param {EditGroupReq} editGroupReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9924,6 +10010,18 @@ export class CoreApi extends BaseAPI {
      */
     public groupsSearch(keyword?: string, value?: string, options?: any) {
         return CoreApiFp(this.configuration).groupsSearch(keyword, value, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {string} [value] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public groupsSearchTree(keyword?: string, value?: string, options?: any) {
+        return CoreApiFp(this.configuration).groupsSearchTree(keyword, value, options)(this.axios, this.basePath);
     }
 
     /**
