@@ -20,9 +20,49 @@ export interface LoginRes {
      * 
      */
     username: string;
+    /**
+     * 
+     */
+    avatar: string;
+    /**
+     * 
+     */
+    email: string;
+    /**
+     * 
+     */
+    name: string;
+    /**
+     * 
+     */
+    mobile: string;
+    /**
+     * 
+     */
+    isAdmin: boolean;
+    /**
+     * 
+     */
+    isApproved: boolean;
+    /**
+     * 
+     */
+    expired: number;
+    /**
+     * 
+     */
+    company?: string;
+    /**
+     * 
+     */
+    siteUrl?: string;
+    /**
+     * 
+     */
+    address?: string;
     token: AccessToken;
     /**
      * 
      */
-    roles: Array<string>;
+    roles?: Array<string>;
 }

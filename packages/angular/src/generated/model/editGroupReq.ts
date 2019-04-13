@@ -46,7 +46,7 @@ export interface EditGroupReq {
     /**
      * 
      */
-    order: number;
+    order?: number;
     /**
      * 
      */

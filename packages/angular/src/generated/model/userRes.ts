@@ -38,6 +38,10 @@ export interface UserRes {
     /**
      * 
      */
+    roles?: Array<string>;
+    /**
+     * 
+     */
     isAdmin: boolean;
     /**
      * 

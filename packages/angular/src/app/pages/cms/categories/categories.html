@@ -13,8 +13,9 @@
         <i class="anticon anticon-search"></i>
       </ng-template>
 
-      <nz-tree [nzSearchValue]="searchValue" [(ngModel)]="nodes" [nzShowLine]="true" [nzDefaultExpandedKeys]="expandKeys" (nzExpandChange)="selectNode('expand')"
-        (nzContextCategory)="selectNode($event)" (nzClick)="treeNodeClick($event)">
+      <nz-tree [nzSearchValue]="searchValue" [nzData]="nodes" [nzShowLine]="true" [nzDefaultExpandedKeys]="expandKeys"
+        (nzExpandChange)="selectNode('expand')" (nzContextCategory)="selectNode($event)"
+        (nzClick)="treeNodeClick($event)">
       </nz-tree>
 
       <ng-template #groupTpl>
@@ -27,11 +28,12 @@
   <nz-col [nzSpan]="16">
     <nz-card *ngIf="selectedItem.title" [nzTitle]="selectedItem.title" [nzExtra]="accountTpl">
 
-      <sf #sf *ngIf="detailSchema" [formData]="formData" (formChange)="formChanged($event)" [mode]="'edit'" [layout]="'inline'"
-        (formError)="onFormError($event)" [schema]="detailSchema" (formSubmit)="save($event)">
+      <sf #sf *ngIf="detailSchema" [formData]="formData" (formChange)="formChanged($event)" [mode]="'edit'"
+        [layout]="'inline'" (formError)="onFormError($event)" [schema]="detailSchema" (formSubmit)="save($event)">
         <div class="modal-footer">
           <button nz-button type="button" (click)="sf.reset()">重置</button>
-          <button nz-button type="submit" [nzType]="'primary'" [disabled]="!sf.valid" [nzLoading]="client.loading">保存</button>
+          <button nz-button type="submit" [nzType]="'primary'" [disabled]="!sf.valid"
+            [nzLoading]="client.loading">保存</button>
         </div>
       </sf>
 

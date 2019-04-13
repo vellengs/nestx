@@ -73,6 +73,7 @@ export * from './role';
 export * from './setting';
 export * from './settingRes';
 export * from './settingsGroup';
+export * from './treeNode';
 export * from './user';
 export * from './userRes';
 export * from './usersOfRole';

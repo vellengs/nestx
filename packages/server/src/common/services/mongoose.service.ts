@@ -1,8 +1,7 @@
 import { Model, Document, Types } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { ObjectID } from 'typeorm';
-import { ResultList } from './../interfaces/result.interface';
-import { ClassType } from 'class-transformer/ClassTransformer';
+import { ResultList, TreeNode } from './../interfaces';
 
 export interface IdentifyEntry {
   id: string | number | ObjectID;
@@ -14,29 +13,37 @@ export interface Criteria {
 }
 
 @Injectable()
-export class MongooseService<T extends Document>  {
-
+export class MongooseService<T extends Document> {
   defaultQueryFields: string[] = [];
 
-  constructor(
-    protected model: Model<T>
-  ) { }
+  constructor(protected model: Model<T>) {}
 
   async create(entry: any): Promise<T> {
     const instance = new this.model(entry);
     return await instance.save();
   }
 
-  async update(entry: IdentifyEntry, fields: string[] = this.defaultQueryFields): Promise<T> {
-    const instance = await this.model.findOneAndUpdate(
-      { _id: entry.id },
-      { $set: entry },
-      { upsert: true, fields: this.getFields(fields), 'new': true }).exec();
+  async update(
+    entry: IdentifyEntry,
+    fields: string[] = this.defaultQueryFields,
+  ): Promise<T> {
+    const instance = await this.model
+      .findOneAndUpdate(
+        { _id: entry.id },
+        { $set: entry },
+        { upsert: true, fields: this.getFields(fields), new: true },
+      )
+      .exec();
     return instance;
   }
 
-  async query(page: number = 1, size: number = 10,
-    query: Criteria = {}, searchField = 'name', fields: string[] = this.defaultQueryFields, sort: Criteria | string = { _id: 1 }
+  async query(
+    page: number = 1,
+    size: number = 10,
+    query: Criteria = {},
+    searchField = 'name',
+    fields: string[] = this.defaultQueryFields,
+    sort: Criteria | string = { _id: 1 },
   ): Promise<ResultList<T>> {
     page = page < 1 ? 1 : page;
 
@@ -45,20 +52,84 @@ export class MongooseService<T extends Document>  {
     const condition = query.keyword ? criteria : {};
 
     const selectFields: Criteria = this.getFields(fields);
-    const listQuery = this.model.find(condition).select(selectFields).sort(sort);
+    const listQuery = this.model
+      .find(condition)
+      .select(selectFields)
+      .sort(sort);
     const collection = this.model.find(condition);
 
-    return new Promise<ResultList<T>>(async (resolve) => {
+    return new Promise<ResultList<T>>(async resolve => {
+      const items = (
+        (await listQuery
+          .limit(size)
+          .skip(size * (page - 1))
+          .lean()) || []
+      ).map((item: any) => {
+        const id = item._id;
+        return { id, ...item };
+      });
       let result: ResultList<T> = {
-        list: await listQuery.limit(size).skip(size * (page - 1)).lean(),
+        list: items,
         count: await collection.countDocuments(),
         query: {
           page: page,
-          size: size
+          size: size,
+        },
+      };
+      resolve(result);
+    });
+  }
+
+  async searchTree(
+    model: Model<Document>,
+    keyword?: string,
+    id?: string,
+    category = '',
+    limit: number = 10,
+    labelField = 'name',
+    valueField = '_id',
+    searchField = 'name',
+  ): Promise<TreeNode[]> {
+    const critical: any = {};
+    critical[searchField] = new RegExp(keyword, 'i');
+    const query: any = keyword ? critical : {};
+
+    if (category) {
+      query.category = category;
+    }
+
+    const fields: any = {};
+    fields[labelField] = 1;
+    fields[valueField] = 1;
+    fields['parent'] = 1;
+
+    const docs =
+      (await model
+        .find(query)
+        .select(fields)
+        .limit(limit)
+        .exec()) || [];
+
+    if (id && (Types.ObjectId.isValid(id) || valueField !== '_id')) {
+      const conditions: any = {};
+      conditions[valueField] = id;
+      const selected = await model.findOne(conditions).select(fields);
+      if (selected) {
+        const found = docs.findIndex((doc: any) => doc[valueField] == id);
+        if (found === -1) {
+          docs.push(selected);
         }
       }
-      resolve(result);
-    })
+    }
+
+    return docs.map((item: any) => {
+      const result = {
+        title: item[labelField],
+        id: item[valueField],
+        parent: item['parent'],
+      };
+      return result;
+    });
   }
 
   /**
@@ -72,10 +143,14 @@ export class MongooseService<T extends Document>  {
    * @param searchField which field to match keyword
    */
   async search(
-    keyword?: string, id?: string,
-    category = '', limit: number = 10, labelField = 'name', valueField = '_id', searchField = 'name'
+    keyword?: string,
+    id?: string,
+    category = '',
+    limit: number = 10,
+    labelField = 'name',
+    valueField = '_id',
+    searchField = 'name',
   ): Promise<any[]> {
-
     let query: Criteria = {};
     if (keyword) {
       query[searchField] = new RegExp(keyword, 'i');
@@ -89,9 +164,12 @@ export class MongooseService<T extends Document>  {
     fields[labelField] = 1;
     fields[valueField] = 1;
 
-    const docs = await this.model.find(query).select(fields)
-      .limit(limit)
-      .exec() || [];
+    const docs =
+      (await this.model
+        .find(query)
+        .select(fields)
+        .limit(limit)
+        .exec()) || [];
 
     if (id && (Types.ObjectId.isValid(id) || valueField !== '_id')) {
       const conditions: Criteria = {};
@@ -108,7 +186,7 @@ export class MongooseService<T extends Document>  {
     return docs.map((item: Criteria) => {
       const result = {
         label: item[labelField],
-        value: item[valueField]
+        value: item[valueField],
       };
       return result;
     });
@@ -135,5 +213,4 @@ export class MongooseService<T extends Document>  {
     });
     return selectFields;
   }
-
 }

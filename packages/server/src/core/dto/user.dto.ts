@@ -108,6 +108,7 @@ export class UserRes {
     email: string;
     name: string;
     mobile: string;
+    roles?: string[];
     isAdmin: boolean;
     isApproved: boolean;
     expired: number;

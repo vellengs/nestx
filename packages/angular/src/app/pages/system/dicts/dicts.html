@@ -33,7 +33,7 @@
   </nz-col>
   <nz-col [nzSpan]="16">
     <nz-card *ngIf="selectedItem.translate" [nzTitle]="selectedItem.translate + '的列表'" [nzExtra]="slaveTpl">
-      <app-base-stand #slaves [operations]="operations" [queryUrl]="'api/account/query'" [queryParams]="queryParams" [domain]="'dict'"></app-base-stand>
+      <app-base-stand #slaves [operations]="operations" [queryUrl]="'api/user/query'" [queryParams]="queryParams" [domain]="'dict'"></app-base-stand>
       <ng-template #slaveTpl>
         <a (click)="addDict()">
           <i class="anticon anticon-plus"></i>
