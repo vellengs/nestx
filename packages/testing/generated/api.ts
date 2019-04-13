@@ -8468,12 +8468,14 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * 
          * @param {string} [keyword] 
+         * @param {string} [group] 
+         * @param {string} [role] 
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+        usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, options: any = {}): RequestArgs {
             const localVarPath = `/user/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -8486,6 +8488,14 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (keyword !== undefined) {
                 localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (group !== undefined) {
+                localVarQueryParameter['group'] = group;
+            }
+
+            if (role !== undefined) {
+                localVarQueryParameter['role'] = role;
             }
 
             if (page !== undefined) {
@@ -9315,13 +9325,15 @@ export const CoreApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} [keyword] 
+         * @param {string} [group] 
+         * @param {string} [role] 
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListUser> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersQuery(keyword, page, size, options);
+        usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListUser> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersQuery(keyword, group, role, page, size, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9848,13 +9860,15 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
         /**
          * 
          * @param {string} [keyword] 
+         * @param {string} [group] 
+         * @param {string} [role] 
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersQuery(keyword?: string, page?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).usersQuery(keyword, page, size, options)(axios, basePath);
+        usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, options?: any) {
+            return CoreApiFp(configuration).usersQuery(keyword, group, role, page, size, options)(axios, basePath);
         },
         /**
          * 
@@ -10458,14 +10472,16 @@ export class CoreApi extends BaseAPI {
     /**
      * 
      * @param {string} [keyword] 
+     * @param {string} [group] 
+     * @param {string} [role] 
      * @param {number} [page] 
      * @param {number} [size] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public usersQuery(keyword?: string, page?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).usersQuery(keyword, page, size, options)(this.axios, this.basePath);
+    public usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, options?: any) {
+        return CoreApiFp(this.configuration).usersQuery(keyword, group, role, page, size, options)(this.axios, this.basePath);
     }
 
     /**

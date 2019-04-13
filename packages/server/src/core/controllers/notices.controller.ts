@@ -1,4 +1,14 @@
-import { Controller, Get, Post, Body, UseGuards, Param, Put, ParseIntPipe, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  UseGuards,
+  Param,
+  Put,
+  ParseIntPipe,
+  Query,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
 import { NoticesService } from './notices.service';
@@ -11,7 +21,7 @@ import { ResultList, NullableParseIntPipe } from './../../common';
 @Controller('notice')
 @UseGuards(AuthGuard('jwt'))
 export class NoticesController {
-  constructor(private readonly noticeService: NoticesService) { }
+  constructor(private readonly noticeService: NoticesService) {}
 
   @Post()
   async create(@Body() entry: CreateNoticeReq) {
@@ -36,13 +46,13 @@ export class NoticesController {
     @Query('keyword') keyword?: string,
     @Query('page', new NullableParseIntPipe()) page: number = 1,
     @Query('size', new NullableParseIntPipe()) size: number = 10,
+    @Query('sort') sort?: string,
   ): Promise<ResultList<Notice>> {
-    return this.noticeService.query(page, size, { keyword });
+    return this.noticeService.querySearch(keyword, page, size, sort);
   }
 
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<Notice> {
     return this.noticeService.findById(id);
   }
-
 }

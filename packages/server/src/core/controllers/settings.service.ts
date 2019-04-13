@@ -1,27 +1,46 @@
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { MongooseService } from './../../common/services/mongoose.service';
+import { MongooseService, ResultList } from './../../common';
 import { SettingModel } from './../interfaces';
 import { SettingsGroup, SettingRes } from './../dto';
 
 @Injectable()
 export class SettingsService extends MongooseService<SettingModel> {
-
   defaultQueryFields = ['name', 'key', 'value', 'description'];
-  constructor(@InjectModel('Setting') protected readonly model: Model<SettingModel>) {
+  constructor(
+    @InjectModel('Setting') protected readonly model: Model<SettingModel>,
+  ) {
     super(model);
+  }
+
+  async querySearch(
+    keyword: string,
+    page: number,
+    size: number,
+    sort: string,
+  ): Promise<ResultList<SettingModel>> {
+    return super.query(
+      page,
+      size,
+      {},
+      { keyword, field: 'name' },
+      this.defaultQueryFields,
+      sort,
+    );
   }
 
   async getSettingsByName(name?: string): Promise<SettingsGroup> {
     const result = new SettingsGroup();
 
     if (name) {
-      const docs = await this.model.find({
-        name: name
-      }).exec();
+      const docs = await this.model
+        .find({
+          name: name,
+        })
+        .exec();
       if (docs) {
-        docs.forEach((doc) => {
+        docs.forEach(doc => {
           result[doc.key] = doc.value;
         });
       }
@@ -31,26 +50,32 @@ export class SettingsService extends MongooseService<SettingModel> {
   }
 
   async getSettingsByKey(name: string): Promise<SettingRes> {
-    const setting = await this.model.findOne({
-      key: name
-    }).exec();
-    return setting;  // TODO;
+    const setting = await this.model
+      .findOne({
+        key: name,
+      })
+      .exec();
+    return setting; // TODO;
   }
 
-  async updateSettingsByName(name: string, entry: SettingsGroup): Promise<SettingsGroup> {
-
+  async updateSettingsByName(
+    name: string,
+    entry: SettingsGroup,
+  ): Promise<SettingsGroup> {
     const keys = Object.keys(entry);
     for (let key of keys) {
       const instance = {
         key: key,
-        value: entry[key]
+        value: entry[key],
       };
-      await this.model.findOneAndUpdate(
-        { key: key, name: name },
-        { $set: instance },
-        { upsert: true, 'new': true }).exec();
+      await this.model
+        .findOneAndUpdate(
+          { key: key, name: name },
+          { $set: instance },
+          { upsert: true, new: true },
+        )
+        .exec();
     }
     return this.getSettingsByName(name);
   }
-
 }

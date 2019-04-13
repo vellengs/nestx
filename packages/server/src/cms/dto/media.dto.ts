@@ -17,7 +17,7 @@ export class EditMediaDto {
     uri: string;
 }
 
-export class MediaResponse {
+export class MediaRes {
     id: string;
     name: string;
     caption: string;
@@ -29,7 +29,7 @@ export class MediaResponse {
 
 export declare interface PaginateMedia {
     error?: Error;
-    list: MediaResponse[];
+    list: MediaRes[];
     total: number;
 }
 

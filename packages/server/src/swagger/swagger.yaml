@@ -2869,6 +2869,18 @@ paths:
                 -
                     description: ""
                     in: query
+                    name: group
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: role
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
                     name: page
                     required: false
                     type: number

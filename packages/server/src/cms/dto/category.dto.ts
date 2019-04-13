@@ -17,7 +17,7 @@ export class EditCategoryDto {
     description: string;
 }
 
-export class CategoryResponse {
+export class CategoryRes {
     id: string;
     name: string;
     slug: string;
@@ -29,7 +29,7 @@ export class CategoryResponse {
 
 export declare interface PaginateCategory {
     error?: Error;
-    list: CategoryResponse[];
+    list: CategoryRes[];
     total: number;
 }
 

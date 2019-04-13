@@ -2279,19 +2279,27 @@ export class CoreService {
      * 
      * 
      * @param keyword 
+     * @param group 
+     * @param role 
      * @param page 
      * @param size 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public usersQuery(keyword?: string, page?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListUser>;
-    public usersQuery(keyword?: string, page?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListUser>>;
-    public usersQuery(keyword?: string, page?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListUser>>;
-    public usersQuery(keyword?: string, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListUser>;
+    public usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListUser>>;
+    public usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListUser>>;
+    public usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
+        }
+        if (group !== undefined && group !== null) {
+            queryParameters = queryParameters.set('group', <any>group);
+        }
+        if (role !== undefined && role !== null) {
+            queryParameters = queryParameters.set('role', <any>role);
         }
         if (page !== undefined && page !== null) {
             queryParameters = queryParameters.set('page', <any>page);

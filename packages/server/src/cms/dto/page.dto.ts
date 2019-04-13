@@ -23,7 +23,7 @@ export class EditPageDto {
     template: string;
 }
 
-export class PageResponse {
+export class PageRes {
     id: string;
     name: string;
     title: string;
@@ -52,6 +52,6 @@ export const PageResponseFields = [
 
 export declare interface PaginatePage {
     error?: Error;
-    list: PageResponse[];
+    list: PageRes[];
     total: number;
 }

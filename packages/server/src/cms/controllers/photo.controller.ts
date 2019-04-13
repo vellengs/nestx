@@ -1,4 +1,12 @@
-import { Controller, Get, Query, Post, Put, Delete, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Query,
+  Post,
+  Put,
+  Delete,
+  Param,
+} from '@nestjs/common';
 import { Tags } from 'nest-swagger';
 import { PhotoService } from './photo.service';
 import { CreatePhotoDto, PhotoRes, EditPhotoDto } from './../dto';
@@ -9,13 +17,12 @@ import { KeyValueDto } from './../../core/dto';
 @Tags('cms')
 @Controller('photo')
 export class PhotoController {
-
-  constructor(private readonly service: PhotoService) { }
+  constructor(private readonly service: PhotoService) {}
 
   @Get('search')
   async search(
     @Query('keyword') keyword?: string,
-    @Query('value') value?: string
+    @Query('value') value?: string,
   ): Promise<KeyValueDto[]> {
     return this.service.search(keyword, value);
   }
@@ -35,8 +42,9 @@ export class PhotoController {
     @Query('keyword') keyword?: string,
     @Query('page', new NullableParseIntPipe()) page: number = 1,
     @Query('size', new NullableParseIntPipe()) size: number = 10,
-  ): Promise<ResultList<Photo>> {
-    return this.service.query(page, size, { keyword }, 'name');
+    @Query('sort') sort?: string,
+  ): Promise<ResultList<PhotoRes>> {
+    return this.service.querySearch(keyword, page, size, sort);
   }
 
   @Delete(':id')

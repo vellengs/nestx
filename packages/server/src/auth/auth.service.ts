@@ -1,4 +1,8 @@
-import { Injectable, UnauthorizedException, NotAcceptableException } from '@nestjs/common';
+import {
+  Injectable,
+  UnauthorizedException,
+  NotAcceptableException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload, AccessToken } from './interfaces/jwt-payload.interface';
 import { LoginReq, LoginRes } from './dto/login.dto';
@@ -8,20 +12,40 @@ import { Result } from './../common';
 
 @Injectable()
 export class AuthService {
-
   constructor(
     private readonly jwtService: JwtService,
     private readonly userService: UsersService,
-  ) { }
+  ) {}
 
   async login(payload: LoginReq): Promise<LoginRes> {
-    const user = await this.userService.login(payload.username, payload.password);
+    const user = await this.userService.login(
+      payload.username,
+      payload.password,
+    );
     if (user) {
       const token = await this.createToken(user);
+      const {
+        username,
+        avatar,
+        email,
+        name,
+        mobile,
+        isAdmin,
+        isApproved,
+        expired,
+        roles,
+      } = user;
       return {
-        username: user.username,
         token,
-        roles: user.roles
+        username,
+        avatar,
+        email,
+        name,
+        mobile,
+        isAdmin,
+        isApproved,
+        expired,
+        roles,
       };
     } else {
       throw new UnauthorizedException();
@@ -41,12 +65,17 @@ export class AuthService {
   }
 
   async register(payload: RegisterReq): Promise<AccessToken> {
-    const validate = await this.userService.verifyCode(payload.veryCode, payload.mobile);
+    const validate = await this.userService.verifyCode(
+      payload.veryCode,
+      payload.mobile,
+    );
     if (!validate) {
       throw new NotAcceptableException('verycode failure');
     }
-    const user = await this.userService.register(payload).catch((error) => {
-      throw new NotAcceptableException('register failure might duplicate with username, email or mobile.');
+    const user = await this.userService.register(payload).catch(error => {
+      throw new NotAcceptableException(
+        'register failure might duplicate with username, email or mobile.',
+      );
     });
     return await this.createToken(user);
   }
@@ -54,13 +83,13 @@ export class AuthService {
   async captcha(mobile: string): Promise<Result> {
     const code = await this.userService.sendVeryCode(mobile);
     return {
-      ok: true
+      ok: true,
     };
   }
 
   async validateUser(payload: JwtPayload) {
     return this.userService.findOne({
-      username: payload.account
-    })
+      username: payload.account,
+    });
   }
 }
