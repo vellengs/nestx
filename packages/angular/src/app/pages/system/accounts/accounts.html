@@ -10,9 +10,8 @@
       <ng-template #suffixIcon>
         <i class="anticon anticon-search"></i>
       </ng-template>
-
-      <nz-tree [nzSearchValue]="searchValue" [(ngModel)]="nodes" [nzShowLine]="true" [nzDefaultExpandedKeys]="expandKeys" (nzExpandChange)="selectNode($event)"
-        (nzContextMenu)="selectNode($event)" (nzClick)="treeNodeClick($event)">
+      <nz-tree [nzSearchValue]="searchValue" [nzData]="nodes" [nzShowLine]="true" [nzDefaultExpandedKeys]="expandKeys"
+        (nzExpandChange)="selectNode($event)" (nzContextMenu)="selectNode($event)" (nzClick)="treeNodeClick($event)">
 
         <ng-template #nzTreeTemplate let-node>
           <span class="custom-node" draggable="true" aria-grabbed="true" [class.active]="node.isSelected">
@@ -40,8 +39,8 @@
   </nz-col>
   <nz-col [nzSpan]="16">
     <nz-card *ngIf="selectedItem.title" [nzTitle]="selectedItem.title + '的成员'" [nzExtra]="accountTpl">
-      <app-base-stand #accountList [operations]="operationColumn" [queryUrl]="'api/user/query'" [queryParams]="accountQueryParams"
-        [domain]="'user'"></app-base-stand>
+      <app-base-stand #accountList [operations]="operationColumn" [queryUrl]="'api/user/query'"
+        [queryParams]="accountQueryParams" [domain]="'user'"></app-base-stand>
       <ng-template #accountTpl>
         <a (click)="addAccount()">
           新建帐号</a>

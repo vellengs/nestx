@@ -26,6 +26,47 @@
 					"type": "string",
 					"description": ""
 				},
+				"avatar": {
+					"type": "string",
+					"description": ""
+				},
+				"email": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"mobile": {
+					"type": "string",
+					"description": ""
+				},
+				"isAdmin": {
+					"type": "boolean",
+					"description": ""
+				},
+				"isApproved": {
+					"type": "boolean",
+					"description": ""
+				},
+				"expired": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"company": {
+					"type": "string",
+					"description": ""
+				},
+				"siteUrl": {
+					"type": "string",
+					"description": ""
+				},
+				"address": {
+					"type": "string",
+					"description": ""
+				},
 				"token": {
 					"$ref": "#/definitions/AccessToken"
 				},
@@ -40,8 +81,14 @@
 			"type": "object",
 			"required": [
 				"username",
-				"token",
-				"roles"
+				"avatar",
+				"email",
+				"name",
+				"mobile",
+				"isAdmin",
+				"isApproved",
+				"expired",
+				"token"
 			]
 		},
 		"LoginReq": {
@@ -394,6 +441,13 @@
 				},
 				"mobile": {
 					"type": "string",
+					"description": ""
+				},
+				"roles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
 					"description": ""
 				},
 				"isAdmin": {

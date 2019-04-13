@@ -20,6 +20,37 @@ definitions:
             username:
                 type: string
                 description: ""
+            avatar:
+                type: string
+                description: ""
+            email:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            mobile:
+                type: string
+                description: ""
+            isAdmin:
+                type: boolean
+                description: ""
+            isApproved:
+                type: boolean
+                description: ""
+            expired:
+                type: number
+                format: double
+                description: ""
+            company:
+                type: string
+                description: ""
+            siteUrl:
+                type: string
+                description: ""
+            address:
+                type: string
+                description: ""
             token:
                 $ref: '#/definitions/AccessToken'
             roles:
@@ -30,8 +61,14 @@ definitions:
         type: object
         required:
             - username
+            - avatar
+            - email
+            - name
+            - mobile
+            - isAdmin
+            - isApproved
+            - expired
             - token
-            - roles
     LoginReq:
         description: ""
         properties:
@@ -296,6 +333,11 @@ definitions:
                 description: ""
             mobile:
                 type: string
+                description: ""
+            roles:
+                type: array
+                items:
+                    type: string
                 description: ""
             isAdmin:
                 type: boolean

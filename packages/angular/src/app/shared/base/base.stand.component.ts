@@ -1,5 +1,11 @@
 import { ModalOptionsForService } from 'ng-zorro-antd';
-import { Component, Input, EventEmitter, Injector, ViewChild } from '@angular/core';
+import {
+    Component,
+    Input,
+    EventEmitter,
+    Injector,
+    ViewChild
+} from '@angular/core';
 import { BaseComponent } from '@shared/base/base.component';
 import { CurdPage, FormSets } from 'types/types';
 import { BaseDetailComponent } from '@shared/base/base.detail.component';
@@ -11,7 +17,6 @@ import { STColumn, STComponent } from '@delon/abc';
     templateUrl: './base.stand.html'
 })
 export class BaseStandComponent extends BaseComponent implements CurdPage {
-
     total: number;
     entries = [];
 
@@ -21,10 +26,10 @@ export class BaseStandComponent extends BaseComponent implements CurdPage {
     @Input() domain: string;
     @Input() configParams: any;
     @Input() columnSets: {
-        default: STColumn[],
+        default: STColumn[];
         [key: string]: STColumn[];
     };
-    @Input() queryParams: { [key: string]: any; };
+    @Input() queryParams: { [key: string]: any };
     @Input() formSets: FormSets;
     @Input() operations: STColumn;
 
@@ -46,20 +51,22 @@ export class BaseStandComponent extends BaseComponent implements CurdPage {
         }
 
         this.queryUrl = `api/${this.domain}/query`;
-        const config = await this.coreService.appearancesGetAppearanceByName(this.domain).toPromise();
+        const config = await this.coreService
+            .appearancesGetAppearanceByName(this.domain)
+            .toPromise();
         if (config && config.data) {
             this.columnSets = config.data.columnSets;
             this.formSets = config.data.formSets;
             if (this.columnSets && Array.isArray(this.columnSets.default)) {
-                this.columnSets.default.map((col) => {
+                this.columnSets.default.map(col => {
                     switch (col.action) {
                         case 'edit':
-                            col.click = (item) => {
+                            col.click = item => {
                                 this.edit(item);
                             };
                             break;
                         case 'delete':
-                            col.click = (item) => {
+                            col.click = item => {
                                 this.remove(item);
                             };
                             break;
@@ -79,15 +86,19 @@ export class BaseStandComponent extends BaseComponent implements CurdPage {
             nzMaskClosable: false
         };
         this.modalHelper
-            .static(BaseDetailComponent, {
-                schema: this.formSets.add,
-                onFormChanged: this.onAddFormChanged,
-                onSave: this.save,
-                formData: formData,
-                context: this
-            }, 'lg',
+            .static(
+                BaseDetailComponent,
+                {
+                    schema: this.formSets.add,
+                    onFormChanged: this.onAddFormChanged,
+                    onSave: this.save,
+                    formData: formData,
+                    context: this
+                },
+                'lg',
                 params
-            ).subscribe((res) => {
+            )
+            .subscribe(res => {
                 if (res) {
                     this.reload();
                 }
@@ -95,23 +106,28 @@ export class BaseStandComponent extends BaseComponent implements CurdPage {
     }
 
     async edit(entry: any) {
-
         const params: ModalOptionsForService = {
             nzTitle: this.formSets.edit.title,
             nzMaskClosable: false
         };
 
-        const modelData = await this.client.get(`api/${this.domain}/` + entry.id).toPromise();
+        const modelData = await this.client
+            .get(`api/${this.domain}/` + entry.id)
+            .toPromise();
         this.modalHelper
-            .static(BaseDetailComponent, {
-                schema: this.formSets.edit,
-                onFormChanged: this.onEditFormChanged,
-                formData: modelData,
-                onSave: this.save,
-                context: this
-            }, 'lg',
+            .static(
+                BaseDetailComponent,
+                {
+                    schema: this.formSets.edit,
+                    onFormChanged: this.onEditFormChanged,
+                    formData: modelData,
+                    onSave: this.save,
+                    context: this
+                },
+                'lg',
                 params
-            ).subscribe((res) => {
+            )
+            .subscribe(res => {
                 if (res) {
                     this.reload();
                 }
@@ -139,9 +155,7 @@ export class BaseStandComponent extends BaseComponent implements CurdPage {
         }
     }
 
-    async changeStatus() {
-
-    }
+    async changeStatus() {}
 
     remove(entry: any, confirm = true): void {
         const self = this;
@@ -152,29 +166,30 @@ export class BaseStandComponent extends BaseComponent implements CurdPage {
                 nzTitle: '提示',
                 nzContent: '确定删除该记录吗？',
                 async nzOnOk() {
-                    self.client.delete(`api/${self.domain}/${entry.id}`).subscribe((item) => {
-                        if (item) {
-                            self.msg.info('删除成功');
-                            self.reload();
-                        }
-                    });
+                    self.client
+                        .delete(`api/${self.domain}/${entry.id}`)
+                        .subscribe(item => {
+                            if (item) {
+                                self.msg.info('删除成功');
+                                self.reload();
+                            }
+                        });
                 },
-                nzOnCancel() {
-                }
+                nzOnCancel() {}
             });
         } else {
-            self.client.delete(`api/${self.domain}/${entry.id}`).subscribe((item) => {
-                if (item) {
-                    self.msg.info('删除成功');
-                    self.reload();
-                }
-            });
+            self.client
+                .delete(`api/${self.domain}/${entry.id}`)
+                .subscribe(item => {
+                    if (item) {
+                        self.msg.info('删除成功');
+                        self.reload();
+                    }
+                });
         }
     }
 
-    removeChecked(): void {
-
-    }
+    removeChecked(): void {}
 
     getTable(): STComponent {
         return this.simpleTable;
@@ -207,5 +222,4 @@ export class BaseStandComponent extends BaseComponent implements CurdPage {
         this.queryParams = Object.assign({}, pickBy(params));
         this.reload();
     }
-
 }

@@ -2195,6 +2195,66 @@ export interface LoginRes {
     username: string;
     /**
      * 
+     * @type {string}
+     * @memberof LoginRes
+     */
+    avatar: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginRes
+     */
+    email: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginRes
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginRes
+     */
+    mobile: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof LoginRes
+     */
+    isAdmin: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof LoginRes
+     */
+    isApproved: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof LoginRes
+     */
+    expired: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginRes
+     */
+    company?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginRes
+     */
+    siteUrl?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginRes
+     */
+    address?: string;
+    /**
+     * 
      * @type {AccessToken}
      * @memberof LoginRes
      */
@@ -2204,7 +2264,7 @@ export interface LoginRes {
      * @type {Array<string>}
      * @memberof LoginRes
      */
-    roles: Array<string>;
+    roles?: Array<string>;
 }
 
 /**
@@ -3625,6 +3685,12 @@ export interface UserRes {
      * @memberof UserRes
      */
     mobile: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof UserRes
+     */
+    roles?: Array<string>;
     /**
      * 
      * @type {boolean}

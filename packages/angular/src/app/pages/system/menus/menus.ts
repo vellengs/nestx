@@ -67,7 +67,7 @@ export class MenusPageComponent extends BaseStandComponent implements OnInit {
 
 
     async loadMenuTree() {
-        const menuResponse = await this.coreService.menusQuery(true, '', 3000).toPromise();
+        const menuResponse = await this.coreService.menusQuery(true, '', 0, 3000).toPromise();
         const items = menuResponse ? menuResponse.list : [];
         const raw = items.map((item) => {
             const isLeaf = items.findIndex(r => r.parent === item.id) === -1;

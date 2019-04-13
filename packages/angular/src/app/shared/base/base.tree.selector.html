@@ -8,7 +8,7 @@
       <i class="anticon anticon-search"></i>
     </ng-template>
 
-    <nz-tree #treeView [nzCheckable]="true" [nzSearchValue]="searchValue" (nzCheckBoxChange)="selectedChanged($event)" [(ngModel)]="nodes"
+    <nz-tree #treeView [nzCheckable]="true" [nzSearchValue]="searchValue" (nzCheckBoxChange)="selectedChanged($event)" [nzData]="nodes"
       [nzShowLine]="true" [nzDefaultExpandedKeys]="expandKeys" (nzExpandChange)="nodeExpandChanged($event)" (nzContextMenu)="showContextMenu($event)"
       (nzClick)="treeNodeClick($event)">
 
