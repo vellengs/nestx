@@ -14,7 +14,7 @@
 /**
  * 
  */
-export interface CategoryResponse { 
+export interface ArticleRes { 
     /**
      * 
      */
@@ -26,21 +26,41 @@ export interface CategoryResponse {
     /**
      * 
      */
-    slug: string;
+    title: string;
     /**
      * 
      */
-    order: number;
+    picture: string;
     /**
      * 
      */
-    parent: string;
-    /**
-     * 
-     */
-    paths: Array<string>;
+    category: string;
     /**
      * 
      */
     description: string;
+    /**
+     * 
+     */
+    author: string;
+    /**
+     * 
+     */
+    sort: number;
+    /**
+     * 
+     */
+    disable: boolean;
+    /**
+     * 
+     */
+    meta: string;
+    /**
+     * 
+     */
+    content: string;
+    /**
+     * 
+     */
+    template: string;
 }

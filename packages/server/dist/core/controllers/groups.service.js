@@ -11,16 +11,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const common_1 = require("@nestjs/common");
 const mongoose_2 = require("@nestjs/mongoose");
-const mongoose_service_1 = require("./../../common/services/mongoose.service");
-let GroupsService = class GroupsService extends mongoose_service_1.MongooseService {
+const common_2 = require("./../../common");
+let GroupsService = class GroupsService extends common_2.MongooseService {
     constructor(model) {
         super(model);
         this.model = model;
         this.defaultQueryFields = ['name', 'key', 'value', 'description'];
+    }
+    querySearch(keyword, page, size, sort) {
+        const _super = Object.create(null, {
+            query: { get: () => super.query }
+        });
+        return __awaiter(this, void 0, void 0, function* () {
+            return _super.query.call(this, page, size, {}, { keyword, field: 'name' }, this.defaultQueryFields, sort);
+        });
+    }
+    searchGroupTree(keyword, value, limit = 10) {
+        const _super = Object.create(null, {
+            searchTree: { get: () => super.searchTree }
+        });
+        return __awaiter(this, void 0, void 0, function* () {
+            return _super.searchTree.call(this, this.model, keyword, value, '', limit);
+        });
     }
 };
 GroupsService = __decorate([

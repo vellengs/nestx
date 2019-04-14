@@ -30,10 +30,18 @@ let AuthService = class AuthService {
             const user = yield this.userService.login(payload.username, payload.password);
             if (user) {
                 const token = yield this.createToken(user);
+                const { username, avatar, email, name, mobile, isAdmin, isApproved, expired, roles, } = user;
                 return {
-                    username: user.username,
                     token,
-                    roles: user.roles
+                    username,
+                    avatar,
+                    email,
+                    name,
+                    mobile,
+                    isAdmin,
+                    isApproved,
+                    expired,
+                    roles,
                 };
             }
             else {
@@ -61,7 +69,7 @@ let AuthService = class AuthService {
             if (!validate) {
                 throw new common_1.NotAcceptableException('verycode failure');
             }
-            const user = yield this.userService.register(payload).catch((error) => {
+            const user = yield this.userService.register(payload).catch(error => {
                 throw new common_1.NotAcceptableException('register failure might duplicate with username, email or mobile.');
             });
             return yield this.createToken(user);
@@ -71,14 +79,14 @@ let AuthService = class AuthService {
         return __awaiter(this, void 0, void 0, function* () {
             const code = yield this.userService.sendVeryCode(mobile);
             return {
-                ok: true
+                ok: true,
             };
         });
     }
     validateUser(payload) {
         return __awaiter(this, void 0, void 0, function* () {
             return this.userService.findOne({
-                username: payload.account
+                username: payload.account,
             });
         });
     }

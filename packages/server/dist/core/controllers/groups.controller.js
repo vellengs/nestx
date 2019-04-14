@@ -28,32 +28,37 @@ const dto_1 = require("./../dto");
 const nest_swagger_1 = require("nest-swagger");
 const common_2 = require("./../../common");
 let GroupsController = class GroupsController {
-    constructor(settingService) {
-        this.settingService = settingService;
+    constructor(groupService) {
+        this.groupService = groupService;
     }
     create(entry) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.settingService.create(class_transformer_1.plainToClass(dto_1.CreateGroupReq, entry));
+            return this.groupService.create(class_transformer_1.plainToClass(dto_1.CreateGroupReq, entry));
         });
     }
     update(entry) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.settingService.update(class_transformer_1.plainToClass(dto_1.EditGroupReq, entry));
+            return this.groupService.update(class_transformer_1.plainToClass(dto_1.EditGroupReq, entry));
         });
     }
     search(keyword, value) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.settingService.search(keyword, value);
+            return this.groupService.search(keyword, value);
         });
     }
-    query(keyword, index = 1, size = 10) {
+    query(keyword, page = 1, size = 10, sort) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.settingService.query(index, size, { keyword });
+            return this.groupService.querySearch(keyword, page, size, sort);
+        });
+    }
+    searchTree(keyword, value) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.groupService.searchGroupTree(keyword, value);
         });
     }
     findOne(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.settingService.findById(id);
+            return this.groupService.findById(id);
         });
     }
 };
@@ -82,12 +87,21 @@ __decorate([
 __decorate([
     common_1.Get('query'),
     __param(0, common_1.Query('keyword')),
-    __param(1, common_1.Query('index', new common_2.NullableParseIntPipe())),
+    __param(1, common_1.Query('page', new common_2.NullableParseIntPipe())),
     __param(2, common_1.Query('size', new common_2.NullableParseIntPipe())),
+    __param(3, common_1.Query('sort')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Number, Number]),
+    __metadata("design:paramtypes", [String, Number, Number, String]),
     __metadata("design:returntype", Promise)
 ], GroupsController.prototype, "query", null);
+__decorate([
+    common_1.Get('tree'),
+    __param(0, common_1.Query('keyword')),
+    __param(1, common_1.Query('value')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:returntype", Promise)
+], GroupsController.prototype, "searchTree", null);
 __decorate([
     common_1.Get(':id'),
     __param(0, common_1.Param('id')),

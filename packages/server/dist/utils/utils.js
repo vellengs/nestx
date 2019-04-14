@@ -10,6 +10,10 @@ class Utils {
             };
         return {};
     }
+    static strip(obj) {
+        Object.keys(obj).forEach(key => obj[key] === undefined ? delete obj[key] : '');
+        return Object.assign({}, obj);
+    }
 }
 exports.Utils = Utils;
 //# sourceMappingURL=utils.js.map

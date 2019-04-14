@@ -204,79 +204,79 @@ export interface Article {
 /**
  * 
  * @export
- * @interface ArticleResponse
+ * @interface ArticleRes
  */
-export interface ArticleResponse {
+export interface ArticleRes {
     /**
      * 
      * @type {string}
-     * @memberof ArticleResponse
+     * @memberof ArticleRes
      */
     id: string;
     /**
      * 
      * @type {string}
-     * @memberof ArticleResponse
+     * @memberof ArticleRes
      */
     name: string;
     /**
      * 
      * @type {string}
-     * @memberof ArticleResponse
+     * @memberof ArticleRes
      */
     title: string;
     /**
      * 
      * @type {string}
-     * @memberof ArticleResponse
+     * @memberof ArticleRes
      */
     picture: string;
     /**
      * 
      * @type {string}
-     * @memberof ArticleResponse
+     * @memberof ArticleRes
      */
     category: string;
     /**
      * 
      * @type {string}
-     * @memberof ArticleResponse
+     * @memberof ArticleRes
      */
     description: string;
     /**
      * 
      * @type {string}
-     * @memberof ArticleResponse
+     * @memberof ArticleRes
      */
     author: string;
     /**
      * 
      * @type {number}
-     * @memberof ArticleResponse
+     * @memberof ArticleRes
      */
     sort: number;
     /**
      * 
      * @type {boolean}
-     * @memberof ArticleResponse
+     * @memberof ArticleRes
      */
     disable: boolean;
     /**
      * 
      * @type {string}
-     * @memberof ArticleResponse
+     * @memberof ArticleRes
      */
     meta: string;
     /**
      * 
      * @type {string}
-     * @memberof ArticleResponse
+     * @memberof ArticleRes
      */
     content: string;
     /**
      * 
      * @type {string}
-     * @memberof ArticleResponse
+     * @memberof ArticleRes
      */
     template: string;
 }
@@ -334,49 +334,49 @@ export interface Category {
 /**
  * 
  * @export
- * @interface CategoryResponse
+ * @interface CategoryRes
  */
-export interface CategoryResponse {
+export interface CategoryRes {
     /**
      * 
      * @type {string}
-     * @memberof CategoryResponse
+     * @memberof CategoryRes
      */
     id: string;
     /**
      * 
      * @type {string}
-     * @memberof CategoryResponse
+     * @memberof CategoryRes
      */
     name: string;
     /**
      * 
      * @type {string}
-     * @memberof CategoryResponse
+     * @memberof CategoryRes
      */
     slug: string;
     /**
      * 
      * @type {number}
-     * @memberof CategoryResponse
+     * @memberof CategoryRes
      */
     order: number;
     /**
      * 
      * @type {string}
-     * @memberof CategoryResponse
+     * @memberof CategoryRes
      */
     parent: string;
     /**
      * 
      * @type {Array<string>}
-     * @memberof CategoryResponse
+     * @memberof CategoryRes
      */
     paths: Array<string>;
     /**
      * 
      * @type {string}
-     * @memberof CategoryResponse
+     * @memberof CategoryRes
      */
     description: string;
 }
@@ -1085,6 +1085,18 @@ export interface CreateUserReq {
      * @memberof CreateUserReq
      */
     address?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof CreateUserReq
+     */
+    groups?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof CreateUserReq
+     */
+    roles?: Array<string>;
 }
 
 /**
@@ -2320,49 +2332,49 @@ export interface Media {
 /**
  * 
  * @export
- * @interface MediaResponse
+ * @interface MediaRes
  */
-export interface MediaResponse {
+export interface MediaRes {
     /**
      * 
      * @type {string}
-     * @memberof MediaResponse
+     * @memberof MediaRes
      */
     id: string;
     /**
      * 
      * @type {string}
-     * @memberof MediaResponse
+     * @memberof MediaRes
      */
     name: string;
     /**
      * 
      * @type {string}
-     * @memberof MediaResponse
+     * @memberof MediaRes
      */
     caption: string;
     /**
      * 
      * @type {string}
-     * @memberof MediaResponse
+     * @memberof MediaRes
      */
     description: string;
     /**
      * 
      * @type {any}
-     * @memberof MediaResponse
+     * @memberof MediaRes
      */
     ext: any;
     /**
      * 
      * @type {string}
-     * @memberof MediaResponse
+     * @memberof MediaRes
      */
     url: string;
     /**
      * 
      * @type {string}
-     * @memberof MediaResponse
+     * @memberof MediaRes
      */
     uri: string;
 }
@@ -2732,67 +2744,67 @@ export interface Page {
 /**
  * 
  * @export
- * @interface PageResponse
+ * @interface PageRes
  */
-export interface PageResponse {
+export interface PageRes {
     /**
      * 
      * @type {string}
-     * @memberof PageResponse
+     * @memberof PageRes
      */
     id: string;
     /**
      * 
      * @type {string}
-     * @memberof PageResponse
+     * @memberof PageRes
      */
     name: string;
     /**
      * 
      * @type {string}
-     * @memberof PageResponse
+     * @memberof PageRes
      */
     title: string;
     /**
      * 
      * @type {string}
-     * @memberof PageResponse
+     * @memberof PageRes
      */
     description: string;
     /**
      * 
      * @type {number}
-     * @memberof PageResponse
+     * @memberof PageRes
      */
     sort: number;
     /**
      * 
      * @type {string}
-     * @memberof PageResponse
+     * @memberof PageRes
      */
     publish: string;
     /**
      * 
      * @type {boolean}
-     * @memberof PageResponse
+     * @memberof PageRes
      */
     disable: boolean;
     /**
      * 
      * @type {string}
-     * @memberof PageResponse
+     * @memberof PageRes
      */
     meta: string;
     /**
      * 
      * @type {string}
-     * @memberof PageResponse
+     * @memberof PageRes
      */
     content: string;
     /**
      * 
      * @type {string}
-     * @memberof PageResponse
+     * @memberof PageRes
      */
     template: string;
 }
@@ -3030,25 +3042,25 @@ export interface ResultListAppearance {
 /**
  * 
  * @export
- * @interface ResultListArticle
+ * @interface ResultListArticleRes
  */
-export interface ResultListArticle {
+export interface ResultListArticleRes {
     /**
      * 
-     * @type {Array<Article>}
-     * @memberof ResultListArticle
+     * @type {Array<ArticleRes>}
+     * @memberof ResultListArticleRes
      */
-    list: Array<Article>;
+    list: Array<ArticleRes>;
     /**
      * 
      * @type {number}
-     * @memberof ResultListArticle
+     * @memberof ResultListArticleRes
      */
     count?: number;
     /**
      * 
      * @type {Query}
-     * @memberof ResultListArticle
+     * @memberof ResultListArticleRes
      */
     query?: Query;
 }
@@ -3056,25 +3068,25 @@ export interface ResultListArticle {
 /**
  * 
  * @export
- * @interface ResultListCategory
+ * @interface ResultListCategoryRes
  */
-export interface ResultListCategory {
+export interface ResultListCategoryRes {
     /**
      * 
-     * @type {Array<Category>}
-     * @memberof ResultListCategory
+     * @type {Array<CategoryRes>}
+     * @memberof ResultListCategoryRes
      */
-    list: Array<Category>;
+    list: Array<CategoryRes>;
     /**
      * 
      * @type {number}
-     * @memberof ResultListCategory
+     * @memberof ResultListCategoryRes
      */
     count?: number;
     /**
      * 
      * @type {Query}
-     * @memberof ResultListCategory
+     * @memberof ResultListCategoryRes
      */
     query?: Query;
 }
@@ -3160,25 +3172,25 @@ export interface ResultListLog {
 /**
  * 
  * @export
- * @interface ResultListMedia
+ * @interface ResultListMediaRes
  */
-export interface ResultListMedia {
+export interface ResultListMediaRes {
     /**
      * 
-     * @type {Array<Media>}
-     * @memberof ResultListMedia
+     * @type {Array<MediaRes>}
+     * @memberof ResultListMediaRes
      */
-    list: Array<Media>;
+    list: Array<MediaRes>;
     /**
      * 
      * @type {number}
-     * @memberof ResultListMedia
+     * @memberof ResultListMediaRes
      */
     count?: number;
     /**
      * 
      * @type {Query}
-     * @memberof ResultListMedia
+     * @memberof ResultListMediaRes
      */
     query?: Query;
 }
@@ -3238,25 +3250,25 @@ export interface ResultListNotice {
 /**
  * 
  * @export
- * @interface ResultListPage
+ * @interface ResultListPageRes
  */
-export interface ResultListPage {
+export interface ResultListPageRes {
     /**
      * 
-     * @type {Array<Page>}
-     * @memberof ResultListPage
+     * @type {Array<PageRes>}
+     * @memberof ResultListPageRes
      */
-    list: Array<Page>;
+    list: Array<PageRes>;
     /**
      * 
      * @type {number}
-     * @memberof ResultListPage
+     * @memberof ResultListPageRes
      */
     count?: number;
     /**
      * 
      * @type {Query}
-     * @memberof ResultListPage
+     * @memberof ResultListPageRes
      */
     query?: Query;
 }
@@ -3264,25 +3276,25 @@ export interface ResultListPage {
 /**
  * 
  * @export
- * @interface ResultListPhoto
+ * @interface ResultListPhotoRes
  */
-export interface ResultListPhoto {
+export interface ResultListPhotoRes {
     /**
      * 
-     * @type {Array<Photo>}
-     * @memberof ResultListPhoto
+     * @type {Array<PhotoRes>}
+     * @memberof ResultListPhotoRes
      */
-    list: Array<Photo>;
+    list: Array<PhotoRes>;
     /**
      * 
      * @type {number}
-     * @memberof ResultListPhoto
+     * @memberof ResultListPhotoRes
      */
     count?: number;
     /**
      * 
      * @type {Query}
-     * @memberof ResultListPhoto
+     * @memberof ResultListPhotoRes
      */
     query?: Query;
 }
@@ -3368,25 +3380,25 @@ export interface ResultListUser {
 /**
  * 
  * @export
- * @interface ResultListWidget
+ * @interface ResultListWidgetRes
  */
-export interface ResultListWidget {
+export interface ResultListWidgetRes {
     /**
      * 
-     * @type {Array<Widget>}
-     * @memberof ResultListWidget
+     * @type {Array<WidgetRes>}
+     * @memberof ResultListWidgetRes
      */
-    list: Array<Widget>;
+    list: Array<WidgetRes>;
     /**
      * 
      * @type {number}
-     * @memberof ResultListWidget
+     * @memberof ResultListWidgetRes
      */
     count?: number;
     /**
      * 
      * @type {Query}
-     * @memberof ResultListWidget
+     * @memberof ResultListWidgetRes
      */
     query?: Query;
 }
@@ -3790,37 +3802,37 @@ export interface Widget {
 /**
  * 
  * @export
- * @interface WidgetResponse
+ * @interface WidgetRes
  */
-export interface WidgetResponse {
+export interface WidgetRes {
     /**
      * 
      * @type {string}
-     * @memberof WidgetResponse
+     * @memberof WidgetRes
      */
     id: string;
     /**
      * 
      * @type {string}
-     * @memberof WidgetResponse
+     * @memberof WidgetRes
      */
     name: string;
     /**
      * 
      * @type {string}
-     * @memberof WidgetResponse
+     * @memberof WidgetRes
      */
     title: string;
     /**
      * 
      * @type {any}
-     * @memberof WidgetResponse
+     * @memberof WidgetRes
      */
     params: any;
     /**
      * 
      * @type {string}
-     * @memberof WidgetResponse
+     * @memberof WidgetRes
      */
     type: string;
 }
@@ -4290,13 +4302,13 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
         /**
          * 
          * @param {string} [keyword] 
-         * @param {string} [category] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        articleQuery(keyword?: string, category?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+        articleQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/article/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -4311,16 +4323,16 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
                 localVarQueryParameter['keyword'] = keyword;
             }
 
-            if (category !== undefined) {
-                localVarQueryParameter['category'] = category;
-            }
-
             if (page !== undefined) {
                 localVarQueryParameter['page'] = page;
             }
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -4508,10 +4520,11 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        categoryQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+        categoryQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/category/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -4532,6 +4545,10 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -4719,10 +4736,11 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mediaQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+        mediaQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/media/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -4743,6 +4761,10 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -4930,10 +4952,11 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pageQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+        pageQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/page/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -4954,6 +4977,10 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -5141,10 +5168,11 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        photoQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+        photoQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/photo/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -5165,6 +5193,10 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -5352,10 +5384,11 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        widgetQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+        widgetQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/widget/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -5376,6 +5409,10 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -5506,7 +5543,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        articleCreate(createArticleDto: CreateArticleDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArticleResponse> {
+        articleCreate(createArticleDto: CreateArticleDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArticleRes> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).articleCreate(createArticleDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -5529,14 +5566,14 @@ export const CmsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} [keyword] 
-         * @param {string} [category] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        articleQuery(keyword?: string, category?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListArticle> {
-            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).articleQuery(keyword, category, page, size, options);
+        articleQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListArticleRes> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).articleQuery(keyword, page, size, sort, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -5575,7 +5612,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        articleUpdate(editArticleDto: EditArticleDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArticleResponse> {
+        articleUpdate(editArticleDto: EditArticleDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArticleRes> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).articleUpdate(editArticleDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -5588,7 +5625,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        categoryCreate(createCategoryDto: CreateCategoryDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<CategoryResponse> {
+        categoryCreate(createCategoryDto: CreateCategoryDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<CategoryRes> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).categoryCreate(createCategoryDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -5613,11 +5650,12 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        categoryQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListCategory> {
-            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).categoryQuery(keyword, page, size, options);
+        categoryQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListCategoryRes> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).categoryQuery(keyword, page, size, sort, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -5656,7 +5694,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        categoryUpdate(editCategoryDto: EditCategoryDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<CategoryResponse> {
+        categoryUpdate(editCategoryDto: EditCategoryDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<CategoryRes> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).categoryUpdate(editCategoryDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -5669,7 +5707,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mediaCreate(createMediaDto: CreateMediaDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<MediaResponse> {
+        mediaCreate(createMediaDto: CreateMediaDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<MediaRes> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).mediaCreate(createMediaDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -5694,11 +5732,12 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mediaQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListMedia> {
-            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).mediaQuery(keyword, page, size, options);
+        mediaQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListMediaRes> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).mediaQuery(keyword, page, size, sort, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -5737,7 +5776,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mediaUpdate(editMediaDto: EditMediaDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<MediaResponse> {
+        mediaUpdate(editMediaDto: EditMediaDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<MediaRes> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).mediaUpdate(editMediaDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -5750,7 +5789,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pageCreate(createPageDto: CreatePageDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PageResponse> {
+        pageCreate(createPageDto: CreatePageDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PageRes> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).pageCreate(createPageDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -5775,11 +5814,12 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pageQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListPage> {
-            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).pageQuery(keyword, page, size, options);
+        pageQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListPageRes> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).pageQuery(keyword, page, size, sort, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -5818,7 +5858,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pageUpdate(editPageDto: EditPageDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PageResponse> {
+        pageUpdate(editPageDto: EditPageDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PageRes> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).pageUpdate(editPageDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -5856,11 +5896,12 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        photoQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListPhoto> {
-            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).photoQuery(keyword, page, size, options);
+        photoQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListPhotoRes> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).photoQuery(keyword, page, size, sort, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -5912,7 +5953,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        widgetCreate(createWidgetDto: CreateWidgetDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<WidgetResponse> {
+        widgetCreate(createWidgetDto: CreateWidgetDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<WidgetRes> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).widgetCreate(createWidgetDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -5937,11 +5978,12 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        widgetQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListWidget> {
-            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).widgetQuery(keyword, page, size, options);
+        widgetQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListWidgetRes> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).widgetQuery(keyword, page, size, sort, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -5980,7 +6022,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        widgetUpdate(editWidgetDto: EditWidgetDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<WidgetResponse> {
+        widgetUpdate(editWidgetDto: EditWidgetDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<WidgetRes> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).widgetUpdate(editWidgetDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -6017,14 +6059,14 @@ export const CmsApiFactory = function (configuration?: Configuration, basePath?:
         /**
          * 
          * @param {string} [keyword] 
-         * @param {string} [category] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        articleQuery(keyword?: string, category?: string, page?: number, size?: number, options?: any) {
-            return CmsApiFp(configuration).articleQuery(keyword, category, page, size, options)(axios, basePath);
+        articleQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+            return CmsApiFp(configuration).articleQuery(keyword, page, size, sort, options)(axios, basePath);
         },
         /**
          * 
@@ -6077,11 +6119,12 @@ export const CmsApiFactory = function (configuration?: Configuration, basePath?:
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        categoryQuery(keyword?: string, page?: number, size?: number, options?: any) {
-            return CmsApiFp(configuration).categoryQuery(keyword, page, size, options)(axios, basePath);
+        categoryQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+            return CmsApiFp(configuration).categoryQuery(keyword, page, size, sort, options)(axios, basePath);
         },
         /**
          * 
@@ -6134,11 +6177,12 @@ export const CmsApiFactory = function (configuration?: Configuration, basePath?:
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mediaQuery(keyword?: string, page?: number, size?: number, options?: any) {
-            return CmsApiFp(configuration).mediaQuery(keyword, page, size, options)(axios, basePath);
+        mediaQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+            return CmsApiFp(configuration).mediaQuery(keyword, page, size, sort, options)(axios, basePath);
         },
         /**
          * 
@@ -6191,11 +6235,12 @@ export const CmsApiFactory = function (configuration?: Configuration, basePath?:
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pageQuery(keyword?: string, page?: number, size?: number, options?: any) {
-            return CmsApiFp(configuration).pageQuery(keyword, page, size, options)(axios, basePath);
+        pageQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+            return CmsApiFp(configuration).pageQuery(keyword, page, size, sort, options)(axios, basePath);
         },
         /**
          * 
@@ -6248,11 +6293,12 @@ export const CmsApiFactory = function (configuration?: Configuration, basePath?:
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        photoQuery(keyword?: string, page?: number, size?: number, options?: any) {
-            return CmsApiFp(configuration).photoQuery(keyword, page, size, options)(axios, basePath);
+        photoQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+            return CmsApiFp(configuration).photoQuery(keyword, page, size, sort, options)(axios, basePath);
         },
         /**
          * 
@@ -6305,11 +6351,12 @@ export const CmsApiFactory = function (configuration?: Configuration, basePath?:
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        widgetQuery(keyword?: string, page?: number, size?: number, options?: any) {
-            return CmsApiFp(configuration).widgetQuery(keyword, page, size, options)(axios, basePath);
+        widgetQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+            return CmsApiFp(configuration).widgetQuery(keyword, page, size, sort, options)(axios, basePath);
         },
         /**
          * 
@@ -6374,15 +6421,15 @@ export class CmsApi extends BaseAPI {
     /**
      * 
      * @param {string} [keyword] 
-     * @param {string} [category] 
      * @param {number} [page] 
      * @param {number} [size] 
+     * @param {string} [sort] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CmsApi
      */
-    public articleQuery(keyword?: string, category?: string, page?: number, size?: number, options?: any) {
-        return CmsApiFp(this.configuration).articleQuery(keyword, category, page, size, options)(this.axios, this.basePath);
+    public articleQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+        return CmsApiFp(this.configuration).articleQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
     }
 
     /**
@@ -6446,12 +6493,13 @@ export class CmsApi extends BaseAPI {
      * @param {string} [keyword] 
      * @param {number} [page] 
      * @param {number} [size] 
+     * @param {string} [sort] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CmsApi
      */
-    public categoryQuery(keyword?: string, page?: number, size?: number, options?: any) {
-        return CmsApiFp(this.configuration).categoryQuery(keyword, page, size, options)(this.axios, this.basePath);
+    public categoryQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+        return CmsApiFp(this.configuration).categoryQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
     }
 
     /**
@@ -6515,12 +6563,13 @@ export class CmsApi extends BaseAPI {
      * @param {string} [keyword] 
      * @param {number} [page] 
      * @param {number} [size] 
+     * @param {string} [sort] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CmsApi
      */
-    public mediaQuery(keyword?: string, page?: number, size?: number, options?: any) {
-        return CmsApiFp(this.configuration).mediaQuery(keyword, page, size, options)(this.axios, this.basePath);
+    public mediaQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+        return CmsApiFp(this.configuration).mediaQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
     }
 
     /**
@@ -6584,12 +6633,13 @@ export class CmsApi extends BaseAPI {
      * @param {string} [keyword] 
      * @param {number} [page] 
      * @param {number} [size] 
+     * @param {string} [sort] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CmsApi
      */
-    public pageQuery(keyword?: string, page?: number, size?: number, options?: any) {
-        return CmsApiFp(this.configuration).pageQuery(keyword, page, size, options)(this.axios, this.basePath);
+    public pageQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+        return CmsApiFp(this.configuration).pageQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
     }
 
     /**
@@ -6653,12 +6703,13 @@ export class CmsApi extends BaseAPI {
      * @param {string} [keyword] 
      * @param {number} [page] 
      * @param {number} [size] 
+     * @param {string} [sort] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CmsApi
      */
-    public photoQuery(keyword?: string, page?: number, size?: number, options?: any) {
-        return CmsApiFp(this.configuration).photoQuery(keyword, page, size, options)(this.axios, this.basePath);
+    public photoQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+        return CmsApiFp(this.configuration).photoQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
     }
 
     /**
@@ -6722,12 +6773,13 @@ export class CmsApi extends BaseAPI {
      * @param {string} [keyword] 
      * @param {number} [page] 
      * @param {number} [size] 
+     * @param {string} [sort] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CmsApi
      */
-    public widgetQuery(keyword?: string, page?: number, size?: number, options?: any) {
-        return CmsApiFp(this.configuration).widgetQuery(keyword, page, size, options)(this.axios, this.basePath);
+    public widgetQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+        return CmsApiFp(this.configuration).widgetQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
     }
 
     /**
@@ -7055,10 +7107,11 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dictsQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+        dictsQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/dict/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -7079,6 +7132,10 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -7234,10 +7291,11 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        groupsQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+        groupsQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/group/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -7258,6 +7316,10 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -7414,10 +7476,11 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        logsQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+        logsQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/log/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -7438,6 +7501,10 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -7575,10 +7642,11 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+        menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             // verify required parameter 'isMenu' is not null or undefined
             if (isMenu === null || isMenu === undefined) {
                 throw new RequiredError('isMenu','Required parameter isMenu was null or undefined when calling menusQuery.');
@@ -7607,6 +7675,10 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -7762,10 +7834,11 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        noticesQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+        noticesQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/notice/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -7786,6 +7859,10 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -7941,10 +8018,11 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rolesQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+        rolesQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/role/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -7965,6 +8043,10 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -8186,10 +8268,11 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        settingsQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+        settingsQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/setting/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -8210,6 +8293,10 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -8472,10 +8559,11 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {string} [role] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+        usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/user/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -8504,6 +8592,10 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -8787,11 +8879,12 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dictsQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListDict> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).dictsQuery(keyword, page, size, options);
+        dictsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListDict> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).dictsQuery(keyword, page, size, sort, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8855,11 +8948,12 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        groupsQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListGroup> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsQuery(keyword, page, size, options);
+        groupsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListGroup> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsQuery(keyword, page, size, sort, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8924,11 +9018,12 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        logsQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListLog> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).logsQuery(keyword, page, size, options);
+        logsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListLog> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).logsQuery(keyword, page, size, sort, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8953,7 +9048,7 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        menusFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Menu> {
+        menusFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<MenuRes> {
             const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusFindOne(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -8990,11 +9085,12 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListMenu> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusQuery(isMenu, keyword, page, size, options);
+        menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListMenu> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusQuery(isMenu, keyword, page, size, sort, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9058,11 +9154,12 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        noticesQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListNotice> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).noticesQuery(keyword, page, size, options);
+        noticesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListNotice> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).noticesQuery(keyword, page, size, sort, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9126,11 +9223,12 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rolesQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListRole> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).rolesQuery(keyword, page, size, options);
+        rolesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListRole> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).rolesQuery(keyword, page, size, sort, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9220,11 +9318,12 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        settingsQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListSetting> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsQuery(keyword, page, size, options);
+        settingsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListSetting> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsQuery(keyword, page, size, sort, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9329,11 +9428,12 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {string} [role] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListUser> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersQuery(keyword, group, role, page, size, options);
+        usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListUser> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersQuery(keyword, group, role, page, size, sort, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9482,11 +9582,12 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dictsQuery(keyword?: string, page?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).dictsQuery(keyword, page, size, options)(axios, basePath);
+        dictsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+            return CoreApiFp(configuration).dictsQuery(keyword, page, size, sort, options)(axios, basePath);
         },
         /**
          * 
@@ -9530,11 +9631,12 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        groupsQuery(keyword?: string, page?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).groupsQuery(keyword, page, size, options)(axios, basePath);
+        groupsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+            return CoreApiFp(configuration).groupsQuery(keyword, page, size, sort, options)(axios, basePath);
         },
         /**
          * 
@@ -9579,11 +9681,12 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        logsQuery(keyword?: string, page?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).logsQuery(keyword, page, size, options)(axios, basePath);
+        logsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+            return CoreApiFp(configuration).logsQuery(keyword, page, size, sort, options)(axios, basePath);
         },
         /**
          * 
@@ -9625,11 +9728,12 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).menusQuery(isMenu, keyword, page, size, options)(axios, basePath);
+        menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+            return CoreApiFp(configuration).menusQuery(isMenu, keyword, page, size, sort, options)(axios, basePath);
         },
         /**
          * 
@@ -9673,11 +9777,12 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        noticesQuery(keyword?: string, page?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).noticesQuery(keyword, page, size, options)(axios, basePath);
+        noticesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+            return CoreApiFp(configuration).noticesQuery(keyword, page, size, sort, options)(axios, basePath);
         },
         /**
          * 
@@ -9721,11 +9826,12 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rolesQuery(keyword?: string, page?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).rolesQuery(keyword, page, size, options)(axios, basePath);
+        rolesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+            return CoreApiFp(configuration).rolesQuery(keyword, page, size, sort, options)(axios, basePath);
         },
         /**
          * 
@@ -9787,11 +9893,12 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        settingsQuery(keyword?: string, page?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).settingsQuery(keyword, page, size, options)(axios, basePath);
+        settingsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+            return CoreApiFp(configuration).settingsQuery(keyword, page, size, sort, options)(axios, basePath);
         },
         /**
          * 
@@ -9864,11 +9971,12 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
          * @param {string} [role] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).usersQuery(keyword, group, role, page, size, options)(axios, basePath);
+        usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, sort?: string, options?: any) {
+            return CoreApiFp(configuration).usersQuery(keyword, group, role, page, size, sort, options)(axios, basePath);
         },
         /**
          * 
@@ -10014,12 +10122,13 @@ export class CoreApi extends BaseAPI {
      * @param {string} [keyword] 
      * @param {number} [page] 
      * @param {number} [size] 
+     * @param {string} [sort] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public dictsQuery(keyword?: string, page?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).dictsQuery(keyword, page, size, options)(this.axios, this.basePath);
+    public dictsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+        return CoreApiFp(this.configuration).dictsQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
     }
 
     /**
@@ -10072,12 +10181,13 @@ export class CoreApi extends BaseAPI {
      * @param {string} [keyword] 
      * @param {number} [page] 
      * @param {number} [size] 
+     * @param {string} [sort] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public groupsQuery(keyword?: string, page?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).groupsQuery(keyword, page, size, options)(this.axios, this.basePath);
+    public groupsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+        return CoreApiFp(this.configuration).groupsQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
     }
 
     /**
@@ -10131,12 +10241,13 @@ export class CoreApi extends BaseAPI {
      * @param {string} [keyword] 
      * @param {number} [page] 
      * @param {number} [size] 
+     * @param {string} [sort] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public logsQuery(keyword?: string, page?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).logsQuery(keyword, page, size, options)(this.axios, this.basePath);
+    public logsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+        return CoreApiFp(this.configuration).logsQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
     }
 
     /**
@@ -10187,12 +10298,13 @@ export class CoreApi extends BaseAPI {
      * @param {string} [keyword] 
      * @param {number} [page] 
      * @param {number} [size] 
+     * @param {string} [sort] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).menusQuery(isMenu, keyword, page, size, options)(this.axios, this.basePath);
+    public menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+        return CoreApiFp(this.configuration).menusQuery(isMenu, keyword, page, size, sort, options)(this.axios, this.basePath);
     }
 
     /**
@@ -10245,12 +10357,13 @@ export class CoreApi extends BaseAPI {
      * @param {string} [keyword] 
      * @param {number} [page] 
      * @param {number} [size] 
+     * @param {string} [sort] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public noticesQuery(keyword?: string, page?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).noticesQuery(keyword, page, size, options)(this.axios, this.basePath);
+    public noticesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+        return CoreApiFp(this.configuration).noticesQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
     }
 
     /**
@@ -10303,12 +10416,13 @@ export class CoreApi extends BaseAPI {
      * @param {string} [keyword] 
      * @param {number} [page] 
      * @param {number} [size] 
+     * @param {string} [sort] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public rolesQuery(keyword?: string, page?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).rolesQuery(keyword, page, size, options)(this.axios, this.basePath);
+    public rolesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+        return CoreApiFp(this.configuration).rolesQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
     }
 
     /**
@@ -10383,12 +10497,13 @@ export class CoreApi extends BaseAPI {
      * @param {string} [keyword] 
      * @param {number} [page] 
      * @param {number} [size] 
+     * @param {string} [sort] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public settingsQuery(keyword?: string, page?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).settingsQuery(keyword, page, size, options)(this.axios, this.basePath);
+    public settingsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+        return CoreApiFp(this.configuration).settingsQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
     }
 
     /**
@@ -10476,12 +10591,13 @@ export class CoreApi extends BaseAPI {
      * @param {string} [role] 
      * @param {number} [page] 
      * @param {number} [size] 
+     * @param {string} [sort] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).usersQuery(keyword, group, role, page, size, options)(this.axios, this.basePath);
+    public usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, sort?: string, options?: any) {
+        return CoreApiFp(this.configuration).usersQuery(keyword, group, role, page, size, sort, options)(this.axios, this.basePath);
     }
 
     /**

@@ -21,14 +21,17 @@ __decorate([
     __metadata("design:type", String)
 ], CreateUserReq.prototype, "password", void 0);
 __decorate([
+    class_validator_1.IsOptional(),
     class_validator_1.IsString(),
     __metadata("design:type", String)
 ], CreateUserReq.prototype, "avatar", void 0);
 __decorate([
+    class_validator_1.IsOptional(),
     class_validator_1.IsString(),
     __metadata("design:type", String)
 ], CreateUserReq.prototype, "email", void 0);
 __decorate([
+    class_validator_1.IsOptional(),
     class_validator_1.IsString(),
     __metadata("design:type", String)
 ], CreateUserReq.prototype, "name", void 0);
@@ -37,14 +40,17 @@ __decorate([
     __metadata("design:type", String)
 ], CreateUserReq.prototype, "mobile", void 0);
 __decorate([
+    class_validator_1.IsOptional(),
     class_validator_1.IsBoolean(),
     __metadata("design:type", Boolean)
 ], CreateUserReq.prototype, "isAdmin", void 0);
 __decorate([
+    class_validator_1.IsOptional(),
     class_validator_1.IsBoolean(),
     __metadata("design:type", Boolean)
 ], CreateUserReq.prototype, "isApproved", void 0);
 __decorate([
+    class_validator_1.IsOptional(),
     class_validator_1.IsNumber(),
     __metadata("design:type", Number)
 ], CreateUserReq.prototype, "expired", void 0);
@@ -63,6 +69,16 @@ __decorate([
     class_validator_1.IsString(),
     __metadata("design:type", String)
 ], CreateUserReq.prototype, "address", void 0);
+__decorate([
+    class_validator_1.IsOptional(),
+    class_validator_1.IsString({ each: true }),
+    __metadata("design:type", Array)
+], CreateUserReq.prototype, "groups", void 0);
+__decorate([
+    class_validator_1.IsOptional(),
+    class_validator_1.IsString({ each: true }),
+    __metadata("design:type", Array)
+], CreateUserReq.prototype, "roles", void 0);
 exports.CreateUserReq = CreateUserReq;
 class EditProfileReq {
 }
@@ -162,7 +178,7 @@ __decorate([
     __metadata("design:type", String)
 ], UsersOfRole.prototype, "role", void 0);
 __decorate([
-    class_validator_1.IsString(),
+    class_validator_1.IsString({ each: true }),
     __metadata("design:type", Array)
 ], UsersOfRole.prototype, "userIds", void 0);
 exports.UsersOfRole = UsersOfRole;

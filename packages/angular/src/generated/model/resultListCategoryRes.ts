@@ -9,18 +9,18 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { Media } from './media';
+import { CategoryRes } from './categoryRes';
 import { Query } from './query';
 
 
 /**
  * 
  */
-export interface ResultListMedia { 
+export interface ResultListCategoryRes { 
     /**
      * 
      */
-    list: Array<Media>;
+    list: Array<CategoryRes>;
     /**
      * 
      */

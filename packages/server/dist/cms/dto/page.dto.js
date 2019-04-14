@@ -6,9 +6,9 @@ exports.CreatePageDto = CreatePageDto;
 class EditPageDto {
 }
 exports.EditPageDto = EditPageDto;
-class PageResponse {
+class PageRes {
 }
-exports.PageResponse = PageResponse;
+exports.PageRes = PageRes;
 exports.PageResponseFields = [
     'id',
     'name',

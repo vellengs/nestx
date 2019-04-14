@@ -63,4 +63,12 @@ export interface CreateUserReq {
      * 
      */
     address?: string;
+    /**
+     * 
+     */
+    groups?: Array<string>;
+    /**
+     * 
+     */
+    roles?: Array<string>;
 }

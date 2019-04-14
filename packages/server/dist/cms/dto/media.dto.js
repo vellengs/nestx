@@ -6,9 +6,9 @@ exports.CreateMediaDto = CreateMediaDto;
 class EditMediaDto {
 }
 exports.EditMediaDto = EditMediaDto;
-class MediaResponse {
+class MediaRes {
 }
-exports.MediaResponse = MediaResponse;
+exports.MediaRes = MediaRes;
 exports.MediaResponseFields = [
     'id',
     'name',

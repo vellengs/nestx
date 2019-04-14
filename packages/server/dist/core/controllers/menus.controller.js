@@ -46,9 +46,9 @@ let MenusController = class MenusController {
             return this.menuService.search(keyword, value);
         });
     }
-    query(isMenu, keyword, index = 1, size = 10) {
+    query(isMenu, keyword, page = 1, size = 10, sort) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.menuService.query(index, size, { keyword, isMenu });
+            return this.menuService.querySearch(isMenu, keyword, page, size, sort);
         });
     }
     getPermissionTags() {
@@ -63,7 +63,7 @@ let MenusController = class MenusController {
     }
     findOne(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.menuService.findById(id);
+            return this.menuService.getMenuById(id);
         });
     }
 };
@@ -93,10 +93,11 @@ __decorate([
     common_1.Get('query'),
     __param(0, common_1.Query('isMenu')),
     __param(1, common_1.Query('keyword')),
-    __param(2, common_1.Query('index', new common_2.NullableParseIntPipe())),
+    __param(2, common_1.Query('page', new common_2.NullableParseIntPipe())),
     __param(3, common_1.Query('size', new common_2.NullableParseIntPipe())),
+    __param(4, common_1.Query('sort')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Boolean, String, Number, Number]),
+    __metadata("design:paramtypes", [Boolean, String, Number, Number, String]),
     __metadata("design:returntype", Promise)
 ], MenusController.prototype, "query", null);
 __decorate([

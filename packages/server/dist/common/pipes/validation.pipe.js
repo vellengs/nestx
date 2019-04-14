@@ -26,7 +26,7 @@ let ValidationPipe = class ValidationPipe {
                 return value;
             }
             const object = class_transformer_1.plainToClass(metatype, value);
-            const errors = yield class_validator_1.validate(object);
+            const errors = yield class_validator_1.validate(object, { whitelist: true, forbidNonWhitelisted: true });
             if (errors.length > 0) {
                 throw new common_1.BadRequestException('Validation failed');
             }

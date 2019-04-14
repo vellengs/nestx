@@ -6,5 +6,4 @@ export * from './interfaces';
 export * from './middlewares/logger.middleware';
 export * from './pipes';
 export * from './services';
-
-
+export * from './types';

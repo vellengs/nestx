@@ -44,9 +44,9 @@ let PageController = class PageController {
             return this.service.update(entry);
         });
     }
-    query(keyword, page = 1, size = 10) {
+    query(keyword, page = 1, size = 10, sort) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.service.query(page, size, { keyword }, 'name');
+            return this.service.querySearch(keyword, page, size, sort);
         });
     }
     remove(id) {
@@ -85,8 +85,9 @@ __decorate([
     __param(0, common_1.Query('keyword')),
     __param(1, common_1.Query('page', new common_2.NullableParseIntPipe())),
     __param(2, common_1.Query('size', new common_2.NullableParseIntPipe())),
+    __param(3, common_1.Query('sort')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Number, Number]),
+    __metadata("design:paramtypes", [String, Number, Number, String]),
     __metadata("design:returntype", Promise)
 ], PageController.prototype, "query", null);
 __decorate([

@@ -14,7 +14,7 @@
 /**
  * 
  */
-export interface ArticleResponse { 
+export interface WidgetRes { 
     /**
      * 
      */
@@ -30,37 +30,9 @@ export interface ArticleResponse {
     /**
      * 
      */
-    picture: string;
+    params: any;
     /**
      * 
      */
-    category: string;
-    /**
-     * 
-     */
-    description: string;
-    /**
-     * 
-     */
-    author: string;
-    /**
-     * 
-     */
-    sort: number;
-    /**
-     * 
-     */
-    disable: boolean;
-    /**
-     * 
-     */
-    meta: string;
-    /**
-     * 
-     */
-    content: string;
-    /**
-     * 
-     */
-    template: string;
+    type: string;
 }

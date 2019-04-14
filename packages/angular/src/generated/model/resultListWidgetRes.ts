@@ -9,18 +9,18 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { Page } from './page';
 import { Query } from './query';
+import { WidgetRes } from './widgetRes';
 
 
 /**
  * 
  */
-export interface ResultListPage { 
+export interface ResultListWidgetRes { 
     /**
      * 
      */
-    list: Array<Page>;
+    list: Array<WidgetRes>;
     /**
      * 
      */

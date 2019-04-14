@@ -23,12 +23,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const common_1 = require("@nestjs/common");
 const mongoose_2 = require("@nestjs/mongoose");
-const mongoose_service_1 = require("./../../common/services/mongoose.service");
+const common_2 = require("./../../common");
 const bson_1 = require("bson");
 const FIVE_MINUTES = 5 * 60 * 1000;
 const ONE_MINUTE = 1 * 60 * 1000;
 const SMS_VERIFICATION_CONTENT = `sms template {0}`;
-let UsersService = class UsersService extends mongoose_service_1.MongooseService {
+let UsersService = class UsersService extends common_2.MongooseService {
     constructor(model, profileModel, veryCodeModel) {
         super(model);
         this.model = model;
@@ -45,39 +45,22 @@ let UsersService = class UsersService extends mongoose_service_1.MongooseService
             'expired',
         ];
     }
-    sendVeryCode(mobile) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const sms = yield this.veryCodeModel.findOne({
-                mobile,
-                lastSent: {
-                    $gte: Date.now() - ONE_MINUTE
-                }
-            }).exec();
-            if (sms && process.env.NODE_ENV !== 'test') {
-                return Promise.reject("Request too often.");
-            }
-            if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
-                const date = Date.now();
-                const code = "123456";
-                yield new this.veryCodeModel({ mobile, code, lastSent: date }).save();
-                return Promise.resolve(code);
-            }
-            const code = "123456";
-            yield new this.veryCodeModel({ mobile, code }).save();
-            return Promise.resolve(code);
+    querySearch(keyword, group, role, page, size, sort) {
+        const _super = Object.create(null, {
+            query: { get: () => super.query }
         });
-    }
-    verifyCode(code, mobile) {
         return __awaiter(this, void 0, void 0, function* () {
-            return true;
-            const instance = yield this.veryCodeModel.findOne({
-                code,
-                mobile,
-                lastSent: {
-                    $gte: Date.now() - ONE_MINUTE
-                }
-            });
-            return instance ? true : false;
+            let groups, roles;
+            if (group) {
+                groups = { $in: group };
+            }
+            if (role) {
+                roles = { $in: role };
+            }
+            return _super.query.call(this, page, size, {
+                groups,
+                roles,
+            }, { keyword, field: 'name' }, this.defaultQueryFields, sort);
         });
     }
     register(entry) {
@@ -85,7 +68,12 @@ let UsersService = class UsersService extends mongoose_service_1.MongooseService
             entry.name = entry.name || entry.username;
             const { name, email, password, username, mobile, mobilePrefix } = entry;
             const instance = new this.model({
-                name, email, password, username, mobile, mobilePrefix
+                name,
+                email,
+                password,
+                username,
+                mobile,
+                mobilePrefix,
             });
             return yield instance.save();
         });
@@ -121,13 +109,15 @@ let UsersService = class UsersService extends mongoose_service_1.MongooseService
     removeUserFromRole(role, accountId) {
         return __awaiter(this, void 0, void 0, function* () {
             if (role && accountId) {
-                yield this.model.update({
+                yield this.model
+                    .update({
                     _id: {
-                        $in: accountId
-                    }
-                }, { $pullAll: { roles: [role] } }, { multi: true }).exec();
+                        $in: accountId,
+                    },
+                }, { $pullAll: { roles: [role] } }, { multi: true })
+                    .exec();
             }
-            return true;
+            return { ok: true };
         });
     }
     addAccountsToRole(role, accountIds) {
@@ -136,37 +126,45 @@ let UsersService = class UsersService extends mongoose_service_1.MongooseService
                 accountIds = [accountIds];
             }
             if (role && Array.isArray(accountIds)) {
-                const existIds = (yield this.model.find({
+                const existIds = yield this.model
+                    .find({
                     _id: {
-                        $in: accountIds
+                        $in: accountIds,
                     },
                     roles: {
-                        $in: [role]
-                    }
-                }, { _id: 1 }).exec());
+                        $in: [role],
+                    },
+                }, { _id: 1 })
+                    .exec();
                 const exists = (existIds || []).map((item) => item._id.toString());
-                const ids = accountIds.filter((id) => {
+                const ids = accountIds.filter(id => {
                     return exists.indexOf(id) === -1;
                 });
-                const effects = yield this.model.update({
+                const effects = yield this.model
+                    .update({
                     _id: {
-                        $in: ids
-                    }
-                }, { $push: { roles: role } }, { multi: true }).exec();
+                        $in: ids,
+                    },
+                }, { $push: { roles: role } }, { multi: true })
+                    .exec();
             }
-            return true;
+            return { ok: true };
         });
     }
     updateProfile(userId, entry) {
         return __awaiter(this, void 0, void 0, function* () {
-            const scopedEntry = Object.assign({}, entry);
-            const profileModel = yield this.profileModel.findOneAndUpdate({
+            const profileModel = yield this.profileModel
+                .findOneAndUpdate({
                 _id: userId,
-            }, scopedEntry, { upsert: true, new: true }).exec();
+            }, entry, { upsert: true, new: true })
+                .exec();
             const profile = profileModel._id;
-            const user = yield this.model.findOneAndUpdate({
+            const user = yield this.model
+                .findOneAndUpdate({
                 _id: userId,
-            }, Object.assign({ profile }, entry), { new: true }).populate('profile').exec();
+            }, Object.assign({ profile }, entry), { new: true })
+                .populate('profile')
+                .exec();
             if (profile) {
                 const instance = this.plainProfile(user);
                 return instance;
@@ -176,8 +174,48 @@ let UsersService = class UsersService extends mongoose_service_1.MongooseService
     }
     getProfile(entry) {
         return __awaiter(this, void 0, void 0, function* () {
-            const user = yield this.model.findById(entry).populate('profile').exec();
+            const user = yield this.model
+                .findById(entry)
+                .populate('profile')
+                .exec();
             return this.plainProfile(user);
+        });
+    }
+    sendVeryCode(mobile) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const sms = yield this.veryCodeModel
+                .findOne({
+                mobile,
+                lastSent: {
+                    $gte: Date.now() - ONE_MINUTE,
+                },
+            })
+                .exec();
+            if (sms && process.env.NODE_ENV !== 'test') {
+                return Promise.reject('Request too often.');
+            }
+            if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+                const date = Date.now();
+                const code = '123456';
+                yield new this.veryCodeModel({ mobile, code, lastSent: date }).save();
+                return Promise.resolve(code);
+            }
+            const code = '123456';
+            yield new this.veryCodeModel({ mobile, code }).save();
+            return Promise.resolve(code);
+        });
+    }
+    verifyCode(code, mobile) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return true;
+            const instance = yield this.veryCodeModel.findOne({
+                code,
+                mobile,
+                lastSent: {
+                    $gte: Date.now() - ONE_MINUTE,
+                },
+            });
+            return instance ? true : false;
         });
     }
     plainProfile(user) {
