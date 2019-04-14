@@ -7199,10 +7199,11 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * 
          * @param {string} [keyword] 
          * @param {string} [value] 
+         * @param {string} [category] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dictsSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
+        dictsSearch(keyword?: string, value?: string, category?: string, options: any = {}): RequestArgs {
             const localVarPath = `/dict/search`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -7219,6 +7220,10 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (value !== undefined) {
                 localVarQueryParameter['value'] = value;
+            }
+
+            if (category !== undefined) {
+                localVarQueryParameter['category'] = category;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -8942,11 +8947,12 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} [keyword] 
          * @param {string} [value] 
+         * @param {string} [category] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dictsSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).dictsSearch(keyword, value, options);
+        dictsSearch(keyword?: string, value?: string, category?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).dictsSearch(keyword, value, category, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9642,11 +9648,12 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
          * 
          * @param {string} [keyword] 
          * @param {string} [value] 
+         * @param {string} [category] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dictsSearch(keyword?: string, value?: string, options?: any) {
-            return CoreApiFp(configuration).dictsSearch(keyword, value, options)(axios, basePath);
+        dictsSearch(keyword?: string, value?: string, category?: string, options?: any) {
+            return CoreApiFp(configuration).dictsSearch(keyword, value, category, options)(axios, basePath);
         },
         /**
          * 
@@ -10185,12 +10192,13 @@ export class CoreApi extends BaseAPI {
      * 
      * @param {string} [keyword] 
      * @param {string} [value] 
+     * @param {string} [category] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public dictsSearch(keyword?: string, value?: string, options?: any) {
-        return CoreApiFp(this.configuration).dictsSearch(keyword, value, options)(this.axios, this.basePath);
+    public dictsSearch(keyword?: string, value?: string, category?: string, options?: any) {
+        return CoreApiFp(this.configuration).dictsSearch(keyword, value, category, options)(this.axios, this.basePath);
     }
 
     /**

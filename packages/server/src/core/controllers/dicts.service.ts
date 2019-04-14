@@ -13,6 +13,7 @@ export class DictsService extends MongooseService<DictModel> {
 
   async querySearch(
     keyword: string,
+    category: string,
     page: number,
     size: number,
     sort: string,
@@ -20,7 +21,9 @@ export class DictsService extends MongooseService<DictModel> {
     return super.query(
       page,
       size,
-      {},
+      {
+        category,
+      },
       { keyword, field: 'name' },
       this.defaultQueryFields,
       sort,

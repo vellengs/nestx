@@ -36,18 +36,20 @@ export class DictsController {
   async search(
     @Query('keyword') keyword?: string,
     @Query('value') value?: string,
+    @Query('category') category?: string,
   ): Promise<KeyValueDto[]> {
-    return this.dictService.search(keyword, value);
+    return this.dictService.search(keyword, value, category);
   }
 
   @Get('query')
   async query(
     @Query('keyword') keyword?: string,
+    @Query('category') category?: string,
     @Query('page', new NullableParseIntPipe()) page: number = 1,
     @Query('size', new NullableParseIntPipe()) size: number = 10,
     @Query('sort') sort?: string,
   ): Promise<ResultList<Dict>> {
-    return this.dictService.querySearch(keyword, page, size, sort);
+    return this.dictService.querySearch(keyword, category, page, size, sort);
   }
 
   @Get(':id')

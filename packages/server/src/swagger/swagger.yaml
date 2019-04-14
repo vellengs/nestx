@@ -2674,6 +2674,12 @@ paths:
                     name: value
                     required: false
                     type: string
+                -
+                    description: ""
+                    in: query
+                    name: category
+                    required: false
+                    type: string
     /dict/query:
         get:
             operationId: DictsQuery
