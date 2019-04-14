@@ -395,6 +395,9 @@ definitions:
             isApproved:
                 type: boolean
                 description: ""
+            isDisable:
+                type: boolean
+                description: ""
             expired:
                 type: number
                 format: double
@@ -408,6 +411,16 @@ definitions:
             address:
                 type: string
                 description: ""
+            groups:
+                type: array
+                items:
+                    type: string
+                description: ""
+            roles:
+                type: array
+                items:
+                    type: string
+                description: ""
         type: object
         required:
             - username
@@ -418,6 +431,7 @@ definitions:
             - mobile
             - isAdmin
             - isApproved
+            - isDisable
             - expired
     UsersOfRole:
         description: ""
@@ -440,22 +454,36 @@ definitions:
             id:
                 type: string
                 description: ""
+            username:
+                type: string
+                description: ""
+            password:
+                type: string
+                description: ""
+            avatar:
+                type: string
+                description: ""
+            email:
+                type: string
+                description: ""
             name:
                 type: string
                 description: ""
             mobile:
                 type: string
                 description: ""
-            password:
-                type: string
+            isAdmin:
+                type: boolean
                 description: ""
-            roles:
-                type: array
-                items:
-                    type: string
+            isApproved:
+                type: boolean
                 description: ""
-            email:
-                type: string
+            isDisable:
+                type: boolean
+                description: ""
+            expired:
+                type: number
+                format: double
                 description: ""
             company:
                 type: string
@@ -466,10 +494,28 @@ definitions:
             address:
                 type: string
                 description: ""
+            groups:
+                type: array
+                items:
+                    type: string
+                description: ""
+            roles:
+                type: array
+                items:
+                    type: string
+                description: ""
         type: object
         required:
             - id
+            - username
+            - avatar
+            - email
             - name
+            - mobile
+            - isAdmin
+            - isApproved
+            - isDisable
+            - expired
     EditProfileReq:
         description: ""
         properties:
@@ -481,11 +527,6 @@ definitions:
                 description: ""
             password:
                 type: string
-                description: ""
-            roles:
-                type: array
-                items:
-                    type: string
                 description: ""
             email:
                 type: string
@@ -1554,6 +1595,23 @@ definitions:
             - ext
             - url
             - uri
+    ResultList$PhotoRes:
+        description: ""
+        properties:
+            list:
+                type: array
+                items:
+                    $ref: '#/definitions/PhotoRes'
+                description: ""
+            count:
+                type: number
+                format: double
+                description: ""
+            query:
+                $ref: '#/definitions/Query'
+        type: object
+        required:
+            - list
     Photo:
         description: ""
         properties:
@@ -1587,24 +1645,7 @@ definitions:
             - ext
             - url
             - uri
-    ResultList$Photo:
-        description: ""
-        properties:
-            list:
-                type: array
-                items:
-                    $ref: '#/definitions/Photo'
-                description: ""
-            count:
-                type: number
-                format: double
-                description: ""
-            query:
-                $ref: '#/definitions/Query'
-        type: object
-        required:
-            - list
-    ArticleResponse:
+    ArticleRes:
         description: ""
         properties:
             id:
@@ -1770,6 +1811,23 @@ definitions:
             - meta
             - content
             - template
+    ResultList$ArticleRes:
+        description: ""
+        properties:
+            list:
+                type: array
+                items:
+                    $ref: '#/definitions/ArticleRes'
+                description: ""
+            count:
+                type: number
+                format: double
+                description: ""
+            query:
+                $ref: '#/definitions/Query'
+        type: object
+        required:
+            - list
     Article:
         description: ""
         properties:
@@ -1828,24 +1886,7 @@ definitions:
             - meta
             - content
             - template
-    ResultList$Article:
-        description: ""
-        properties:
-            list:
-                type: array
-                items:
-                    $ref: '#/definitions/Article'
-                description: ""
-            count:
-                type: number
-                format: double
-                description: ""
-            query:
-                $ref: '#/definitions/Query'
-        type: object
-        required:
-            - list
-    CategoryResponse:
+    CategoryRes:
         description: ""
         properties:
             id:
@@ -1949,6 +1990,23 @@ definitions:
             - parent
             - paths
             - description
+    ResultList$CategoryRes:
+        description: ""
+        properties:
+            list:
+                type: array
+                items:
+                    $ref: '#/definitions/CategoryRes'
+                description: ""
+            count:
+                type: number
+                format: double
+                description: ""
+            query:
+                $ref: '#/definitions/Query'
+        type: object
+        required:
+            - list
     Category:
         description: ""
         properties:
@@ -1985,24 +2043,7 @@ definitions:
             - parent
             - paths
             - description
-    ResultList$Category:
-        description: ""
-        properties:
-            list:
-                type: array
-                items:
-                    $ref: '#/definitions/Category'
-                description: ""
-            count:
-                type: number
-                format: double
-                description: ""
-            query:
-                $ref: '#/definitions/Query'
-        type: object
-        required:
-            - list
-    MediaResponse:
+    MediaRes:
         description: ""
         properties:
             id:
@@ -2097,6 +2138,23 @@ definitions:
             - ext
             - url
             - uri
+    ResultList$MediaRes:
+        description: ""
+        properties:
+            list:
+                type: array
+                items:
+                    $ref: '#/definitions/MediaRes'
+                description: ""
+            count:
+                type: number
+                format: double
+                description: ""
+            query:
+                $ref: '#/definitions/Query'
+        type: object
+        required:
+            - list
     Media:
         description: ""
         properties:
@@ -2130,24 +2188,7 @@ definitions:
             - ext
             - url
             - uri
-    ResultList$Media:
-        description: ""
-        properties:
-            list:
-                type: array
-                items:
-                    $ref: '#/definitions/Media'
-                description: ""
-            count:
-                type: number
-                format: double
-                description: ""
-            query:
-                $ref: '#/definitions/Query'
-        type: object
-        required:
-            - list
-    PageResponse:
+    PageRes:
         description: ""
         properties:
             id:
@@ -2281,6 +2322,23 @@ definitions:
             - meta
             - content
             - template
+    ResultList$PageRes:
+        description: ""
+        properties:
+            list:
+                type: array
+                items:
+                    $ref: '#/definitions/PageRes'
+                description: ""
+            count:
+                type: number
+                format: double
+                description: ""
+            query:
+                $ref: '#/definitions/Query'
+        type: object
+        required:
+            - list
     Page:
         description: ""
         properties:
@@ -2331,24 +2389,7 @@ definitions:
             - publish
             - content
             - template
-    ResultList$Page:
-        description: ""
-        properties:
-            list:
-                type: array
-                items:
-                    $ref: '#/definitions/Page'
-                description: ""
-            count:
-                type: number
-                format: double
-                description: ""
-            query:
-                $ref: '#/definitions/Query'
-        type: object
-        required:
-            - list
-    WidgetResponse:
+    WidgetRes:
         description: ""
         properties:
             id:
@@ -2419,6 +2460,23 @@ definitions:
             - title
             - params
             - type
+    ResultList$WidgetRes:
+        description: ""
+        properties:
+            list:
+                type: array
+                items:
+                    $ref: '#/definitions/WidgetRes'
+                description: ""
+            count:
+                type: number
+                format: double
+                description: ""
+            query:
+                $ref: '#/definitions/Query'
+        type: object
+        required:
+            - list
     Widget:
         description: ""
         properties:
@@ -2444,23 +2502,6 @@ definitions:
             - title
             - type
             - params
-    ResultList$Widget:
-        description: ""
-        properties:
-            list:
-                type: array
-                items:
-                    $ref: '#/definitions/Widget'
-                description: ""
-            count:
-                type: number
-                format: double
-                description: ""
-            query:
-                $ref: '#/definitions/Query'
-        type: object
-        required:
-            - list
 info:
     description: 项目标准接口
     license:
@@ -2669,6 +2710,12 @@ paths:
                     type: number
                     format: double
                     default: 10
+                -
+                    description: ""
+                    in: query
+                    name: sort
+                    required: false
+                    type: string
     '/dict/{id}':
         get:
             operationId: DictsFindOne
@@ -2869,6 +2916,18 @@ paths:
                 -
                     description: ""
                     in: query
+                    name: group
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: role
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
                     name: page
                     required: false
                     type: number
@@ -2882,6 +2941,12 @@ paths:
                     type: number
                     format: double
                     default: 10
+                -
+                    description: ""
+                    in: query
+                    name: sort
+                    required: false
+                    type: string
     '/user/{id}':
         get:
             operationId: UsersFindOne
@@ -2891,7 +2956,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/User'
+                        $ref: '#/definitions/UserRes'
             description: ""
             tags:
                 - core
@@ -3015,6 +3080,12 @@ paths:
                     type: number
                     format: double
                     default: 10
+                -
+                    description: ""
+                    in: query
+                    name: sort
+                    required: false
+                    type: string
     /menu/permissions:
         get:
             operationId: MenusGetPermissionTags
@@ -3066,7 +3137,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/Menu'
+                        $ref: '#/definitions/MenuRes'
             description: ""
             tags:
                 - core
@@ -3113,6 +3184,12 @@ paths:
                     type: number
                     format: double
                     default: 10
+                -
+                    description: ""
+                    in: query
+                    name: sort
+                    required: false
+                    type: string
     '/log/{id}':
         get:
             operationId: LogsFindOne
@@ -3240,6 +3317,12 @@ paths:
                     type: number
                     format: double
                     default: 10
+                -
+                    description: ""
+                    in: query
+                    name: sort
+                    required: false
+                    type: string
     '/notice/{id}':
         get:
             operationId: NoticesFindOne
@@ -3443,6 +3526,12 @@ paths:
                     type: number
                     format: double
                     default: 10
+                -
+                    description: ""
+                    in: query
+                    name: sort
+                    required: false
+                    type: string
     '/setting/key/{key}':
         get:
             operationId: SettingsGetSettingsByKey
@@ -3590,6 +3679,12 @@ paths:
                     type: number
                     format: double
                     default: 10
+                -
+                    description: ""
+                    in: query
+                    name: sort
+                    required: false
+                    type: string
     '/role/{id}':
         get:
             operationId: RolesFindOne
@@ -3717,6 +3812,12 @@ paths:
                     type: number
                     format: double
                     default: 10
+                -
+                    description: ""
+                    in: query
+                    name: sort
+                    required: false
+                    type: string
     /group/tree:
         get:
             operationId: GroupsSearchTree
@@ -3872,6 +3973,12 @@ paths:
                     type: number
                     format: double
                     default: 10
+                -
+                    description: ""
+                    in: query
+                    name: sort
+                    required: false
+                    type: string
     '/appearance/name/{name}':
         get:
             operationId: AppearancesGetAppearanceByName
@@ -4043,7 +4150,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/ResultList$Photo'
+                        $ref: '#/definitions/ResultList$PhotoRes'
             description: ""
             tags:
                 - cms
@@ -4070,6 +4177,12 @@ paths:
                     type: number
                     format: double
                     default: 10
+                -
+                    description: ""
+                    in: query
+                    name: sort
+                    required: false
+                    type: string
     '/photo/{id}':
         delete:
             operationId: PhotoRemove
@@ -4146,7 +4259,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/ArticleResponse'
+                        $ref: '#/definitions/ArticleRes'
             description: ""
             tags:
                 - cms
@@ -4168,7 +4281,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/ArticleResponse'
+                        $ref: '#/definitions/ArticleRes'
             description: ""
             tags:
                 - cms
@@ -4191,7 +4304,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/ResultList$Article'
+                        $ref: '#/definitions/ResultList$ArticleRes'
             description: ""
             tags:
                 - cms
@@ -4200,12 +4313,6 @@ paths:
                     description: ""
                     in: query
                     name: keyword
-                    required: false
-                    type: string
-                -
-                    description: ""
-                    in: query
-                    name: category
                     required: false
                     type: string
                 -
@@ -4224,6 +4331,12 @@ paths:
                     type: number
                     format: double
                     default: 10
+                -
+                    description: ""
+                    in: query
+                    name: sort
+                    required: false
+                    type: string
     '/article/{id}':
         delete:
             operationId: ArticleRemove
@@ -4300,7 +4413,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/CategoryResponse'
+                        $ref: '#/definitions/CategoryRes'
             description: ""
             tags:
                 - cms
@@ -4322,7 +4435,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/CategoryResponse'
+                        $ref: '#/definitions/CategoryRes'
             description: ""
             tags:
                 - cms
@@ -4345,7 +4458,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/ResultList$Category'
+                        $ref: '#/definitions/ResultList$CategoryRes'
             description: ""
             tags:
                 - cms
@@ -4372,6 +4485,12 @@ paths:
                     type: number
                     format: double
                     default: 10
+                -
+                    description: ""
+                    in: query
+                    name: sort
+                    required: false
+                    type: string
     '/category/{id}':
         delete:
             operationId: CategoryRemove
@@ -4448,7 +4567,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/MediaResponse'
+                        $ref: '#/definitions/MediaRes'
             description: ""
             tags:
                 - cms
@@ -4470,7 +4589,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/MediaResponse'
+                        $ref: '#/definitions/MediaRes'
             description: ""
             tags:
                 - cms
@@ -4493,7 +4612,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/ResultList$Media'
+                        $ref: '#/definitions/ResultList$MediaRes'
             description: ""
             tags:
                 - cms
@@ -4520,6 +4639,12 @@ paths:
                     type: number
                     format: double
                     default: 10
+                -
+                    description: ""
+                    in: query
+                    name: sort
+                    required: false
+                    type: string
     '/media/{id}':
         delete:
             operationId: MediaRemove
@@ -4596,7 +4721,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/PageResponse'
+                        $ref: '#/definitions/PageRes'
             description: ""
             tags:
                 - cms
@@ -4618,7 +4743,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/PageResponse'
+                        $ref: '#/definitions/PageRes'
             description: ""
             tags:
                 - cms
@@ -4641,7 +4766,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/ResultList$Page'
+                        $ref: '#/definitions/ResultList$PageRes'
             description: ""
             tags:
                 - cms
@@ -4668,6 +4793,12 @@ paths:
                     type: number
                     format: double
                     default: 10
+                -
+                    description: ""
+                    in: query
+                    name: sort
+                    required: false
+                    type: string
     '/page/{id}':
         delete:
             operationId: PageRemove
@@ -4744,7 +4875,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/WidgetResponse'
+                        $ref: '#/definitions/WidgetRes'
             description: ""
             tags:
                 - cms
@@ -4766,7 +4897,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/WidgetResponse'
+                        $ref: '#/definitions/WidgetRes'
             description: ""
             tags:
                 - cms
@@ -4789,7 +4920,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/ResultList$Widget'
+                        $ref: '#/definitions/ResultList$WidgetRes'
             description: ""
             tags:
                 - cms
@@ -4816,6 +4947,12 @@ paths:
                     type: number
                     format: double
                     default: 10
+                -
+                    description: ""
+                    in: query
+                    name: sort
+                    required: false
+                    type: string
     '/widget/{id}':
         delete:
             operationId: WidgetRemove

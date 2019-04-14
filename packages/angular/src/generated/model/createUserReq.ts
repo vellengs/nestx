@@ -50,6 +50,10 @@ export interface CreateUserReq {
     /**
      * 
      */
+    isDisable: boolean;
+    /**
+     * 
+     */
     expired: number;
     /**
      * 
@@ -63,4 +67,12 @@ export interface CreateUserReq {
      * 
      */
     address?: string;
+    /**
+     * 
+     */
+    groups?: Array<string>;
+    /**
+     * 
+     */
+    roles?: Array<string>;
 }

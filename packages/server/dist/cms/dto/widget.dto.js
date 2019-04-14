@@ -6,9 +6,9 @@ exports.CreateWidgetDto = CreateWidgetDto;
 class EditWidgetDto {
 }
 exports.EditWidgetDto = EditWidgetDto;
-class WidgetResponse {
+class WidgetRes {
 }
-exports.WidgetResponse = WidgetResponse;
+exports.WidgetRes = WidgetRes;
 exports.WidgetResponseFields = [
     'id',
     'name',

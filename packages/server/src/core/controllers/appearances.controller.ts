@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, UseGuards, Param, Put, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  UseGuards,
+  Param,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
 import { ResultList, NullableParseIntPipe } from './../../common';
@@ -11,16 +20,20 @@ import { Tags } from 'nest-swagger';
 @Controller('appearance')
 @UseGuards(AuthGuard('jwt'))
 export class AppearancesController {
-  constructor(private readonly appearanceService: AppearancesService) { }
+  constructor(private readonly appearanceService: AppearancesService) {}
 
   @Post()
   async create(@Body() entry: CreateAppearanceReq) {
-    return this.appearanceService.create(plainToClass(CreateAppearanceReq, entry));
+    return this.appearanceService.create(
+      plainToClass(CreateAppearanceReq, entry),
+    );
   }
 
   @Put()
   async update(@Body() entry: EditAppearanceReq): Promise<Appearance> {
-    return this.appearanceService.update(plainToClass(EditAppearanceReq, entry));
+    return this.appearanceService.update(
+      plainToClass(EditAppearanceReq, entry),
+    );
   }
 
   @Get('search')
@@ -36,8 +49,9 @@ export class AppearancesController {
     @Query('keyword') keyword?: string,
     @Query('page', new NullableParseIntPipe()) page: number = 1,
     @Query('size', new NullableParseIntPipe()) size: number = 10,
+    @Query('sort') sort?: string,
   ): Promise<ResultList<Appearance>> {
-    return this.appearanceService.query(page, size, { keyword });
+    return this.appearanceService.querySearch(keyword, page, size, sort);
   }
 
   @Get('name/:name')
@@ -52,5 +66,4 @@ export class AppearancesController {
   async findOne(@Param('id') id: string): Promise<Appearance> {
     return this.appearanceService.findById(id);
   }
-
 }

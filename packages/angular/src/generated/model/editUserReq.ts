@@ -22,11 +22,7 @@ export interface EditUserReq {
     /**
      * 
      */
-    name: string;
-    /**
-     * 
-     */
-    mobile?: string;
+    username: string;
     /**
      * 
      */
@@ -34,11 +30,35 @@ export interface EditUserReq {
     /**
      * 
      */
-    roles?: Array<string>;
+    avatar: string;
     /**
      * 
      */
-    email?: string;
+    email: string;
+    /**
+     * 
+     */
+    name: string;
+    /**
+     * 
+     */
+    mobile: string;
+    /**
+     * 
+     */
+    isAdmin: boolean;
+    /**
+     * 
+     */
+    isApproved: boolean;
+    /**
+     * 
+     */
+    isDisable: boolean;
+    /**
+     * 
+     */
+    expired: number;
     /**
      * 
      */
@@ -51,4 +71,12 @@ export interface EditUserReq {
      * 
      */
     address?: string;
+    /**
+     * 
+     */
+    groups?: Array<string>;
+    /**
+     * 
+     */
+    roles?: Array<string>;
 }

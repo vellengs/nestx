@@ -9,18 +9,18 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { Photo } from './photo';
+import { MediaRes } from './mediaRes';
 import { Query } from './query';
 
 
 /**
  * 
  */
-export interface ResultListPhoto { 
+export interface ResultListMediaRes { 
     /**
      * 
      */
-    list: Array<Photo>;
+    list: Array<MediaRes>;
     /**
      * 
      */

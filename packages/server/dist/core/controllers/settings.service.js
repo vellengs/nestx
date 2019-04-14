@@ -23,23 +23,33 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const common_1 = require("@nestjs/common");
 const mongoose_2 = require("@nestjs/mongoose");
-const mongoose_service_1 = require("./../../common/services/mongoose.service");
+const common_2 = require("./../../common");
 const dto_1 = require("./../dto");
-let SettingsService = class SettingsService extends mongoose_service_1.MongooseService {
+let SettingsService = class SettingsService extends common_2.MongooseService {
     constructor(model) {
         super(model);
         this.model = model;
         this.defaultQueryFields = ['name', 'key', 'value', 'description'];
     }
+    querySearch(keyword, page, size, sort) {
+        const _super = Object.create(null, {
+            query: { get: () => super.query }
+        });
+        return __awaiter(this, void 0, void 0, function* () {
+            return _super.query.call(this, page, size, {}, { keyword, field: 'name' }, this.defaultQueryFields, sort);
+        });
+    }
     getSettingsByName(name) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = new dto_1.SettingsGroup();
             if (name) {
-                const docs = yield this.model.find({
-                    name: name
-                }).exec();
+                const docs = yield this.model
+                    .find({
+                    name: name,
+                })
+                    .exec();
                 if (docs) {
-                    docs.forEach((doc) => {
+                    docs.forEach(doc => {
                         result[doc.key] = doc.value;
                     });
                 }
@@ -49,9 +59,11 @@ let SettingsService = class SettingsService extends mongoose_service_1.MongooseS
     }
     getSettingsByKey(name) {
         return __awaiter(this, void 0, void 0, function* () {
-            const setting = yield this.model.findOne({
-                key: name
-            }).exec();
+            const setting = yield this.model
+                .findOne({
+                key: name,
+            })
+                .exec();
             return setting;
         });
     }
@@ -61,9 +73,11 @@ let SettingsService = class SettingsService extends mongoose_service_1.MongooseS
             for (let key of keys) {
                 const instance = {
                     key: key,
-                    value: entry[key]
+                    value: entry[key],
                 };
-                yield this.model.findOneAndUpdate({ key: key, name: name }, { $set: instance }, { upsert: true, 'new': true }).exec();
+                yield this.model
+                    .findOneAndUpdate({ key: key, name: name }, { $set: instance }, { upsert: true, new: true })
+                    .exec();
             }
             return this.getSettingsByName(name);
         });

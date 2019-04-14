@@ -19,6 +19,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const common_1 = require("@nestjs/common");
+const utils_1 = require("./../../utils");
 let MongooseService = class MongooseService {
     constructor(model) {
         this.model = model;
@@ -32,43 +33,101 @@ let MongooseService = class MongooseService {
     }
     update(entry, fields = this.defaultQueryFields) {
         return __awaiter(this, void 0, void 0, function* () {
-            const instance = yield this.model.findOneAndUpdate({ _id: entry.id }, { $set: entry }, { upsert: true, fields: this.getFields(fields), 'new': true }).exec();
+            const instance = yield this.model
+                .findOneAndUpdate({ _id: entry.id }, { $set: entry }, { upsert: true, fields: this.getFields(fields), new: true })
+                .exec();
             return instance;
         });
     }
-    query(page = 1, size = 10, query = {}, searchField = 'name', fields = this.defaultQueryFields, sort = { _id: 1 }) {
+    query(page = 1, size = 10, query = {}, search = { field: 'name' }, fields = this.defaultQueryFields, sort = { _id: 1 }, populate) {
         return __awaiter(this, void 0, void 0, function* () {
-            const criteria = {};
-            criteria[searchField] = new RegExp(query.keyword, 'i');
-            const condition = query.keyword ? criteria : {};
+            page = page < 1 ? 1 : page;
+            let condition = utils_1.Utils.strip(query);
+            if (search && search.keyword) {
+                condition[search.field] = new RegExp(search.keyword, 'i');
+            }
             const selectFields = this.getFields(fields);
-            const listQuery = this.model.find(condition).select(selectFields).sort(sort);
+            let listQuery = this.model
+                .find(condition)
+                .select(selectFields)
+                .sort(sort);
+            if (populate) {
+                listQuery = listQuery.populate(populate);
+            }
             const collection = this.model.find(condition);
             return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
+                const items = ((yield listQuery
+                    .limit(size)
+                    .skip(size * (page - 1))
+                    .lean()) || []).map((item) => {
+                    const id = item._id;
+                    return Object.assign({ id }, item);
+                });
                 let result = {
-                    list: yield listQuery.limit(size).skip(size * (page - 1)).lean(),
+                    list: items,
                     count: yield collection.countDocuments(),
                     query: {
                         page: page,
-                        size: size
-                    }
+                        size: size,
+                    },
                 };
                 resolve(result);
             }));
         });
     }
-    search(keyword, id, category = '', limit = 10, labelField = 'name', valueField = '_id', searchField = 'name') {
+    searchTree(model, keyword, id, category = '', limit = 10, labelField = 'name', valueField = '_id', searchField = 'name') {
         return __awaiter(this, void 0, void 0, function* () {
-            const criteria = {};
-            criteria[searchField] = new RegExp(keyword, 'i');
-            const query = keyword ? criteria : {};
+            const critical = {};
+            critical[searchField] = new RegExp(keyword, 'i');
+            const query = keyword ? critical : {};
             if (category) {
                 query.category = category;
             }
             const fields = {};
             fields[labelField] = 1;
             fields[valueField] = 1;
-            const docs = (yield this.model.find(query).select(fields)
+            fields['parent'] = 1;
+            const docs = (yield model
+                .find(query)
+                .select(fields)
+                .limit(limit)
+                .exec()) || [];
+            if (id && (mongoose_1.Types.ObjectId.isValid(id) || valueField !== '_id')) {
+                const conditions = {};
+                conditions[valueField] = id;
+                const selected = yield model.findOne(conditions).select(fields);
+                if (selected) {
+                    const found = docs.findIndex((doc) => doc[valueField] == id);
+                    if (found === -1) {
+                        docs.push(selected);
+                    }
+                }
+            }
+            return docs.map((item) => {
+                const result = {
+                    title: item[labelField],
+                    id: item[valueField],
+                    parent: item['parent'],
+                };
+                return result;
+            });
+        });
+    }
+    search(keyword, id, category = '', limit = 10, labelField = 'name', valueField = '_id', searchField = 'name') {
+        return __awaiter(this, void 0, void 0, function* () {
+            let query = {};
+            if (keyword) {
+                query[searchField] = new RegExp(keyword, 'i');
+            }
+            if (category) {
+                query.category = category;
+            }
+            const fields = {};
+            fields[labelField] = 1;
+            fields[valueField] = 1;
+            const docs = (yield this.model
+                .find(query)
+                .select(fields)
                 .limit(limit)
                 .exec()) || [];
             if (id && (mongoose_1.Types.ObjectId.isValid(id) || valueField !== '_id')) {
@@ -85,7 +144,7 @@ let MongooseService = class MongooseService {
             return docs.map((item) => {
                 const result = {
                     label: item[labelField],
-                    value: item[valueField]
+                    value: item[valueField],
                 };
                 return result;
             });

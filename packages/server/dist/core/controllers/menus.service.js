@@ -39,61 +39,91 @@ let MenusService = class MenusService extends mongoose_service_1.MongooseService
             'badge',
             'enable',
             'parent',
-            'isMenu'
+            'isMenu',
         ];
     }
     getAllPermissionTags() {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = (yield this.model.find({ isMenu: false }).select({
+            const result = (yield this.model
+                .find({ isMenu: false })
+                .select({
                 name: 1,
                 slug: 1,
-                link: 1
-            }).exec()) || [];
-            return result.map((r) => {
+                link: 1,
+            })
+                .exec()) || [];
+            return result.map(r => {
                 return { id: r._id, name: r.name, desc: r.link };
             });
         });
     }
-    query(index = 1, size = 10, query = {}, searchField = 'name', fields = this.defaultQueryFields, sort = { _id: 1 }) {
+    querySearch(isMenu, keyword, page = 1, size = 10, sort) {
         const _super = Object.create(null, {
             query: { get: () => super.query }
         });
         return __awaiter(this, void 0, void 0, function* () {
-            return _super.query.call(this, index, size, query, searchField, fields, sort);
+            const populate = [
+                {
+                    path: 'permissions',
+                    select: 'name',
+                },
+            ];
+            return _super.query.call(this, page, size, { isMenu }, {
+                keyword,
+                field: 'name',
+            }, this.defaultQueryFields, sort, populate);
         });
     }
     getAuthenticatedMenus(currentUser) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!currentUser) {
-                Promise.reject("user is not authenticated");
+                Promise.reject('user is not authenticated');
             }
             const fields = this.getFields(this.defaultQueryFields);
             if (!currentUser.isAdmin) {
                 const user = yield this.model.findById(currentUser.id, 'groups').exec();
                 const roles = user.toObject().roles || [];
-                const roleDocs = (yield this.groupModel.find({
-                    _id: { $in: roles }
-                }, 'permissions').exec()) || [];
+                const roleDocs = (yield this.groupModel
+                    .find({
+                    _id: { $in: roles },
+                }, 'permissions')
+                    .exec()) || [];
                 const permissions = [];
                 roleDocs.forEach((g) => {
                     permissions.push(...g.permissions);
                 });
-                const menus = yield this.model.find({
+                const menus = yield this.model
+                    .find({
                     _id: {
-                        $in: permissions
+                        $in: permissions,
                     },
-                    isMenu: true
-                }).select(fields);
+                    isMenu: true,
+                })
+                    .select(fields);
                 return menus;
             }
             else {
-                const menus = (yield this.model.find({
-                    isMenu: true
-                }).select(fields)).map(item => {
+                const menus = (yield this.model
+                    .find({
+                    isMenu: true,
+                })
+                    .select(fields)).map(item => {
                     return item;
                 });
                 return menus;
             }
+        });
+    }
+    getMenuById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const res = yield this.model
+                .findById(id)
+                .populate({
+                path: 'permissions',
+                select: 'name',
+            })
+                .exec();
+            return res;
         });
     }
 };

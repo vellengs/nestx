@@ -30,7 +30,7 @@ export class EditArticleDto {
     template: string;
 }
 
-export class ArticleResponse {
+export class ArticleRes {
     id: string;
     name: string;
     title: string;
@@ -47,7 +47,7 @@ export class ArticleResponse {
 
 export declare interface PaginateArticle {
     error?: Error;
-    list: ArticleResponse[];
+    list: ArticleRes[];
     total: number;
 }
 

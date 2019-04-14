@@ -1,16 +1,32 @@
-import { Controller, Get, Post, Body, UseGuards, Param, Put, ParseIntPipe, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  UseGuards,
+  Param,
+  Put,
+  ParseIntPipe,
+  Query,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
 import { SettingsService } from './settings.service';
 import { Setting } from './../interfaces';
-import { KeyValueDto, CreateSettingReq, EditSettingReq, SettingsGroup, SettingRes } from './../dto';
+import {
+  KeyValueDto,
+  CreateSettingReq,
+  EditSettingReq,
+  SettingsGroup,
+  SettingRes,
+} from './../dto';
 import { Tags } from 'nest-swagger';
 import { ResultList, NullableParseIntPipe } from './../../common';
 
 @Tags('core')
 @Controller('setting')
 export class SettingsController {
-  constructor(private readonly settingService: SettingsService) { }
+  constructor(private readonly settingService: SettingsService) {}
 
   @Post()
   @UseGuards(AuthGuard('jwt'))
@@ -27,7 +43,8 @@ export class SettingsController {
   @Put('name/:name')
   async updateSettingsByName(
     @Query('name') name: string,
-    @Body() entry: SettingsGroup): Promise<SettingsGroup> {
+    @Body() entry: SettingsGroup,
+  ): Promise<SettingsGroup> {
     return this.settingService.updateSettingsByName(name, entry);
   }
 
@@ -46,12 +63,15 @@ export class SettingsController {
     @Query('keyword') keyword?: string,
     @Query('page', new NullableParseIntPipe()) page: number = 1,
     @Query('size', new NullableParseIntPipe()) size: number = 10,
+    @Query('sort') sort?: string,
   ): Promise<ResultList<Setting>> {
-    return this.settingService.query(page, size, { keyword });
+    return this.settingService.querySearch(keyword, page, size, sort);
   }
 
   @Get('name/:name')
-  async getSettingsByName(@Query('name') name?: string): Promise<SettingsGroup> {
+  async getSettingsByName(
+    @Query('name') name?: string,
+  ): Promise<SettingsGroup> {
     return this.settingService.getSettingsByName(name);
   }
 
@@ -65,5 +85,4 @@ export class SettingsController {
   async findOne(@Param('id') id: string): Promise<Setting> {
     return this.settingService.findById(id);
   }
-
 }

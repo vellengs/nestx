@@ -10,4 +10,5 @@ __export(require("./interceptors"));
 __export(require("./middlewares/logger.middleware"));
 __export(require("./pipes"));
 __export(require("./services"));
+__export(require("./types"));
 //# sourceMappingURL=index.js.map

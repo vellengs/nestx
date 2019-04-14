@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, UseGuards, Param, Put, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  UseGuards,
+  Param,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
 import { ResultList, NullableParseIntPipe } from './../../common';
@@ -11,7 +20,7 @@ import { Tags } from 'nest-swagger';
 @Controller('role')
 @UseGuards(AuthGuard('jwt'))
 export class RolesController {
-  constructor(private readonly roleService: RolesService) { }
+  constructor(private readonly roleService: RolesService) {}
 
   @Post()
   async create(@Body() entry: CreateRoleReq) {
@@ -36,13 +45,13 @@ export class RolesController {
     @Query('keyword') keyword?: string,
     @Query('page', new NullableParseIntPipe()) page: number = 1,
     @Query('size', new NullableParseIntPipe()) size: number = 10,
+    @Query('sort') sort?: string,
   ): Promise<ResultList<Role>> {
-    return this.roleService.query(page, size, { keyword });
+    return this.roleService.querySearch(keyword, page, size, sort);
   }
 
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<Role> {
     return this.roleService.findById(id);
   }
-
 }

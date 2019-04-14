@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, UseGuards, Param, Put, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  UseGuards,
+  Param,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
 import { ResultList, NullableParseIntPipe } from './../../common';
@@ -11,7 +20,7 @@ import { Tags } from 'nest-swagger';
 @Controller('dict')
 @UseGuards(AuthGuard('jwt'))
 export class DictsController {
-  constructor(private readonly dictService: DictsService) { }
+  constructor(private readonly dictService: DictsService) {}
 
   @Post()
   async create(@Body() entry: CreateDictReq) {
@@ -36,13 +45,13 @@ export class DictsController {
     @Query('keyword') keyword?: string,
     @Query('page', new NullableParseIntPipe()) page: number = 1,
     @Query('size', new NullableParseIntPipe()) size: number = 10,
+    @Query('sort') sort?: string,
   ): Promise<ResultList<Dict>> {
-    return this.dictService.query(page, size, { keyword });
+    return this.dictService.querySearch(keyword, page, size, sort);
   }
 
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<Dict> {
     return this.dictService.findById(id);
   }
-
 }

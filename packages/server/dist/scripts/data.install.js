@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = require("fs");
 const path_1 = require("path");
-const models = ['Role', 'Dict', 'Menu', 'Setting', 'User'];
+const models = ['Role', 'Dict', 'Menu', 'Setting', 'User', 'Notice', 'Group'];
 class Installer {
     constructor(db) {
         this.db = db;

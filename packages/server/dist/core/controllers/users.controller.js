@@ -63,9 +63,9 @@ let UsersController = class UsersController {
             return this.usersService.search(keyword, value);
         });
     }
-    query(keyword, index = 1, size = 10) {
+    query(keyword, group, role, page = 1, size = 10, sort) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.usersService.query(index, size, { keyword }, 'name');
+            return this.usersService.querySearch(keyword, group, role, page, size, sort);
         });
     }
     removeAccountFromRole(role, accountId) {
@@ -109,7 +109,8 @@ __decorate([
 ], UsersController.prototype, "update", null);
 __decorate([
     common_1.Put('profile'),
-    __param(0, common_1.Body()), __param(1, common_1.Req()),
+    __param(0, common_1.Body()),
+    __param(1, common_1.Req()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [dto_1.EditProfileReq, Object]),
     __metadata("design:returntype", Promise)
@@ -125,15 +126,19 @@ __decorate([
 __decorate([
     common_1.Get('query'),
     __param(0, common_1.Query('keyword')),
-    __param(1, common_1.Query('index', new common_2.NullableParseIntPipe())),
-    __param(2, common_1.Query('size', new common_2.NullableParseIntPipe())),
+    __param(1, common_1.Query('group')),
+    __param(2, common_1.Query('role')),
+    __param(3, common_1.Query('page', new common_2.NullableParseIntPipe())),
+    __param(4, common_1.Query('size', new common_2.NullableParseIntPipe())),
+    __param(5, common_1.Query('sort')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Number, Number]),
+    __metadata("design:paramtypes", [String, String, String, Number, Number, String]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "query", null);
 __decorate([
     common_1.Delete('role'),
-    __param(0, common_1.Query('role')), __param(1, common_1.Query('id')),
+    __param(0, common_1.Query('role')),
+    __param(1, common_1.Query('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", Promise)

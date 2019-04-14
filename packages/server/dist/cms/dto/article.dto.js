@@ -6,9 +6,9 @@ exports.CreateArticleDto = CreateArticleDto;
 class EditArticleDto {
 }
 exports.EditArticleDto = EditArticleDto;
-class ArticleResponse {
+class ArticleRes {
 }
-exports.ArticleResponse = ArticleResponse;
+exports.ArticleRes = ArticleRes;
 exports.ArticleResponseFields = [
     'id',
     'name',

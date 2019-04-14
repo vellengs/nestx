@@ -1,5 +1,13 @@
 import { NzModalRef } from 'ng-zorro-antd';
-import { Component, Injector, Input, EventEmitter, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import {
+    Component,
+    Injector,
+    Input,
+    EventEmitter,
+    OnInit,
+    ViewChild,
+    AfterViewInit
+} from '@angular/core';
 import { SFComponent } from '@delon/form';
 import { BaseComponent } from '@shared/base/base.component';
 
@@ -7,8 +15,8 @@ import { BaseComponent } from '@shared/base/base.component';
     selector: 'app-base-detail',
     templateUrl: './base.detail.html'
 })
-export class BaseDetailComponent extends BaseComponent implements OnInit, AfterViewInit {
-
+export class BaseDetailComponent extends BaseComponent
+    implements OnInit, AfterViewInit {
     @Input() schema: any;
     @Input() model: any = {};
     @Input() formData: any = {};
@@ -20,9 +28,7 @@ export class BaseDetailComponent extends BaseComponent implements OnInit, AfterV
     @Input() context: any;
 
     modalRef: NzModalRef;
-    value: any = {
-
-    };
+    value: any = {};
 
     @ViewChild('sf') formRef: SFComponent;
 
@@ -32,20 +38,12 @@ export class BaseDetailComponent extends BaseComponent implements OnInit, AfterV
         this.modalRef = this.injector.get(NzModalRef);
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit() {}
 
-    }
+    ngOnInit(): void {}
 
-    ngOnInit(): void {
-
-    }
-
-    load(): void {
-
-    }
-    reload(): void {
-
-    }
+    load(): void {}
+    reload(): void {}
 
     reset() {
         this.formRef.reset();
@@ -55,12 +53,10 @@ export class BaseDetailComponent extends BaseComponent implements OnInit, AfterV
         this.value = $event;
     }
 
-    submit() {
+    submit() {}
 
-    }
-
-    onFormError() {
-
+    onFormError($event) {
+        // console.log('error:', $event);
     }
 
     async save(value) {

@@ -23,7 +23,11 @@ function bootstrap() {
         swagger_1.setupSwagger(app);
         app.enableCors();
         app.use(helmet());
-        app.useGlobalPipes(new common_1.ValidationPipe());
+        app.useGlobalPipes(new common_1.ValidationPipe({
+            transform: true,
+            whitelist: true,
+            forbidNonWhitelisted: true,
+        }));
         app.use(compression());
         yield app.listen(5600);
     });

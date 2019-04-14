@@ -1,126 +1,182 @@
-import { IsString, IsEmail, IsOptional, IsArray, IsBoolean, IsNumber } from 'class-validator';
+import {
+  IsString,
+  IsEmail,
+  IsOptional,
+  IsArray,
+  IsBoolean,
+  IsNumber,
+} from 'class-validator';
 
 export class CreateUserReq {
-    @IsString()
-    username: string;
-    @IsString()
-    password: string;
-    @IsString()
-    avatar: string;
-    @IsString()
-    email: string;
-    @IsString()
-    name: string;
-    @IsString()
-    mobile: string;
-    @IsBoolean()
-    isAdmin: boolean;
-    @IsBoolean()
-    isApproved: boolean;
-    @IsNumber()
-    expired: number;
+  @IsString()
+  username: string;
 
-    @IsOptional()
-    @IsString()
-    company?: string;
+  @IsString()
+  password: string;
 
-    @IsOptional()
-    @IsString()
-    siteUrl?: string;
+  @IsOptional()
+  @IsString()
+  avatar: string;
 
-    @IsOptional()
-    @IsString()
-    address?: string;
+  @IsOptional()
+  @IsString()
+  email: string;
+
+  @IsOptional()
+  @IsString()
+  name: string;
+
+  @IsString()
+  mobile: string;
+
+  @IsOptional()
+  @IsBoolean()
+  isAdmin: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  isApproved: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  isDisable: boolean;
+
+  @IsOptional()
+  @IsNumber()
+  expired: number;
+
+  @IsOptional()
+  @IsString()
+  company?: string;
+
+  @IsOptional()
+  @IsString()
+  siteUrl?: string;
+
+  @IsOptional()
+  @IsString()
+  address?: string;
+
+  @IsOptional()
+  @IsString({ each: true })
+  groups?: string[];
+
+  @IsOptional()
+  @IsString({ each: true })
+  roles?: string[];
+}
+
+export class EditUserReq {
+  @IsString()
+  id: string;
+
+  @IsString()
+  username: string;
+
+  @IsString()
+  @IsOptional()
+  password?: string;
+
+  @IsOptional()
+  @IsString()
+  avatar: string;
+
+  @IsOptional()
+  @IsString()
+  email: string;
+
+  @IsOptional()
+  @IsString()
+  name: string;
+
+  @IsString()
+  mobile: string;
+
+  @IsOptional()
+  @IsBoolean()
+  isAdmin: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  isApproved: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  isDisable: boolean;
+
+  @IsOptional()
+  @IsNumber()
+  expired: number;
+
+  @IsOptional()
+  @IsString()
+  company?: string;
+
+  @IsOptional()
+  @IsString()
+  siteUrl?: string;
+
+  @IsOptional()
+  @IsString()
+  address?: string;
+
+  @IsOptional()
+  @IsString({ each: true })
+  groups?: string[];
+
+  @IsOptional()
+  @IsString({ each: true })
+  roles?: string[];
 }
 
 export class EditProfileReq {
-    @IsString()
-    readonly name: string;
+  @IsString()
+  readonly name: string;
 
-    @IsString()
-    @IsOptional()
-    mobile?: string;
+  @IsString()
+  @IsOptional()
+  mobile?: string;
 
-    @IsString()
-    @IsOptional()
-    password?: string;
+  @IsString()
+  @IsOptional()
+  password?: string;
 
-    @IsArray()
-    @IsOptional()
-    roles?: string[];
+  @IsEmail()
+  @IsOptional()
+  email?: string;
 
-    @IsEmail()
-    @IsOptional()
-    email?: string;
+  @IsOptional()
+  @IsString()
+  company?: string;
 
-    @IsOptional()
-    @IsString()
-    company?: string;
+  @IsOptional()
+  @IsString()
+  siteUrl?: string;
 
-    @IsOptional()
-    @IsString()
-    siteUrl?: string;
-
-    @IsOptional()
-    @IsString()
-    address?: string;
-}
-
-
-export class EditUserReq {
-    @IsString()
-    id: string;
-    @IsString()
-    readonly name: string;
-
-    @IsString()
-    @IsOptional()
-    readonly mobile?: string;
-
-    @IsString()
-    @IsOptional()
-    password?: string;
-
-    @IsArray()
-    @IsOptional()
-    roles?: string[];
-
-    @IsEmail()
-    @IsOptional()
-    email?: string;
-
-    @IsOptional()
-    @IsString()
-    company?: string;
-
-    @IsOptional()
-    @IsString()
-    siteUrl?: string;
-
-    @IsOptional()
-    @IsString()
-    address?: string;
+  @IsOptional()
+  @IsString()
+  address?: string;
 }
 
 export class UserRes {
-    username: string;
-    avatar: string;
-    email: string;
-    name: string;
-    mobile: string;
-    roles?: string[];
-    isAdmin: boolean;
-    isApproved: boolean;
-    expired: number;
-    company?: string;
-    siteUrl?: string;
-    address?: string;
+  username: string;
+  avatar: string;
+  email: string;
+  name: string;
+  mobile: string;
+  roles?: string[];
+  isAdmin: boolean;
+  isApproved: boolean;
+  expired: number;
+  company?: string;
+  siteUrl?: string;
+  address?: string;
 }
 
 export class UsersOfRole {
-    @IsString()
-    role: string;
+  @IsString()
+  role: string;
 
-    @IsString({each: true})
-    userIds: string[];
+  @IsString({ each: true })
+  userIds: string[];
 }

@@ -233,13 +233,14 @@ export class CoreService {
      * @param keyword 
      * @param page 
      * @param size 
+     * @param sort 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public appearancesQuery(keyword?: string, page?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListAppearance>;
-    public appearancesQuery(keyword?: string, page?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListAppearance>>;
-    public appearancesQuery(keyword?: string, page?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListAppearance>>;
-    public appearancesQuery(keyword?: string, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public appearancesQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<ResultListAppearance>;
+    public appearancesQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListAppearance>>;
+    public appearancesQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListAppearance>>;
+    public appearancesQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -250,6 +251,9 @@ export class CoreService {
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (sort !== undefined && sort !== null) {
+            queryParameters = queryParameters.set('sort', <any>sort);
         }
 
         let headers = this.defaultHeaders;
@@ -462,13 +466,14 @@ export class CoreService {
      * @param keyword 
      * @param page 
      * @param size 
+     * @param sort 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dictsQuery(keyword?: string, page?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListDict>;
-    public dictsQuery(keyword?: string, page?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListDict>>;
-    public dictsQuery(keyword?: string, page?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListDict>>;
-    public dictsQuery(keyword?: string, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public dictsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<ResultListDict>;
+    public dictsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListDict>>;
+    public dictsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListDict>>;
+    public dictsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -479,6 +484,9 @@ export class CoreService {
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (sort !== undefined && sort !== null) {
+            queryParameters = queryParameters.set('sort', <any>sort);
         }
 
         let headers = this.defaultHeaders;
@@ -691,13 +699,14 @@ export class CoreService {
      * @param keyword 
      * @param page 
      * @param size 
+     * @param sort 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public groupsQuery(keyword?: string, page?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListGroup>;
-    public groupsQuery(keyword?: string, page?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListGroup>>;
-    public groupsQuery(keyword?: string, page?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListGroup>>;
-    public groupsQuery(keyword?: string, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public groupsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<ResultListGroup>;
+    public groupsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListGroup>>;
+    public groupsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListGroup>>;
+    public groupsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -708,6 +717,9 @@ export class CoreService {
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (sort !== undefined && sort !== null) {
+            queryParameters = queryParameters.set('sort', <any>sort);
         }
 
         let headers = this.defaultHeaders;
@@ -922,13 +934,14 @@ export class CoreService {
      * @param keyword 
      * @param page 
      * @param size 
+     * @param sort 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public logsQuery(keyword?: string, page?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListLog>;
-    public logsQuery(keyword?: string, page?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListLog>>;
-    public logsQuery(keyword?: string, page?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListLog>>;
-    public logsQuery(keyword?: string, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public logsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<ResultListLog>;
+    public logsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListLog>>;
+    public logsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListLog>>;
+    public logsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -939,6 +952,9 @@ export class CoreService {
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (sort !== undefined && sort !== null) {
+            queryParameters = queryParameters.set('sort', <any>sort);
         }
 
         let headers = this.defaultHeaders;
@@ -1019,9 +1035,9 @@ export class CoreService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public menusFindOne(id: string, observe?: 'body', reportProgress?: boolean): Observable<Menu>;
-    public menusFindOne(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Menu>>;
-    public menusFindOne(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Menu>>;
+    public menusFindOne(id: string, observe?: 'body', reportProgress?: boolean): Observable<MenuRes>;
+    public menusFindOne(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<MenuRes>>;
+    public menusFindOne(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<MenuRes>>;
     public menusFindOne(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling menusFindOne.');
@@ -1042,7 +1058,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Menu>(`${this.configuration.basePath}/menu/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<MenuRes>(`${this.configuration.basePath}/menu/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -1131,13 +1147,14 @@ export class CoreService {
      * @param keyword 
      * @param page 
      * @param size 
+     * @param sort 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListMenu>;
-    public menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListMenu>>;
-    public menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListMenu>>;
-    public menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<ResultListMenu>;
+    public menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListMenu>>;
+    public menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListMenu>>;
+    public menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (isMenu === null || isMenu === undefined) {
             throw new Error('Required parameter isMenu was null or undefined when calling menusQuery.');
         }
@@ -1154,6 +1171,9 @@ export class CoreService {
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (sort !== undefined && sort !== null) {
+            queryParameters = queryParameters.set('sort', <any>sort);
         }
 
         let headers = this.defaultHeaders;
@@ -1366,13 +1386,14 @@ export class CoreService {
      * @param keyword 
      * @param page 
      * @param size 
+     * @param sort 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public noticesQuery(keyword?: string, page?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListNotice>;
-    public noticesQuery(keyword?: string, page?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListNotice>>;
-    public noticesQuery(keyword?: string, page?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListNotice>>;
-    public noticesQuery(keyword?: string, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public noticesQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<ResultListNotice>;
+    public noticesQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListNotice>>;
+    public noticesQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListNotice>>;
+    public noticesQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -1383,6 +1404,9 @@ export class CoreService {
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (sort !== undefined && sort !== null) {
+            queryParameters = queryParameters.set('sort', <any>sort);
         }
 
         let headers = this.defaultHeaders;
@@ -1595,13 +1619,14 @@ export class CoreService {
      * @param keyword 
      * @param page 
      * @param size 
+     * @param sort 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public rolesQuery(keyword?: string, page?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListRole>;
-    public rolesQuery(keyword?: string, page?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListRole>>;
-    public rolesQuery(keyword?: string, page?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListRole>>;
-    public rolesQuery(keyword?: string, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public rolesQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<ResultListRole>;
+    public rolesQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListRole>>;
+    public rolesQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListRole>>;
+    public rolesQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -1612,6 +1637,9 @@ export class CoreService {
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (sort !== undefined && sort !== null) {
+            queryParameters = queryParameters.set('sort', <any>sort);
         }
 
         let headers = this.defaultHeaders;
@@ -1913,13 +1941,14 @@ export class CoreService {
      * @param keyword 
      * @param page 
      * @param size 
+     * @param sort 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public settingsQuery(keyword?: string, page?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListSetting>;
-    public settingsQuery(keyword?: string, page?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListSetting>>;
-    public settingsQuery(keyword?: string, page?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListSetting>>;
-    public settingsQuery(keyword?: string, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public settingsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<ResultListSetting>;
+    public settingsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListSetting>>;
+    public settingsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListSetting>>;
+    public settingsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -1930,6 +1959,9 @@ export class CoreService {
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (sort !== undefined && sort !== null) {
+            queryParameters = queryParameters.set('sort', <any>sort);
         }
 
         let headers = this.defaultHeaders;
@@ -2206,9 +2238,9 @@ export class CoreService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public usersFindOne(id: string, observe?: 'body', reportProgress?: boolean): Observable<User>;
-    public usersFindOne(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<User>>;
-    public usersFindOne(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<User>>;
+    public usersFindOne(id: string, observe?: 'body', reportProgress?: boolean): Observable<UserRes>;
+    public usersFindOne(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UserRes>>;
+    public usersFindOne(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UserRes>>;
     public usersFindOne(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling usersFindOne.');
@@ -2229,7 +2261,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<User>(`${this.configuration.basePath}/user/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<UserRes>(`${this.configuration.basePath}/user/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -2279,25 +2311,37 @@ export class CoreService {
      * 
      * 
      * @param keyword 
+     * @param group 
+     * @param role 
      * @param page 
      * @param size 
+     * @param sort 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public usersQuery(keyword?: string, page?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListUser>;
-    public usersQuery(keyword?: string, page?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListUser>>;
-    public usersQuery(keyword?: string, page?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListUser>>;
-    public usersQuery(keyword?: string, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<ResultListUser>;
+    public usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListUser>>;
+    public usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListUser>>;
+    public usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
+        }
+        if (group !== undefined && group !== null) {
+            queryParameters = queryParameters.set('group', <any>group);
+        }
+        if (role !== undefined && role !== null) {
+            queryParameters = queryParameters.set('role', <any>role);
         }
         if (page !== undefined && page !== null) {
             queryParameters = queryParameters.set('page', <any>page);
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (sort !== undefined && sort !== null) {
+            queryParameters = queryParameters.set('sort', <any>sort);
         }
 
         let headers = this.defaultHeaders;

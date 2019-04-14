@@ -6,9 +6,9 @@ exports.CreateCategoryDto = CreateCategoryDto;
 class EditCategoryDto {
 }
 exports.EditCategoryDto = EditCategoryDto;
-class CategoryResponse {
+class CategoryRes {
 }
-exports.CategoryResponse = CategoryResponse;
+exports.CategoryRes = CategoryRes;
 exports.CategoryResponseFields = [
     'id',
     'name',

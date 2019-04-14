@@ -12,11 +12,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
 import { GroupsService } from './groups.service';
 import { Group } from './../interfaces';
-import {
-  KeyValueDto,
-  CreateGroupReq,
-  EditGroupReq,
-} from './../dto';
+import { KeyValueDto, CreateGroupReq, EditGroupReq } from './../dto';
 import { Tags } from 'nest-swagger';
 import { ResultList, NullableParseIntPipe, TreeNode } from './../../common';
 
@@ -49,8 +45,9 @@ export class GroupsController {
     @Query('keyword') keyword?: string,
     @Query('page', new NullableParseIntPipe()) page: number = 1,
     @Query('size', new NullableParseIntPipe()) size: number = 10,
+    @Query('sort') sort?: string,
   ): Promise<ResultList<Group>> {
-    return this.groupService.query(page, size, { keyword });
+    return this.groupService.querySearch(keyword, page, size, sort);
   }
 
   @Get('tree')

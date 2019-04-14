@@ -523,6 +523,10 @@
 					"type": "boolean",
 					"description": ""
 				},
+				"isDisable": {
+					"type": "boolean",
+					"description": ""
+				},
 				"expired": {
 					"type": "number",
 					"format": "double",
@@ -539,6 +543,20 @@
 				"address": {
 					"type": "string",
 					"description": ""
+				},
+				"groups": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				},
+				"roles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
 				}
 			},
 			"type": "object",
@@ -551,6 +569,7 @@
 				"mobile",
 				"isAdmin",
 				"isApproved",
+				"isDisable",
 				"expired"
 			]
 		},
@@ -582,6 +601,22 @@
 					"type": "string",
 					"description": ""
 				},
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"password": {
+					"type": "string",
+					"description": ""
+				},
+				"avatar": {
+					"type": "string",
+					"description": ""
+				},
+				"email": {
+					"type": "string",
+					"description": ""
+				},
 				"name": {
 					"type": "string",
 					"description": ""
@@ -590,19 +625,21 @@
 					"type": "string",
 					"description": ""
 				},
-				"password": {
-					"type": "string",
+				"isAdmin": {
+					"type": "boolean",
 					"description": ""
 				},
-				"roles": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					},
+				"isApproved": {
+					"type": "boolean",
 					"description": ""
 				},
-				"email": {
-					"type": "string",
+				"isDisable": {
+					"type": "boolean",
+					"description": ""
+				},
+				"expired": {
+					"type": "number",
+					"format": "double",
 					"description": ""
 				},
 				"company": {
@@ -616,12 +653,34 @@
 				"address": {
 					"type": "string",
 					"description": ""
+				},
+				"groups": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				},
+				"roles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
 				}
 			},
 			"type": "object",
 			"required": [
 				"id",
-				"name"
+				"username",
+				"avatar",
+				"email",
+				"name",
+				"mobile",
+				"isAdmin",
+				"isApproved",
+				"isDisable",
+				"expired"
 			]
 		},
 		"EditProfileReq": {
@@ -637,13 +696,6 @@
 				},
 				"password": {
 					"type": "string",
-					"description": ""
-				},
-				"roles": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					},
 					"description": ""
 				},
 				"email": {
@@ -2068,6 +2120,30 @@
 				"uri"
 			]
 		},
+		"ResultList$PhotoRes": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PhotoRes"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
 		"Photo": {
 			"description": "",
 			"properties": {
@@ -2111,31 +2187,7 @@
 				"uri"
 			]
 		},
-		"ResultList$Photo": {
-			"description": "",
-			"properties": {
-				"list": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/Photo"
-					},
-					"description": ""
-				},
-				"count": {
-					"type": "number",
-					"format": "double",
-					"description": ""
-				},
-				"query": {
-					"$ref": "#/definitions/Query"
-				}
-			},
-			"type": "object",
-			"required": [
-				"list"
-			]
-		},
-		"ArticleResponse": {
+		"ArticleRes": {
 			"description": "",
 			"properties": {
 				"id": {
@@ -2347,6 +2399,30 @@
 				"template"
 			]
 		},
+		"ResultList$ArticleRes": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ArticleRes"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
 		"Article": {
 			"description": "",
 			"properties": {
@@ -2421,31 +2497,7 @@
 				"template"
 			]
 		},
-		"ResultList$Article": {
-			"description": "",
-			"properties": {
-				"list": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/Article"
-					},
-					"description": ""
-				},
-				"count": {
-					"type": "number",
-					"format": "double",
-					"description": ""
-				},
-				"query": {
-					"$ref": "#/definitions/Query"
-				}
-			},
-			"type": "object",
-			"required": [
-				"list"
-			]
-		},
-		"CategoryResponse": {
+		"CategoryRes": {
 			"description": "",
 			"properties": {
 				"id": {
@@ -2581,6 +2633,30 @@
 				"description"
 			]
 		},
+		"ResultList$CategoryRes": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/CategoryRes"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
 		"Category": {
 			"description": "",
 			"properties": {
@@ -2628,31 +2704,7 @@
 				"description"
 			]
 		},
-		"ResultList$Category": {
-			"description": "",
-			"properties": {
-				"list": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/Category"
-					},
-					"description": ""
-				},
-				"count": {
-					"type": "number",
-					"format": "double",
-					"description": ""
-				},
-				"query": {
-					"$ref": "#/definitions/Query"
-				}
-			},
-			"type": "object",
-			"required": [
-				"list"
-			]
-		},
-		"MediaResponse": {
+		"MediaRes": {
 			"description": "",
 			"properties": {
 				"id": {
@@ -2776,6 +2828,30 @@
 				"uri"
 			]
 		},
+		"ResultList$MediaRes": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/MediaRes"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
 		"Media": {
 			"description": "",
 			"properties": {
@@ -2819,31 +2895,7 @@
 				"uri"
 			]
 		},
-		"ResultList$Media": {
-			"description": "",
-			"properties": {
-				"list": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/Media"
-					},
-					"description": ""
-				},
-				"count": {
-					"type": "number",
-					"format": "double",
-					"description": ""
-				},
-				"query": {
-					"$ref": "#/definitions/Query"
-				}
-			},
-			"type": "object",
-			"required": [
-				"list"
-			]
-		},
-		"PageResponse": {
+		"PageRes": {
 			"description": "",
 			"properties": {
 				"id": {
@@ -3015,6 +3067,30 @@
 				"template"
 			]
 		},
+		"ResultList$PageRes": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PageRes"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
 		"Page": {
 			"description": "",
 			"properties": {
@@ -3079,31 +3155,7 @@
 				"template"
 			]
 		},
-		"ResultList$Page": {
-			"description": "",
-			"properties": {
-				"list": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/Page"
-					},
-					"description": ""
-				},
-				"count": {
-					"type": "number",
-					"format": "double",
-					"description": ""
-				},
-				"query": {
-					"$ref": "#/definitions/Query"
-				}
-			},
-			"type": "object",
-			"required": [
-				"list"
-			]
-		},
-		"WidgetResponse": {
+		"WidgetRes": {
 			"description": "",
 			"properties": {
 				"id": {
@@ -3197,6 +3249,30 @@
 				"type"
 			]
 		},
+		"ResultList$WidgetRes": {
+			"description": "",
+			"properties": {
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/WidgetRes"
+					},
+					"description": ""
+				},
+				"count": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"query": {
+					"$ref": "#/definitions/Query"
+				}
+			},
+			"type": "object",
+			"required": [
+				"list"
+			]
+		},
 		"Widget": {
 			"description": "",
 			"properties": {
@@ -3228,30 +3304,6 @@
 				"title",
 				"type",
 				"params"
-			]
-		},
-		"ResultList$Widget": {
-			"description": "",
-			"properties": {
-				"list": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/Widget"
-					},
-					"description": ""
-				},
-				"count": {
-					"type": "number",
-					"format": "double",
-					"description": ""
-				},
-				"query": {
-					"$ref": "#/definitions/Query"
-				}
-			},
-			"type": "object",
-			"required": [
-				"list"
 			]
 		}
 	},
@@ -3548,6 +3600,13 @@
 						"type": "number",
 						"format": "double",
 						"default": 10
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"type": "string"
 					}
 				]
 			}
@@ -3836,6 +3895,20 @@
 					{
 						"description": "",
 						"in": "query",
+						"name": "group",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "role",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
 						"name": "page",
 						"required": false,
 						"type": "number",
@@ -3850,6 +3923,13 @@
 						"type": "number",
 						"format": "double",
 						"default": 10
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"type": "string"
 					}
 				]
 			}
@@ -3864,7 +3944,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/User"
+							"$ref": "#/definitions/UserRes"
 						}
 					}
 				},
@@ -4035,6 +4115,13 @@
 						"type": "number",
 						"format": "double",
 						"default": 10
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"type": "string"
 					}
 				]
 			}
@@ -4111,7 +4198,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/Menu"
+							"$ref": "#/definitions/MenuRes"
 						}
 					}
 				},
@@ -4173,6 +4260,13 @@
 						"type": "number",
 						"format": "double",
 						"default": 10
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"type": "string"
 					}
 				]
 			}
@@ -4351,6 +4445,13 @@
 						"type": "number",
 						"format": "double",
 						"default": 10
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"type": "string"
 					}
 				]
 			}
@@ -4639,6 +4740,13 @@
 						"type": "number",
 						"format": "double",
 						"default": 10
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"type": "string"
 					}
 				]
 			}
@@ -4846,6 +4954,13 @@
 						"type": "number",
 						"format": "double",
 						"default": 10
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"type": "string"
 					}
 				]
 			}
@@ -5024,6 +5139,13 @@
 						"type": "number",
 						"format": "double",
 						"default": 10
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"type": "string"
 					}
 				]
 			}
@@ -5241,6 +5363,13 @@
 						"type": "number",
 						"format": "double",
 						"default": 10
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"type": "string"
 					}
 				]
 			}
@@ -5489,7 +5618,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/ResultList$Photo"
+							"$ref": "#/definitions/ResultList$PhotoRes"
 						}
 					}
 				},
@@ -5522,6 +5651,13 @@
 						"type": "number",
 						"format": "double",
 						"default": 10
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"type": "string"
 					}
 				]
 			}
@@ -5631,7 +5767,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/ArticleResponse"
+							"$ref": "#/definitions/ArticleRes"
 						}
 					}
 				},
@@ -5663,7 +5799,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/ArticleResponse"
+							"$ref": "#/definitions/ArticleRes"
 						}
 					}
 				},
@@ -5697,7 +5833,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/ResultList$Article"
+							"$ref": "#/definitions/ResultList$ArticleRes"
 						}
 					}
 				},
@@ -5710,13 +5846,6 @@
 						"description": "",
 						"in": "query",
 						"name": "keyword",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"description": "",
-						"in": "query",
-						"name": "category",
 						"required": false,
 						"type": "string"
 					},
@@ -5737,6 +5866,13 @@
 						"type": "number",
 						"format": "double",
 						"default": 10
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"type": "string"
 					}
 				]
 			}
@@ -5846,7 +5982,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/CategoryResponse"
+							"$ref": "#/definitions/CategoryRes"
 						}
 					}
 				},
@@ -5878,7 +6014,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/CategoryResponse"
+							"$ref": "#/definitions/CategoryRes"
 						}
 					}
 				},
@@ -5912,7 +6048,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/ResultList$Category"
+							"$ref": "#/definitions/ResultList$CategoryRes"
 						}
 					}
 				},
@@ -5945,6 +6081,13 @@
 						"type": "number",
 						"format": "double",
 						"default": 10
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"type": "string"
 					}
 				]
 			}
@@ -6054,7 +6197,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/MediaResponse"
+							"$ref": "#/definitions/MediaRes"
 						}
 					}
 				},
@@ -6086,7 +6229,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/MediaResponse"
+							"$ref": "#/definitions/MediaRes"
 						}
 					}
 				},
@@ -6120,7 +6263,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/ResultList$Media"
+							"$ref": "#/definitions/ResultList$MediaRes"
 						}
 					}
 				},
@@ -6153,6 +6296,13 @@
 						"type": "number",
 						"format": "double",
 						"default": 10
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"type": "string"
 					}
 				]
 			}
@@ -6262,7 +6412,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/PageResponse"
+							"$ref": "#/definitions/PageRes"
 						}
 					}
 				},
@@ -6294,7 +6444,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/PageResponse"
+							"$ref": "#/definitions/PageRes"
 						}
 					}
 				},
@@ -6328,7 +6478,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/ResultList$Page"
+							"$ref": "#/definitions/ResultList$PageRes"
 						}
 					}
 				},
@@ -6361,6 +6511,13 @@
 						"type": "number",
 						"format": "double",
 						"default": 10
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"type": "string"
 					}
 				]
 			}
@@ -6470,7 +6627,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/WidgetResponse"
+							"$ref": "#/definitions/WidgetRes"
 						}
 					}
 				},
@@ -6502,7 +6659,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/WidgetResponse"
+							"$ref": "#/definitions/WidgetRes"
 						}
 					}
 				},
@@ -6536,7 +6693,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/ResultList$Widget"
+							"$ref": "#/definitions/ResultList$WidgetRes"
 						}
 					}
 				},
@@ -6569,6 +6726,13 @@
 						"type": "number",
 						"format": "double",
 						"default": 10
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"type": "string"
 					}
 				]
 			}

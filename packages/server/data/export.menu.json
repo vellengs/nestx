@@ -125,14 +125,4 @@
     "link": "/system/menus",
     "slug": "menus",
     "permissions": []
-}, {
-    "_id": "5b25fd480231387d74c8c253",
-    "name": "接口配置",
-    "parent": "5b0d07b841b2399582a10b0b",
-    "paths": [],
-    "order": 100,
-    "isMenu": true,
-    "link": "/system/permission",
-    "slug": "permission",
-    "permissions": []
 }]

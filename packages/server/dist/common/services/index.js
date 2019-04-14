@@ -5,4 +5,6 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./controller.service"));
 __export(require("./repository.service"));
+__export(require("./mongoose.service"));
+__export(require("./typeScoped.service"));
 //# sourceMappingURL=index.js.map

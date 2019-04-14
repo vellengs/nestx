@@ -18,6 +18,10 @@ __decorate([
     __metadata("design:type", String)
 ], LoginReq.prototype, "username", void 0);
 __decorate([
+    class_validator_1.IsOptional(),
+    __metadata("design:type", String)
+], LoginReq.prototype, "type", void 0);
+__decorate([
     class_validator_1.IsNotEmpty(),
     class_validator_1.MinLength(5, {
         message: 'Your password is too short! It must be 5 characters or more!',

@@ -1,7 +1,8 @@
-import { Model, Document, Types } from 'mongoose';
+import { Model, Document, Types, ModelPopulateOptions } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { ObjectID } from 'typeorm';
 import { ResultList, TreeNode } from './../interfaces';
+import { Utils } from './../../utils';
 
 export interface IdentifyEntry {
   id: string | number | ObjectID;
@@ -10,6 +11,10 @@ export interface IdentifyEntry {
 
 export interface Criteria {
   [key: string]: any;
+}
+export interface SearParam {
+  field: string;
+  keyword?: string;
 }
 
 @Injectable()
@@ -37,27 +42,31 @@ export class MongooseService<T extends Document> {
     return instance;
   }
 
-  async query(
+  protected async query(
     page: number = 1,
     size: number = 10,
     query: Criteria = {},
-    searchField = 'name',
+    search: SearParam = { field: 'name' },
     fields: string[] = this.defaultQueryFields,
     sort: Criteria | string = { _id: 1 },
+    populate?: ModelPopulateOptions | ModelPopulateOptions[],
   ): Promise<ResultList<T>> {
     page = page < 1 ? 1 : page;
-
-    const criteria: Criteria = {};
-    criteria[searchField] = new RegExp(query.keyword, 'i');
-    const condition = query.keyword ? criteria : {};
-
+    let condition = Utils.strip(query);
+    if (search && search.keyword) {
+      condition[search.field] = new RegExp(search.keyword, 'i');
+    }
     const selectFields: Criteria = this.getFields(fields);
-    const listQuery = this.model
+    let listQuery = this.model
       .find(condition)
       .select(selectFields)
       .sort(sort);
-    const collection = this.model.find(condition);
 
+    if (populate) {
+      listQuery = listQuery.populate(populate);
+    }
+
+    const collection = this.model.find(condition);
     return new Promise<ResultList<T>>(async resolve => {
       const items = (
         (await listQuery

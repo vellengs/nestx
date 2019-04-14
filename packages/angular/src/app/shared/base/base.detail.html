@@ -1,7 +1,8 @@
-<sf #sf *ngIf="schema" [button]="'none'" [formData]="formData" (formChange)="formChanged($event)" [mode]="'edit'" [layout]="'inline'"
-  (formError)="onFormError($event)" [schema]="schema" (formSubmit)="submit($event)">
+<sf #sf *ngIf="schema" [button]="'none'" [formData]="formData" (formChange)="formChanged($event)" [mode]="'edit'"
+  [layout]="'inline'" (formError)="onFormError($event)" [schema]="schema" (formSubmit)="submit($event)">
   <div class="modal-footer">
     <button nz-button type="button" (click)="sf.reset()">重置</button>
-    <button nz-button type="submit" [nzType]="'primary'" (click)="save(sf.value)" [disabled]="!sf.valid" [nzLoading]="client.loading">保存</button>
+    <button nz-button type="submit" [nzType]="'primary'" (click)="save(sf.value)" [disabled]="!sf.valid"
+      [nzLoading]="client.loading">保存</button>
   </div>
 </sf>

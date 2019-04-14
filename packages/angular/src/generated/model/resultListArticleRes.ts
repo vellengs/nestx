@@ -9,18 +9,18 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { Category } from './category';
+import { ArticleRes } from './articleRes';
 import { Query } from './query';
 
 
 /**
  * 
  */
-export interface ResultListCategory { 
+export interface ResultListArticleRes { 
     /**
      * 
      */
-    list: Array<Category>;
+    list: Array<ArticleRes>;
     /**
      * 
      */

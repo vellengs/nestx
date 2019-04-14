@@ -14,7 +14,7 @@
 /**
  * 
  */
-export interface PageResponse { 
+export interface CategoryRes { 
     /**
      * 
      */
@@ -26,33 +26,21 @@ export interface PageResponse {
     /**
      * 
      */
-    title: string;
+    slug: string;
+    /**
+     * 
+     */
+    order: number;
+    /**
+     * 
+     */
+    parent: string;
+    /**
+     * 
+     */
+    paths: Array<string>;
     /**
      * 
      */
     description: string;
-    /**
-     * 
-     */
-    sort: number;
-    /**
-     * 
-     */
-    publish: string;
-    /**
-     * 
-     */
-    disable: boolean;
-    /**
-     * 
-     */
-    meta: string;
-    /**
-     * 
-     */
-    content: string;
-    /**
-     * 
-     */
-    template: string;
 }

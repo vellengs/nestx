@@ -10,20 +10,20 @@ import { Tags } from 'nest-swagger';
 @Controller('log')
 @UseGuards(AuthGuard('jwt'))
 export class LogsController {
-  constructor(private readonly logService: LogsService) { }
+  constructor(private readonly logService: LogsService) {}
 
   @Get('query')
   async query(
     @Query('keyword') keyword?: string,
     @Query('page', new NullableParseIntPipe()) page: number = 1,
     @Query('size', new NullableParseIntPipe()) size: number = 10,
+    @Query('sort') sort?: string,
   ): Promise<ResultList<Log>> {
-    return this.logService.query(page, size, { keyword });
+    return this.logService.querySearch(keyword, page, size, sort);
   }
 
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<Log> {
     return this.logService.findById(id);
   }
-
 }

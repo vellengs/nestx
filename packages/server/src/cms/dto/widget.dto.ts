@@ -13,7 +13,7 @@ export class EditWidgetDto {
     type: string;
 }
 
-export class WidgetResponse {
+export class WidgetRes {
     id: string;
     name: string;
     title: string;
@@ -31,6 +31,6 @@ export const WidgetResponseFields = [
 
 export declare interface PaginateWidget {
     error?: Error;
-    list: WidgetResponse[];
+    list: WidgetRes[];
     total: number;
 }

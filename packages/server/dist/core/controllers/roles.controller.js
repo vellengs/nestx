@@ -46,9 +46,9 @@ let RolesController = class RolesController {
             return this.roleService.search(keyword, value);
         });
     }
-    query(keyword, index = 1, size = 10) {
+    query(keyword, page = 1, size = 10, sort) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.roleService.query(index, size, { keyword });
+            return this.roleService.querySearch(keyword, page, size, sort);
         });
     }
     findOne(id) {
@@ -82,10 +82,11 @@ __decorate([
 __decorate([
     common_1.Get('query'),
     __param(0, common_1.Query('keyword')),
-    __param(1, common_1.Query('index', new common_2.NullableParseIntPipe())),
+    __param(1, common_1.Query('page', new common_2.NullableParseIntPipe())),
     __param(2, common_1.Query('size', new common_2.NullableParseIntPipe())),
+    __param(3, common_1.Query('sort')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Number, Number]),
+    __metadata("design:paramtypes", [String, Number, Number, String]),
     __metadata("design:returntype", Promise)
 ], RolesController.prototype, "query", null);
 __decorate([

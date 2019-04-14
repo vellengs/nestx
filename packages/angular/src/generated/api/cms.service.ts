@@ -19,9 +19,9 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 import { Article } from '../model/article';
-import { ArticleResponse } from '../model/articleResponse';
+import { ArticleRes } from '../model/articleRes';
 import { Category } from '../model/category';
-import { CategoryResponse } from '../model/categoryResponse';
+import { CategoryRes } from '../model/categoryRes';
 import { CreateArticleDto } from '../model/createArticleDto';
 import { CreateCategoryDto } from '../model/createCategoryDto';
 import { CreateMediaDto } from '../model/createMediaDto';
@@ -36,19 +36,19 @@ import { EditPhotoDto } from '../model/editPhotoDto';
 import { EditWidgetDto } from '../model/editWidgetDto';
 import { KeyValueDto } from '../model/keyValueDto';
 import { Media } from '../model/media';
-import { MediaResponse } from '../model/mediaResponse';
+import { MediaRes } from '../model/mediaRes';
 import { Page } from '../model/page';
-import { PageResponse } from '../model/pageResponse';
+import { PageRes } from '../model/pageRes';
 import { Photo } from '../model/photo';
 import { PhotoRes } from '../model/photoRes';
-import { ResultListArticle } from '../model/resultListArticle';
-import { ResultListCategory } from '../model/resultListCategory';
-import { ResultListMedia } from '../model/resultListMedia';
-import { ResultListPage } from '../model/resultListPage';
-import { ResultListPhoto } from '../model/resultListPhoto';
-import { ResultListWidget } from '../model/resultListWidget';
+import { ResultListArticleRes } from '../model/resultListArticleRes';
+import { ResultListCategoryRes } from '../model/resultListCategoryRes';
+import { ResultListMediaRes } from '../model/resultListMediaRes';
+import { ResultListPageRes } from '../model/resultListPageRes';
+import { ResultListPhotoRes } from '../model/resultListPhotoRes';
+import { ResultListWidgetRes } from '../model/resultListWidgetRes';
 import { Widget } from '../model/widget';
-import { WidgetResponse } from '../model/widgetResponse';
+import { WidgetRes } from '../model/widgetRes';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -96,9 +96,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public articleCreate(createArticleDto: CreateArticleDto, observe?: 'body', reportProgress?: boolean): Observable<ArticleResponse>;
-    public articleCreate(createArticleDto: CreateArticleDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ArticleResponse>>;
-    public articleCreate(createArticleDto: CreateArticleDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ArticleResponse>>;
+    public articleCreate(createArticleDto: CreateArticleDto, observe?: 'body', reportProgress?: boolean): Observable<ArticleRes>;
+    public articleCreate(createArticleDto: CreateArticleDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ArticleRes>>;
+    public articleCreate(createArticleDto: CreateArticleDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ArticleRes>>;
     public articleCreate(createArticleDto: CreateArticleDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (createArticleDto === null || createArticleDto === undefined) {
             throw new Error('Required parameter createArticleDto was null or undefined when calling articleCreate.');
@@ -124,7 +124,7 @@ export class CmsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<ArticleResponse>(`${this.configuration.basePath}/article/`,
+        return this.httpClient.post<ArticleRes>(`${this.configuration.basePath}/article/`,
             createArticleDto,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -179,29 +179,29 @@ export class CmsService {
      * 
      * 
      * @param keyword 
-     * @param category 
      * @param page 
      * @param size 
+     * @param sort 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public articleQuery(keyword?: string, category?: string, page?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListArticle>;
-    public articleQuery(keyword?: string, category?: string, page?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListArticle>>;
-    public articleQuery(keyword?: string, category?: string, page?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListArticle>>;
-    public articleQuery(keyword?: string, category?: string, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public articleQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<ResultListArticleRes>;
+    public articleQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListArticleRes>>;
+    public articleQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListArticleRes>>;
+    public articleQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
-        }
-        if (category !== undefined && category !== null) {
-            queryParameters = queryParameters.set('category', <any>category);
         }
         if (page !== undefined && page !== null) {
             queryParameters = queryParameters.set('page', <any>page);
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (sort !== undefined && sort !== null) {
+            queryParameters = queryParameters.set('sort', <any>sort);
         }
 
         let headers = this.defaultHeaders;
@@ -219,7 +219,7 @@ export class CmsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<ResultListArticle>(`${this.configuration.basePath}/article/query`,
+        return this.httpClient.get<ResultListArticleRes>(`${this.configuration.basePath}/article/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -324,9 +324,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public articleUpdate(editArticleDto: EditArticleDto, observe?: 'body', reportProgress?: boolean): Observable<ArticleResponse>;
-    public articleUpdate(editArticleDto: EditArticleDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ArticleResponse>>;
-    public articleUpdate(editArticleDto: EditArticleDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ArticleResponse>>;
+    public articleUpdate(editArticleDto: EditArticleDto, observe?: 'body', reportProgress?: boolean): Observable<ArticleRes>;
+    public articleUpdate(editArticleDto: EditArticleDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ArticleRes>>;
+    public articleUpdate(editArticleDto: EditArticleDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ArticleRes>>;
     public articleUpdate(editArticleDto: EditArticleDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (editArticleDto === null || editArticleDto === undefined) {
             throw new Error('Required parameter editArticleDto was null or undefined when calling articleUpdate.');
@@ -352,7 +352,7 @@ export class CmsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<ArticleResponse>(`${this.configuration.basePath}/article/`,
+        return this.httpClient.put<ArticleRes>(`${this.configuration.basePath}/article/`,
             editArticleDto,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -370,9 +370,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public categoryCreate(createCategoryDto: CreateCategoryDto, observe?: 'body', reportProgress?: boolean): Observable<CategoryResponse>;
-    public categoryCreate(createCategoryDto: CreateCategoryDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<CategoryResponse>>;
-    public categoryCreate(createCategoryDto: CreateCategoryDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<CategoryResponse>>;
+    public categoryCreate(createCategoryDto: CreateCategoryDto, observe?: 'body', reportProgress?: boolean): Observable<CategoryRes>;
+    public categoryCreate(createCategoryDto: CreateCategoryDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<CategoryRes>>;
+    public categoryCreate(createCategoryDto: CreateCategoryDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<CategoryRes>>;
     public categoryCreate(createCategoryDto: CreateCategoryDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (createCategoryDto === null || createCategoryDto === undefined) {
             throw new Error('Required parameter createCategoryDto was null or undefined when calling categoryCreate.');
@@ -398,7 +398,7 @@ export class CmsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<CategoryResponse>(`${this.configuration.basePath}/category/`,
+        return this.httpClient.post<CategoryRes>(`${this.configuration.basePath}/category/`,
             createCategoryDto,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -455,13 +455,14 @@ export class CmsService {
      * @param keyword 
      * @param page 
      * @param size 
+     * @param sort 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public categoryQuery(keyword?: string, page?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListCategory>;
-    public categoryQuery(keyword?: string, page?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListCategory>>;
-    public categoryQuery(keyword?: string, page?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListCategory>>;
-    public categoryQuery(keyword?: string, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public categoryQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<ResultListCategoryRes>;
+    public categoryQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListCategoryRes>>;
+    public categoryQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListCategoryRes>>;
+    public categoryQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -472,6 +473,9 @@ export class CmsService {
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (sort !== undefined && sort !== null) {
+            queryParameters = queryParameters.set('sort', <any>sort);
         }
 
         let headers = this.defaultHeaders;
@@ -489,7 +493,7 @@ export class CmsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<ResultListCategory>(`${this.configuration.basePath}/category/query`,
+        return this.httpClient.get<ResultListCategoryRes>(`${this.configuration.basePath}/category/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -594,9 +598,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public categoryUpdate(editCategoryDto: EditCategoryDto, observe?: 'body', reportProgress?: boolean): Observable<CategoryResponse>;
-    public categoryUpdate(editCategoryDto: EditCategoryDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<CategoryResponse>>;
-    public categoryUpdate(editCategoryDto: EditCategoryDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<CategoryResponse>>;
+    public categoryUpdate(editCategoryDto: EditCategoryDto, observe?: 'body', reportProgress?: boolean): Observable<CategoryRes>;
+    public categoryUpdate(editCategoryDto: EditCategoryDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<CategoryRes>>;
+    public categoryUpdate(editCategoryDto: EditCategoryDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<CategoryRes>>;
     public categoryUpdate(editCategoryDto: EditCategoryDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (editCategoryDto === null || editCategoryDto === undefined) {
             throw new Error('Required parameter editCategoryDto was null or undefined when calling categoryUpdate.');
@@ -622,7 +626,7 @@ export class CmsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<CategoryResponse>(`${this.configuration.basePath}/category/`,
+        return this.httpClient.put<CategoryRes>(`${this.configuration.basePath}/category/`,
             editCategoryDto,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -640,9 +644,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public mediaCreate(createMediaDto: CreateMediaDto, observe?: 'body', reportProgress?: boolean): Observable<MediaResponse>;
-    public mediaCreate(createMediaDto: CreateMediaDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<MediaResponse>>;
-    public mediaCreate(createMediaDto: CreateMediaDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<MediaResponse>>;
+    public mediaCreate(createMediaDto: CreateMediaDto, observe?: 'body', reportProgress?: boolean): Observable<MediaRes>;
+    public mediaCreate(createMediaDto: CreateMediaDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<MediaRes>>;
+    public mediaCreate(createMediaDto: CreateMediaDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<MediaRes>>;
     public mediaCreate(createMediaDto: CreateMediaDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (createMediaDto === null || createMediaDto === undefined) {
             throw new Error('Required parameter createMediaDto was null or undefined when calling mediaCreate.');
@@ -668,7 +672,7 @@ export class CmsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<MediaResponse>(`${this.configuration.basePath}/media/`,
+        return this.httpClient.post<MediaRes>(`${this.configuration.basePath}/media/`,
             createMediaDto,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -725,13 +729,14 @@ export class CmsService {
      * @param keyword 
      * @param page 
      * @param size 
+     * @param sort 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public mediaQuery(keyword?: string, page?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListMedia>;
-    public mediaQuery(keyword?: string, page?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListMedia>>;
-    public mediaQuery(keyword?: string, page?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListMedia>>;
-    public mediaQuery(keyword?: string, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public mediaQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<ResultListMediaRes>;
+    public mediaQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListMediaRes>>;
+    public mediaQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListMediaRes>>;
+    public mediaQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -742,6 +747,9 @@ export class CmsService {
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (sort !== undefined && sort !== null) {
+            queryParameters = queryParameters.set('sort', <any>sort);
         }
 
         let headers = this.defaultHeaders;
@@ -759,7 +767,7 @@ export class CmsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<ResultListMedia>(`${this.configuration.basePath}/media/query`,
+        return this.httpClient.get<ResultListMediaRes>(`${this.configuration.basePath}/media/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -864,9 +872,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public mediaUpdate(editMediaDto: EditMediaDto, observe?: 'body', reportProgress?: boolean): Observable<MediaResponse>;
-    public mediaUpdate(editMediaDto: EditMediaDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<MediaResponse>>;
-    public mediaUpdate(editMediaDto: EditMediaDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<MediaResponse>>;
+    public mediaUpdate(editMediaDto: EditMediaDto, observe?: 'body', reportProgress?: boolean): Observable<MediaRes>;
+    public mediaUpdate(editMediaDto: EditMediaDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<MediaRes>>;
+    public mediaUpdate(editMediaDto: EditMediaDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<MediaRes>>;
     public mediaUpdate(editMediaDto: EditMediaDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (editMediaDto === null || editMediaDto === undefined) {
             throw new Error('Required parameter editMediaDto was null or undefined when calling mediaUpdate.');
@@ -892,7 +900,7 @@ export class CmsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<MediaResponse>(`${this.configuration.basePath}/media/`,
+        return this.httpClient.put<MediaRes>(`${this.configuration.basePath}/media/`,
             editMediaDto,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -910,9 +918,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pageCreate(createPageDto: CreatePageDto, observe?: 'body', reportProgress?: boolean): Observable<PageResponse>;
-    public pageCreate(createPageDto: CreatePageDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageResponse>>;
-    public pageCreate(createPageDto: CreatePageDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageResponse>>;
+    public pageCreate(createPageDto: CreatePageDto, observe?: 'body', reportProgress?: boolean): Observable<PageRes>;
+    public pageCreate(createPageDto: CreatePageDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageRes>>;
+    public pageCreate(createPageDto: CreatePageDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageRes>>;
     public pageCreate(createPageDto: CreatePageDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (createPageDto === null || createPageDto === undefined) {
             throw new Error('Required parameter createPageDto was null or undefined when calling pageCreate.');
@@ -938,7 +946,7 @@ export class CmsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<PageResponse>(`${this.configuration.basePath}/page/`,
+        return this.httpClient.post<PageRes>(`${this.configuration.basePath}/page/`,
             createPageDto,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -995,13 +1003,14 @@ export class CmsService {
      * @param keyword 
      * @param page 
      * @param size 
+     * @param sort 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pageQuery(keyword?: string, page?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListPage>;
-    public pageQuery(keyword?: string, page?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListPage>>;
-    public pageQuery(keyword?: string, page?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListPage>>;
-    public pageQuery(keyword?: string, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public pageQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<ResultListPageRes>;
+    public pageQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListPageRes>>;
+    public pageQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListPageRes>>;
+    public pageQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -1012,6 +1021,9 @@ export class CmsService {
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (sort !== undefined && sort !== null) {
+            queryParameters = queryParameters.set('sort', <any>sort);
         }
 
         let headers = this.defaultHeaders;
@@ -1029,7 +1041,7 @@ export class CmsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<ResultListPage>(`${this.configuration.basePath}/page/query`,
+        return this.httpClient.get<ResultListPageRes>(`${this.configuration.basePath}/page/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1134,9 +1146,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pageUpdate(editPageDto: EditPageDto, observe?: 'body', reportProgress?: boolean): Observable<PageResponse>;
-    public pageUpdate(editPageDto: EditPageDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageResponse>>;
-    public pageUpdate(editPageDto: EditPageDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageResponse>>;
+    public pageUpdate(editPageDto: EditPageDto, observe?: 'body', reportProgress?: boolean): Observable<PageRes>;
+    public pageUpdate(editPageDto: EditPageDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageRes>>;
+    public pageUpdate(editPageDto: EditPageDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageRes>>;
     public pageUpdate(editPageDto: EditPageDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (editPageDto === null || editPageDto === undefined) {
             throw new Error('Required parameter editPageDto was null or undefined when calling pageUpdate.');
@@ -1162,7 +1174,7 @@ export class CmsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<PageResponse>(`${this.configuration.basePath}/page/`,
+        return this.httpClient.put<PageRes>(`${this.configuration.basePath}/page/`,
             editPageDto,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -1265,13 +1277,14 @@ export class CmsService {
      * @param keyword 
      * @param page 
      * @param size 
+     * @param sort 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public photoQuery(keyword?: string, page?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListPhoto>;
-    public photoQuery(keyword?: string, page?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListPhoto>>;
-    public photoQuery(keyword?: string, page?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListPhoto>>;
-    public photoQuery(keyword?: string, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public photoQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<ResultListPhotoRes>;
+    public photoQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListPhotoRes>>;
+    public photoQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListPhotoRes>>;
+    public photoQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -1282,6 +1295,9 @@ export class CmsService {
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (sort !== undefined && sort !== null) {
+            queryParameters = queryParameters.set('sort', <any>sort);
         }
 
         let headers = this.defaultHeaders;
@@ -1299,7 +1315,7 @@ export class CmsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<ResultListPhoto>(`${this.configuration.basePath}/photo/query`,
+        return this.httpClient.get<ResultListPhotoRes>(`${this.configuration.basePath}/photo/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1450,9 +1466,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public widgetCreate(createWidgetDto: CreateWidgetDto, observe?: 'body', reportProgress?: boolean): Observable<WidgetResponse>;
-    public widgetCreate(createWidgetDto: CreateWidgetDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<WidgetResponse>>;
-    public widgetCreate(createWidgetDto: CreateWidgetDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<WidgetResponse>>;
+    public widgetCreate(createWidgetDto: CreateWidgetDto, observe?: 'body', reportProgress?: boolean): Observable<WidgetRes>;
+    public widgetCreate(createWidgetDto: CreateWidgetDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<WidgetRes>>;
+    public widgetCreate(createWidgetDto: CreateWidgetDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<WidgetRes>>;
     public widgetCreate(createWidgetDto: CreateWidgetDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (createWidgetDto === null || createWidgetDto === undefined) {
             throw new Error('Required parameter createWidgetDto was null or undefined when calling widgetCreate.');
@@ -1478,7 +1494,7 @@ export class CmsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<WidgetResponse>(`${this.configuration.basePath}/widget/`,
+        return this.httpClient.post<WidgetRes>(`${this.configuration.basePath}/widget/`,
             createWidgetDto,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -1535,13 +1551,14 @@ export class CmsService {
      * @param keyword 
      * @param page 
      * @param size 
+     * @param sort 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public widgetQuery(keyword?: string, page?: number, size?: number, observe?: 'body', reportProgress?: boolean): Observable<ResultListWidget>;
-    public widgetQuery(keyword?: string, page?: number, size?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListWidget>>;
-    public widgetQuery(keyword?: string, page?: number, size?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListWidget>>;
-    public widgetQuery(keyword?: string, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public widgetQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<ResultListWidgetRes>;
+    public widgetQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListWidgetRes>>;
+    public widgetQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListWidgetRes>>;
+    public widgetQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -1552,6 +1569,9 @@ export class CmsService {
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (sort !== undefined && sort !== null) {
+            queryParameters = queryParameters.set('sort', <any>sort);
         }
 
         let headers = this.defaultHeaders;
@@ -1569,7 +1589,7 @@ export class CmsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<ResultListWidget>(`${this.configuration.basePath}/widget/query`,
+        return this.httpClient.get<ResultListWidgetRes>(`${this.configuration.basePath}/widget/query`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1674,9 +1694,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public widgetUpdate(editWidgetDto: EditWidgetDto, observe?: 'body', reportProgress?: boolean): Observable<WidgetResponse>;
-    public widgetUpdate(editWidgetDto: EditWidgetDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<WidgetResponse>>;
-    public widgetUpdate(editWidgetDto: EditWidgetDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<WidgetResponse>>;
+    public widgetUpdate(editWidgetDto: EditWidgetDto, observe?: 'body', reportProgress?: boolean): Observable<WidgetRes>;
+    public widgetUpdate(editWidgetDto: EditWidgetDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<WidgetRes>>;
+    public widgetUpdate(editWidgetDto: EditWidgetDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<WidgetRes>>;
     public widgetUpdate(editWidgetDto: EditWidgetDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (editWidgetDto === null || editWidgetDto === undefined) {
             throw new Error('Required parameter editWidgetDto was null or undefined when calling widgetUpdate.');
@@ -1702,7 +1722,7 @@ export class CmsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<WidgetResponse>(`${this.configuration.basePath}/widget/`,
+        return this.httpClient.put<WidgetRes>(`${this.configuration.basePath}/widget/`,
             editWidgetDto,
             {
                 withCredentials: this.configuration.withCredentials,

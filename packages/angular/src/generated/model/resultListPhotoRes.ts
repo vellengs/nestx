@@ -9,30 +9,21 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { PhotoRes } from './photoRes';
+import { Query } from './query';
 
 
 /**
  * 
  */
-export interface WidgetResponse { 
+export interface ResultListPhotoRes { 
     /**
      * 
      */
-    id: string;
+    list: Array<PhotoRes>;
     /**
      * 
      */
-    name: string;
-    /**
-     * 
-     */
-    title: string;
-    /**
-     * 
-     */
-    params: any;
-    /**
-     * 
-     */
-    type: string;
+    count?: number;
+    query?: Query;
 }

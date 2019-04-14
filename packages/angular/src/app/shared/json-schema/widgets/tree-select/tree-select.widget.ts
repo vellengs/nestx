@@ -40,7 +40,7 @@ export class TreeSelectWidgetComponent extends ControlWidget implements OnInit {
     static readonly KEY = 'tree-select';
 
     i: any;
-    nodes: NzTreeNode[];
+    nodes: NzTreeNode[] = [];
     hasGroup = false;
 
     ngOnInit(): void {

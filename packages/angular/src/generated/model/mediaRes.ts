@@ -14,7 +14,7 @@
 /**
  * 
  */
-export interface MediaResponse { 
+export interface MediaRes { 
     /**
      * 
      */
