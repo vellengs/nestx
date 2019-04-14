@@ -319,6 +319,9 @@ definitions:
     UserRes:
         description: ""
         properties:
+            id:
+                type: string
+                description: ""
             username:
                 type: string
                 description: ""
@@ -360,6 +363,7 @@ definitions:
                 description: ""
         type: object
         required:
+            - id
             - username
             - avatar
             - email
@@ -425,14 +429,8 @@ definitions:
         required:
             - username
             - password
-            - avatar
             - email
-            - name
             - mobile
-            - isAdmin
-            - isApproved
-            - isDisable
-            - expired
     UsersOfRole:
         description: ""
         properties:
@@ -507,15 +505,7 @@ definitions:
         type: object
         required:
             - id
-            - username
-            - avatar
-            - email
-            - name
             - mobile
-            - isAdmin
-            - isApproved
-            - isDisable
-            - expired
     EditProfileReq:
         description: ""
         properties:
@@ -2698,6 +2688,12 @@ paths:
                     description: ""
                     in: query
                     name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: category
                     required: false
                     type: string
                 -

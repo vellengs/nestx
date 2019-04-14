@@ -26,7 +26,7 @@ export interface CreateUserReq {
     /**
      * 
      */
-    avatar: string;
+    avatar?: string;
     /**
      * 
      */
@@ -34,7 +34,7 @@ export interface CreateUserReq {
     /**
      * 
      */
-    name: string;
+    name?: string;
     /**
      * 
      */
@@ -42,19 +42,19 @@ export interface CreateUserReq {
     /**
      * 
      */
-    isAdmin: boolean;
+    isAdmin?: boolean;
     /**
      * 
      */
-    isApproved: boolean;
+    isApproved?: boolean;
     /**
      * 
      */
-    isDisable: boolean;
+    isDisable?: boolean;
     /**
      * 
      */
-    expired: number;
+    expired?: number;
     /**
      * 
      */

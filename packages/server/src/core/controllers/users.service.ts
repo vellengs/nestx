@@ -171,6 +171,21 @@ export class UsersService extends MongooseService<UserModel> {
     return { ok: true };
   }
 
+  async update(
+    entry: IdentifyEntry,
+    fields: string[] = this.defaultQueryFields,
+  ): Promise<UserModel> {
+    delete entry.username; // should not change the username;
+    const instance = await this.model
+      .findOneAndUpdate(
+        { _id: entry.id },
+        { $set: entry },
+        { upsert: true, fields: this.getFields(fields), new: true },
+      )
+      .exec();
+    return instance;
+  }
+
   async updateProfile(userId: string, entry: EditProfileReq): Promise<UserRes> {
     const profileModel = await this.profileModel
       .findOneAndUpdate(

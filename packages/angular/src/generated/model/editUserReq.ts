@@ -22,7 +22,7 @@ export interface EditUserReq {
     /**
      * 
      */
-    username: string;
+    username?: string;
     /**
      * 
      */
@@ -30,15 +30,15 @@ export interface EditUserReq {
     /**
      * 
      */
-    avatar: string;
+    avatar?: string;
     /**
      * 
      */
-    email: string;
+    email?: string;
     /**
      * 
      */
-    name: string;
+    name?: string;
     /**
      * 
      */
@@ -46,19 +46,19 @@ export interface EditUserReq {
     /**
      * 
      */
-    isAdmin: boolean;
+    isAdmin?: boolean;
     /**
      * 
      */
-    isApproved: boolean;
+    isApproved?: boolean;
     /**
      * 
      */
-    isDisable: boolean;
+    isDisable?: boolean;
     /**
      * 
      */
-    expired: number;
+    expired?: number;
     /**
      * 
      */

@@ -464,20 +464,24 @@ export class CoreService {
      * 
      * 
      * @param keyword 
+     * @param category 
      * @param page 
      * @param size 
      * @param sort 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dictsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<ResultListDict>;
-    public dictsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListDict>>;
-    public dictsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListDict>>;
-    public dictsQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public dictsQuery(keyword?: string, category?: string, page?: number, size?: number, sort?: string, observe?: 'body', reportProgress?: boolean): Observable<ResultListDict>;
+    public dictsQuery(keyword?: string, category?: string, page?: number, size?: number, sort?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResultListDict>>;
+    public dictsQuery(keyword?: string, category?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListDict>>;
+    public dictsQuery(keyword?: string, category?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
+        }
+        if (category !== undefined && category !== null) {
+            queryParameters = queryParameters.set('category', <any>category);
         }
         if (page !== undefined && page !== null) {
             queryParameters = queryParameters.set('page', <any>page);
