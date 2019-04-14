@@ -16,34 +16,33 @@ export class CreateUserReq {
 
   @IsOptional()
   @IsString()
-  avatar: string;
+  avatar?: string;
 
-  @IsOptional()
   @IsString()
   email: string;
 
   @IsOptional()
   @IsString()
-  name: string;
+  name?: string;
 
   @IsString()
   mobile: string;
 
   @IsOptional()
   @IsBoolean()
-  isAdmin: boolean;
+  isAdmin?: boolean;
 
   @IsOptional()
   @IsBoolean()
-  isApproved: boolean;
+  isApproved?: boolean;
 
   @IsOptional()
   @IsBoolean()
-  isDisable: boolean;
+  isDisable?: boolean;
 
   @IsOptional()
   @IsNumber()
-  expired: number;
+  expired?: number;
 
   @IsOptional()
   @IsString()
@@ -71,7 +70,8 @@ export class EditUserReq {
   id: string;
 
   @IsString()
-  username: string;
+  @IsOptional()
+  username?: string;
 
   @IsString()
   @IsOptional()
@@ -79,34 +79,34 @@ export class EditUserReq {
 
   @IsOptional()
   @IsString()
-  avatar: string;
+  avatar?: string;
 
   @IsOptional()
   @IsString()
-  email: string;
+  email?: string;
 
   @IsOptional()
   @IsString()
-  name: string;
+  name?: string;
 
   @IsString()
   mobile: string;
 
   @IsOptional()
   @IsBoolean()
-  isAdmin: boolean;
+  isAdmin?: boolean;
 
   @IsOptional()
   @IsBoolean()
-  isApproved: boolean;
+  isApproved?: boolean;
 
   @IsOptional()
   @IsBoolean()
-  isDisable: boolean;
+  isDisable?: boolean;
 
   @IsOptional()
   @IsNumber()
-  expired: number;
+  expired?: number;
 
   @IsOptional()
   @IsString()
@@ -159,6 +159,7 @@ export class EditProfileReq {
 }
 
 export class UserRes {
+  id: string;
   username: string;
   avatar: string;
   email: string;

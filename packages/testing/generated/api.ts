@@ -1030,7 +1030,7 @@ export interface CreateUserReq {
      * @type {string}
      * @memberof CreateUserReq
      */
-    avatar: string;
+    avatar?: string;
     /**
      * 
      * @type {string}
@@ -1042,7 +1042,7 @@ export interface CreateUserReq {
      * @type {string}
      * @memberof CreateUserReq
      */
-    name: string;
+    name?: string;
     /**
      * 
      * @type {string}
@@ -1054,25 +1054,25 @@ export interface CreateUserReq {
      * @type {boolean}
      * @memberof CreateUserReq
      */
-    isAdmin: boolean;
+    isAdmin?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof CreateUserReq
      */
-    isApproved: boolean;
+    isApproved?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof CreateUserReq
      */
-    isDisable: boolean;
+    isDisable?: boolean;
     /**
      * 
      * @type {number}
      * @memberof CreateUserReq
      */
-    expired: number;
+    expired?: number;
     /**
      * 
      * @type {string}
@@ -1920,7 +1920,7 @@ export interface EditUserReq {
      * @type {string}
      * @memberof EditUserReq
      */
-    username: string;
+    username?: string;
     /**
      * 
      * @type {string}
@@ -1932,19 +1932,19 @@ export interface EditUserReq {
      * @type {string}
      * @memberof EditUserReq
      */
-    avatar: string;
+    avatar?: string;
     /**
      * 
      * @type {string}
      * @memberof EditUserReq
      */
-    email: string;
+    email?: string;
     /**
      * 
      * @type {string}
      * @memberof EditUserReq
      */
-    name: string;
+    name?: string;
     /**
      * 
      * @type {string}
@@ -1956,25 +1956,25 @@ export interface EditUserReq {
      * @type {boolean}
      * @memberof EditUserReq
      */
-    isAdmin: boolean;
+    isAdmin?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof EditUserReq
      */
-    isApproved: boolean;
+    isApproved?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof EditUserReq
      */
-    isDisable: boolean;
+    isDisable?: boolean;
     /**
      * 
      * @type {number}
      * @memberof EditUserReq
      */
-    expired: number;
+    expired?: number;
     /**
      * 
      * @type {string}
@@ -3709,6 +3709,12 @@ export interface User {
  * @interface UserRes
  */
 export interface UserRes {
+    /**
+     * 
+     * @type {string}
+     * @memberof UserRes
+     */
+    id: string;
     /**
      * 
      * @type {string}
@@ -7152,13 +7158,14 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * 
          * @param {string} [keyword] 
+         * @param {string} [category] 
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dictsQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
+        dictsQuery(keyword?: string, category?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/dict/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -7171,6 +7178,10 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (keyword !== undefined) {
                 localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (category !== undefined) {
+                localVarQueryParameter['category'] = category;
             }
 
             if (page !== undefined) {
@@ -8930,14 +8941,15 @@ export const CoreApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} [keyword] 
+         * @param {string} [category] 
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dictsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListDict> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).dictsQuery(keyword, page, size, sort, options);
+        dictsQuery(keyword?: string, category?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListDict> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).dictsQuery(keyword, category, page, size, sort, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9635,14 +9647,15 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
         /**
          * 
          * @param {string} [keyword] 
+         * @param {string} [category] 
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dictsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
-            return CoreApiFp(configuration).dictsQuery(keyword, page, size, sort, options)(axios, basePath);
+        dictsQuery(keyword?: string, category?: string, page?: number, size?: number, sort?: string, options?: any) {
+            return CoreApiFp(configuration).dictsQuery(keyword, category, page, size, sort, options)(axios, basePath);
         },
         /**
          * 
@@ -10177,6 +10190,7 @@ export class CoreApi extends BaseAPI {
     /**
      * 
      * @param {string} [keyword] 
+     * @param {string} [category] 
      * @param {number} [page] 
      * @param {number} [size] 
      * @param {string} [sort] 
@@ -10184,8 +10198,8 @@ export class CoreApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public dictsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
-        return CoreApiFp(this.configuration).dictsQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
+    public dictsQuery(keyword?: string, category?: string, page?: number, size?: number, sort?: string, options?: any) {
+        return CoreApiFp(this.configuration).dictsQuery(keyword, category, page, size, sort, options)(this.axios, this.basePath);
     }
 
     /**

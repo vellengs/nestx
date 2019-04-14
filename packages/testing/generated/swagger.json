@@ -423,6 +423,10 @@
 		"UserRes": {
 			"description": "",
 			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
 				"username": {
 					"type": "string",
 					"description": ""
@@ -478,6 +482,7 @@
 			},
 			"type": "object",
 			"required": [
+				"id",
 				"username",
 				"avatar",
 				"email",
@@ -563,14 +568,8 @@
 			"required": [
 				"username",
 				"password",
-				"avatar",
 				"email",
-				"name",
-				"mobile",
-				"isAdmin",
-				"isApproved",
-				"isDisable",
-				"expired"
+				"mobile"
 			]
 		},
 		"UsersOfRole": {
@@ -672,15 +671,7 @@
 			"type": "object",
 			"required": [
 				"id",
-				"username",
-				"avatar",
-				"email",
-				"name",
-				"mobile",
-				"isAdmin",
-				"isApproved",
-				"isDisable",
-				"expired"
+				"mobile"
 			]
 		},
 		"EditProfileReq": {
@@ -3587,6 +3578,13 @@
 						"description": "",
 						"in": "query",
 						"name": "keyword",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"description": "",
+						"in": "query",
+						"name": "category",
 						"required": false,
 						"type": "string"
 					},

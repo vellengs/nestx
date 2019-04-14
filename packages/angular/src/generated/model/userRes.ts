@@ -18,6 +18,10 @@ export interface UserRes {
     /**
      * 
      */
+    id: string;
+    /**
+     * 
+     */
     username: string;
     /**
      * 
