@@ -1,3 +1,4 @@
+
 # Nestx 
 
 ## 技术栈
@@ -9,4 +10,6 @@
 - Swagger
 - Lerna
 
+# nestx
+A full stack management system base on nest
 
