@@ -38,6 +38,73 @@ export class CreateUserReq {
   isApproved: boolean;
 
   @IsOptional()
+  @IsBoolean()
+  isDisable: boolean;
+
+  @IsOptional()
+  @IsNumber()
+  expired: number;
+
+  @IsOptional()
+  @IsString()
+  company?: string;
+
+  @IsOptional()
+  @IsString()
+  siteUrl?: string;
+
+  @IsOptional()
+  @IsString()
+  address?: string;
+
+  @IsOptional()
+  @IsString({ each: true })
+  groups?: string[];
+
+  @IsOptional()
+  @IsString({ each: true })
+  roles?: string[];
+}
+
+export class EditUserReq {
+  @IsString()
+  id: string;
+
+  @IsString()
+  username: string;
+
+  @IsString()
+  @IsOptional()
+  password?: string;
+
+  @IsOptional()
+  @IsString()
+  avatar: string;
+
+  @IsOptional()
+  @IsString()
+  email: string;
+
+  @IsOptional()
+  @IsString()
+  name: string;
+
+  @IsString()
+  mobile: string;
+
+  @IsOptional()
+  @IsBoolean()
+  isAdmin: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  isApproved: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  isDisable: boolean;
+
+  @IsOptional()
   @IsNumber()
   expired: number;
 
@@ -73,45 +140,6 @@ export class EditProfileReq {
   @IsString()
   @IsOptional()
   password?: string;
-
-  @IsArray()
-  @IsOptional()
-  roles?: string[];
-
-  @IsEmail()
-  @IsOptional()
-  email?: string;
-
-  @IsOptional()
-  @IsString()
-  company?: string;
-
-  @IsOptional()
-  @IsString()
-  siteUrl?: string;
-
-  @IsOptional()
-  @IsString()
-  address?: string;
-}
-
-export class EditUserReq {
-  @IsString()
-  id: string;
-  @IsString()
-  readonly name: string;
-
-  @IsString()
-  @IsOptional()
-  readonly mobile?: string;
-
-  @IsString()
-  @IsOptional()
-  password?: string;
-
-  @IsArray()
-  @IsOptional()
-  roles?: string[];
 
   @IsEmail()
   @IsOptional()

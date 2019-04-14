@@ -1,9 +1,4 @@
-import {
-  Appearance,
-  SchemaTypes as t,
-  WidgetTypes as w,
-  FormDefine,
-} from '../../common';
+import { Appearance, SchemaTypes as t, WidgetTypes as w } from '../../common';
 import { cloneDeep } from 'lodash';
 import { SFSchema } from '../../common';
 

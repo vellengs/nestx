@@ -99,7 +99,7 @@ export class UsersController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string): Promise<User> {
-    return this.usersService.findById(id);
+  async findOne(@Param('id') id: string): Promise<UserRes> {
+    return this.usersService.getProfile({ id });
   }
 }

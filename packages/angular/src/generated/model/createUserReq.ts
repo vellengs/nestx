@@ -50,6 +50,10 @@ export interface CreateUserReq {
     /**
      * 
      */
+    isDisable: boolean;
+    /**
+     * 
+     */
     expired: number;
     /**
      * 

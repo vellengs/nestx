@@ -206,7 +206,7 @@ export class UsersService extends MongooseService<UserModel> {
 
   async getProfile(entry: IdentifyEntry) {
     const user = await this.model
-      .findById(entry)
+      .findById(entry.id)
       .populate('profile')
       .exec();
     return this.plainProfile(user);

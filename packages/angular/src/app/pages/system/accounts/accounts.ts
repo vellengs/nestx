@@ -103,7 +103,6 @@ export class AccountsPageComponent extends BaseStandComponent
                 this.expandKeys.push(doc.id);
                 return new NzTreeNode(doc);
             });
-            console.log('loaded ...');
             this.nodes = nodes;
         });
         this.load();

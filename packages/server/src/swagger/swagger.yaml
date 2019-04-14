@@ -395,6 +395,9 @@ definitions:
             isApproved:
                 type: boolean
                 description: ""
+            isDisable:
+                type: boolean
+                description: ""
             expired:
                 type: number
                 format: double
@@ -428,6 +431,7 @@ definitions:
             - mobile
             - isAdmin
             - isApproved
+            - isDisable
             - expired
     UsersOfRole:
         description: ""
@@ -450,22 +454,36 @@ definitions:
             id:
                 type: string
                 description: ""
+            username:
+                type: string
+                description: ""
+            password:
+                type: string
+                description: ""
+            avatar:
+                type: string
+                description: ""
+            email:
+                type: string
+                description: ""
             name:
                 type: string
                 description: ""
             mobile:
                 type: string
                 description: ""
-            password:
-                type: string
+            isAdmin:
+                type: boolean
                 description: ""
-            roles:
-                type: array
-                items:
-                    type: string
+            isApproved:
+                type: boolean
                 description: ""
-            email:
-                type: string
+            isDisable:
+                type: boolean
+                description: ""
+            expired:
+                type: number
+                format: double
                 description: ""
             company:
                 type: string
@@ -476,10 +494,28 @@ definitions:
             address:
                 type: string
                 description: ""
+            groups:
+                type: array
+                items:
+                    type: string
+                description: ""
+            roles:
+                type: array
+                items:
+                    type: string
+                description: ""
         type: object
         required:
             - id
+            - username
+            - avatar
+            - email
             - name
+            - mobile
+            - isAdmin
+            - isApproved
+            - isDisable
+            - expired
     EditProfileReq:
         description: ""
         properties:
@@ -491,11 +527,6 @@ definitions:
                 description: ""
             password:
                 type: string
-                description: ""
-            roles:
-                type: array
-                items:
-                    type: string
                 description: ""
             email:
                 type: string
@@ -2925,7 +2956,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/User'
+                        $ref: '#/definitions/UserRes'
             description: ""
             tags:
                 - core
@@ -3942,6 +3973,12 @@ paths:
                     type: number
                     format: double
                     default: 10
+                -
+                    description: ""
+                    in: query
+                    name: sort
+                    required: false
+                    type: string
     '/appearance/name/{name}':
         get:
             operationId: AppearancesGetAppearanceByName

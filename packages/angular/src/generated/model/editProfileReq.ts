@@ -30,10 +30,6 @@ export interface EditProfileReq {
     /**
      * 
      */
-    roles?: Array<string>;
-    /**
-     * 
-     */
     email?: string;
     /**
      * 

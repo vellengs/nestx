@@ -1063,6 +1063,12 @@ export interface CreateUserReq {
     isApproved: boolean;
     /**
      * 
+     * @type {boolean}
+     * @memberof CreateUserReq
+     */
+    isDisable: boolean;
+    /**
+     * 
      * @type {number}
      * @memberof CreateUserReq
      */
@@ -1803,12 +1809,6 @@ export interface EditProfileReq {
     password?: string;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof EditProfileReq
-     */
-    roles?: Array<string>;
-    /**
-     * 
      * @type {string}
      * @memberof EditProfileReq
      */
@@ -1920,13 +1920,7 @@ export interface EditUserReq {
      * @type {string}
      * @memberof EditUserReq
      */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditUserReq
-     */
-    mobile?: string;
+    username: string;
     /**
      * 
      * @type {string}
@@ -1935,16 +1929,52 @@ export interface EditUserReq {
     password?: string;
     /**
      * 
-     * @type {Array<string>}
+     * @type {string}
      * @memberof EditUserReq
      */
-    roles?: Array<string>;
+    avatar: string;
     /**
      * 
      * @type {string}
      * @memberof EditUserReq
      */
-    email?: string;
+    email: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditUserReq
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditUserReq
+     */
+    mobile: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof EditUserReq
+     */
+    isAdmin: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof EditUserReq
+     */
+    isApproved: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof EditUserReq
+     */
+    isDisable: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof EditUserReq
+     */
+    expired: number;
     /**
      * 
      * @type {string}
@@ -1963,6 +1993,18 @@ export interface EditUserReq {
      * @memberof EditUserReq
      */
     address?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof EditUserReq
+     */
+    groups?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof EditUserReq
+     */
+    roles?: Array<string>;
 }
 
 /**
@@ -6928,10 +6970,11 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        appearancesQuery(keyword?: string, page?: number, size?: number, options: any = {}): RequestArgs {
+        appearancesQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/appearance/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -6952,6 +6995,10 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -8811,11 +8858,12 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        appearancesQuery(keyword?: string, page?: number, size?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListAppearance> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).appearancesQuery(keyword, page, size, options);
+        appearancesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListAppearance> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).appearancesQuery(keyword, page, size, sort, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9402,7 +9450,7 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
+        usersFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRes> {
             const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersFindOne(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -9534,11 +9582,12 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
+         * @param {string} [sort] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        appearancesQuery(keyword?: string, page?: number, size?: number, options?: any) {
-            return CoreApiFp(configuration).appearancesQuery(keyword, page, size, options)(axios, basePath);
+        appearancesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+            return CoreApiFp(configuration).appearancesQuery(keyword, page, size, sort, options)(axios, basePath);
         },
         /**
          * 
@@ -10064,12 +10113,13 @@ export class CoreApi extends BaseAPI {
      * @param {string} [keyword] 
      * @param {number} [page] 
      * @param {number} [size] 
+     * @param {string} [sort] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CoreApi
      */
-    public appearancesQuery(keyword?: string, page?: number, size?: number, options?: any) {
-        return CoreApiFp(this.configuration).appearancesQuery(keyword, page, size, options)(this.axios, this.basePath);
+    public appearancesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
+        return CoreApiFp(this.configuration).appearancesQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
     }
 
     /**

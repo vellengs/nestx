@@ -9,9 +9,8 @@ import {
 import { BaseComponent } from '@shared/base/base.component';
 import { CurdPage, FormSets } from 'types/types';
 import { BaseDetailComponent } from '@shared/base/base.detail.component';
-import { pickBy } from 'lodash';
+import { pickBy, pick } from 'lodash';
 import { STColumn, STComponent } from '@delon/abc';
-
 @Component({
     selector: 'app-base-stand',
     templateUrl: './base.stand.html'
@@ -114,13 +113,18 @@ export class BaseStandComponent extends BaseComponent implements CurdPage {
         const modelData = await this.client
             .get(`api/${this.domain}/` + entry.id)
             .toPromise();
+
+        const schema = this.formSets.edit;
+        const keys = Object.keys(schema.properties);
+        keys.push('id');
+        const formData = pick(modelData, keys);
         this.modalHelper
             .static(
                 BaseDetailComponent,
                 {
-                    schema: this.formSets.edit,
+                    schema,
                     onFormChanged: this.onEditFormChanged,
-                    formData: modelData,
+                    formData,
                     onSave: this.save,
                     context: this
                 },
@@ -134,11 +138,11 @@ export class BaseStandComponent extends BaseComponent implements CurdPage {
             });
     }
 
-    beforeSave(entry) {
+    beforeSave(entry: any) {
         return entry;
     }
 
-    async save(entry) {
+    async save(entry: any) {
         const url = `api/${this.domain}`;
         const instance = this.beforeSave(entry);
 
