@@ -520,13 +520,14 @@ export class CoreService {
      * 
      * @param keyword 
      * @param value 
+     * @param category 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dictsSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValueDto>>;
-    public dictsSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValueDto>>>;
-    public dictsSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValueDto>>>;
-    public dictsSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public dictsSearch(keyword?: string, value?: string, category?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValueDto>>;
+    public dictsSearch(keyword?: string, value?: string, category?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValueDto>>>;
+    public dictsSearch(keyword?: string, value?: string, category?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValueDto>>>;
+    public dictsSearch(keyword?: string, value?: string, category?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (keyword !== undefined && keyword !== null) {
@@ -534,6 +535,9 @@ export class CoreService {
         }
         if (value !== undefined && value !== null) {
             queryParameters = queryParameters.set('value', <any>value);
+        }
+        if (category !== undefined && category !== null) {
+            queryParameters = queryParameters.set('category', <any>category);
         }
 
         let headers = this.defaultHeaders;
