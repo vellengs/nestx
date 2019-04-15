@@ -1,6 +1,6 @@
 
 # Nestx 
-A full stack infrastructure base on nestjs <a href="README.zh-CN.md"> 中文说明 </a>
+A full stack infrastructure base on nestjs <a href="README.zh-CN.md"> 中文说明 </a> [demo](http://typerx.top) 
 
 ## What is Nestx
 Nestx is a full stack real project with nestjs base on nestjs framework.
@@ -19,7 +19,7 @@ Nestjs provides nodejs' back-end modular management, completed controller annota
 
 ## Why Swagger
 
-- Swagger is for rest api standard. good for decoupling development, it is a good tools to connect between backend and frontend.
+- Swagger is for rest api standard. good for decoupling development, it is a good tool to connect between backend and frontend.
 Swagger provides good choices for swagger -> front , swagger -> server -> front implement sequence.
 Swagger can easily generate front-end proxy codes, basic domain codes, and basic test interface codes, making coding easy and efficient etc.
 
@@ -37,7 +37,7 @@ Testing is necessary, it is code quality assurance, and the persistent test code
 
 ## Gets start
 
-prepare for change .env for your own settings
+prepare to change .env for your own settings
 
 ```
 npm install lerna -g

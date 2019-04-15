@@ -7,9 +7,11 @@ import {
   CommentSchema,
   MediaSchema,
   PageSchema,
-  PhotoSchema
+  PhotoSchema,
 } from './schemas';
 import { WidgetSchema } from './schemas/widget.schema';
+import { MulterModule } from '@nestjs/platform-express';
+import { ConfigModule, ConfigService } from './../config';
 
 const models = [
   { name: 'Article', schema: ArticleSchema },
@@ -22,9 +24,16 @@ const models = [
 ];
 @Module({
   imports: [
+    MulterModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        dest: configService.get('MULTER_DEST'),
+      }),
+      inject: [ConfigService],
+    }),
     MongooseModule.forFeature(models),
   ],
   controllers: [...CmsControllers],
   providers: [...CmsServices],
 })
-export class CmsModule { }
+export class CmsModule {}

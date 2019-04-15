@@ -6,13 +6,20 @@ import {
   Put,
   Delete,
   Param,
+  UseInterceptors,
+  UploadedFiles,
+  Logger,
+  UploadedFile,
 } from '@nestjs/common';
 import { Tags } from 'nest-swagger';
 import { MediaService } from './media.service';
 import { CreateMediaDto, MediaRes, EditMediaDto } from '../dto';
-import { NullableParseIntPipe, ResultList } from '../../common';
+import { NullableParseIntPipe, ResultList, Result } from '../../common';
 import { Media } from '../interfaces';
 import { KeyValueDto } from '../../core/dto';
+import { FilesInterceptor, FileInterceptor } from '@nestjs/platform-express';
+import { join } from 'path';
+import * as multer from 'multer';
 
 @Tags('cms')
 @Controller('media')
@@ -25,6 +32,23 @@ export class MediaController {
     @Query('value') value?: string,
   ): Promise<KeyValueDto[]> {
     return this.service.search(keyword, value);
+  }
+
+  @Post('upload')
+  @UseInterceptors(FileInterceptor('file'))
+  uploadFile(@UploadedFile() file: any): Promise<Result> {
+    console.log('file...:', file);
+    // const fileName = file.filename;
+    return Promise.resolve({
+      ok: true,
+      message: '...sfss',
+    });
+  }
+
+  @Post('uploads')
+  @UseInterceptors(FilesInterceptor('files'))
+  uploadFiles(@UploadedFiles() files: any) {
+    console.log(files);
   }
 
   @Post()

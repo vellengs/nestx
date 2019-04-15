@@ -1,1 +1,0 @@
-{"version":3,"file":"commerce.module.js","sourceRoot":"","sources":["../../src/commerce/commerce.module.ts"],"names":[],"mappings":";;;;;;;;AAAA,2CAAwC;AACxC,+DAA2D;AAC3D,yDAAqD;AAMrD,IAAa,cAAc,GAA3B,MAAa,cAAc;CAAI,CAAA;AAAlB,cAAc;IAJ1B,eAAM,CAAC;QACN,WAAW,EAAE,CAAC,wCAAkB,CAAC;QACjC,SAAS,EAAE,CAAC,kCAAe,CAAC;KAC7B,CAAC;GACW,cAAc,CAAI;AAAlB,wCAAc"}

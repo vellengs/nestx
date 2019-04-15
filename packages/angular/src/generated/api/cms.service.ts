@@ -47,6 +47,7 @@ import { ResultListMediaRes } from '../model/resultListMediaRes';
 import { ResultListPageRes } from '../model/resultListPageRes';
 import { ResultListPhotoRes } from '../model/resultListPhotoRes';
 import { ResultListWidgetRes } from '../model/resultListWidgetRes';
+import { UNKNOWN_BASE_TYPE } from '../model/uNKNOWNBASETYPE';
 import { Widget } from '../model/widget';
 import { WidgetRes } from '../model/widgetRes';
 
@@ -902,6 +903,96 @@ export class CmsService {
 
         return this.httpClient.put<MediaRes>(`${this.configuration.basePath}/media/`,
             editMediaDto,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param UNKNOWN_BASE_TYPE 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public mediaUploadFile(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public mediaUploadFile(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public mediaUploadFile(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public mediaUploadFile(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (UNKNOWN_BASE_TYPE === null || UNKNOWN_BASE_TYPE === undefined) {
+            throw new Error('Required parameter UNKNOWN_BASE_TYPE was null or undefined when calling mediaUploadFile.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.post<any>(`${this.configuration.basePath}/media/upload`,
+            UNKNOWN_BASE_TYPE,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param UNKNOWN_BASE_TYPE 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public mediaUploadFiles(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public mediaUploadFiles(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public mediaUploadFiles(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public mediaUploadFiles(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (UNKNOWN_BASE_TYPE === null || UNKNOWN_BASE_TYPE === undefined) {
+            throw new Error('Required parameter UNKNOWN_BASE_TYPE was null or undefined when calling mediaUploadFiles.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.post<any>(`${this.configuration.basePath}/media/uploads`,
+            UNKNOWN_BASE_TYPE,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

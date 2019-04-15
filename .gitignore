@@ -56,3 +56,9 @@ typings/
 # dotenv environment variables file
 .env
 
+#uploads
+uploadss
+
+
+#dist
+dist

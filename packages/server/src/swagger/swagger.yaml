@@ -122,6 +122,9 @@ definitions:
             ok:
                 type: boolean
                 description: ""
+            message:
+                type: string
+                description: ""
         type: object
         required:
             - ok
@@ -4600,6 +4603,48 @@ paths:
                     name: value
                     required: false
                     type: string
+    /media/upload:
+        post:
+            operationId: MediaUploadFile
+            produces:
+                - text/html
+            responses:
+                '204':
+                    description: 'No content'
+            description: ""
+            tags:
+                - cms
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: files
+                    required: true
+                    schema:
+                        type: object
+    /media/uploads:
+        post:
+            operationId: MediaUploadFiles
+            produces:
+                - text/html
+            responses:
+                '204':
+                    description: 'No content'
+            description: ""
+            tags:
+                - cms
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: files
+                    required: true
+                    schema:
+                        type: object
     /media/:
         post:
             operationId: MediaCreate

@@ -9,6 +9,18 @@ import { CoreModule } from './core/core.module';
 import { CommerceModule } from './commerce/commerce.module';
 import { CmsModule } from './cms/cms.module';
 import { MONGODB_URI } from './utils/secrets';
+import { MulterModule } from '@nestjs/platform-express';
+import { ConfigModule, ConfigService } from './config';
+import { resolve } from 'path';
+import * as multer from 'multer';
+
+// MulterModule.register({
+//   storage  // TODO can be store on cloud
+// }),
+
+const uploads = resolve(process.cwd(), 'uploads');
+
+console.log('uploads,,,', uploads);
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
@@ -21,4 +33,4 @@ import { MONGODB_URI } from './utils/secrets';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

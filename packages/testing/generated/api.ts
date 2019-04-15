@@ -3079,6 +3079,12 @@ export interface Result {
      * @memberof Result
      */
     ok: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof Result
+     */
+    message?: string;
 }
 
 /**
@@ -4956,6 +4962,76 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
         },
         /**
          * 
+         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaUploadFile(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options: any = {}): RequestArgs {
+            // verify required parameter 'UNKNOWN_BASE_TYPE' is not null or undefined
+            if (UNKNOWN_BASE_TYPE === null || UNKNOWN_BASE_TYPE === undefined) {
+                throw new RequiredError('UNKNOWN_BASE_TYPE','Required parameter UNKNOWN_BASE_TYPE was null or undefined when calling mediaUploadFile.');
+            }
+            const localVarPath = `/media/upload`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"UNKNOWN_BASE_TYPE" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(UNKNOWN_BASE_TYPE || {}) : (UNKNOWN_BASE_TYPE || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaUploadFiles(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options: any = {}): RequestArgs {
+            // verify required parameter 'UNKNOWN_BASE_TYPE' is not null or undefined
+            if (UNKNOWN_BASE_TYPE === null || UNKNOWN_BASE_TYPE === undefined) {
+                throw new RequiredError('UNKNOWN_BASE_TYPE','Required parameter UNKNOWN_BASE_TYPE was null or undefined when calling mediaUploadFiles.');
+            }
+            const localVarPath = `/media/uploads`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"UNKNOWN_BASE_TYPE" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(UNKNOWN_BASE_TYPE || {}) : (UNKNOWN_BASE_TYPE || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {CreatePageDto} createPageDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -5859,6 +5935,32 @@ export const CmsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaUploadFile(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).mediaUploadFile(UNKNOWN_BASE_TYPE, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaUploadFiles(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).mediaUploadFiles(UNKNOWN_BASE_TYPE, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @param {CreatePageDto} createPageDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6288,6 +6390,24 @@ export const CmsApiFactory = function (configuration?: Configuration, basePath?:
         },
         /**
          * 
+         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaUploadFile(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options?: any) {
+            return CmsApiFp(configuration).mediaUploadFile(UNKNOWN_BASE_TYPE, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        mediaUploadFiles(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options?: any) {
+            return CmsApiFp(configuration).mediaUploadFiles(UNKNOWN_BASE_TYPE, options)(axios, basePath);
+        },
+        /**
+         * 
          * @param {CreatePageDto} createPageDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6678,6 +6798,28 @@ export class CmsApi extends BaseAPI {
      */
     public mediaUpdate(editMediaDto: EditMediaDto, options?: any) {
         return CmsApiFp(this.configuration).mediaUpdate(editMediaDto, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public mediaUploadFile(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options?: any) {
+        return CmsApiFp(this.configuration).mediaUploadFile(UNKNOWN_BASE_TYPE, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public mediaUploadFiles(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options?: any) {
+        return CmsApiFp(this.configuration).mediaUploadFiles(UNKNOWN_BASE_TYPE, options)(this.axios, this.basePath);
     }
 
     /**
