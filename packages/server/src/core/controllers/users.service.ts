@@ -5,8 +5,6 @@ import { User, UserModel, VeryCodeModel } from './../interfaces';
 import {
   MongooseService,
   IdentifyEntry,
-  Criteria,
-  SearParam,
   ResultList,
   Result,
 } from './../../common';
@@ -194,7 +192,10 @@ export class UsersService extends MongooseService<UserModel> {
     const password = entry.newPassword;
 
     if (entry.newPassword != entry.confirm) {
-      Promise.reject('passwords no consist.');
+      return {
+        ok: false,
+        message: 'passwords no consist',
+      };
     }
 
     const account: any = await this.model
@@ -218,11 +219,14 @@ export class UsersService extends MongooseService<UserModel> {
 
     if (result) {
       account.password = password;
+      await account.save();
     } else {
-      Promise.reject('old password error');
+      return {
+        ok: false,
+        message: 'old password not equal',
+      };
     }
 
-    await account.save();
     return {
       ok: true,
     };
