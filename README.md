@@ -37,7 +37,7 @@ Testing is necessary, it is code quality assurance, and the persistent test code
 
 ## Gets start
 
-prepare for change .env for your own settings
+prepare: To change .env for your own settings
 
 ```
 npm install lerna -g
