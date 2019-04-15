@@ -384,6 +384,32 @@ export interface CategoryRes {
 /**
  * 
  * @export
+ * @interface ChangePasswordReq
+ */
+export interface ChangePasswordReq {
+    /**
+     * 
+     * @type {string}
+     * @memberof ChangePasswordReq
+     */
+    oldPassword: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChangePasswordReq
+     */
+    newPassword: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChangePasswordReq
+     */
+    confirm: string;
+}
+
+/**
+ * 
+ * @export
  * @interface CreateAppearanceReq
  */
 export interface CreateAppearanceReq {
@@ -8524,6 +8550,41 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {ChangePasswordReq} changePasswordReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersChangePassword(changePasswordReq: ChangePasswordReq, options: any = {}): RequestArgs {
+            // verify required parameter 'changePasswordReq' is not null or undefined
+            if (changePasswordReq === null || changePasswordReq === undefined) {
+                throw new RequiredError('changePasswordReq','Required parameter changePasswordReq was null or undefined when calling usersChangePassword.');
+            }
+            const localVarPath = `/user/password`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"ChangePasswordReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(changePasswordReq || {}) : (changePasswordReq || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {CreateUserReq} createUserReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9451,6 +9512,19 @@ export const CoreApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {ChangePasswordReq} changePasswordReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersChangePassword(changePasswordReq: ChangePasswordReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Result> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersChangePassword(changePasswordReq, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @param {CreateUserReq} createUserReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -10006,6 +10080,15 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
          */
         usersAddUsersToRole(usersOfRole: UsersOfRole, options?: any) {
             return CoreApiFp(configuration).usersAddUsersToRole(usersOfRole, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {ChangePasswordReq} changePasswordReq 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersChangePassword(changePasswordReq: ChangePasswordReq, options?: any) {
+            return CoreApiFp(configuration).usersChangePassword(changePasswordReq, options)(axios, basePath);
         },
         /**
          * 
@@ -10622,6 +10705,17 @@ export class CoreApi extends BaseAPI {
      */
     public usersAddUsersToRole(usersOfRole: UsersOfRole, options?: any) {
         return CoreApiFp(this.configuration).usersAddUsersToRole(usersOfRole, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {ChangePasswordReq} changePasswordReq 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public usersChangePassword(changePasswordReq: ChangePasswordReq, options?: any) {
+        return CoreApiFp(this.configuration).usersChangePassword(changePasswordReq, options)(this.axios, this.basePath);
     }
 
     /**

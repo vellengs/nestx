@@ -711,6 +711,29 @@
 				"name"
 			]
 		},
+		"ChangePasswordReq": {
+			"description": "",
+			"properties": {
+				"oldPassword": {
+					"type": "string",
+					"description": ""
+				},
+				"newPassword": {
+					"type": "string",
+					"description": ""
+				},
+				"confirm": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"oldPassword",
+				"newPassword",
+				"confirm"
+			]
+		},
 		"ResultList$User": {
 			"description": "",
 			"properties": {
@@ -3828,6 +3851,40 @@
 						"name": "id",
 						"required": true,
 						"type": "string"
+					}
+				]
+			}
+		},
+		"/user/password": {
+			"put": {
+				"operationId": "UsersChangePassword",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Result"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"core"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "entry",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ChangePasswordReq"
+						}
 					}
 				]
 			}

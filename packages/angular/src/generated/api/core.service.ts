@@ -19,6 +19,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 import { Appearance } from '../model/appearance';
+import { ChangePasswordReq } from '../model/changePasswordReq';
 import { CreateAppearanceReq } from '../model/createAppearanceReq';
 import { CreateDictReq } from '../model/createDictReq';
 import { CreateGroupReq } from '../model/createGroupReq';
@@ -2184,6 +2185,52 @@ export class CoreService {
 
         return this.httpClient.post<Result>(`${this.configuration.basePath}/user/role`,
             usersOfRole,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param changePasswordReq 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public usersChangePassword(changePasswordReq: ChangePasswordReq, observe?: 'body', reportProgress?: boolean): Observable<Result>;
+    public usersChangePassword(changePasswordReq: ChangePasswordReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Result>>;
+    public usersChangePassword(changePasswordReq: ChangePasswordReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Result>>;
+    public usersChangePassword(changePasswordReq: ChangePasswordReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (changePasswordReq === null || changePasswordReq === undefined) {
+            throw new Error('Required parameter changePasswordReq was null or undefined when calling usersChangePassword.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.put<Result>(`${this.configuration.basePath}/user/password`,
+            changePasswordReq,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

@@ -4,6 +4,7 @@ export * from './article';
 export * from './articleRes';
 export * from './category';
 export * from './categoryRes';
+export * from './changePasswordReq';
 export * from './createAppearanceReq';
 export * from './createArticleDto';
 export * from './createCategoryDto';

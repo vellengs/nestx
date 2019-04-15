@@ -8,10 +8,11 @@ import {
   Criteria,
   SearParam,
   ResultList,
+  Result,
 } from './../../common';
 import { RegisterReq } from './../../auth/dto/Register.dto';
 import { ObjectID } from 'typeorm';
-import { EditProfileReq, UserRes } from './../dto';
+import { EditProfileReq, UserRes, ChangePasswordReq } from './../dto';
 import { ObjectId } from 'bson';
 import { Utils } from 'utils';
 
@@ -184,6 +185,47 @@ export class UsersService extends MongooseService<UserModel> {
       )
       .exec();
     return instance;
+  }
+
+  async changePassword(
+    userId: string,
+    entry: ChangePasswordReq,
+  ): Promise<Result> {
+    const password = entry.newPassword;
+
+    if (entry.newPassword != entry.confirm) {
+      Promise.reject('passwords no consist.');
+    }
+
+    const account: any = await this.model
+      .findOne({
+        _id: userId,
+      })
+      .exec();
+
+    const result = await new Promise((resolve, reject) => {
+      account.comparePassword(
+        entry.oldPassword,
+        (error: any, isMatch: boolean) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(isMatch);
+          }
+        },
+      );
+    });
+
+    if (result) {
+      account.password = password;
+    } else {
+      Promise.reject('old password error');
+    }
+
+    await account.save();
+    return {
+      ok: true,
+    };
   }
 
   async updateProfile(userId: string, entry: EditProfileReq): Promise<UserRes> {
