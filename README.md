@@ -2,7 +2,7 @@
 # Nestx 
 A full stack infrastructure base on nestjs <a href="README.zh-CN.md"> 中文说明 </a>
 
-## 什么是 Nestx
+## What is Nestx
 Nestx is a full stack real project with nestjs base on nestjs framework.
 This project is infrastructure for scale and extendable system.
 
