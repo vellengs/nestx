@@ -13,14 +13,18 @@ import {
 } from '@nestjs/common';
 import { Tags } from 'nest-swagger';
 import { MediaService } from './media.service';
-import { CreateMediaDto, MediaRes, EditMediaDto } from '../dto';
-import { NullableParseIntPipe, ResultList, Result } from '../../common';
+import {
+  CreateMediaDto,
+  MediaRes,
+  EditMediaDto,
+  UploadRes,
+  UploadMultipleRes,
+  MediaFile,
+} from '../dto';
+import { NullableParseIntPipe, ResultList } from '../../common';
 import { Media } from '../interfaces';
 import { KeyValueDto } from '../../core/dto';
 import { FilesInterceptor, FileInterceptor } from '@nestjs/platform-express';
-import { join } from 'path';
-import * as multer from 'multer';
-
 @Tags('cms')
 @Controller('media')
 export class MediaController {
@@ -36,19 +40,23 @@ export class MediaController {
 
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
-  uploadFile(@UploadedFile() file: any): Promise<Result> {
-    console.log('file...:', file);
-    // const fileName = file.filename;
-    return Promise.resolve({
+  async uploadFile(@UploadedFile() file: MediaFile): Promise<UploadRes> {
+    return {
       ok: true,
-      message: '...sfss',
-    });
+      file: file.path,
+    };
   }
 
   @Post('uploads')
   @UseInterceptors(FilesInterceptor('files'))
-  uploadFiles(@UploadedFiles() files: any) {
-    console.log(files);
+  async uploadFiles(
+    @UploadedFiles() files?: MediaFile[],
+  ): Promise<UploadMultipleRes> {
+    const fileNames = (files || []).map(item => item.path);
+    return {
+      ok: true,
+      files: fileNames,
+    };
   }
 
   @Post()

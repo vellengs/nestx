@@ -1121,8 +1121,14 @@ definitions:
             - description
     SettingsGroup:
         description: ""
-        properties: {}
+        properties:
+            options:
+                type: object
+                properties: {}
+                description: ""
         type: object
+        required:
+            - options
     ResultList$Setting:
         description: ""
         properties:
@@ -2053,6 +2059,76 @@ definitions:
             - parent
             - paths
             - description
+    UploadRes:
+        description: ""
+        properties:
+            ok:
+                type: boolean
+                description: ""
+            error:
+                type: string
+                description: ""
+            file:
+                type: string
+                description: ""
+        type: object
+        required:
+            - ok
+    MediaFile:
+        description: ""
+        properties:
+            fieldname:
+                type: string
+                description: ""
+            originalname:
+                type: string
+                description: ""
+            encoding:
+                type: string
+                description: ""
+            mimetype:
+                type: string
+                description: ""
+            destination:
+                type: string
+                description: ""
+            filename:
+                type: string
+                description: ""
+            path:
+                type: string
+                description: ""
+            size:
+                type: number
+                format: double
+                description: ""
+        type: object
+        required:
+            - fieldname
+            - originalname
+            - encoding
+            - mimetype
+            - destination
+            - filename
+            - path
+            - size
+    UploadMultipleRes:
+        description: ""
+        properties:
+            ok:
+                type: boolean
+                description: ""
+            error:
+                type: string
+                description: ""
+            files:
+                type: array
+                items:
+                    type: string
+                description: ""
+        type: object
+        required:
+            - ok
     MediaRes:
         description: ""
         properties:
@@ -4607,10 +4683,12 @@ paths:
         post:
             operationId: MediaUploadFile
             produces:
-                - text/html
+                - application/json
             responses:
-                '204':
-                    description: 'No content'
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/UploadRes'
             description: ""
             tags:
                 - cms
@@ -4620,18 +4698,20 @@ paths:
                 -
                     description: ""
                     in: body
-                    name: files
+                    name: file
                     required: true
                     schema:
-                        type: object
+                        $ref: '#/definitions/MediaFile'
     /media/uploads:
         post:
             operationId: MediaUploadFiles
             produces:
-                - text/html
+                - application/json
             responses:
-                '204':
-                    description: 'No content'
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/UploadMultipleRes'
             description: ""
             tags:
                 - cms
@@ -4642,9 +4722,11 @@ paths:
                     description: ""
                     in: body
                     name: files
-                    required: true
+                    required: false
                     schema:
-                        type: object
+                        type: array
+                    items:
+                        $ref: '#/definitions/MediaFile'
     /media/:
         post:
             operationId: MediaCreate

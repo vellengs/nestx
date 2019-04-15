@@ -36,6 +36,7 @@ import { EditPhotoDto } from '../model/editPhotoDto';
 import { EditWidgetDto } from '../model/editWidgetDto';
 import { KeyValueDto } from '../model/keyValueDto';
 import { Media } from '../model/media';
+import { MediaFile } from '../model/mediaFile';
 import { MediaRes } from '../model/mediaRes';
 import { Page } from '../model/page';
 import { PageRes } from '../model/pageRes';
@@ -47,7 +48,8 @@ import { ResultListMediaRes } from '../model/resultListMediaRes';
 import { ResultListPageRes } from '../model/resultListPageRes';
 import { ResultListPhotoRes } from '../model/resultListPhotoRes';
 import { ResultListWidgetRes } from '../model/resultListWidgetRes';
-import { UNKNOWN_BASE_TYPE } from '../model/uNKNOWNBASETYPE';
+import { UploadMultipleRes } from '../model/uploadMultipleRes';
+import { UploadRes } from '../model/uploadRes';
 import { Widget } from '../model/widget';
 import { WidgetRes } from '../model/widgetRes';
 
@@ -915,22 +917,23 @@ export class CmsService {
     /**
      * 
      * 
-     * @param UNKNOWN_BASE_TYPE 
+     * @param mediaFile 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public mediaUploadFile(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public mediaUploadFile(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public mediaUploadFile(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public mediaUploadFile(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (UNKNOWN_BASE_TYPE === null || UNKNOWN_BASE_TYPE === undefined) {
-            throw new Error('Required parameter UNKNOWN_BASE_TYPE was null or undefined when calling mediaUploadFile.');
+    public mediaUploadFile(mediaFile: MediaFile, observe?: 'body', reportProgress?: boolean): Observable<UploadRes>;
+    public mediaUploadFile(mediaFile: MediaFile, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UploadRes>>;
+    public mediaUploadFile(mediaFile: MediaFile, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UploadRes>>;
+    public mediaUploadFile(mediaFile: MediaFile, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (mediaFile === null || mediaFile === undefined) {
+            throw new Error('Required parameter mediaFile was null or undefined when calling mediaUploadFile.');
         }
 
         let headers = this.defaultHeaders;
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected !== undefined) {
@@ -946,8 +949,8 @@ export class CmsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.configuration.basePath}/media/upload`,
-            UNKNOWN_BASE_TYPE,
+        return this.httpClient.post<UploadRes>(`${this.configuration.basePath}/media/upload`,
+            mediaFile,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -960,22 +963,20 @@ export class CmsService {
     /**
      * 
      * 
-     * @param UNKNOWN_BASE_TYPE 
+     * @param requestBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public mediaUploadFiles(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public mediaUploadFiles(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public mediaUploadFiles(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public mediaUploadFiles(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (UNKNOWN_BASE_TYPE === null || UNKNOWN_BASE_TYPE === undefined) {
-            throw new Error('Required parameter UNKNOWN_BASE_TYPE was null or undefined when calling mediaUploadFiles.');
-        }
+    public mediaUploadFiles(requestBody?: Array<string>, observe?: 'body', reportProgress?: boolean): Observable<UploadMultipleRes>;
+    public mediaUploadFiles(requestBody?: Array<string>, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UploadMultipleRes>>;
+    public mediaUploadFiles(requestBody?: Array<string>, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UploadMultipleRes>>;
+    public mediaUploadFiles(requestBody?: Array<string>, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected !== undefined) {
@@ -991,8 +992,8 @@ export class CmsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.configuration.basePath}/media/uploads`,
-            UNKNOWN_BASE_TYPE,
+        return this.httpClient.post<UploadMultipleRes>(`${this.configuration.basePath}/media/uploads`,
+            requestBody,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

@@ -1,4 +1,3 @@
-// tslint:disable
 /**
  * rest api interface
  * 项目标准接口
@@ -12,5 +11,20 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
+/**
+ * 
+ */
+export interface UploadRes { 
+    /**
+     * 
+     */
+    ok: boolean;
+    /**
+     * 
+     */
+    error?: string;
+    /**
+     * 
+     */
+    file?: string;
+}

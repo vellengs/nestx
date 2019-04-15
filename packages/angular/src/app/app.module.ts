@@ -75,7 +75,7 @@ export function StartupServiceFactory(
             ],
             options: {
                 UEDITOR_HOME_URL: `//apps.bdimg.com/libs/ueditor/1.4.3.1/`,
-                serverUrl: '/user/upload',
+                serverUrl: '/api/media/upload',
                 lang: 'zh-cn'
             },
         }),

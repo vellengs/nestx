@@ -65,10 +65,11 @@ export class AvatarWidgetComponent extends ControlWidget implements OnInit {
         };
     }
 
-    change(args: UploadChangeParam) {
+    change(args: UploadChangeParam) { 
+        console.log('args:', args);
         if (args.type !== 'success') return;
         if (args.file && args.file.response) {
-            const value = args.file.response.url;
+            const value = args.file.response.file;
             this.formProperty.setValue(value, false);
         }
     }

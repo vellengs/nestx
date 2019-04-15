@@ -12,7 +12,7 @@ const profile: SFSchema = {
                 widget: w.avatar,
                 fileType: 'image/png,image/jpeg,image/gif,image/bmp',
                 listType: 'picture-card',
-                action: 'user/upload',
+                action: 'api/media/upload',
                 limit: 1,
                 name: 'file',
                 grid: {
@@ -106,7 +106,7 @@ const sysSetting: SFSchema = {
                 widget: w.avatar,
                 fileType: 'image/png,image/jpeg,image/gif,image/bmp',
                 listType: 'picture-card',
-                action: 'user/upload',
+                action: 'api/media/upload',
                 limit: 1,
                 name: 'file',
                 grid: {
@@ -121,7 +121,7 @@ const sysSetting: SFSchema = {
                 widget: w.avatar,
                 fileType: 'image/png,image/jpeg,image/gif,image/bmp',
                 listType: 'picture-card',
-                action: 'user/upload',
+                action: 'api/media/upload',
                 limit: 1,
                 name: 'file',
                 grid: {
@@ -136,7 +136,7 @@ const sysSetting: SFSchema = {
                 widget: w.avatar,
                 fileType: 'image/png,image/jpeg,image/gif,image/bmp',
                 listType: 'picture-card',
-                action: 'user/upload',
+                action: 'api/media/upload',
                 limit: 1,
                 name: 'file',
                 grid: {
