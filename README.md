@@ -34,7 +34,7 @@ nodejs 开发的模块多了，需要对版本和源代码进行统一的管理,
 
 ## 如何使用
 
-使用期请配置 server 目录下的 .env 文件
+使用前请配置 server 目录下的 .env 文件
 
 ```
 npm install lerna -g
