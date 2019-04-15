@@ -6,6 +6,7 @@ export interface ResultList<T> {
 
 export interface Result {
   ok: boolean;
+  message?: string;
 }
 
 export interface Query {

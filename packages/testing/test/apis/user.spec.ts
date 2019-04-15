@@ -52,6 +52,18 @@ describe("user module test", () => {
     expect(res.status).toBe(200);
   });
 
+  it("[put] /user/password", async () => {
+    const reqBody = {
+      oldPassword: "helloTest",
+      newPassword: "newpasspsd",
+      confirm: "newpasspsd"
+    };
+    // TODO;
+    // const res = await HttpClient.coreApi.usersChangePassword(reqBody);
+    // expect(res.status).toBe(200);
+    // expect(res.data.ok).toBe(true);
+  });
+
   it("[put] /user/", async () => {
     const user = await HttpClient.coreApi.usersFindOne(
       "5b31eba49a674f606f7c5849"

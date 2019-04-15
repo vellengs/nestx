@@ -24,6 +24,7 @@ import {
   EditProfileReq,
   UsersOfRole,
   UserRes,
+  ChangePasswordReq,
 } from './../dto';
 import { Tags } from 'nest-swagger';
 
@@ -61,6 +62,14 @@ export class UsersController {
     @Req() req: Express.Request,
   ): Promise<UserRes> {
     return this.usersService.updateProfile(req.user.id, user);
+  }
+
+  @Put('password')
+  async changePassword(
+    @Body() entry: ChangePasswordReq,
+    @Req() req: Express.Request,
+  ): Promise<Result> {
+    return this.usersService.changePassword(req.user.id, entry);
   }
 
   @Get('search')

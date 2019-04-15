@@ -8,7 +8,6 @@ import { BaseStandComponent } from '@shared/base/base.stand.component';
     styles: []
 })
 export class DictsPageComponent extends BaseStandComponent implements OnInit {
-
     @ViewChild('slaves') slaves: BaseStandComponent;
 
     @Input() domain = 'dict';
@@ -21,10 +20,8 @@ export class DictsPageComponent extends BaseStandComponent implements OnInit {
     }
 
     async ngOnInit() {
-
         this.queryUrl = `api/${this.domain}/query`;
-        this.onConfigChanged.subscribe(() => {
-        });
+        this.onConfigChanged.subscribe(() => {});
 
         this.operations = {
             title: '操作',
@@ -52,7 +49,9 @@ export class DictsPageComponent extends BaseStandComponent implements OnInit {
 
     async load() {
         // TODO;
-        const res = await this.coreService.dictsQuery('', 0, 2000).toPromise();
+        const res = await this.coreService
+            .dictsQuery('', '', 0, 2000)
+            .toPromise();
         if (res) {
             this.categories = res.list;
         }
@@ -81,5 +80,4 @@ export class DictsPageComponent extends BaseStandComponent implements OnInit {
             category: 'category'
         });
     }
-
 }

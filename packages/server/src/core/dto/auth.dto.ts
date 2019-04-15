@@ -1,15 +1,12 @@
-import { IsString, IsJSON } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class ChangePasswordReq {
-    @IsString()
-    readonly password: string;
+  @IsString()
+  readonly oldPassword: string;
 
-    @IsString()
-    readonly confirm: string;
+  @IsString()
+  newPassword: string;
+
+  @IsString()
+  readonly confirm: string;
 }
-
-export class ChangeRolesReq {
-
-}
-
-
