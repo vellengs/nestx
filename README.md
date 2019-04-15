@@ -33,7 +33,7 @@ Angular and react both of them have large high quality UI libraries, good to use
 
 ## Why needs testing
 
-Testing is necessary, it is code quality assurance, and the persistent test codes is the guarantees for project success.
+Testing is an effective guarantee of project quality, and persistent testing code is a necessary means of project iteration.
 
 ## Gets start
 
