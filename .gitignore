@@ -61,4 +61,5 @@ uploadss
 
 
 #dist
-dist
+**/dist
+**/uploads
