@@ -1,6 +1,6 @@
 
 # Nestx 
-A full stack infrastructure base on nestjs
+A full stack infrastructure base on nestjs . [demo](http://typerx.top) 
 
 ## 什么是 Nestx
 nestx 是一套以 nestjs 为框架基础框架的全技术栈真实项目系统, 项目为创建一套基础完整开箱即用, 可方便扩展, 易于二次开发的基础框架平台。
