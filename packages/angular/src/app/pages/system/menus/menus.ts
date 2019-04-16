@@ -1,7 +1,6 @@
 import { NzTreeNode, NzFormatEmitEvent } from 'ng-zorro-antd';
 import { Component, OnInit, Injector, Input } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
-import * as treeify from 'array-to-tree';
 import { BaseStandComponent } from '@shared/base/base.stand.component';
 
 @Component({
@@ -10,8 +9,6 @@ import { BaseStandComponent } from '@shared/base/base.stand.component';
     styles: []
 })
 export class MenusPageComponent extends BaseStandComponent implements OnInit {
-
-
     @Input() domain = 'menu';
 
     nodes = [];
@@ -30,22 +27,20 @@ export class MenusPageComponent extends BaseStandComponent implements OnInit {
             {
                 text: '删除',
                 type: 'del',
-                click: () => {
-                }
+                click: () => {}
             },
             {
                 text: '编辑',
                 type: 'none',
-                click: () => {
-                }
+                click: () => {}
             },
             {
                 text: '更多',
                 children: [
                     {
                         text: `过期`,
-                        type: 'none',
-                    },
+                        type: 'none'
+                    }
                 ]
             }
         ]
@@ -65,11 +60,12 @@ export class MenusPageComponent extends BaseStandComponent implements OnInit {
         });
     }
 
-
     async loadMenuTree() {
-        const menuResponse = await this.coreService.menusQuery(true, '', 0, 3000).toPromise();
+        const menuResponse = await this.coreService
+            .menusQuery(true, '', 0, 3000)
+            .toPromise();
         const items = menuResponse ? menuResponse.list : [];
-        const raw = items.map((item) => {
+        const raw = items.map(item => {
             const isLeaf = items.findIndex(r => r.parent === item.id) === -1;
             return {
                 title: item.name,
@@ -80,13 +76,12 @@ export class MenusPageComponent extends BaseStandComponent implements OnInit {
             };
         });
 
-        const treeData = treeify(raw, {
-            parentProperty: 'parent',
-            customID: 'id'
-        }) || [];
+        const treeNodes = this.arrayService.arrToTree(raw, {
+            idMapName: 'id',
+            parentIdMapName: 'parent'
+        });
 
-
-        this.nodes = treeData.map(doc => {
+        this.nodes = treeNodes.map(doc => {
             this.expandKeys.push(doc.id);
             return new NzTreeNode(doc);
         });
@@ -94,11 +89,10 @@ export class MenusPageComponent extends BaseStandComponent implements OnInit {
 
     treeNodeClick(e: Required<NzFormatEmitEvent>) {
         if (e.node.key === this.selectedItem.key) {
-
         } else {
             this.selectedItem = e.node;
 
-            this.coreService.menusFindOne(e.node.key).subscribe((res) => {
+            this.coreService.menusFindOne(e.node.key).subscribe(res => {
                 this.formData = res;
             });
         }
@@ -106,14 +100,13 @@ export class MenusPageComponent extends BaseStandComponent implements OnInit {
 
     selectNode(event: Required<NzFormatEmitEvent>): void {
         if (name === 'contextmenu') {
-
         }
     }
 
     async saveMenu(entry) {
         const instance = Object.assign({}, entry);
         if (entry.permissions) {
-            instance.permissions = entry.permissions.map((p) => {
+            instance.permissions = entry.permissions.map(p => {
                 return p.id;
             });
         }
@@ -121,7 +114,6 @@ export class MenusPageComponent extends BaseStandComponent implements OnInit {
     }
 
     addMenu() {
-
         const defaultItem = {
             parent: this.selectedItem.key
         };
@@ -139,5 +131,4 @@ export class MenusPageComponent extends BaseStandComponent implements OnInit {
         this.selectedItem = {};
         this.loadMenuTree();
     }
-
 }

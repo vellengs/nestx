@@ -2,7 +2,6 @@ import { NzTreeNode } from 'ng-zorro-antd';
 import { Component, OnInit, Injector, Input, ViewChild } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 import { BaseStandComponent } from '@shared/base/base.stand.component';
-import * as treeify from 'array-to-tree';
 @Component({
     selector: 'app-account-page',
     templateUrl: './accounts.html',
@@ -94,9 +93,9 @@ export class AccountsPageComponent extends BaseStandComponent
             });
 
             const treeData =
-                treeify(raw, {
-                    parentProperty: 'parent',
-                    customID: 'id'
+                this.arrayService.arrToTree(raw, {
+                    parentIdMapName: 'parent',
+                    idMapName: 'id'
                 }) || [];
 
             const nodes = treeData.map((doc: any) => {
