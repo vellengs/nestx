@@ -1,23 +1,32 @@
-import globalAxios from 'axios';
-import { Configuration, CoreApi, AppApi, DefaultApi, AuthApi, MockApi, LoginReq, CmsApi } from '../generated';
+import globalAxios from "axios";
+import {
+  Configuration,
+  CoreApi,
+  AppApi,
+  DefaultApi,
+  AuthApi,
+  MockApi,
+  LoginReq,
+  CmsApi
+} from "../generated";
 
 const store = new Map();
 
 function getToken(): string {
-  return store.get('token');
+  return store.get("token");
 }
 
 function setToken(token: string) {
-  store.set('token', token);
+  store.set("token", token);
 }
 
 function errorHandler(error: any) {
-  console.log('error', error.response.data);
+  console.log("error", error.response.data);
   return error.response;
 }
 
 const config = new Configuration({
-  basePath: 'http://localhost:5600/api',
+  basePath: "http://localhost:5600/api"
 });
 
 globalAxios.interceptors.request.use(
@@ -30,16 +39,13 @@ globalAxios.interceptors.request.use(
     }
 
     return config;
-  },
-  function (error) {
-    return Promise.reject(JSON.stringify(error));
-  },
+  }
 );
 
 // TODO;
 globalAxios.interceptors.response.use(response => {
   return response;
-}, (errorHandler));
+}, errorHandler);
 
 export class Client {
   private static client: Client;
@@ -56,7 +62,7 @@ export class Client {
     }
     return this.client;
   }
-  private constructor() { }
+  private constructor() {}
 
   public async initDatabase() {
     if (!Client.ready) {
