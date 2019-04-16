@@ -2142,6 +2142,90 @@ export interface Group {
 /**
  * 
  * @export
+ * @interface GroupedUsersRes
+ */
+export interface GroupedUsersRes {
+    /**
+     * 
+     * @type {Array<GroupedUsersResGroups>}
+     * @memberof GroupedUsersRes
+     */
+    groups: Array<GroupedUsersResGroups>;
+    /**
+     * 
+     * @type {Array<GroupedUsersResUsers>}
+     * @memberof GroupedUsersRes
+     */
+    users: Array<GroupedUsersResUsers>;
+}
+
+/**
+ * 
+ * @export
+ * @interface GroupedUsersResGroups
+ */
+export interface GroupedUsersResGroups {
+    /**
+     * 
+     * @type {string}
+     * @memberof GroupedUsersResGroups
+     */
+    parent?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GroupedUsersResGroups
+     */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GroupedUsersResGroups
+     */
+    icon?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GroupedUsersResGroups
+     */
+    id?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GroupedUsersResGroups
+     */
+    isRegion?: boolean;
+}
+
+/**
+ * 
+ * @export
+ * @interface GroupedUsersResUsers
+ */
+export interface GroupedUsersResUsers {
+    /**
+     * 
+     * @type {string}
+     * @memberof GroupedUsersResUsers
+     */
+    name?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof GroupedUsersResUsers
+     */
+    groups?: Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof GroupedUsersResUsers
+     */
+    id?: string;
+}
+
+/**
+ * 
+ * @export
  * @interface InlineResponse200
  */
 export interface InlineResponse200 {
@@ -3673,6 +3757,18 @@ export interface TreeNode {
      * @memberof TreeNode
      */
     id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TreeNode
+     */
+    icon?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TreeNode
+     */
+    type?: string;
     /**
      * 
      * @type {string}
@@ -7629,6 +7725,37 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {string} [parent] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsGetGroupedUsers(parent?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/group/users`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (parent !== undefined) {
+                localVarQueryParameter['parent'] = parent;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
@@ -9324,6 +9451,19 @@ export const CoreApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {string} [parent] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsGetGroupedUsers(parent?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<GroupedUsersRes> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsGetGroupedUsers(parent, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
@@ -10023,6 +10163,15 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {string} [parent] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        groupsGetGroupedUsers(parent?: string, options?: any) {
+            return CoreApiFp(configuration).groupsGetGroupedUsers(parent, options)(axios, basePath);
+        },
+        /**
+         * 
          * @param {string} [keyword] 
          * @param {number} [page] 
          * @param {number} [size] 
@@ -10581,6 +10730,17 @@ export class CoreApi extends BaseAPI {
      */
     public groupsFindOne(id: string, options?: any) {
         return CoreApiFp(this.configuration).groupsFindOne(id, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [parent] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public groupsGetGroupedUsers(parent?: string, options?: any) {
+        return CoreApiFp(this.configuration).groupsGetGroupedUsers(parent, options)(this.axios, this.basePath);
     }
 
     /**

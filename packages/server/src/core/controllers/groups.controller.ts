@@ -12,7 +12,12 @@ import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
 import { GroupsService } from './groups.service';
 import { Group } from './../interfaces';
-import { KeyValueDto, CreateGroupReq, EditGroupReq } from './../dto';
+import {
+  KeyValueDto,
+  CreateGroupReq,
+  EditGroupReq,
+  GroupedUsersRes,
+} from './../dto';
 import { Tags } from 'nest-swagger';
 import { ResultList, NullableParseIntPipe, TreeNode } from './../../common';
 
@@ -38,6 +43,13 @@ export class GroupsController {
     @Query('value') value?: string,
   ): Promise<KeyValueDto[]> {
     return this.groupService.search(keyword, value);
+  }
+
+  @Get('users')
+  async getGroupedUsers(
+    @Query('parent') parent?: string,
+  ): Promise<GroupedUsersRes> {
+    return this.groupService.getGroupedUsers(parent);
   }
 
   @Get('query')

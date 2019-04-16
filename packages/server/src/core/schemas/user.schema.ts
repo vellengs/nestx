@@ -1,7 +1,7 @@
 import { Schema, Error, SchemaTypes as t } from 'mongoose';
-import { transform } from './../../utils';
 
 import * as bcrypt from 'bcrypt';
+import { ObjectID } from 'bson';
 
 export const UserSchema = new Schema(
   {
@@ -107,5 +107,18 @@ UserSchema.methods.pure = function() {
 };
 
 UserSchema.set('toJSON', {
-  transform,
+  transform: function(
+    _doc: any,
+    ret: {
+      [key: string]: any;
+      _id: ObjectID;
+      __v: string;
+    },
+    _options: any,
+  ) {
+    ret.id = ret._id;
+    ret.name = ret.name || ret.username;
+    delete ret._id;
+    delete ret.__v;
+  },
 });

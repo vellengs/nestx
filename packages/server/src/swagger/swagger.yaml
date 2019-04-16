@@ -1384,6 +1384,51 @@ definitions:
         required:
             - id
             - name
+    GroupedUsersRes:
+        description: ""
+        properties:
+            groups:
+                type: array
+                items:
+                    type: object
+                    properties:
+                        id:
+                            type: string
+                            description: ""
+                        name:
+                            type: string
+                            description: ""
+                        icon:
+                            type: string
+                            description: ""
+                        isRegion:
+                            type: boolean
+                            description: ""
+                        parent:
+                            type: string
+                            description: ""
+                description: ""
+            users:
+                type: array
+                items:
+                    type: object
+                    properties:
+                        id:
+                            type: string
+                            description: ""
+                        name:
+                            type: string
+                            description: ""
+                        groups:
+                            type: array
+                            items:
+                                type: string
+                            description: ""
+                description: ""
+        type: object
+        required:
+            - groups
+            - users
     ResultList$Group:
         description: ""
         properties:
@@ -1405,6 +1450,12 @@ definitions:
         description: ""
         properties:
             id:
+                type: string
+                description: ""
+            icon:
+                type: string
+                description: ""
+            type:
                 type: string
                 description: ""
             title:
@@ -3895,6 +3946,26 @@ paths:
                     description: ""
                     in: query
                     name: value
+                    required: false
+                    type: string
+    /group/users:
+        get:
+            operationId: GroupsGetGroupedUsers
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/GroupedUsersRes'
+            description: ""
+            tags:
+                - core
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: parent
                     required: false
                     type: string
     /group/query:

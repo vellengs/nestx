@@ -9,30 +9,20 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { GroupedUsersResGroups } from './groupedUsersResGroups';
+import { GroupedUsersResUsers } from './groupedUsersResUsers';
 
 
 /**
  * 
  */
-export interface TreeNode { 
+export interface GroupedUsersRes { 
     /**
      * 
      */
-    id: string;
+    groups: Array<GroupedUsersResGroups>;
     /**
      * 
      */
-    icon?: string;
-    /**
-     * 
-     */
-    type?: string;
-    /**
-     * 
-     */
-    title: string;
-    /**
-     * 
-     */
-    parent: string;
+    users: Array<GroupedUsersResUsers>;
 }

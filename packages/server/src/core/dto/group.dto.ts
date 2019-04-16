@@ -1,4 +1,5 @@
 import { IsNumber, IsString, IsBoolean, IsOptional } from 'class-validator';
+import { TreeNode } from './../../common';
 
 export class CreateGroupReq {
   @IsNumber()
@@ -40,7 +41,7 @@ export class CreateGroupReq {
 export class EditGroupReq {
   @IsString()
   id: string;
-  
+
   @IsNumber()
   @IsOptional()
   outid?: number;
@@ -88,4 +89,19 @@ export class GroupRes {
   order: number;
   isRegion?: boolean;
   description?: string;
+}
+
+export class GroupedUsersRes {
+  groups: {
+    id: string;
+    name: string;
+    icon: string;
+    isRegion: boolean;
+    parent: string;
+  }[];
+  users: {
+    id: string;
+    name: string;
+    groups: string[];
+  }[];
 }

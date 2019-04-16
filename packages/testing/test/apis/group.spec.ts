@@ -40,6 +40,11 @@ describe("group module test", () => {
     expect(res.status).toBe(200);
   });
 
+  it("[get] /group/users", async () => {
+    const res = await HttpClient.coreApi.groupsGetGroupedUsers();
+    expect(res.status).toBe(200);
+  });
+
   it("[get] /group/query", async () => {
     const res = await HttpClient.coreApi.groupsQuery();
     expect(res.status).toBe(200);

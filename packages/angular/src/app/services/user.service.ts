@@ -4,6 +4,7 @@ import { CoreService, LoginReq, AuthService } from 'generated';
 // TODO remove array-to-tree
 import * as treeify from 'array-to-tree';
 import { NzTreeNode } from 'ng-zorro-antd';
+import { ArrayService } from '@delon/util';
 
 interface User {
     name?: string;
@@ -15,15 +16,13 @@ interface User {
 
 @Injectable()
 export class UserService {
-
     constructor(
         public client: _HttpClient,
         public settings: SettingsService,
         public authService: AuthService,
-        public coreService: CoreService
-    ) {
-
-    }
+        public coreService: CoreService,
+        public arrayService: ArrayService
+    ) {}
 
     private timeStamp = new Date().getTime();
     private authenticating = false;
@@ -32,7 +31,6 @@ export class UserService {
     private regionIds = [];
     private _allRegions = [];
     private user: User = {};
-
 
     get isLogin(): boolean {
         return this.user.name != null;
@@ -55,16 +53,19 @@ export class UserService {
     }
 
     async treeMenus(ids?: Array<string>) {
-
         ids = ids || [];
-        const menus: any = await this.client.get('api/menu/query', {
-            size: 5000,
-            isMenu: true,
-        }).toPromise();
+        const menus: any = await this.client
+            .get('api/menu/query', {
+                size: 5000,
+                isMenu: true
+            })
+            .toPromise();
 
         const items = menus.list.map((item, index) => {
-            const isLeaf = menus.list.findIndex(r => r.parent === item.id) === -1;
-            const hasPermissionNodes = item.permissions && item.permissions.length;
+            const isLeaf =
+                menus.list.findIndex(r => r.parent === item.id) === -1;
+            const hasPermissionNodes =
+                item.permissions && item.permissions.length;
             const node: any = {
                 title: item.name,
                 key: item.id,
@@ -105,33 +106,24 @@ export class UserService {
             nodes: nodes,
             expandKeys: expandKeys
         };
-
     }
 
-
-    async treeUsers(attachUsers?: boolean) {
-
-        const group: any = await this.client.get('api/group/query', {
-            size: 5000,
-        }).toPromise();
-
-        const accounts: any = await this.client.get('api/user/query', {
-            size: 10000  // TODO if user too big should be lazy load.
-        }).toPromise();
-
-        const groups = group.list.map((item, index) => {
+    async treeUsers() {
+        const res = await this.coreService.groupsGetGroupedUsers().toPromise();
+        const { groups, users } = res;
+        const groupItems = groups.map((item, index) => {
             return {
                 title: item.name,
                 key: item.id + index,
                 parent: item.parent,
-                id: item.id,
+                id: item.id
                 // isLeaf: isLeaf
             };
         });
 
-        const users = accounts.list.map((item, index) => {
+        const userItems = users.map((item, index) => {
             return {
-                title: item.nick || item.username,
+                title: item.name,
                 key: item.id + index,
                 id: item.id,
                 groups: item.groups,
@@ -139,25 +131,32 @@ export class UserService {
             };
         });
 
-        const tree = treeify(groups, {
-            parentProperty: 'parent',
-            customID: 'id'
+        const tree = this.arrayService.arrToTree(groupItems, {
+            idMapName: 'id',
+            parentIdMapName: 'parent'
         });
 
-        if (groups) {
-            groups.forEach((d) => {
-                d.children = d.children || [];
-                const items = users.filter((entry) => {
-                    entry.groups = entry.groups || [];
-                    const exist = entry.groups.indexOf(d.id) > -1;
-                    return exist;
-                });
-
-                items.forEach(i => {
-                    d.children.push(i);
-                });
+        const attachUsers = group => {
+            group.children = group.children || [];
+            const items = userItems.filter(entry => {
+                return entry.groups && entry.groups.includes(group.id);
             });
-        }
+            group.children.push(...items);
+        };
+
+        const iterateTree = (items: any[]) => {
+            const stack: any[] = [];
+            stack.push(...items);
+            while (stack.length !== 0) {
+                const node = stack.pop();
+                attachUsers(node);
+                if (node.children) {
+                    stack.push(...node.children);
+                }
+            }
+        };
+
+        iterateTree(tree);
         const expandKeys = [];
         const nodes = tree.map((doc: any) => {
             expandKeys.push(doc.key);
@@ -181,7 +180,7 @@ export class UserService {
             return true;
         }
         this.authenticating = true;
-        const user = await this.coreService.usersProfile().toPromise() || {};
+        const user = (await this.coreService.usersProfile().toPromise()) || {};
         this.settings.setUser(user);
         return user;
     }
