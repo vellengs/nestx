@@ -160,6 +160,10 @@
 				"ok": {
 					"type": "boolean",
 					"description": ""
+				},
+				"message": {
+					"type": "string",
+					"description": ""
 				}
 			},
 			"type": "object",
@@ -1484,8 +1488,17 @@
 		},
 		"SettingsGroup": {
 			"description": "",
-			"properties": {},
-			"type": "object"
+			"properties": {
+				"options": {
+					"type": "object",
+					"properties": {},
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"options"
+			]
 		},
 		"ResultList$Setting": {
 			"description": "",
@@ -2716,6 +2729,100 @@
 				"parent",
 				"paths",
 				"description"
+			]
+		},
+		"UploadRes": {
+			"description": "",
+			"properties": {
+				"ok": {
+					"type": "boolean",
+					"description": ""
+				},
+				"error": {
+					"type": "string",
+					"description": ""
+				},
+				"file": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"ok"
+			]
+		},
+		"MediaFile": {
+			"description": "",
+			"properties": {
+				"fieldname": {
+					"type": "string",
+					"description": ""
+				},
+				"originalname": {
+					"type": "string",
+					"description": ""
+				},
+				"encoding": {
+					"type": "string",
+					"description": ""
+				},
+				"mimetype": {
+					"type": "string",
+					"description": ""
+				},
+				"destination": {
+					"type": "string",
+					"description": ""
+				},
+				"filename": {
+					"type": "string",
+					"description": ""
+				},
+				"path": {
+					"type": "string",
+					"description": ""
+				},
+				"size": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"fieldname",
+				"originalname",
+				"encoding",
+				"mimetype",
+				"destination",
+				"filename",
+				"path",
+				"size"
+			]
+		},
+		"UploadMultipleRes": {
+			"description": "",
+			"properties": {
+				"ok": {
+					"type": "boolean",
+					"description": ""
+				},
+				"error": {
+					"type": "string",
+					"description": ""
+				},
+				"files": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"ok"
 			]
 		},
 		"MediaRes": {
@@ -6245,6 +6352,77 @@
 						"name": "value",
 						"required": false,
 						"type": "string"
+					}
+				]
+			}
+		},
+		"/media/upload": {
+			"post": {
+				"operationId": "MediaUploadFile",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/UploadRes"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "file",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/MediaFile"
+						}
+					}
+				]
+			}
+		},
+		"/media/uploads": {
+			"post": {
+				"operationId": "MediaUploadFiles",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/UploadMultipleRes"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"cms"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "files",
+						"required": false,
+						"schema": {
+							"type": "array"
+						},
+						"items": {
+							"$ref": "#/definitions/MediaFile"
+						}
 					}
 				]
 			}

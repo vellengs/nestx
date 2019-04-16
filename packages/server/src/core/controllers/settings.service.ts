@@ -32,6 +32,7 @@ export class SettingsService extends MongooseService<SettingModel> {
 
   async getSettingsByName(name?: string): Promise<SettingsGroup> {
     const result = new SettingsGroup();
+    result.options = {};
 
     if (name) {
       const docs = await this.model
@@ -41,7 +42,7 @@ export class SettingsService extends MongooseService<SettingModel> {
         .exec();
       if (docs) {
         docs.forEach(doc => {
-          result[doc.key] = doc.value;
+          result.options[doc.key] = doc.value;
         });
       }
     }
@@ -62,11 +63,12 @@ export class SettingsService extends MongooseService<SettingModel> {
     name: string,
     entry: SettingsGroup,
   ): Promise<SettingsGroup> {
-    const keys = Object.keys(entry);
+    entry.options = entry.options || {};
+    const keys = Object.keys(entry.options);
     for (let key of keys) {
       const instance = {
         key: key,
-        value: entry[key],
+        value: entry.options[key],
       };
       await this.model
         .findOneAndUpdate(

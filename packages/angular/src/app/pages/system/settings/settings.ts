@@ -3,6 +3,9 @@ import { BaseComponent } from '@shared/base/base.component';
 import { FormSets } from 'types/types';
 import { SFComponent } from '@delon/form';
 import { EditSettingReq, EditUserReq } from 'generated';
+
+type CustomFormSets = FormSets & { [k: string]: any };
+
 @Component({
     selector: 'app-settings-page',
     templateUrl: './settings.html',
@@ -21,8 +24,16 @@ export class SettingsPageComponent extends BaseComponent implements OnInit {
     active = 1;
 
     @Input() queryParams: { [key: string]: any };
-    @Input() formSets: FormSets;
+    @Input() formSets: CustomFormSets;
     @ViewChild('profileForm') formRef: SFComponent;
+
+    get Profile() {
+        return this.formSets.profile;
+    }
+
+    get SysSetting() {
+        return this.formSets.sysSetting;
+    }
 
     profileValue = {};
     profileData = {};
@@ -84,19 +95,21 @@ export class SettingsPageComponent extends BaseComponent implements OnInit {
             .subscribe(res => {
                 if (res) {
                     this.settings.setUser(res);
+                    this.profileData = Object.assign(this.profileData, res);
                     this.msg.success('个人资料修改成功');
                 }
             });
     }
 
     saveSysSettings(event?) {
-        const entry = Object.assign({}, event);
-
+        const options = Object.assign({}, ...event);
         this.coreService
-            .settingsUpdateSettingsByName('main', entry)
+            .settingsUpdateSettingsByName('main', {
+                options
+            })
             .subscribe(res => {
                 if (res) {
-                    this.settingsData = res;
+                    this.settingsData = res.options;
                     this.msg.success('系统设置更新成功');
                 }
             });
@@ -105,7 +118,7 @@ export class SettingsPageComponent extends BaseComponent implements OnInit {
     load() {
         this.coreService.settingsGetSettingsByName('main').subscribe(res => {
             if (res) {
-                this.settingsData = res;
+                this.settingsData = res.options;
             }
         });
     }

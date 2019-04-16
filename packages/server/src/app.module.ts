@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { CommerceModule } from './commerce/commerce.module';
 import { CmsModule } from './cms/cms.module';
 import { MONGODB_URI } from './utils/secrets';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
@@ -21,4 +22,4 @@ import { MONGODB_URI } from './utils/secrets';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

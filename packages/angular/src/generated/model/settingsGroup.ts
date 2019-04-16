@@ -15,4 +15,8 @@
  * 
  */
 export interface SettingsGroup { 
+    /**
+     * 
+     */
+    options: any;
 }

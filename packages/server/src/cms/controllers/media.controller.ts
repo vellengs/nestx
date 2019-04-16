@@ -6,14 +6,25 @@ import {
   Put,
   Delete,
   Param,
+  UseInterceptors,
+  UploadedFiles,
+  Logger,
+  UploadedFile,
 } from '@nestjs/common';
 import { Tags } from 'nest-swagger';
 import { MediaService } from './media.service';
-import { CreateMediaDto, MediaRes, EditMediaDto } from '../dto';
+import {
+  CreateMediaDto,
+  MediaRes,
+  EditMediaDto,
+  UploadRes,
+  UploadMultipleRes,
+  MediaFile,
+} from '../dto';
 import { NullableParseIntPipe, ResultList } from '../../common';
 import { Media } from '../interfaces';
 import { KeyValueDto } from '../../core/dto';
-
+import { FilesInterceptor, FileInterceptor } from '@nestjs/platform-express';
 @Tags('cms')
 @Controller('media')
 export class MediaController {
@@ -25,6 +36,27 @@ export class MediaController {
     @Query('value') value?: string,
   ): Promise<KeyValueDto[]> {
     return this.service.search(keyword, value);
+  }
+
+  @Post('upload')
+  @UseInterceptors(FileInterceptor('file'))
+  async uploadFile(@UploadedFile() file: MediaFile): Promise<UploadRes> {
+    return {
+      ok: true,
+      file: file.path,
+    };
+  }
+
+  @Post('uploads')
+  @UseInterceptors(FilesInterceptor('files'))
+  async uploadFiles(
+    @UploadedFiles() files?: MediaFile[],
+  ): Promise<UploadMultipleRes> {
+    const fileNames = (files || []).map(item => item.path);
+    return {
+      ok: true,
+      files: fileNames,
+    };
   }
 
   @Post()

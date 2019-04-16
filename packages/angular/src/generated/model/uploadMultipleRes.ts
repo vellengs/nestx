@@ -14,7 +14,7 @@
 /**
  * 
  */
-export interface Result { 
+export interface UploadMultipleRes { 
     /**
      * 
      */
@@ -22,5 +22,9 @@ export interface Result {
     /**
      * 
      */
-    message?: string;
+    error?: string;
+    /**
+     * 
+     */
+    files?: Array<string>;
 }

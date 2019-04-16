@@ -3,10 +3,6 @@
     "target": "http://localhost:5600/",
     "secure": false
   },
-  "/user": {
-    "target": "http://localhost:5600/",
-    "secure": false
-  },
   "/uploads": {
     "target": "http://localhost:5600/",
     "secure": false
