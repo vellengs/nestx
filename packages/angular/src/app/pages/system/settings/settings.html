@@ -13,13 +13,13 @@
       <nz-card nzTitle="个人信息" *ngIf="active===1">
 
         <sf #profileForm *ngIf="formSets" [formData]="profileData" (formChange)="profileFormChanged($event)" [mode]="'edit'" [layout]="'vertical'"
-          [schema]="formSets.profile" (formSubmit)="profileSave($event)">
+          [schema]="Profile" (formSubmit)="profileSave($event)">
         </sf>
       </nz-card>
       <nz-card nzTitle="系统设置" *ngIf="active===2">
 
         <sf #sysSetting *ngIf="formSets" [formData]="settingsData" (formChange)="sysSettingFormChanged($event)" [mode]="'edit'" [layout]="'vertical'"
-          [schema]="formSets.sysSetting" (formSubmit)="saveSysSettings($event)">
+          [schema]="SysSetting" (formSubmit)="saveSysSettings($event)">
         </sf>
       </nz-card>
     </nz-col>
