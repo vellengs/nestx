@@ -6,7 +6,16 @@ import { GroupModel } from './../interfaces';
 
 @Injectable()
 export class GroupsService extends MongooseService<GroupModel> {
-  defaultQueryFields = ['name', 'key', 'value', 'description'];
+  defaultQueryFields = [
+    'name',
+    'outid',
+    'isRegion',
+    'director',
+    'icon',
+    'order',
+    'parent',
+    'description',
+  ];
   constructor(
     @InjectModel('Group') protected readonly model: Model<GroupModel>,
   ) {
