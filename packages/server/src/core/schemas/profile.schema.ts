@@ -1,15 +1,15 @@
-
 import { Schema, SchemaTypes as t, SchemaOptions, model } from 'mongoose';
+import { transform } from './../../utils';
 
-export const ProfileSchema = new Schema({
+export const ProfileSchema = new Schema(
+  {
     company: { type: t.String },
     siteUrl: { type: t.String },
     address: { type: t.String },
-},
-    { timestamps: true });
+  },
+  { timestamps: true },
+);
 
 ProfileSchema.set('toJSON', {
-    transform: function (_doc: any, ret: any, _options: any) {
-        ret.id = ret._id;
-    }
-}); 
+  transform,
+});

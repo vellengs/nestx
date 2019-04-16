@@ -11,14 +11,15 @@
  */
 
 
-/**
- * 
- */
-export interface TreeNode { 
+export interface GroupedUsersResGroups { 
     /**
      * 
      */
-    id: string;
+    parent?: string;
+    /**
+     * 
+     */
+    name?: string;
     /**
      * 
      */
@@ -26,13 +27,9 @@ export interface TreeNode {
     /**
      * 
      */
-    type?: string;
+    id?: string;
     /**
      * 
      */
-    title: string;
-    /**
-     * 
-     */
-    parent: string;
+    isRegion?: boolean;
 }

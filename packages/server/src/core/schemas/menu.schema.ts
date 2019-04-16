@@ -1,8 +1,11 @@
 import { Schema, SchemaTypes as t, SchemaOptions } from 'mongoose';
+import { transform } from './../../utils';
+
 const option: SchemaOptions = {};
 option.timestamps = true;
 
-export const MenuSchema = new Schema({
+export const MenuSchema = new Schema(
+  {
     name: { type: t.String },
     slug: { type: t.String },
     group: { type: t.Boolean },
@@ -14,28 +17,30 @@ export const MenuSchema = new Schema({
     enable: { type: t.Boolean },
     expanded: { type: t.Boolean },
     acl: { type: t.String },
-    paths: [{
+    paths: [
+      {
         type: t.ObjectId,
-        ref: 'Menu'
-    }],
+        ref: 'Menu',
+      },
+    ],
     parent: {
-        type: t.ObjectId,
-        ref: 'Menu'
+      type: t.ObjectId,
+      ref: 'Menu',
     },
     permissions: [
-        {
-            type: t.ObjectId,
-            ref: 'Menu'
-        }
+      {
+        type: t.ObjectId,
+        ref: 'Menu',
+      },
     ],
     isMenu: {
-        type: t.Boolean,
-        default: true
-    }
-}, option);
+      type: t.Boolean,
+      default: true,
+    },
+  },
+  option,
+);
 
 MenuSchema.set('toJSON', {
-    transform: function (_doc: any, ret: any, _options: any) {
-        ret.id = ret._id;
-    }
-}); 
+  transform,
+});

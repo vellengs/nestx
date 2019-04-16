@@ -1,7 +1,8 @@
-
 import { Schema, SchemaTypes as t } from 'mongoose';
+import { transform } from './../../utils';
 
-export const GroupSchema = new Schema({
+export const GroupSchema = new Schema(
+  {
     outid: { type: t.Number },
     name: { type: t.String },
     icon: { type: t.String },
@@ -10,13 +11,11 @@ export const GroupSchema = new Schema({
     parent: { type: t.ObjectId, ref: 'Group' },
     paths: [{ type: t.ObjectId, ref: 'Group' }],
     director: { type: t.ObjectId, ref: 'User' },
-    description: { type: t.String }
-},
-    { timestamps: true });
-
+    description: { type: t.String },
+  },
+  { timestamps: true },
+);
 
 GroupSchema.set('toJSON', {
-    transform: function (_doc: any, ret: any, _options: any) {
-        ret.id = ret._id;
-    }
-}); 
+  transform,
+});

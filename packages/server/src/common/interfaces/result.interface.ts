@@ -15,6 +15,8 @@ export interface Query {
 }
 export interface TreeNode {
   id: string;
+  icon?: string;
+  type?: string;
   title: string;
   parent: string;
 }
