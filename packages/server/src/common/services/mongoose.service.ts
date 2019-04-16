@@ -68,15 +68,7 @@ export class MongooseService<T extends Document> {
 
     const collection = this.model.find(condition);
     return new Promise<ResultList<T>>(async resolve => {
-      const items = (
-        (await listQuery
-          .limit(size)
-          .skip(size * (page - 1))
-          .lean()) || []
-      ).map((item: any) => {
-        const id = item._id;
-        return { id, ...item };
-      });
+      const items = (await listQuery.limit(size).skip(size * (page - 1))) || [];
       let result: ResultList<T> = {
         list: items,
         count: await collection.countDocuments(),

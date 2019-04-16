@@ -1,4 +1,6 @@
 import { Schema, SchemaTypes as t, SchemaOptions } from 'mongoose';
+import { transform } from './../../utils';
+
 const option: SchemaOptions = {};
 option.timestamps = true;
 
@@ -12,3 +14,7 @@ export const CommentSchema = new Schema({
         ref: 'Category'
     }
 }, option);
+
+CommentSchema.set('toJSON', {
+    transform,
+  });
