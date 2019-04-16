@@ -15,11 +15,11 @@ Includes:
 
 ## Why Nestjs 
 
-Nestjs provides nodejs' back-end modular management, completed controller annotation decorators, powerful module integration capabilities, and friendly with Angular.
+Nestjs provides nodejs back-end modular management, completed controller annotation decorators, powerful module integration capabilities, and friendly with Angular.
 
 ## Why Swagger
 
-- Swagger is for rest api standard. good for decoupling development, it is a good tool to connect between backend and frontend.
+Swagger is for rest api standard. good for decoupling development, it is a good tools to connect between backend and frontend.
 Swagger provides good choices for swagger -> front , swagger -> server -> front implement sequence.
 Swagger can easily generate front-end proxy codes, basic domain codes, and basic test interface codes, making coding easy and efficient etc.
 
@@ -33,11 +33,11 @@ Angular and react both of them have large high quality UI libraries, good to use
 
 ## Why needs testing
 
-Testing is necessary, it is code quality assurance, and the persistent test codes is the guarantees for project success.
+Testing is an effective guarantee of project quality, and persistent testing codes are necessary means of project iteration.
 
 ## Gets start
 
-prepare to change .env for your own settings
+prepare: To change .env for your own settings
 
 ```
 npm install lerna -g
