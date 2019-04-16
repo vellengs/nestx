@@ -1,7 +1,6 @@
 import { NzTreeNode, NzFormatEmitEvent } from 'ng-zorro-antd';
 import { Component, OnInit, Injector, Input } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
-import * as treeify from 'array-to-tree';
 import { BaseStandComponent } from '@shared/base/base.stand.component';
 
 @Component({
@@ -9,9 +8,8 @@ import { BaseStandComponent } from '@shared/base/base.stand.component';
     templateUrl: './categories.html',
     styles: []
 })
-export class CategoriesPageComponent extends BaseStandComponent implements OnInit {
-
-
+export class CategoriesPageComponent extends BaseStandComponent
+    implements OnInit {
     @Input() domain = 'category';
 
     nodes = [];
@@ -28,22 +26,20 @@ export class CategoriesPageComponent extends BaseStandComponent implements OnIni
             {
                 text: '删除',
                 type: 'del',
-                click: () => {
-                }
+                click: () => {}
             },
             {
                 text: '编辑',
                 type: 'none',
-                click: () => {
-                }
+                click: () => {}
             },
             {
                 text: '更多',
                 children: [
                     {
                         text: `过期`,
-                        type: 'none',
-                    },
+                        type: 'none'
+                    }
                 ]
             }
         ]
@@ -61,11 +57,13 @@ export class CategoriesPageComponent extends BaseStandComponent implements OnIni
     }
 
     async loadTreeData() {
-        const treeResponse = await this.cmsService.categoryQuery('', 0, 3000).toPromise();
+        const treeResponse = await this.cmsService
+            .categoryQuery('', 0, 3000)
+            .toPromise();
 
         const items = treeResponse ? treeResponse.list : [];
 
-        const raw = items.map((item) => {
+        const raw = items.map(item => {
             const isLeaf = items.findIndex(r => r.parent === item.id) === -1;
             return {
                 title: item.name,
@@ -76,11 +74,11 @@ export class CategoriesPageComponent extends BaseStandComponent implements OnIni
             };
         });
 
-        const treeData = treeify(raw, {
-            parentProperty: 'parent',
-            customID: 'id'
-        }) || [];
-
+        const treeData =
+            this.arrayService.arrToTree(raw, {
+                parentIdMapName: 'parent',
+                idMapName: 'id'
+            }) || [];
 
         this.nodes = treeData.map(doc => {
             this.expandKeys.push(doc.id);
@@ -88,13 +86,11 @@ export class CategoriesPageComponent extends BaseStandComponent implements OnIni
         });
     }
 
-
     treeNodeClick(e: Required<NzFormatEmitEvent>) {
         if (e.node.key === this.selectedItem.key) {
-
         } else {
             this.selectedItem = e.node;
-            this.cmsService.categoryFindOne(e.node.key).subscribe((res) => {
+            this.cmsService.categoryFindOne(e.node.key).subscribe(res => {
                 this.formData = res;
             });
         }
@@ -102,17 +98,12 @@ export class CategoriesPageComponent extends BaseStandComponent implements OnIni
 
     selectNode(name: string): void {
         if (name === 'contextmenu') {
-
         }
     }
 
-    formChanged() {
+    formChanged() {}
 
-    }
-
-    onFormError() {
-
-    }
+    onFormError() {}
 
     removeMenu(item) {
         super.remove({
@@ -128,5 +119,4 @@ export class CategoriesPageComponent extends BaseStandComponent implements OnIni
         this.selectedItem = {};
         this.loadTreeData();
     }
-
 }

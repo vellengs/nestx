@@ -38,7 +38,14 @@ export class DictsController {
     @Query('value') value?: string,
     @Query('category') category?: string,
   ): Promise<KeyValueDto[]> {
-    return this.dictService.search(keyword, value, category);
+    return this.dictService.search(
+      keyword,
+      value,
+      category,
+      10,
+      'name',
+      'category',
+    );
   }
 
   @Get('query')

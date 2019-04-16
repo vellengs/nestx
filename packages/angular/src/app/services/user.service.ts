@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SettingsService, _HttpClient } from '@delon/theme';
 import { CoreService, LoginReq, AuthService } from 'generated';
-// TODO remove array-to-tree
-import * as treeify from 'array-to-tree';
 import { NzTreeNode } from 'ng-zorro-antd';
 import { ArrayService } from '@delon/util';
 
@@ -91,9 +89,9 @@ export class UserService {
             return node;
         });
 
-        const tree = treeify(items, {
-            parentProperty: 'parent',
-            customID: 'id'
+        const tree = this.arrayService.arrToTree(items, {
+            parentIdMapName: 'parent',
+            idMapName: 'id'
         });
 
         const expandKeys = [];

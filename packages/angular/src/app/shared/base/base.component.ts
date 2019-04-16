@@ -2,10 +2,16 @@ import { ModalHelper, _HttpClient, SettingsService } from '@delon/theme';
 import { NzMessageService, NzModalService } from 'ng-zorro-antd';
 import { ActivatedRoute } from '@angular/router';
 import { XlsxService } from '@delon/abc';
-import { Component, Injector, Input, SystemJsNgModuleLoader, Renderer2 } from '@angular/core';
+import {
+    Component,
+    Injector,
+    Input,
+    SystemJsNgModuleLoader,
+    Renderer2
+} from '@angular/core';
 import { BasePage } from 'types/types';
 import { HttpClient } from '@angular/common/http';
-import { LazyService } from '@delon/util';
+import { LazyService, ArrayService } from '@delon/util';
 import { CoreService } from 'generated';
 import { CmsService } from 'generated/api/cms.service';
 
@@ -14,7 +20,6 @@ import { CmsService } from 'generated/api/cms.service';
     template: ''
 })
 export class BaseComponent implements BasePage {
-
     @Input() title = '';
     modalHelper: ModalHelper;
     settings: SettingsService;
@@ -27,6 +32,7 @@ export class BaseComponent implements BasePage {
     lazy: LazyService;
     coreService: CoreService;
     cmsService: CmsService;
+    arrayService: ArrayService;
     http: HttpClient;
     renderer: Renderer2;
 
@@ -44,15 +50,12 @@ export class BaseComponent implements BasePage {
         this.renderer = this.injector.get(Renderer2);
         this.coreService = this.injector.get(CoreService);
         this.cmsService = this.injector.get(CmsService);
+        this.arrayService = this.injector.get(ArrayService);
         const routeData = this.route.data['value'] || {};
         this.title = routeData.title;
     }
 
-    load(): void {
+    load(): void {}
 
-    }
-
-    reload(): void {
-
-    }
+    reload(): void {}
 }

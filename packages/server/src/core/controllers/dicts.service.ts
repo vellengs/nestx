@@ -6,7 +6,7 @@ import { MongooseService, ResultList } from './../../common';
 
 @Injectable()
 export class DictsService extends MongooseService<DictModel> {
-  defaultQueryFields = ['name', 'translate', 'expand'];
+  defaultQueryFields = ['name', 'category', 'translate', 'expand'];
   constructor(@InjectModel('Dict') protected readonly model: Model<DictModel>) {
     super(model);
   }
