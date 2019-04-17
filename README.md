@@ -6,7 +6,7 @@ admin
 888888
 
 ## What is Nestx
-Nestx is a full stack real project with nestjs base on nestjs framework.
+Nestx is a full stack real project base on nestjs framework.
 This project is infrastructure for scale and extendable system.
 
 Includes:
