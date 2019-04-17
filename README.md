@@ -23,7 +23,9 @@ Nestjs provides nodejs back-end modular management, completed controller annotat
 ## Why Swagger
 
 Swagger is for rest api standard. it has benifit on decoupling but connecting between backend and frontend.
+
 Swagger provides good choices for swagger -> front , swagger -> server -> front implement sequence.
+
 Swagger can easily generate front-end proxy codes, basic domain codes, and basic test interface codes, making coding easy and efficient etc.
 
 ## Why Lerna
