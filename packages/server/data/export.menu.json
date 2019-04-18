@@ -47,7 +47,7 @@
     "isMenu": true,
     "link": "/system/accounts",
     "slug": "accounts",
-    "permissions": ["5b1a2da699f6ac12569afb0e", "5b1a2da699f6ac12569afb0f", "5b1a2da699f6ac12569afb10"]
+    "permissions": []
 }, {
     "_id": "5b194e39139f72b0e7a28582",
     "name": "角色管理",
@@ -87,33 +87,6 @@
     "isMenu": true,
     "link": "/cms/pages",
     "slug": "pages",
-    "permissions": ["5b1a2da699f6ac12569afb0f", "5b1a2da699f6ac12569afb10"]
-}, {
-    "_id": "5b1a2da699f6ac12569afb0e",
-    "name": "是否允许添加帐号",
-    "paths": [],
-    "order": 100,
-    "isMenu": false,
-    "link": "CanAddAccount",
-    "slug": "CanAddAccount",
-    "permissions": []
-}, {
-    "_id": "5b1a2da699f6ac12569afb0f",
-    "name": "是否允许编辑帐号",
-    "paths": [],
-    "order": 100,
-    "isMenu": false,
-    "link": "CanEditAccount",
-    "slug": "CanEditAccount",
-    "permissions": []
-}, {
-    "_id": "5b1a2da699f6ac12569afb10",
-    "name": "是否允许删除帐号",
-    "paths": [],
-    "order": 100,
-    "isMenu": false,
-    "link": "CanRemoveAccount",
-    "slug": "CanRemoveAccount",
     "permissions": []
 }, {
     "_id": "5b25f774a408a579f0d89f94",

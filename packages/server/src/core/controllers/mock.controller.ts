@@ -5,7 +5,7 @@ import { MockService } from './mock.service';
 @Tags('mock')
 @Controller('mock')
 export class MockController {
-  constructor(private readonly mockService: MockService) { }
+  constructor(private readonly mockService: MockService) {}
 
   @Get('init')
   initData(): Promise<boolean> {

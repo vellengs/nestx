@@ -59,7 +59,7 @@ export class UserService {
             })
             .toPromise();
 
-        const items = menus.list.map((item, index) => {
+        const menuItems = menus.list.map((item, index) => {
             const isLeaf =
                 menus.list.findIndex(r => r.parent === item.id) === -1;
             const hasPermissionNodes =
@@ -68,13 +68,24 @@ export class UserService {
                 title: item.name,
                 key: item.id,
                 parent: item.parent,
+                permissions: item.permissions,
                 id: item.id,
                 checked: ids.includes(item.id) && isLeaf && !hasPermissionNodes,
                 isLeaf: isLeaf
             };
+            return node;
+        });
 
+        const tree = this.arrayService.arrToTree(menuItems, {
+            parentIdMapName: 'parent',
+            idMapName: 'id'
+        });
+
+        const refactorMenu = item => {
+            const hasPermissionNodes =
+                item.permissions && item.permissions.length;
             if (hasPermissionNodes) {
-                node.children = item.permissions.map((p, i) => {
+                item.children = item.permissions.map((p, i) => {
                     return {
                         title: p.name,
                         key: p.id + i,
@@ -83,17 +94,23 @@ export class UserService {
                         isLeaf: true
                     };
                 });
-                node.isLeaf = false;
+                item.isLeaf = false;
             }
+        };
 
-            return node;
-        });
+        const iterateTree = (items: any[]) => {
+            const stack: any[] = [];
+            stack.push(...items);
+            while (stack.length !== 0) {
+                const node = stack.pop();
+                refactorMenu(node);
+                if (node.children) {
+                    stack.push(...node.children);
+                }
+            }
+        };
 
-        const tree = this.arrayService.arrToTree(items, {
-            parentIdMapName: 'parent',
-            idMapName: 'id'
-        });
-
+        iterateTree(tree);
         const expandKeys = [];
         const nodes = tree.map((doc: any) => {
             expandKeys.push(doc.key);

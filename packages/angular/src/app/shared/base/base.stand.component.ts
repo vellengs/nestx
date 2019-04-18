@@ -154,7 +154,7 @@ export class BaseStandComponent extends BaseComponent implements CurdPage {
         } else {
             return this.client.post(url, instance).subscribe(() => {
                 this.msg.success('保存成功');
-                this.reload();
+                this.reload(); // TODO
             });
         }
     }

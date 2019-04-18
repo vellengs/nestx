@@ -15,11 +15,11 @@ import { NoticesService } from './notices.service';
 import { Notice } from './../interfaces';
 import { KeyValueDto, CreateNoticeReq, EditNoticeReq } from './../dto';
 import { Tags } from 'nest-swagger';
-import { ResultList, NullableParseIntPipe } from './../../common';
+import { ResultList, NullableParseIntPipe, RolesGuards } from './../../common';
 
 @Tags('core')
 @Controller('notice')
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(AuthGuard('jwt'), RolesGuards('notice'))
 export class NoticesController {
   constructor(private readonly noticeService: NoticesService) {}
 

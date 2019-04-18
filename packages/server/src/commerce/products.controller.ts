@@ -8,7 +8,6 @@ import {
   Param,
   ParseIntPipe,
 } from '@nestjs/common';
-import { RolesGuard } from '../common/guards/roles.guard';
 import { Roles } from '../common/decorators/roles.decorator';
 import { LoggingInterceptor } from '../common/interceptors/logging.interceptor';
 import { TransformInterceptor } from '../common/interceptors/transform.interceptor';
@@ -18,10 +17,9 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { Product } from './interfaces/Product.interface';
 
 @Controller('cats')
-@UseGuards(RolesGuard)
 @UseInterceptors(LoggingInterceptor, TransformInterceptor)
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) { }
+  constructor(private readonly productsService: ProductsService) {}
 
   @Post()
   @Roles(RoleTypes.admin)
@@ -38,7 +36,5 @@ export class ProductsController {
   findOne(
     @Param('id', new ParseIntPipe())
     id: number,
-  ) {
-
-  }
+  ) {}
 }
