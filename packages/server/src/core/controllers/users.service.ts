@@ -13,6 +13,7 @@ import { ObjectID } from 'typeorm';
 import { EditProfileReq, UserRes, ChangePasswordReq } from './../dto';
 import { ObjectId } from 'bson';
 import { Utils } from 'utils';
+import { omit } from 'lodash';
 
 const FIVE_MINUTES = 5 * 60 * 1000; // 5 mins
 const ONE_MINUTE = 1 * 60 * 1000; // 1 mins
@@ -318,11 +319,7 @@ export class UsersService extends MongooseService<UserModel> {
     const doc = user.toObject();
     const instance = Object.assign({}, doc, doc.profile);
     instance.id = doc._id;
-    delete instance.profile;
-    delete instance._id;
-    delete instance.__v;
-    delete instance.password;
     instance.createdAt = doc.createdAt;
-    return instance;
+    return omit(instance, ['_id', '__v', 'password', 'profile']);
   }
 }

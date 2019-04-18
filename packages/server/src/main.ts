@@ -9,6 +9,7 @@ import * as cookieParser from 'cookie-parser';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import * as express from 'express';
+import { RolesGuard } from './common';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -20,6 +21,8 @@ async function bootstrap() {
   setupSwagger(app);
   app.enableCors();
   app.use(helmet());
+  // const rolesGuard = app.select(AppModule).get(RolesGuard);
+  // app.useGlobalGuards(rolesGuard);
   app.useGlobalPipes(
     new ValidationPipe({
       // disableErrorMessages: true,  // TODO needs only open at dev;

@@ -13,7 +13,10 @@ import { MONGODB_URI } from './utils/secrets';
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
-    MongooseModule.forRoot(MONGODB_URI, { useNewUrlParser: true }),
+    MongooseModule.forRoot(MONGODB_URI, {
+      useCreateIndex: true,
+      useNewUrlParser: true,
+    }),
     AuthModule,
     CoreModule,
     CmsModule,

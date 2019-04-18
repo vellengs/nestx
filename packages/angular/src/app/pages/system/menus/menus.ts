@@ -2,6 +2,7 @@ import { NzTreeNode, NzFormatEmitEvent } from 'ng-zorro-antd';
 import { Component, OnInit, Injector, Input } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 import { BaseStandComponent } from '@shared/base/base.stand.component';
+import { pick } from 'lodash';
 
 @Component({
     selector: 'app-menus-page',
@@ -93,9 +94,16 @@ export class MenusPageComponent extends BaseStandComponent implements OnInit {
             this.selectedItem = e.node;
 
             this.coreService.menusFindOne(e.node.key).subscribe(res => {
-                this.formData = res;
+                this.formData = this.setFormData(res);
             });
         }
+    }
+
+    setFormData(data) {
+        const schema = this.detailSchema;
+        const keys = Object.keys(schema.properties);
+        keys.push('id');
+        return pick(data, keys);
     }
 
     selectNode(event: Required<NzFormatEmitEvent>): void {

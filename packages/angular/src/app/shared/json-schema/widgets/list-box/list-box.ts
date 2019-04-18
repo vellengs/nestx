@@ -11,13 +11,13 @@ import { TransferItem } from 'types/types';
     template: `
     <sf-item-wrap [id]="id" [schema]="schema" [ui]="ui" [showError]="showError" [error]="error" [showTitle]="schema.title">
      <nz-tag
-        *ngFor="let i of data"
+        *ngFor="let item of data"
         nzMode="closeable"
-        [nzChecked]="i.checked"
-        (nzAfterClose)="handleClose(i)"
+        [nzChecked]="item.checked"
+        (nzAfterClose)="handleClose(item)"
         (nzOnClose)="close($event)"
-        (nzCheckedChange)="onChange(i)">
-        {{i.label || i.title}}
+        (nzCheckedChange)="onChange(item)">
+        {{item.label || item.title || item.name}}
       </nz-tag>
       <div>
       <button type="button" nz-button [nzType]="'dashed'" (click)="openModal()">
@@ -32,9 +32,10 @@ export class ListBoxWidgetComponent extends ControlWidget implements OnInit {
     i: any;
     config: any;
     loadingTip: string;
-    data: SFSchemaEnum[];
+    data: any[];
     selectorAsyncData: (input?: any) => Observable<TransferItem[]>;
     selectorTitle: string;
+
 
     openModal() {
         this.injector.get(ModalHelper)

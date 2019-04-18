@@ -19,11 +19,11 @@ import {
   GroupedUsersRes,
 } from './../dto';
 import { Tags } from 'nest-swagger';
-import { ResultList, NullableParseIntPipe, TreeNode } from './../../common';
+import { ResultList, NullableParseIntPipe, TreeNode, RolesGuards } from './../../common';
 
 @Tags('core')
 @Controller('group')
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(AuthGuard('jwt'), RolesGuards('group'))
 export class GroupsController {
   constructor(private readonly groupService: GroupsService) {}
 
