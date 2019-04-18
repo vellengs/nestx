@@ -59,3 +59,15 @@ npm run start:serve
 ```
 npm run start:angular
 ```
+ 
+### Features
+
+| functions    |  basic        |  full        |
+| -----------  |  -----------  |  ----------- |
+| Login        | √             |              |
+| Settings     | √             |              |
+| Users        | √             |              |
+| Roles        | √             |              |
+| Dictionary   | √             |              |
+| Logs         | √             |              |
+| Menus        | √             |              |

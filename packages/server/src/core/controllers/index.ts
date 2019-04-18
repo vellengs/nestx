@@ -1,4 +1,3 @@
-
 import { DictsController } from './dicts.controller';
 import { UsersController } from './users.controller';
 import { DictsService } from './dicts.service';
@@ -19,29 +18,31 @@ import { GroupsController } from './groups.controller';
 import { GroupsService } from './groups.service';
 import { AppearancesController } from './appearances.controller';
 import { AppearancesService } from './appearances.service';
+import { AccessManagement } from './access.management';
 
 export const CoreControllers = [
-    DictsController,
-    UsersController,
-    MenusController,
-    LogsController,
-    NoticesController,
-    MockController,
-    SettingsController,
-    RolesController,
-    GroupsController,
-    AppearancesController,
+  DictsController,
+  UsersController,
+  MenusController,
+  LogsController,
+  NoticesController,
+  MockController,
+  SettingsController,
+  RolesController,
+  GroupsController,
+  AppearancesController,
 ];
 
 export const CoreServices = [
-    DictsService,
-    UsersService,
-    MenusService,
-    LogsService,
-    NoticesService,
-    MockService,
-    SettingsService,
-    RolesService,
-    GroupsService,
-    AppearancesService,
+  DictsService,
+  UsersService,
+  MenusService,
+  LogsService,
+  NoticesService,
+  MockService,
+  SettingsService,
+  RolesService,
+  GroupsService,
+  AppearancesService,
+  AccessManagement,
 ];

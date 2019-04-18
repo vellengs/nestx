@@ -63,8 +63,8 @@ const addForm: SFSchema = {
             default: 100,
         },
         permissions: {
-            title: '权限标签',
-            type: t.array,
+            title: '权限标签',  
+            type: t.string,
             ui: {
                 widget: w.listBox,
                 selectorTitle: '添加权限标签',

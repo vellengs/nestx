@@ -79,7 +79,7 @@ const addForm: SFSchema = {
       },
     },
   },
-  required: ['username', 'password', 'mobile'],
+  required: ['username', 'password', 'mobile', 'email'],
   ui: {
     spanLabelFixed: 100,
     grid: {

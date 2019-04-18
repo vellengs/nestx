@@ -16,7 +16,12 @@ import { UsersService } from './users.service';
 import { User } from './../interfaces/user.interface';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
-import { ResultList, NullableParseIntPipe, Result, RolesGuards } from './../../common';
+import {
+  ResultList,
+  NullableParseIntPipe,
+  Result,
+  RolesGuard,
+} from './../../common';
 import {
   KeyValueDto,
   CreateUserReq,
@@ -30,7 +35,7 @@ import { Tags } from 'nest-swagger';
 
 @Tags('core')
 @Controller('user')
-@UseGuards(AuthGuard('jwt'), RolesGuards('user'))
+@UseGuards(AuthGuard('jwt'), RolesGuard)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 

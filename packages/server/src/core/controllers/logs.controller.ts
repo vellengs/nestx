@@ -1,6 +1,6 @@
 import { Controller, Get, UseGuards, Param, Query } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { ResultList, NullableParseIntPipe, RolesGuards } from './../../common';
+import { ResultList, NullableParseIntPipe, RolesGuard } from './../../common';
 import { LogsService } from './logs.service';
 import { Log } from './../interfaces';
 import { KeyValueDto } from './../dto';
@@ -8,7 +8,7 @@ import { Tags } from 'nest-swagger';
 
 @Tags('core')
 @Controller('log')
-@UseGuards(AuthGuard('jwt'), RolesGuards('log'))
+@UseGuards(AuthGuard('jwt'), RolesGuard)
 export class LogsController {
   constructor(private readonly logService: LogsService) {}
 

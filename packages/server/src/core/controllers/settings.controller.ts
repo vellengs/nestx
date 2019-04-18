@@ -20,11 +20,11 @@ import {
   SettingRes,
 } from './../dto';
 import { Tags } from 'nest-swagger';
-import { ResultList, NullableParseIntPipe, RolesGuards } from './../../common';
+import { ResultList, NullableParseIntPipe, RolesGuard } from './../../common';
 
 @Tags('core')
 @Controller('setting')
-@UseGuards(AuthGuard('jwt'), RolesGuards('setting'))
+@UseGuards(AuthGuard('jwt'), RolesGuard)
 export class SettingsController {
   constructor(private readonly settingService: SettingsService) {}
 
