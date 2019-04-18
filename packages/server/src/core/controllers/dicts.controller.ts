@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
-import { ResultList, NullableParseIntPipe, RolesGuards } from './../../common';
+import { ResultList, NullableParseIntPipe, RolesGuard } from './../../common';
 import { DictsService } from './dicts.service';
 import { Dict } from './../interfaces/dict.interface';
 import { CreateDictReq, EditDictReq, KeyValueDto } from './../dto';
@@ -18,7 +18,7 @@ import { Tags } from 'nest-swagger';
 
 @Tags('core')
 @Controller('dict')
-@UseGuards(AuthGuard('jwt'), RolesGuards('dict'))
+@UseGuards(AuthGuard('jwt'), RolesGuard)
 export class DictsController {
   constructor(private readonly dictService: DictsService) {}
 
