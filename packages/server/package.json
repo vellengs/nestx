@@ -14,6 +14,7 @@
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "swagger": "swaggerGen -c ./swagger.config.json && npm run gen",
     "init:data": "ts-node src/scripts/data.import.ts",
+    "data:export": "ts-node src/scripts/data.export.ts",
     "gen": "ts-node src/scripts/api.generate.ts",
     "test": "jest",
     "test:watch": "jest --watch",

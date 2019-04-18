@@ -1,7 +1,7 @@
 import { grants } from './access.grants';
 import { CoreDatabase as Db } from './database';
 
-async function init() {
+export async function createGrants() {
   let result = 0;
   // await Db.Menu.remove({ isMenu: true }).exec();
   const keys = Object.keys(grants);
@@ -27,7 +27,5 @@ async function init() {
       }
     }
   }
-  console.log('result', result);
+  console.log('grants created', result);
 }
-
-init();

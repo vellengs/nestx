@@ -2,6 +2,7 @@ import { Installer } from './data.install';
 import { CoreDatabase as db } from './database';
 import { resolve } from 'path';
 import * as fs from 'fs';
+import { createGrants } from './access.init';
 
 async function importModuleAppearances(modules: string[]) {
   const current = process.cwd();
@@ -43,9 +44,11 @@ async function exec() {
   await Installer.importData(db.Notice);
   await db.Appearance.remove({}).exec();
   await importModuleAppearances(['core', 'cms']);
+  await createGrants();
   return true;
 }
 exec().then(() => {
   console.log('data imported.');
+
   process.exit(0);
 });

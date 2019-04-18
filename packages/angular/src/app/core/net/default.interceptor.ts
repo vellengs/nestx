@@ -1,8 +1,15 @@
 import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import {
-    HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse,
-    HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpResponse, HttpUserEvent,
+    HttpInterceptor,
+    HttpRequest,
+    HttpHandler,
+    HttpErrorResponse,
+    HttpSentEvent,
+    HttpHeaderResponse,
+    HttpProgressEvent,
+    HttpResponse,
+    HttpUserEvent
 } from '@angular/common/http';
 import { mergeMap, catchError } from 'rxjs/operators';
 import { NzMessageService } from 'ng-zorro-antd';
@@ -15,7 +22,7 @@ import { Observable, of } from 'rxjs';
  */
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
-    constructor(private injector: Injector) { }
+    constructor(private injector: Injector) {}
 
     get msg(): NzMessageService {
         return this.injector.get(NzMessageService);
@@ -25,7 +32,9 @@ export class DefaultInterceptor implements HttpInterceptor {
         setTimeout(() => this.injector.get(Router).navigateByUrl(url));
     }
 
-    private handleData(event: HttpResponse<any> | HttpErrorResponse): Observable<any> {
+    private handleData(
+        event: HttpResponse<any> | HttpErrorResponse
+    ): Observable<any> {
         // 可能会因为 `throw` 导出无法执行 `_HttpClient` 的 `end()` 操作
         this.injector.get(_HttpClient).end();
         // 业务处理：一些通用操作
@@ -55,13 +64,20 @@ export class DefaultInterceptor implements HttpInterceptor {
                 this.goTo('/passport/login');
                 break;
             case 403:
+                if (event instanceof HttpErrorResponse) {
+                    this.msg.error('您未获得 API 授权');
+                }
+                break;
             case 404:
             case 500:
                 this.goTo(`/${event.status}`);
                 break;
             default:
                 if (event instanceof HttpErrorResponse) {
-                    console.warn('未可知错误，大部分是由于后端不支持CORS或无效配置引起', event);
+                    console.warn(
+                        '未可知错误，大部分是由于后端不支持CORS或无效配置引起',
+                        event
+                    );
                     this.msg.error(event.message);
                 }
                 break;
@@ -69,9 +85,16 @@ export class DefaultInterceptor implements HttpInterceptor {
         return of(event);
     }
 
-    intercept(req: HttpRequest<any>, next: HttpHandler):
-        Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
-
+    intercept(
+        req: HttpRequest<any>,
+        next: HttpHandler
+    ): Observable<
+        | HttpSentEvent
+        | HttpHeaderResponse
+        | HttpProgressEvent
+        | HttpResponse<any>
+        | HttpUserEvent<any>
+    > {
         // 统一加上服务端前缀
         let url = req.url;
         if (!url.startsWith('https://') && !url.startsWith('http://')) {
