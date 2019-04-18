@@ -2,9 +2,11 @@ import { ModuleRef } from '@nestjs/core';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { MenuModel, RoleModel } from './../../core/interfaces';
+import { MenuModel, RoleModel } from './../interfaces';
 
-const mapActions = {
+const mapActions: {
+  [key: string]: string;
+} = {
   GET: 'read',
   POST: 'create',
   PUT: 'update',
@@ -18,11 +20,7 @@ export class AccessManagement {
     @InjectModel('Role') private readonly roleModel: Model<RoleModel>,
   ) {}
 
-  async canAccess(
-    roles: string[],
-    ctrl: string,
-    method: 'GET' | 'POST' | 'PUT' | 'DELETE',
-  ) {
+  async canAccess(roles: string[], ctrl: string, method: string) {
     const action = mapActions[method];
     const permissions =
       (await this.menuModel
