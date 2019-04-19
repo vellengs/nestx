@@ -12,11 +12,17 @@ export const LogSchema = new Schema(
     operator: {
       type: t.String,
     },
-    operatorIp: {
+    ip: {
       type: t.String,
     },
     operation: {
       type: t.String,
+    },
+    result: {
+      type: t.Number,
+    },
+    elapsed: {
+      type: t.Number,
     },
     comment: {
       type: t.String,

@@ -7,6 +7,7 @@ import {
   Param,
   Put,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
@@ -19,11 +20,12 @@ import {
   GroupedUsersRes,
 } from './../dto';
 import { Tags } from 'nest-swagger';
-import { ResultList, NullableParseIntPipe, TreeNode, RolesGuard } from './../../common';
+import { ResultList, NullableParseIntPipe, TreeNode, RolesGuard, LoggingInterceptor } from './../../common';
 
 @Tags('core')
 @Controller('group')
 @UseGuards(AuthGuard('jwt'), RolesGuard)
+@UseInterceptors(LoggingInterceptor)
 export class GroupsController {
   constructor(private readonly groupService: GroupsService) {}
 

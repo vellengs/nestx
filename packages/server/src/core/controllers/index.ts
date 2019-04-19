@@ -19,6 +19,7 @@ import { GroupsService } from './groups.service';
 import { AppearancesController } from './appearances.controller';
 import { AppearancesService } from './appearances.service';
 import { AccessManagement } from './access.management';
+import { LoggerService } from './logger.service';
 
 export const CoreControllers = [
   DictsController,
@@ -45,4 +46,5 @@ export const CoreServices = [
   GroupsService,
   AppearancesService,
   AccessManagement,
+  LoggerService,
 ];

@@ -11,6 +11,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  UseInterceptors,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './../interfaces/user.interface';
@@ -21,6 +22,7 @@ import {
   NullableParseIntPipe,
   Result,
   RolesGuard,
+  LoggingInterceptor,
 } from './../../common';
 import {
   KeyValueDto,
@@ -36,6 +38,7 @@ import { Tags } from 'nest-swagger';
 @Tags('core')
 @Controller('user')
 @UseGuards(AuthGuard('jwt'), RolesGuard)
+@UseInterceptors(LoggingInterceptor)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 

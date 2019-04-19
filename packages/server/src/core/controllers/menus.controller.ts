@@ -8,10 +8,11 @@ import {
   Put,
   Query,
   Req,
+  UseInterceptors,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
-import { ResultList, NullableParseIntPipe, RolesGuard } from './../../common';
+import { ResultList, NullableParseIntPipe, RolesGuard, LoggingInterceptor } from './../../common';
 import { MenusService } from './menus.service';
 import { Menu } from './../interfaces';
 import { CreateMenuReq, EditMenuReq, KeyValueDto, MenuRes } from './../dto';
@@ -20,6 +21,7 @@ import { Tags } from 'nest-swagger';
 @Tags('core')
 @Controller('menu')
 @UseGuards(AuthGuard('jwt'), RolesGuard)
+@UseInterceptors(LoggingInterceptor)
 export class MenusController {
   constructor(private readonly menuService: MenusService) {}
 

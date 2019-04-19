@@ -7,10 +7,11 @@ import {
   Param,
   Put,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
-import { ResultList, NullableParseIntPipe, RolesGuard } from './../../common';
+import { ResultList, NullableParseIntPipe, RolesGuard, LoggingInterceptor } from './../../common';
 import { DictsService } from './dicts.service';
 import { Dict } from './../interfaces/dict.interface';
 import { CreateDictReq, EditDictReq, KeyValueDto } from './../dto';
@@ -19,6 +20,7 @@ import { Tags } from 'nest-swagger';
 @Tags('core')
 @Controller('dict')
 @UseGuards(AuthGuard('jwt'), RolesGuard)
+@UseInterceptors(LoggingInterceptor)
 export class DictsController {
   constructor(private readonly dictService: DictsService) {}
 

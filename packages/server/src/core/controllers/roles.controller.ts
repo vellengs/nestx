@@ -7,10 +7,16 @@ import {
   Param,
   Put,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
-import { ResultList, NullableParseIntPipe, RolesGuard } from './../../common';
+import {
+  ResultList,
+  NullableParseIntPipe,
+  RolesGuard,
+  LoggingInterceptor,
+} from './../../common';
 import { RolesService } from './roles.service';
 import { Role } from './../interfaces/role.interface';
 import { CreateRoleReq, EditRoleReq, KeyValueDto } from './../dto';
@@ -19,6 +25,7 @@ import { Tags } from 'nest-swagger';
 @Tags('core')
 @Controller('role')
 @UseGuards(AuthGuard('jwt'), RolesGuard)
+@UseInterceptors(LoggingInterceptor)
 export class RolesController {
   constructor(private readonly roleService: RolesService) {}
 
