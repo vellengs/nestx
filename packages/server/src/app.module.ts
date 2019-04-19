@@ -1,14 +1,13 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth';
+import { CoreModule } from './core';
+import { CommerceModule } from './commerce';
+import { CmsModule } from './cms';
+import { MONGODB_URI } from './utils';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { MongooseModule } from '@nestjs/mongoose';
-
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from './auth/auth.module';
-import { CoreModule } from './core/core.module';
-import { CommerceModule } from './commerce/commerce.module';
-import { CmsModule } from './cms/cms.module';
-import { MONGODB_URI } from './utils/secrets';
 
 @Module({
   imports: [
