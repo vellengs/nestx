@@ -34,6 +34,7 @@ export enum WidgetTypes {
     transfer = 'transfer',
     upload = 'upload',
     tinymce = 'tinymce',
+    editor = 'editor',
     ueditor = 'ueditor',
     umeditor = 'umeditor',
     listBox = 'listBox',

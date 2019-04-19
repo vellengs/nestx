@@ -2301,7 +2301,13 @@ export interface Log {
    * @type {string}
    * @memberof Log
    */
-  operatorIp: string;
+  operatorName: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Log
+   */
+  ip: string;
   /**
    *
    * @type {string}
@@ -2310,16 +2316,28 @@ export interface Log {
   operation: string;
   /**
    *
+   * @type {number}
+   * @memberof Log
+   */
+  result: number;
+  /**
+   *
+   * @type {number}
+   * @memberof Log
+   */
+  elapsed: number;
+  /**
+   *
    * @type {string}
    * @memberof Log
    */
-  comment: string;
+  comment?: string;
   /**
    *
    * @type {Date}
    * @memberof Log
    */
-  createdAt: Date;
+  createdAt?: Date;
 }
 
 /**
@@ -4138,6 +4156,42 @@ export const AppApiAxiosParamCreator = function(configuration?: Configuration) {
   return {
     /**
      *
+     * @param {string} [name]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    appGetAppSettings(name?: string, options: any = {}): RequestArgs {
+      const localVarPath = `/name/{name}`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      if (name !== undefined) {
+        localVarQueryParameter['name'] = name;
+      }
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query,
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -4178,6 +4232,27 @@ export const AppApiFp = function(configuration?: Configuration) {
   return {
     /**
      *
+     * @param {string} [name]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    appGetAppSettings(
+      name?: string,
+      options?: any,
+    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<SettingsGroup> {
+      const localVarAxiosArgs = AppApiAxiosParamCreator(configuration).appGetAppSettings(
+        name,
+        options,
+      );
+      return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+        const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {
+          url: basePath + localVarAxiosArgs.url,
+        });
+        return axios.request(axiosRequestArgs);
+      };
+    },
+    /**
+     *
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -4205,6 +4280,15 @@ export const AppApiFactory = function(
   return {
     /**
      *
+     * @param {string} [name]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    appGetAppSettings(name?: string, options?: any) {
+      return AppApiFp(configuration).appGetAppSettings(name, options)(axios, basePath);
+    },
+    /**
+     *
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -4221,6 +4305,17 @@ export const AppApiFactory = function(
  * @extends {BaseAPI}
  */
 export class AppApi extends BaseAPI {
+  /**
+   *
+   * @param {string} [name]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AppApi
+   */
+  public appGetAppSettings(name?: string, options?: any) {
+    return AppApiFp(this.configuration).appGetAppSettings(name, options)(this.axios, this.basePath);
+  }
+
   /**
    *
    * @param {*} [options] Override http request option.

@@ -15,8 +15,10 @@ import { UmeditorWidget } from '@shared/json-schema/widgets/umeditor/umeditor.wi
 import { TabsWidgetComponent } from '@shared/json-schema/widgets/tabs/tabs.widget';
 import { TextareaWidgetComponent } from '@shared/json-schema/widgets/textarea/textarea.widget';
 import { TreeSelectWidgetComponent } from '@shared/json-schema/widgets/tree-select/tree-select.widget';
+import { EditorWidget } from './widgets/editor/editor.widget';
 
 export const SCHEMA_THIRDS_COMPONENTS = [
+    EditorWidget,
     TinymceWidget,
     UeditorWidget,
     UmeditorWidget,
@@ -29,34 +31,48 @@ export const SCHEMA_THIRDS_COMPONENTS = [
     AvatarWidgetComponent,
     TabsWidgetComponent,
     TextareaWidgetComponent,
-    TreeSelectWidgetComponent,
+    TreeSelectWidgetComponent
 ];
 
 @NgModule({
     declarations: SCHEMA_THIRDS_COMPONENTS,
     entryComponents: SCHEMA_THIRDS_COMPONENTS,
-    imports: [
-        SharedModule,
-        DelonFormModule.forRoot()
-    ],
-    exports: [
-        ...SCHEMA_THIRDS_COMPONENTS
-    ]
+    imports: [SharedModule, DelonFormModule.forRoot()],
+    exports: [...SCHEMA_THIRDS_COMPONENTS]
 })
 export class JsonSchemaModule {
     constructor(widgetRegistry: WidgetRegistry) {
+        widgetRegistry.register(EditorWidget.KEY, EditorWidget);
         widgetRegistry.register(TinymceWidget.KEY, TinymceWidget);
         widgetRegistry.register(UeditorWidget.KEY, UeditorWidget);
-        widgetRegistry.register(SearchWidgetComponent.KEY, SearchWidgetComponent);
-        widgetRegistry.register(ListBoxWidgetComponent.KEY, ListBoxWidgetComponent);
+        widgetRegistry.register(
+            SearchWidgetComponent.KEY,
+            SearchWidgetComponent
+        );
+        widgetRegistry.register(
+            ListBoxWidgetComponent.KEY,
+            ListBoxWidgetComponent
+        );
         widgetRegistry.register(DictWidgetComponent.KEY, DictWidgetComponent);
         widgetRegistry.register(TreeWidgetComponent.KEY, TreeWidgetComponent);
-        widgetRegistry.register(ChoicesWidgetComponent.KEY, ChoicesWidgetComponent);
+        widgetRegistry.register(
+            ChoicesWidgetComponent.KEY,
+            ChoicesWidgetComponent
+        );
         widgetRegistry.register(ImageWidgetComponent.KEY, ImageWidgetComponent);
-        widgetRegistry.register(AvatarWidgetComponent.KEY, AvatarWidgetComponent);
+        widgetRegistry.register(
+            AvatarWidgetComponent.KEY,
+            AvatarWidgetComponent
+        );
         widgetRegistry.register(UmeditorWidget.KEY, UmeditorWidget);
         widgetRegistry.register(TabsWidgetComponent.KEY, TabsWidgetComponent);
-        widgetRegistry.register(TextareaWidgetComponent.KEY, TextareaWidgetComponent);
-        widgetRegistry.register(TreeSelectWidgetComponent.KEY, TreeSelectWidgetComponent);
+        widgetRegistry.register(
+            TextareaWidgetComponent.KEY,
+            TextareaWidgetComponent
+        );
+        widgetRegistry.register(
+            TreeSelectWidgetComponent.KEY,
+            TreeSelectWidgetComponent
+        );
     }
 }

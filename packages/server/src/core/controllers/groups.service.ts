@@ -1,14 +1,15 @@
 import { Model } from 'mongoose';
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpStatus } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import {
+  CustomException,
   MongooseService,
   TreeNode,
   ResultList,
   Criteria,
 } from './../../common';
 import { GroupModel, UserModel } from './../interfaces';
-import { GroupedUsersRes } from './../dto';
+import { GroupedUsersRes, EditGroupReq } from './../dto';
 
 @Injectable()
 export class GroupsService extends MongooseService<GroupModel> {
@@ -27,6 +28,16 @@ export class GroupsService extends MongooseService<GroupModel> {
     @InjectModel('User') protected readonly userModel: Model<UserModel>,
   ) {
     super(model);
+  }
+
+  async editGroup(entry: EditGroupReq) {
+    if (entry.id === entry.parent) {
+      throw new CustomException(
+        'Can not set parent by itself.',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+    return super.update(entry);
   }
 
   async getGroupedUsers(

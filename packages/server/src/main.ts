@@ -9,19 +9,18 @@ import * as cookieParser from 'cookie-parser';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import * as express from 'express';
-import { LoggingInterceptor } from './common';
+import { HttpExceptionFilter } from './common';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.useStaticAssets(join(__dirname, '..', 'public'));
-  // const reflector = app.get(Reflector);
-  // app.useGlobalInterceptors(new LoggingInterceptor(reflector));
   app.use('/uploads', express.static('uploads'));
   app.use(cookieParser());
   app.setGlobalPrefix('api'); // TODO
   setupSwagger(app);
   app.enableCors();
   app.use(helmet());
+  app.useGlobalFilters(new HttpExceptionFilter());
   app.useGlobalPipes(
     new ValidationPipe({
       // disableErrorMessages: true,  // TODO needs only open at dev;
