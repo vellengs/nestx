@@ -8,7 +8,6 @@ import { tap } from 'rxjs/operators';
 import { Reflector } from '@nestjs/core';
 import { LoggerService } from './../../core/controllers/logger.service';
 import { User } from './../../core';
-import { method } from 'bluebird';
 
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {
@@ -19,6 +18,15 @@ export class LoggingInterceptor implements NestInterceptor {
 
   async intercept(context: ExecutionContext, next: CallHandler) {
     const now = Date.now();
+    return next.handle().pipe(
+      tap(async () => {
+        await this.handle(now, context);
+      })
+    );
+  }
+
+  private async handle(now: number, context: ExecutionContext) {
+    const elapsed = Date.now() - now;
     const request: Request & {
       user: User;
       connection: any;
@@ -38,29 +46,21 @@ export class LoggingInterceptor implements NestInterceptor {
       request.ip ||
       request.ips[0]
     ).replace('::ffff:', '');
-
-    return next.handle().pipe(
-      tap(async val => {
-        const elapsed = Date.now() - now;
-        const action = `${controller}/${method}`;
-
-        if (user && method !== 'GET') {
-          const userId = user.id;
-          const username = user.name || user.username;
-          await this.logger.log({
-            ip,
-            elapsed,
-            controller,
-            method,
-            userId,
-            username,
-          });
-        }
-
-        if (controller) {
-          console.log(`${action} takes: ${Date.now() - now}ms`, ip, val);
-        }
-      }),
-    );
+    const action = `${controller}/${method}`;
+    if (user && method !== 'GET') {
+      const userId = user.id;
+      const username = user.name || user.username;
+      await this.logger.log({
+        ip,
+        elapsed,
+        controller,
+        method,
+        userId,
+        username,
+      });
+    }
+    if (controller) {
+      console.log(`${action} takes: ${Date.now() - now}ms`, ip);
+    }
   }
 }

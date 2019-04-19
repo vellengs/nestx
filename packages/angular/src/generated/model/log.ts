@@ -30,7 +30,11 @@ export interface Log {
     /**
      * 
      */
-    operatorIp: string;
+    operatorName: string;
+    /**
+     * 
+     */
+    ip: string;
     /**
      * 
      */
@@ -38,9 +42,17 @@ export interface Log {
     /**
      * 
      */
-    comment: string;
+    result: number;
     /**
      * 
      */
-    createdAt: Date;
+    elapsed: number;
+    /**
+     * 
+     */
+    comment?: string;
+    /**
+     * 
+     */
+    createdAt?: Date;
 }

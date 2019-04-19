@@ -1,176 +1,5 @@
 {
 	"definitions": {
-		"AccessToken": {
-			"description": "",
-			"properties": {
-				"expiresIn": {
-					"type": "number",
-					"format": "double",
-					"description": ""
-				},
-				"accessToken": {
-					"type": "string",
-					"description": ""
-				}
-			},
-			"type": "object",
-			"required": [
-				"expiresIn",
-				"accessToken"
-			]
-		},
-		"LoginRes": {
-			"description": "",
-			"properties": {
-				"username": {
-					"type": "string",
-					"description": ""
-				},
-				"avatar": {
-					"type": "string",
-					"description": ""
-				},
-				"email": {
-					"type": "string",
-					"description": ""
-				},
-				"name": {
-					"type": "string",
-					"description": ""
-				},
-				"mobile": {
-					"type": "string",
-					"description": ""
-				},
-				"isAdmin": {
-					"type": "boolean",
-					"description": ""
-				},
-				"isApproved": {
-					"type": "boolean",
-					"description": ""
-				},
-				"expired": {
-					"type": "number",
-					"format": "double",
-					"description": ""
-				},
-				"company": {
-					"type": "string",
-					"description": ""
-				},
-				"siteUrl": {
-					"type": "string",
-					"description": ""
-				},
-				"address": {
-					"type": "string",
-					"description": ""
-				},
-				"token": {
-					"$ref": "#/definitions/AccessToken"
-				},
-				"roles": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					},
-					"description": ""
-				}
-			},
-			"type": "object",
-			"required": [
-				"username",
-				"avatar",
-				"email",
-				"name",
-				"mobile",
-				"isAdmin",
-				"isApproved",
-				"expired",
-				"token"
-			]
-		},
-		"LoginReq": {
-			"description": "",
-			"properties": {
-				"username": {
-					"type": "string",
-					"description": ""
-				},
-				"type": {
-					"type": "string",
-					"description": ""
-				},
-				"password": {
-					"type": "string",
-					"description": ""
-				}
-			},
-			"type": "object",
-			"required": [
-				"username",
-				"password"
-			]
-		},
-		"RegisterReq": {
-			"description": "",
-			"properties": {
-				"username": {
-					"type": "string",
-					"description": ""
-				},
-				"password": {
-					"type": "string",
-					"description": ""
-				},
-				"mobile": {
-					"type": "string",
-					"description": ""
-				},
-				"email": {
-					"type": "string",
-					"description": ""
-				},
-				"name": {
-					"type": "string",
-					"description": ""
-				},
-				"mobilePrefix": {
-					"type": "string",
-					"description": ""
-				},
-				"veryCode": {
-					"type": "string",
-					"description": ""
-				}
-			},
-			"type": "object",
-			"required": [
-				"username",
-				"password",
-				"mobile",
-				"email",
-				"veryCode"
-			]
-		},
-		"Result": {
-			"description": "",
-			"properties": {
-				"ok": {
-					"type": "boolean",
-					"description": ""
-				},
-				"message": {
-					"type": "string",
-					"description": ""
-				}
-			},
-			"type": "object",
-			"required": [
-				"ok"
-			]
-		},
 		"CreateDictReq": {
 			"description": "",
 			"properties": {
@@ -574,6 +403,23 @@
 				"password",
 				"email",
 				"mobile"
+			]
+		},
+		"Result": {
+			"description": "",
+			"properties": {
+				"ok": {
+					"type": "boolean",
+					"description": ""
+				},
+				"message": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"ok"
 			]
 		},
 		"UsersOfRole": {
@@ -1205,12 +1051,26 @@
 					"type": "string",
 					"description": ""
 				},
-				"operatorIp": {
+				"operatorName": {
+					"type": "string",
+					"description": ""
+				},
+				"ip": {
 					"type": "string",
 					"description": ""
 				},
 				"operation": {
 					"type": "string",
+					"description": ""
+				},
+				"result": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"elapsed": {
+					"type": "number",
+					"format": "double",
 					"description": ""
 				},
 				"comment": {
@@ -1228,10 +1088,11 @@
 				"id",
 				"name",
 				"operator",
-				"operatorIp",
+				"operatorName",
+				"ip",
 				"operation",
-				"comment",
-				"createdAt"
+				"result",
+				"elapsed"
 			]
 		},
 		"ResultList$Log": {
@@ -2056,6 +1917,160 @@
 			"type": "object",
 			"required": [
 				"list"
+			]
+		},
+		"AccessToken": {
+			"description": "",
+			"properties": {
+				"expiresIn": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"accessToken": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"expiresIn",
+				"accessToken"
+			]
+		},
+		"LoginRes": {
+			"description": "",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"avatar": {
+					"type": "string",
+					"description": ""
+				},
+				"email": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"mobile": {
+					"type": "string",
+					"description": ""
+				},
+				"isAdmin": {
+					"type": "boolean",
+					"description": ""
+				},
+				"isApproved": {
+					"type": "boolean",
+					"description": ""
+				},
+				"expired": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"company": {
+					"type": "string",
+					"description": ""
+				},
+				"siteUrl": {
+					"type": "string",
+					"description": ""
+				},
+				"address": {
+					"type": "string",
+					"description": ""
+				},
+				"token": {
+					"$ref": "#/definitions/AccessToken"
+				},
+				"roles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"username",
+				"avatar",
+				"email",
+				"name",
+				"mobile",
+				"isAdmin",
+				"isApproved",
+				"expired",
+				"token"
+			]
+		},
+		"LoginReq": {
+			"description": "",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"type": {
+					"type": "string",
+					"description": ""
+				},
+				"password": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"username",
+				"password"
+			]
+		},
+		"RegisterReq": {
+			"description": "",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"password": {
+					"type": "string",
+					"description": ""
+				},
+				"mobile": {
+					"type": "string",
+					"description": ""
+				},
+				"email": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"mobilePrefix": {
+					"type": "string",
+					"description": ""
+				},
+				"veryCode": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"username",
+				"password",
+				"mobile",
+				"email",
+				"veryCode"
 			]
 		},
 		"CreateProductDto": {
@@ -3508,145 +3523,6 @@
 		"version": "0.0.1"
 	},
 	"paths": {
-		"/": {
-			"get": {
-				"operationId": "AppRoot",
-				"produces": [
-					"text/html"
-				],
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"schema": {
-							"type": "string"
-						}
-					}
-				},
-				"description": "",
-				"tags": [
-					"app"
-				],
-				"parameters": []
-			}
-		},
-		"/auth/login": {
-			"post": {
-				"operationId": "AuthLogin",
-				"produces": [
-					"application/json"
-				],
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"schema": {
-							"$ref": "#/definitions/LoginRes"
-						}
-					}
-				},
-				"description": "",
-				"tags": [
-					"auth"
-				],
-				"consumes": [
-					"application/json"
-				],
-				"parameters": [
-					{
-						"description": "",
-						"in": "body",
-						"name": "payload",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/LoginReq"
-						}
-					}
-				]
-			}
-		},
-		"/auth/register": {
-			"post": {
-				"operationId": "AuthRegister",
-				"produces": [
-					"application/json"
-				],
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"schema": {
-							"$ref": "#/definitions/AccessToken"
-						}
-					}
-				},
-				"description": "",
-				"tags": [
-					"auth"
-				],
-				"consumes": [
-					"application/json"
-				],
-				"parameters": [
-					{
-						"description": "",
-						"in": "body",
-						"name": "payload",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/RegisterReq"
-						}
-					}
-				]
-			}
-		},
-		"/auth/logout": {
-			"get": {
-				"operationId": "AuthLogout",
-				"produces": [
-					"application/json"
-				],
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"schema": {
-							"$ref": "#/definitions/Result"
-						}
-					}
-				},
-				"description": "",
-				"tags": [
-					"auth"
-				],
-				"parameters": []
-			}
-		},
-		"/auth/captcha": {
-			"get": {
-				"operationId": "AuthCaptcha",
-				"produces": [
-					"application/json"
-				],
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"schema": {
-							"$ref": "#/definitions/Result"
-						}
-					}
-				},
-				"description": "",
-				"tags": [
-					"auth"
-				],
-				"parameters": [
-					{
-						"description": "",
-						"in": "query",
-						"name": "mobile",
-						"required": true,
-						"type": "string"
-					}
-				]
-			}
-		},
 		"/dict/": {
 			"post": {
 				"operationId": "DictsCreate",
@@ -5701,6 +5577,124 @@
 				]
 			}
 		},
+		"/auth/login": {
+			"post": {
+				"operationId": "AuthLogin",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/LoginRes"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"auth"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "payload",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/LoginReq"
+						}
+					}
+				]
+			}
+		},
+		"/auth/register": {
+			"post": {
+				"operationId": "AuthRegister",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/AccessToken"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"auth"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "payload",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/RegisterReq"
+						}
+					}
+				]
+			}
+		},
+		"/auth/logout": {
+			"get": {
+				"operationId": "AuthLogout",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Result"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"auth"
+				],
+				"parameters": []
+			}
+		},
+		"/auth/captcha": {
+			"get": {
+				"operationId": "AuthCaptcha",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Result"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"auth"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "mobile",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
 		"/cats/": {
 			"post": {
 				"operationId": "ProductsCreate",
@@ -7131,6 +7125,56 @@
 						"type": "string"
 					}
 				]
+			}
+		},
+		"/name/{name}": {
+			"get": {
+				"operationId": "AppGetAppSettings",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/SettingsGroup"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"app"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "name",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/": {
+			"get": {
+				"operationId": "AppRoot",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"app"
+				],
+				"parameters": []
 			}
 		}
 	},

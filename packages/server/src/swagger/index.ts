@@ -8,6 +8,7 @@ import {
   SWAGGER_API_AUTH_NAME,
   SWAGGER_API_AUTH_LOCATION,
 } from './constants';
+import { existsSync } from 'fs';
 
 export const setupSwagger = (app: INestApplication) => {
   const options = new DocumentBuilder()
@@ -19,8 +20,11 @@ export const setupSwagger = (app: INestApplication) => {
     .setSchemes('http')
     .build();
   // const document = SwaggerModule.createDocument(app, options);
-  const document = require('./swagger.json');
-  SwaggerModule.setup(SWAGGER_API_ROOT, app, document);
+  const swaggerFile = './swagger.json';
+  if (existsSync(swaggerFile)) {
+    const document = require(swaggerFile);
+    SwaggerModule.setup(SWAGGER_API_ROOT, app, document);
+  }
 };
 
 export const createDocument = (app: INestApplication) => {
