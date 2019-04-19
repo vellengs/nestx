@@ -852,61 +852,61 @@ export interface CreateNoticeReq {
 /**
  * 
  * @export
- * @interface CreatePageDto
+ * @interface CreatePageReq
  */
-export interface CreatePageDto {
+export interface CreatePageReq {
     /**
      * 
      * @type {string}
-     * @memberof CreatePageDto
+     * @memberof CreatePageReq
      */
     name: string;
     /**
      * 
      * @type {string}
-     * @memberof CreatePageDto
+     * @memberof CreatePageReq
      */
     title: string;
     /**
      * 
      * @type {string}
-     * @memberof CreatePageDto
+     * @memberof CreatePageReq
      */
     description: string;
     /**
      * 
      * @type {number}
-     * @memberof CreatePageDto
+     * @memberof CreatePageReq
      */
     sort: number;
     /**
      * 
      * @type {boolean}
-     * @memberof CreatePageDto
+     * @memberof CreatePageReq
      */
     disable: boolean;
     /**
      * 
      * @type {string}
-     * @memberof CreatePageDto
+     * @memberof CreatePageReq
      */
     meta: string;
     /**
      * 
      * @type {string}
-     * @memberof CreatePageDto
+     * @memberof CreatePageReq
      */
     publish: string;
     /**
      * 
      * @type {string}
-     * @memberof CreatePageDto
+     * @memberof CreatePageReq
      */
     content: string;
     /**
      * 
      * @type {string}
-     * @memberof CreatePageDto
+     * @memberof CreatePageReq
      */
     template: string;
 }
@@ -1694,67 +1694,67 @@ export interface EditNoticeReq {
 /**
  * 
  * @export
- * @interface EditPageDto
+ * @interface EditPageReq
  */
-export interface EditPageDto {
+export interface EditPageReq {
     /**
      * 
      * @type {string}
-     * @memberof EditPageDto
+     * @memberof EditPageReq
      */
     id: string;
     /**
      * 
      * @type {string}
-     * @memberof EditPageDto
+     * @memberof EditPageReq
      */
     name: string;
     /**
      * 
      * @type {string}
-     * @memberof EditPageDto
+     * @memberof EditPageReq
      */
     title: string;
     /**
      * 
      * @type {string}
-     * @memberof EditPageDto
+     * @memberof EditPageReq
      */
     description: string;
     /**
      * 
      * @type {number}
-     * @memberof EditPageDto
+     * @memberof EditPageReq
      */
     sort: number;
     /**
      * 
      * @type {boolean}
-     * @memberof EditPageDto
+     * @memberof EditPageReq
      */
     disable: boolean;
     /**
      * 
      * @type {string}
-     * @memberof EditPageDto
-     */
-    publish: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditPageDto
+     * @memberof EditPageReq
      */
     meta: string;
     /**
      * 
      * @type {string}
-     * @memberof EditPageDto
+     * @memberof EditPageReq
+     */
+    publish: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditPageReq
      */
     content: string;
     /**
      * 
      * @type {string}
-     * @memberof EditPageDto
+     * @memberof EditPageReq
      */
     template: string;
 }
@@ -5320,14 +5320,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
         },
         /**
          * 
-         * @param {CreatePageDto} createPageDto 
+         * @param {CreatePageReq} createPageReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pageCreate(createPageDto: CreatePageDto, options: any = {}): RequestArgs {
-            // verify required parameter 'createPageDto' is not null or undefined
-            if (createPageDto === null || createPageDto === undefined) {
-                throw new RequiredError('createPageDto','Required parameter createPageDto was null or undefined when calling pageCreate.');
+        pageCreate(createPageReq: CreatePageReq, options: any = {}): RequestArgs {
+            // verify required parameter 'createPageReq' is not null or undefined
+            if (createPageReq === null || createPageReq === undefined) {
+                throw new RequiredError('createPageReq','Required parameter createPageReq was null or undefined when calling pageCreate.');
             }
             const localVarPath = `/page/`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -5345,8 +5345,8 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"CreatePageDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(createPageDto || {}) : (createPageDto || "");
+            const needsSerialization = (<any>"CreatePageReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(createPageReq || {}) : (createPageReq || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -5501,14 +5501,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
         },
         /**
          * 
-         * @param {EditPageDto} editPageDto 
+         * @param {EditPageReq} editPageReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pageUpdate(editPageDto: EditPageDto, options: any = {}): RequestArgs {
-            // verify required parameter 'editPageDto' is not null or undefined
-            if (editPageDto === null || editPageDto === undefined) {
-                throw new RequiredError('editPageDto','Required parameter editPageDto was null or undefined when calling pageUpdate.');
+        pageUpdate(editPageReq: EditPageReq, options: any = {}): RequestArgs {
+            // verify required parameter 'editPageReq' is not null or undefined
+            if (editPageReq === null || editPageReq === undefined) {
+                throw new RequiredError('editPageReq','Required parameter editPageReq was null or undefined when calling pageUpdate.');
             }
             const localVarPath = `/page/`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -5526,8 +5526,8 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"EditPageDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(editPageDto || {}) : (editPageDto || "");
+            const needsSerialization = (<any>"EditPageReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(editPageReq || {}) : (editPageReq || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -6249,12 +6249,12 @@ export const CmsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {CreatePageDto} createPageDto 
+         * @param {CreatePageReq} createPageReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pageCreate(createPageDto: CreatePageDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PageRes> {
-            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).pageCreate(createPageDto, options);
+        pageCreate(createPageReq: CreatePageReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PageRes> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).pageCreate(createPageReq, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -6318,12 +6318,12 @@ export const CmsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {EditPageDto} editPageDto 
+         * @param {EditPageReq} editPageReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pageUpdate(editPageDto: EditPageDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PageRes> {
-            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).pageUpdate(editPageDto, options);
+        pageUpdate(editPageReq: EditPageReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PageRes> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).pageUpdate(editPageReq, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -6696,12 +6696,12 @@ export const CmsApiFactory = function (configuration?: Configuration, basePath?:
         },
         /**
          * 
-         * @param {CreatePageDto} createPageDto 
+         * @param {CreatePageReq} createPageReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pageCreate(createPageDto: CreatePageDto, options?: any) {
-            return CmsApiFp(configuration).pageCreate(createPageDto, options)(axios, basePath);
+        pageCreate(createPageReq: CreatePageReq, options?: any) {
+            return CmsApiFp(configuration).pageCreate(createPageReq, options)(axios, basePath);
         },
         /**
          * 
@@ -6745,12 +6745,12 @@ export const CmsApiFactory = function (configuration?: Configuration, basePath?:
         },
         /**
          * 
-         * @param {EditPageDto} editPageDto 
+         * @param {EditPageReq} editPageReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pageUpdate(editPageDto: EditPageDto, options?: any) {
-            return CmsApiFp(configuration).pageUpdate(editPageDto, options)(axios, basePath);
+        pageUpdate(editPageReq: EditPageReq, options?: any) {
+            return CmsApiFp(configuration).pageUpdate(editPageReq, options)(axios, basePath);
         },
         /**
          * 
@@ -7112,13 +7112,13 @@ export class CmsApi extends BaseAPI {
 
     /**
      * 
-     * @param {CreatePageDto} createPageDto 
+     * @param {CreatePageReq} createPageReq 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CmsApi
      */
-    public pageCreate(createPageDto: CreatePageDto, options?: any) {
-        return CmsApiFp(this.configuration).pageCreate(createPageDto, options)(this.axios, this.basePath);
+    public pageCreate(createPageReq: CreatePageReq, options?: any) {
+        return CmsApiFp(this.configuration).pageCreate(createPageReq, options)(this.axios, this.basePath);
     }
 
     /**
@@ -7171,13 +7171,13 @@ export class CmsApi extends BaseAPI {
 
     /**
      * 
-     * @param {EditPageDto} editPageDto 
+     * @param {EditPageReq} editPageReq 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CmsApi
      */
-    public pageUpdate(editPageDto: EditPageDto, options?: any) {
-        return CmsApiFp(this.configuration).pageUpdate(editPageDto, options)(this.axios, this.basePath);
+    public pageUpdate(editPageReq: EditPageReq, options?: any) {
+        return CmsApiFp(this.configuration).pageUpdate(editPageReq, options)(this.axios, this.basePath);
     }
 
     /**

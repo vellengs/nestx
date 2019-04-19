@@ -6,10 +6,11 @@ import {
   Put,
   Delete,
   Param,
+  Body,
 } from '@nestjs/common';
 import { Tags } from 'nest-swagger';
 import { PageService } from './page.service';
-import { CreatePageDto, PageRes, EditPageDto } from './../dto';
+import { CreatePageReq, PageRes, EditPageReq } from './../dto';
 import { NullableParseIntPipe, ResultList } from './../../common';
 import { Page } from './../interfaces';
 import { KeyValueDto } from './../../core/dto';
@@ -28,13 +29,13 @@ export class PageController {
   }
 
   @Post()
-  async create(entry: CreatePageDto): Promise<PageRes> {
-    return this.service.create(entry);
+  async create(@Body() entry: CreatePageReq): Promise<PageRes> {
+    return this.service.createPage(entry);
   }
 
   @Put()
-  async update(entry: EditPageDto): Promise<PageRes> {
-    return this.service.update(entry);
+  async update(@Body() entry: EditPageReq): Promise<PageRes> {
+    return this.service.updatePage(entry);
   }
 
   @Get('query')

@@ -14,11 +14,7 @@
 /**
  * 
  */
-export interface EditPageDto { 
-    /**
-     * 
-     */
-    id: string;
+export interface CreatePageReq { 
     /**
      * 
      */
@@ -42,11 +38,11 @@ export interface EditPageDto {
     /**
      * 
      */
-    publish: string;
+    meta: string;
     /**
      * 
      */
-    meta: string;
+    publish: string;
     /**
      * 
      */

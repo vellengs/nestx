@@ -8,6 +8,8 @@ import {
   MediaSchema,
   PageSchema,
   PhotoSchema,
+  ContentSchema,
+  CustomSchema,
 } from './schemas';
 import { WidgetSchema } from './schemas/widget.schema';
 import { MulterModule } from '@nestjs/platform-express';
@@ -21,6 +23,8 @@ const models = [
   { name: 'Page', schema: PageSchema },
   { name: 'Photo', schema: PhotoSchema },
   { name: 'Widget', schema: WidgetSchema },
+  { name: 'Content', schema: ContentSchema },
+  { name: 'Custom', schema: CustomSchema },
 ];
 @Module({
   imports: [

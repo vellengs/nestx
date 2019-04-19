@@ -2383,7 +2383,7 @@ definitions:
             - meta
             - content
             - template
-    CreatePageDto:
+    CreatePageReq:
         description: ""
         properties:
             name:
@@ -2425,7 +2425,7 @@ definitions:
             - publish
             - content
             - template
-    EditPageDto:
+    EditPageReq:
         description: ""
         properties:
             id:
@@ -2447,10 +2447,10 @@ definitions:
             disable:
                 type: boolean
                 description: ""
-            publish:
+            meta:
                 type: string
                 description: ""
-            meta:
+            publish:
                 type: string
                 description: ""
             content:
@@ -2467,8 +2467,8 @@ definitions:
             - description
             - sort
             - disable
-            - publish
             - meta
+            - publish
             - content
             - template
     ResultList$PageRes:
@@ -4972,7 +4972,7 @@ paths:
                     name: entry
                     required: true
                     schema:
-                        $ref: '#/definitions/CreatePageDto'
+                        $ref: '#/definitions/CreatePageReq'
         put:
             operationId: PageUpdate
             produces:
@@ -4994,7 +4994,7 @@ paths:
                     name: entry
                     required: true
                     schema:
-                        $ref: '#/definitions/EditPageDto'
+                        $ref: '#/definitions/EditPageReq'
     /page/query:
         get:
             operationId: PageQuery

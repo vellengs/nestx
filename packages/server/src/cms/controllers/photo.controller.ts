@@ -6,6 +6,7 @@ import {
   Put,
   Delete,
   Param,
+  Body,
 } from '@nestjs/common';
 import { Tags } from 'nest-swagger';
 import { PhotoService } from './photo.service';
@@ -28,12 +29,12 @@ export class PhotoController {
   }
 
   @Post()
-  async create(entry: CreatePhotoDto): Promise<PhotoRes> {
+  async create(@Body() entry: CreatePhotoDto): Promise<PhotoRes> {
     return this.service.create(entry);
   }
 
   @Put()
-  async update(entry: EditPhotoDto): Promise<PhotoRes> {
+  async update(@Body() entry: EditPhotoDto): Promise<PhotoRes> {
     return this.service.update(entry);
   }
 

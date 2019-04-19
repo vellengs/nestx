@@ -10,6 +10,7 @@ import {
   UploadedFiles,
   Logger,
   UploadedFile,
+  Body,
 } from '@nestjs/common';
 import { Tags } from 'nest-swagger';
 import { MediaService } from './media.service';
@@ -60,12 +61,12 @@ export class MediaController {
   }
 
   @Post()
-  async create(entry: CreateMediaDto): Promise<MediaRes> {
+  async create(@Body() entry: CreateMediaDto): Promise<MediaRes> {
     return this.service.create(entry);
   }
 
   @Put()
-  async update(entry: EditMediaDto): Promise<MediaRes> {
+  async update(@Body() entry: EditMediaDto): Promise<MediaRes> {
     return this.service.update(entry);
   }
 

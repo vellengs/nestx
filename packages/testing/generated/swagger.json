@@ -3161,7 +3161,7 @@
 				"template"
 			]
 		},
-		"CreatePageDto": {
+		"CreatePageReq": {
 			"description": "",
 			"properties": {
 				"name": {
@@ -3215,7 +3215,7 @@
 				"template"
 			]
 		},
-		"EditPageDto": {
+		"EditPageReq": {
 			"description": "",
 			"properties": {
 				"id": {
@@ -3243,11 +3243,11 @@
 					"type": "boolean",
 					"description": ""
 				},
-				"publish": {
+				"meta": {
 					"type": "string",
 					"description": ""
 				},
-				"meta": {
+				"publish": {
 					"type": "string",
 					"description": ""
 				},
@@ -3268,8 +3268,8 @@
 				"description",
 				"sort",
 				"disable",
-				"publish",
 				"meta",
+				"publish",
 				"content",
 				"template"
 			]
@@ -6764,7 +6764,7 @@
 						"name": "entry",
 						"required": true,
 						"schema": {
-							"$ref": "#/definitions/CreatePageDto"
+							"$ref": "#/definitions/CreatePageReq"
 						}
 					}
 				]
@@ -6796,7 +6796,7 @@
 						"name": "entry",
 						"required": true,
 						"schema": {
-							"$ref": "#/definitions/EditPageDto"
+							"$ref": "#/definitions/EditPageReq"
 						}
 					}
 				]

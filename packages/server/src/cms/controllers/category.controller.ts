@@ -6,6 +6,7 @@ import {
   Put,
   Delete,
   Param,
+  Body,
 } from '@nestjs/common';
 import { Tags } from 'nest-swagger';
 import { CategoryService } from './category.service';
@@ -29,12 +30,12 @@ export class CategoryController {
   }
 
   @Post()
-  async create(entry: CreateCategoryDto): Promise<CategoryRes> {
+  async create(@Body() entry: CreateCategoryDto): Promise<CategoryRes> {
     return this.service.create(entry);
   }
 
   @Put()
-  async update(entry: EditCategoryDto): Promise<CategoryRes> {
+  async update(@Body() entry: EditCategoryDto): Promise<CategoryRes> {
     return this.service.update(entry);
   }
   

@@ -4,3 +4,5 @@ export * from './comment.schema';
 export * from './media.schema';
 export * from './page.schema';
 export * from './photo.schema';
+export * from './content.schema';
+export * from './custom.schema';

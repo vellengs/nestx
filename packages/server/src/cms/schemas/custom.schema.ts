@@ -1,18 +1,20 @@
-import { Schema, SchemaTypes as t, SchemaOptions } from 'mongoose';
+import { Schema, SchemaTypes as t, SchemaOptions, model } from 'mongoose';
 import { transform } from './../../utils';
 
-const option: SchemaOptions = {};
-option.timestamps = true;
-
-export const PageSchema = new Schema(
+export const CustomSchema = new Schema(
   {
     name: { type: t.String },
     title: t.String,
     keyword: t.String,
+    type: t.String,
     description: t.String,
+    author: t.String,
     sort: t.Number,
     disable: t.Boolean,
-    publish: { type: t.Date, default: Date.now },
+    category: {
+      ref: 'Category',
+      type: t.ObjectId,
+    },
     meta: {
       ref: 'Meta',
       type: t.ObjectId,
@@ -26,8 +28,11 @@ export const PageSchema = new Schema(
       type: t.ObjectId,
     },
   },
-  option,
+  {
+    timestamps: true,
+    toJSON: {
+      transform,
+    },
+    strict: false,
+  },
 );
-PageSchema.set('toJSON', {
-  transform,
-});

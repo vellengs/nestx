@@ -25,13 +25,13 @@ import { CategoryRes } from '../model/categoryRes';
 import { CreateArticleDto } from '../model/createArticleDto';
 import { CreateCategoryDto } from '../model/createCategoryDto';
 import { CreateMediaDto } from '../model/createMediaDto';
-import { CreatePageDto } from '../model/createPageDto';
+import { CreatePageReq } from '../model/createPageReq';
 import { CreatePhotoDto } from '../model/createPhotoDto';
 import { CreateWidgetDto } from '../model/createWidgetDto';
 import { EditArticleDto } from '../model/editArticleDto';
 import { EditCategoryDto } from '../model/editCategoryDto';
 import { EditMediaDto } from '../model/editMediaDto';
-import { EditPageDto } from '../model/editPageDto';
+import { EditPageReq } from '../model/editPageReq';
 import { EditPhotoDto } from '../model/editPhotoDto';
 import { EditWidgetDto } from '../model/editWidgetDto';
 import { KeyValueDto } from '../model/keyValueDto';
@@ -1006,16 +1006,16 @@ export class CmsService {
     /**
      * 
      * 
-     * @param createPageDto 
+     * @param createPageReq 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pageCreate(createPageDto: CreatePageDto, observe?: 'body', reportProgress?: boolean): Observable<PageRes>;
-    public pageCreate(createPageDto: CreatePageDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageRes>>;
-    public pageCreate(createPageDto: CreatePageDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageRes>>;
-    public pageCreate(createPageDto: CreatePageDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (createPageDto === null || createPageDto === undefined) {
-            throw new Error('Required parameter createPageDto was null or undefined when calling pageCreate.');
+    public pageCreate(createPageReq: CreatePageReq, observe?: 'body', reportProgress?: boolean): Observable<PageRes>;
+    public pageCreate(createPageReq: CreatePageReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageRes>>;
+    public pageCreate(createPageReq: CreatePageReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageRes>>;
+    public pageCreate(createPageReq: CreatePageReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (createPageReq === null || createPageReq === undefined) {
+            throw new Error('Required parameter createPageReq was null or undefined when calling pageCreate.');
         }
 
         let headers = this.defaultHeaders;
@@ -1039,7 +1039,7 @@ export class CmsService {
         }
 
         return this.httpClient.post<PageRes>(`${this.configuration.basePath}/page/`,
-            createPageDto,
+            createPageReq,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -1234,16 +1234,16 @@ export class CmsService {
     /**
      * 
      * 
-     * @param editPageDto 
+     * @param editPageReq 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pageUpdate(editPageDto: EditPageDto, observe?: 'body', reportProgress?: boolean): Observable<PageRes>;
-    public pageUpdate(editPageDto: EditPageDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageRes>>;
-    public pageUpdate(editPageDto: EditPageDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageRes>>;
-    public pageUpdate(editPageDto: EditPageDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (editPageDto === null || editPageDto === undefined) {
-            throw new Error('Required parameter editPageDto was null or undefined when calling pageUpdate.');
+    public pageUpdate(editPageReq: EditPageReq, observe?: 'body', reportProgress?: boolean): Observable<PageRes>;
+    public pageUpdate(editPageReq: EditPageReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageRes>>;
+    public pageUpdate(editPageReq: EditPageReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageRes>>;
+    public pageUpdate(editPageReq: EditPageReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (editPageReq === null || editPageReq === undefined) {
+            throw new Error('Required parameter editPageReq was null or undefined when calling pageUpdate.');
         }
 
         let headers = this.defaultHeaders;
@@ -1267,7 +1267,7 @@ export class CmsService {
         }
 
         return this.httpClient.put<PageRes>(`${this.configuration.basePath}/page/`,
-            editPageDto,
+            editPageReq,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
