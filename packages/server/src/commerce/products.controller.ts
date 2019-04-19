@@ -9,7 +9,6 @@ import {
   ParseIntPipe,
 } from '@nestjs/common';
 import { Roles } from '../common/decorators/roles.decorator';
-import { LoggingInterceptor } from '../common/interceptors/logging.interceptor';
 import { TransformInterceptor } from '../common/interceptors/transform.interceptor';
 import { RoleTypes } from './../config/enums';
 import { ProductsService } from './products.service';
@@ -17,7 +16,7 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { Product } from './interfaces/Product.interface';
 
 @Controller('cats')
-@UseInterceptors(LoggingInterceptor, TransformInterceptor)
+@UseInterceptors(TransformInterceptor)
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 

@@ -8,6 +8,7 @@ import {
   Put,
   ParseIntPipe,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
@@ -15,11 +16,17 @@ import { NoticesService } from './notices.service';
 import { Notice } from './../interfaces';
 import { KeyValueDto, CreateNoticeReq, EditNoticeReq } from './../dto';
 import { Tags } from 'nest-swagger';
-import { ResultList, NullableParseIntPipe, RolesGuard } from './../../common';
+import {
+  ResultList,
+  NullableParseIntPipe,
+  RolesGuard,
+  LoggingInterceptor,
+} from './../../common';
 
 @Tags('core')
 @Controller('notice')
 @UseGuards(AuthGuard('jwt'), RolesGuard)
+@UseInterceptors(LoggingInterceptor)
 export class NoticesController {
   constructor(private readonly noticeService: NoticesService) {}
 

@@ -7,6 +7,7 @@ import {
   Param,
   Put,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
@@ -20,11 +21,17 @@ import {
   SettingRes,
 } from './../dto';
 import { Tags } from 'nest-swagger';
-import { ResultList, NullableParseIntPipe, RolesGuard } from './../../common';
+import {
+  ResultList,
+  NullableParseIntPipe,
+  RolesGuard,
+  LoggingInterceptor,
+} from './../../common';
 
 @Tags('core')
 @Controller('setting')
 @UseGuards(AuthGuard('jwt'), RolesGuard)
+@UseInterceptors(LoggingInterceptor)
 export class SettingsController {
   constructor(private readonly settingService: SettingsService) {}
 
