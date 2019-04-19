@@ -1,8 +1,4 @@
-<div style="display: none" class="content__title">
-  <h1>
-    用户登陆
-  </h1>
-</div>
+
 <form nz-form [formGroup]="form" (ngSubmit)="submit()" role="form">
   <nz-tabset [nzAnimated]="false" class="tabs" (nzSelectChange)="switch()">
     <nz-tab nzTitle="">
@@ -33,6 +29,6 @@
     </nz-col>
   </nz-form-item>
   <nz-form-item>
-    <button nz-button type="submit" nzType="primary" nzSize="large" [nzLoading]="loading" class="ant-btn__block">登录</button>
+    <button nz-button nzBlock type="submit" nzType="primary" nzSize="large" [nzLoading]="loading" class="ant-btn__block">登录</button>
   </nz-form-item>
 </form>

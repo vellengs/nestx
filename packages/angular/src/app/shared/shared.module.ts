@@ -25,6 +25,7 @@ import { BaseDetailComponent } from '@shared/base/base.detail.component';
 import { BaseSelectorComponent } from '@shared/base/base.selector';
 import { BaseTreeSelectorComponent } from '@shared/base/base.tree.selector';
 import { TransferSelectorComponent } from '@shared/base/transfer.selector';
+import { EditorComponent } from './components/editor/editor.component';
 import { UMeditorModule } from 'ngx-umeditor';
 
 const THIRDMODULES = [
@@ -45,7 +46,8 @@ const COMPONENTS = [
     BaseDetailComponent,
     BaseSelectorComponent,
     BaseTreeSelectorComponent,
-    TransferSelectorComponent
+    TransferSelectorComponent,
+    EditorComponent
 ];
 const DIRECTIVES = [];
 // endregion
@@ -69,9 +71,7 @@ const DIRECTIVES = [];
         ...COMPONENTS,
         ...DIRECTIVES
     ],
-    entryComponents: [
-        ...COMPONENTS,
-    ],
+    entryComponents: [...COMPONENTS],
     exports: [
         CommonModule,
         FormsModule,
@@ -91,4 +91,4 @@ const DIRECTIVES = [];
         ...DIRECTIVES
     ]
 })
-export class SharedModule { }
+export class SharedModule {}

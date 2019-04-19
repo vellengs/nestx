@@ -20,7 +20,13 @@ import {
   GroupedUsersRes,
 } from './../dto';
 import { Tags } from 'nest-swagger';
-import { ResultList, NullableParseIntPipe, TreeNode, RolesGuard, LoggingInterceptor } from './../../common';
+import {
+  ResultList,
+  NullableParseIntPipe,
+  TreeNode,
+  RolesGuard,
+  LoggingInterceptor,
+} from './../../common';
 
 @Tags('core')
 @Controller('group')
@@ -36,7 +42,7 @@ export class GroupsController {
 
   @Put()
   async update(@Body() entry: EditGroupReq): Promise<Group> {
-    return this.groupService.update(plainToClass(EditGroupReq, entry));
+    return this.groupService.editGroup(plainToClass(EditGroupReq, entry));
   }
 
   @Get('search')
