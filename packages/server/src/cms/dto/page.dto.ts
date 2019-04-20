@@ -38,6 +38,7 @@ export class CreatePageReq {
 }
 
 export class EditPageReq {
+  @IsString()
   id: string;
 
   @IsString()

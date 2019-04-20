@@ -54,7 +54,7 @@ export class PageController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string): Promise<Page> {
-    return this.service.findById(id);
+  async findOne(@Param('id') id: string): Promise<PageRes> {
+    return this.service.get(id);
   }
 }

@@ -5,13 +5,17 @@ import {
   IsArray,
   IsBoolean,
   IsNumber,
+  MinLength,
+  Length,
 } from 'class-validator';
 
 export class CreateUserReq {
   @IsString()
+  @Length(5, 30)
   username: string;
 
   @IsString()
+  @Length(5, 30)
   password: string;
 
   @IsOptional()
@@ -23,6 +27,7 @@ export class CreateUserReq {
 
   @IsOptional()
   @IsString()
+  @Length(5, 50)
   name?: string;
 
   @IsString()

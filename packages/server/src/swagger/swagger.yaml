@@ -2389,6 +2389,9 @@ definitions:
             name:
                 type: string
                 description: ""
+            keyword:
+                type: string
+                description: ""
             title:
                 type: string
                 description: ""
@@ -2417,6 +2420,7 @@ definitions:
         type: object
         required:
             - name
+            - keyword
             - title
             - description
             - sort
@@ -2432,6 +2436,9 @@ definitions:
                 type: string
                 description: ""
             name:
+                type: string
+                description: ""
+            keyword:
                 type: string
                 description: ""
             title:
@@ -2463,6 +2470,7 @@ definitions:
         required:
             - id
             - name
+            - keyword
             - title
             - description
             - sort

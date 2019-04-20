@@ -1,67 +1,115 @@
+import { IsString, IsNumber, IsBoolean, IsOptional } from 'class-validator';
 
 export class CreateArticleDto {
-    name: string;
-    title: string;
-    keyword: string;
-    picture: string;
-    category: string;
-    description: string;
-    author: string;
-    sort: number;
-    disable: boolean;
-    meta: string;
-    content: string;
-    template: string;
+  @IsString()
+  @IsOptional()
+  name: string;
+
+  @IsString()
+  title: string;
+
+  @IsString()
+  @IsOptional()
+  keyword: string;
+
+  @IsString()
+  @IsOptional()
+  picture: string;
+
+  @IsString()
+  category: string;
+
+  @IsString()
+  @IsOptional()
+  description: string;
+
+  @IsString()
+  @IsOptional()
+  author: string;
+
+  @IsNumber()
+  @IsOptional()
+  sort: number;
+
+  @IsBoolean()
+  @IsOptional()
+  disable: boolean;
+
+  @IsString()
+  @IsOptional()
+  meta: string;
+
+  @IsString()
+  @IsOptional()
+  content: string;
+
+  @IsString()
+  @IsOptional()
+  template: string;
 }
 
 export class EditArticleDto {
-    id: string;
-    name: string;
-    picture: string;
-    title: string;
-    keyword: string;
-    category: string;
-    description: string;
-    author: string;
-    sort: number;
-    disable: boolean;
-    meta: string;
-    content: string;
-    template: string;
+  @IsString()
+  id: string;
+
+  @IsString()
+  @IsOptional()
+  name: string;
+
+  @IsString()
+  title: string;
+
+  @IsString()
+  @IsOptional()
+  keyword: string;
+
+  @IsString()
+  @IsOptional()
+  picture: string;
+
+  @IsString()
+  category: string;
+
+  @IsString()
+  @IsOptional()
+  description: string;
+
+  @IsString()
+  @IsOptional()
+  author: string;
+
+  @IsNumber()
+  @IsOptional()
+  sort: number;
+
+  @IsBoolean()
+  @IsOptional()
+  disable: boolean;
+
+  @IsString()
+  @IsOptional()
+  meta: string;
+
+  @IsString()
+  @IsOptional()
+  content: string;
+
+  @IsString()
+  @IsOptional()
+  template: string;
 }
 
 export class ArticleRes {
-    id: string;
-    name: string;
-    title: string;
-    picture: string;
-    category: string;
-    description: string;
-    author: string;
-    sort: number;
-    disable: boolean;
-    meta: string;
-    content: string;
-    template: string;
+  id: string;
+  name: string;
+  title: string;
+  picture: string;
+  category: string;
+  description: string;
+  author: string;
+  sort: number;
+  disable: boolean;
+  meta: string;
+  content: string;
+  template: string;
 }
-
-export declare interface PaginateArticle {
-    error?: Error;
-    list: ArticleRes[];
-    total: number;
-}
-
-export const ArticleResponseFields = [
-    'id',
-    'name',
-    'picture',
-    'title',
-    'category',
-    'description',
-    'author',
-    'sort',
-    'disable',
-    'meta',
-    'content',
-    'template',
-];

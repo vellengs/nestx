@@ -22,6 +22,10 @@ export interface CreatePageReq {
     /**
      * 
      */
+    keyword: string;
+    /**
+     * 
+     */
     title: string;
     /**
      * 

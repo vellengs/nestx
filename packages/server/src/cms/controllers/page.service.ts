@@ -1,9 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { MongooseService, ResultList } from './../../common';
+import { Injectable, HttpStatus } from '@nestjs/common';
+import { MongooseService, ResultList, CustomException } from './../../common';
 import { PageModel, ContentModel } from './../interfaces';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { CreatePageReq, EditPageReq } from 'cms/dto';
+import { CreatePageReq, EditPageReq, PageRes } from '../dto';
 
 @Injectable()
 export class PageService extends MongooseService<PageModel> {
@@ -69,6 +69,24 @@ export class PageService extends MongooseService<PageModel> {
     return doc;
   }
 
+  async get(id: string): Promise<PageRes> {
+    const instance = await this.model
+      .findById(id)
+      .populate('content', {
+        text: 1,
+      })
+      .exec();
+
+    if (instance) {
+      const result = instance.toJSON();
+      if (result.content) {
+        result.content = (result.content as any).text;
+      }
+      return result;
+    }
+    throw new CustomException('Page not found', HttpStatus.NOT_FOUND);
+  }
+
   async querySearch(
     keyword: string,
     page: number,
@@ -84,7 +102,4 @@ export class PageService extends MongooseService<PageModel> {
       sort,
     );
   }
-
-  
-
 }

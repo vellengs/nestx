@@ -26,6 +26,10 @@ export interface EditPageReq {
     /**
      * 
      */
+    keyword: string;
+    /**
+     * 
+     */
     title: string;
     /**
      * 

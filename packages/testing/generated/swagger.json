@@ -3168,6 +3168,10 @@
 					"type": "string",
 					"description": ""
 				},
+				"keyword": {
+					"type": "string",
+					"description": ""
+				},
 				"title": {
 					"type": "string",
 					"description": ""
@@ -3205,6 +3209,7 @@
 			"type": "object",
 			"required": [
 				"name",
+				"keyword",
 				"title",
 				"description",
 				"sort",
@@ -3223,6 +3228,10 @@
 					"description": ""
 				},
 				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"keyword": {
 					"type": "string",
 					"description": ""
 				},
@@ -3264,6 +3273,7 @@
 			"required": [
 				"id",
 				"name",
+				"keyword",
 				"title",
 				"description",
 				"sort",

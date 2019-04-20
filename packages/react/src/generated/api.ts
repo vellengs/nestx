@@ -866,6 +866,12 @@ export interface CreatePageReq {
      * @type {string}
      * @memberof CreatePageReq
      */
+    keyword: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePageReq
+     */
     title: string;
     /**
      * 
@@ -1709,6 +1715,12 @@ export interface EditPageReq {
      * @memberof EditPageReq
      */
     name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditPageReq
+     */
+    keyword: string;
     /**
      * 
      * @type {string}

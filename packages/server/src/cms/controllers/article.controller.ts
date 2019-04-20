@@ -30,12 +30,12 @@ export class ArticleController {
 
   @Post()
   async create(@Body() entry: CreateArticleDto): Promise<ArticleRes> {
-    return this.service.create(entry);
+    return this.service.createArticle(entry);
   }
 
   @Put()
   async update(@Body() entry: EditArticleDto): Promise<ArticleRes> {
-    return this.service.update(entry);
+    return this.service.updateArticle(entry);
   }
 
   @Get('query')
@@ -54,7 +54,7 @@ export class ArticleController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string): Promise<Article> {
-    return this.service.findById(id);
+  async findOne(@Param('id') id: string): Promise<ArticleRes> {
+    return this.service.getArticle(id);
   }
 }

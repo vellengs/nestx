@@ -1,16 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { MongooseService, ResultList } from './../../common';
+import { MongooseService, ResultList, TreeNode } from './../../common';
 import { CategoryModel } from './../interfaces';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
+import { omit } from 'lodash';
 
 @Injectable()
 export class CategoryService extends MongooseService<CategoryModel> {
-  defaultQueryFields = ['name', 'translate', 'expand'];
+  defaultQueryFields = ['name', 'slug', 'order', 'parent', 'description'];
   constructor(
     @InjectModel('Category') protected readonly model: Model<CategoryModel>,
   ) {
     super(model);
+  }
+
+  async searchCategoryTree(
+    keyword?: string,
+    value?: string,
+    limit: number = 10,
+  ): Promise<TreeNode[]> {
+    return super.searchTree(this.model, keyword, value, '', limit);
   }
 
   async querySearch(
@@ -27,5 +36,14 @@ export class CategoryService extends MongooseService<CategoryModel> {
       this.defaultQueryFields,
       sort,
     );
+  }
+
+  async getCategory(id: string): Promise<CategoryModel> {
+    const instance = await this.model
+      .findById(id)
+      .select(this.defaultQueryFields)
+      .exec();
+
+    return instance;
   }
 }

@@ -5,7 +5,7 @@ import { ObjectID } from 'bson';
 
 export const UserSchema = new Schema(
   {
-    username: { type: t.String, unique: true, required: true },
+    username: { type: t.String, minlength: 5, unique: true, required: true },
     password: t.String,
     avatar: t.String,
     email: { type: t.String, unique: true, required: false },
