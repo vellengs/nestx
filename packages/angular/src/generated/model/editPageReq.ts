@@ -14,11 +14,19 @@
 /**
  * 
  */
-export interface CreatePageDto { 
+export interface EditPageReq { 
+    /**
+     * 
+     */
+    id: string;
     /**
      * 
      */
     name: string;
+    /**
+     * 
+     */
+    keyword: string;
     /**
      * 
      */

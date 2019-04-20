@@ -7,11 +7,13 @@ const addForm: SFSchema = {
   properties: {
     username: {
       title: '帐号名',
+      minLength: 5,
       type: t.string,
     },
     password: {
       title: '密码',
       type: t.string,
+      minLength: 6,
       ui: {
         type: 'password',
       },

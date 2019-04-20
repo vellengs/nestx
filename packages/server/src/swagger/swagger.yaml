@@ -2383,10 +2383,13 @@ definitions:
             - meta
             - content
             - template
-    CreatePageDto:
+    CreatePageReq:
         description: ""
         properties:
             name:
+                type: string
+                description: ""
+            keyword:
                 type: string
                 description: ""
             title:
@@ -2417,6 +2420,7 @@ definitions:
         type: object
         required:
             - name
+            - keyword
             - title
             - description
             - sort
@@ -2425,13 +2429,16 @@ definitions:
             - publish
             - content
             - template
-    EditPageDto:
+    EditPageReq:
         description: ""
         properties:
             id:
                 type: string
                 description: ""
             name:
+                type: string
+                description: ""
+            keyword:
                 type: string
                 description: ""
             title:
@@ -2447,10 +2454,10 @@ definitions:
             disable:
                 type: boolean
                 description: ""
-            publish:
+            meta:
                 type: string
                 description: ""
-            meta:
+            publish:
                 type: string
                 description: ""
             content:
@@ -2463,12 +2470,13 @@ definitions:
         required:
             - id
             - name
+            - keyword
             - title
             - description
             - sort
             - disable
-            - publish
             - meta
+            - publish
             - content
             - template
     ResultList$PageRes:
@@ -4972,7 +4980,7 @@ paths:
                     name: entry
                     required: true
                     schema:
-                        $ref: '#/definitions/CreatePageDto'
+                        $ref: '#/definitions/CreatePageReq'
         put:
             operationId: PageUpdate
             produces:
@@ -4994,7 +5002,7 @@ paths:
                     name: entry
                     required: true
                     schema:
-                        $ref: '#/definitions/EditPageDto'
+                        $ref: '#/definitions/EditPageReq'
     /page/query:
         get:
             operationId: PageQuery

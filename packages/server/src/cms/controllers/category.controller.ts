@@ -6,12 +6,13 @@ import {
   Put,
   Delete,
   Param,
+  Body,
 } from '@nestjs/common';
 import { Tags } from 'nest-swagger';
 import { CategoryService } from './category.service';
 import { KeyValue } from 'common/types/data.types';
 import { CreateCategoryDto, CategoryRes, EditCategoryDto } from '../dto';
-import { NullableParseIntPipe, ResultList } from '../../common';
+import { NullableParseIntPipe, ResultList, TreeNode } from '../../common';
 import { Category } from '../interfaces';
 import { KeyValueDto } from './../../core/dto';
 
@@ -29,15 +30,15 @@ export class CategoryController {
   }
 
   @Post()
-  async create(entry: CreateCategoryDto): Promise<CategoryRes> {
+  async create(@Body() entry: CreateCategoryDto): Promise<CategoryRes> {
     return this.service.create(entry);
   }
 
   @Put()
-  async update(entry: EditCategoryDto): Promise<CategoryRes> {
+  async update(@Body() entry: EditCategoryDto): Promise<CategoryRes> {
     return this.service.update(entry);
   }
-  
+
   @Get('query')
   async query(
     @Query('keyword') keyword?: string,
@@ -48,6 +49,14 @@ export class CategoryController {
     return this.service.querySearch(keyword, page, size, sort);
   }
 
+  @Get('tree')
+  async searchTree(
+    @Query('keyword') keyword?: string,
+    @Query('value') value?: string,
+  ): Promise<TreeNode[]> {
+    return this.service.searchCategoryTree(keyword, value);
+  }
+
   @Delete(':id')
   async remove(@Param('id') id: string): Promise<boolean> {
     return this.service.remove(id);
@@ -55,6 +64,6 @@ export class CategoryController {
 
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<Category> {
-    return this.service.findById(id);
+    return this.service.getCategory(id);
   }
 }

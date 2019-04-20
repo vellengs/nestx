@@ -4,17 +4,15 @@ import { transform } from './../../utils';
 const option: SchemaOptions = {};
 option.timestamps = true;
 
-export const CommentSchema = new Schema({
-    name: {
-        type: t.String
-    },
-    paths: [{ type: t.ObjectId, ref: 'Category' }],
-    parent: {
-        type: t.ObjectId,
-        ref: 'Category'
-    }
-}, option);
+export const CommentSchema = new Schema(
+  {
+    name: t.String,
+    article: { ref: 'Article', type: t.ObjectId },
+    text: t.String,
+  },
+  option,
+);
 
 CommentSchema.set('toJSON', {
-    transform,
-  });
+  transform,
+});

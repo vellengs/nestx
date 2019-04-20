@@ -6,6 +6,7 @@ import {
   Put,
   Delete,
   Param,
+  Body,
 } from '@nestjs/common';
 import { Tags } from 'nest-swagger';
 import { WidgetService } from './widget.service';
@@ -28,12 +29,12 @@ export class WidgetController {
   }
 
   @Post()
-  async create(entry: CreateWidgetDto): Promise<WidgetRes> {
+  async create(@Body() entry: CreateWidgetDto): Promise<WidgetRes> {
     return this.service.create(entry);
   }
 
   @Put()
-  async update(entry: EditWidgetDto): Promise<WidgetRes> {
+  async update(@Body() entry: EditWidgetDto): Promise<WidgetRes> {
     return this.service.update(entry);
   }
 
