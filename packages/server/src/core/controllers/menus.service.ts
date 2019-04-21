@@ -7,7 +7,7 @@ import {
   SearParam,
 } from './../../common/services/mongoose.service';
 import { MenuModel, User, GroupModel } from './../interfaces';
-import { ResultList } from './../../common';
+import { ResultList, TreeNode } from './../../common';
 import { MenuRes } from './../dto';
 import { ObjectID } from 'typeorm';
 
@@ -31,6 +31,14 @@ export class MenusService extends MongooseService<MenuModel> {
     @InjectModel('Group') protected readonly groupModel: Model<GroupModel>,
   ) {
     super(model);
+  }
+
+  async searchMenuTree(
+    keyword?: string,
+    value?: string,
+    limit: number = 10,
+  ): Promise<TreeNode[]> {
+    return super.searchTree(this.model, keyword, value, '', limit);
   }
 
   async getAllPermissionTags() {

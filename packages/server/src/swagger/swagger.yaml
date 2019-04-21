@@ -687,6 +687,29 @@ definitions:
             - enable
             - expanded
             - isMenu
+    TreeNode:
+        description: ""
+        properties:
+            id:
+                type: string
+                description: ""
+            icon:
+                type: string
+                description: ""
+            type:
+                type: string
+                description: ""
+            title:
+                type: string
+                description: ""
+            parent:
+                type: string
+                description: ""
+        type: object
+        required:
+            - id
+            - title
+            - parent
     ResultList$Menu:
         description: ""
         properties:
@@ -1342,29 +1365,6 @@ definitions:
         type: object
         required:
             - list
-    TreeNode:
-        description: ""
-        properties:
-            id:
-                type: string
-                description: ""
-            icon:
-                type: string
-                description: ""
-            type:
-                type: string
-                description: ""
-            title:
-                type: string
-                description: ""
-            parent:
-                type: string
-                description: ""
-        type: object
-        required:
-            - id
-            - title
-            - parent
     CreateAppearanceReq:
         description: ""
         properties:
@@ -1841,13 +1841,13 @@ definitions:
             name:
                 type: string
                 description: ""
-            picture:
-                type: string
-                description: ""
             title:
                 type: string
                 description: ""
             keyword:
+                type: string
+                description: ""
+            picture:
                 type: string
                 description: ""
             category:
@@ -1879,9 +1879,9 @@ definitions:
         required:
             - id
             - name
-            - picture
             - title
             - keyword
+            - picture
             - category
             - description
             - author
@@ -1907,64 +1907,6 @@ definitions:
         type: object
         required:
             - list
-    Article:
-        description: ""
-        properties:
-            id:
-                type: string
-                description: ""
-            name:
-                type: string
-                description: ""
-            title:
-                type: string
-                description: ""
-            picture:
-                type: string
-                description: ""
-            keyword:
-                type: string
-                description: ""
-            category:
-                type: string
-                description: ""
-            description:
-                type: string
-                description: ""
-            author:
-                type: string
-                description: ""
-            sort:
-                type: number
-                format: double
-                description: ""
-            disable:
-                type: boolean
-                description: ""
-            meta:
-                type: string
-                description: ""
-            content:
-                type: string
-                description: ""
-            template:
-                type: string
-                description: ""
-        type: object
-        required:
-            - id
-            - name
-            - title
-            - picture
-            - keyword
-            - category
-            - description
-            - author
-            - sort
-            - disable
-            - meta
-            - content
-            - template
     CategoryRes:
         description: ""
         properties:
@@ -2419,16 +2361,8 @@ definitions:
                 description: ""
         type: object
         required:
-            - name
-            - keyword
             - title
             - description
-            - sort
-            - disable
-            - meta
-            - publish
-            - content
-            - template
     EditPageReq:
         description: ""
         properties:
@@ -2469,16 +2403,8 @@ definitions:
         type: object
         required:
             - id
-            - name
-            - keyword
             - title
             - description
-            - sort
-            - disable
-            - meta
-            - publish
-            - content
-            - template
     ResultList$PageRes:
         description: ""
         properties:
@@ -2496,56 +2422,6 @@ definitions:
         type: object
         required:
             - list
-    Page:
-        description: ""
-        properties:
-            id:
-                type: string
-                description: ""
-            name:
-                type: string
-                description: ""
-            title:
-                type: string
-                description: ""
-            keyword:
-                type: string
-                description: ""
-            description:
-                type: string
-                description: ""
-            sort:
-                type: number
-                format: double
-                description: ""
-            disable:
-                type: boolean
-                description: ""
-            meta:
-                type: string
-                description: ""
-            publish:
-                type: string
-                description: ""
-            content:
-                type: string
-                description: ""
-            template:
-                type: string
-                description: ""
-        type: object
-        required:
-            - id
-            - name
-            - title
-            - keyword
-            - description
-            - sort
-            - disable
-            - meta
-            - publish
-            - content
-            - template
     WidgetRes:
         description: ""
         properties:
@@ -3108,6 +2984,34 @@ paths:
                     required: true
                     schema:
                         $ref: '#/definitions/EditMenuReq'
+    /menu/tree:
+        get:
+            operationId: MenusSearchTree
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/definitions/TreeNode'
+            description: ""
+            tags:
+                - core
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: value
+                    required: false
+                    type: string
     /menu/search:
         get:
             operationId: MenusSearch
@@ -4563,7 +4467,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/Article'
+                        $ref: '#/definitions/ArticleRes'
             description: ""
             tags:
                 - cms
@@ -4687,6 +4591,34 @@ paths:
                     description: ""
                     in: query
                     name: sort
+                    required: false
+                    type: string
+    /category/tree:
+        get:
+            operationId: CategorySearchTree
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/definitions/TreeNode'
+            description: ""
+            tags:
+                - cms
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: keyword
+                    required: false
+                    type: string
+                -
+                    description: ""
+                    in: query
+                    name: value
                     required: false
                     type: string
     '/category/{id}':
@@ -5073,7 +5005,7 @@ paths:
                 '200':
                     description: Ok
                     schema:
-                        $ref: '#/definitions/Page'
+                        $ref: '#/definitions/PageRes'
             description: ""
             tags:
                 - cms

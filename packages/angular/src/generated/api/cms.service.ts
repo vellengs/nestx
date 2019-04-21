@@ -18,7 +18,6 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { Article } from '../model/article';
 import { ArticleRes } from '../model/articleRes';
 import { Category } from '../model/category';
 import { CategoryRes } from '../model/categoryRes';
@@ -38,7 +37,6 @@ import { KeyValueDto } from '../model/keyValueDto';
 import { Media } from '../model/media';
 import { MediaFile } from '../model/mediaFile';
 import { MediaRes } from '../model/mediaRes';
-import { Page } from '../model/page';
 import { PageRes } from '../model/pageRes';
 import { Photo } from '../model/photo';
 import { PhotoRes } from '../model/photoRes';
@@ -48,6 +46,7 @@ import { ResultListMediaRes } from '../model/resultListMediaRes';
 import { ResultListPageRes } from '../model/resultListPageRes';
 import { ResultListPhotoRes } from '../model/resultListPhotoRes';
 import { ResultListWidgetRes } from '../model/resultListWidgetRes';
+import { TreeNode } from '../model/treeNode';
 import { UploadMultipleRes } from '../model/uploadMultipleRes';
 import { UploadRes } from '../model/uploadRes';
 import { Widget } from '../model/widget';
@@ -145,9 +144,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public articleFindOne(id: string, observe?: 'body', reportProgress?: boolean): Observable<Article>;
-    public articleFindOne(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Article>>;
-    public articleFindOne(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Article>>;
+    public articleFindOne(id: string, observe?: 'body', reportProgress?: boolean): Observable<ArticleRes>;
+    public articleFindOne(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ArticleRes>>;
+    public articleFindOne(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ArticleRes>>;
     public articleFindOne(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling articleFindOne.');
@@ -168,7 +167,7 @@ export class CmsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Article>(`${this.configuration.basePath}/article/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<ArticleRes>(`${this.configuration.basePath}/article/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -584,6 +583,53 @@ export class CmsService {
         ];
 
         return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/category/search`,
+            {
+                params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param keyword 
+     * @param value 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public categorySearchTree(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<TreeNode>>;
+    public categorySearchTree(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<TreeNode>>>;
+    public categorySearchTree(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<TreeNode>>>;
+    public categorySearchTree(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (keyword !== undefined && keyword !== null) {
+            queryParameters = queryParameters.set('keyword', <any>keyword);
+        }
+        if (value !== undefined && value !== null) {
+            queryParameters = queryParameters.set('value', <any>value);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.get<Array<TreeNode>>(`${this.configuration.basePath}/category/tree`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1056,9 +1102,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pageFindOne(id: string, observe?: 'body', reportProgress?: boolean): Observable<Page>;
-    public pageFindOne(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Page>>;
-    public pageFindOne(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Page>>;
+    public pageFindOne(id: string, observe?: 'body', reportProgress?: boolean): Observable<PageRes>;
+    public pageFindOne(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageRes>>;
+    public pageFindOne(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageRes>>;
     public pageFindOne(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling pageFindOne.');
@@ -1079,7 +1125,7 @@ export class CmsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Page>(`${this.configuration.basePath}/page/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<PageRes>(`${this.configuration.basePath}/page/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

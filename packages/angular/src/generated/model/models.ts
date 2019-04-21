@@ -1,6 +1,5 @@
 export * from './accessToken';
 export * from './appearance';
-export * from './article';
 export * from './articleRes';
 export * from './category';
 export * from './categoryRes';
@@ -51,7 +50,6 @@ export * from './mediaRes';
 export * from './menu';
 export * from './menuRes';
 export * from './notice';
-export * from './page';
 export * from './pageRes';
 export * from './photo';
 export * from './photoRes';

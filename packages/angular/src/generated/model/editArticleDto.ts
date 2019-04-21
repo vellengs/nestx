@@ -26,15 +26,15 @@ export interface EditArticleDto {
     /**
      * 
      */
-    picture: string;
-    /**
-     * 
-     */
     title: string;
     /**
      * 
      */
     keyword: string;
+    /**
+     * 
+     */
+    picture: string;
     /**
      * 
      */
