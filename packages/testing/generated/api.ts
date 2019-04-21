@@ -118,92 +118,6 @@ export interface Appearance {
 /**
  * 
  * @export
- * @interface Article
- */
-export interface Article {
-    /**
-     * 
-     * @type {string}
-     * @memberof Article
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Article
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Article
-     */
-    title: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Article
-     */
-    picture: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Article
-     */
-    keyword: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Article
-     */
-    category: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Article
-     */
-    description: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Article
-     */
-    author: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Article
-     */
-    sort: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Article
-     */
-    disable: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof Article
-     */
-    meta: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Article
-     */
-    content: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Article
-     */
-    template: string;
-}
-
-/**
- * 
- * @export
  * @interface ArticleRes
  */
 export interface ArticleRes {
@@ -860,13 +774,13 @@ export interface CreatePageReq {
      * @type {string}
      * @memberof CreatePageReq
      */
-    name: string;
+    name?: string;
     /**
      * 
      * @type {string}
      * @memberof CreatePageReq
      */
-    keyword: string;
+    keyword?: string;
     /**
      * 
      * @type {string}
@@ -884,37 +798,37 @@ export interface CreatePageReq {
      * @type {number}
      * @memberof CreatePageReq
      */
-    sort: number;
+    sort?: number;
     /**
      * 
      * @type {boolean}
      * @memberof CreatePageReq
      */
-    disable: boolean;
+    disable?: boolean;
     /**
      * 
      * @type {string}
      * @memberof CreatePageReq
      */
-    meta: string;
+    meta?: string;
     /**
      * 
      * @type {string}
      * @memberof CreatePageReq
      */
-    publish: string;
+    publish?: string;
     /**
      * 
      * @type {string}
      * @memberof CreatePageReq
      */
-    content: string;
+    content?: string;
     /**
      * 
      * @type {string}
      * @memberof CreatePageReq
      */
-    template: string;
+    template?: string;
 }
 
 /**
@@ -1262,12 +1176,6 @@ export interface EditArticleDto {
      * @type {string}
      * @memberof EditArticleDto
      */
-    picture: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditArticleDto
-     */
     title: string;
     /**
      * 
@@ -1275,6 +1183,12 @@ export interface EditArticleDto {
      * @memberof EditArticleDto
      */
     keyword: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditArticleDto
+     */
+    picture: string;
     /**
      * 
      * @type {string}
@@ -1714,13 +1628,13 @@ export interface EditPageReq {
      * @type {string}
      * @memberof EditPageReq
      */
-    name: string;
+    name?: string;
     /**
      * 
      * @type {string}
      * @memberof EditPageReq
      */
-    keyword: string;
+    keyword?: string;
     /**
      * 
      * @type {string}
@@ -1738,37 +1652,37 @@ export interface EditPageReq {
      * @type {number}
      * @memberof EditPageReq
      */
-    sort: number;
+    sort?: number;
     /**
      * 
      * @type {boolean}
      * @memberof EditPageReq
      */
-    disable: boolean;
+    disable?: boolean;
     /**
      * 
      * @type {string}
      * @memberof EditPageReq
      */
-    meta: string;
+    meta?: string;
     /**
      * 
      * @type {string}
      * @memberof EditPageReq
      */
-    publish: string;
+    publish?: string;
     /**
      * 
      * @type {string}
      * @memberof EditPageReq
      */
-    content: string;
+    content?: string;
     /**
      * 
      * @type {string}
      * @memberof EditPageReq
      */
-    template: string;
+    template?: string;
 }
 
 /**
@@ -2903,80 +2817,6 @@ export interface Notice {
      * @memberof Notice
      */
     read: boolean;
-}
-
-/**
- * 
- * @export
- * @interface Page
- */
-export interface Page {
-    /**
-     * 
-     * @type {string}
-     * @memberof Page
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Page
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Page
-     */
-    title: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Page
-     */
-    keyword: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Page
-     */
-    description: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Page
-     */
-    sort: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Page
-     */
-    disable: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof Page
-     */
-    meta: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Page
-     */
-    publish: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Page
-     */
-    content: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Page
-     */
-    template: string;
 }
 
 /**
@@ -5015,6 +4855,42 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
         },
         /**
          * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categorySearchTree(keyword?: string, value?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/category/tree`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (value !== undefined) {
+                localVarQueryParameter['value'] = value;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {EditCategoryDto} editCategoryDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6006,7 +5882,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        articleFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Article> {
+        articleFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArticleRes> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).articleFindOne(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -6133,6 +6009,20 @@ export const CmsApiFp = function(configuration?: Configuration) {
          */
         categorySearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).categorySearch(keyword, value, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categorySearchTree(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TreeNode>> {
+            const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).categorySearchTree(keyword, value, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -6278,7 +6168,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pageFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Page> {
+        pageFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PageRes> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).pageFindOne(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -6620,6 +6510,16 @@ export const CmsApiFactory = function (configuration?: Configuration, basePath?:
          */
         categorySearch(keyword?: string, value?: string, options?: any) {
             return CmsApiFp(configuration).categorySearch(keyword, value, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        categorySearchTree(keyword?: string, value?: string, options?: any) {
+            return CmsApiFp(configuration).categorySearchTree(keyword, value, options)(axios, basePath);
         },
         /**
          * 
@@ -7017,6 +6917,18 @@ export class CmsApi extends BaseAPI {
      */
     public categorySearch(keyword?: string, value?: string, options?: any) {
         return CmsApiFp(this.configuration).categorySearch(keyword, value, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {string} [value] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CmsApi
+     */
+    public categorySearchTree(keyword?: string, value?: string, options?: any) {
+        return CmsApiFp(this.configuration).categorySearchTree(keyword, value, options)(this.axios, this.basePath);
     }
 
     /**
@@ -8262,6 +8174,42 @@ export const CoreApiAxiosParamCreator = function (configuration?: Configuration)
          */
         menusSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
             const localVarPath = `/menu/search`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['keyword'] = keyword;
+            }
+
+            if (value !== undefined) {
+                localVarQueryParameter['value'] = value;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        menusSearchTree(keyword?: string, value?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/menu/tree`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -9725,6 +9673,20 @@ export const CoreApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        menusSearchTree(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TreeNode>> {
+            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusSearchTree(keyword, value, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @param {EditMenuReq} editMenuReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -10385,6 +10347,16 @@ export const CoreApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {string} [keyword] 
+         * @param {string} [value] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        menusSearchTree(keyword?: string, value?: string, options?: any) {
+            return CoreApiFp(configuration).menusSearchTree(keyword, value, options)(axios, basePath);
+        },
+        /**
+         * 
          * @param {EditMenuReq} editMenuReq 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -10978,6 +10950,18 @@ export class CoreApi extends BaseAPI {
      */
     public menusSearch(keyword?: string, value?: string, options?: any) {
         return CoreApiFp(this.configuration).menusSearch(keyword, value, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} [keyword] 
+     * @param {string} [value] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CoreApi
+     */
+    public menusSearchTree(keyword?: string, value?: string, options?: any) {
+        return CoreApiFp(this.configuration).menusSearchTree(keyword, value, options)(this.axios, this.basePath);
     }
 
     /**

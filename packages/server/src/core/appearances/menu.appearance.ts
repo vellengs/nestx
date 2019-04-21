@@ -17,7 +17,7 @@ const addForm: SFSchema = {
             title: '父级菜单',
             type: 'string',
             ui: {
-                widget: w.search,
+                widget: w.treeSelect,
                 allowClear: true,
                 domain: 'menu'
             }

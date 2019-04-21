@@ -12,7 +12,13 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
-import { ResultList, NullableParseIntPipe, RolesGuard, LoggingInterceptor } from './../../common';
+import {
+  ResultList,
+  NullableParseIntPipe,
+  RolesGuard,
+  LoggingInterceptor,
+  TreeNode,
+} from './../../common';
 import { MenusService } from './menus.service';
 import { Menu } from './../interfaces';
 import { CreateMenuReq, EditMenuReq, KeyValueDto, MenuRes } from './../dto';
@@ -33,6 +39,14 @@ export class MenusController {
   @Put()
   async update(@Body() entry: EditMenuReq): Promise<Menu> {
     return this.menuService.update(plainToClass(EditMenuReq, entry));
+  }
+
+  @Get('tree')
+  async searchTree(
+    @Query('keyword') keyword?: string,
+    @Query('value') value?: string,
+  ): Promise<TreeNode[]> {
+    return this.menuService.searchMenuTree(keyword, value);
   }
 
   @Get('search')

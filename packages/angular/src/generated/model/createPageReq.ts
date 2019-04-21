@@ -18,11 +18,11 @@ export interface CreatePageReq {
     /**
      * 
      */
-    name: string;
+    name?: string;
     /**
      * 
      */
-    keyword: string;
+    keyword?: string;
     /**
      * 
      */
@@ -34,25 +34,25 @@ export interface CreatePageReq {
     /**
      * 
      */
-    sort: number;
+    sort?: number;
     /**
      * 
      */
-    disable: boolean;
+    disable?: boolean;
     /**
      * 
      */
-    meta: string;
+    meta?: string;
     /**
      * 
      */
-    publish: string;
+    publish?: string;
     /**
      * 
      */
-    content: string;
+    content?: string;
     /**
      * 
      */
-    template: string;
+    template?: string;
 }

@@ -3,11 +3,11 @@ import { IsString, IsNumber, IsOptional, IsBoolean } from 'class-validator';
 export class CreatePageReq {
   @IsString()
   @IsOptional()
-  name: string;
+  name?: string;
 
   @IsString()
   @IsOptional()
-  keyword: string;
+  keyword?: string;
 
   @IsString()
   title: string;
@@ -17,24 +17,24 @@ export class CreatePageReq {
 
   @IsNumber()
   @IsOptional()
-  sort: number;
+  sort?: number;
 
   @IsBoolean()
   @IsOptional()
-  disable: boolean;
+  disable?: boolean;
 
   @IsString()
   @IsOptional()
-  meta: string;
+  meta?: string;
   @IsString()
   @IsOptional()
-  publish: string;
+  publish?: string;
   @IsString()
   @IsOptional()
-  content: string;
+  content?: string;
   @IsString()
   @IsOptional()
-  template: string;
+  template?: string;
 }
 
 export class EditPageReq {
@@ -43,11 +43,11 @@ export class EditPageReq {
 
   @IsString()
   @IsOptional()
-  name: string;
+  name?: string;
 
   @IsString()
   @IsOptional()
-  keyword: string;
+  keyword?: string;
 
   @IsString()
   title: string;
@@ -57,24 +57,24 @@ export class EditPageReq {
 
   @IsNumber()
   @IsOptional()
-  sort: number;
+  sort?: number;
 
   @IsBoolean()
   @IsOptional()
-  disable: boolean;
+  disable?: boolean;
 
   @IsString()
   @IsOptional()
-  meta: string;
+  meta?: string;
   @IsString()
   @IsOptional()
-  publish: string;
+  publish?: string;
   @IsString()
   @IsOptional()
-  content: string;
+  content?: string;
   @IsString()
   @IsOptional()
-  template: string;
+  template?: string;
 }
 
 export class PageRes {
