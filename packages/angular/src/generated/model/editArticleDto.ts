@@ -22,7 +22,7 @@ export interface EditArticleDto {
     /**
      * 
      */
-    name: string;
+    name?: string;
     /**
      * 
      */
@@ -30,11 +30,11 @@ export interface EditArticleDto {
     /**
      * 
      */
-    keyword: string;
+    keyword?: string;
     /**
      * 
      */
-    picture: string;
+    picture?: string;
     /**
      * 
      */
@@ -42,29 +42,29 @@ export interface EditArticleDto {
     /**
      * 
      */
-    description: string;
+    description?: string;
     /**
      * 
      */
-    author: string;
+    author?: string;
     /**
      * 
      */
-    sort: number;
+    sort?: number;
     /**
      * 
      */
-    disable: boolean;
+    disable?: boolean;
     /**
      * 
      */
-    meta: string;
+    meta?: string;
     /**
      * 
      */
-    content: string;
+    content?: string;
     /**
      * 
      */
-    template: string;
+    template?: string;
 }

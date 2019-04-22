@@ -15,7 +15,7 @@ describe("user module test", () => {
       password: "psw0121",
       avatar: "http://www.avatar.com/example.jpg",
       email: "demo001@",
-      name: "sam",
+      name: "same",
       mobile: "13069099883",
       isAdmin: true,
       isApproved: true,

@@ -2,6 +2,8 @@ import { HttpClient } from "./../../scripts/client";
 import { login } from "../utils/login";
 
 describe("page module test", () => {
+  let createId: string;
+
   beforeAll(async () => {
     await HttpClient.initDatabase();
     await login();
@@ -24,6 +26,7 @@ describe("page module test", () => {
     expect(res.status).toBe(201);
     expect(res.data.name).toBe(reqBody.name);
     expect(res.data.title).toBe(reqBody.title);
+    createId = res.data.id;
   });
 
   it("[put] /page/", async () => {
@@ -52,14 +55,12 @@ describe("page module test", () => {
   });
 
   it("[get] /page/{id}", async () => {
-    const id = "5cb9f10655654febb1fcd715";
-    const res = await HttpClient.cmsApi.pageFindOne(id);
+    const res = await HttpClient.cmsApi.pageFindOne(createId);
     expect(res.status).toBe(200);
   });
 
-  it.skip("[delete] /page/{id}", async () => {
-    const id = "5cb9f10655654febb1fcd715";
-    const res = await HttpClient.cmsApi.pageRemove(id);
+  it("[delete] /page/{id}", async () => {
+    const res = await HttpClient.cmsApi.pageRemove(createId);
     expect(res.status).toBe(200);
   });
 });

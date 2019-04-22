@@ -26,7 +26,7 @@ export interface EditMediaDto {
     /**
      * 
      */
-    caption: string;
+    caption?: string;
     /**
      * 
      */
@@ -34,13 +34,13 @@ export interface EditMediaDto {
     /**
      * 
      */
-    ext: any;
+    ext?: string;
     /**
      * 
      */
-    url: string;
+    url?: string;
     /**
      * 
      */
-    uri: string;
+    uri?: string;
 }

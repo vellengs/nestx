@@ -1,21 +1,56 @@
+import { IsString, IsOptional } from 'class-validator';
 
 export class CreateMediaDto {
+  @IsString()
   name: string;
-  caption: string;
+
+  @IsString()
+  @IsOptional()
+  caption?: string;
+
+  @IsString()
+  @IsOptional()
   description: string;
-  ext: any;
-  url: string;
-  uri: string;
+
+  @IsString()
+  @IsOptional()
+  ext?: string;
+
+  @IsString()
+  @IsOptional()
+  url?: string;
+
+  @IsString()
+  @IsOptional()
+  uri?: string;
 }
 
 export class EditMediaDto {
+  @IsString()
   id: string;
+
+  @IsString()
   name: string;
-  caption: string;
+
+  @IsString()
+  @IsOptional()
+  caption?: string;
+
+  @IsString()
+  @IsOptional()
   description: string;
-  ext: any;
-  url: string;
-  uri: string;
+
+  @IsString()
+  @IsOptional()
+  ext?: string;
+
+  @IsString()
+  @IsOptional()
+  url?: string;
+
+  @IsString()
+  @IsOptional()
+  uri?: string;
 }
 
 export class MediaRes {
