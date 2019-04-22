@@ -1820,18 +1820,8 @@ definitions:
                 description: ""
         type: object
         required:
-            - name
             - title
-            - keyword
-            - picture
             - category
-            - description
-            - author
-            - sort
-            - disable
-            - meta
-            - content
-            - template
     EditArticleDto:
         description: ""
         properties:
@@ -1878,18 +1868,8 @@ definitions:
         type: object
         required:
             - id
-            - name
             - title
-            - keyword
-            - picture
             - category
-            - description
-            - author
-            - sort
-            - disable
-            - meta
-            - content
-            - template
     ResultList$ArticleRes:
         description: ""
         properties:
@@ -1971,10 +1951,6 @@ definitions:
         required:
             - name
             - slug
-            - order
-            - parent
-            - paths
-            - description
     EditCategoryDto:
         description: ""
         properties:
@@ -2007,10 +1983,6 @@ definitions:
             - id
             - name
             - slug
-            - order
-            - parent
-            - paths
-            - description
     ResultList$CategoryRes:
         description: ""
         properties:
@@ -2180,7 +2152,7 @@ definitions:
                 type: string
                 description: ""
             ext:
-                type: object
+                type: string
                 description: ""
             url:
                 type: string
@@ -2191,11 +2163,7 @@ definitions:
         type: object
         required:
             - name
-            - caption
             - description
-            - ext
-            - url
-            - uri
     EditMediaDto:
         description: ""
         properties:
@@ -2212,7 +2180,7 @@ definitions:
                 type: string
                 description: ""
             ext:
-                type: object
+                type: string
                 description: ""
             url:
                 type: string
@@ -2224,11 +2192,7 @@ definitions:
         required:
             - id
             - name
-            - caption
             - description
-            - ext
-            - url
-            - uri
     ResultList$MediaRes:
         description: ""
         properties:

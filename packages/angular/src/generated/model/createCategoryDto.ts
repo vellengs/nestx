@@ -26,17 +26,17 @@ export interface CreateCategoryDto {
     /**
      * 
      */
-    order: number;
+    order?: number;
     /**
      * 
      */
-    parent: string;
+    parent?: string;
     /**
      * 
      */
-    paths: Array<string>;
+    paths?: Array<string>;
     /**
      * 
      */
-    description: string;
+    description?: string;
 }

@@ -2424,18 +2424,8 @@
 			},
 			"type": "object",
 			"required": [
-				"name",
 				"title",
-				"keyword",
-				"picture",
-				"category",
-				"description",
-				"author",
-				"sort",
-				"disable",
-				"meta",
-				"content",
-				"template"
+				"category"
 			]
 		},
 		"EditArticleDto": {
@@ -2498,18 +2488,8 @@
 			"type": "object",
 			"required": [
 				"id",
-				"name",
 				"title",
-				"keyword",
-				"picture",
-				"category",
-				"description",
-				"author",
-				"sort",
-				"disable",
-				"meta",
-				"content",
-				"template"
+				"category"
 			]
 		},
 		"ResultList$ArticleRes": {
@@ -2618,11 +2598,7 @@
 			"type": "object",
 			"required": [
 				"name",
-				"slug",
-				"order",
-				"parent",
-				"paths",
-				"description"
+				"slug"
 			]
 		},
 		"EditCategoryDto": {
@@ -2665,11 +2641,7 @@
 			"required": [
 				"id",
 				"name",
-				"slug",
-				"order",
-				"parent",
-				"paths",
-				"description"
+				"slug"
 			]
 		},
 		"ResultList$CategoryRes": {
@@ -2896,7 +2868,7 @@
 					"description": ""
 				},
 				"ext": {
-					"type": "object",
+					"type": "string",
 					"description": ""
 				},
 				"url": {
@@ -2911,11 +2883,7 @@
 			"type": "object",
 			"required": [
 				"name",
-				"caption",
-				"description",
-				"ext",
-				"url",
-				"uri"
+				"description"
 			]
 		},
 		"EditMediaDto": {
@@ -2938,7 +2906,7 @@
 					"description": ""
 				},
 				"ext": {
-					"type": "object",
+					"type": "string",
 					"description": ""
 				},
 				"url": {
@@ -2954,11 +2922,7 @@
 			"required": [
 				"id",
 				"name",
-				"caption",
-				"description",
-				"ext",
-				"url",
-				"uri"
+				"description"
 			]
 		},
 		"ResultList$MediaRes": {

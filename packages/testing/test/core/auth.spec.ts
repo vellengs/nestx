@@ -13,7 +13,7 @@ describe('Auth module test', () => {
 
     it('[post] /auth/login', async () => {
         const res = await login();
-        expect(res.status).toBe(200);
+        expect(res.status).toBe(201);
         expect(res.data.roles.length).toBeGreaterThan(0);
         expect(res.data.token).toBeDefined;
         expect(res.data.username).toBeDefined;

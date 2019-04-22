@@ -7,7 +7,7 @@ option.timestamps = true;
 export const MediaSchema = new Schema(
   {
     name: t.String,
-    caption: t.Number,
+    caption: t.String,
     description: t.String,
     ext: t.Mixed,
     url: t.String,

@@ -358,7 +358,7 @@ export interface CreateArticleDto {
      * @type {string}
      * @memberof CreateArticleDto
      */
-    name: string;
+    name?: string;
     /**
      * 
      * @type {string}
@@ -370,13 +370,13 @@ export interface CreateArticleDto {
      * @type {string}
      * @memberof CreateArticleDto
      */
-    keyword: string;
+    keyword?: string;
     /**
      * 
      * @type {string}
      * @memberof CreateArticleDto
      */
-    picture: string;
+    picture?: string;
     /**
      * 
      * @type {string}
@@ -388,43 +388,43 @@ export interface CreateArticleDto {
      * @type {string}
      * @memberof CreateArticleDto
      */
-    description: string;
+    description?: string;
     /**
      * 
      * @type {string}
      * @memberof CreateArticleDto
      */
-    author: string;
+    author?: string;
     /**
      * 
      * @type {number}
      * @memberof CreateArticleDto
      */
-    sort: number;
+    sort?: number;
     /**
      * 
      * @type {boolean}
      * @memberof CreateArticleDto
      */
-    disable: boolean;
+    disable?: boolean;
     /**
      * 
      * @type {string}
      * @memberof CreateArticleDto
      */
-    meta: string;
+    meta?: string;
     /**
      * 
      * @type {string}
      * @memberof CreateArticleDto
      */
-    content: string;
+    content?: string;
     /**
      * 
      * @type {string}
      * @memberof CreateArticleDto
      */
-    template: string;
+    template?: string;
 }
 
 /**
@@ -450,25 +450,25 @@ export interface CreateCategoryDto {
      * @type {number}
      * @memberof CreateCategoryDto
      */
-    order: number;
+    order?: number;
     /**
      * 
      * @type {string}
      * @memberof CreateCategoryDto
      */
-    parent: string;
+    parent?: string;
     /**
      * 
      * @type {Array<string>}
      * @memberof CreateCategoryDto
      */
-    paths: Array<string>;
+    paths?: Array<string>;
     /**
      * 
      * @type {string}
      * @memberof CreateCategoryDto
      */
-    description: string;
+    description?: string;
 }
 
 /**
@@ -582,7 +582,7 @@ export interface CreateMediaDto {
      * @type {string}
      * @memberof CreateMediaDto
      */
-    caption: string;
+    caption?: string;
     /**
      * 
      * @type {string}
@@ -591,22 +591,22 @@ export interface CreateMediaDto {
     description: string;
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof CreateMediaDto
      */
-    ext: any;
+    ext?: string;
     /**
      * 
      * @type {string}
      * @memberof CreateMediaDto
      */
-    url: string;
+    url?: string;
     /**
      * 
      * @type {string}
      * @memberof CreateMediaDto
      */
-    uri: string;
+    uri?: string;
 }
 
 /**
@@ -1170,7 +1170,7 @@ export interface EditArticleDto {
      * @type {string}
      * @memberof EditArticleDto
      */
-    name: string;
+    name?: string;
     /**
      * 
      * @type {string}
@@ -1182,13 +1182,13 @@ export interface EditArticleDto {
      * @type {string}
      * @memberof EditArticleDto
      */
-    keyword: string;
+    keyword?: string;
     /**
      * 
      * @type {string}
      * @memberof EditArticleDto
      */
-    picture: string;
+    picture?: string;
     /**
      * 
      * @type {string}
@@ -1200,43 +1200,43 @@ export interface EditArticleDto {
      * @type {string}
      * @memberof EditArticleDto
      */
-    description: string;
+    description?: string;
     /**
      * 
      * @type {string}
      * @memberof EditArticleDto
      */
-    author: string;
+    author?: string;
     /**
      * 
      * @type {number}
      * @memberof EditArticleDto
      */
-    sort: number;
+    sort?: number;
     /**
      * 
      * @type {boolean}
      * @memberof EditArticleDto
      */
-    disable: boolean;
+    disable?: boolean;
     /**
      * 
      * @type {string}
      * @memberof EditArticleDto
      */
-    meta: string;
+    meta?: string;
     /**
      * 
      * @type {string}
      * @memberof EditArticleDto
      */
-    content: string;
+    content?: string;
     /**
      * 
      * @type {string}
      * @memberof EditArticleDto
      */
-    template: string;
+    template?: string;
 }
 
 /**
@@ -1268,25 +1268,25 @@ export interface EditCategoryDto {
      * @type {number}
      * @memberof EditCategoryDto
      */
-    order: number;
+    order?: number;
     /**
      * 
      * @type {string}
      * @memberof EditCategoryDto
      */
-    parent: string;
+    parent?: string;
     /**
      * 
      * @type {Array<string>}
      * @memberof EditCategoryDto
      */
-    paths: Array<string>;
+    paths?: Array<string>;
     /**
      * 
      * @type {string}
      * @memberof EditCategoryDto
      */
-    description: string;
+    description?: string;
 }
 
 /**
@@ -1418,7 +1418,7 @@ export interface EditMediaDto {
      * @type {string}
      * @memberof EditMediaDto
      */
-    caption: string;
+    caption?: string;
     /**
      * 
      * @type {string}
@@ -1427,22 +1427,22 @@ export interface EditMediaDto {
     description: string;
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof EditMediaDto
      */
-    ext: any;
+    ext?: string;
     /**
      * 
      * @type {string}
      * @memberof EditMediaDto
      */
-    url: string;
+    url?: string;
     /**
      * 
      * @type {string}
      * @memberof EditMediaDto
      */
-    uri: string;
+    uri?: string;
 }
 
 /**

@@ -7,6 +7,7 @@ import {
   IsNumber,
   MinLength,
   Length,
+  MaxLength,
 } from 'class-validator';
 
 export class CreateUserReq {
@@ -27,7 +28,7 @@ export class CreateUserReq {
 
   @IsOptional()
   @IsString()
-  @Length(5, 50)
+  @MaxLength(50)
   name?: string;
 
   @IsString()

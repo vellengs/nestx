@@ -30,17 +30,17 @@ export interface EditCategoryDto {
     /**
      * 
      */
-    order: number;
+    order?: number;
     /**
      * 
      */
-    parent: string;
+    parent?: string;
     /**
      * 
      */
-    paths: Array<string>;
+    paths?: Array<string>;
     /**
      * 
      */
-    description: string;
+    description?: string;
 }

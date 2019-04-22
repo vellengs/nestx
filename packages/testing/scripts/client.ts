@@ -21,7 +21,7 @@ function setToken(token: string) {
 }
 
 function errorHandler(error: any) {
-  console.log("error", error.response.data);
+  console.log("error:", JSON.stringify(error.response.data));
   return error.response;
 }
 
@@ -29,18 +29,16 @@ const config = new Configuration({
   basePath: "http://localhost:5600/api"
 });
 
-globalAxios.interceptors.request.use(
-  config => {
-    if (config.baseURL === config.baseURL && !config.headers.Authorization) {
-      const token = getToken();
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
+globalAxios.interceptors.request.use(config => {
+  if (config.baseURL === config.baseURL && !config.headers.Authorization) {
+    const token = getToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
-
-    return config;
   }
-);
+
+  return config;
+});
 
 // TODO;
 globalAxios.interceptors.response.use(response => {

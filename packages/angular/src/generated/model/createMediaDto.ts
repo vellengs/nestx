@@ -22,7 +22,7 @@ export interface CreateMediaDto {
     /**
      * 
      */
-    caption: string;
+    caption?: string;
     /**
      * 
      */
@@ -30,13 +30,13 @@ export interface CreateMediaDto {
     /**
      * 
      */
-    ext: any;
+    ext?: string;
     /**
      * 
      */
-    url: string;
+    url?: string;
     /**
      * 
      */
-    uri: string;
+    uri?: string;
 }

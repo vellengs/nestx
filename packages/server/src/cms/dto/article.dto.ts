@@ -3,49 +3,49 @@ import { IsString, IsNumber, IsBoolean, IsOptional } from 'class-validator';
 export class CreateArticleDto {
   @IsString()
   @IsOptional()
-  name: string;
+  name?: string;
 
   @IsString()
   title: string;
 
   @IsString()
   @IsOptional()
-  keyword: string;
+  keyword?: string;
 
   @IsString()
   @IsOptional()
-  picture: string;
+  picture?: string;
 
   @IsString()
   category: string;
 
   @IsString()
   @IsOptional()
-  description: string;
+  description?: string;
 
   @IsString()
   @IsOptional()
-  author: string;
+  author?: string;
 
   @IsNumber()
   @IsOptional()
-  sort: number;
+  sort?: number;
 
   @IsBoolean()
   @IsOptional()
-  disable: boolean;
+  disable?: boolean;
 
   @IsString()
   @IsOptional()
-  meta: string;
+  meta?: string;
 
   @IsString()
   @IsOptional()
-  content: string;
+  content?: string;
 
   @IsString()
   @IsOptional()
-  template: string;
+  template?: string;
 }
 
 export class EditArticleDto {
@@ -54,49 +54,49 @@ export class EditArticleDto {
 
   @IsString()
   @IsOptional()
-  name: string;
+  name?: string;
 
   @IsString()
   title: string;
 
   @IsString()
   @IsOptional()
-  keyword: string;
+  keyword?: string;
 
   @IsString()
   @IsOptional()
-  picture: string;
+  picture?: string;
 
   @IsString()
   category: string;
 
   @IsString()
   @IsOptional()
-  description: string;
+  description?: string;
 
   @IsString()
   @IsOptional()
-  author: string;
+  author?: string;
 
   @IsNumber()
   @IsOptional()
-  sort: number;
+  sort?: number;
 
   @IsBoolean()
   @IsOptional()
-  disable: boolean;
+  disable?: boolean;
 
   @IsString()
   @IsOptional()
-  meta: string;
+  meta?: string;
 
   @IsString()
   @IsOptional()
-  content: string;
+  content?: string;
 
   @IsString()
   @IsOptional()
-  template: string;
+  template?: string;
 }
 
 export class ArticleRes {

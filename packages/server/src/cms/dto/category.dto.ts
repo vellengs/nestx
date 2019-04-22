@@ -9,19 +9,19 @@ export class CreateCategoryDto {
 
   @IsNumber()
   @IsOptional()
-  order: number;
+  order?: number;
 
   @IsString()
   @IsOptional()
-  parent: string;
+  parent?: string;
 
   @IsString({ each: true })
   @IsOptional()
-  paths: string[];
+  paths?: string[];
 
   @IsString()
   @IsOptional()
-  description: string;
+  description?: string;
 }
 
 export class EditCategoryDto {
@@ -36,19 +36,19 @@ export class EditCategoryDto {
 
   @IsNumber()
   @IsOptional()
-  order: number;
+  order?: number;
 
   @IsString()
   @IsOptional()
-  parent: string;
+  parent?: string;
 
   @IsString({ each: true })
   @IsOptional()
-  paths: string[];
+  paths?: string[];
 
   @IsString()
   @IsOptional()
-  description: string;
+  description?: string;
 }
 
 export class CategoryRes {

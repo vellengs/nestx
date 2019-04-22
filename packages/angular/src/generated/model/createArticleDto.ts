@@ -18,7 +18,7 @@ export interface CreateArticleDto {
     /**
      * 
      */
-    name: string;
+    name?: string;
     /**
      * 
      */
@@ -26,11 +26,11 @@ export interface CreateArticleDto {
     /**
      * 
      */
-    keyword: string;
+    keyword?: string;
     /**
      * 
      */
-    picture: string;
+    picture?: string;
     /**
      * 
      */
@@ -38,29 +38,29 @@ export interface CreateArticleDto {
     /**
      * 
      */
-    description: string;
+    description?: string;
     /**
      * 
      */
-    author: string;
+    author?: string;
     /**
      * 
      */
-    sort: number;
+    sort?: number;
     /**
      * 
      */
-    disable: boolean;
+    disable?: boolean;
     /**
      * 
      */
-    meta: string;
+    meta?: string;
     /**
      * 
      */
-    content: string;
+    content?: string;
     /**
      * 
      */
-    template: string;
+    template?: string;
 }
