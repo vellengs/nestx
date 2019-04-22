@@ -60,6 +60,7 @@ export class ArticleService extends MongooseService<ArticleModel> {
           _id: entry.id,
         },
         entry,
+        { upsert: true, new: true },
       )
       .exec();
 

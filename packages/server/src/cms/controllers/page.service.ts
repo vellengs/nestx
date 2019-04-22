@@ -54,6 +54,7 @@ export class PageService extends MongooseService<PageModel> {
           _id: entry.id,
         },
         entry,
+        { upsert: true, new: true },
       )
       .exec();
 

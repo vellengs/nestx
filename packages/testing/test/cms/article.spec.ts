@@ -56,7 +56,7 @@ describe("article module test", () => {
 
     const res = await HttpClient.cmsApi.articleUpdate(reqBody);
     expect(res.status).toBe(200);
-    // expect(res.data.author).toBe(reqBody.author); // TODO
+    expect(res.data.author).toBe(reqBody.author);
   });
 
   it("[get] /article/query", async () => {
