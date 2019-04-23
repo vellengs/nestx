@@ -1,0 +1,43 @@
+{
+  "name": "nestx-cms",
+  "version": "0.0.14",
+  "description": "base module of nestx",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@nestjs/common": "^6.1.1",
+    "@nestjs/core": "^6.1.1",
+    "@nestjs/jwt": "^6.0.0",
+    "@nestjs/mongoose": "^6.1.2",
+    "@nestjs/passport": "^6.0.0",
+    "@nestjs/platform-express": "^6.1.1",
+    "bson": "^4.0.2",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "nest-swagger": "^0.3.0-alpha.0",
+    "nestx-auth": "^0.0.12",
+    "nestx-common": "^0.0.12",
+    "nestx-config": "^0.0.13",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.4.0"
+  },
+  "gitHead": "56e54eb712aa27194f4d1356c5219a09f7734f95",
+  "devDependencies": {
+    "@types/bson": "^4.0.0",
+    "@types/passport-jwt": "^3.0.1",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^4.16.1",
+    "@types/lodash": "^4.14.123",
+    "class-transformer": "^0.2.0",
+    "class-validator": "^0.9.1",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.4"
+  }
+}
