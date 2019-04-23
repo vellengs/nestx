@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { Tags } from 'nest-swagger';
 import { MockService } from './mock.service';
 

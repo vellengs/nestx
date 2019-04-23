@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { SettingsService } from './core/controllers/settings.service';
+import { SettingsService } from 'nestx-base';
 @Injectable()
 export class AppService {
   constructor(private readonly settingService: SettingsService) {}

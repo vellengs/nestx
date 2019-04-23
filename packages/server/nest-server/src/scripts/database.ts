@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 import * as bluebird from 'bluebird';
-import { model, Connection } from 'mongoose';
+import { model } from 'mongoose';
 import {
   AppearanceSchema,
   SettingSchema,
@@ -11,7 +11,7 @@ import {
   UserSchema,
   GroupSchema,
   NoticeSchema,
-} from './../core/schemas';
+} from 'nestx-base';
 
 import {
   AppearanceModel,
@@ -23,7 +23,7 @@ import {
   SettingModel,
   GroupModel,
   NoticeModel,
-} from './../core/interfaces';
+} from 'nestx-base';
 
 import { MONGODB_URI } from './../utils/secrets';
 

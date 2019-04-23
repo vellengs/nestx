@@ -1,12 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Installer } from './../../scripts/data.install';
+import { Installer } from './../scripts/data.install';
 import { InjectModel } from '@nestjs/mongoose';
-import { UserModel } from './../interfaces';
 import { Model } from 'mongoose';
+import { UserModel } from 'nestx-base';
 
 @Injectable()
 export class MockService {
-
   private install: Installer;
   constructor(
     @InjectModel('User')
@@ -18,7 +17,6 @@ export class MockService {
   async initDatabase(): Promise<boolean> {
     if (process.env.NODE_ENV === 'test') {
       await this.install.initData();
-
     } else {
       Promise.reject('mock method only run on test env');
     }
@@ -26,7 +24,6 @@ export class MockService {
   }
 
   async resetDatabase(): Promise<boolean> {
-
     if (process.env.NODE_ENV === 'test') {
       await this.install.reset();
     } else {
@@ -34,5 +31,4 @@ export class MockService {
     }
     return true;
   }
-
 }

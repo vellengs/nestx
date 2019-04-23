@@ -1,14 +1,13 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from './auth';
-import { CoreModule } from './core';
-import { CommerceModule } from './commerce';
-import { CmsModule } from './cms';
+import { CmsModule } from 'nestx-cms';
 import { MONGODB_URI } from './utils';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersService } from './core/controllers/users.service';
+import { BaseModule } from 'nestx-base';
+import { MockController } from './mock/mock.controller';
+import { MockService } from './mock/mock.service';
 
 @Module({
   imports: [
@@ -17,12 +16,10 @@ import { UsersService } from './core/controllers/users.service';
       useCreateIndex: true,
       useNewUrlParser: true,
     }),
-    AuthModule,
-    CoreModule,
+    BaseModule,
     CmsModule,
-    CommerceModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, MockController],
+  providers: [AppService, MockService],
 })
 export class AppModule {}
