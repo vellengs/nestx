@@ -71,3 +71,31 @@ npm run start:angular
 | Dictionary   | √             |              |
 | Logs         | √             |              |
 | Menus        | √             |              |
+
+### source code struct
+
+├── README.md
+├── README.zh-CN.md
+├── docs
+│   ├── NestJsRBAC.1.md
+│   ├── NestJsRBAC.2.md
+│   └── README.md
+├── lerna.json
+├── nestx.code-workspace
+├── package.json
+└── packages
+    ├── clients
+    │   ├── nest-angular
+    │   └── nest-react
+    └── servers
+        ├── nest-server
+        ├── nest-swagger
+        ├── nest-testing
+        ├── nestx-auth
+        ├── nestx-base
+        ├── nestx-cms
+        ├── nestx-common
+        └── nestx-config
+
+
+
