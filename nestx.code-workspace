@@ -1,16 +1,25 @@
 {
 	"folders": [
 		{
-			"path": "packages/testing"
+			"path": "packages/server/nestx-config"
 		},
 		{
-			"path": "docs"
+			"path": "packages/server/nestx-common"
 		},
 		{
-			"path": "packages/react"
+			"path": "packages/server/nestx-base"
 		},
 		{
-			"path": "packages/angular"
+			"path": "packages/server/nestx-auth"
+		},
+		{
+			"path": "packages/server/nestx-cms"
+		},
+		{
+			"path": "packages/server/nest-server"
+		},
+		{
+			"path": "packages/server/nest-testing"
 		}
 	],
 	"settings": {

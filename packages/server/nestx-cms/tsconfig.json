@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "declaration": true,
+        "noImplicitAny": true,
+        "removeComments": true,
+        "noLib": false,
+        "allowSyntheticDefaultImports": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es6",
+        "sourceMap": true,
+        "allowJs": false,
+        "outDir": "dist",
+        "baseUrl": "src",
+        "typeRoots": [
+            "./node_modules/@types",
+            "./types/"
+        ]
+    },
+    "exclude": [
+        "node_modules/**/*",
+        "dist/**/*",
+        "**/*.spec.ts"
+    ]
+}
