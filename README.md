@@ -74,6 +74,8 @@ npm run start:angular
 
 ### source code struct
 
+```
+
 ├── README.md
 ├── README.zh-CN.md
 ├── docs
@@ -96,6 +98,8 @@ npm run start:angular
         ├── nestx-cms
         ├── nestx-common
         └── nestx-config
+        
+ ```
 
 
 
