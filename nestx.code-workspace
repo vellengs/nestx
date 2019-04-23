@@ -1,25 +1,25 @@
 {
 	"folders": [
 		{
-			"path": "packages/server/nestx-config"
+			"path": "packages/servers/nestx-config"
 		},
 		{
-			"path": "packages/server/nestx-common"
+			"path": "packages/servers/nestx-common"
 		},
 		{
-			"path": "packages/server/nestx-base"
+			"path": "packages/servers/nestx-base"
 		},
 		{
-			"path": "packages/server/nestx-auth"
+			"path": "packages/servers/nestx-auth"
 		},
 		{
-			"path": "packages/server/nestx-cms"
+			"path": "packages/servers/nestx-cms"
 		},
 		{
-			"path": "packages/server/nest-server"
+			"path": "packages/servers/nest-server"
 		},
 		{
-			"path": "packages/server/nest-testing"
+			"path": "packages/servers/nest-testing"
 		}
 	],
 	"settings": {
