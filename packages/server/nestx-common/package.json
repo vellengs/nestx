@@ -1,0 +1,32 @@
+{
+  "name": "nestx-common",
+  "version": "0.0.12",
+  "description": "common module of nestx",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "tsc -p tsconfig.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@nestjs/common": "^6.1.1",
+    "@nestjs/core": "^6.1.1",
+    "@nestjs/jwt": "^6.0.0",
+    "@nestjs/passport": "^6.0.0",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.5.2",
+    "nest-swagger": "^0.3.0-alpha.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.4.0",
+    "typeorm": "^0.2.16"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.123",
+    "@types/mongoose": "^5.3.26",
+    "class-transformer": "^0.2.0",
+    "class-validator": "^0.9.1"
+  },
+  "gitHead": "56e54eb712aa27194f4d1356c5219a09f7734f95"
+}
