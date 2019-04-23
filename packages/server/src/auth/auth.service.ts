@@ -2,19 +2,27 @@ import {
   Injectable,
   UnauthorizedException,
   NotAcceptableException,
+  Inject,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload, AccessToken } from './interfaces/jwt-payload.interface';
 import { LoginReq, LoginRes } from './dto/login.dto';
 import { RegisterReq } from './dto/Register.dto';
-import { UsersService } from './../core/controllers/users.service';
 import { Result } from './../common';
+
+export interface IUserService {
+  verifyCode: (code: string, mobile: string) => Promise<boolean>;
+  register: (payload: RegisterReq) => Promise<{ username: string }>;
+  sendVeryCode: (mobile: string) => Promise<Result>;
+  findOne: (conditions?: { [key: string]: any }) => Promise<any>;
+  login: (username: string, password: string) => Promise<any>;
+}
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly jwtService: JwtService,
-    private readonly userService: UsersService,
+    @Inject('IUserService') private readonly userService: IUserService,
   ) {}
 
   async login(payload: LoginReq): Promise<LoginRes> {

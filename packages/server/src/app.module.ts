@@ -8,6 +8,7 @@ import { CmsModule } from './cms';
 import { MONGODB_URI } from './utils';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UsersService } from './core/controllers/users.service';
 
 @Module({
   imports: [
