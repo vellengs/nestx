@@ -2,7 +2,7 @@
   "name": "nestx-base",
   "version": "0.0.13",
   "description": "base module of nestx",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "scripts": {
     "prepublish": "npm run build",
     "build": "tsc -p tsconfig.json",
