@@ -1,6 +1,6 @@
 {
   "name": "nest-react",
-  "version": "0.3.0-alpha.0",
+  "version": "0.3.0",
   "description": "react client side",
   "scripts": {
     "start": "cross-env APP_TYPE=site umi dev",

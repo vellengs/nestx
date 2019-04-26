@@ -1,6 +1,6 @@
 {
   "name": "nestx-base",
-  "version": "0.0.13",
+  "version": "0.3.0",
   "description": "base module of nestx",
   "main": "dist/index.js",
   "scripts": {
@@ -16,9 +16,9 @@
     "express": "^4.16.4",
     "lodash": "^4.17.11",
     "mongoose": "^5.5.2",
-    "nest-swagger": "^0.3.0-alpha.0",
+    "nest-swagger": "^0.3.0",
     "nestx-auth": "^0.0.12",
-    "nestx-common": "^0.0.12",
+    "nestx-common": "^0.3.0",
     "nestx-config": "^0.0.12",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
