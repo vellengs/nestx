@@ -1,6 +1,6 @@
 {
   "name": "nestx-config",
-  "version": "0.0.13",
+  "version": "0.3.0",
   "description": "base module of nestx",
   "main": "dist/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "@nestjs/jwt": "^6.0.0",
     "@nestjs/passport": "^6.0.0",
     "dotenv": "^7.0.0",
-    "nest-swagger": "^0.3.0-alpha.0",
+    "nest-swagger": "^0.3.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.4.0"
   },

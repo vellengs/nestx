@@ -1,8 +1,9 @@
 {
   "name": "nest-testing",
-  "version": "0.3.0-alpha.0",
+  "version": "0.3.0",
   "description": "",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "jest",
     "test:cov": "jest --coverage",
@@ -14,7 +15,7 @@
   "devDependencies": {
     "@types/jest": "^24.0.11",
     "@types/lodash": "^4.14.123",
-    "@types/mongoose": "^5.3.24",
+    "@types/mongoose": "^5.3.27",
     "@types/node": "^11.13.0",
     "@types/swagger-parser": "^4.0.3",
     "axios": "^0.18.0",

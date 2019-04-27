@@ -1,5 +1,121 @@
 basePath: null
 definitions:
+    AccessToken:
+        description: ""
+        properties:
+            expiresIn:
+                type: number
+                format: double
+                description: ""
+            accessToken:
+                type: string
+                description: ""
+        type: object
+        required:
+            - expiresIn
+            - accessToken
+    LoginRes:
+        description: ""
+        properties:
+            username:
+                type: string
+                description: ""
+            avatar:
+                type: string
+                description: ""
+            email:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            mobile:
+                type: string
+                description: ""
+            isAdmin:
+                type: boolean
+                description: ""
+            isApproved:
+                type: boolean
+                description: ""
+            expired:
+                type: number
+                format: double
+                description: ""
+            company:
+                type: string
+                description: ""
+            siteUrl:
+                type: string
+                description: ""
+            address:
+                type: string
+                description: ""
+            token:
+                $ref: '#/definitions/AccessToken'
+            roles:
+                type: array
+                items:
+                    type: string
+                description: ""
+        type: object
+        required:
+            - username
+            - avatar
+            - email
+            - name
+            - mobile
+            - isAdmin
+            - isApproved
+            - expired
+            - token
+    LoginReq:
+        description: ""
+        properties:
+            username:
+                type: string
+                description: ""
+            type:
+                type: string
+                description: ""
+            password:
+                type: string
+                description: ""
+        type: object
+        required:
+            - username
+            - password
+    RegisterReq:
+        description: ""
+        properties:
+            username:
+                type: string
+                description: ""
+            password:
+                type: string
+                description: ""
+            mobile:
+                type: string
+                description: ""
+            email:
+                type: string
+                description: ""
+            name:
+                type: string
+                description: ""
+            mobilePrefix:
+                type: string
+                description: ""
+            veryCode:
+                type: string
+                description: ""
+        type: object
+        required:
+            - username
+            - password
+            - mobile
+            - email
+            - veryCode
     CreateDictReq:
         description: ""
         properties:
@@ -1385,16 +1501,20 @@ definitions:
     Appearance:
         description: ""
         properties:
-            columnSets:
+            name:
+                type: string
+                description: ""
+            options:
                 type: object
                 description: ""
-            formSets:
+            data:
                 type: object
                 description: ""
         type: object
         required:
-            - columnSets
-            - formSets
+            - name
+            - options
+            - data
     EditAppearanceReq:
         description: ""
         properties:
@@ -1440,6 +1560,94 @@ info:
     title: 'rest api interface'
     version: 0.0.1
 paths:
+    /auth/login:
+        post:
+            operationId: AuthLogin
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/LoginRes'
+            description: ""
+            tags:
+                - auth
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: payload
+                    required: true
+                    schema:
+                        $ref: '#/definitions/LoginReq'
+    /auth/register:
+        post:
+            operationId: AuthRegister
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/AccessToken'
+            description: ""
+            tags:
+                - auth
+            consumes:
+                - application/json
+            parameters:
+                -
+                    description: ""
+                    in: body
+                    name: payload
+                    required: true
+                    schema:
+                        $ref: '#/definitions/RegisterReq'
+    /auth/logout:
+        get:
+            operationId: AuthLogout
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: object
+                        properties:
+                            ok:
+                                type: boolean
+                                description: ""
+            description: ""
+            tags:
+                - auth
+            parameters: []
+    /auth/captcha:
+        get:
+            operationId: AuthCaptcha
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        type: object
+                        properties:
+                            ok:
+                                type: boolean
+                                description: ""
+            description: ""
+            tags:
+                - auth
+            parameters:
+                -
+                    description: ""
+                    in: query
+                    name: mobile
+                    required: true
+                    type: string
     /dict/:
         post:
             operationId: DictsCreate
@@ -2911,68 +3119,6 @@ paths:
                     name: id
                     required: true
                     type: string
-    '/name/{name}':
-        get:
-            operationId: AppGetAppSettings
-            produces:
-                - application/json
-            responses:
-                '200':
-                    description: Ok
-                    schema:
-                        $ref: '#/definitions/SettingsGroup'
-            description: ""
-            tags:
-                - app
-            parameters:
-                -
-                    description: ""
-                    in: query
-                    name: name
-                    required: false
-                    type: string
-    /:
-        get:
-            operationId: AppRoot
-            produces:
-                - text/html
-            responses:
-                '200':
-                    description: Ok
-                    schema:
-                        type: string
-            description: ""
-            tags:
-                - app
-            parameters: []
-    /mock/init:
-        get:
-            operationId: MockInitData
-            produces:
-                - text/html
-            responses:
-                '200':
-                    description: Ok
-                    schema:
-                        type: boolean
-            description: ""
-            tags:
-                - mock
-            parameters: []
-    /mock/reset:
-        get:
-            operationId: MockReset
-            produces:
-                - text/html
-            responses:
-                '200':
-                    description: Ok
-                    schema:
-                        type: boolean
-            description: ""
-            tags:
-                - mock
-            parameters: []
 swagger: '2.0'
 securityDefinitions: {}
 produces:

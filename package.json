@@ -1,6 +1,11 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "swagger": "cd packages/servers/nest-server && npm run swagger",
+    "start:serve": "cd packages/servers/nest-server && npm run start",
+    "start:angular": "cd packages/clients/nest-angular && npm run start"
+  },
   "devDependencies": {
     "lerna": "^3.13.1"
   }

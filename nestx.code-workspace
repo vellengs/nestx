@@ -20,6 +20,9 @@
 		},
 		{
 			"path": "packages/servers/nest-testing"
+		},
+		{
+			"path": "."
 		}
 	],
 	"settings": {
