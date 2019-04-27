@@ -18,13 +18,14 @@
     "lodash": "^4.17.11",
     "mongoose": "^5.5.2",
     "nest-swagger": "^0.3.0",
+    "nestx-config": "^0.3.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.4.0",
     "typeorm": "^0.2.16"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.123",
-    "@types/mongoose": "^5.3.26",
+    "@types/mongoose": "^5.3.27",
     "class-transformer": "^0.2.0",
     "class-validator": "^0.9.1"
   },
