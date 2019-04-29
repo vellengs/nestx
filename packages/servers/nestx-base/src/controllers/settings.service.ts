@@ -1,15 +1,16 @@
 import { Injectable } from "@nestjs/common";
-import { InjectModel } from "@nestjs/mongoose";
-import { MongooseService, ResultList } from "nestx-common";
-import { SettingModel } from "./../interfaces";
-import { SettingsGroup, SettingRes } from "./../dto";
-import { Model } from "mongoose";
+import { InjectModel } from "nestjs-typegoose";
+import { ResultList } from "nestx-common";
+import { SettingsGroup } from "./../dto";
+import { BaseService } from "./base.service";
+import { Setting } from "./../schemas";
+import { ModelType } from "typegoose";
 
 @Injectable()
-export class SettingsService extends MongooseService<SettingModel> {
+export class SettingsService extends BaseService<Setting> {
   defaultQueryFields = ["name", "key", "value", "description"];
   constructor(
-    @InjectModel("Setting") protected readonly model: Model<SettingModel>
+    @InjectModel(Setting) protected readonly model: ModelType<Setting>
   ) {
     super(model);
   }
@@ -19,7 +20,7 @@ export class SettingsService extends MongooseService<SettingModel> {
     page: number,
     size: number,
     sort: string
-  ): Promise<ResultList<SettingModel>> {
+  ): Promise<ResultList<Setting>> {
     return super.query(
       page,
       size,
@@ -42,15 +43,14 @@ export class SettingsService extends MongooseService<SettingModel> {
         .exec();
       if (docs) {
         docs.forEach(doc => {
-          result.options[doc.key] = doc.value;
+          // result.options[doc.key] = doc.value;  //TODO
         });
       }
     }
-
     return result;
   }
 
-  async getSettingsByKey(name: string): Promise<SettingRes> {
+  async getSettingsByKey(name: string): Promise<Setting> {
     const setting = await this.model
       .findOne({
         key: name

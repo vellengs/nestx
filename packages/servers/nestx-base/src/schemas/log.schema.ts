@@ -1,37 +1,29 @@
-import { Schema, SchemaTypes as t, SchemaOptions } from "mongoose";
-import { utils } from "nestx-common";
-const { transform } = utils;
+import { Typegoose, prop } from "typegoose";
+import { SchemaDefaultOptions } from "nestx-common";
 
-const option: SchemaOptions = {};
-option.timestamps = true;
+export class Log extends Typegoose {
+  @prop({ required: true })
+  name: string;
 
-export const LogSchema = new Schema(
-  {
-    name: {
-      type: t.String
-    },
-    operator: {
-      type: t.String
-    },
-    ip: {
-      type: t.String
-    },
-    operation: {
-      type: t.String
-    },
-    result: {
-      type: t.Number
-    },
-    elapsed: {
-      type: t.Number
-    },
-    comment: {
-      type: t.String
-    }
-  },
-  option
-);
+  @prop({ required: true })
+  operator: string;
 
-LogSchema.set("toJSON", {
-  transform
-});
+  @prop({ required: true })
+  ip: string;
+
+  @prop()
+  operation?: string;
+
+  @prop()
+  result: number;
+
+  @prop()
+  elapsed: number;
+
+  @prop()
+  comment: string;
+
+  static get Model() {
+    return new Log().getModelForClass(Log, SchemaDefaultOptions);
+  }
+}

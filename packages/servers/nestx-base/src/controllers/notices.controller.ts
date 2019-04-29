@@ -12,7 +12,6 @@ import {
 import { AuthGuard } from "@nestjs/passport";
 import { plainToClass } from "class-transformer";
 import { NoticesService } from "./notices.service";
-import { Notice } from "./../interfaces";
 import { KeyValueDto, CreateNoticeReq, EditNoticeReq } from "./../dto";
 import { Tags } from "nest-swagger";
 import {
@@ -21,6 +20,7 @@ import {
   RolesGuard,
   LoggingInterceptor
 } from "nestx-common";
+import { Notice } from "./../schemas";
 
 @Tags("core")
 @Controller("notice")

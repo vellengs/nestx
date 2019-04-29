@@ -1,16 +1,17 @@
-import { Schema, SchemaTypes as t, SchemaOptions, model } from "mongoose";
-import { utils } from "nestx-common";
-const { transform } = utils;
+import { SchemaDefaultOptions } from "nestx-common";
+import { Typegoose, prop } from "typegoose";
 
-export const ProfileSchema = new Schema(
-  {
-    company: { type: t.String },
-    siteUrl: { type: t.String },
-    address: { type: t.String }
-  },
-  { timestamps: true }
-);
+export class Profile extends Typegoose {
+  @prop()
+  company?: string;
 
-ProfileSchema.set("toJSON", {
-  transform
-});
+  @prop()
+  siteUrl?: string;
+
+  @prop()
+  address?: string;
+
+  static get Model() {
+    return new Profile().getModelForClass(Profile, SchemaDefaultOptions);
+  }
+}

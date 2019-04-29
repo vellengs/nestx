@@ -1,25 +1,22 @@
-import { Model, Document } from "mongoose";
+import { Document } from "mongoose";
 import { Injectable } from "@nestjs/common";
-import { InjectModel } from "@nestjs/mongoose";
-import { User, UserModel, VeryCodeModel } from "./../interfaces";
-import {
-  MongooseService,
-  IdentifyEntry,
-  ResultList,
-  Result
-} from "nestx-common";
+import { InjectModel } from "nestjs-typegoose";
+import { IdentifyEntry, ResultList, Result } from "nestx-common";
 import { RegisterReq } from "nestx-auth";
 import { ObjectID } from "typeorm";
 import { EditProfileReq, UserRes, ChangePasswordReq } from "./../dto";
 import { ObjectId } from "bson";
 import { omit } from "lodash";
+import { BaseService } from "./base.service";
+import { User, Profile, VeryCode } from "./../schemas";
+import { ModelType, InstanceType } from "typegoose";
 
 const FIVE_MINUTES = 5 * 60 * 1000; // 5 mins
 const ONE_MINUTE = 1 * 60 * 1000; // 1 mins
 const SMS_VERIFICATION_CONTENT = `sms template {0}`;
 
 @Injectable()
-export class UsersService extends MongooseService<UserModel> {
+export class UsersService extends BaseService<User> {
   defaultQueryFields = [
     "username",
     "avatar",
@@ -32,12 +29,12 @@ export class UsersService extends MongooseService<UserModel> {
   ];
 
   constructor(
-    @InjectModel("User")
-    protected readonly model: Model<UserModel>,
-    @InjectModel("Profile")
-    protected readonly profileModel: Model<UserModel>,
-    @InjectModel("VeryCode")
-    private readonly veryCodeModel: Model<VeryCodeModel>
+    @InjectModel(User)
+    protected readonly model: ModelType<User>,
+    @InjectModel(Profile)
+    protected readonly profileModel: ModelType<Profile>,
+    @InjectModel(VeryCode)
+    private readonly veryCodeModel: ModelType<VeryCode>
   ) {
     super(model);
   }
@@ -49,7 +46,7 @@ export class UsersService extends MongooseService<UserModel> {
     page: number,
     size: number,
     sort: string
-  ): Promise<ResultList<UserModel>> {
+  ): Promise<ResultList<User>> {
     let groups, roles;
     if (group) {
       groups = { $in: group };
@@ -102,7 +99,7 @@ export class UsersService extends MongooseService<UserModel> {
     return false;
   }
 
-  async findById(id: string | number | ObjectID): Promise<UserModel> {
+  async findById(id: string | number | ObjectID): Promise<User> {
     const user = await this.model.findById(id).exec();
     if (user) {
       user.name = user.name || user.username;
@@ -173,7 +170,7 @@ export class UsersService extends MongooseService<UserModel> {
   async update(
     entry: IdentifyEntry,
     fields: string[] = this.defaultQueryFields
-  ): Promise<UserModel> {
+  ): Promise<User> {
     delete entry.username; // should not change the username;
     const instance = await this.model
       .findOneAndUpdate(
@@ -311,7 +308,7 @@ export class UsersService extends MongooseService<UserModel> {
     return instance ? true : false;
   }
 
-  private plainProfile(user?: UserModel) {
+  private plainProfile(user: InstanceType<User>) {
     if (!user) {
       return null;
     }

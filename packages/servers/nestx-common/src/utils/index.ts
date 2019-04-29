@@ -1,17 +1,18 @@
-import { ObjectID } from "bson";
-function transform(
-  _doc: any,
-  ret: {
-    [key: string]: any;
-    _id: ObjectID;
-    __v: string;
-  },
-  _options: any
-) {
+function transform(doc: any, ret: any, options: any) {
   ret.id = ret._id;
   delete ret._id;
-  delete ret.__v;
 }
+
+export const SchemaDefaultOptions = {
+  schemaOptions: {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+      versionKey: false,
+      transform
+    }
+  }
+};
 
 function strip(obj: { [k: string]: any }) {
   Object.keys(obj).forEach(key =>

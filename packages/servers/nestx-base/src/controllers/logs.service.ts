@@ -1,12 +1,14 @@
 import { Model } from "mongoose";
 import { Injectable } from "@nestjs/common";
-import { InjectModel } from "@nestjs/mongoose";
-import { MongooseService, ResultList } from "nestx-common";
-import { LogModel } from "./../interfaces";
+import { InjectModel } from "nestjs-typegoose";
+import { ResultList } from "nestx-common";
+import { BaseService } from "./base.service";
+import { Log } from "./../schemas";
+import { ModelType } from "typegoose";
 
 @Injectable()
-export class LogsService extends MongooseService<LogModel> {
-  constructor(@InjectModel("Log") protected readonly model: Model<LogModel>) {
+export class LogsService extends BaseService<Log> {
+  constructor(@InjectModel(Log) protected readonly model: ModelType<Log>) {
     super(model);
   }
 
@@ -15,7 +17,7 @@ export class LogsService extends MongooseService<LogModel> {
     page: number,
     size: number,
     sort: string
-  ): Promise<ResultList<LogModel>> {
+  ): Promise<ResultList<Log>> {
     return super.query(
       page,
       size,

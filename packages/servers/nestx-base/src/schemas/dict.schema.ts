@@ -1,19 +1,20 @@
-import { Schema, SchemaTypes as t } from "mongoose";
-import { utils } from "nestx-common";
-const { transform } = utils;
-export const DictSchema = new Schema(
-  {
-    category: { type: t.String },
-    name: { type: t.String },
-    translate: { type: t.String },
-    expand: { type: t.Mixed }
-  },
-  {
-    timestamps: true,
-    usePushEach: true
-  }
-);
+import { Typegoose, prop } from "typegoose";
+import { SchemaDefaultOptions } from "nestx-common";
 
-DictSchema.set("toJSON", {
-  transform
-});
+export class Dict extends Typegoose {
+  @prop({ required: true })
+  name: string;
+
+  @prop({ required: true })
+  category: string;
+
+  @prop({ required: true })
+  translate: string;
+
+  @prop()
+  expand?: object;
+
+  static get Model() {
+    return new Dict().getModelForClass(Dict, SchemaDefaultOptions);
+  }
+}

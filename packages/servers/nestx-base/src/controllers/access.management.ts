@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
-import { InjectModel } from "@nestjs/mongoose";
-import { Model } from "mongoose";
-import { MenuModel, RoleModel } from "./../interfaces";
+import { InjectModel } from "nestjs-typegoose";
+import { ModelType } from "typegoose";
+import { Menu, Role } from "./../schemas";
 
 const mapActions: {
   [key: string]: string;
@@ -15,8 +15,8 @@ const mapActions: {
 @Injectable()
 export class AccessManagement {
   constructor(
-    @InjectModel("Menu") private readonly menuModel: Model<MenuModel>,
-    @InjectModel("Role") private readonly roleModel: Model<RoleModel>
+    @InjectModel(Menu) private readonly menuModel: ModelType<Menu>,
+    @InjectModel(Role) private readonly roleModel: ModelType<Role>
   ) {}
 
   async canAccess(roles: string[], ctrl: string, method: string) {

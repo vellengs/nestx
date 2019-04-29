@@ -7,30 +7,30 @@ import {
   Param,
   Put,
   Query,
-  UseInterceptors,
-} from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
-import { plainToClass } from 'class-transformer';
-import { GroupsService } from './groups.service';
-import { Group } from './../interfaces';
+  UseInterceptors
+} from "@nestjs/common";
+import { AuthGuard } from "@nestjs/passport";
+import { plainToClass } from "class-transformer";
+import { GroupsService } from "./groups.service";
 import {
   KeyValueDto,
   CreateGroupReq,
   EditGroupReq,
-  GroupedUsersRes,
-} from './../dto';
-import { Tags } from 'nest-swagger';
+  GroupedUsersRes
+} from "./../dto";
+import { Tags } from "nest-swagger";
 import {
   ResultList,
   NullableParseIntPipe,
   TreeNode,
   RolesGuard,
-  LoggingInterceptor,
-} from 'nestx-common';
+  LoggingInterceptor
+} from "nestx-common";
+import { Group } from "./../schemas";
 
-@Tags('core')
-@Controller('group')
-@UseGuards(AuthGuard('jwt'), RolesGuard)
+@Tags("core")
+@Controller("group")
+@UseGuards(AuthGuard("jwt"), RolesGuard)
 @UseInterceptors(LoggingInterceptor)
 export class GroupsController {
   constructor(private readonly groupService: GroupsService) {}
@@ -45,41 +45,41 @@ export class GroupsController {
     return this.groupService.editGroup(plainToClass(EditGroupReq, entry));
   }
 
-  @Get('search')
+  @Get("search")
   async search(
-    @Query('keyword') keyword?: string,
-    @Query('value') value?: string,
+    @Query("keyword") keyword?: string,
+    @Query("value") value?: string
   ): Promise<KeyValueDto[]> {
     return this.groupService.search(keyword, value);
   }
 
-  @Get('users')
+  @Get("users")
   async getGroupedUsers(
-    @Query('parent') parent?: string,
+    @Query("parent") parent?: string
   ): Promise<GroupedUsersRes> {
     return this.groupService.getGroupedUsers(parent);
   }
 
-  @Get('query')
+  @Get("query")
   async query(
-    @Query('keyword') keyword?: string,
-    @Query('page', new NullableParseIntPipe()) page: number = 1,
-    @Query('size', new NullableParseIntPipe()) size: number = 10,
-    @Query('sort') sort?: string,
+    @Query("keyword") keyword?: string,
+    @Query("page", new NullableParseIntPipe()) page: number = 1,
+    @Query("size", new NullableParseIntPipe()) size: number = 10,
+    @Query("sort") sort?: string
   ): Promise<ResultList<Group>> {
     return this.groupService.querySearch(keyword, page, size, sort);
   }
 
-  @Get('tree')
+  @Get("tree")
   async searchTree(
-    @Query('keyword') keyword?: string,
-    @Query('value') value?: string,
+    @Query("keyword") keyword?: string,
+    @Query("value") value?: string
   ): Promise<TreeNode[]> {
     return this.groupService.searchGroupTree(keyword, value);
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string): Promise<Group> {
+  @Get(":id")
+  async findOne(@Param("id") id: string): Promise<Group> {
     return this.groupService.findById(id);
   }
 }

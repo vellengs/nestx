@@ -1,62 +1,20 @@
-import { Schema, Error, SchemaTypes as t } from 'mongoose';
-
-import * as bcrypt from 'bcrypt';
-import { ObjectID } from 'bson';
-
-export const UserSchema = new Schema(
-  {
-    username: { type: t.String, minlength: 5, unique: true, required: true },
-    password: t.String,
-    avatar: t.String,
-    email: { type: t.String, unique: true, required: false },
-    name: t.String,
-    about: t.String,
-    location: {
-      country: t.String,
-      province: t.String,
-      district: t.String,
-      address: t.String,
-    },
-    type: t.String,
-    mobile: { type: t.String, unique: true, required: true },
-    roles: [
-      {
-        type: t.ObjectId,
-        ref: 'Role',
-      },
-    ],
-    groups: [
-      {
-        type: t.ObjectId,
-        ref: 'Group',
-      },
-    ],
-    profile: {
-      type: t.ObjectId,
-      ref: 'Profile',
-    },
-    isDisable: {
-      type: t.Boolean,
-    },
-    isAdmin: {
-      type: t.Boolean,
-    },
-    isApproved: {
-      type: t.Boolean,
-    },
-    expired: {
-      type: t.Date,
-    },
-  },
-  {
-    timestamps: true,
-    usePushEach: true,
-  },
-);
+import * as bcrypt from "bcrypt";
+import {
+  Typegoose,
+  prop,
+  Ref,
+  arrayProp,
+  pre,
+  instanceMethod
+} from "typegoose";
+import { Role } from "./role.schema";
+import { Group } from "./group.schema";
+import { Profile } from "./profile.schema";
+import { SchemaDefaultOptions } from "nestx-common";
 
 function preSave(next: Function) {
   const user = this;
-  if (!user.isModified('password')) {
+  if (!user.isModified("password")) {
     return next();
   }
   bcrypt.genSalt(10, (err: any, salt: any) => {
@@ -83,42 +41,87 @@ function preUpdate(next: Function) {
   next();
 }
 
-UserSchema.pre('save', preSave);
-UserSchema.pre('findOneAndUpdate', preUpdate);
-UserSchema.methods.comparePassword = function(
-  candidatePassword: string,
-  cb: (err: any, isMatch: any) => {},
-) {
-  bcrypt.compare(
-    candidatePassword,
-    this.password,
-    (err: Error, isMatch: boolean) => {
-      if (cb) {
-        cb(err, isMatch);
-      }
-    },
-  );
-};
+export class Location {
+  country: string;
+  province: string;
+  district: string;
+  address: string;
+}
 
-UserSchema.methods.pure = function() {
-  const obj = this.toJSON();
-  delete obj.password;
-  return obj;
-};
+@pre<User>("save", preSave)
+@pre<User>("findOneAndUpdate", preUpdate)
+export class User extends Typegoose {
+  id: string; // TODO;
 
-UserSchema.set('toJSON', {
-  transform: function(
-    _doc: any,
-    ret: {
-      [key: string]: any;
-      _id: ObjectID;
-      __v: string;
-    },
-    _options: any,
+  @prop({
+    minlength: 5,
+    unique: true,
+    required: true
+  })
+  username: string;
+
+  @prop()
+  password?: string;
+
+  @prop()
+  avatar?: string;
+
+  @prop({ required: true, unique: true })
+  email: string;
+
+  @prop()
+  name?: string;
+
+  @prop()
+  about?: string;
+
+  @prop()
+  location?: Location;
+
+  @prop()
+  type?: string;
+
+  @prop({ required: true, unique: true })
+  mobile: string;
+
+  @arrayProp({ itemsRef: Role, default: [] })
+  roles: Ref<Role>[];
+
+  @arrayProp({ itemsRef: Group, default: [] })
+  groups: Ref<Group>[];
+
+  @prop({ ref: Profile })
+  profile?: Ref<Profile>;
+
+  @prop({ default: false })
+  isDisable: boolean;
+
+  @prop({ default: false })
+  isAdmin: boolean;
+
+  @prop({ default: true })
+  isApproved: boolean;
+
+  @prop()
+  expired?: Date;
+
+  @instanceMethod
+  public comparePassword(
+    candidatePassword: string,
+    cb: (err: Error, isMatch: boolean) => void
   ) {
-    ret.id = ret._id;
-    ret.name = ret.name || ret.username;
-    delete ret._id;
-    delete ret.__v;
-  },
-});
+    bcrypt.compare(
+      candidatePassword,
+      this.password,
+      (err: Error, isMatch: boolean) => {
+        if (cb) {
+          cb(err, isMatch);
+        }
+      }
+    );
+  }
+
+  static get Model() {
+    return new User().getModelForClass(User, SchemaDefaultOptions);
+  }
+}

@@ -7,19 +7,24 @@ import {
   Param,
   Put,
   Query,
-  UseInterceptors,
-} from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
-import { plainToClass } from 'class-transformer';
-import { ResultList, NullableParseIntPipe, RolesGuard, LoggingInterceptor } from 'nestx-common';
-import { DictsService } from './dicts.service';
-import { Dict } from './../interfaces/dict.interface';
-import { CreateDictReq, EditDictReq, KeyValueDto } from './../dto';
-import { Tags } from 'nest-swagger';
+  UseInterceptors
+} from "@nestjs/common";
+import { AuthGuard } from "@nestjs/passport";
+import { plainToClass } from "class-transformer";
+import {
+  ResultList,
+  NullableParseIntPipe,
+  RolesGuard,
+  LoggingInterceptor
+} from "nestx-common";
+import { DictsService } from "./dicts.service";
+import { CreateDictReq, EditDictReq, KeyValueDto } from "./../dto";
+import { Tags } from "nest-swagger";
+import { Dict } from "./../schemas";
 
-@Tags('core')
-@Controller('dict')
-@UseGuards(AuthGuard('jwt'), RolesGuard)
+@Tags("core")
+@Controller("dict")
+@UseGuards(AuthGuard("jwt"), RolesGuard)
 @UseInterceptors(LoggingInterceptor)
 export class DictsController {
   constructor(private readonly dictService: DictsService) {}
@@ -34,35 +39,35 @@ export class DictsController {
     return this.dictService.update(plainToClass(EditDictReq, entry));
   }
 
-  @Get('search')
+  @Get("search")
   async search(
-    @Query('keyword') keyword?: string,
-    @Query('value') value?: string,
-    @Query('category') category?: string,
+    @Query("keyword") keyword?: string,
+    @Query("value") value?: string,
+    @Query("category") category?: string
   ): Promise<KeyValueDto[]> {
     return this.dictService.search(
       keyword,
       value,
       category,
       10,
-      'name',
-      'category',
+      "name",
+      "category"
     );
   }
 
-  @Get('query')
+  @Get("query")
   async query(
-    @Query('keyword') keyword?: string,
-    @Query('category') category?: string,
-    @Query('page', new NullableParseIntPipe()) page: number = 1,
-    @Query('size', new NullableParseIntPipe()) size: number = 10,
-    @Query('sort') sort?: string,
+    @Query("keyword") keyword?: string,
+    @Query("category") category?: string,
+    @Query("page", new NullableParseIntPipe()) page: number = 1,
+    @Query("size", new NullableParseIntPipe()) size: number = 10,
+    @Query("sort") sort?: string
   ): Promise<ResultList<Dict>> {
     return this.dictService.querySearch(keyword, category, page, size, sort);
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string): Promise<Dict> {
+  @Get(":id")
+  async findOne(@Param("id") id: string): Promise<Dict> {
     return this.dictService.findById(id);
   }
 }

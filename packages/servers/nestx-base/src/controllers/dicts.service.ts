@@ -1,13 +1,14 @@
-import { Model } from 'mongoose';
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { DictModel } from './../interfaces';
-import { MongooseService, ResultList } from 'nestx-common';
+import { Injectable } from "@nestjs/common";
+import { ResultList } from "nestx-common";
+import { ModelType } from "typegoose";
+import { Dict } from "./../schemas";
+import { BaseService } from "./base.service";
+import { InjectModel } from "nestjs-typegoose";
 
 @Injectable()
-export class DictsService extends MongooseService<DictModel> {
-  defaultQueryFields = ['name', 'category', 'translate', 'expand'];
-  constructor(@InjectModel('Dict') protected readonly model: Model<DictModel>) {
+export class DictsService extends BaseService<Dict> {
+  defaultQueryFields = ["name", "category", "translate", "expand"];
+  constructor(@InjectModel(Dict) protected readonly model: ModelType<Dict>) {
     super(model);
   }
 
@@ -16,17 +17,17 @@ export class DictsService extends MongooseService<DictModel> {
     category: string,
     page: number,
     size: number,
-    sort: string,
-  ): Promise<ResultList<DictModel>> {
+    sort: string
+  ): Promise<ResultList<Dict>> {
     return super.query(
       page,
       size,
       {
-        category,
+        category
       },
-      { keyword, field: 'name' },
+      { keyword, field: "name" },
       this.defaultQueryFields,
-      sort,
+      sort
     );
   }
 }

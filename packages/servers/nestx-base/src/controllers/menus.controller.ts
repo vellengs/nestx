@@ -20,9 +20,9 @@ import {
   TreeNode
 } from "nestx-common";
 import { MenusService } from "./menus.service";
-import { Menu } from "./../interfaces";
 import { CreateMenuReq, EditMenuReq, KeyValueDto, MenuRes } from "./../dto";
 import { Tags } from "nest-swagger";
+import { Menu } from "./../schemas";
 
 @Tags("core")
 @Controller("menu")
@@ -80,12 +80,12 @@ export class MenusController {
   }
 
   @Get("auth")
-  async getUserMenus(@Req() request: any): Promise<MenuRes[]> {
+  async getUserMenus(@Req() request: any): Promise<Menu[]> {
     return this.menuService.getAuthenticatedMenus(request.user);
   }
 
   @Get(":id")
-  async findOne(@Param("id") id: string): Promise<MenuRes> {
+  async findOne(@Param("id") id: string): Promise<Menu> {
     return this.menuService.getMenuById(id);
   }
 }

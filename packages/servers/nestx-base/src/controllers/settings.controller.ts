@@ -12,7 +12,6 @@ import {
 import { AuthGuard } from "@nestjs/passport";
 import { plainToClass } from "class-transformer";
 import { SettingsService } from "./settings.service";
-import { Setting } from "./../interfaces";
 import {
   KeyValueDto,
   CreateSettingReq,
@@ -27,6 +26,7 @@ import {
   RolesGuard,
   LoggingInterceptor
 } from "nestx-common";
+import { Setting } from "./../schemas";
 
 @Tags("core")
 @Controller("setting")
@@ -79,7 +79,7 @@ export class SettingsController {
   }
 
   @Get("key/:key")
-  async getSettingsByKey(@Query("key") key: string): Promise<SettingRes> {
+  async getSettingsByKey(@Query("key") key: string): Promise<Setting> {
     return this.settingService.getSettingsByKey(key);
   }
 

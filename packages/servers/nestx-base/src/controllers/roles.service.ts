@@ -1,13 +1,14 @@
-import { Model } from "mongoose";
 import { Injectable } from "@nestjs/common";
-import { InjectModel } from "@nestjs/mongoose";
-import { MongooseService, ResultList } from "nestx-common";
-import { RoleModel } from "./../interfaces";
+import { InjectModel } from "nestjs-typegoose";
+import { ResultList } from "nestx-common";
+import { BaseService } from "./base.service";
+import { Role } from "./../schemas";
+import { ModelType } from "typegoose";
 
 @Injectable()
-export class RolesService extends MongooseService<RoleModel> {
+export class RolesService extends BaseService<Role> {
   defaultQueryFields = ["name", "description", "permissions"];
-  constructor(@InjectModel("Role") protected readonly model: Model<RoleModel>) {
+  constructor(@InjectModel(Role) protected readonly model: ModelType<Role>) {
     super(model);
   }
 
@@ -16,7 +17,7 @@ export class RolesService extends MongooseService<RoleModel> {
     page: number,
     size: number,
     sort: string
-  ): Promise<ResultList<RoleModel>> {
+  ): Promise<ResultList<Role>> {
     return super.query(
       page,
       size,

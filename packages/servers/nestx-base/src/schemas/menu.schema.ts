@@ -1,47 +1,53 @@
-import { Schema, SchemaTypes as t, SchemaOptions } from "mongoose";
-import { utils } from "nestx-common";
-const { transform } = utils;
+import { Typegoose, prop, Ref, arrayProp } from "typegoose";
+import { SchemaDefaultOptions } from "nestx-common";
 
-const option: SchemaOptions = {};
-option.timestamps = true;
+export class Menu extends Typegoose {
+  @prop({ required: true })
+  name: string;
 
-export const MenuSchema = new Schema(
-  {
-    name: { type: t.String },
-    slug: { type: t.String },
-    group: { type: t.Boolean },
-    link: { type: t.String },
-    externalLink: { type: t.String },
-    blank: { type: t.Boolean },
-    icon: { type: t.String },
-    order: { type: t.Number, default: 100 },
-    enable: { type: t.Boolean },
-    expanded: { type: t.Boolean },
-    acl: { type: t.String },
-    paths: [
-      {
-        type: t.ObjectId,
-        ref: "Menu"
-      }
-    ],
-    parent: {
-      type: t.ObjectId,
-      ref: "Menu"
-    },
-    permissions: [
-      {
-        type: t.ObjectId,
-        ref: "Menu"
-      }
-    ],
-    isMenu: {
-      type: t.Boolean,
-      default: true
-    }
-  },
-  option
-);
+  @prop()
+  slug: string;
 
-MenuSchema.set("toJSON", {
-  transform
-});
+  @prop()
+  group: boolean;
+
+  @prop()
+  link?: string;
+
+  @prop()
+  externalLink?: string;
+
+  @prop()
+  blank?: string;
+
+  @prop()
+  icon?: string;
+
+  @prop({ default: 0 })
+  order: number;
+
+  @prop({ default: true })
+  enable: boolean;
+
+  @prop({ default: false })
+  expanded: boolean;
+
+  @prop()
+  acl?: string;
+
+  @arrayProp({ itemsRef: Menu })
+  paths?: Ref<Menu>[];
+
+  @prop({ ref: Menu })
+  parent?: Ref<Menu>;
+
+  @arrayProp({ itemsRef: Menu })
+  permissions?: Ref<Menu>[];
+
+  @prop({ default: true })
+  isMenu: boolean;
+
+  static get Model() {
+    return new Menu().getModelForClass(Menu, SchemaDefaultOptions);
+  }
+}

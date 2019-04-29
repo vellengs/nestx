@@ -11,10 +11,10 @@ import {
 import { AuthGuard } from "@nestjs/passport";
 import { plainToClass } from "class-transformer";
 import { AppearancesService } from "./appearances.service";
-import { Appearance } from "./../interfaces/appearance.interface";
 import { CreateAppearanceReq, EditAppearanceReq, KeyValueDto } from "./../dto";
 import { Tags } from "nest-swagger";
 import { NullableParseIntPipe, ResultList } from "nestx-common";
+import { Appearance } from "./../schemas";
 
 @Tags("core")
 @Controller("appearance")
@@ -57,8 +57,8 @@ export class AppearancesController {
   @Get("name/:name")
   async getAppearanceByName(@Param("name") name: string): Promise<Appearance> {
     const result = await this.appearanceService.findOne({ name });
-    result.options = JSON.parse(result.options || "{}");
-    result.data = JSON.parse(result.data || "{}");
+    // result.options = JSON.parse(result.options || "{}");
+    // result.data = JSON.parse(result.data || "{}");
     return result;
   }
 

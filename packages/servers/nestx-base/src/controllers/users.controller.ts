@@ -12,7 +12,6 @@ import {
   UseInterceptors
 } from "@nestjs/common";
 import { UsersService } from "./users.service";
-import { User } from "./../interfaces/user.interface";
 import { AuthGuard } from "@nestjs/passport";
 import { plainToClass } from "class-transformer";
 import {
@@ -32,6 +31,7 @@ import {
   ChangePasswordReq
 } from "./../dto";
 import { Tags } from "nest-swagger";
+import { User } from "./../schemas";
 
 @Tags("core")
 @Controller("user")
@@ -48,7 +48,7 @@ export class UsersController {
   }
 
   @Post()
-  async create(@Body() user: CreateUserReq): Promise<UserRes> {
+  async create(@Body() user: CreateUserReq): Promise<User> {
     return this.usersService.create(plainToClass(CreateUserReq, user));
   }
 
@@ -58,7 +58,7 @@ export class UsersController {
   }
 
   @Put()
-  async update(@Body() user: EditUserReq): Promise<UserRes> {
+  async update(@Body() user: EditUserReq): Promise<User> {
     return this.usersService.update(plainToClass(EditUserReq, user));
   }
 

@@ -1,14 +1,16 @@
-import { Model } from 'mongoose';
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { AppearanceModel } from './../interfaces';
-import { MongooseService, ResultList } from 'nestx-common';
+import { Model } from "mongoose";
+import { Injectable } from "@nestjs/common";
+import { InjectModel } from "nestjs-typegoose";
+import { ResultList } from "nestx-common";
+import { ModelType } from "typegoose";
+import { Appearance } from "./../schemas";
+import { BaseService } from "./base.service";
 
 @Injectable()
-export class AppearancesService extends MongooseService<AppearanceModel> {
-  defaultQueryFields = ['name', 'options', 'data'];
+export class AppearancesService extends BaseService<Appearance> {
+  defaultQueryFields = ["name", "options", "data"];
   constructor(
-    @InjectModel('Appearance') protected readonly model: Model<AppearanceModel>,
+    @InjectModel(Appearance) protected readonly model: ModelType<Appearance>
   ) {
     super(model);
   }
@@ -17,15 +19,15 @@ export class AppearancesService extends MongooseService<AppearanceModel> {
     keyword: string,
     page: number,
     size: number,
-    sort: string,
-  ): Promise<ResultList<AppearanceModel>> {
+    sort: string
+  ): Promise<ResultList<Appearance>> {
     return super.query(
       page,
       size,
       {},
-      { keyword, field: 'name' },
+      { keyword, field: "name" },
       this.defaultQueryFields,
-      sort,
+      sort
     );
   }
 }

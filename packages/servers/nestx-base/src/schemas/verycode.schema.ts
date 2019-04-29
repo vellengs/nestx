@@ -1,26 +1,17 @@
-import { Schema, SchemaTypes as t } from "mongoose";
-import { utils } from "nestx-common";
-const { transform } = utils;
+import { SchemaDefaultOptions } from "nestx-common";
+import { Typegoose, prop } from "typegoose";
 
-export const VeryCodeSchema = new Schema(
-  {
-    mobile: {
-      type: t.String
-    },
-    lastSent: {
-      type: t.Decimal128,
-      default: Date.now
-    },
-    code: {
-      type: t.String
-    }
-  },
-  {
-    timestamps: true,
-    usePushEach: true
+export class VeryCode extends Typegoose {
+  @prop({ required: true })
+  mobile: string;
+
+  @prop({ default: Date.now })
+  lastSent: number;
+
+  @prop()
+  code?: string;
+
+  static get Model() {
+    return new VeryCode().getModelForClass(VeryCode, SchemaDefaultOptions);
   }
-);
-
-VeryCodeSchema.set("toJSON", {
-  transform
-});
+}

@@ -1,31 +1,20 @@
-import { Schema, SchemaTypes as t } from 'mongoose';
-import { utils } from "nestx-common";
-const { transform } = utils;
+import { SchemaDefaultOptions } from "nestx-common";
+import { Typegoose, prop } from "typegoose";
 
-export const SettingSchema = new Schema(
-  {
-    id: {
-      type: t.String,
-    },
-    name: {
-      type: t.String,
-    },
-    key: {
-      type: t.String,
-    },
-    value: {
-      type: t.Mixed,
-    },
-    description: {
-      type: t.String,
-    },
-  },
-  {
-    timestamps: true,
-    usePushEach: true,
-  },
-);
+export class Setting extends Typegoose {
+  @prop({ required: true })
+  name: string;
 
-SettingSchema.set('toJSON', {
-  transform,
-});
+  @prop({ required: true })
+  key: string;
+
+  @prop()
+  value: object;
+
+  @prop()
+  description?: string;
+
+  static get Model() {
+    return new Setting().getModelForClass(Setting, SchemaDefaultOptions);
+  }
+}

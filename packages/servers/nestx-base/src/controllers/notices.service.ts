@@ -1,14 +1,16 @@
 import { Model } from "mongoose";
 import { Injectable } from "@nestjs/common";
-import { InjectModel } from "@nestjs/mongoose";
-import { MongooseService, ResultList } from "nestx-common";
-import { NoticeModel } from "./../interfaces";
+import { InjectModel } from "nestjs-typegoose";
+import { ResultList } from "nestx-common";
+import { BaseService } from "./base.service";
+import { Notice } from "./../schemas";
+import { ModelType } from "typegoose";
 
 @Injectable()
-export class NoticesService extends MongooseService<NoticeModel> {
+export class NoticesService extends BaseService<Notice> {
   defaultQueryFields = ["title", "avatar", "type", "read"];
   constructor(
-    @InjectModel("Notice") protected readonly model: Model<NoticeModel>
+    @InjectModel(Notice) protected readonly model: ModelType<Notice>
   ) {
     super(model);
   }
@@ -18,7 +20,7 @@ export class NoticesService extends MongooseService<NoticeModel> {
     page: number,
     size: number,
     sort: string
-  ): Promise<ResultList<NoticeModel>> {
+  ): Promise<ResultList<Notice>> {
     return super.query(
       page,
       size,

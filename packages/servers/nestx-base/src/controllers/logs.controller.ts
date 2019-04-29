@@ -14,8 +14,8 @@ import {
   LoggingInterceptor
 } from "nestx-common";
 import { LogsService } from "./logs.service";
-import { Log } from "./../interfaces";
 import { Tags } from "nest-swagger";
+import { Log } from "./../schemas";
 
 @Tags("core")
 @Controller("log")

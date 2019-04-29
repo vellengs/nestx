@@ -1,19 +1,18 @@
-import { Schema, SchemaTypes as t, SchemaOptions } from "mongoose";
-import { utils } from "nestx-common";
-const { transform } = utils;
+import { SchemaDefaultOptions } from "nestx-common";
+import { Typegoose, prop, arrayProp, Ref } from "typegoose";
+import { Menu } from "./menu.schema";
 
-const option: SchemaOptions = {};
-option.timestamps = true;
+export class Role extends Typegoose {
+  @prop({ required: true })
+  name: string;
 
-export const RoleSchema = new Schema(
-  {
-    name: { type: t.String },
-    description: { type: t.String },
-    permissions: [{ type: t.ObjectId, ref: "Menu" }]
-  },
-  option
-);
+  @prop()
+  description?: string;
 
-RoleSchema.set("toJSON", {
-  transform
-});
+  @arrayProp({ itemsRef: Menu })
+  permissions?: Ref<Menu>[];
+
+  static get Model() {
+    return new Role().getModelForClass(Role, SchemaDefaultOptions);
+  }
+}

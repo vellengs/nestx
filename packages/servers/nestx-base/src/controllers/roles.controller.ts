@@ -18,9 +18,9 @@ import {
   LoggingInterceptor
 } from "nestx-common";
 import { RolesService } from "./roles.service";
-import { Role } from "./../interfaces/role.interface";
 import { CreateRoleReq, EditRoleReq, KeyValueDto } from "./../dto";
 import { Tags } from "nest-swagger";
+import { Role } from "./../schemas";
 
 @Tags("core")
 @Controller("role")

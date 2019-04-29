@@ -1,18 +1,14 @@
 import { Model } from "mongoose";
 import { Injectable, HttpStatus } from "@nestjs/common";
-import { InjectModel } from "@nestjs/mongoose";
-import {
-  CustomException,
-  MongooseService,
-  TreeNode,
-  ResultList,
-  Criteria
-} from "nestx-common";
-import { GroupModel, UserModel } from "./../interfaces";
+import { InjectModel } from "nestjs-typegoose";
+import { CustomException, TreeNode, ResultList, Criteria } from "nestx-common";
 import { GroupedUsersRes, EditGroupReq } from "./../dto";
+import { BaseService } from "./base.service";
+import { Group, User } from "./../schemas";
+import { ModelType } from "typegoose";
 
 @Injectable()
-export class GroupsService extends MongooseService<GroupModel> {
+export class GroupsService extends BaseService<Group> {
   defaultQueryFields = [
     "name",
     "outid",
@@ -24,8 +20,8 @@ export class GroupsService extends MongooseService<GroupModel> {
     "description"
   ];
   constructor(
-    @InjectModel("Group") protected readonly model: Model<GroupModel>,
-    @InjectModel("User") protected readonly userModel: Model<UserModel>
+    @InjectModel(Group) protected readonly model: ModelType<Group>,
+    @InjectModel(User) protected readonly userModel: ModelType<User>
   ) {
     super(model);
   }
@@ -40,6 +36,7 @@ export class GroupsService extends MongooseService<GroupModel> {
     return super.update(entry);
   }
 
+  // TODO;
   async getGroupedUsers(
     parent?: string,
     size = 1000
@@ -48,14 +45,14 @@ export class GroupsService extends MongooseService<GroupModel> {
     if (parent) {
       condition.parent = parent;
     }
-    const groups =
+    const groupsItems =
       (await this.model
         .find(condition)
         .select(["name", "icon", "isRegion", "parent"])
         .sort({ order: -1 })
         .limit(size)
         .exec()) || [];
-    const groupIds = await groups.map(item => item.id);
+    const groupIds = await groupsItems.map(item => item.id);
     const usersItems =
       (await this.userModel
         .find({
@@ -67,7 +64,7 @@ export class GroupsService extends MongooseService<GroupModel> {
         .select(["name", "username", "groups"])
         .exec()) || [];
 
-    const users = usersItems.map(user => {
+    const groupedUsers = usersItems.map(user => {
       const { id, name, groups } = user;
       return {
         id,
@@ -76,10 +73,15 @@ export class GroupsService extends MongooseService<GroupModel> {
       };
     });
 
-    return {
+    const groups = groupsItems.map(item => {});
+    const users = groupedUsers.map(item => {});
+
+    const result = {
       groups,
       users
-    } as GroupedUsersRes;
+    };
+
+    return null; // result as GroupedUsersRes; // TODO
   }
 
   async querySearch(
@@ -87,7 +89,7 @@ export class GroupsService extends MongooseService<GroupModel> {
     page: number,
     size: number,
     sort: string
-  ): Promise<ResultList<GroupModel>> {
+  ): Promise<ResultList<Group>> {
     return super.query(
       page,
       size,

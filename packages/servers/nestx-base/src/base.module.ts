@@ -1,19 +1,6 @@
 import { Module } from "@nestjs/common";
-import { MongooseModule } from "@nestjs/mongoose";
-import { PassportModule } from "@nestjs/passport";
-import {
-  UserSchema,
-  DictSchema,
-  LogSchema,
-  MenuSchema,
-  RoleSchema,
-  SettingSchema,
-  NoticeSchema,
-  VeryCodeSchema,
-  GroupSchema,
-  ProfileSchema,
-  AppearanceSchema
-} from "./schemas";
+import { TypegooseModule } from "nestjs-typegoose";
+import { SchemaDefaultOptions } from "nestx-common";
 import {
   BaseControllers,
   BaseServices,
@@ -22,24 +9,37 @@ import {
   UsersService
 } from "./controllers";
 import { AuthModule } from "nestx-auth";
-
+import {
+  Dict,
+  Log,
+  Menu,
+  Role,
+  Setting,
+  User,
+  Notice,
+  VeryCode,
+  Group,
+  Profile,
+  Appearance
+} from "./schemas";
+const schemaOptions = SchemaDefaultOptions.schemaOptions;
 const models = [
-  { name: "Dict", schema: DictSchema },
-  { name: "Log", schema: LogSchema },
-  { name: "Menu", schema: MenuSchema },
-  { name: "Role", schema: RoleSchema },
-  { name: "Setting", schema: SettingSchema },
-  { name: "User", schema: UserSchema },
-  { name: "Notice", schema: NoticeSchema },
-  { name: "VeryCode", schema: VeryCodeSchema },
-  { name: "Group", schema: GroupSchema },
-  { name: "Profile", schema: ProfileSchema },
-  { name: "Appearance", schema: AppearanceSchema }
+  { typegooseClass: Dict },
+  { typegooseClass: Log, schemaOptions },
+  { typegooseClass: Menu, schemaOptions },
+  { typegooseClass: Role, schemaOptions },
+  { typegooseClass: Setting, schemaOptions },
+  { typegooseClass: User, schemaOptions },
+  { typegooseClass: Notice, schemaOptions },
+  { typegooseClass: VeryCode, schemaOptions },
+  { typegooseClass: Group, schemaOptions },
+  { typegooseClass: Profile, schemaOptions },
+  { typegooseClass: Appearance, schemaOptions }
 ];
 
 @Module({
   imports: [
-    MongooseModule.forFeature(models),
+    TypegooseModule.forFeature(models as any),
     AuthModule.registerAsync({
       imports: [BaseModule],
       providers: [

@@ -1,22 +1,36 @@
-import { Schema, SchemaTypes as t } from "mongoose";
-import { utils } from "nestx-common";
-const { transform } = utils;
+import { Typegoose, prop, Ref, arrayProp } from "typegoose";
+import { SchemaDefaultOptions } from "nestx-common";
+import { User } from "./user.schema";
 
-export const GroupSchema = new Schema(
-  {
-    outid: { type: t.Number },
-    name: { type: t.String },
-    icon: { type: t.String },
-    isRegion: { type: t.Boolean },
-    order: { type: t.Number },
-    parent: { type: t.ObjectId, ref: "Group" },
-    paths: [{ type: t.ObjectId, ref: "Group" }],
-    director: { type: t.ObjectId, ref: "User" },
-    description: { type: t.String }
-  },
-  { timestamps: true }
-);
+export class Group extends Typegoose {
+  @prop()
+  outid?: number;
 
-GroupSchema.set("toJSON", {
-  transform
-});
+  @prop({ required: true })
+  name: string;
+
+  @prop()
+  icon?: string;
+
+  @prop({ default: false })
+  isRegion: boolean;
+
+  @prop({ default: 0 })
+  order: number;
+
+  @prop({ ref: Group })
+  parent: Ref<Group>;
+
+  @arrayProp({ itemsRef: Group })
+  paths: Ref<Group>[];
+
+  @prop({ ref: User })
+  director: Ref<User>;
+
+  @prop()
+  description?: string;
+
+  static get Model() {
+    return new Group().getModelForClass(Group, SchemaDefaultOptions);
+  }
+}

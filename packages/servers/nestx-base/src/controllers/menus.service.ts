@@ -1,13 +1,13 @@
-import { Model } from "mongoose";
 import { Injectable } from "@nestjs/common";
-import { InjectModel } from "@nestjs/mongoose";
-import { MongooseService, ResultList, TreeNode } from "nestx-common";
-import { MenuModel, User, GroupModel } from "./../interfaces";
-import { MenuRes } from "./../dto";
-import { ObjectID } from "typeorm";
+import { ResultList, TreeNode } from "nestx-common";
+import { BaseService } from "./base.service";
+import { Menu, Group, User } from "./../schemas";
+import { ModelType } from "typegoose";
+import { ObjectID } from "bson";
+import { InjectModel } from "nestjs-typegoose";
 
 @Injectable()
-export class MenusService extends MongooseService<MenuModel> {
+export class MenusService extends BaseService<Menu> {
   defaultQueryFields = [
     "name",
     "slug",
@@ -22,8 +22,8 @@ export class MenusService extends MongooseService<MenuModel> {
   ];
 
   constructor(
-    @InjectModel("Menu") protected readonly model: Model<MenuModel>,
-    @InjectModel("Group") protected readonly groupModel: Model<GroupModel>
+    @InjectModel(Menu) protected readonly model: ModelType<Menu>,
+    @InjectModel(Group) protected readonly groupModel: ModelType<Group>
   ) {
     super(model);
   }
@@ -57,7 +57,7 @@ export class MenusService extends MongooseService<MenuModel> {
     page: number = 1,
     size: number = 10,
     sort?: string
-  ): Promise<ResultList<MenuModel>> {
+  ): Promise<ResultList<Menu>> {
     const populate = [
       {
         path: "permissions",
@@ -79,7 +79,7 @@ export class MenusService extends MongooseService<MenuModel> {
     );
   }
 
-  async getAuthenticatedMenus(currentUser: User): Promise<MenuRes[]> {
+  async getAuthenticatedMenus(currentUser: User): Promise<Menu[]> {
     if (!currentUser) {
       Promise.reject("user is not authenticated");
     }
@@ -117,13 +117,13 @@ export class MenusService extends MongooseService<MenuModel> {
           isMenu: true
         })
         .select(fields)).map(item => {
-        return item as MenuRes; // TODO;
+        return item; // TODO;
       });
       return menus;
     }
   }
 
-  async getMenuById(id: string | number | ObjectID): Promise<MenuRes> {
+  async getMenuById(id: string | number | ObjectID): Promise<Menu> {
     const res = await this.model
       .findById(id)
       .populate({
@@ -131,6 +131,6 @@ export class MenusService extends MongooseService<MenuModel> {
         select: "name"
       })
       .exec();
-    return res as MenuRes; // TODO;
+    return res; // TODO;
   }
 }

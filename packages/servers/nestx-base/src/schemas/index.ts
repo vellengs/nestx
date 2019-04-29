@@ -1,12 +1,11 @@
-
-export { RoleSchema } from './role.schema';
-export { LogSchema } from './log.schema';
-export { SettingSchema } from './setting.schema';
-export { DictSchema } from './dict.schema';
-export { MenuSchema } from './menu.schema';
-export { GroupSchema } from './group.schema';
-export { UserSchema } from './user.schema';
-export { NoticeSchema } from './notice.schema';
-export { VeryCodeSchema } from './verycode.schema';
-export { ProfileSchema } from './profile.schema';
-export { AppearanceSchema } from './appearance.schema';
+export * from "./role.schema";
+export * from "./log.schema";
+export * from "./setting.schema";
+export * from "./dict.schema";
+export * from "./menu.schema";
+export * from "./group.schema";
+export * from "./user.schema";
+export * from "./notice.schema";
+export * from "./verycode.schema";
+export * from "./profile.schema";
+export * from "./appearance.schema";

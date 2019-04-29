@@ -1,21 +1,23 @@
-import { Schema, SchemaTypes as t, SchemaOptions } from "mongoose";
-import { utils } from "nestx-common";
-const { transform } = utils;
+import { SchemaDefaultOptions } from "nestx-common";
+import { Typegoose, prop } from "typegoose";
 
-const option: SchemaOptions = {};
-option.timestamps = true;
+export class Notice extends Typegoose {
+  @prop({ required: true })
+  title: string;
 
-export const NoticeSchema = new Schema(
-  {
-    title: { type: t.String },
-    type: { type: t.String },
-    extra: { type: t.String },
-    status: { type: t.String },
-    read: { type: t.Boolean }
-  },
-  option
-);
+  @prop({ required: true })
+  type: string;
 
-NoticeSchema.set("toJSON", {
-  transform
-});
+  @prop()
+  extra?: string;
+
+  @prop()
+  status?: string;
+
+  @prop({ default: false })
+  read: boolean;
+
+  static get Model() {
+    return new Notice().getModelForClass(Notice, SchemaDefaultOptions);
+  }
+}

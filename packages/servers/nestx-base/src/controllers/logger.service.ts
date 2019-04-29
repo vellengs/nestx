@@ -1,11 +1,12 @@
 import { Model } from "mongoose";
 import { Injectable } from "@nestjs/common";
-import { InjectModel } from "@nestjs/mongoose";
-import { LogModel } from "./../interfaces";
+import { InjectModel } from "nestjs-typegoose";
+import { ModelType } from "typegoose";
+import { Log } from "./../schemas";
 
 @Injectable()
 export class LoggerService {
-  constructor(@InjectModel("Log") protected readonly model: Model<LogModel>) {}
+  constructor(@InjectModel(Log) protected readonly model: ModelType<Log>) {}
 
   async log(log: {
     controller: string;
