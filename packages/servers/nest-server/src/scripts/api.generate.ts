@@ -89,9 +89,12 @@ async function generate(
 
 async function generateAxios() {
   const current = process.cwd();
-  const axiosDist = path.resolve(current, './../react/src/generated');
+  const axiosDist = path.resolve(
+    current,
+    './../../clients/nest-react/src/generated',
+  );
   await generate('typescript-axios', axiosDist);
-  const testingFolder = path.resolve(current, './../testing/generated');
+  const testingFolder = path.resolve(current, './../nest-testing/generated');
   shell.rm('-rf', testingFolder);
   shell.cp('-R', axiosDist, testingFolder);
   const from = path.resolve(current, 'src/swagger', 'swagger.json');
@@ -99,12 +102,15 @@ async function generateAxios() {
 }
 
 async function generateAngular() {
-  const angularDist = path.resolve(process.cwd(), './../angular/src/generated');
+  const angularDist = path.resolve(
+    process.cwd(),
+    './../../clients/nest-angular/src/generated',
+  );
   await generate('typescript-angular', angularDist, { ngVersion: '6.0' });
 }
 
 async function generateJavaSpringBoot() {
-  const springBootDist = path.resolve(process.cwd(), './../spring');
+  const springBootDist = path.resolve(process.cwd(), './../nest-spring');
   await generate('spring', springBootDist, null, 'server');
 }
 

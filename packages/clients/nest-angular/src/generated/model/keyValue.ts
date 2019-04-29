@@ -14,13 +14,13 @@
 /**
  * 
  */
-export interface Product { 
+export interface KeyValue { 
     /**
      * 
      */
-    name: string;
+    label: string;
     /**
      * 
      */
-    title: string;
+    value: string;
 }

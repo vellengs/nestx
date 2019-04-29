@@ -11,16 +11,17 @@
  */
 
 
-/**
- * 
- */
-export interface CreateProductDto { 
+export interface InlineResponse2001 { 
     /**
      * 
      */
-    name: string;
+    name?: string;
     /**
      * 
      */
-    title: string;
+    id?: string;
+    /**
+     * 
+     */
+    desc?: string;
 }
