@@ -33,7 +33,7 @@ import { EditMediaDto } from '../model/editMediaDto';
 import { EditPageReq } from '../model/editPageReq';
 import { EditPhotoDto } from '../model/editPhotoDto';
 import { EditWidgetDto } from '../model/editWidgetDto';
-import { KeyValueDto } from '../model/keyValueDto';
+import { KeyValue } from '../model/keyValue';
 import { Media } from '../model/media';
 import { MediaFile } from '../model/mediaFile';
 import { MediaRes } from '../model/mediaRes';
@@ -280,9 +280,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public articleSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValueDto>>;
-    public articleSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValueDto>>>;
-    public articleSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValueDto>>>;
+    public articleSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValue>>;
+    public articleSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValue>>>;
+    public articleSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
     public articleSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -308,7 +308,7 @@ export class CmsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/article/search`,
+        return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/article/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -554,9 +554,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public categorySearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValueDto>>;
-    public categorySearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValueDto>>>;
-    public categorySearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValueDto>>>;
+    public categorySearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValue>>;
+    public categorySearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValue>>>;
+    public categorySearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
     public categorySearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -582,7 +582,7 @@ export class CmsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/category/search`,
+        return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/category/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -875,9 +875,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public mediaSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValueDto>>;
-    public mediaSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValueDto>>>;
-    public mediaSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValueDto>>>;
+    public mediaSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValue>>;
+    public mediaSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValue>>>;
+    public mediaSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
     public mediaSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -903,7 +903,7 @@ export class CmsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/media/search`,
+        return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/media/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1238,9 +1238,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pageSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValueDto>>;
-    public pageSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValueDto>>>;
-    public pageSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValueDto>>>;
+    public pageSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValue>>;
+    public pageSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValue>>>;
+    public pageSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
     public pageSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -1266,7 +1266,7 @@ export class CmsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/page/search`,
+        return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/page/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1512,9 +1512,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public photoSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValueDto>>;
-    public photoSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValueDto>>>;
-    public photoSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValueDto>>>;
+    public photoSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValue>>;
+    public photoSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValue>>>;
+    public photoSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
     public photoSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -1540,7 +1540,7 @@ export class CmsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/photo/search`,
+        return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/photo/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1786,9 +1786,9 @@ export class CmsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public widgetSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValueDto>>;
-    public widgetSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValueDto>>>;
-    public widgetSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValueDto>>>;
+    public widgetSearch(keyword?: string, value?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<KeyValue>>;
+    public widgetSearch(keyword?: string, value?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<KeyValue>>>;
+    public widgetSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
     public widgetSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -1814,7 +1814,7 @@ export class CmsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<KeyValueDto>>(`${this.configuration.basePath}/widget/search`,
+        return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/widget/search`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

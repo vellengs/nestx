@@ -878,26 +878,6 @@ export interface CreatePhotoDto {
 /**
  * 
  * @export
- * @interface CreateProductDto
- */
-export interface CreateProductDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateProductDto
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateProductDto
-     */
-    title: string;
-}
-
-/**
- * 
- * @export
  * @interface CreateRoleReq
  */
 export interface CreateRoleReq {
@@ -2157,22 +2137,56 @@ export interface GroupedUsersResUsers {
 export interface InlineResponse200 {
     /**
      * 
-     * @type {string}
+     * @type {boolean}
      * @memberof InlineResponse200
+     */
+    ok?: boolean;
+}
+
+/**
+ * 
+ * @export
+ * @interface InlineResponse2001
+ */
+export interface InlineResponse2001 {
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2001
      */
     name?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse200
+     * @memberof InlineResponse2001
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse200
+     * @memberof InlineResponse2001
      */
     desc?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface KeyValue
+ */
+export interface KeyValue {
+    /**
+     * 
+     * @type {string}
+     * @memberof KeyValue
+     */
+    label: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof KeyValue
+     */
+    value: string;
 }
 
 /**
@@ -2985,26 +2999,6 @@ export interface PhotoRes {
      * @memberof PhotoRes
      */
     uri: string;
-}
-
-/**
- * 
- * @export
- * @interface Product
- */
-export interface Product {
-    /**
-     * 
-     * @type {string}
-     * @memberof Product
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Product
-     */
-    title: string;
 }
 
 /**
@@ -4306,7 +4300,7 @@ export const AuthApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authCaptcha(mobile: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Result> {
+        authCaptcha(mobile: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200> {
             const localVarAxiosArgs = AuthApiAxiosParamCreator(configuration).authCaptcha(mobile, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -4331,7 +4325,7 @@ export const AuthApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authLogout(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Result> {
+        authLogout(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200> {
             const localVarAxiosArgs = AuthApiAxiosParamCreator(configuration).authLogout(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -5925,7 +5919,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        articleSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+        articleSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValue>> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).articleSearch(keyword, value, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -6007,7 +6001,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        categorySearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+        categorySearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValue>> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).categorySearch(keyword, value, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -6103,7 +6097,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mediaSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+        mediaSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValue>> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).mediaSearch(keyword, value, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -6211,7 +6205,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pageSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+        pageSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValue>> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).pageSearch(keyword, value, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -6293,7 +6287,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        photoSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+        photoSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValue>> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).photoSearch(keyword, value, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -6375,7 +6369,7 @@ export const CmsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        widgetSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
+        widgetSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValue>> {
             const localVarAxiosArgs = CmsApiAxiosParamCreator(configuration).widgetSearch(keyword, value, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -9621,7 +9615,7 @@ export const CoreApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        menusGetPermissionTags(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<InlineResponse200>> {
+        menusGetPermissionTags(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<InlineResponse2001>> {
             const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusGetPermissionTags(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -11300,231 +11294,6 @@ export class CoreApi extends BaseAPI {
      */
     public usersUpdateProfile(editProfileReq: EditProfileReq, options?: any) {
         return CoreApiFp(this.configuration).usersUpdateProfile(editProfileReq, options)(this.axios, this.basePath);
-    }
-
-}
-
-/**
- * DefaultApi - axios parameter creator
- * @export
- */
-export const DefaultApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {CreateProductDto} createProductDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productsCreate(createProductDto: CreateProductDto, options: any = {}): RequestArgs {
-            // verify required parameter 'createProductDto' is not null or undefined
-            if (createProductDto === null || createProductDto === undefined) {
-                throw new RequiredError('createProductDto','Required parameter createProductDto was null or undefined when calling productsCreate.');
-            }
-            const localVarPath = `/cats/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"CreateProductDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(createProductDto || {}) : (createProductDto || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productsFindAll(options: any = {}): RequestArgs {
-            const localVarPath = `/cats/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productsFindOne(id: number, options: any = {}): RequestArgs {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling productsFindOne.');
-            }
-            const localVarPath = `/cats/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * DefaultApi - functional programming interface
- * @export
- */
-export const DefaultApiFp = function(configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {CreateProductDto} createProductDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productsCreate(createProductDto: CreateProductDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = DefaultApiAxiosParamCreator(configuration).productsCreate(createProductDto, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productsFindAll(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Product>> {
-            const localVarAxiosArgs = DefaultApiAxiosParamCreator(configuration).productsFindAll(options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productsFindOne(id: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = DefaultApiAxiosParamCreator(configuration).productsFindOne(id, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-    }
-};
-
-/**
- * DefaultApi - factory interface
- * @export
- */
-export const DefaultApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    return {
-        /**
-         * 
-         * @param {CreateProductDto} createProductDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productsCreate(createProductDto: CreateProductDto, options?: any) {
-            return DefaultApiFp(configuration).productsCreate(createProductDto, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productsFindAll(options?: any) {
-            return DefaultApiFp(configuration).productsFindAll(options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productsFindOne(id: number, options?: any) {
-            return DefaultApiFp(configuration).productsFindOne(id, options)(axios, basePath);
-        },
-    };
-};
-
-/**
- * DefaultApi - object-oriented interface
- * @export
- * @class DefaultApi
- * @extends {BaseAPI}
- */
-export class DefaultApi extends BaseAPI {
-    /**
-     * 
-     * @param {CreateProductDto} createProductDto 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public productsCreate(createProductDto: CreateProductDto, options?: any) {
-        return DefaultApiFp(this.configuration).productsCreate(createProductDto, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public productsFindAll(options?: any) {
-        return DefaultApiFp(this.configuration).productsFindAll(options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {number} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public productsFindOne(id: number, options?: any) {
-        return DefaultApiFp(this.configuration).productsFindOne(id, options)(this.axios, this.basePath);
     }
 
 }

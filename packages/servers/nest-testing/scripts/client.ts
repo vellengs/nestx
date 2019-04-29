@@ -2,8 +2,6 @@ import globalAxios from "axios";
 import {
   Configuration,
   CoreApi,
-  AppApi,
-  DefaultApi,
   AuthApi,
   MockApi,
   LoginReq,
@@ -52,8 +50,6 @@ export class Client {
   public mockApi = new MockApi(config);
   public coreApi = new CoreApi(config);
   public cmsApi = new CmsApi(config);
-  public defaultApi = new DefaultApi(config);
-  public appApi = new AppApi(config);
   public static get instance() {
     if (!this.client) {
       this.client = new Client();

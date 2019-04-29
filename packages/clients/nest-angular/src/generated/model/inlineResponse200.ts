@@ -15,13 +15,5 @@ export interface InlineResponse200 {
     /**
      * 
      */
-    name?: string;
-    /**
-     * 
-     */
-    id?: string;
-    /**
-     * 
-     */
-    desc?: string;
+    ok?: boolean;
 }

@@ -1,6 +1,6 @@
 {
   "name": "nestx-cms",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "base module of nestx",
   "main": "dist/index.js",
   "scripts": {

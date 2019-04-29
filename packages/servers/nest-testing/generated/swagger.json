@@ -1,5 +1,159 @@
 {
 	"definitions": {
+		"AccessToken": {
+			"description": "",
+			"properties": {
+				"expiresIn": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"accessToken": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"expiresIn",
+				"accessToken"
+			]
+		},
+		"LoginRes": {
+			"description": "",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"avatar": {
+					"type": "string",
+					"description": ""
+				},
+				"email": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"mobile": {
+					"type": "string",
+					"description": ""
+				},
+				"isAdmin": {
+					"type": "boolean",
+					"description": ""
+				},
+				"isApproved": {
+					"type": "boolean",
+					"description": ""
+				},
+				"expired": {
+					"type": "number",
+					"format": "double",
+					"description": ""
+				},
+				"company": {
+					"type": "string",
+					"description": ""
+				},
+				"siteUrl": {
+					"type": "string",
+					"description": ""
+				},
+				"address": {
+					"type": "string",
+					"description": ""
+				},
+				"token": {
+					"$ref": "#/definitions/AccessToken"
+				},
+				"roles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"username",
+				"avatar",
+				"email",
+				"name",
+				"mobile",
+				"isAdmin",
+				"isApproved",
+				"expired",
+				"token"
+			]
+		},
+		"LoginReq": {
+			"description": "",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"type": {
+					"type": "string",
+					"description": ""
+				},
+				"password": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"username",
+				"password"
+			]
+		},
+		"RegisterReq": {
+			"description": "",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": ""
+				},
+				"password": {
+					"type": "string",
+					"description": ""
+				},
+				"mobile": {
+					"type": "string",
+					"description": ""
+				},
+				"email": {
+					"type": "string",
+					"description": ""
+				},
+				"name": {
+					"type": "string",
+					"description": ""
+				},
+				"mobilePrefix": {
+					"type": "string",
+					"description": ""
+				},
+				"veryCode": {
+					"type": "string",
+					"description": ""
+				}
+			},
+			"type": "object",
+			"required": [
+				"username",
+				"password",
+				"mobile",
+				"email",
+				"veryCode"
+			]
+		},
 		"CreateDictReq": {
 			"description": "",
 			"properties": {
@@ -1919,194 +2073,22 @@
 				"list"
 			]
 		},
-		"AccessToken": {
+		"KeyValue": {
 			"description": "",
 			"properties": {
-				"expiresIn": {
-					"type": "number",
-					"format": "double",
+				"label": {
+					"type": "string",
 					"description": ""
 				},
-				"accessToken": {
+				"value": {
 					"type": "string",
 					"description": ""
 				}
 			},
 			"type": "object",
 			"required": [
-				"expiresIn",
-				"accessToken"
-			]
-		},
-		"LoginRes": {
-			"description": "",
-			"properties": {
-				"username": {
-					"type": "string",
-					"description": ""
-				},
-				"avatar": {
-					"type": "string",
-					"description": ""
-				},
-				"email": {
-					"type": "string",
-					"description": ""
-				},
-				"name": {
-					"type": "string",
-					"description": ""
-				},
-				"mobile": {
-					"type": "string",
-					"description": ""
-				},
-				"isAdmin": {
-					"type": "boolean",
-					"description": ""
-				},
-				"isApproved": {
-					"type": "boolean",
-					"description": ""
-				},
-				"expired": {
-					"type": "number",
-					"format": "double",
-					"description": ""
-				},
-				"company": {
-					"type": "string",
-					"description": ""
-				},
-				"siteUrl": {
-					"type": "string",
-					"description": ""
-				},
-				"address": {
-					"type": "string",
-					"description": ""
-				},
-				"token": {
-					"$ref": "#/definitions/AccessToken"
-				},
-				"roles": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					},
-					"description": ""
-				}
-			},
-			"type": "object",
-			"required": [
-				"username",
-				"avatar",
-				"email",
-				"name",
-				"mobile",
-				"isAdmin",
-				"isApproved",
-				"expired",
-				"token"
-			]
-		},
-		"LoginReq": {
-			"description": "",
-			"properties": {
-				"username": {
-					"type": "string",
-					"description": ""
-				},
-				"type": {
-					"type": "string",
-					"description": ""
-				},
-				"password": {
-					"type": "string",
-					"description": ""
-				}
-			},
-			"type": "object",
-			"required": [
-				"username",
-				"password"
-			]
-		},
-		"RegisterReq": {
-			"description": "",
-			"properties": {
-				"username": {
-					"type": "string",
-					"description": ""
-				},
-				"password": {
-					"type": "string",
-					"description": ""
-				},
-				"mobile": {
-					"type": "string",
-					"description": ""
-				},
-				"email": {
-					"type": "string",
-					"description": ""
-				},
-				"name": {
-					"type": "string",
-					"description": ""
-				},
-				"mobilePrefix": {
-					"type": "string",
-					"description": ""
-				},
-				"veryCode": {
-					"type": "string",
-					"description": ""
-				}
-			},
-			"type": "object",
-			"required": [
-				"username",
-				"password",
-				"mobile",
-				"email",
-				"veryCode"
-			]
-		},
-		"CreateProductDto": {
-			"description": "",
-			"properties": {
-				"name": {
-					"type": "string",
-					"description": ""
-				},
-				"title": {
-					"type": "string",
-					"description": ""
-				}
-			},
-			"type": "object",
-			"required": [
-				"name",
-				"title"
-			]
-		},
-		"Product": {
-			"description": "",
-			"properties": {
-				"name": {
-					"type": "string",
-					"description": ""
-				},
-				"title": {
-					"type": "string",
-					"description": ""
-				}
-			},
-			"type": "object",
-			"required": [
-				"name",
-				"title"
+				"label",
+				"value"
 			]
 		},
 		"PhotoRes": {
@@ -3343,6 +3325,136 @@
 		"version": "0.0.1"
 	},
 	"paths": {
+		"/auth/login": {
+			"post": {
+				"operationId": "AuthLogin",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/LoginRes"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"auth"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "payload",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/LoginReq"
+						}
+					}
+				]
+			}
+		},
+		"/auth/register": {
+			"post": {
+				"operationId": "AuthRegister",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/AccessToken"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"auth"
+				],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "body",
+						"name": "payload",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/RegisterReq"
+						}
+					}
+				]
+			}
+		},
+		"/auth/logout": {
+			"get": {
+				"operationId": "AuthLogout",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"ok": {
+									"type": "boolean",
+									"description": ""
+								}
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"auth"
+				],
+				"parameters": []
+			}
+		},
+		"/auth/captcha": {
+			"get": {
+				"operationId": "AuthCaptcha",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"ok": {
+									"type": "boolean",
+									"description": ""
+								}
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"auth"
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "mobile",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
 		"/dict/": {
 			"post": {
 				"operationId": "DictsCreate",
@@ -4460,48 +4572,6 @@
 				]
 			}
 		},
-		"/mock/init": {
-			"get": {
-				"operationId": "MockInitData",
-				"produces": [
-					"text/html"
-				],
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"schema": {
-							"type": "boolean"
-						}
-					}
-				},
-				"description": "",
-				"tags": [
-					"mock"
-				],
-				"parameters": []
-			}
-		},
-		"/mock/reset": {
-			"get": {
-				"operationId": "MockReset",
-				"produces": [
-					"text/html"
-				],
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"schema": {
-							"type": "boolean"
-						}
-					}
-				},
-				"description": "",
-				"tags": [
-					"mock"
-				],
-				"parameters": []
-			}
-		},
 		"/setting/": {
 			"post": {
 				"operationId": "SettingsCreate",
@@ -5436,195 +5506,6 @@
 				]
 			}
 		},
-		"/auth/login": {
-			"post": {
-				"operationId": "AuthLogin",
-				"produces": [
-					"application/json"
-				],
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"schema": {
-							"$ref": "#/definitions/LoginRes"
-						}
-					}
-				},
-				"description": "",
-				"tags": [
-					"auth"
-				],
-				"consumes": [
-					"application/json"
-				],
-				"parameters": [
-					{
-						"description": "",
-						"in": "body",
-						"name": "payload",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/LoginReq"
-						}
-					}
-				]
-			}
-		},
-		"/auth/register": {
-			"post": {
-				"operationId": "AuthRegister",
-				"produces": [
-					"application/json"
-				],
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"schema": {
-							"$ref": "#/definitions/AccessToken"
-						}
-					}
-				},
-				"description": "",
-				"tags": [
-					"auth"
-				],
-				"consumes": [
-					"application/json"
-				],
-				"parameters": [
-					{
-						"description": "",
-						"in": "body",
-						"name": "payload",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/RegisterReq"
-						}
-					}
-				]
-			}
-		},
-		"/auth/logout": {
-			"get": {
-				"operationId": "AuthLogout",
-				"produces": [
-					"application/json"
-				],
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"schema": {
-							"$ref": "#/definitions/Result"
-						}
-					}
-				},
-				"description": "",
-				"tags": [
-					"auth"
-				],
-				"parameters": []
-			}
-		},
-		"/auth/captcha": {
-			"get": {
-				"operationId": "AuthCaptcha",
-				"produces": [
-					"application/json"
-				],
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"schema": {
-							"$ref": "#/definitions/Result"
-						}
-					}
-				},
-				"description": "",
-				"tags": [
-					"auth"
-				],
-				"parameters": [
-					{
-						"description": "",
-						"in": "query",
-						"name": "mobile",
-						"required": true,
-						"type": "string"
-					}
-				]
-			}
-		},
-		"/cats/": {
-			"post": {
-				"operationId": "ProductsCreate",
-				"produces": [
-					"text/html"
-				],
-				"responses": {
-					"204": {
-						"description": "No content"
-					}
-				},
-				"description": "",
-				"consumes": [
-					"application/json"
-				],
-				"parameters": [
-					{
-						"description": "",
-						"in": "body",
-						"name": "createCatDto",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/CreateProductDto"
-						}
-					}
-				]
-			},
-			"get": {
-				"operationId": "ProductsFindAll",
-				"produces": [
-					"application/json"
-				],
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"schema": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/Product"
-							}
-						}
-					}
-				},
-				"description": "",
-				"parameters": []
-			}
-		},
-		"/cats/{id}": {
-			"get": {
-				"operationId": "ProductsFindOne",
-				"produces": [
-					"text/html"
-				],
-				"responses": {
-					"204": {
-						"description": "No content"
-					}
-				},
-				"description": "",
-				"parameters": [
-					{
-						"description": "",
-						"in": "path",
-						"name": "id",
-						"required": true,
-						"type": "number",
-						"format": "double"
-					}
-				]
-			}
-		},
 		"/photo/search": {
 			"get": {
 				"operationId": "PhotoSearch",
@@ -5637,7 +5518,7 @@
 						"schema": {
 							"type": "array",
 							"items": {
-								"$ref": "#/definitions/KeyValueDto"
+								"$ref": "#/definitions/KeyValue"
 							}
 						}
 					}
@@ -5852,7 +5733,7 @@
 						"schema": {
 							"type": "array",
 							"items": {
-								"$ref": "#/definitions/KeyValueDto"
+								"$ref": "#/definitions/KeyValue"
 							}
 						}
 					}
@@ -6067,7 +5948,7 @@
 						"schema": {
 							"type": "array",
 							"items": {
-								"$ref": "#/definitions/KeyValueDto"
+								"$ref": "#/definitions/KeyValue"
 							}
 						}
 					}
@@ -6321,7 +6202,7 @@
 						"schema": {
 							"type": "array",
 							"items": {
-								"$ref": "#/definitions/KeyValueDto"
+								"$ref": "#/definitions/KeyValue"
 							}
 						}
 					}
@@ -6607,7 +6488,7 @@
 						"schema": {
 							"type": "array",
 							"items": {
-								"$ref": "#/definitions/KeyValueDto"
+								"$ref": "#/definitions/KeyValue"
 							}
 						}
 					}
@@ -6822,7 +6703,7 @@
 						"schema": {
 							"type": "array",
 							"items": {
-								"$ref": "#/definitions/KeyValueDto"
+								"$ref": "#/definitions/KeyValue"
 							}
 						}
 					}
@@ -7071,6 +6952,48 @@
 				"description": "",
 				"tags": [
 					"app"
+				],
+				"parameters": []
+			}
+		},
+		"/mock/init": {
+			"get": {
+				"operationId": "MockInitData",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"mock"
+				],
+				"parameters": []
+			}
+		},
+		"/mock/reset": {
+			"get": {
+				"operationId": "MockReset",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"mock"
 				],
 				"parameters": []
 			}

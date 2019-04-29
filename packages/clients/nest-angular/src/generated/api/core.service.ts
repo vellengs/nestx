@@ -40,7 +40,7 @@ import { EditSettingReq } from '../model/editSettingReq';
 import { EditUserReq } from '../model/editUserReq';
 import { Group } from '../model/group';
 import { GroupedUsersRes } from '../model/groupedUsersRes';
-import { InlineResponse200 } from '../model/inlineResponse200';
+import { InlineResponse2001 } from '../model/inlineResponse2001';
 import { KeyValueDto } from '../model/keyValueDto';
 import { Log } from '../model/log';
 import { Menu } from '../model/menu';
@@ -1127,9 +1127,9 @@ export class CoreService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public menusGetPermissionTags(observe?: 'body', reportProgress?: boolean): Observable<Array<InlineResponse200>>;
-    public menusGetPermissionTags(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<InlineResponse200>>>;
-    public menusGetPermissionTags(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<InlineResponse200>>>;
+    public menusGetPermissionTags(observe?: 'body', reportProgress?: boolean): Observable<Array<InlineResponse2001>>;
+    public menusGetPermissionTags(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<InlineResponse2001>>>;
+    public menusGetPermissionTags(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<InlineResponse2001>>>;
     public menusGetPermissionTags(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -1147,7 +1147,7 @@ export class CoreService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<InlineResponse200>>(`${this.configuration.basePath}/menu/permissions`,
+        return this.httpClient.get<Array<InlineResponse2001>>(`${this.configuration.basePath}/menu/permissions`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
