@@ -68,7 +68,7 @@ function parseParams(params: Parameter[], context: Context): Parameter[] {
             properties
         }
 
-        if (schema) {
+        if (schema && schema.$ref) {
             const paths = schema.$ref.split('/');
             item.properties = context.definitions[paths[paths.length - 1]].properties;
         }

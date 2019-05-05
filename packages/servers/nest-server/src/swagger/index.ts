@@ -9,6 +9,7 @@ import {
   SWAGGER_API_AUTH_LOCATION,
 } from './constants';
 import { existsSync } from 'fs';
+import { resolve } from 'path';
 
 export const setupSwagger = (app: INestApplication) => {
   const options = new DocumentBuilder()
@@ -21,7 +22,9 @@ export const setupSwagger = (app: INestApplication) => {
     .build();
   // const document = SwaggerModule.createDocument(app, options);
   const swaggerFile = './swagger.json';
-  if (existsSync(swaggerFile)) {
+
+  const filePath = resolve(__dirname, swaggerFile);
+  if (existsSync(filePath)) {
     const document = require(swaggerFile);
     SwaggerModule.setup(SWAGGER_API_ROOT, app, document);
   }
