@@ -15,7 +15,7 @@ describe('dict module test', () => {
 
     it('[post] /dict/', async () => {
         const reqBody = {
-            "category": "string",
+            "category": "水果",
             "name": "string",
             "translate": "string",
             "expand": "{\"demo\":123}"

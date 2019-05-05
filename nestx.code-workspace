@@ -23,6 +23,9 @@
 		},
 		{
 			"path": "."
+		},
+		{
+			"path": "packages/clients/nest-angular"
 		}
 	],
 	"settings": {
