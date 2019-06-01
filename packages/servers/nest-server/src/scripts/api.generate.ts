@@ -117,7 +117,7 @@ async function generateJavaSpringBoot() {
 async function generateAll() {
   await generateAngular();
   await generateAxios();
-  // await generateJavaSpringBoot();
+  await generateJavaSpringBoot();
 }
 
 generateAll().then(() => {
