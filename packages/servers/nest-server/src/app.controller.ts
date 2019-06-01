@@ -1,8 +1,8 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, Post, Body } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Tags } from 'nest-swagger';
 import { SettingsGroup } from 'nestx-base';
- 
+
 @Tags('app')
 @Controller()
 export class AppController {
@@ -14,7 +14,12 @@ export class AppController {
   }
 
   @Get()
-  root(): string {
+  root(): object {
+    return this.appService.root();
+  }
+
+  @Post()
+  demo(@Body('par1') par1: string): object {
     return this.appService.root();
   }
 }

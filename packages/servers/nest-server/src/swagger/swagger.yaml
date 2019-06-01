@@ -5076,12 +5076,12 @@ paths:
         get:
             operationId: AppRoot
             produces:
-                - text/html
+                - application/json
             responses:
                 '200':
                     description: Ok
                     schema:
-                        type: string
+                        type: object
             description: ""
             tags:
                 - app

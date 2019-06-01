@@ -89,6 +89,7 @@ export class EditUserReq {
 
   @IsOptional()
   @IsString()
+  @IsEmail()
   email?: string;
 
   @IsOptional()

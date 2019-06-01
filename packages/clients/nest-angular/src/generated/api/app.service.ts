@@ -108,16 +108,16 @@ export class AppService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public appRoot(observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public appRoot(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public appRoot(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public appRoot(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public appRoot(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public appRoot(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
     public appRoot(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
-            'text/html'
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected !== undefined) {
@@ -128,7 +128,7 @@ export class AppService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<string>(`${this.configuration.basePath}/`,
+        return this.httpClient.get<any>(`${this.configuration.basePath}/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
