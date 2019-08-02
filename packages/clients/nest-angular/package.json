@@ -130,5 +130,6 @@
       "editorconfig-tools fix",
       "git add"
     ]
-  }
+  },
+  "gitHead": "5d81593bf6de625b1b04062432497f636d890dbd"
 }

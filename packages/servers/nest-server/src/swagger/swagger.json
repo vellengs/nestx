@@ -3355,6 +3355,16 @@
 						"schema": {
 							"$ref": "#/definitions/LoginReq"
 						}
+					},
+					{
+						"name":"name",
+						"in":"query",
+						"required":true,
+						"type":"array",
+						"items":{
+						  "type":"string"
+						},
+						"collectionFormat":"multi"
 					}
 				]
 			}

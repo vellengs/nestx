@@ -67,5 +67,6 @@
   "directories": {
     "lib": "dist",
     "doc": "doc"
-  }
+  },
+  "gitHead": "5d81593bf6de625b1b04062432497f636d890dbd"
 }
