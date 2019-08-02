@@ -1,6 +1,6 @@
 {
   "name": "nestx-auth",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "auth module of nestx",
   "main": "dist/index.js",
   "scripts": {
@@ -21,8 +21,8 @@
     "bson": "^4.0.2",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
-    "nest-swagger": "^0.3.1",
-    "nestx-config": "^0.3.1",
+    "nest-swagger": "^0.3.2",
+    "nestx-config": "^0.3.2",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "reflect-metadata": "^0.1.13",
