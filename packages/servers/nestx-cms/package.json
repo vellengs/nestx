@@ -29,7 +29,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.4.0"
   },
-  "gitHead": "5d81593bf6de625b1b04062432497f636d890dbd",
+  "gitHead": "3f01311f987fc4f02f1e64f74365d53780a0a497",
   "devDependencies": {
     "@types/bson": "^4.0.0",
     "@types/dotenv": "^6.1.1",
