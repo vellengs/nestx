@@ -1,6 +1,6 @@
 {
   "name": "nestx-base",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "base module of nestx",
   "main": "dist/index.js",
   "scripts": {
@@ -16,16 +16,16 @@
     "express": "^4.16.4",
     "lodash": "^4.17.11",
     "mongoose": "^5.5.2",
-    "nest-swagger": "^0.3.1",
-    "nestx-auth": "^0.3.1",
-    "nestx-common": "^0.3.1",
-    "nestx-config": "^0.3.1",
+    "nest-swagger": "^0.3.2",
+    "nestx-auth": "^0.3.2",
+    "nestx-common": "^0.3.2",
+    "nestx-config": "^0.3.2",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "rxjs": "^6.4.0",
     "typeorm": "^0.2.16"
   },
-  "gitHead": "56e54eb712aa27194f4d1356c5219a09f7734f95",
+  "gitHead": "5d81593bf6de625b1b04062432497f636d890dbd",
   "devDependencies": {
     "@nestjs/common": "^6.1.1",
     "@nestjs/core": "^6.1.1",

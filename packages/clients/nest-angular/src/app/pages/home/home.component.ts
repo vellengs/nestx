@@ -9,7 +9,7 @@ import { BaseStandComponent } from '@shared/base/base.stand.component';
 export class HomeComponent extends BaseStandComponent implements OnInit {
 
     ngOnInit() {
-
+      
     }
 
 }

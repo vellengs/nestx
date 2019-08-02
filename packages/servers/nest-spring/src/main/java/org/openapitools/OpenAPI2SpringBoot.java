@@ -1,5 +1,7 @@
 package org.openapitools;
 
+import com.fasterxml.jackson.databind.Module;
+import org.openapitools.jackson.nullable.JsonNullableModule;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
@@ -24,7 +26,7 @@ public class OpenAPI2SpringBoot implements CommandLineRunner {
         new SpringApplication(OpenAPI2SpringBoot.class).run(args);
     }
 
-    class ExitException extends RuntimeException implements ExitCodeGenerator {
+    static class ExitException extends RuntimeException implements ExitCodeGenerator {
         private static final long serialVersionUID = 1L;
 
         @Override
@@ -45,6 +47,11 @@ public class OpenAPI2SpringBoot implements CommandLineRunner {
                         .allowedHeaders("Content-Type");
             }*/
         };
+    }
+
+    @Bean
+    public Module jsonNullableModule() {
+        return new JsonNullableModule();
     }
 
 }

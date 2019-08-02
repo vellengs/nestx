@@ -1,6 +1,6 @@
 {
   "name": "nestx-auth",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "auth module of nestx",
   "main": "dist/index.js",
   "scripts": {
@@ -21,14 +21,14 @@
     "bson": "^4.0.2",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
-    "nest-swagger": "^0.3.1",
-    "nestx-config": "^0.3.1",
+    "nest-swagger": "^0.3.2",
+    "nestx-config": "^0.3.2",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.4.0"
   },
-  "gitHead": "56e54eb712aa27194f4d1356c5219a09f7734f95",
+  "gitHead": "5d81593bf6de625b1b04062432497f636d890dbd",
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
     "@types/express": "^4.16.1",

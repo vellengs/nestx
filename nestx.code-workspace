@@ -26,6 +26,9 @@
 		},
 		{
 			"path": "packages/servers/nest-swagger"
+		},
+		{
+			"path": "packages/servers/nest-spring"
 		}
 	],
 	"settings": {

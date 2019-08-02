@@ -1,6 +1,6 @@
 {
   "name": "nest-react",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "react client side",
   "scripts": {
     "start": "cross-env APP_TYPE=site umi dev",
@@ -122,5 +122,6 @@
   "homepage": "https://github.com/vellengs/nestx#readme",
   "keywords": [],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "5d81593bf6de625b1b04062432497f636d890dbd"
 }
