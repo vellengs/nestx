@@ -1,6 +1,6 @@
 {
   "name": "nest-react",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "react client side",
   "scripts": {
     "start": "cross-env APP_TYPE=site umi dev",
@@ -123,5 +123,5 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "gitHead": "5d81593bf6de625b1b04062432497f636d890dbd"
+  "gitHead": "3f01311f987fc4f02f1e64f74365d53780a0a497"
 }

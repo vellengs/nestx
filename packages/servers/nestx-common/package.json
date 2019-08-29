@@ -1,6 +1,6 @@
 {
   "name": "nestx-common",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "common module of nestx",
   "main": "dist/index.js",
   "scripts": {
@@ -17,8 +17,8 @@
     "@nestjs/passport": "^6.0.0",
     "lodash": "^4.17.11",
     "mongoose": "^5.5.2",
-    "nest-swagger": "^0.3.2",
-    "nestx-config": "^0.3.2",
+    "nest-swagger": "^0.4.0",
+    "nestx-config": "^0.4.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.4.0",
     "typeorm": "^0.2.16"
@@ -29,5 +29,5 @@
     "class-transformer": "^0.2.0",
     "class-validator": "^0.9.1"
   },
-  "gitHead": "5d81593bf6de625b1b04062432497f636d890dbd"
+  "gitHead": "3f01311f987fc4f02f1e64f74365d53780a0a497"
 }
