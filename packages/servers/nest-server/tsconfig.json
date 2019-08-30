@@ -13,6 +13,7 @@
         "allowJs": true,
         "outDir": "dist",
         "baseUrl": "src",
+        "skipLibCheck": true,
         "typeRoots": [
             "./node_modules/@types",
             "./src/types/"

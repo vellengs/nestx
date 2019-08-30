@@ -1,4 +1,5 @@
-import { ObjectID } from "bson";
+import { ObjectID } from "typeorm";
+
 function transform(
   _doc: any,
   ret: {

@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Repository, ObjectID, getManager } from "typeorm";
+import { Repository, getManager, ObjectID } from "typeorm";
 import { ResultList } from "../interfaces";
 
 export interface Id {

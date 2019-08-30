@@ -9,9 +9,9 @@ import {
   Result
 } from "nestx-common";
 import { RegisterReq } from "nestx-auth";
-import { ObjectID } from "typeorm";
+
 import { EditProfileReq, UserRes, ChangePasswordReq } from "./../dto";
-import { ObjectId } from "bson";
+import { ObjectId, ObjectID } from "bson";
 import { omit } from "lodash";
 
 const FIVE_MINUTES = 5 * 60 * 1000; // 5 mins
@@ -319,6 +319,11 @@ export class UsersService extends MongooseService<UserModel> {
     const instance = Object.assign({}, doc, doc.profile);
     instance.id = doc._id;
     instance.createdAt = doc.createdAt;
-    return omit(instance, ["_id", "__v", "password", "profile"]);
+    return omit<UserModel>(instance, [
+      "_id",
+      "__v",
+      "password",
+      "profile"
+    ]) as User;
   }
 }

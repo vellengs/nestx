@@ -12,7 +12,7 @@ import {
 import { Id, RepositoryService } from "./repository.service";
 import { ResultList } from "../interfaces";
 import { ObjectID } from "typeorm";
-
+ 
 @Injectable()
 export class ControllerService<T extends Id> {
   constructor(private readonly service: RepositoryService<T>) {}
