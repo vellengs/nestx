@@ -292,7 +292,7 @@
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/mongoose@*", "@types/mongoose@^5.3.26", "@types/mongoose@^5.3.27":
+"@types/mongoose@*", "@types/mongoose@^5.3.27":
   version "5.3.27"
   resolved "https://registry.npmjs.org/@types/mongoose/-/mongoose-5.3.27.tgz#bfa893deab793118e59d7c3ea5deb5e2e84c0599"
   integrity sha512-1bQcQaYw4kN9mMuJC54FcfjyYe2gtxbUj9OAvrUA/5G2rSv0fuvu2jplizXqyADgBcXzPVEglDNzT3YrztWLoQ==
@@ -3850,7 +3850,7 @@ is-extendable@^0.1.0, is-extendable@^0.1.1:
 
 is-extendable@^1.0.1:
   version "1.0.1"
-  resolved "https://registry.npmjs.org/is-extendable/-/is-extendable-1.0.1.tgz#a7470f9e426733d81bd81e1155264e3a3507cab4"
+  resolved "https://registry.yarnpkg.com/is-extendable/-/is-extendable-1.0.1.tgz#a7470f9e426733d81bd81e1155264e3a3507cab4"
   integrity sha512-arnXMxT1hhoKo9k1LZdmlNyJdDDfy2v0fXjFlmok4+i8ul/6WlbVge9bhM74OpNPQPMGUToDtz+KXa1PneJxOA==
   dependencies:
     is-plain-object "^2.0.4"
@@ -3985,7 +3985,7 @@ is-plain-obj@^1.1.0:
 
 is-plain-object@^2.0.1, is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   version "2.0.4"
-  resolved "https://registry.npmjs.org/is-plain-object/-/is-plain-object-2.0.4.tgz#2c163b3fafb1b606d9d17928f05c2a1c38e07677"
+  resolved "https://registry.yarnpkg.com/is-plain-object/-/is-plain-object-2.0.4.tgz#2c163b3fafb1b606d9d17928f05c2a1c38e07677"
   integrity sha512-h5PpgXkWitc38BBMYawTYMWJHFZJVnBquFE57xFpjB8pJFiF6gZ+bU+WyI/yqXiFR5mdLsgYNaPe8uao6Uv9Og==
   dependencies:
     isobject "^3.0.1"
@@ -4103,7 +4103,7 @@ isobject@^2.0.0:
 
 isobject@^3.0.0, isobject@^3.0.1:
   version "3.0.1"
-  resolved "https://registry.npmjs.org/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
+  resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
 
 isstream@~0.1.2:
@@ -5331,9 +5331,9 @@ mississippi@^2.0.0:
     through2 "^2.0.0"
 
 mixin-deep@^1.2.0:
-  version "1.3.1"
-  resolved "https://registry.npmjs.org/mixin-deep/-/mixin-deep-1.3.1.tgz#a49e7268dce1a0d9698e45326c5626df3543d0fe"
-  integrity sha512-8ZItLHeEgaqEvd5lYBXfm4EZSFCX29Jb9K+lAHhDKzReKBQKj3R+7NOF6tjqYi9t4oI8VUfaWITJQm86wnXGNQ==
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/mixin-deep/-/mixin-deep-1.3.2.tgz#1120b43dc359a785dce65b55b82e257ccf479566"
+  integrity sha512-WRoDn//mXBiJ1H40rqa3vH0toePwSsGb45iInWlTySa+Uu4k3tYUSxa2v1KqAiLtvlrSzaExqS1gtk96A9zvEA==
   dependencies:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
@@ -5547,10 +5547,10 @@ neo-async@^2.6.0:
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
   integrity sha512-MFh0d/Wa7vkKO3Y3LlacqAEeHK0mckVqzDieUKTT+KGxi+zIpeVsFxymkIiRpbpDziHc290Xr9A1O4Om7otoRA==
 
-nest-swagger@^0.3.0, nest-swagger@^0.3.0-alpha.0:
-  version "0.3.0"
-  resolved "https://registry.npmjs.org/nest-swagger/-/nest-swagger-0.3.0.tgz#4f8ed3a59eaeb8d63e2e566277cfed29e255b25d"
-  integrity sha512-6YNTp829DGGa6Xaea7pzwGKPLrSaDbWp/5/OrAnS6n24LBahsPQHcR6Wj2hYL5x/fpUFR3YWgDCpXXg0ErVxCg==
+nest-swagger@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/nest-swagger/-/nest-swagger-0.4.0.tgz#c4697a193da0a0e10a3f12fe489eff46ea1148fc"
+  integrity sha512-BnupSntiiAMBm+BPCKXfGXH5/ihuuTF3kac7bVCK6SFLUPc7Y0qkMd1I4D460d1YckXOSNy/tvItWmSS38en6A==
   dependencies:
     argparse "^1.0.10"
     lodash "4.17.11"
@@ -5558,10 +5558,10 @@ nest-swagger@^0.3.0, nest-swagger@^0.3.0-alpha.0:
     path-to-regexp "3.0.0"
     yamljs "^0.3.0"
 
-nestx-auth@^0.0.12:
-  version "0.0.12"
-  resolved "https://registry.npmjs.org/nestx-auth/-/nestx-auth-0.0.12.tgz#49081810cfd46a23197f15b8338c9f47fb8392d9"
-  integrity sha512-mQ77qfUyXdcNi7ZA6dgk81YiMn8sYzrPHNS0CJnVS/PwLuIv1VwGGOoda0jMBqnHNdTxSJx7KlVHenRKDeA+sA==
+nestx-auth@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/nestx-auth/-/nestx-auth-0.4.0.tgz#9320691c58ca3dffef546b4f8f2088a4a8a0b99c"
+  integrity sha512-jsEL3PIEz7FKWq06MqhefzdlFiYVpy+/uz62BwJJE7V+swXq2yML5VAebL/hh4qsrg2l/apvI4A93rMlSd1rsQ==
   dependencies:
     "@nestjs/common" "^6.1.1"
     "@nestjs/core" "^6.1.1"
@@ -5569,62 +5569,40 @@ nestx-auth@^0.0.12:
     "@nestjs/passport" "^6.0.0"
     "@nestjs/platform-express" "^6.1.1"
     "@types/bson" "^4.0.0"
-    "@types/mongoose" "^5.3.26"
+    "@types/mongoose" "^5.3.27"
     bson "^4.0.2"
     dotenv "^7.0.0"
     express "^4.16.4"
-    nest-swagger "^0.3.0-alpha.0"
-    nestx-config "^0.0.12"
+    nest-swagger "^0.4.0"
+    nestx-config "^0.4.0"
     passport "^0.4.0"
     passport-jwt "^4.0.0"
     reflect-metadata "^0.1.13"
     rxjs "^6.4.0"
 
-nestx-auth@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.npmjs.org/nestx-auth/-/nestx-auth-0.3.0.tgz#8d3a3faa9a00267400080b7a7321122eafebba6d"
-  integrity sha512-bM3My0LPSfXK6mJbXk7fACN7QhmklJZXWGG269rujLisaHkef5H7gQvTCOYhG4RMKT35efAIuotGzbv1qsllHQ==
-  dependencies:
-    "@nestjs/common" "^6.1.1"
-    "@nestjs/core" "^6.1.1"
-    "@nestjs/jwt" "^6.0.0"
-    "@nestjs/passport" "^6.0.0"
-    "@nestjs/platform-express" "^6.1.1"
-    "@types/bson" "^4.0.0"
-    "@types/mongoose" "^5.3.26"
-    bson "^4.0.2"
-    dotenv "^7.0.0"
-    express "^4.16.4"
-    nest-swagger "^0.3.0"
-    nestx-config "^0.0.12"
-    passport "^0.4.0"
-    passport-jwt "^4.0.0"
-    reflect-metadata "^0.1.13"
-    rxjs "^6.4.0"
-
-nestx-base@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.npmjs.org/nestx-base/-/nestx-base-0.3.0.tgz#3899be07de565c116bc0262d1bc583789d8fe6c7"
-  integrity sha512-2SOjnUaCQukCve8TR+FYvwBlX1pNLtC0C1KY2GULibrr5rwpPyH0scyYJI7SIbv5bsBXuPq8YWU9EBHoIq9vlQ==
+nestx-base@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/nestx-base/-/nestx-base-0.4.0.tgz#1a3a578f5ebc54db041b35141472a28e0d08ca95"
+  integrity sha512-1govRMxfhbzlh6bWUIDEuF1vh6IwEy7v/47ijByXIeRg2HlaoT+UM1wCX1txjjkEq+DEIS5XFqpcHWYpKOufEA==
   dependencies:
     auth "^0.0.9"
     bcrypt "^3.0.6"
     express "^4.16.4"
     lodash "^4.17.11"
     mongoose "^5.5.2"
-    nest-swagger "^0.3.0"
-    nestx-auth "^0.0.12"
-    nestx-common "^0.3.0"
-    nestx-config "^0.0.12"
+    nest-swagger "^0.4.0"
+    nestx-auth "^0.4.0"
+    nestx-common "^0.4.0"
+    nestx-config "^0.4.0"
     passport "^0.4.0"
     passport-jwt "^4.0.0"
     rxjs "^6.4.0"
     typeorm "^0.2.16"
 
-nestx-cms@^0.3.0:
-  version "0.3.1"
-  resolved "https://registry.npmjs.org/nestx-cms/-/nestx-cms-0.3.1.tgz#52a68fb128697289bc083d54338705fb089c9110"
-  integrity sha512-IzGKG9FCMUXEvnhrTLZDfi5lxkjFQUiagf2cig/oMjB135margJd/fCby8GL5BiJTyNtijmF9DE08EhEwMKPig==
+nestx-cms@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/nestx-cms/-/nestx-cms-0.4.0.tgz#572e220d0b1b34355f2ed3c46a564265be3323f3"
+  integrity sha512-ueXNHOikyo4epJwGGopUnFf4yd6YNvNk/tmD9tEvk4c6EXhFV/eVDkyWurpk0vmnbme+MXfGYFx85n7T9IKG5A==
   dependencies:
     "@nestjs/common" "^6.1.1"
     "@nestjs/core" "^6.1.1"
@@ -5635,19 +5613,19 @@ nestx-cms@^0.3.0:
     bson "^4.0.2"
     dotenv "^7.0.0"
     express "^4.16.4"
-    nest-swagger "^0.3.0"
-    nestx-auth "^0.0.12"
-    nestx-common "^0.3.0"
-    nestx-config "^0.3.0"
+    nest-swagger "^0.4.0"
+    nestx-auth "^0.4.0"
+    nestx-common "^0.4.0"
+    nestx-config "^0.4.0"
     passport "^0.4.0"
     passport-jwt "^4.0.0"
     reflect-metadata "^0.1.13"
     rxjs "^6.4.0"
 
-nestx-common@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.npmjs.org/nestx-common/-/nestx-common-0.3.0.tgz#ef9f9bfd9a4454874bd423e24f1a496bc0c67c85"
-  integrity sha512-eeedAjaPvego3D+xvpfSTgT7hJiMZuk0cw2qu1IKIOuELwQ02y2JIn2DPgCdVs8wuM+0N6ALEYFM2xLqVVKcsg==
+nestx-common@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/nestx-common/-/nestx-common-0.4.0.tgz#ac485f75daec2537ec3b08ec69b3d2caa57ccabd"
+  integrity sha512-iB/lwZDunI1B+5CKtgCTip+x1Epz69KmZwnEYH5GYidjNX1J7u9HF1UMuLWRBMUyX1ZJ5hQ8hY+MWfrHM8VSpw==
   dependencies:
     "@nestjs/common" "^6.1.1"
     "@nestjs/core" "^6.1.1"
@@ -5655,34 +5633,22 @@ nestx-common@^0.3.0:
     "@nestjs/passport" "^6.0.0"
     lodash "^4.17.11"
     mongoose "^5.5.2"
-    nest-swagger "^0.3.0"
+    nest-swagger "^0.4.0"
+    nestx-config "^0.4.0"
     reflect-metadata "^0.1.13"
     rxjs "^6.4.0"
     typeorm "^0.2.16"
 
-nestx-config@^0.0.12:
-  version "0.0.12"
-  resolved "https://registry.npmjs.org/nestx-config/-/nestx-config-0.0.12.tgz#e1048edff01b5a1cfe5aa8e6ec8c5f271cfcfefd"
-  integrity sha512-jsvmMwdbaFRMWqq7oenZhev7Ah0hIV0ueH0Yvi5FXbnW5Uy39MBH7MGhb1+vYr+rWaOLItUX/fKCUEzfsikDjg==
+nestx-config@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/nestx-config/-/nestx-config-0.4.0.tgz#da62d320fa2f6a2b88301e7223f8b7109c2e8e22"
+  integrity sha512-kOvf0IbHhYnx/trZEkEyyy2bzwofseZQWjHX8bEObZJHso4C8SSemHTmslfJap/+LsKbs43hONpjy0uDsn9bNg==
   dependencies:
     "@nestjs/common" "^6.1.1"
     "@nestjs/jwt" "^6.0.0"
     "@nestjs/passport" "^6.0.0"
     dotenv "^7.0.0"
-    nest-swagger "^0.3.0-alpha.0"
-    reflect-metadata "^0.1.13"
-    rxjs "^6.4.0"
-
-nestx-config@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.npmjs.org/nestx-config/-/nestx-config-0.3.0.tgz#9c2f7fcd255f62f5585642a7fb9b268be9b43945"
-  integrity sha512-6Yfrev5pdvztvT2gmWkvB3Kz6h5K+lUhkUycvi76nxZ/qtPshYgZGev1kF97srKRoUifBJh6HZDpDe3sKblPng==
-  dependencies:
-    "@nestjs/common" "^6.1.1"
-    "@nestjs/jwt" "^6.0.0"
-    "@nestjs/passport" "^6.0.0"
-    dotenv "^7.0.0"
-    nest-swagger "^0.3.0"
+    nest-swagger "^0.4.0"
     reflect-metadata "^0.1.13"
     rxjs "^6.4.0"
 
