@@ -54,8 +54,8 @@ export class BaseStandComponent extends BaseComponent implements CurdPage {
             .appearancesGetAppearanceByName(this.domain)
             .toPromise();
         if (config && config.data) {
-            this.columnSets = config.data.columnSets;
-            this.formSets = config.data.formSets;
+            this.columnSets = (config.data as any).columnSets;
+            this.formSets = (config.data as any).formSets;
             if (this.columnSets && Array.isArray(this.columnSets.default)) {
                 this.columnSets.default.map(col => {
                     switch (col.action) {

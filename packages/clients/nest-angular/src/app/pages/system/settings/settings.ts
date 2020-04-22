@@ -46,7 +46,7 @@ export class SettingsPageComponent extends BaseComponent implements OnInit {
             .appearancesGetAppearanceByName(this.domain)
             .subscribe(config => {
                 if (config && config.data) {
-                    this.formSets = config.data.formSets as any;
+                    this.formSets = (config.data as any).formSets as any; // TODO
                 }
             });
     }

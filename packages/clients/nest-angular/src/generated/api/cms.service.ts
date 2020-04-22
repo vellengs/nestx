@@ -13,9 +13,8 @@
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { CustomHttpUrlEncodingCodec }                        from '../encoder';
-
+         HttpResponse, HttpEvent, HttpParameterCodec }       from '@angular/common/http';
+import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 import { ArticleRes } from '../model/articleRes';
@@ -64,36 +63,24 @@ export class CmsService {
     protected basePath = 'http://localhost';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
+    public encoder: HttpParameterCodec;
 
     constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
-
         if (configuration) {
             this.configuration = configuration;
-            this.configuration.basePath = configuration.basePath || basePath || this.basePath;
-
-        } else {
-            this.configuration.basePath = basePath || this.basePath;
         }
-    }
-
-    /**
-     * @param consumes string[] mime-types
-     * @return true: consumes contains 'multipart/form-data', false: otherwise
-     */
-    private canConsumeForm(consumes: string[]): boolean {
-        const form = 'multipart/form-data';
-        for (const consume of consumes) {
-            if (form === consume) {
-                return true;
+        if (typeof this.configuration.basePath !== 'string') {
+            if (typeof basePath !== 'string') {
+                basePath = this.basePath;
             }
+            this.configuration.basePath = basePath;
         }
-        return false;
+        this.encoder = this.configuration.encoder || new CustomHttpParameterCodec();
     }
 
 
+
     /**
-     * 
-     * 
      * @param entry 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -117,6 +104,7 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
+
         // to determine the Content-Type header
         const consumes: string[] = [
             'application/json'
@@ -138,8 +126,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -163,9 +149,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<ArticleRes>(`${this.configuration.basePath}/article/${encodeURIComponent(String(id))}`,
             {
@@ -178,8 +161,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param keyword 
      * @param page 
      * @param size 
@@ -192,7 +173,7 @@ export class CmsService {
     public articleQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListArticleRes>>;
     public articleQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        let queryParameters = new HttpParams({encoder: this.encoder});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
         }
@@ -217,9 +198,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<ResultListArticleRes>(`${this.configuration.basePath}/article/query`,
             {
@@ -233,8 +211,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -258,9 +234,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.delete<boolean>(`${this.configuration.basePath}/article/${encodeURIComponent(String(id))}`,
             {
@@ -273,8 +246,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param keyword 
      * @param value 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -285,7 +256,7 @@ export class CmsService {
     public articleSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
     public articleSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        let queryParameters = new HttpParams({encoder: this.encoder});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
         }
@@ -304,9 +275,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/article/search`,
             {
@@ -320,8 +288,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param entry 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -345,6 +311,7 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
+
         // to determine the Content-Type header
         const consumes: string[] = [
             'application/json'
@@ -366,8 +333,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param entry 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -391,6 +356,7 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
+
         // to determine the Content-Type header
         const consumes: string[] = [
             'application/json'
@@ -412,8 +378,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -437,9 +401,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<Category>(`${this.configuration.basePath}/category/${encodeURIComponent(String(id))}`,
             {
@@ -452,8 +413,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param keyword 
      * @param page 
      * @param size 
@@ -466,7 +425,7 @@ export class CmsService {
     public categoryQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListCategoryRes>>;
     public categoryQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        let queryParameters = new HttpParams({encoder: this.encoder});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
         }
@@ -491,9 +450,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<ResultListCategoryRes>(`${this.configuration.basePath}/category/query`,
             {
@@ -507,8 +463,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -532,9 +486,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.delete<boolean>(`${this.configuration.basePath}/category/${encodeURIComponent(String(id))}`,
             {
@@ -547,8 +498,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param keyword 
      * @param value 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -559,7 +508,7 @@ export class CmsService {
     public categorySearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
     public categorySearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        let queryParameters = new HttpParams({encoder: this.encoder});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
         }
@@ -578,9 +527,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/category/search`,
             {
@@ -594,8 +540,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param keyword 
      * @param value 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -606,7 +550,7 @@ export class CmsService {
     public categorySearchTree(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<TreeNode>>>;
     public categorySearchTree(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        let queryParameters = new HttpParams({encoder: this.encoder});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
         }
@@ -625,9 +569,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<Array<TreeNode>>(`${this.configuration.basePath}/category/tree`,
             {
@@ -641,8 +582,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param entry 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -666,6 +605,7 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
+
         // to determine the Content-Type header
         const consumes: string[] = [
             'application/json'
@@ -687,8 +627,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param entry 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -712,6 +650,7 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
+
         // to determine the Content-Type header
         const consumes: string[] = [
             'application/json'
@@ -733,8 +672,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -758,9 +695,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<Media>(`${this.configuration.basePath}/media/${encodeURIComponent(String(id))}`,
             {
@@ -773,8 +707,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param keyword 
      * @param page 
      * @param size 
@@ -787,7 +719,7 @@ export class CmsService {
     public mediaQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListMediaRes>>;
     public mediaQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        let queryParameters = new HttpParams({encoder: this.encoder});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
         }
@@ -812,9 +744,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<ResultListMediaRes>(`${this.configuration.basePath}/media/query`,
             {
@@ -828,8 +757,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -853,9 +780,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.delete<boolean>(`${this.configuration.basePath}/media/${encodeURIComponent(String(id))}`,
             {
@@ -868,8 +792,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param keyword 
      * @param value 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -880,7 +802,7 @@ export class CmsService {
     public mediaSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
     public mediaSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        let queryParameters = new HttpParams({encoder: this.encoder});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
         }
@@ -899,9 +821,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/media/search`,
             {
@@ -915,8 +834,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param entry 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -940,6 +857,7 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
+
         // to determine the Content-Type header
         const consumes: string[] = [
             'application/json'
@@ -961,8 +879,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param file 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -986,6 +902,7 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
+
         // to determine the Content-Type header
         const consumes: string[] = [
             'application/json'
@@ -1007,8 +924,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param files 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -1028,6 +943,7 @@ export class CmsService {
         if (httpHeaderAcceptSelected !== undefined) {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
+
 
         // to determine the Content-Type header
         const consumes: string[] = [
@@ -1050,8 +966,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param entry 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -1075,6 +989,7 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
+
         // to determine the Content-Type header
         const consumes: string[] = [
             'application/json'
@@ -1096,8 +1011,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -1121,9 +1034,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<PageRes>(`${this.configuration.basePath}/page/${encodeURIComponent(String(id))}`,
             {
@@ -1136,8 +1046,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param keyword 
      * @param page 
      * @param size 
@@ -1150,7 +1058,7 @@ export class CmsService {
     public pageQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListPageRes>>;
     public pageQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        let queryParameters = new HttpParams({encoder: this.encoder});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
         }
@@ -1175,9 +1083,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<ResultListPageRes>(`${this.configuration.basePath}/page/query`,
             {
@@ -1191,8 +1096,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -1216,9 +1119,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.delete<boolean>(`${this.configuration.basePath}/page/${encodeURIComponent(String(id))}`,
             {
@@ -1231,8 +1131,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param keyword 
      * @param value 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -1243,7 +1141,7 @@ export class CmsService {
     public pageSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
     public pageSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        let queryParameters = new HttpParams({encoder: this.encoder});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
         }
@@ -1262,9 +1160,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/page/search`,
             {
@@ -1278,8 +1173,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param entry 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -1303,6 +1196,7 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
+
         // to determine the Content-Type header
         const consumes: string[] = [
             'application/json'
@@ -1324,8 +1218,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param entry 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -1349,6 +1241,7 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
+
         // to determine the Content-Type header
         const consumes: string[] = [
             'application/json'
@@ -1370,8 +1263,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -1395,9 +1286,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<Photo>(`${this.configuration.basePath}/photo/${encodeURIComponent(String(id))}`,
             {
@@ -1410,8 +1298,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param keyword 
      * @param page 
      * @param size 
@@ -1424,7 +1310,7 @@ export class CmsService {
     public photoQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListPhotoRes>>;
     public photoQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        let queryParameters = new HttpParams({encoder: this.encoder});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
         }
@@ -1449,9 +1335,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<ResultListPhotoRes>(`${this.configuration.basePath}/photo/query`,
             {
@@ -1465,8 +1348,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -1490,9 +1371,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.delete<boolean>(`${this.configuration.basePath}/photo/${encodeURIComponent(String(id))}`,
             {
@@ -1505,8 +1383,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param keyword 
      * @param value 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -1517,7 +1393,7 @@ export class CmsService {
     public photoSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
     public photoSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        let queryParameters = new HttpParams({encoder: this.encoder});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
         }
@@ -1536,9 +1412,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/photo/search`,
             {
@@ -1552,8 +1425,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param entry 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -1577,6 +1448,7 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
+
         // to determine the Content-Type header
         const consumes: string[] = [
             'application/json'
@@ -1598,8 +1470,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param entry 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -1623,6 +1493,7 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
+
         // to determine the Content-Type header
         const consumes: string[] = [
             'application/json'
@@ -1644,8 +1515,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -1669,9 +1538,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<Widget>(`${this.configuration.basePath}/widget/${encodeURIComponent(String(id))}`,
             {
@@ -1684,8 +1550,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param keyword 
      * @param page 
      * @param size 
@@ -1698,7 +1562,7 @@ export class CmsService {
     public widgetQuery(keyword?: string, page?: number, size?: number, sort?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResultListWidgetRes>>;
     public widgetQuery(keyword?: string, page?: number, size?: number, sort?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        let queryParameters = new HttpParams({encoder: this.encoder});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
         }
@@ -1723,9 +1587,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<ResultListWidgetRes>(`${this.configuration.basePath}/widget/query`,
             {
@@ -1739,8 +1600,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -1764,9 +1623,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.delete<boolean>(`${this.configuration.basePath}/widget/${encodeURIComponent(String(id))}`,
             {
@@ -1779,8 +1635,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param keyword 
      * @param value 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -1791,7 +1645,7 @@ export class CmsService {
     public widgetSearch(keyword?: string, value?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<KeyValue>>>;
     public widgetSearch(keyword?: string, value?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        let queryParameters = new HttpParams({encoder: this.encoder});
         if (keyword !== undefined && keyword !== null) {
             queryParameters = queryParameters.set('keyword', <any>keyword);
         }
@@ -1810,9 +1664,6 @@ export class CmsService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<Array<KeyValue>>(`${this.configuration.basePath}/widget/search`,
             {
@@ -1826,8 +1677,6 @@ export class CmsService {
     }
 
     /**
-     * 
-     * 
      * @param entry 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -1850,6 +1699,7 @@ export class CmsService {
         if (httpHeaderAcceptSelected !== undefined) {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
+
 
         // to determine the Content-Type header
         const consumes: string[] = [

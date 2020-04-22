@@ -1,5 +1,4 @@
 // tslint:disable
-/// <reference path="./custom.d.ts" />
 /**
  * rest api interface
  * 项目标准接口
@@ -13,9 +12,11 @@
  */
 
 
-import * as url from 'url';
+import * as globalImportUrl from 'url';
 import { Configuration } from './configuration';
 import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+// Some imports not used depending on template conditions
+// @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from './base';
 
 /**
@@ -36,31 +37,6 @@ export interface AccessToken {
      * @memberof AccessToken
      */
     accessToken: string;
-}
-/**
- * 
- * @export
- * @interface Appearance
- */
-export interface Appearance {
-    /**
-     * 
-     * @type {string}
-     * @memberof Appearance
-     */
-    name: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof Appearance
-     */
-    options: object;
-    /**
-     * 
-     * @type {object}
-     * @memberof Appearance
-     */
-    data: object;
 }
 /**
  * 
@@ -242,56 +218,6 @@ export interface CategoryRes {
 /**
  * 
  * @export
- * @interface ChangePasswordReq
- */
-export interface ChangePasswordReq {
-    /**
-     * 
-     * @type {string}
-     * @memberof ChangePasswordReq
-     */
-    oldPassword: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ChangePasswordReq
-     */
-    newPassword: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ChangePasswordReq
-     */
-    confirm: string;
-}
-/**
- * 
- * @export
- * @interface CreateAppearanceReq
- */
-export interface CreateAppearanceReq {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateAppearanceReq
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateAppearanceReq
-     */
-    option: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateAppearanceReq
-     */
-    data: string;
-}
-/**
- * 
- * @export
  * @interface CreateArticleDto
  */
 export interface CreateArticleDto {
@@ -414,98 +340,6 @@ export interface CreateCategoryDto {
 /**
  * 
  * @export
- * @interface CreateDictReq
- */
-export interface CreateDictReq {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateDictReq
-     */
-    category: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateDictReq
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateDictReq
-     */
-    translate: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof CreateDictReq
-     */
-    expand: object;
-}
-/**
- * 
- * @export
- * @interface CreateGroupReq
- */
-export interface CreateGroupReq {
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGroupReq
-     */
-    outid?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGroupReq
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGroupReq
-     */
-    icon?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGroupReq
-     */
-    parent?: string;
-    /**
-     * 
-     * @type {Array<object>}
-     * @memberof CreateGroupReq
-     */
-    paths?: Array<object>;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGroupReq
-     */
-    director?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateGroupReq
-     */
-    order?: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateGroupReq
-     */
-    isRegion?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateGroupReq
-     */
-    description?: string;
-}
-/**
- * 
- * @export
  * @interface CreateMediaDto
  */
 export interface CreateMediaDto {
@@ -545,158 +379,6 @@ export interface CreateMediaDto {
      * @memberof CreateMediaDto
      */
     uri?: string;
-}
-/**
- * 
- * @export
- * @interface CreateMenuReq
- */
-export interface CreateMenuReq {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateMenuReq
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateMenuReq
-     */
-    slug: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateMenuReq
-     */
-    group: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateMenuReq
-     */
-    link: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateMenuReq
-     */
-    order?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateMenuReq
-     */
-    externalLink?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateMenuReq
-     */
-    blank: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateMenuReq
-     */
-    icon?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateMenuReq
-     */
-    badge?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateMenuReq
-     */
-    badgeDot?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateMenuReq
-     */
-    badgeStatus?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateMenuReq
-     */
-    enable: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateMenuReq
-     */
-    expanded: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateMenuReq
-     */
-    acl?: string;
-    /**
-     * 
-     * @type {Array<object>}
-     * @memberof CreateMenuReq
-     */
-    paths?: Array<object>;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateMenuReq
-     */
-    parent?: string;
-    /**
-     * 
-     * @type {Array<object>}
-     * @memberof CreateMenuReq
-     */
-    permissions?: Array<object>;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateMenuReq
-     */
-    isMenu: boolean;
-}
-/**
- * 
- * @export
- * @interface CreateNoticeReq
- */
-export interface CreateNoticeReq {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateNoticeReq
-     */
-    title: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateNoticeReq
-     */
-    description: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateNoticeReq
-     */
-    extra: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateNoticeReq
-     */
-    status: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateNoticeReq
-     */
-    type: string;
 }
 /**
  * 
@@ -811,159 +493,6 @@ export interface CreatePhotoDto {
 /**
  * 
  * @export
- * @interface CreateRoleReq
- */
-export interface CreateRoleReq {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateRoleReq
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateRoleReq
-     */
-    description: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof CreateRoleReq
-     */
-    permissions: Array<string>;
-}
-/**
- * 
- * @export
- * @interface CreateSettingReq
- */
-export interface CreateSettingReq {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSettingReq
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSettingReq
-     */
-    key: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof CreateSettingReq
-     */
-    value: object;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSettingReq
-     */
-    description: string;
-}
-/**
- * 
- * @export
- * @interface CreateUserReq
- */
-export interface CreateUserReq {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateUserReq
-     */
-    username: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateUserReq
-     */
-    password: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateUserReq
-     */
-    avatar?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateUserReq
-     */
-    email: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateUserReq
-     */
-    name?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateUserReq
-     */
-    mobile: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateUserReq
-     */
-    isAdmin?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateUserReq
-     */
-    isApproved?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateUserReq
-     */
-    isDisable?: boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateUserReq
-     */
-    expired?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateUserReq
-     */
-    company?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateUserReq
-     */
-    siteUrl?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateUserReq
-     */
-    address?: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof CreateUserReq
-     */
-    groups?: Array<string>;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof CreateUserReq
-     */
-    roles?: Array<string>;
-}
-/**
- * 
- * @export
  * @interface CreateWidgetDto
  */
 export interface CreateWidgetDto {
@@ -991,74 +520,6 @@ export interface CreateWidgetDto {
      * @memberof CreateWidgetDto
      */
     type: string;
-}
-/**
- * 
- * @export
- * @interface Dict
- */
-export interface Dict {
-    /**
-     * 
-     * @type {string}
-     * @memberof Dict
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Dict
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Dict
-     */
-    category: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Dict
-     */
-    translate: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof Dict
-     */
-    expand: object;
-}
-/**
- * 
- * @export
- * @interface EditAppearanceReq
- */
-export interface EditAppearanceReq {
-    /**
-     * 
-     * @type {string}
-     * @memberof EditAppearanceReq
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditAppearanceReq
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditAppearanceReq
-     */
-    option: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditAppearanceReq
-     */
-    data: string;
 }
 /**
  * 
@@ -1197,110 +658,6 @@ export interface EditCategoryDto {
 /**
  * 
  * @export
- * @interface EditDictReq
- */
-export interface EditDictReq {
-    /**
-     * 
-     * @type {string}
-     * @memberof EditDictReq
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditDictReq
-     */
-    category: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditDictReq
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditDictReq
-     */
-    translate: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof EditDictReq
-     */
-    expand: object;
-}
-/**
- * 
- * @export
- * @interface EditGroupReq
- */
-export interface EditGroupReq {
-    /**
-     * 
-     * @type {string}
-     * @memberof EditGroupReq
-     */
-    id: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof EditGroupReq
-     */
-    outid?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditGroupReq
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditGroupReq
-     */
-    icon?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditGroupReq
-     */
-    parent?: string;
-    /**
-     * 
-     * @type {Array<object>}
-     * @memberof EditGroupReq
-     */
-    paths?: Array<object>;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditGroupReq
-     */
-    director?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof EditGroupReq
-     */
-    order?: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof EditGroupReq
-     */
-    isRegion?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditGroupReq
-     */
-    description?: string;
-}
-/**
- * 
- * @export
  * @interface EditMediaDto
  */
 export interface EditMediaDto {
@@ -1346,170 +703,6 @@ export interface EditMediaDto {
      * @memberof EditMediaDto
      */
     uri?: string;
-}
-/**
- * 
- * @export
- * @interface EditMenuReq
- */
-export interface EditMenuReq {
-    /**
-     * 
-     * @type {string}
-     * @memberof EditMenuReq
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditMenuReq
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditMenuReq
-     */
-    slug: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof EditMenuReq
-     */
-    group: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditMenuReq
-     */
-    link: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof EditMenuReq
-     */
-    order?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditMenuReq
-     */
-    externalLink?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof EditMenuReq
-     */
-    blank: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditMenuReq
-     */
-    icon?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditMenuReq
-     */
-    badge?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditMenuReq
-     */
-    badgeDot?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditMenuReq
-     */
-    badgeStatus?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof EditMenuReq
-     */
-    enable: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof EditMenuReq
-     */
-    expanded: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditMenuReq
-     */
-    acl?: string;
-    /**
-     * 
-     * @type {Array<object>}
-     * @memberof EditMenuReq
-     */
-    paths?: Array<object>;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditMenuReq
-     */
-    parent?: string;
-    /**
-     * 
-     * @type {Array<object>}
-     * @memberof EditMenuReq
-     */
-    permissions?: Array<object>;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof EditMenuReq
-     */
-    isMenu: boolean;
-}
-/**
- * 
- * @export
- * @interface EditNoticeReq
- */
-export interface EditNoticeReq {
-    /**
-     * 
-     * @type {string}
-     * @memberof EditNoticeReq
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditNoticeReq
-     */
-    title: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditNoticeReq
-     */
-    description: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditNoticeReq
-     */
-    extra: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditNoticeReq
-     */
-    status: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditNoticeReq
-     */
-    type: string;
 }
 /**
  * 
@@ -1636,226 +829,6 @@ export interface EditPhotoDto {
 /**
  * 
  * @export
- * @interface EditProfileReq
- */
-export interface EditProfileReq {
-    /**
-     * 
-     * @type {string}
-     * @memberof EditProfileReq
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditProfileReq
-     */
-    mobile?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditProfileReq
-     */
-    password?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditProfileReq
-     */
-    email?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditProfileReq
-     */
-    company?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditProfileReq
-     */
-    siteUrl?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditProfileReq
-     */
-    address?: string;
-}
-/**
- * 
- * @export
- * @interface EditRoleReq
- */
-export interface EditRoleReq {
-    /**
-     * 
-     * @type {string}
-     * @memberof EditRoleReq
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditRoleReq
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditRoleReq
-     */
-    description: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof EditRoleReq
-     */
-    permissions: Array<string>;
-}
-/**
- * 
- * @export
- * @interface EditSettingReq
- */
-export interface EditSettingReq {
-    /**
-     * 
-     * @type {string}
-     * @memberof EditSettingReq
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditSettingReq
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditSettingReq
-     */
-    key: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof EditSettingReq
-     */
-    value: object;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditSettingReq
-     */
-    description: string;
-}
-/**
- * 
- * @export
- * @interface EditUserReq
- */
-export interface EditUserReq {
-    /**
-     * 
-     * @type {string}
-     * @memberof EditUserReq
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditUserReq
-     */
-    username?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditUserReq
-     */
-    password?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditUserReq
-     */
-    avatar?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditUserReq
-     */
-    email?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditUserReq
-     */
-    name?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditUserReq
-     */
-    mobile: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof EditUserReq
-     */
-    isAdmin?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof EditUserReq
-     */
-    isApproved?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof EditUserReq
-     */
-    isDisable?: boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof EditUserReq
-     */
-    expired?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditUserReq
-     */
-    company?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditUserReq
-     */
-    siteUrl?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EditUserReq
-     */
-    address?: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof EditUserReq
-     */
-    groups?: Array<string>;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof EditUserReq
-     */
-    roles?: Array<string>;
-}
-/**
- * 
- * @export
  * @interface EditWidgetDto
  */
 export interface EditWidgetDto {
@@ -1893,154 +866,6 @@ export interface EditWidgetDto {
 /**
  * 
  * @export
- * @interface Group
- */
-export interface Group {
-    /**
-     * 
-     * @type {string}
-     * @memberof Group
-     */
-    id: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Group
-     */
-    outid: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof Group
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Group
-     */
-    icon: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Group
-     */
-    parent: string;
-    /**
-     * 
-     * @type {Array<object>}
-     * @memberof Group
-     */
-    paths: Array<object>;
-    /**
-     * 
-     * @type {string}
-     * @memberof Group
-     */
-    director: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Group
-     */
-    order: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Group
-     */
-    isRegion: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof Group
-     */
-    description: string;
-}
-/**
- * 
- * @export
- * @interface GroupedUsersRes
- */
-export interface GroupedUsersRes {
-    /**
-     * 
-     * @type {Array<GroupedUsersResGroups>}
-     * @memberof GroupedUsersRes
-     */
-    groups: Array<GroupedUsersResGroups>;
-    /**
-     * 
-     * @type {Array<GroupedUsersResUsers>}
-     * @memberof GroupedUsersRes
-     */
-    users: Array<GroupedUsersResUsers>;
-}
-/**
- * 
- * @export
- * @interface GroupedUsersResGroups
- */
-export interface GroupedUsersResGroups {
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupedUsersResGroups
-     */
-    parent?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupedUsersResGroups
-     */
-    name?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupedUsersResGroups
-     */
-    icon?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupedUsersResGroups
-     */
-    id?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GroupedUsersResGroups
-     */
-    isRegion?: boolean;
-}
-/**
- * 
- * @export
- * @interface GroupedUsersResUsers
- */
-export interface GroupedUsersResUsers {
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupedUsersResUsers
-     */
-    name?: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof GroupedUsersResUsers
-     */
-    groups?: Array<string>;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupedUsersResUsers
-     */
-    id?: string;
-}
-/**
- * 
- * @export
  * @interface InlineResponse200
  */
 export interface InlineResponse200 {
@@ -2050,31 +875,6 @@ export interface InlineResponse200 {
      * @memberof InlineResponse200
      */
     ok?: boolean;
-}
-/**
- * 
- * @export
- * @interface InlineResponse2001
- */
-export interface InlineResponse2001 {
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2001
-     */
-    name?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2001
-     */
-    id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2001
-     */
-    desc?: string;
 }
 /**
  * 
@@ -2094,92 +894,6 @@ export interface KeyValue {
      * @memberof KeyValue
      */
     value: string;
-}
-/**
- * 
- * @export
- * @interface KeyValueDto
- */
-export interface KeyValueDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof KeyValueDto
-     */
-    label: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof KeyValueDto
-     */
-    value: string;
-}
-/**
- * 
- * @export
- * @interface Log
- */
-export interface Log {
-    /**
-     * 
-     * @type {string}
-     * @memberof Log
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Log
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Log
-     */
-    operator: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Log
-     */
-    operatorName: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Log
-     */
-    ip: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Log
-     */
-    operation: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Log
-     */
-    result: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Log
-     */
-    elapsed: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof Log
-     */
-    comment?: string;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Log
-     */
-    createdAt?: Date;
 }
 /**
  * 
@@ -2447,291 +1161,6 @@ export interface MediaRes {
 /**
  * 
  * @export
- * @interface Menu
- */
-export interface Menu {
-    /**
-     * 
-     * @type {string}
-     * @memberof Menu
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Menu
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Menu
-     */
-    slug: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Menu
-     */
-    group: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof Menu
-     */
-    link: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Menu
-     */
-    order: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof Menu
-     */
-    externalLink: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Menu
-     */
-    blank: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof Menu
-     */
-    icon: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Menu
-     */
-    badge: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Menu
-     */
-    badgeDot: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Menu
-     */
-    badgeStatus: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Menu
-     */
-    enable: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Menu
-     */
-    expanded: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof Menu
-     */
-    acl: string;
-    /**
-     * 
-     * @type {Array<object>}
-     * @memberof Menu
-     */
-    paths: Array<object>;
-    /**
-     * 
-     * @type {object}
-     * @memberof Menu
-     */
-    parent: object;
-    /**
-     * 
-     * @type {Array<object>}
-     * @memberof Menu
-     */
-    permissions?: Array<object>;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Menu
-     */
-    isMenu: boolean;
-}
-/**
- * 
- * @export
- * @interface MenuRes
- */
-export interface MenuRes {
-    /**
-     * 
-     * @type {string}
-     * @memberof MenuRes
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof MenuRes
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof MenuRes
-     */
-    slug: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof MenuRes
-     */
-    group: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof MenuRes
-     */
-    link: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof MenuRes
-     */
-    order?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof MenuRes
-     */
-    externalLink?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof MenuRes
-     */
-    blank: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof MenuRes
-     */
-    icon?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof MenuRes
-     */
-    badge?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof MenuRes
-     */
-    badgeDot?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof MenuRes
-     */
-    badgeStatus?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof MenuRes
-     */
-    enable: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof MenuRes
-     */
-    expanded: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof MenuRes
-     */
-    acl?: string;
-    /**
-     * 
-     * @type {Array<object>}
-     * @memberof MenuRes
-     */
-    paths?: Array<object>;
-    /**
-     * 
-     * @type {string}
-     * @memberof MenuRes
-     */
-    parent?: string;
-    /**
-     * 
-     * @type {Array<object>}
-     * @memberof MenuRes
-     */
-    permissions?: Array<object>;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof MenuRes
-     */
-    isMenu: boolean;
-}
-/**
- * 
- * @export
- * @interface Notice
- */
-export interface Notice {
-    /**
-     * 
-     * @type {string}
-     * @memberof Notice
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Notice
-     */
-    title: string;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Notice
-     */
-    description: Date;
-    /**
-     * 
-     * @type {string}
-     * @memberof Notice
-     */
-    type: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Notice
-     */
-    extra: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Notice
-     */
-    read: boolean;
-}
-/**
- * 
- * @export
  * @interface PageRes
  */
 export interface PageRes {
@@ -2965,50 +1394,6 @@ export interface RegisterReq {
 /**
  * 
  * @export
- * @interface Result
- */
-export interface Result {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Result
-     */
-    ok: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof Result
-     */
-    message?: string;
-}
-/**
- * 
- * @export
- * @interface ResultListAppearance
- */
-export interface ResultListAppearance {
-    /**
-     * 
-     * @type {Array<Appearance>}
-     * @memberof ResultListAppearance
-     */
-    list: Array<Appearance>;
-    /**
-     * 
-     * @type {number}
-     * @memberof ResultListAppearance
-     */
-    count?: number;
-    /**
-     * 
-     * @type {Query}
-     * @memberof ResultListAppearance
-     */
-    query?: Query;
-}
-/**
- * 
- * @export
  * @interface ResultListArticleRes
  */
 export interface ResultListArticleRes {
@@ -3059,81 +1444,6 @@ export interface ResultListCategoryRes {
 /**
  * 
  * @export
- * @interface ResultListDict
- */
-export interface ResultListDict {
-    /**
-     * 
-     * @type {Array<Dict>}
-     * @memberof ResultListDict
-     */
-    list: Array<Dict>;
-    /**
-     * 
-     * @type {number}
-     * @memberof ResultListDict
-     */
-    count?: number;
-    /**
-     * 
-     * @type {Query}
-     * @memberof ResultListDict
-     */
-    query?: Query;
-}
-/**
- * 
- * @export
- * @interface ResultListGroup
- */
-export interface ResultListGroup {
-    /**
-     * 
-     * @type {Array<Group>}
-     * @memberof ResultListGroup
-     */
-    list: Array<Group>;
-    /**
-     * 
-     * @type {number}
-     * @memberof ResultListGroup
-     */
-    count?: number;
-    /**
-     * 
-     * @type {Query}
-     * @memberof ResultListGroup
-     */
-    query?: Query;
-}
-/**
- * 
- * @export
- * @interface ResultListLog
- */
-export interface ResultListLog {
-    /**
-     * 
-     * @type {Array<Log>}
-     * @memberof ResultListLog
-     */
-    list: Array<Log>;
-    /**
-     * 
-     * @type {number}
-     * @memberof ResultListLog
-     */
-    count?: number;
-    /**
-     * 
-     * @type {Query}
-     * @memberof ResultListLog
-     */
-    query?: Query;
-}
-/**
- * 
- * @export
  * @interface ResultListMediaRes
  */
 export interface ResultListMediaRes {
@@ -3153,56 +1463,6 @@ export interface ResultListMediaRes {
      * 
      * @type {Query}
      * @memberof ResultListMediaRes
-     */
-    query?: Query;
-}
-/**
- * 
- * @export
- * @interface ResultListMenu
- */
-export interface ResultListMenu {
-    /**
-     * 
-     * @type {Array<Menu>}
-     * @memberof ResultListMenu
-     */
-    list: Array<Menu>;
-    /**
-     * 
-     * @type {number}
-     * @memberof ResultListMenu
-     */
-    count?: number;
-    /**
-     * 
-     * @type {Query}
-     * @memberof ResultListMenu
-     */
-    query?: Query;
-}
-/**
- * 
- * @export
- * @interface ResultListNotice
- */
-export interface ResultListNotice {
-    /**
-     * 
-     * @type {Array<Notice>}
-     * @memberof ResultListNotice
-     */
-    list: Array<Notice>;
-    /**
-     * 
-     * @type {number}
-     * @memberof ResultListNotice
-     */
-    count?: number;
-    /**
-     * 
-     * @type {Query}
-     * @memberof ResultListNotice
      */
     query?: Query;
 }
@@ -3259,81 +1519,6 @@ export interface ResultListPhotoRes {
 /**
  * 
  * @export
- * @interface ResultListRole
- */
-export interface ResultListRole {
-    /**
-     * 
-     * @type {Array<Role>}
-     * @memberof ResultListRole
-     */
-    list: Array<Role>;
-    /**
-     * 
-     * @type {number}
-     * @memberof ResultListRole
-     */
-    count?: number;
-    /**
-     * 
-     * @type {Query}
-     * @memberof ResultListRole
-     */
-    query?: Query;
-}
-/**
- * 
- * @export
- * @interface ResultListSetting
- */
-export interface ResultListSetting {
-    /**
-     * 
-     * @type {Array<Setting>}
-     * @memberof ResultListSetting
-     */
-    list: Array<Setting>;
-    /**
-     * 
-     * @type {number}
-     * @memberof ResultListSetting
-     */
-    count?: number;
-    /**
-     * 
-     * @type {Query}
-     * @memberof ResultListSetting
-     */
-    query?: Query;
-}
-/**
- * 
- * @export
- * @interface ResultListUser
- */
-export interface ResultListUser {
-    /**
-     * 
-     * @type {Array<User>}
-     * @memberof ResultListUser
-     */
-    list: Array<User>;
-    /**
-     * 
-     * @type {number}
-     * @memberof ResultListUser
-     */
-    count?: number;
-    /**
-     * 
-     * @type {Query}
-     * @memberof ResultListUser
-     */
-    query?: Query;
-}
-/**
- * 
- * @export
  * @interface ResultListWidgetRes
  */
 export interface ResultListWidgetRes {
@@ -3355,117 +1540,6 @@ export interface ResultListWidgetRes {
      * @memberof ResultListWidgetRes
      */
     query?: Query;
-}
-/**
- * 
- * @export
- * @interface Role
- */
-export interface Role {
-    /**
-     * 
-     * @type {string}
-     * @memberof Role
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Role
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Role
-     */
-    role: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Role
-     */
-    description: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof Role
-     */
-    permissions: Array<string>;
-}
-/**
- * 
- * @export
- * @interface Setting
- */
-export interface Setting {
-    /**
-     * 
-     * @type {string}
-     * @memberof Setting
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Setting
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Setting
-     */
-    key: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof Setting
-     */
-    value: object;
-    /**
-     * 
-     * @type {string}
-     * @memberof Setting
-     */
-    description: string;
-}
-/**
- * 
- * @export
- * @interface SettingRes
- */
-export interface SettingRes {
-    /**
-     * 
-     * @type {string}
-     * @memberof SettingRes
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SettingRes
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SettingRes
-     */
-    key: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof SettingRes
-     */
-    value: object;
-    /**
-     * 
-     * @type {string}
-     * @memberof SettingRes
-     */
-    description: string;
 }
 /**
  * 
@@ -3570,219 +1644,6 @@ export interface UploadRes {
 /**
  * 
  * @export
- * @interface User
- */
-export interface User {
-    /**
-     * 
-     * @type {string}
-     * @memberof User
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof User
-     */
-    username: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof User
-     */
-    password?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof User
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof User
-     */
-    keyword?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof User
-     */
-    avatar: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof User
-     */
-    type: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof User
-     */
-    groups: Array<string>;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof User
-     */
-    roles: Array<string>;
-    /**
-     * 
-     * @type {string}
-     * @memberof User
-     */
-    email: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof User
-     */
-    mobile: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof User
-     */
-    profile?: object;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof User
-     */
-    isDisable: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof User
-     */
-    isAdmin: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof User
-     */
-    isApproved: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof User
-     */
-    secret: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof User
-     */
-    expired: number;
-}
-/**
- * 
- * @export
- * @interface UserRes
- */
-export interface UserRes {
-    /**
-     * 
-     * @type {string}
-     * @memberof UserRes
-     */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserRes
-     */
-    username: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserRes
-     */
-    avatar: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserRes
-     */
-    email: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserRes
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserRes
-     */
-    mobile: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof UserRes
-     */
-    roles?: Array<string>;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserRes
-     */
-    isAdmin: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserRes
-     */
-    isApproved: boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof UserRes
-     */
-    expired: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserRes
-     */
-    company?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserRes
-     */
-    siteUrl?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserRes
-     */
-    address?: string;
-}
-/**
- * 
- * @export
- * @interface UsersOfRole
- */
-export interface UsersOfRole {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsersOfRole
-     */
-    role: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof UsersOfRole
-     */
-    userIds: Array<string>;
-}
-/**
- * 
- * @export
  * @interface Widget
  */
 export interface Widget {
@@ -3863,13 +1724,50 @@ export const AppApiAxiosParamCreator = function (configuration?: Configuration) 
     return {
         /**
          * 
+         * @param {string} par1 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appDemo(par1: string, options: any = {}): RequestArgs {
+            // verify required parameter 'par1' is not null or undefined
+            if (par1 === null || par1 === undefined) {
+                throw new RequiredError('par1','Required parameter par1 was null or undefined when calling appDemo.');
+            }
+            const localVarPath = `/`;
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
+            const needsSerialization = (typeof par1 !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(par1 !== undefined ? par1 : {}) : (par1 || "");
+
+            return {
+                url: globalImportUrl.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {string} [name] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         appGetAppSettings(name?: string, options: any = {}): RequestArgs {
             const localVarPath = `/name/{name}`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -3883,13 +1781,14 @@ export const AppApiAxiosParamCreator = function (configuration?: Configuration) 
             }
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -3900,7 +1799,7 @@ export const AppApiAxiosParamCreator = function (configuration?: Configuration) 
          */
         appRoot(options: any = {}): RequestArgs {
             const localVarPath = `/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -3910,13 +1809,14 @@ export const AppApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -3929,6 +1829,19 @@ export const AppApiAxiosParamCreator = function (configuration?: Configuration) 
  */
 export const AppApiFp = function(configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @param {string} par1 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appDemo(par1: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<object> {
+            const localVarAxiosArgs = AppApiAxiosParamCreator(configuration).appDemo(par1, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
         /**
          * 
          * @param {string} [name] 
@@ -3965,6 +1878,15 @@ export const AppApiFactory = function (configuration?: Configuration, basePath?:
     return {
         /**
          * 
+         * @param {string} par1 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appDemo(par1: string, options?: any) {
+            return AppApiFp(configuration).appDemo(par1, options)(axios, basePath);
+        },
+        /**
+         * 
          * @param {string} [name] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3990,6 +1912,17 @@ export const AppApiFactory = function (configuration?: Configuration, basePath?:
  * @extends {BaseAPI}
  */
 export class AppApi extends BaseAPI {
+    /**
+     * 
+     * @param {string} par1 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AppApi
+     */
+    public appDemo(par1: string, options?: any) {
+        return AppApiFp(this.configuration).appDemo(par1, options)(this.axios, this.basePath);
+    }
+
     /**
      * 
      * @param {string} [name] 
@@ -4032,7 +1965,7 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
                 throw new RequiredError('mobile','Required parameter mobile was null or undefined when calling authCaptcha.');
             }
             const localVarPath = `/auth/captcha`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4046,34 +1979,30 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
             }
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
         /**
          * 
-         * @param {Array<string>} name 
          * @param {LoginReq} payload 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authLogin(name: Array<string>, payload: LoginReq, options: any = {}): RequestArgs {
-            // verify required parameter 'name' is not null or undefined
-            if (name === null || name === undefined) {
-                throw new RequiredError('name','Required parameter name was null or undefined when calling authLogin.');
-            }
+        authLogin(payload: LoginReq, options: any = {}): RequestArgs {
             // verify required parameter 'payload' is not null or undefined
             if (payload === null || payload === undefined) {
                 throw new RequiredError('payload','Required parameter payload was null or undefined when calling authLogin.');
             }
             const localVarPath = `/auth/login`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4082,22 +2011,19 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (name) {
-                localVarQueryParameter['name'] = name;
-            }
 
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"LoginReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (typeof payload !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(payload !== undefined ? payload : {}) : (payload || "");
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4108,7 +2034,7 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
          */
         authLogout(options: any = {}): RequestArgs {
             const localVarPath = `/auth/logout`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4118,13 +2044,14 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarQueryParameter = {} as any;
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4140,7 +2067,7 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
                 throw new RequiredError('payload','Required parameter payload was null or undefined when calling authRegister.');
             }
             const localVarPath = `/auth/register`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4150,17 +2077,18 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarQueryParameter = {} as any;
 
 
-                localVarHeaderParameter['Content-Type'] = 'application/json';
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"RegisterReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (typeof payload !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(payload !== undefined ? payload : {}) : (payload || "");
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4188,13 +2116,12 @@ export const AuthApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {Array<string>} name 
          * @param {LoginReq} payload 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authLogin(name: Array<string>, payload: LoginReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LoginRes> {
-            const localVarAxiosArgs = AuthApiAxiosParamCreator(configuration).authLogin(name, payload, options);
+        authLogin(payload: LoginReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LoginRes> {
+            const localVarAxiosArgs = AuthApiAxiosParamCreator(configuration).authLogin(payload, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -4245,13 +2172,12 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
-         * @param {Array<string>} name 
          * @param {LoginReq} payload 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authLogin(name: Array<string>, payload: LoginReq, options?: any) {
-            return AuthApiFp(configuration).authLogin(name, payload, options)(axios, basePath);
+        authLogin(payload: LoginReq, options?: any) {
+            return AuthApiFp(configuration).authLogin(payload, options)(axios, basePath);
         },
         /**
          * 
@@ -4293,14 +2219,13 @@ export class AuthApi extends BaseAPI {
 
     /**
      * 
-     * @param {Array<string>} name 
      * @param {LoginReq} payload 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    public authLogin(name: Array<string>, payload: LoginReq, options?: any) {
-        return AuthApiFp(this.configuration).authLogin(name, payload, options)(this.axios, this.basePath);
+    public authLogin(payload: LoginReq, options?: any) {
+        return AuthApiFp(this.configuration).authLogin(payload, options)(this.axios, this.basePath);
     }
 
     /**
@@ -4345,7 +2270,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
                 throw new RequiredError('entry','Required parameter entry was null or undefined when calling articleCreate.');
             }
             const localVarPath = `/article/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4355,17 +2280,18 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarHeaderParameter['Content-Type'] = 'application/json';
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"CreateArticleDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (typeof entry !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4382,7 +2308,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             const localVarPath = `/article/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4392,13 +2318,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4413,7 +2340,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          */
         articleQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/article/query`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4439,13 +2366,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4462,7 +2390,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             const localVarPath = `/article/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4472,13 +2400,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4491,7 +2420,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          */
         articleSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
             const localVarPath = `/article/search`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4509,13 +2438,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4531,7 +2461,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
                 throw new RequiredError('entry','Required parameter entry was null or undefined when calling articleUpdate.');
             }
             const localVarPath = `/article/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4541,17 +2471,18 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarHeaderParameter['Content-Type'] = 'application/json';
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"EditArticleDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (typeof entry !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4567,7 +2498,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
                 throw new RequiredError('entry','Required parameter entry was null or undefined when calling categoryCreate.');
             }
             const localVarPath = `/category/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4577,17 +2508,18 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarHeaderParameter['Content-Type'] = 'application/json';
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"CreateCategoryDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (typeof entry !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4604,7 +2536,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             const localVarPath = `/category/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4614,13 +2546,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4635,7 +2568,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          */
         categoryQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/category/query`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4661,13 +2594,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4684,7 +2618,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             const localVarPath = `/category/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4694,13 +2628,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4713,7 +2648,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          */
         categorySearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
             const localVarPath = `/category/search`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4731,13 +2666,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4750,7 +2686,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          */
         categorySearchTree(keyword?: string, value?: string, options: any = {}): RequestArgs {
             const localVarPath = `/category/tree`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4768,13 +2704,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4790,7 +2727,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
                 throw new RequiredError('entry','Required parameter entry was null or undefined when calling categoryUpdate.');
             }
             const localVarPath = `/category/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4800,17 +2737,18 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarHeaderParameter['Content-Type'] = 'application/json';
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"EditCategoryDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (typeof entry !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4826,7 +2764,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
                 throw new RequiredError('entry','Required parameter entry was null or undefined when calling mediaCreate.');
             }
             const localVarPath = `/media/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4836,17 +2774,18 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarHeaderParameter['Content-Type'] = 'application/json';
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"CreateMediaDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (typeof entry !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4863,7 +2802,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             const localVarPath = `/media/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4873,13 +2812,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4894,7 +2834,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          */
         mediaQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/media/query`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4920,13 +2860,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4943,7 +2884,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             const localVarPath = `/media/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4953,13 +2894,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -4972,7 +2914,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          */
         mediaSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
             const localVarPath = `/media/search`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -4990,13 +2932,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5012,7 +2955,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
                 throw new RequiredError('entry','Required parameter entry was null or undefined when calling mediaUpdate.');
             }
             const localVarPath = `/media/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5022,17 +2965,18 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarHeaderParameter['Content-Type'] = 'application/json';
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"EditMediaDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (typeof entry !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5048,7 +2992,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
                 throw new RequiredError('file','Required parameter file was null or undefined when calling mediaUploadFile.');
             }
             const localVarPath = `/media/upload`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5058,17 +3002,18 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarHeaderParameter['Content-Type'] = 'application/json';
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"MediaFile" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (typeof file !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(file !== undefined ? file : {}) : (file || "");
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5080,7 +3025,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          */
         mediaUploadFiles(files?: Array<string>, options: any = {}): RequestArgs {
             const localVarPath = `/media/uploads`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5090,17 +3035,18 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarHeaderParameter['Content-Type'] = 'application/json';
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"Array&lt;string&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (typeof files !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(files !== undefined ? files : {}) : (files || "");
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5116,7 +3062,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
                 throw new RequiredError('entry','Required parameter entry was null or undefined when calling pageCreate.');
             }
             const localVarPath = `/page/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5126,17 +3072,18 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarHeaderParameter['Content-Type'] = 'application/json';
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"CreatePageReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (typeof entry !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5153,7 +3100,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             const localVarPath = `/page/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5163,13 +3110,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5184,7 +3132,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          */
         pageQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/page/query`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5210,13 +3158,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5233,7 +3182,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             const localVarPath = `/page/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5243,13 +3192,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5262,7 +3212,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          */
         pageSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
             const localVarPath = `/page/search`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5280,13 +3230,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5302,7 +3253,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
                 throw new RequiredError('entry','Required parameter entry was null or undefined when calling pageUpdate.');
             }
             const localVarPath = `/page/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5312,17 +3263,18 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarHeaderParameter['Content-Type'] = 'application/json';
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"EditPageReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (typeof entry !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5338,7 +3290,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
                 throw new RequiredError('entry','Required parameter entry was null or undefined when calling photoCreate.');
             }
             const localVarPath = `/photo/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5348,17 +3300,18 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarHeaderParameter['Content-Type'] = 'application/json';
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"CreatePhotoDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (typeof entry !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5375,7 +3328,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             const localVarPath = `/photo/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5385,13 +3338,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5406,7 +3360,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          */
         photoQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/photo/query`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5432,13 +3386,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5455,7 +3410,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             const localVarPath = `/photo/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5465,13 +3420,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5484,7 +3440,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          */
         photoSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
             const localVarPath = `/photo/search`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5502,13 +3458,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5524,7 +3481,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
                 throw new RequiredError('entry','Required parameter entry was null or undefined when calling photoUpdate.');
             }
             const localVarPath = `/photo/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5534,17 +3491,18 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarHeaderParameter['Content-Type'] = 'application/json';
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"EditPhotoDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (typeof entry !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5560,7 +3518,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
                 throw new RequiredError('entry','Required parameter entry was null or undefined when calling widgetCreate.');
             }
             const localVarPath = `/widget/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5570,17 +3528,18 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarHeaderParameter['Content-Type'] = 'application/json';
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"CreateWidgetDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (typeof entry !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5597,7 +3556,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             const localVarPath = `/widget/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5607,13 +3566,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5628,7 +3588,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          */
         widgetQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
             const localVarPath = `/widget/query`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5654,13 +3614,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5677,7 +3638,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
             const localVarPath = `/widget/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5687,13 +3648,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5706,7 +3668,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
          */
         widgetSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
             const localVarPath = `/widget/search`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5724,13 +3686,14 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             }
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -5746,7 +3709,7 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
                 throw new RequiredError('entry','Required parameter entry was null or undefined when calling widgetUpdate.');
             }
             const localVarPath = `/widget/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -5756,17 +3719,18 @@ export const CmsApiAxiosParamCreator = function (configuration?: Configuration) 
             const localVarQueryParameter = {} as any;
 
 
-                localVarHeaderParameter['Content-Type'] = 'application/json';
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"EditWidgetDto" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (typeof entry !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -7164,4121 +5128,6 @@ export class CmsApi extends BaseAPI {
 
 
 /**
- * CoreApi - axios parameter creator
- * @export
- */
-export const CoreApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {CreateAppearanceReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesCreate(entry: CreateAppearanceReq, options: any = {}): RequestArgs {
-            // verify required parameter 'entry' is not null or undefined
-            if (entry === null || entry === undefined) {
-                throw new RequiredError('entry','Required parameter entry was null or undefined when calling appearancesCreate.');
-            }
-            const localVarPath = `/appearance/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"CreateAppearanceReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesFindOne(id: string, options: any = {}): RequestArgs {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling appearancesFindOne.');
-            }
-            const localVarPath = `/appearance/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} name 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesGetAppearanceByName(name: string, options: any = {}): RequestArgs {
-            // verify required parameter 'name' is not null or undefined
-            if (name === null || name === undefined) {
-                throw new RequiredError('name','Required parameter name was null or undefined when calling appearancesGetAppearanceByName.');
-            }
-            const localVarPath = `/appearance/name/{name}`
-                .replace(`{${"name"}}`, encodeURIComponent(String(name)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/appearance/query`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (size !== undefined) {
-                localVarQueryParameter['size'] = size;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/appearance/search`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (value !== undefined) {
-                localVarQueryParameter['value'] = value;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {EditAppearanceReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesUpdate(entry: EditAppearanceReq, options: any = {}): RequestArgs {
-            // verify required parameter 'entry' is not null or undefined
-            if (entry === null || entry === undefined) {
-                throw new RequiredError('entry','Required parameter entry was null or undefined when calling appearancesUpdate.');
-            }
-            const localVarPath = `/appearance/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"EditAppearanceReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {CreateDictReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dictsCreate(entry: CreateDictReq, options: any = {}): RequestArgs {
-            // verify required parameter 'entry' is not null or undefined
-            if (entry === null || entry === undefined) {
-                throw new RequiredError('entry','Required parameter entry was null or undefined when calling dictsCreate.');
-            }
-            const localVarPath = `/dict/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"CreateDictReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dictsFindOne(id: string, options: any = {}): RequestArgs {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling dictsFindOne.');
-            }
-            const localVarPath = `/dict/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [category] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dictsQuery(keyword?: string, category?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/dict/query`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (category !== undefined) {
-                localVarQueryParameter['category'] = category;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (size !== undefined) {
-                localVarQueryParameter['size'] = size;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {string} [category] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dictsSearch(keyword?: string, value?: string, category?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/dict/search`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (value !== undefined) {
-                localVarQueryParameter['value'] = value;
-            }
-
-            if (category !== undefined) {
-                localVarQueryParameter['category'] = category;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {EditDictReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dictsUpdate(entry: EditDictReq, options: any = {}): RequestArgs {
-            // verify required parameter 'entry' is not null or undefined
-            if (entry === null || entry === undefined) {
-                throw new RequiredError('entry','Required parameter entry was null or undefined when calling dictsUpdate.');
-            }
-            const localVarPath = `/dict/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"EditDictReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {CreateGroupReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsCreate(entry: CreateGroupReq, options: any = {}): RequestArgs {
-            // verify required parameter 'entry' is not null or undefined
-            if (entry === null || entry === undefined) {
-                throw new RequiredError('entry','Required parameter entry was null or undefined when calling groupsCreate.');
-            }
-            const localVarPath = `/group/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"CreateGroupReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsFindOne(id: string, options: any = {}): RequestArgs {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling groupsFindOne.');
-            }
-            const localVarPath = `/group/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [parent] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsGetGroupedUsers(parent?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/group/users`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (parent !== undefined) {
-                localVarQueryParameter['parent'] = parent;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/group/query`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (size !== undefined) {
-                localVarQueryParameter['size'] = size;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/group/search`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (value !== undefined) {
-                localVarQueryParameter['value'] = value;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsSearchTree(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/group/tree`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (value !== undefined) {
-                localVarQueryParameter['value'] = value;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {EditGroupReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsUpdate(entry: EditGroupReq, options: any = {}): RequestArgs {
-            // verify required parameter 'entry' is not null or undefined
-            if (entry === null || entry === undefined) {
-                throw new RequiredError('entry','Required parameter entry was null or undefined when calling groupsUpdate.');
-            }
-            const localVarPath = `/group/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"EditGroupReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        logsFindOne(id: string, options: any = {}): RequestArgs {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling logsFindOne.');
-            }
-            const localVarPath = `/log/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        logsQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/log/query`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (size !== undefined) {
-                localVarQueryParameter['size'] = size;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {CreateMenuReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusCreate(entry: CreateMenuReq, options: any = {}): RequestArgs {
-            // verify required parameter 'entry' is not null or undefined
-            if (entry === null || entry === undefined) {
-                throw new RequiredError('entry','Required parameter entry was null or undefined when calling menusCreate.');
-            }
-            const localVarPath = `/menu/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"CreateMenuReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusFindOne(id: string, options: any = {}): RequestArgs {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling menusFindOne.');
-            }
-            const localVarPath = `/menu/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusGetPermissionTags(options: any = {}): RequestArgs {
-            const localVarPath = `/menu/permissions`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusGetUserMenus(options: any = {}): RequestArgs {
-            const localVarPath = `/menu/auth`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {boolean} isMenu 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'isMenu' is not null or undefined
-            if (isMenu === null || isMenu === undefined) {
-                throw new RequiredError('isMenu','Required parameter isMenu was null or undefined when calling menusQuery.');
-            }
-            const localVarPath = `/menu/query`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (isMenu !== undefined) {
-                localVarQueryParameter['isMenu'] = isMenu;
-            }
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (size !== undefined) {
-                localVarQueryParameter['size'] = size;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/menu/search`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (value !== undefined) {
-                localVarQueryParameter['value'] = value;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusSearchTree(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/menu/tree`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (value !== undefined) {
-                localVarQueryParameter['value'] = value;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {EditMenuReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusUpdate(entry: EditMenuReq, options: any = {}): RequestArgs {
-            // verify required parameter 'entry' is not null or undefined
-            if (entry === null || entry === undefined) {
-                throw new RequiredError('entry','Required parameter entry was null or undefined when calling menusUpdate.');
-            }
-            const localVarPath = `/menu/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"EditMenuReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {CreateNoticeReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        noticesCreate(entry: CreateNoticeReq, options: any = {}): RequestArgs {
-            // verify required parameter 'entry' is not null or undefined
-            if (entry === null || entry === undefined) {
-                throw new RequiredError('entry','Required parameter entry was null or undefined when calling noticesCreate.');
-            }
-            const localVarPath = `/notice/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"CreateNoticeReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        noticesFindOne(id: string, options: any = {}): RequestArgs {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling noticesFindOne.');
-            }
-            const localVarPath = `/notice/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        noticesQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/notice/query`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (size !== undefined) {
-                localVarQueryParameter['size'] = size;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        noticesSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/notice/search`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (value !== undefined) {
-                localVarQueryParameter['value'] = value;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {EditNoticeReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        noticesUpdate(entry: EditNoticeReq, options: any = {}): RequestArgs {
-            // verify required parameter 'entry' is not null or undefined
-            if (entry === null || entry === undefined) {
-                throw new RequiredError('entry','Required parameter entry was null or undefined when calling noticesUpdate.');
-            }
-            const localVarPath = `/notice/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"EditNoticeReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {CreateRoleReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        rolesCreate(entry: CreateRoleReq, options: any = {}): RequestArgs {
-            // verify required parameter 'entry' is not null or undefined
-            if (entry === null || entry === undefined) {
-                throw new RequiredError('entry','Required parameter entry was null or undefined when calling rolesCreate.');
-            }
-            const localVarPath = `/role/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"CreateRoleReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        rolesFindOne(id: string, options: any = {}): RequestArgs {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling rolesFindOne.');
-            }
-            const localVarPath = `/role/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        rolesQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/role/query`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (size !== undefined) {
-                localVarQueryParameter['size'] = size;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        rolesSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/role/search`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (value !== undefined) {
-                localVarQueryParameter['value'] = value;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {EditRoleReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        rolesUpdate(entry: EditRoleReq, options: any = {}): RequestArgs {
-            // verify required parameter 'entry' is not null or undefined
-            if (entry === null || entry === undefined) {
-                throw new RequiredError('entry','Required parameter entry was null or undefined when calling rolesUpdate.');
-            }
-            const localVarPath = `/role/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"EditRoleReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {CreateSettingReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsCreate(entry: CreateSettingReq, options: any = {}): RequestArgs {
-            // verify required parameter 'entry' is not null or undefined
-            if (entry === null || entry === undefined) {
-                throw new RequiredError('entry','Required parameter entry was null or undefined when calling settingsCreate.');
-            }
-            const localVarPath = `/setting/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"CreateSettingReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsFindOne(id: string, options: any = {}): RequestArgs {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling settingsFindOne.');
-            }
-            const localVarPath = `/setting/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} key 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsGetSettingsByKey(key: string, options: any = {}): RequestArgs {
-            // verify required parameter 'key' is not null or undefined
-            if (key === null || key === undefined) {
-                throw new RequiredError('key','Required parameter key was null or undefined when calling settingsGetSettingsByKey.');
-            }
-            const localVarPath = `/setting/key/{key}`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (key !== undefined) {
-                localVarQueryParameter['key'] = key;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [name] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsGetSettingsByName(name?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/setting/name/{name}`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (name !== undefined) {
-                localVarQueryParameter['name'] = name;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsQuery(keyword?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/setting/query`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (size !== undefined) {
-                localVarQueryParameter['size'] = size;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/setting/search`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (value !== undefined) {
-                localVarQueryParameter['value'] = value;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {EditSettingReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsUpdate(entry: EditSettingReq, options: any = {}): RequestArgs {
-            // verify required parameter 'entry' is not null or undefined
-            if (entry === null || entry === undefined) {
-                throw new RequiredError('entry','Required parameter entry was null or undefined when calling settingsUpdate.');
-            }
-            const localVarPath = `/setting/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"EditSettingReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} name 
-         * @param {SettingsGroup} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsUpdateSettingsByName(name: string, entry: SettingsGroup, options: any = {}): RequestArgs {
-            // verify required parameter 'name' is not null or undefined
-            if (name === null || name === undefined) {
-                throw new RequiredError('name','Required parameter name was null or undefined when calling settingsUpdateSettingsByName.');
-            }
-            // verify required parameter 'entry' is not null or undefined
-            if (entry === null || entry === undefined) {
-                throw new RequiredError('entry','Required parameter entry was null or undefined when calling settingsUpdateSettingsByName.');
-            }
-            const localVarPath = `/setting/name/{name}`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (name !== undefined) {
-                localVarQueryParameter['name'] = name;
-            }
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"SettingsGroup" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {UsersOfRole} users 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersAddUsersToRole(users: UsersOfRole, options: any = {}): RequestArgs {
-            // verify required parameter 'users' is not null or undefined
-            if (users === null || users === undefined) {
-                throw new RequiredError('users','Required parameter users was null or undefined when calling usersAddUsersToRole.');
-            }
-            const localVarPath = `/user/role`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"UsersOfRole" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(users !== undefined ? users : {}) : (users || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {ChangePasswordReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersChangePassword(entry: ChangePasswordReq, options: any = {}): RequestArgs {
-            // verify required parameter 'entry' is not null or undefined
-            if (entry === null || entry === undefined) {
-                throw new RequiredError('entry','Required parameter entry was null or undefined when calling usersChangePassword.');
-            }
-            const localVarPath = `/user/password`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"ChangePasswordReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(entry !== undefined ? entry : {}) : (entry || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {CreateUserReq} user 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersCreate(user: CreateUserReq, options: any = {}): RequestArgs {
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling usersCreate.');
-            }
-            const localVarPath = `/user/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"CreateUserReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user !== undefined ? user : {}) : (user || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersFindOne(id: string, options: any = {}): RequestArgs {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling usersFindOne.');
-            }
-            const localVarPath = `/user/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersProfile(options: any = {}): RequestArgs {
-            const localVarPath = `/user/profile`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [group] 
-         * @param {string} [role] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, sort?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/user/query`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (group !== undefined) {
-                localVarQueryParameter['group'] = group;
-            }
-
-            if (role !== undefined) {
-                localVarQueryParameter['role'] = role;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (size !== undefined) {
-                localVarQueryParameter['size'] = size;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} role 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersRemoveAccountFromRole(role: string, id: string, options: any = {}): RequestArgs {
-            // verify required parameter 'role' is not null or undefined
-            if (role === null || role === undefined) {
-                throw new RequiredError('role','Required parameter role was null or undefined when calling usersRemoveAccountFromRole.');
-            }
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling usersRemoveAccountFromRole.');
-            }
-            const localVarPath = `/user/role`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (role !== undefined) {
-                localVarQueryParameter['role'] = role;
-            }
-
-            if (id !== undefined) {
-                localVarQueryParameter['id'] = id;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersSearch(keyword?: string, value?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/user/search`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (keyword !== undefined) {
-                localVarQueryParameter['keyword'] = keyword;
-            }
-
-            if (value !== undefined) {
-                localVarQueryParameter['value'] = value;
-            }
-
-
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {EditUserReq} user 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersUpdate(user: EditUserReq, options: any = {}): RequestArgs {
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling usersUpdate.');
-            }
-            const localVarPath = `/user/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"EditUserReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user !== undefined ? user : {}) : (user || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {EditProfileReq} user 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersUpdateProfile(user: EditProfileReq, options: any = {}): RequestArgs {
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling usersUpdateProfile.');
-            }
-            const localVarPath = `/user/profile`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"EditProfileReq" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user !== undefined ? user : {}) : (user || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * CoreApi - functional programming interface
- * @export
- */
-export const CoreApiFp = function(configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {CreateAppearanceReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesCreate(entry: CreateAppearanceReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).appearancesCreate(entry, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Appearance> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).appearancesFindOne(id, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} name 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesGetAppearanceByName(name: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Appearance> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).appearancesGetAppearanceByName(name, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListAppearance> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).appearancesQuery(keyword, page, size, sort, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).appearancesSearch(keyword, value, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {EditAppearanceReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesUpdate(entry: EditAppearanceReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Appearance> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).appearancesUpdate(entry, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {CreateDictReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dictsCreate(entry: CreateDictReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).dictsCreate(entry, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dictsFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dict> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).dictsFindOne(id, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [category] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dictsQuery(keyword?: string, category?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListDict> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).dictsQuery(keyword, category, page, size, sort, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {string} [category] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dictsSearch(keyword?: string, value?: string, category?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).dictsSearch(keyword, value, category, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {EditDictReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dictsUpdate(entry: EditDictReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dict> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).dictsUpdate(entry, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {CreateGroupReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsCreate(entry: CreateGroupReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsCreate(entry, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Group> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsFindOne(id, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [parent] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsGetGroupedUsers(parent?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<GroupedUsersRes> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsGetGroupedUsers(parent, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListGroup> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsQuery(keyword, page, size, sort, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsSearch(keyword, value, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsSearchTree(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TreeNode>> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsSearchTree(keyword, value, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {EditGroupReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsUpdate(entry: EditGroupReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Group> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).groupsUpdate(entry, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        logsFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Log> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).logsFindOne(id, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        logsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListLog> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).logsQuery(keyword, page, size, sort, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {CreateMenuReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusCreate(entry: CreateMenuReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusCreate(entry, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<MenuRes> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusFindOne(id, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusGetPermissionTags(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<InlineResponse2001>> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusGetPermissionTags(options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusGetUserMenus(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<MenuRes>> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusGetUserMenus(options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {boolean} isMenu 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListMenu> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusQuery(isMenu, keyword, page, size, sort, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusSearch(keyword, value, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusSearchTree(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TreeNode>> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusSearchTree(keyword, value, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {EditMenuReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusUpdate(entry: EditMenuReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Menu> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).menusUpdate(entry, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {CreateNoticeReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        noticesCreate(entry: CreateNoticeReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).noticesCreate(entry, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        noticesFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Notice> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).noticesFindOne(id, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        noticesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListNotice> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).noticesQuery(keyword, page, size, sort, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        noticesSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).noticesSearch(keyword, value, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {EditNoticeReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        noticesUpdate(entry: EditNoticeReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Notice> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).noticesUpdate(entry, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {CreateRoleReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        rolesCreate(entry: CreateRoleReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).rolesCreate(entry, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        rolesFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Role> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).rolesFindOne(id, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        rolesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListRole> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).rolesQuery(keyword, page, size, sort, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        rolesSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).rolesSearch(keyword, value, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {EditRoleReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        rolesUpdate(entry: EditRoleReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Role> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).rolesUpdate(entry, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {CreateSettingReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsCreate(entry: CreateSettingReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsCreate(entry, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Setting> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsFindOne(id, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} key 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsGetSettingsByKey(key: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<SettingRes> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsGetSettingsByKey(key, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [name] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsGetSettingsByName(name?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<SettingsGroup> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsGetSettingsByName(name, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListSetting> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsQuery(keyword, page, size, sort, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsSearch(keyword, value, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {EditSettingReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsUpdate(entry: EditSettingReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Setting> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsUpdate(entry, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} name 
-         * @param {SettingsGroup} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsUpdateSettingsByName(name: string, entry: SettingsGroup, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<SettingsGroup> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).settingsUpdateSettingsByName(name, entry, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {UsersOfRole} users 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersAddUsersToRole(users: UsersOfRole, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Result> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersAddUsersToRole(users, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {ChangePasswordReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersChangePassword(entry: ChangePasswordReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Result> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersChangePassword(entry, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {CreateUserReq} user 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersCreate(user: CreateUserReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRes> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersCreate(user, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRes> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersFindOne(id, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersProfile(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersProfile(options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [group] 
-         * @param {string} [role] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, sort?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListUser> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersQuery(keyword, group, role, page, size, sort, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} role 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersRemoveAccountFromRole(role: string, id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Result> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersRemoveAccountFromRole(role, id, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersSearch(keyword?: string, value?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<KeyValueDto>> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersSearch(keyword, value, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {EditUserReq} user 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersUpdate(user: EditUserReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRes> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersUpdate(user, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {EditProfileReq} user 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersUpdateProfile(user: EditProfileReq, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRes> {
-            const localVarAxiosArgs = CoreApiAxiosParamCreator(configuration).usersUpdateProfile(user, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-    }
-};
-
-/**
- * CoreApi - factory interface
- * @export
- */
-export const CoreApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    return {
-        /**
-         * 
-         * @param {CreateAppearanceReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesCreate(entry: CreateAppearanceReq, options?: any) {
-            return CoreApiFp(configuration).appearancesCreate(entry, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesFindOne(id: string, options?: any) {
-            return CoreApiFp(configuration).appearancesFindOne(id, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} name 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesGetAppearanceByName(name: string, options?: any) {
-            return CoreApiFp(configuration).appearancesGetAppearanceByName(name, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
-            return CoreApiFp(configuration).appearancesQuery(keyword, page, size, sort, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesSearch(keyword?: string, value?: string, options?: any) {
-            return CoreApiFp(configuration).appearancesSearch(keyword, value, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {EditAppearanceReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appearancesUpdate(entry: EditAppearanceReq, options?: any) {
-            return CoreApiFp(configuration).appearancesUpdate(entry, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {CreateDictReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dictsCreate(entry: CreateDictReq, options?: any) {
-            return CoreApiFp(configuration).dictsCreate(entry, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dictsFindOne(id: string, options?: any) {
-            return CoreApiFp(configuration).dictsFindOne(id, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [category] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dictsQuery(keyword?: string, category?: string, page?: number, size?: number, sort?: string, options?: any) {
-            return CoreApiFp(configuration).dictsQuery(keyword, category, page, size, sort, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {string} [category] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dictsSearch(keyword?: string, value?: string, category?: string, options?: any) {
-            return CoreApiFp(configuration).dictsSearch(keyword, value, category, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {EditDictReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dictsUpdate(entry: EditDictReq, options?: any) {
-            return CoreApiFp(configuration).dictsUpdate(entry, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {CreateGroupReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsCreate(entry: CreateGroupReq, options?: any) {
-            return CoreApiFp(configuration).groupsCreate(entry, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsFindOne(id: string, options?: any) {
-            return CoreApiFp(configuration).groupsFindOne(id, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [parent] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsGetGroupedUsers(parent?: string, options?: any) {
-            return CoreApiFp(configuration).groupsGetGroupedUsers(parent, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
-            return CoreApiFp(configuration).groupsQuery(keyword, page, size, sort, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsSearch(keyword?: string, value?: string, options?: any) {
-            return CoreApiFp(configuration).groupsSearch(keyword, value, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsSearchTree(keyword?: string, value?: string, options?: any) {
-            return CoreApiFp(configuration).groupsSearchTree(keyword, value, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {EditGroupReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        groupsUpdate(entry: EditGroupReq, options?: any) {
-            return CoreApiFp(configuration).groupsUpdate(entry, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        logsFindOne(id: string, options?: any) {
-            return CoreApiFp(configuration).logsFindOne(id, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        logsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
-            return CoreApiFp(configuration).logsQuery(keyword, page, size, sort, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {CreateMenuReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusCreate(entry: CreateMenuReq, options?: any) {
-            return CoreApiFp(configuration).menusCreate(entry, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusFindOne(id: string, options?: any) {
-            return CoreApiFp(configuration).menusFindOne(id, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusGetPermissionTags(options?: any) {
-            return CoreApiFp(configuration).menusGetPermissionTags(options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusGetUserMenus(options?: any) {
-            return CoreApiFp(configuration).menusGetUserMenus(options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {boolean} isMenu 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
-            return CoreApiFp(configuration).menusQuery(isMenu, keyword, page, size, sort, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusSearch(keyword?: string, value?: string, options?: any) {
-            return CoreApiFp(configuration).menusSearch(keyword, value, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusSearchTree(keyword?: string, value?: string, options?: any) {
-            return CoreApiFp(configuration).menusSearchTree(keyword, value, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {EditMenuReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        menusUpdate(entry: EditMenuReq, options?: any) {
-            return CoreApiFp(configuration).menusUpdate(entry, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {CreateNoticeReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        noticesCreate(entry: CreateNoticeReq, options?: any) {
-            return CoreApiFp(configuration).noticesCreate(entry, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        noticesFindOne(id: string, options?: any) {
-            return CoreApiFp(configuration).noticesFindOne(id, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        noticesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
-            return CoreApiFp(configuration).noticesQuery(keyword, page, size, sort, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        noticesSearch(keyword?: string, value?: string, options?: any) {
-            return CoreApiFp(configuration).noticesSearch(keyword, value, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {EditNoticeReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        noticesUpdate(entry: EditNoticeReq, options?: any) {
-            return CoreApiFp(configuration).noticesUpdate(entry, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {CreateRoleReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        rolesCreate(entry: CreateRoleReq, options?: any) {
-            return CoreApiFp(configuration).rolesCreate(entry, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        rolesFindOne(id: string, options?: any) {
-            return CoreApiFp(configuration).rolesFindOne(id, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        rolesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
-            return CoreApiFp(configuration).rolesQuery(keyword, page, size, sort, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        rolesSearch(keyword?: string, value?: string, options?: any) {
-            return CoreApiFp(configuration).rolesSearch(keyword, value, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {EditRoleReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        rolesUpdate(entry: EditRoleReq, options?: any) {
-            return CoreApiFp(configuration).rolesUpdate(entry, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {CreateSettingReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsCreate(entry: CreateSettingReq, options?: any) {
-            return CoreApiFp(configuration).settingsCreate(entry, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsFindOne(id: string, options?: any) {
-            return CoreApiFp(configuration).settingsFindOne(id, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} key 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsGetSettingsByKey(key: string, options?: any) {
-            return CoreApiFp(configuration).settingsGetSettingsByKey(key, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [name] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsGetSettingsByName(name?: string, options?: any) {
-            return CoreApiFp(configuration).settingsGetSettingsByName(name, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
-            return CoreApiFp(configuration).settingsQuery(keyword, page, size, sort, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsSearch(keyword?: string, value?: string, options?: any) {
-            return CoreApiFp(configuration).settingsSearch(keyword, value, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {EditSettingReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsUpdate(entry: EditSettingReq, options?: any) {
-            return CoreApiFp(configuration).settingsUpdate(entry, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} name 
-         * @param {SettingsGroup} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        settingsUpdateSettingsByName(name: string, entry: SettingsGroup, options?: any) {
-            return CoreApiFp(configuration).settingsUpdateSettingsByName(name, entry, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {UsersOfRole} users 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersAddUsersToRole(users: UsersOfRole, options?: any) {
-            return CoreApiFp(configuration).usersAddUsersToRole(users, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {ChangePasswordReq} entry 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersChangePassword(entry: ChangePasswordReq, options?: any) {
-            return CoreApiFp(configuration).usersChangePassword(entry, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {CreateUserReq} user 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersCreate(user: CreateUserReq, options?: any) {
-            return CoreApiFp(configuration).usersCreate(user, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersFindOne(id: string, options?: any) {
-            return CoreApiFp(configuration).usersFindOne(id, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersProfile(options?: any) {
-            return CoreApiFp(configuration).usersProfile(options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [group] 
-         * @param {string} [role] 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, sort?: string, options?: any) {
-            return CoreApiFp(configuration).usersQuery(keyword, group, role, page, size, sort, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} role 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersRemoveAccountFromRole(role: string, id: string, options?: any) {
-            return CoreApiFp(configuration).usersRemoveAccountFromRole(role, id, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {string} [keyword] 
-         * @param {string} [value] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersSearch(keyword?: string, value?: string, options?: any) {
-            return CoreApiFp(configuration).usersSearch(keyword, value, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {EditUserReq} user 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersUpdate(user: EditUserReq, options?: any) {
-            return CoreApiFp(configuration).usersUpdate(user, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @param {EditProfileReq} user 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersUpdateProfile(user: EditProfileReq, options?: any) {
-            return CoreApiFp(configuration).usersUpdateProfile(user, options)(axios, basePath);
-        },
-    };
-};
-
-/**
- * CoreApi - object-oriented interface
- * @export
- * @class CoreApi
- * @extends {BaseAPI}
- */
-export class CoreApi extends BaseAPI {
-    /**
-     * 
-     * @param {CreateAppearanceReq} entry 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public appearancesCreate(entry: CreateAppearanceReq, options?: any) {
-        return CoreApiFp(this.configuration).appearancesCreate(entry, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public appearancesFindOne(id: string, options?: any) {
-        return CoreApiFp(this.configuration).appearancesFindOne(id, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} name 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public appearancesGetAppearanceByName(name: string, options?: any) {
-        return CoreApiFp(this.configuration).appearancesGetAppearanceByName(name, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {number} [page] 
-     * @param {number} [size] 
-     * @param {string} [sort] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public appearancesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
-        return CoreApiFp(this.configuration).appearancesQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {string} [value] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public appearancesSearch(keyword?: string, value?: string, options?: any) {
-        return CoreApiFp(this.configuration).appearancesSearch(keyword, value, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {EditAppearanceReq} entry 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public appearancesUpdate(entry: EditAppearanceReq, options?: any) {
-        return CoreApiFp(this.configuration).appearancesUpdate(entry, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {CreateDictReq} entry 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public dictsCreate(entry: CreateDictReq, options?: any) {
-        return CoreApiFp(this.configuration).dictsCreate(entry, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public dictsFindOne(id: string, options?: any) {
-        return CoreApiFp(this.configuration).dictsFindOne(id, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {string} [category] 
-     * @param {number} [page] 
-     * @param {number} [size] 
-     * @param {string} [sort] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public dictsQuery(keyword?: string, category?: string, page?: number, size?: number, sort?: string, options?: any) {
-        return CoreApiFp(this.configuration).dictsQuery(keyword, category, page, size, sort, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {string} [value] 
-     * @param {string} [category] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public dictsSearch(keyword?: string, value?: string, category?: string, options?: any) {
-        return CoreApiFp(this.configuration).dictsSearch(keyword, value, category, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {EditDictReq} entry 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public dictsUpdate(entry: EditDictReq, options?: any) {
-        return CoreApiFp(this.configuration).dictsUpdate(entry, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {CreateGroupReq} entry 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public groupsCreate(entry: CreateGroupReq, options?: any) {
-        return CoreApiFp(this.configuration).groupsCreate(entry, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public groupsFindOne(id: string, options?: any) {
-        return CoreApiFp(this.configuration).groupsFindOne(id, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [parent] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public groupsGetGroupedUsers(parent?: string, options?: any) {
-        return CoreApiFp(this.configuration).groupsGetGroupedUsers(parent, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {number} [page] 
-     * @param {number} [size] 
-     * @param {string} [sort] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public groupsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
-        return CoreApiFp(this.configuration).groupsQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {string} [value] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public groupsSearch(keyword?: string, value?: string, options?: any) {
-        return CoreApiFp(this.configuration).groupsSearch(keyword, value, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {string} [value] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public groupsSearchTree(keyword?: string, value?: string, options?: any) {
-        return CoreApiFp(this.configuration).groupsSearchTree(keyword, value, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {EditGroupReq} entry 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public groupsUpdate(entry: EditGroupReq, options?: any) {
-        return CoreApiFp(this.configuration).groupsUpdate(entry, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public logsFindOne(id: string, options?: any) {
-        return CoreApiFp(this.configuration).logsFindOne(id, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {number} [page] 
-     * @param {number} [size] 
-     * @param {string} [sort] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public logsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
-        return CoreApiFp(this.configuration).logsQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {CreateMenuReq} entry 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public menusCreate(entry: CreateMenuReq, options?: any) {
-        return CoreApiFp(this.configuration).menusCreate(entry, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public menusFindOne(id: string, options?: any) {
-        return CoreApiFp(this.configuration).menusFindOne(id, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public menusGetPermissionTags(options?: any) {
-        return CoreApiFp(this.configuration).menusGetPermissionTags(options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public menusGetUserMenus(options?: any) {
-        return CoreApiFp(this.configuration).menusGetUserMenus(options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {boolean} isMenu 
-     * @param {string} [keyword] 
-     * @param {number} [page] 
-     * @param {number} [size] 
-     * @param {string} [sort] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public menusQuery(isMenu: boolean, keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
-        return CoreApiFp(this.configuration).menusQuery(isMenu, keyword, page, size, sort, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {string} [value] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public menusSearch(keyword?: string, value?: string, options?: any) {
-        return CoreApiFp(this.configuration).menusSearch(keyword, value, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {string} [value] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public menusSearchTree(keyword?: string, value?: string, options?: any) {
-        return CoreApiFp(this.configuration).menusSearchTree(keyword, value, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {EditMenuReq} entry 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public menusUpdate(entry: EditMenuReq, options?: any) {
-        return CoreApiFp(this.configuration).menusUpdate(entry, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {CreateNoticeReq} entry 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public noticesCreate(entry: CreateNoticeReq, options?: any) {
-        return CoreApiFp(this.configuration).noticesCreate(entry, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public noticesFindOne(id: string, options?: any) {
-        return CoreApiFp(this.configuration).noticesFindOne(id, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {number} [page] 
-     * @param {number} [size] 
-     * @param {string} [sort] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public noticesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
-        return CoreApiFp(this.configuration).noticesQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {string} [value] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public noticesSearch(keyword?: string, value?: string, options?: any) {
-        return CoreApiFp(this.configuration).noticesSearch(keyword, value, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {EditNoticeReq} entry 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public noticesUpdate(entry: EditNoticeReq, options?: any) {
-        return CoreApiFp(this.configuration).noticesUpdate(entry, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {CreateRoleReq} entry 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public rolesCreate(entry: CreateRoleReq, options?: any) {
-        return CoreApiFp(this.configuration).rolesCreate(entry, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public rolesFindOne(id: string, options?: any) {
-        return CoreApiFp(this.configuration).rolesFindOne(id, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {number} [page] 
-     * @param {number} [size] 
-     * @param {string} [sort] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public rolesQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
-        return CoreApiFp(this.configuration).rolesQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {string} [value] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public rolesSearch(keyword?: string, value?: string, options?: any) {
-        return CoreApiFp(this.configuration).rolesSearch(keyword, value, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {EditRoleReq} entry 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public rolesUpdate(entry: EditRoleReq, options?: any) {
-        return CoreApiFp(this.configuration).rolesUpdate(entry, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {CreateSettingReq} entry 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public settingsCreate(entry: CreateSettingReq, options?: any) {
-        return CoreApiFp(this.configuration).settingsCreate(entry, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public settingsFindOne(id: string, options?: any) {
-        return CoreApiFp(this.configuration).settingsFindOne(id, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} key 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public settingsGetSettingsByKey(key: string, options?: any) {
-        return CoreApiFp(this.configuration).settingsGetSettingsByKey(key, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [name] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public settingsGetSettingsByName(name?: string, options?: any) {
-        return CoreApiFp(this.configuration).settingsGetSettingsByName(name, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {number} [page] 
-     * @param {number} [size] 
-     * @param {string} [sort] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public settingsQuery(keyword?: string, page?: number, size?: number, sort?: string, options?: any) {
-        return CoreApiFp(this.configuration).settingsQuery(keyword, page, size, sort, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {string} [value] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public settingsSearch(keyword?: string, value?: string, options?: any) {
-        return CoreApiFp(this.configuration).settingsSearch(keyword, value, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {EditSettingReq} entry 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public settingsUpdate(entry: EditSettingReq, options?: any) {
-        return CoreApiFp(this.configuration).settingsUpdate(entry, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} name 
-     * @param {SettingsGroup} entry 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public settingsUpdateSettingsByName(name: string, entry: SettingsGroup, options?: any) {
-        return CoreApiFp(this.configuration).settingsUpdateSettingsByName(name, entry, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {UsersOfRole} users 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public usersAddUsersToRole(users: UsersOfRole, options?: any) {
-        return CoreApiFp(this.configuration).usersAddUsersToRole(users, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {ChangePasswordReq} entry 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public usersChangePassword(entry: ChangePasswordReq, options?: any) {
-        return CoreApiFp(this.configuration).usersChangePassword(entry, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {CreateUserReq} user 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public usersCreate(user: CreateUserReq, options?: any) {
-        return CoreApiFp(this.configuration).usersCreate(user, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public usersFindOne(id: string, options?: any) {
-        return CoreApiFp(this.configuration).usersFindOne(id, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public usersProfile(options?: any) {
-        return CoreApiFp(this.configuration).usersProfile(options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {string} [group] 
-     * @param {string} [role] 
-     * @param {number} [page] 
-     * @param {number} [size] 
-     * @param {string} [sort] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public usersQuery(keyword?: string, group?: string, role?: string, page?: number, size?: number, sort?: string, options?: any) {
-        return CoreApiFp(this.configuration).usersQuery(keyword, group, role, page, size, sort, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} role 
-     * @param {string} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public usersRemoveAccountFromRole(role: string, id: string, options?: any) {
-        return CoreApiFp(this.configuration).usersRemoveAccountFromRole(role, id, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {string} [keyword] 
-     * @param {string} [value] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public usersSearch(keyword?: string, value?: string, options?: any) {
-        return CoreApiFp(this.configuration).usersSearch(keyword, value, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {EditUserReq} user 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public usersUpdate(user: EditUserReq, options?: any) {
-        return CoreApiFp(this.configuration).usersUpdate(user, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @param {EditProfileReq} user 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CoreApi
-     */
-    public usersUpdateProfile(user: EditProfileReq, options?: any) {
-        return CoreApiFp(this.configuration).usersUpdateProfile(user, options)(this.axios, this.basePath);
-    }
-
-}
-
-
-/**
  * MockApi - axios parameter creator
  * @export
  */
@@ -11291,7 +5140,7 @@ export const MockApiAxiosParamCreator = function (configuration?: Configuration)
          */
         mockInitData(options: any = {}): RequestArgs {
             const localVarPath = `/mock/init`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -11301,13 +5150,14 @@ export const MockApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarQueryParameter = {} as any;
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -11318,7 +5168,7 @@ export const MockApiAxiosParamCreator = function (configuration?: Configuration)
          */
         mockReset(options: any = {}): RequestArgs {
             const localVarPath = `/mock/reset`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -11328,13 +5178,14 @@ export const MockApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarQueryParameter = {} as any;
 
 
-                localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },

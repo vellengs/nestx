@@ -67,7 +67,10 @@ export class MenusPageComponent extends BaseStandComponent implements OnInit {
             .toPromise();
         const items = menuResponse ? menuResponse.list : [];
         const raw = items.map(item => {
-            const isLeaf = items.findIndex(r => r.parent === item.id) === -1;
+            const isLeaf =
+                items.findIndex(r => {
+                    return r.parent.toString() === item.id; // TODO
+                }) === -1;
             return {
                 title: item.name,
                 key: item.id,

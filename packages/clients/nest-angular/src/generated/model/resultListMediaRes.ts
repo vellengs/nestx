@@ -9,8 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { MediaRes } from './mediaRes';
 import { Query } from './query';
+import { MediaRes } from './mediaRes';
 
 
 /**

@@ -17,7 +17,7 @@ import javax.validation.constraints.*;
  * 
  */
 @ApiModel(description = "")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-06-14T14:09:29.012Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-04-22T03:09:30.309Z[GMT]")
 
 public class ResultListWidgetRes   {
   @JsonProperty("list")
@@ -28,7 +28,7 @@ public class ResultListWidgetRes   {
   private Double count;
 
   @JsonProperty("query")
-  private Query query = null;
+  private Query query;
 
   public ResultListWidgetRes list(List<WidgetRes> list) {
     this.list = list;
