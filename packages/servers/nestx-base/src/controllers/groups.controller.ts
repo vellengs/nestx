@@ -57,6 +57,9 @@ export class GroupsController {
   async getGroupedUsers(
     @Query('parent') parent?: string,
   ): Promise<GroupedUsersRes> {
+
+    
+
     return this.groupService.getGroupedUsers(parent);
   }
 

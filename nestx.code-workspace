@@ -1,12 +1,6 @@
 {
 	"folders": [
 		{
-			"path": "packages/servers/nestx-config"
-		},
-		{
-			"path": "packages/servers/nestx-common"
-		},
-		{
 			"path": "packages/servers/nestx-base"
 		},
 		{
@@ -19,16 +13,7 @@
 			"path": "packages/servers/nest-server"
 		},
 		{
-			"path": "packages/servers/nest-testing"
-		},
-		{
-			"path": "."
-		},
-		{
-			"path": "packages/servers/nest-swagger"
-		},
-		{
-			"path": "packages/servers/nest-spring"
+			"path": "packages/clients/nest-angular"
 		}
 	],
 	"settings": {

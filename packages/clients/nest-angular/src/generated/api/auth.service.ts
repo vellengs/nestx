@@ -13,9 +13,8 @@
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { CustomHttpUrlEncodingCodec }                        from '../encoder';
-
+         HttpResponse, HttpEvent, HttpParameterCodec }       from '@angular/common/http';
+import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 import { AccessToken } from '../model/accessToken';
@@ -36,36 +35,24 @@ export class AuthService {
     protected basePath = 'http://localhost';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
+    public encoder: HttpParameterCodec;
 
     constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
-
         if (configuration) {
             this.configuration = configuration;
-            this.configuration.basePath = configuration.basePath || basePath || this.basePath;
-
-        } else {
-            this.configuration.basePath = basePath || this.basePath;
         }
-    }
-
-    /**
-     * @param consumes string[] mime-types
-     * @return true: consumes contains 'multipart/form-data', false: otherwise
-     */
-    private canConsumeForm(consumes: string[]): boolean {
-        const form = 'multipart/form-data';
-        for (const consume of consumes) {
-            if (form === consume) {
-                return true;
+        if (typeof this.configuration.basePath !== 'string') {
+            if (typeof basePath !== 'string') {
+                basePath = this.basePath;
             }
+            this.configuration.basePath = basePath;
         }
-        return false;
+        this.encoder = this.configuration.encoder || new CustomHttpParameterCodec();
     }
 
 
+
     /**
-     * 
-     * 
      * @param mobile 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -78,7 +65,7 @@ export class AuthService {
             throw new Error('Required parameter mobile was null or undefined when calling authCaptcha.');
         }
 
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        let queryParameters = new HttpParams({encoder: this.encoder});
         if (mobile !== undefined && mobile !== null) {
             queryParameters = queryParameters.set('mobile', <any>mobile);
         }
@@ -94,9 +81,6 @@ export class AuthService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<InlineResponse200>(`${this.configuration.basePath}/auth/captcha`,
             {
@@ -110,29 +94,16 @@ export class AuthService {
     }
 
     /**
-     * 
-     * 
-     * @param name 
      * @param payload 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public authLogin(name: Array<string>, payload: LoginReq, observe?: 'body', reportProgress?: boolean): Observable<LoginRes>;
-    public authLogin(name: Array<string>, payload: LoginReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<LoginRes>>;
-    public authLogin(name: Array<string>, payload: LoginReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<LoginRes>>;
-    public authLogin(name: Array<string>, payload: LoginReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (name === null || name === undefined) {
-            throw new Error('Required parameter name was null or undefined when calling authLogin.');
-        }
+    public authLogin(payload: LoginReq, observe?: 'body', reportProgress?: boolean): Observable<LoginRes>;
+    public authLogin(payload: LoginReq, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<LoginRes>>;
+    public authLogin(payload: LoginReq, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<LoginRes>>;
+    public authLogin(payload: LoginReq, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (payload === null || payload === undefined) {
             throw new Error('Required parameter payload was null or undefined when calling authLogin.');
-        }
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (name) {
-            name.forEach((element) => {
-                queryParameters = queryParameters.append('name', <any>element);
-            })
         }
 
         let headers = this.defaultHeaders;
@@ -146,6 +117,7 @@ export class AuthService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
+
         // to determine the Content-Type header
         const consumes: string[] = [
             'application/json'
@@ -158,7 +130,6 @@ export class AuthService {
         return this.httpClient.post<LoginRes>(`${this.configuration.basePath}/auth/login`,
             payload,
             {
-                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -168,8 +139,6 @@ export class AuthService {
     }
 
     /**
-     * 
-     * 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -189,9 +158,6 @@ export class AuthService {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
 
         return this.httpClient.get<InlineResponse200>(`${this.configuration.basePath}/auth/logout`,
             {
@@ -204,8 +170,6 @@ export class AuthService {
     }
 
     /**
-     * 
-     * 
      * @param payload 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -228,6 +192,7 @@ export class AuthService {
         if (httpHeaderAcceptSelected !== undefined) {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
+
 
         // to determine the Content-Type header
         const consumes: string[] = [

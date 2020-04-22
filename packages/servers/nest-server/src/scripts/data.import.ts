@@ -7,7 +7,7 @@ import { createGrants } from './access.init';
 async function importModuleAppearances(modules: string[]) {
   const current = process.cwd();
   for (const module of modules) {
-    const folder = resolve(current, `src/${module}/appearances`);
+    const folder = resolve(current, `src/appearances/${module}`);
     const files = fs.readdirSync(folder);
     for (const file of files) {
       const name = file.substr(0, file.indexOf('.'));

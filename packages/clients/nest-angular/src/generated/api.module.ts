@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
 import { AppService } from './api/app.service';
 import { AuthService } from './api/auth.service';
 import { CmsService } from './api/cms.service';
-import { CoreService } from './api/core.service';
 import { MockService } from './api/mock.service';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { MockService } from './api/mock.service';
     AppService,
     AuthService,
     CmsService,
-    CoreService,
     MockService ]
 })
 export class ApiModule {

@@ -9,8 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PhotoRes } from './photoRes';
 import { Query } from './query';
+import { PhotoRes } from './photoRes';
 
 
 /**

@@ -9,8 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ArticleRes } from './articleRes';
 import { Query } from './query';
+import { ArticleRes } from './articleRes';
 
 
 /**

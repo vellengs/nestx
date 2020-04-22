@@ -6,11 +6,11 @@ export async function createGrants() {
   // await Db.Menu.remove({ isMenu: true }).exec();
   const keys = Object.keys(grants);
 
-  for (let key of keys) {
+  for (const key of keys) {
     const node = grants[key];
     const { actions } = node;
     const items = Object.keys(actions);
-    for (let subKey of items) {
+    for (const subKey of items) {
       const action = actions[subKey];
       const menu = {
         name: node.name + action,
