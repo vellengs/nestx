@@ -22,7 +22,7 @@
     "@types/swagger-parser": "^4.0.3",
     "axios": "^0.18.1",
     "jest": "^24.6.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "mongoose": "^5.7.5",
     "rimraf": "^2.6.2",
     "swagger-parser": "^6.0.5",
