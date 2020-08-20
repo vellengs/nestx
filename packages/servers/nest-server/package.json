@@ -35,7 +35,7 @@
     "@nestjs/testing": "^6.0.2",
     "@nestjs/typeorm": "^6.0.0",
     "@nestjs/websockets": "^6.0.2",
-    "bcrypt": "^3.0.4",
+    "bcrypt": "^5.0.0",
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.3",
     "class-transformer": "^0.1.10",
