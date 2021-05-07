@@ -10,7 +10,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "handlebars": "^4.3.0",
+    "handlebars": "^4.7.7",
     "qs": "^6.7.0"
   },
   "devDependencies": {
