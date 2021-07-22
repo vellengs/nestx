@@ -114,7 +114,7 @@
     "tslint-language-service": "^0.9.9",
     "typescript": "~3.2.2",
     "webpack-bundle-analyzer": "^3.0.3",
-    "xlsx": "^0.14.1"
+    "xlsx": "^0.17.0"
   },
   "engines": {
     "node": ">= 6.9.0",
