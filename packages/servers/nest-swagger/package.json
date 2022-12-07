@@ -29,7 +29,7 @@
     "@types/node": "11.11.3",
     "chai": "^4.2.0",
     "husky": "0.14.3",
-    "lint-staged": "8.1.5",
+    "lint-staged": "13.1.0",
     "mocha": "^6.0.2",
     "prettier": "1.16.4",
     "reflect-metadata": "0.1.13",
