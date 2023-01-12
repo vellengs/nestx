@@ -39,7 +39,7 @@
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.3",
     "class-transformer": "^0.1.10",
-    "class-validator": "^0.8.5",
+    "class-validator": "^0.14.0",
     "compression": "^1.7.3",
     "connect-mongo": "^2.0.3",
     "cookie-parser": "^1.4.4",
