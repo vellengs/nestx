@@ -27,7 +27,7 @@
     "@types/lodash": "^4.14.123",
     "@types/mongoose": "^5.3.27",
     "class-transformer": "^0.2.0",
-    "class-validator": "^0.9.1"
+    "class-validator": "^0.14.0"
   },
   "gitHead": "3f01311f987fc4f02f1e64f74365d53780a0a497"
 }
