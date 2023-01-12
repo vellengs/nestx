@@ -39,7 +39,7 @@
     "@types/mongoose": "^5.3.27",
     "@types/passport-jwt": "^3.0.1",
     "class-transformer": "^0.2.0",
-    "class-validator": "^0.9.1",
+    "class-validator": "^0.14.0",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.4"
   }
